@@ -14,59 +14,38 @@
         <div id="grid-container">
             <table class = 'scacchiera'>
                 <tbody>
-                    <!-- Creazione della tabella 6x6 con alternanza dei colori -->
-                    <tr>
-                        <td>
-                            <div id="torre1" class="torre" draggable="true"></div>
-                        </td>
-                        <td>
-                            <div id="alfiere1" class="alfiere"></div>
-                        </td>
-                        <td>
-                            <div id="regina1" class="regina"></div>
-                        </td>
-                        <td>
-                            <div id="re1" class="re"></div>
-                        </td>
-                        <td>
-                            <div id="cavallo1" class="cavallo"></div>
-                        </td>
-                        <td>
-                            <div id="torre2" class="torre"></div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div id="pedone" class="pedina"></div>
-                        </td>
-                        <td>
-                            <div id="pedone" class="pedina"></div>
-                        </td>
-                        <td>
-                            <div id="pedone" class="pedina"></div>
-                        </td>
-                        <td>
-                            <div id="pedone" class="pedina"></div>
-                        </td>
-                        <td>
-                            <div id="pedone" class="pedina"></div>
-                        </td>
-                        <td>
-                            <div id="pedone" class="pedina"></div>
-                        </td>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-
-                    </tr>
+                    <script>
+                        for (let i = 0; i < 6; i++) {
+                            document.write('<tr>');
+                            for (let j = 0; j < 6; j++) {
+                                let cellId = `cell-${'A'+i}-${j}`;
+                                let cellClass = (i + j) % 2 === 0 ? 'verde' : 'crema';
+                                document.write(`<td id="${cellId}" class="${cellClass}"></td>`);
+                            }
+                            document.write('</tr>');
+                        }
+                    </script>
                 </tbody>
             </table>
+
+            <!-- pedine -->
+
+            <div id="torre1" class="torre" draggable="true">
+                <img src="images/pedone_nero_no_sfondo.png">
+            </div>
+            <div id="alfiere1" class="alfiere" draggable="true">
+                <img src="images/pedone_nero_no_sfondo.png">
+            </div>
+            <div id="regina1" class="regina" draggable="true">
+                <img src="images/pedone_nero_no_sfondo.png">
+            </div>
+            <div id="re1" class="re" draggable="true">
+                <img src="images/pedone_nero_no_sfondo.png">
+            </div>
         </div>
+
+        <!-- griglie draft-->
+
         <div id="dx-container">
             <table class="table_draft_dx">
                 <tbody>
