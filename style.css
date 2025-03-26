@@ -44,7 +44,11 @@
 }
 
 .greencell {
-    color: green;
+    background-color: green;
+}
+
+.creamcell {
+    background-color: #f5deb3;
 }
 
 .pedina {
