@@ -51,9 +51,22 @@
     background-color: #f5deb3;
 }
 
+.draftcell {
+    background-color: #303030;
+    width: 80px;
+    height: 80px;
+}
 .pedina {
     width: 70px;
     height: 70px;
+}
+
+.santino {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    position:relative;
 }
 
 .table_draft_dx{

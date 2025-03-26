@@ -12,6 +12,8 @@
         <img src = soccer_field.jpg class = "background">
 
         <div id="grid-container" class="grid-container" z-index="1">
+
+            <!-- scacchiera -->
             <table class = 'scacchiera'>
                 <tbody>
                     <tr>
@@ -64,21 +66,7 @@
                     </tr>
                 </tbody>
             </table>
-
-            <!-- pedine 
-
-            <div id="torre1" class="torre" draggable="false" onclick="selectPiece('torre1')">
-                <img src="images/pedone_nero.png">
-            </div>
-            <div id="alfiere1" class="alfiere" draggable="false" onclick="selectPiece('alfiere1')">
-                <img src="images/pedone_nero.png">
-            </div>
-            <div id="regina1" class="regina" draggable="false" onclick="selectPiece('regina1')">
-                <img src="images/pedone_bianco.png">
-            </div>
-            <div id="re1" class="re" draggable="false" onclick="selectPiece('re1')">
-                <img src="images/pedone_bianco.png">
-            </div>-->
+            <script src="script_pedine.js"></script>
         </div>
 
         <!-- griglie draft-->
@@ -86,38 +74,88 @@
         <div id="dx-container">
             <table class="table_draft_dx">
                 <tbody>
-                <!-- Creazione della tabella 6x6 con alternanza dei colori -->
-                    <script>
-                        for (let i = 0; i < 6; i++) {
-                            document.write('<tr>');
-                            for (let j = 0; j < 3; j++) {
-                                classe = 'nero'
-                                document.write(`<td class="${classe}"></td>`);
-                            }
-                            document.write('</tr>');
-                        }
-                    </script>
+                    <tr>
+                        <td class="draftcell"> <div id="d00"></div></td>
+                        <td class="draftcell"> <div id="d01"></div></td>
+                        <td class="draftcell"> <div id="d02"></div></td>
+                        <td class="draftcell"> <div id="d03"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="d10"></div></td>
+                        <td class="draftcell"> <div id="d11"></div></td>
+                        <td class="draftcell"> <div id="d12"></div></td>
+                        <td class="draftcell"> <div id="d13"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="d20"></div></td>
+                        <td class="draftcell"> <div id="d21"></div></td>
+                        <td class="draftcell"> <div id="d22"></div></td>
+                        <td class="draftcell"> <div id="d23"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="d30"></div></td>
+                        <td class="draftcell"> <div id="d31"></div></td>
+                        <td class="draftcell"> <div id="d32"></div></td>
+                        <td class="draftcell"> <div id="d33"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="d40"></div></td>
+                        <td class="draftcell"> <div id="d41"></div></td>
+                        <td class="draftcell"> <div id="d42"></div></td>
+                        <td class="draftcell"> <div id="d43"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="d50"></div></td>
+                        <td class="draftcell"> <div id="d51"></div></td>
+                        <td class="draftcell"> <div id="d52"></div></td>
+                        <td class="draftcell"> <div id="d53"></div></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
         <div id="sx-container">
             <table class="table_draft_sx">
                 <tbody>
-                    <!-- Creazione della tabella 6x6 con alternanza dei colori -->
-                    <script>
-                        for (let i = 0; i < 6; i++) {
-                            document.write('<tr>');
-                            for (let j = 0; j < 3; j++) {
-                                let cellId = `sx-${i}-${j}`;
-                                document.write(`<td class="nero" id="${cellId}"></td>`);
-                            }
-                            document.write('</tr>');
-                        }
-                    </script>                    
+                    <tr>
+                        <td class="draftcell"> <div id="s00"></div></td>
+                        <td class="draftcell"> <div id="s01"></div></td>
+                        <td class="draftcell"> <div id="s02"></div></td>
+                        <td class="draftcell"> <div id="s03"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="s10"></div></td>
+                        <td class="draftcell"> <div id="s11"></div></td>
+                        <td class="draftcell"> <div id="s12"></div></td>
+                        <td class="draftcell"> <div id="s13"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="s20"></div></td>
+                        <td class="draftcell"> <div id="s21"></div></td>
+                        <td class="draftcell"> <div id="s22"></div></td>
+                        <td class="draftcell"> <div id="s23"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="s30"></div></td>
+                        <td class="draftcell"> <div id="s31"></div></td>
+                        <td class="draftcell"> <div id="s32"></div></td>
+                        <td class="draftcell"> <div id="s33"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="s40"></div></td>
+                        <td class="draftcell"> <div id="s41"></div></td>
+                        <td class="draftcell"> <div id="s42"></div></td>
+                        <td class="draftcell"> <div id="s43"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="draftcell"> <div id="s50"></div></td>
+                        <td class="draftcell"> <div id="s51"></div></td>
+                        <td class="draftcell"> <div id="s52"></div></td>
+                        <td class="draftcell"> <div id="s53"></div></td>
+                    </tr>                   
                 </tbody>
             </table>
+            <script src="script_draft.js"></script>
         </div>
     </div>
-    <script src="script_pedine.js"></script>
 </body>
 </html>
