@@ -35,9 +35,8 @@
 }
 
 .pedina {
-    width: 40px;
-    height: 40px;
-    background-color: red;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
@@ -46,9 +45,8 @@
 }
 
 .torre {
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
@@ -57,9 +55,8 @@
 }
 
 .alfiere {
-    width: 40px;
-    height: 40px;
-    background-color: yellow;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
@@ -68,9 +65,8 @@
 }
 
 .regina {
-    width: 40px;
-    height: 40px;
-    background-color: green;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
@@ -79,9 +75,8 @@
 }
 
 .re {
-    width: 40px;
-    height: 40px;
-    background-color: black;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
@@ -90,9 +85,8 @@
 }
 
 .cavallo {
-    width: 40px;
-    height: 40px;
-    background-color: orange;
+    width: 86px;
+    height: 86px;
     border-radius: 50%;
     cursor: grab;
     display: flex;
