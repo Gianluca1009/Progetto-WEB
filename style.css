@@ -28,8 +28,8 @@
     font-size: 50px;
     font-weight: bold;
     margin-top: 20px;
-    color: #2e2e2e;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombra del testo */
+    color: #f5deb3;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* Ombra del testo */
     font-family: 'Arial', sans-serif; /* Font elegante */
 }
 
@@ -44,7 +44,7 @@
 }
 
 .greencell {
-    background-color: green;
+    background-color: rgb(116, 172, 116);
 }
 
 .creamcell {
@@ -52,7 +52,7 @@
 }
 
 .draftcell {
-    background-color: #303030;
+    background-color: #6b6a6a;
     width: 80px;
     height: 80px;
 }
@@ -97,7 +97,8 @@ table {
 
 body {
     min-height: 300vh;
-    background-color: rgb(0, 99, 0);
+    /* background-color: #f9f1e3; */
+    background-color: #cdf7c8;
 }
 
 td {
