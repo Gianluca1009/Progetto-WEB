@@ -15,16 +15,55 @@
             <table class = 'scacchiera'>
                 <tbody>
                     <!-- Creazione della tabella 6x6 con alternanza dei colori -->
-                    <script>
-                        for (let i = 0; i < 6; i++) {
-                            document.write('<tr>');
-                            for (let j = 0; j < 6; j++) {
-                                let classe = (i + j) % 2 === 0 ? 'verde' : 'crema';
-                                document.write(`<td class="${classe}"></td>`);
-                            }
-                            document.write('</tr>');
-                        }
-                    </script>
+                    <tr>
+                        <td>
+                            <div id="torre1" class="torre" draggable="true"></div>
+                        </td>
+                        <td>
+                            <div id="alfiere1" class="alfiere"></div>
+                        </td>
+                        <td>
+                            <div id="regina1" class="regina"></div>
+                        </td>
+                        <td>
+                            <div id="re1" class="re"></div>
+                        </td>
+                        <td>
+                            <div id="cavallo1" class="cavallo"></div>
+                        </td>
+                        <td>
+                            <div id="torre2" class="torre"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="pedone" class="pedina"></div>
+                        </td>
+                        <td>
+                            <div id="pedone" class="pedina"></div>
+                        </td>
+                        <td>
+                            <div id="pedone" class="pedina"></div>
+                        </td>
+                        <td>
+                            <div id="pedone" class="pedina"></div>
+                        </td>
+                        <td>
+                            <div id="pedone" class="pedina"></div>
+                        </td>
+                        <td>
+                            <div id="pedone" class="pedina"></div>
+                        </td>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -62,7 +101,6 @@
                 </tbody>
             </table>
         </div>
-        <script src="script_pedine.js"></script>
     </div>
 </body>
 </html>

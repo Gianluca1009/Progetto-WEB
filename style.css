@@ -45,6 +45,61 @@
     justify-content: center;
 }
 
+.torre {
+    width: 40px;
+    height: 40px;
+    background-color: blue;
+    border-radius: 50%;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alfiere {
+    width: 40px;
+    height: 40px;
+    background-color: yellow;
+    border-radius: 50%;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.regina {
+    width: 40px;
+    height: 40px;
+    background-color: green;
+    border-radius: 50%;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.re {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cavallo {
+    width: 40px;
+    height: 40px;
+    background-color: orange;
+    border-radius: 50%;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .table_draft_dx{
     position: absolute;
     top: 50%;  /* Regola la posizione verticale della tabella */
@@ -80,6 +135,7 @@ td {
     width: 50px;
     height: 50px;
     text-align: center;
+    justify-content: center;
     border: 2px solid black;
 }
 
