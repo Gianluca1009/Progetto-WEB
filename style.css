@@ -1,7 +1,12 @@
 .intestazione {
-    display: inline;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 100%;
 }
 
 .game-container {
@@ -34,6 +39,7 @@
     font-size: 50px;
     font-weight: bold;
     margin-top: 20px;
+    margin-right: 10px;
     color: #f5deb3;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* Ombra del testo */
     font-family: 'Arial', sans-serif; /* Font elegante */
@@ -42,8 +48,10 @@
 .info {
     width: 40px;
     height: 40px;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    
+    vertical-align: middle;    
 }
 
 .scacchiera {
