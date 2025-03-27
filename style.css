@@ -2,9 +2,11 @@
     display: inline;
     position: relative;
     transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 .game-container {
+    z-index: 1;
     position: relative;
     margin:auto;
     top: 50%;
@@ -40,13 +42,48 @@
 }
 
 .info {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     position: relative;
     top: 50%;  /* Regola la posizione verticale della tabella */
     left: 50%; /* Regola la posizione orizzontale della tabella */
     transform: translate(-50%, -50%);
-    
+}
+
+.tooltip {
+    z-index: 1000;
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 600px;
+    text-align: center;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+    transform: translateX(-50%);
+}
+
+.info-container {
+    position: relative;
+    display: inline-block;
+    top: 50%;  /* Regola la posizione verticale della tabella */
+    left: 50%; /* Regola la posizione orizzontale della tabella */
+    transform: translate(-50%, -50%);
 }
 
 .scacchiera {
@@ -112,8 +149,7 @@ table {
 
 body {
     min-height: 300vh;
-    /* background-color: #f9f1e3; */
-    background-color: #cdf7c8;
+    background-color: #0f0641;
 }
 
 td {
@@ -137,6 +173,3 @@ td {
 .nero{
     background-color: rgb(63, 63, 63);
 }
-/* .stile_prova{
-    background-color: green;
-} */

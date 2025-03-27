@@ -9,7 +9,16 @@
 <body>
     <div class="intestazione">
         <h1 class="title">SOC-C-HESS</h1>
-        <img src = images/info.png class = "info">
+        <div class="info-container">
+            <img src="images/info.png" class="info" id="infoIcon">
+            <div class="tooltip" id="tooltip">Associa ad ogni pedina un calciatore, poi segui le regole classiche del gioco degli
+                scacchi, tranne per:
+                <br>
+                <br>Il pedone può mangiare in diagonale, ma non può muoversi di due caselle alla volta.
+                <br>Il cavallo può muoversi in diagonale, ma non può saltare.
+                <br>Il re può muoversi di due caselle alla volta, ma non può mangiare.
+            </div>
+        </div>
     </div>
     <div class="game-container">
         <img src = images/soccer_field.jpg class = "background">
@@ -160,5 +169,6 @@
             <script src="script_draft.js"></script>
         </div>
     </div>
+    <script src="script_regole.js"></script>
 </body>
 </html>
