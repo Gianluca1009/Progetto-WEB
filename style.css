@@ -14,7 +14,7 @@
     height: 700px; /* Imposta l'altezza del campo da calcio */
     border: 10px solid rgb(93, 2, 113);
     border-radius: 10px;
-}
+} 
 
 .grid-container {
     z-index: 1;
