@@ -16,7 +16,6 @@
     top: 50%;
     width: 93vw;  /* Imposta la larghezza del campo da calcio */
     height: 93vh; /* Imposta l'altezza del campo da calcio */
-    /* border: 10px solid rgb(93, 2, 113); */
     border: 6px solid #f5deb3;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
@@ -63,6 +62,7 @@
     top: 50%;  /* Regola la posizione verticale della tabella */
     left: 50%; /* Regola la posizione orizzontale della tabella */
     transform: translate(-50%, -50%);
+    transform-origin: center;
 }
 
 .tooltip {
@@ -91,14 +91,6 @@
     border-style: solid;
     border-color: black transparent transparent transparent;
     transform: translateX(-50%);
-}
-
-.info-container {
-    position: relative;
-    display: inline-block;
-    top: 50%;  /* Regola la posizione verticale della tabella */
-    left: 50%; /* Regola la posizione orizzontale della tabella */
-    transform: translate(-50%, -50%);
 }
 
 .scacchiera {
@@ -143,7 +135,6 @@
 
 .pedina:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .santino {
@@ -156,8 +147,7 @@
 }
 
 .santino:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transform: scale(1.04);
 }
 
 .table_draft_dx{
