@@ -10,8 +10,8 @@
     position: relative;
     margin:auto;
     top: 50%;
-    width: 1200px;  /* Imposta la larghezza del campo da calcio */
-    height: 700px; /* Imposta l'altezza del campo da calcio */
+    width: 93vw;  /* Imposta la larghezza del campo da calcio */
+    height: 93vh; /* Imposta l'altezza del campo da calcio */
     /* border: 10px solid rgb(93, 2, 113); */
     border: 6px solid #f5deb3;
     border-radius: 10px;
@@ -27,8 +27,8 @@
     height: 500px;
 }
 .background {
-    width: 100%;
-    height: 100%;
+    width: 93vw;  /* Imposta la larghezza del campo da calcio */
+    height: 93vh; /* Imposta l'altezza del campo da calcio */
     position: center;
     border-radius: 6px;
 }
