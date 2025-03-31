@@ -10,13 +10,13 @@ function posizion_iniziali(){
     let torre_nera = document.createElement("img");
     let torre_bianca = document.createElement("img");
     
-    torre_bianca.className = "pedina";
+    torre_bianca.className = "pedina torre";
     torre_bianca.id= "t";
     torre_bianca.src = "images/pedine/torre_bianca.png";
     torre_bianca.alt = "Torre nera";
     torre_bianca.draggable = true;
      
-    torre_nera.className = "pedina";
+    torre_nera.className = "pedina torre";
     torre_nera.id= "T";
     torre_nera.src = "images/pedine/torre_nera.png";
     torre_nera.alt = "Torre bianca";
@@ -35,13 +35,13 @@ function posizion_iniziali(){
     let alfiere_bianco = document.createElement("img");
     ;
     
-    alfiere_bianco.className = "pedina";
+    alfiere_bianco.className = "pedina alfiere";
     alfiere_bianco.id = "a";
     alfiere_bianco.src = "images/pedine/alfiere_bianco.png";
     alfiere_bianco.alt = "Alfiere bianco";
     alfiere_bianco.draggable = true;
 
-    alfiere_nero.className = "pedina";
+    alfiere_nero.className = "pedina alfiere";
     alfiere_nero.id = "A";
     alfiere_nero.src = "images/pedine/alfiere_nero.png";
     alfiere_nero.alt = "Alfiere nero";
@@ -57,14 +57,14 @@ function posizion_iniziali(){
     let regina_nera = document.createElement("img");
     let regina_bianca = document.createElement("img");
     
-    regina_bianca.className = "pedina";
+    regina_bianca.className = "pedina regina";
     regina_bianca.id = "q";
     regina_bianca.src = "images/pedine/regina_bianca.png";
     regina_bianca.alt = "Regina bianca";
     regina_bianca.draggable = true;
 
         
-    regina_nera.className = "pedina";
+    regina_nera.className = "pedina regina";
     regina_nera.id = "Q";
     regina_nera.src = "images/pedine/regina_nera.png";
     regina_nera.alt = "Regina nera";
@@ -81,13 +81,13 @@ function posizion_iniziali(){
     let re_nero = document.createElement("img");
     let re_bianco = document.createElement("img");
    
-    re_bianco.className = "pedina";
+    re_bianco.className = "pedina re";
     re_bianco.id = "r";
     re_bianco.src = "images/pedine/re_bianco.png";
     re_bianco.alt = "Re bianco";
     re_bianco.draggable = true;
 
-    re_nero.className = "pedina";
+    re_nero.className = "pedina re";
     re_nero.id = "R";
     re_nero.src = "images/pedine/re_nero.png";
     re_nero.alt = "Re nero";
@@ -103,13 +103,13 @@ function posizion_iniziali(){
     let cavallo_nero = document.createElement("img");
     let cavallo_bianco = document.createElement("img");
     
-    cavallo_bianco.className = "pedina";
+    cavallo_bianco.className = "pedina cavallo";
     cavallo_bianco.id = "c";
     cavallo_bianco.src = "images/pedine/cavallo_bianco.png";
     cavallo_bianco.alt = "Cavallo bianco";
     cavallo_bianco.draggable = true;
 
-    cavallo_nero.className = "pedina";
+    cavallo_nero.className = "pedina cavallo";
     cavallo_nero.id = "C";
     cavallo_nero.src = "images/pedine/cavallo_nero.png";
     cavallo_nero.alt = "Cavallo nero";
@@ -126,13 +126,13 @@ function posizion_iniziali(){
         let pedone_nero = document.createElement("img");
         let pedone_bianco = document.createElement("img");
         
-        pedone_bianco.className = "pedina";
+        pedone_bianco.className = "pedina pedone";
         pedone_bianco.id = "p"; 
         pedone_bianco.src = "images/pedine/pedone_bianco.png";
         pedone_bianco.alt = "Pedone bianco";
         pedone_bianco.draggable = true;
 
-        pedone_nero.className = "pedina";
+        pedone_nero.className = "pedina pedone";
         pedone_nero.id = "P";
         pedone_nero.src = "images/pedine/pedone_nero.png";
         pedone_nero.alt = "Pedone nero";
