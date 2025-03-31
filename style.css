@@ -35,12 +35,18 @@
 
 .title {
     text-align: center;
-    font-size: 50px;
+    font-size: 60px;
     font-weight: bold;
     margin-top: 20px;
     color: #f5deb3;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* Ombra del testo */
-    font-family: 'Arial', sans-serif; /* Font elegante */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 10px rgba(245, 222, 179, 0.3); /* Ombra e bagliore */
+    font-family: 'Georgia', serif; /* Font elegante */
+    letter-spacing: 2px; /* Spaziatura tra le lettere */
+    background: linear-gradient(to right, #f5deb3, #f5deb3);
+    
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Effetto gradiente sul testo */
 }
 
 .info {
@@ -151,7 +157,8 @@ table {
 
 body {
     min-height: 300vh;
-    background-color: #0f0641;
+    background: linear-gradient(to right ,#1b014e,#4a01de);
+    overscroll-behavior: none;
 }
 
 td {
