@@ -23,8 +23,9 @@ function sx_draft(){
     let scell03 = document.getElementById("s03");
     let s03 = document.createElement("img");
     s03.className = "santino";
-    s03.src = "https://img.a.transfermarkt.technology/portrait/header/43722-1718986946.jpg?lm=1";
-    s03.alt = "Isla";
+    // s03.src = "https://img.a.transfermarkt.technology/portrait/header/43722-1718986946.jpg?lm=1";
+    s03.src = "http://www.diag.uniroma1.it/oriolo/oriolo_sitoDIAG.jpg";
+    s03.alt = "Oriolo";
     scell03.appendChild(s03);
 }
 
