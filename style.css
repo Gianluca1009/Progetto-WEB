@@ -1,3 +1,7 @@
+.grid-container, .tooltip, .table_draft_dx, .table_draft_sx {
+    box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 .intestazione {
     display: inline;
     position: relative;
@@ -15,6 +19,8 @@
     /* border: 10px solid rgb(93, 2, 113); */
     border: 6px solid #f5deb3;
     border-radius: 10px;
+    box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
+    animation: glow 2s infinite alternate;
 } 
 
 .grid-container {
@@ -31,6 +37,7 @@
     height: 93vh; /* Imposta l'altezza del campo da calcio */
     position: center;
     border-radius: 6px;
+
 }
 
 .title {
@@ -39,7 +46,7 @@
     font-weight: bold;
     margin-top: 20px;
     color: #f5deb3;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), 0 0 10px rgba(245, 222, 179, 0.3); /* Ombra e bagliore */
+    text-shadow: 15px 3px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(245, 222, 179, 0.3); /* Ombra e bagliore */
     font-family: 'Georgia', serif; /* Font elegante */
     letter-spacing: 2px; /* Spaziatura tra le lettere */
     background: linear-gradient(to right, #f5deb3, #f5deb3);
@@ -111,6 +118,18 @@
     background-color: #f5deb3;
 }
 
+.greencell, .creamcell {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.greencell:hover {
+    background-color: rgb(107, 155, 107);
+}
+
+.creamcell:hover {
+    background-color: #e6cda5;
+}
+
 .draftcell {
     background-color: #6b6a6a;
     width: 80px;
@@ -119,6 +138,12 @@
 .pedina {
     width: 70px;
     height: 70px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pedina:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .santino {
@@ -127,6 +152,12 @@
     width: auto;
     height: auto;
     position:relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.santino:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .table_draft_dx{
