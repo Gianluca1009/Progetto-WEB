@@ -1,6 +1,6 @@
-
 function posizion_iniziali(){
 
+    let draggedElement = null;
     // Posizionamento torri
 
     let cell00 = document.getElementById("00");
@@ -14,13 +14,13 @@ function posizion_iniziali(){
     torre_bianca.id= "t";
     torre_bianca.src = "images/pedine/torre_bianca.png";
     torre_bianca.alt = "Torre nera";
-    torre_bianca.draggable = "false";
+    torre_bianca.draggable = true;
      
     torre_nera.className = "pedina";
     torre_nera.id= "T";
     torre_nera.src = "images/pedine/torre_nera.png";
     torre_nera.alt = "Torre bianca";
-    torre_nera.draggable = "false";
+    torre_nera.draggable = true;
 
     cell00.appendChild(torre_nera);
     cell05.appendChild(torre_nera.cloneNode(true));
@@ -39,13 +39,13 @@ function posizion_iniziali(){
     alfiere_bianco.id = "a";
     alfiere_bianco.src = "images/pedine/alfiere_bianco.png";
     alfiere_bianco.alt = "Alfiere bianco";
-    alfiere_bianco.draggable = "false";
+    alfiere_bianco.draggable = true;
 
     alfiere_nero.className = "pedina";
     alfiere_nero.id = "A";
     alfiere_nero.src = "images/pedine/alfiere_nero.png";
     alfiere_nero.alt = "Alfiere nero";
-    alfiere_nero.draggable = "false";
+    alfiere_nero.draggable = true;
 
     cell01.appendChild(alfiere_nero);
     cell54.appendChild(alfiere_bianco);
@@ -61,13 +61,15 @@ function posizion_iniziali(){
     regina_bianca.id = "q";
     regina_bianca.src = "images/pedine/regina_bianca.png";
     regina_bianca.alt = "Regina bianca";
-    regina_bianca.draggable = "false";
+    regina_bianca.draggable = true;
 
+        
     regina_nera.className = "pedina";
     regina_nera.id = "Q";
     regina_nera.src = "images/pedine/regina_nera.png";
     regina_nera.alt = "Regina nera";
-    regina_nera.draggable = "false";
+    regina_nera.draggable = true;
+
 
     cell02.appendChild(regina_nera);
     cell52.appendChild(regina_bianca);
@@ -83,13 +85,13 @@ function posizion_iniziali(){
     re_bianco.id = "r";
     re_bianco.src = "images/pedine/re_bianco.png";
     re_bianco.alt = "Re bianco";
-    re_bianco.draggable = "false";
+    re_bianco.draggable = true;
 
     re_nero.className = "pedina";
     re_nero.id = "R";
     re_nero.src = "images/pedine/re_nero.png";
     re_nero.alt = "Re nero";
-    re_nero.draggable = "false";
+    re_nero.draggable = true;
 
     cell03.appendChild(re_nero);
     cell53.appendChild(re_bianco);
@@ -105,13 +107,13 @@ function posizion_iniziali(){
     cavallo_bianco.id = "c";
     cavallo_bianco.src = "images/pedine/cavallo_bianco.png";
     cavallo_bianco.alt = "Cavallo bianco";
-    cavallo_bianco.draggable = "false";
+    cavallo_bianco.draggable = true;
 
     cavallo_nero.className = "pedina";
     cavallo_nero.id = "C";
     cavallo_nero.src = "images/pedine/cavallo_nero.png";
     cavallo_nero.alt = "Cavallo nero";
-    cavallo_nero.draggable = "false";
+    cavallo_nero.draggable = true;
 
     cell04.appendChild(cavallo_nero);
     cell51.appendChild(cavallo_bianco);
@@ -128,17 +130,53 @@ function posizion_iniziali(){
         pedone_bianco.id = "p"; 
         pedone_bianco.src = "images/pedine/pedone_bianco.png";
         pedone_bianco.alt = "Pedone bianco";
-        pedone_bianco.draggable = "false";
+        pedone_bianco.draggable = true;
 
         pedone_nero.className = "pedina";
         pedone_nero.id = "P";
         pedone_nero.src = "images/pedine/pedone_nero.png";
         pedone_nero.alt = "Pedone nero";
-        pedone_nero.draggable = "false";
+        pedone_nero.draggable = true;
         
         cell1.appendChild(pedone_nero);
         cell4.appendChild(pedone_bianco);
     }
+
+    regina_bianca.addEventListener("dragstart", function(event) {
+        // Salva l'elemento che stai trascinando
+        draggedElement = event.target;
+        event.dataTransfer.setData("text", event.target.id);
+    });
+
+    document.querySelectorAll(".pedina").forEach(ped =>{
+        ped.addEventListener("dragstart", function(event) {
+            // Salva l'elemento che stai trascinando
+            draggedElement = event.target;
+            event.dataTransfer.setData("text", event.target.id);
+        });
+    });
+
+    document.querySelectorAll("td").forEach(cell => {
+        // Permetti il drop sulle celle della tabella
+            cell.addEventListener("dragover", function(event) {
+            event.preventDefault();  // Necessario per consentire il drop
+        });
+
+        // Gestisci il drop sulle celle della tabella
+        cell.addEventListener("drop", function(event) {
+            event.preventDefault();
+
+            // Ottieni la cella di destinazione
+            let x = event.clientX;
+            let y = event.clientY;
+            let cell = document.elementFromPoint(x, y);
+
+            // Se è una cella (tagName == "TD"), aggiungi l'elemento
+            if (cell && cell.tagName === "TD") {
+                cell.appendChild(draggedElement);
+            }
+        });
+    });
 }
 
 window.onload = posizion_iniziali();
