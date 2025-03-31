@@ -142,12 +142,6 @@ function posizion_iniziali(){
         cell4.appendChild(pedone_bianco);
     }
 
-    regina_bianca.addEventListener("dragstart", function(event) {
-        // Salva l'elemento che stai trascinando
-        draggedElement = event.target;
-        event.dataTransfer.setData("text", event.target.id);
-    });
-
     document.querySelectorAll(".pedina").forEach(ped =>{
         ped.addEventListener("dragstart", function(event) {
             // Salva l'elemento che stai trascinando
