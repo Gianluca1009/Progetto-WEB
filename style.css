@@ -127,6 +127,11 @@
     width: 80px;
     height: 80px;
 }
+
+.highlighted {
+    background-color: yellow;
+}
+
 .pedina {
     width: 60px;
     height: 60px;
