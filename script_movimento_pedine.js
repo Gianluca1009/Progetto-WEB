@@ -1,30 +1,32 @@
+let selectedElement = null;
 
-document.querySelectorAll(".pedina").forEach(ped =>{
-    ped.addEventListener("dragstart", function(event) {
-        // Salva l'elemento che stai trascinando
-        draggedElement = event.target;
-        event.dataTransfer.setData("text", event.target.id);
+// Aggiungi un event listener per selezionare la pedina
+document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
+    pedina.addEventListener("click", function(event) {
+        // Seleziona l'elemento (pedina) da spostare
+        selectedElement = event.target;
+
+        // Aggiungi evidenza sull'elemento selezionato (opzionale)
+        document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(p => p.classList.remove("selected"));
+        selectedElement.classList.add("selected");
     });
 });
 
+// Aggiungi un event listener per le celle per gestire il click di destinazione
 document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
-    // Permetti il drop sulle celle della tabella
-        cell.addEventListener("dragover", function(event) {
-        event.preventDefault();  // Necessario per consentire il drop
-    });
+    cell.addEventListener("click", function(event) {
+        if (selectedElement) {
+            // Verifica che la cella cliccata non contenga già una pedina
+            if (this.tagName === "TD" && !this.contains(selectedElement)) {
+                // Sposta la pedina nella cella cliccata
+                this.appendChild(selectedElement);
 
-    // Gestisci il drop sulle celle della tabella
-    cell.addEventListener("drop", function(event) {
-        event.preventDefault();
+                // Rimuovi l'evidenziazione della pedina
+                selectedElement.classList.remove("selected");
 
-        // Ottieni la cella di destinazione
-        let x = event.clientX;
-        let y = event.clientY;
-        let cell = document.elementFromPoint(x, y);
-
-        // Se è una cella (tagName == "TD"), aggiungi l'elemento
-        if (cell && cell.tagName === "TD") {
-            cell.appendChild(draggedElement);
+                // Resetta l'elemento selezionato
+                selectedElement = null;
+            }
         }
     });
 });
