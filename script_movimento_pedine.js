@@ -7,7 +7,7 @@ document.querySelectorAll(".pedina").forEach(ped =>{
     });
 });
 
-document.querySelectorAll("td").forEach(cell => {
+document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     // Permetti il drop sulle celle della tabella
         cell.addEventListener("dragover", function(event) {
         event.preventDefault();  // Necessario per consentire il drop
