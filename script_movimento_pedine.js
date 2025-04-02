@@ -135,6 +135,13 @@ function validationMove(elem,dest_cell){
 
     return valid;
 }
+
+/*
+*    LISTNER PER MUOVERE LE PEDINE:
+*           1. seleziona il pezzo che voglio muovere 
+*           2. seleziona la cella di destinazione dove voglio spostare il pezzo -> se valida -> sposta il pezzo in quella cella
+*/
+
 // Aggiungi un event listener per selezionare la pedina
 document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
     pedina.addEventListener("click", function(event) {
