@@ -34,10 +34,10 @@ la pedina è un div con all'inteno due foto
     stile css
 
 # Game-page:
-    mosse valide      :white_check_mark:
+    mosse valide      ✅
     consiglia-mosse
     log delle mosse
-    muovere pezzi     :white_check_mark:
+    muovere pezzi     ✅
     deselezionare pedina
     bottone torna alla home
     logica pedina mangiata
