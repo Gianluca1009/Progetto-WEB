@@ -7,20 +7,26 @@ function posizion_iniziali(){
     let cell05 = document.getElementById("05");
     let cell50 = document.getElementById("50");
     let cell55 = document.getElementById("55");
-    let torre_nera = document.createElement("img");
-    let torre_bianca = document.createElement("img");
+
+    let torre_nera = document.createElement("div");
+    let torre_bianca = document.createElement("div");
+    torre_bianca.className = "pedina";
+    torre_nera.className = "pedina";
+    torre_bianca.id = "t";
+    torre_nera.id = "T";
     
-    torre_bianca.className = "pedina torre";
-    torre_bianca.id= "t";
-    torre_bianca.src = "images/pedine/torre_bianca.png";
-    torre_bianca.alt = "Torre nera";
-    torre_bianca.draggable = true;
-     
-    torre_nera.className = "pedina torre";
-    torre_nera.id= "T";
-    torre_nera.src = "images/pedine/torre_nera.png";
-    torre_nera.alt = "Torre bianca";
-    torre_nera.draggable = true;
+    let torre_bianca_img = document.createElement("img");
+    let torre_nera_img = document.createElement("img");
+    
+    torre_bianca_img.className = "torre";
+    torre_bianca_img.src = "images/pedine/torre_bianca.png";
+    torre_bianca_img.alt = "Torre nera";
+    torre_bianca.appendChild(torre_bianca_img);
+
+    torre_nera_img.className = "torre";
+    torre_nera_img.src = "images/pedine/torre_nera.png";
+    torre_nera_img.alt = "Torre bianca";
+    torre_nera.appendChild(torre_nera_img);
 
     cell00.appendChild(torre_nera);
     cell05.appendChild(torre_nera.cloneNode(true));
@@ -31,21 +37,24 @@ function posizion_iniziali(){
 
     let cell01 = document.getElementById("01");
     let cell54 = document.getElementById("54");
-    let alfiere_nero = document.createElement("img");
-    let alfiere_bianco = document.createElement("img");
-    ;
-    
-    alfiere_bianco.className = "pedina alfiere";
-    alfiere_bianco.id = "a";
-    alfiere_bianco.src = "images/pedine/alfiere_bianco.png";
-    alfiere_bianco.alt = "Alfiere bianco";
-    alfiere_bianco.draggable = true;
 
-    alfiere_nero.className = "pedina alfiere";
+    let alfiere_nero = document.createElement("div");
+    let alfiere_bianco = document.createElement("div");
+    alfiere_bianco.id = "a";
     alfiere_nero.id = "A";
-    alfiere_nero.src = "images/pedine/alfiere_nero.png";
-    alfiere_nero.alt = "Alfiere nero";
-    alfiere_nero.draggable = true;
+
+    let alfiere_nero_img = document.createElement("img");
+    let alfiere_bianco_img = document.createElement("img");
+
+    alfiere_bianco_img.className = "pedina alfiere";
+    alfiere_bianco_img.src = "images/pedine/alfiere_bianco.png";
+    alfiere_bianco_img.alt = "Alfiere bianco";
+    alfiere_bianco.appendChild(alfiere_bianco_img);
+    
+    alfiere_nero_img.className = "pedina alfiere";
+    alfiere_nero_img.src = "images/pedine/alfiere_nero.png";
+    alfiere_nero_img.alt = "Alfiere nero";
+    alfiere_nero.appendChild(alfiere_nero_img);
 
     cell01.appendChild(alfiere_nero);
     cell54.appendChild(alfiere_bianco);

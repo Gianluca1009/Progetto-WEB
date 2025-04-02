@@ -133,13 +133,39 @@
 }
 
 .pedina {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pedina:hover {
-    transform: scale(1.15);
+.torre{
+    width: 60px;
+    height: 60px;
+}
+
+.alfiere{
+    width: 60px;
+    height: 60px;
+}
+
+.cavallo{
+    width: 60px;
+    height: 60px;
+}
+
+.regina{
+    width: 60px;
+    height: 60px;
+}
+
+.re{
+    width: 60px;
+    height: 60px;
+}
+
+.pedone{
+    width: 60px;
+    height: 60px;
 }
 
 .santino {
