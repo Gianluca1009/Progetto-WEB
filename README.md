@@ -4,6 +4,7 @@
 la cella è un elem td 
 la pedina è un div con all'inteno due foto
 
+```html
 <td cella>
     <div pedina>
         <img tipo_pedina>
