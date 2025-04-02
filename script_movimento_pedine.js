@@ -1,6 +1,30 @@
 let selectedElement = null;
 let selectedCell = null;  // Memorizza la cella selezionata
 
+function validationMove(elem,dest_cell){
+
+    let valid; //booleano che decide se la mossa sia valida o meno secondo le regole
+
+    if(elem.parentElement.id=='P' || elem.parentElement.id=='p'){
+
+        if(elem.parentElement.id=='p'){
+            var valid_cell_x = parseInt(elem.parentElement.parentElement.id[0])-1;  //x dello spostamento valido
+        }
+        if(elem.parentElement.id=='P'){
+            var valid_cell_x = parseInt(elem.parentElement.parentElement.id[0])+1;
+        }
+        let valid_cell_y = parseInt(elem.parentElement.parentElement.id[1]);    //y dello spostamento valido
+
+        let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
+        let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
+
+        if (dest_cell_x==valid_cell_x && dest_cell_y==valid_cell_y){
+            valid = true;       //spostamento validato dal confronto
+        }
+        else valid = false;
+    }
+    return valid;
+}
 // Aggiungi un event listener per selezionare la pedina
 document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
     pedina.addEventListener("click", function(event) {
@@ -9,18 +33,13 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
         selectedElement = selectedImage.parentElement;
         selectedCell = selectedElement.parentElement;  // Memorizza la cella sorgente
         
-        console.log(selectedImage);
-        console.log(selectedElement);       //osservare cosa succede ai click
-        console.log(selectedCell);
-
-        // Aggiungi evidenza sulla pedina selezionata
-        //document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(p => p.classList.remove("selected"));
-        //selectedCell.classList.add("selected");
+        //console.log(selectedImage);
+        //console.log(selectedElement);       //osservare cosa succede ai click
+        //console.log(selectedCell);
 
         // Evidenzia la cella sorgente in giallo
         document.querySelectorAll(".greencell, .creamcell").forEach(cell => cell.classList.remove("highlighted"));
         selectedCell.classList.add("highlighted");
-        console.log(selectedCell.classList);
     });
 });
 
@@ -31,11 +50,9 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
             // Verifica che la cella cliccata non contenga già una pedina
             if (this.tagName === "TD" && !this.contains(selectedElement)) {
                 // Sposta la pedina nella cella cliccata
-                if(validationMove(selectedElement,this))
+                
+                if(validationMove(selectedImage,this))
                     this.appendChild(selectedElement);
-
-                // Rimuovi l'evidenziazione della pedina
-                //selectedElement.classList.remove("selected");
 
                 // Resetta l'elemento selezionato
                 selectedElement = null;
