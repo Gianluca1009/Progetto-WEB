@@ -100,6 +100,7 @@
     transform: translate(-50%, -50%); /* Centra la tabella sopra l'immagine */
     width: 500px;
     height: 500px;
+    table-layout: fixed;
 }
 
 .greencell {
@@ -114,13 +115,6 @@
     transition: background-color 0.3s ease-in-out;
 }
 
-.greencell:hover {
-    background-color: rgb(107, 155, 107);
-}
-
-.creamcell:hover {
-    background-color: #e6cda5;
-}
 
 .draftcell {
     background-color: #6b6a6a;
@@ -135,7 +129,14 @@
 .pedina {
     width: 80px;
     height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pedina:hover{
+    transform: scale(1.1);
 }
 
 .torre{

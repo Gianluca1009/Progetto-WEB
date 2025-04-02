@@ -14,12 +14,13 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
         console.log(selectedCell);
 
         // Aggiungi evidenza sulla pedina selezionata
-        document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(p => p.classList.remove("selected"));
-        selectedCell.classList.add("selected");
+        //document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(p => p.classList.remove("selected"));
+        //selectedCell.classList.add("selected");
 
         // Evidenzia la cella sorgente in giallo
-        document.querySelectorAll(".greencell, .creamcell, .greencell:hover, .creamcell:hover").forEach(cell => cell.classList.remove("highlighted"));
+        document.querySelectorAll(".greencell, .creamcell").forEach(cell => cell.classList.remove("highlighted"));
         selectedCell.classList.add("highlighted");
+        console.log(selectedCell.classList);
     });
 });
 
@@ -30,10 +31,11 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
             // Verifica che la cella cliccata non contenga già una pedina
             if (this.tagName === "TD" && !this.contains(selectedElement)) {
                 // Sposta la pedina nella cella cliccata
-                this.appendChild(selectedElement);
+                if(validationMove(selectedElement,this))
+                    this.appendChild(selectedElement);
 
                 // Rimuovi l'evidenziazione della pedina
-                selectedElement.classList.remove("selected");
+                //selectedElement.classList.remove("selected");
 
                 // Resetta l'elemento selezionato
                 selectedElement = null;

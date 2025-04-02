@@ -26,6 +26,7 @@ progetto scacchi - calcio
     consiglia-mosse
     log delle mosse
     muovere pezzi
+    deselezionare pedina
     bottone torna alla home
     logica pedina mangiata
     stile css
