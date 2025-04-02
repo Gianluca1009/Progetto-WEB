@@ -3,7 +3,7 @@ let selectedCell = null;  // Memorizza la cella selezionata
 
 function validationMove(elem,dest_cell){
 
-    let valid; //booleano che decide se la mossa sia valida o meno secondo le regole
+    let valid = true; //booleano che decide se la mossa sia valida o meno secondo le regole
 
     if(elem.parentElement.id=='P' || elem.parentElement.id=='p'){
 
@@ -23,6 +23,30 @@ function validationMove(elem,dest_cell){
         }
         else valid = false;
     }
+
+    if(elem.parentElement.id=='t' || elem.parentElement.id=='T'){
+
+        let start_cell_x = parseInt(elem.parentElement.parentElement.id[0]);
+        let start_cell_y = parseInt(elem.parentElement.parentElement.id[1]);
+        
+        let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
+        let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
+
+        if(dest_cell_x==start_cell_x || dest_cell_y==start_cell_y) valid=true;      //una tra x e y deve rimanere invariata
+        else valid = false;
+    }
+    if(elem.parentElement.id=='a' || elem.parentElement.id=='A'){
+
+        let curr_x = parseInt(elem.parentElement.parentElement.id[0]);
+        let curr_y = parseInt(elem.parentElement.parentElement.id[1]);
+        
+        let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
+        let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
+
+        if(Math.abs(dest_cell_x-curr_x) != Math.abs(dest_cell_y-curr_y)) return false;      //una tra x e y deve rimanere invariata
+
+    }
+
     return valid;
 }
 // Aggiungi un event listener per selezionare la pedina
@@ -58,6 +82,7 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                 selectedElement = null;
 
                 // Rimuovi l'evidenziazione dalla cella sorgente
+               
                 selectedCell.classList.remove("highlighted");
                 selectedCell = null;
             }

@@ -112,9 +112,8 @@
 }
 
 .greencell, .creamcell {
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.5s ease;
 }
-
 
 .draftcell {
     background-color: #6b6a6a;
