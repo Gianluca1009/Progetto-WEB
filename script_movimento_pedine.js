@@ -29,6 +29,9 @@ function validationMove(elem,dest_cell){
 
     let valid = true; //booleano che decide se la mossa sia valida o meno secondo le regole
 
+    let div_pezzo = elem.parentElement;
+    let td_cell = div_pezzo.parentElement;
+
     if(elem.parentElement.id=='P' || elem.parentElement.id=='p'){
 
         if(elem.parentElement.id=='p'){

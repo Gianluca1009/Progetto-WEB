@@ -1,5 +1,15 @@
 # Progetto-WEB
-progetto scacchi - calcio
+## progetto scacchi - calcio
+### nota struttara pedine-celle
+la cella è un elem td 
+la pedina è un div con all'inteno due foto
+
+<td cella>
+    <div pedina>
+        <img tipo_pedina>
+        <img calciatore>
+    </div>
+</td>
 
 # To-do:
     sfondo non scrollabile
@@ -22,10 +32,10 @@ progetto scacchi - calcio
     stile css
 
 # Game-page:
-    mosse valide
+    mosse valide      :white_check_mark:
     consiglia-mosse
     log delle mosse
-    muovere pezzi
+    muovere pezzi     :white_check_mark:
     deselezionare pedina
     bottone torna alla home
     logica pedina mangiata
