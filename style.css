@@ -1,42 +1,152 @@
-.grid-container, .tooltip, .table_draft_dx, .table_draft_sx, .condition-container, .timer-container {
-    box-shadow: 15px 15px 15px rgba(15, 12, 12, 0.5);
-}
-
-.intestazione {
-    display: inline;
-    position: relative;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-}
-
+/* Layout and Container Classes */
 .game-container {
     z-index: 1;
     position: relative;
     margin:auto;
     top: 50%;
-    width: 85vw;  /* Imposta la larghezza del campo da calcio */
-    height: 95vh; /* Imposta l'altezza del campo da calcio */
+    width: 85vw;
+    height: 95vh;
     border: 6px solid #f5deb3;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
     animation: glow 2s infinite alternate;
-} 
+}
 
 .grid-container {
     z-index: 1;
     position: absolute;
-    top: 50%;  /* Regola la posizione verticale della tabella */
-    left: 50%; /* Regola la posizione orizzontale della tabella */
-    transform: translate(-50%, -50%); /* Centra la tabella sopra l'immagine */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 500px;
     height: 500px;
 }
+
 .background {
-    width: 85vw;  /* Imposta la larghezza del campo da calcio */
-    height: 95vh; /* Imposta l'altezza del campo da calcio */
+    width: 85vw;
+    height: 95vh;
     position: center;
     border-radius: 6px;
+}
 
+/* Table and Chessboard Classes */
+.scacchiera {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    table-layout: fixed;
+    border-radius: 10px;
+}
+
+.table_draft_dx {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, -50%);
+    width: 290px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+.table_draft_sx {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-200%, -50%);
+    width: 290px;
+    height: 500px;
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid black;
+}
+
+td {
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+/* Cell Colors and States */
+.greencell {
+    background-color: rgb(116, 172, 116);
+}
+
+.creamcell {
+    background-color: #f5deb3;
+}
+
+.greencell, .creamcell {
+    transition: background-color 0.5s ease;
+}
+
+.draftcell {
+    background-color: #6b6a6a;
+    width: 80px;
+    height: 80px;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+.verde {
+    background-color: green;
+}
+
+.crema {
+    background-color: #f5deb3;
+}
+
+.nero {
+    background-color: rgb(63, 63, 63);
+}
+
+/* Pieces and Game Elements */
+.pedina {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pedina:hover {
+    transform: scale(1.1);
+}
+
+.torre, .alfiere, .cavallo, .regina, .re, .pedone {
+    width: 60px;
+    height: 60px;
+}
+
+.santino {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.santino:hover {
+    transform: scale(1.04);
+}
+
+/* UI Elements */
+.intestazione {
+    display: inline;
+    position: relative;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 .title {
@@ -45,22 +155,21 @@
     font-weight: bold;
     margin-top: 20px;
     color: #f5deb3;
-    text-shadow: 15px 3px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(245, 222, 179, 0.3); /* Ombra e bagliore */
-    font-family: 'Georgia', serif; /* Font elegante */
-    letter-spacing: 2px; /* Spaziatura tra le lettere */
+    text-shadow: 15px 3px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(245, 222, 179, 0.3);
+    font-family: 'Georgia', serif;
+    letter-spacing: 2px;
     background: linear-gradient(to right, #f5deb3, #f5deb3);
-    
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* Effetto gradiente sul testo */
+    -webkit-text-fill-color: transparent;
 }
 
 .info {
     width: 30px;
     height: 30px;
     position: relative;
-    top: 50%;  /* Regola la posizione verticale della tabella */
-    left: 50%; /* Regola la posizione orizzontale della tabella */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
 }
@@ -91,126 +200,6 @@
     border-style: solid;
     border-color: black transparent transparent transparent;
     transform: translateX(-50%);
-}
-
-.scacchiera {
-    position: absolute;
-    top: 50%;  /* Regola la posizione verticale della tabella */
-    left: 50%; /* Regola la posizione orizzontale della tabella */
-    transform: translate(-50%, -50%); /* Centra la tabella sopra l'immagine */
-    width: 500px;
-    height: 500px;
-    table-layout: fixed;
-    border-radius: 10px;
-}
-
-.greencell {
-    background-color: rgb(116, 172, 116);
-}
-
-.creamcell {
-    background-color: #f5deb3;
-}
-
-.greencell, .creamcell {
-    transition: background-color 0.5s ease;
-}
-
-.draftcell {
-    background-color: #6b6a6a;
-    width: 80px;
-    height: 80px;
-    
-}
-
-.highlighted {
-    background-color: yellow;
-}
-
-.pedina {
-    width: 80px;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.pedina:hover{
-    transform: scale(1.1);
-}
-
-.torre, .alfiere, .cavallo, .regina, .re, .pedone{
-    width: 60px;
-    height: 60px;
-}
-
-
-.santino {
-    max-width: 80px;
-    max-height: 80px;
-    width: auto;
-    height: auto;
-    position:relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.santino:hover {
-    transform: scale(1.04);
-}
-
-.table_draft_dx{
-    position: absolute;
-    top: 50%;  /* Regola la posizione verticale della tabella */
-    left: 50%; /* Regola la posizione orizzontale della tabella */
-    transform: translate(100%, -50%); /* Centra la tabella sopra l'immagine */
-    width: 290px;
-    height: 500px;
-    border: 1px solid black;
-}
-
-.table_draft_sx{
-    position: absolute;
-    top: 50%;  /* Regola la posizione verticale della tabella */
-    left: 50%; /* Regola la posizione orizzontale della tabella */
-    transform: translate(-200%, -50%); /* Centra la tabella sopra l'immagine */
-    width: 290px;
-    height: 500px;
-    border: 1px solid black;
-}
-
-
-table {
-    border-collapse: collapse;
-    border: 2px solid black;
-}
-
-body {
-    min-height: 300vh;
-    background: linear-gradient(to right ,#1b014e,#4a01de);
-    overscroll-behavior: none;
-}
-
-td {
-    width: 80px;
-    height: 80px;
-    text-align: center;
-    justify-content: center;
-    border: 2px solid black;
-}
-
-
-.verde {
-    background-color: green;
-}
-
-
-.crema {
-    background-color: #f5deb3; /* Colore crema */
-}
-
-.nero{
-    background-color: rgb(63, 63, 63);
 }
 
 .condition-container {
@@ -257,4 +246,15 @@ td {
     vertical-align: middle;
     z-index: 2;
     border: 3px solid #f5deb3;
+}
+
+/* General Styling */
+body {
+    min-height: 300vh;
+    background: linear-gradient(to right ,#1b014e,#4a01de);
+    overscroll-behavior: none;
+}
+
+.grid-container, .tooltip, .table_draft_dx, .table_draft_sx, .condition-container, .timer-container {
+    box-shadow: 15px 15px 15px rgba(15, 12, 12, 0.5);
 }

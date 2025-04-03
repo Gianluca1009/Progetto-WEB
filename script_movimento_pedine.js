@@ -1,5 +1,6 @@
 let selectedElement = null;
 let selectedCell = null;  // Memorizza la cella selezionata
+let selectedImage = null;  // Memorizza l'immagine selezionata
 
 // Funzione di supporto per verificare se ci sono pedine nel percorso
 function checkPathClear(start_x, start_y, end_x, end_y) {
@@ -146,17 +147,31 @@ function validationMove(elem,dest_cell){
 // Aggiungi un event listener per selezionare la pedina
 document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
     pedina.addEventListener("click", function(event) {
+        // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
+        if (selectedImage === event.target) {
+            selectedCell.classList.remove("highlighted");
+            selectedElement = null;
+            selectedCell = null;
+            selectedImage = null;
+            return;  // Importante: esce dalla funzione dopo la deselezione
+        }
+
+        // Rimuovi l'evidenziazione precedente se presente
+        if (selectedCell) {
+            selectedCell.classList.remove("highlighted");
+        }
+
         // Seleziona l'elemento (pedina) da spostare
         selectedImage = event.target; //immagine
         selectedElement = selectedImage.parentElement;
         selectedCell = selectedElement.parentElement;  // Memorizza la cella sorgente
         
         // Evidenzia la cella sorgente in giallo
-        document.querySelectorAll(".greencell, .creamcell").forEach(cell => cell.classList.remove("highlighted"));
         selectedCell.classList.add("highlighted");
-
     });
 });
+
+
 
 // Aggiungi un event listener per le celle per gestire il click di destinazione
 document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
@@ -165,16 +180,16 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
             // Verifica che la cella cliccata non contenga già una pedina
             if (this.tagName === "TD" && !this.contains(selectedElement)) {
                 // Sposta la pedina nella cella cliccata
-                if(validationMove(selectedImage,this))
+                if(validationMove(selectedImage, this))
                     this.appendChild(selectedElement);
 
                 // Resetta l'elemento selezionato
                 selectedElement = null;
+                selectedImage = null;
 
                 // Rimuovi l'evidenziazione dalla cella sorgente
                 selectedCell.classList.remove("highlighted");
                 selectedCell = null;
-
             }
         }
     });
