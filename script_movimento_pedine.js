@@ -180,8 +180,10 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
             // Verifica che la cella cliccata non contenga già una pedina
             if (this.tagName === "TD" && !this.contains(selectedElement)) {
                 // Sposta la pedina nella cella cliccata
-                if(validationMove(selectedImage, this))
+                if(validationMove(selectedImage, this)) {
                     this.appendChild(selectedElement);
+                    resetTimer(); // Resetta il timer quando la mossa è valida
+                }
 
                 // Resetta l'elemento selezionato
                 selectedElement = null;

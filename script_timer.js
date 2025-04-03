@@ -22,8 +22,6 @@ function startTimer() {
 }
 
 function resetTimer() {
-    clearInterval(timerId);
-    timerId = null;
     timeLeft = 30;
     updateTimer();
 }
