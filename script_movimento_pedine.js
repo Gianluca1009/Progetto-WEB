@@ -165,6 +165,15 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
         selectedImage = event.target; //immagine
         selectedElement = selectedImage.parentElement;
         selectedCell = selectedElement.parentElement;  // Memorizza la cella sorgente
+
+        // Verifica se è il turno corretto per muovere questa pedina
+        if (!canMovePiece(selectedElement.id)) {
+            // Se non è il turno corretto, deseleziona tutto
+            selectedElement = null;
+            selectedCell = null;
+            selectedImage = null;
+            return;s
+        }
         
         // Evidenzia la cella sorgente in giallo
         selectedCell.classList.add("highlighted");
