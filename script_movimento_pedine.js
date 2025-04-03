@@ -17,11 +17,12 @@ function checkPathClear(start_x, start_y, end_x, end_y) {
         let check_y = start_y + (i * step_y);
         let check_cell = document.getElementById(check_x + "" + check_y);
         
-        // Se la cella contiene una pedina, il percorso non è libero
+        // Se la cella contiene una pedina, il percorso non è libero e ritorna false
         if (check_cell && check_cell.querySelector('.pedina')) {
             return false;
         }
     }
+    //se non ci sono pedine nel percorso ritorna true
     return true;
 }
 
@@ -29,18 +30,18 @@ function validationMove(elem,dest_cell){
 
     let valid = true; //booleano che decide se la mossa sia valida o meno secondo le regole
 
-    let div_pezzo = elem.parentElement;
-    let td_cell = div_pezzo.parentElement;
+    let div_pezzo = elem.parentElement; //variabile per il pezzo selezionato
+    let td_cell = div_pezzo.parentElement; //variabile per la cella selezionata
 
-    if(elem.parentElement.id=='P' || elem.parentElement.id=='p'){
+    if(div_pezzo.id=='P' || div_pezzo.id=='p'){
 
-        if(elem.parentElement.id=='p'){
-            var valid_cell_x = parseInt(elem.parentElement.parentElement.id[0])-1;  //x dello spostamento valido
+        if(div_pezzo.id=='p'){
+            var valid_cell_x = parseInt(td_cell.id[0])-1;  //x dello spostamento valido
         }
-        if(elem.parentElement.id=='P'){
-            var valid_cell_x = parseInt(elem.parentElement.parentElement.id[0])+1;
+        if(div_pezzo.id=='P'){
+            var valid_cell_x = parseInt(td_cell.id[0])+1;
         }
-        let valid_cell_y = parseInt(elem.parentElement.parentElement.id[1]);    //y dello spostamento valido
+        let valid_cell_y = parseInt(td_cell.id[1]);    //y dello spostamento valido
 
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
@@ -56,10 +57,10 @@ function validationMove(elem,dest_cell){
         else valid = false;
     }
 
-    if(elem.parentElement.id=='t' || elem.parentElement.id=='T'){
+    if(div_pezzo.id=='t' || div_pezzo.id=='T'){
 
-        let start_cell_x = parseInt(elem.parentElement.parentElement.id[0]);
-        let start_cell_y = parseInt(elem.parentElement.parentElement.id[1]);
+        let start_cell_x = parseInt(td_cell.id[0]);
+        let start_cell_y = parseInt(td_cell.id[1]);
         
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
@@ -71,10 +72,10 @@ function validationMove(elem,dest_cell){
         else valid = false;
     }
 
-    if(elem.parentElement.id=='a' || elem.parentElement.id=='A'){
+    if(div_pezzo.id=='a' || div_pezzo.id=='A'){
 
-        let curr_x = parseInt(elem.parentElement.parentElement.id[0]);
-        let curr_y = parseInt(elem.parentElement.parentElement.id[1]);
+        let curr_x = parseInt(td_cell.id[0]);
+        let curr_y = parseInt(td_cell.id[1]);
         
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
@@ -85,10 +86,10 @@ function validationMove(elem,dest_cell){
         valid = checkPathClear(curr_x, curr_y, dest_cell_x, dest_cell_y);
     }
 
-    if(elem.parentElement.id=='c' || elem.parentElement.id=='C'){
+    if(div_pezzo.id=='c' || div_pezzo.id=='C'){
 
-        let curr_x = parseInt(elem.parentElement.parentElement.id[0]);
-        let curr_y = parseInt(elem.parentElement.parentElement.id[1]);
+        let curr_x = parseInt(td_cell.id[0]);
+        let curr_y = parseInt(td_cell.id[1]);
         
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
@@ -100,10 +101,10 @@ function validationMove(elem,dest_cell){
         if (!((dx === 2 && dy === 1) || (dx === 1 && dy === 2))) return false;
     }
 
-    if(elem.parentElement.id=='q' || elem.parentElement.id=='Q'){
+    if(div_pezzo.id=='q' || div_pezzo.id=='Q'){
 
-        let curr_x = parseInt(elem.parentElement.parentElement.id[0]);
-        let curr_y = parseInt(elem.parentElement.parentElement.id[1]);
+        let curr_x = parseInt(td_cell.id[0]);
+        let curr_y = parseInt(td_cell.id[1]);
         
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
@@ -118,15 +119,15 @@ function validationMove(elem,dest_cell){
         valid = checkPathClear(curr_x, curr_y, dest_cell_x, dest_cell_y);
     }
 
-    if(elem.parentElement.id=='r' || elem.parentElement.id=='R'){
+    if(div_pezzo.id=='r' || div_pezzo.id=='R'){
 
-        let curr_x = parseInt(elem.parentElement.parentElement.id[0]);
-        let curr_y = parseInt(elem.parentElement.parentElement.id[1]);
+        let curr_x = parseInt(td_cell.id[0]);
+        let curr_y = parseInt(td_cell.id[1]);
         
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
-        // Il re si muove di una casella in qualsiasi direzione
+        // Il re si muove di una casella in qualsiasi direzione e non serve controllare il percorso
         let dx = Math.abs(dest_cell_x - curr_x);
         let dy = Math.abs(dest_cell_y - curr_y);
         
