@@ -1,5 +1,5 @@
-.grid-container, .tooltip, .table_draft_dx, .table_draft_sx {
-    box-shadow: 15px 5px 15px rgba(0, 0, 0, 0.3);
+.grid-container, .tooltip, .table_draft_dx, .table_draft_sx, .condition-container, .timer-container {
+    box-shadow: 15px 15px 15px rgba(15, 12, 12, 0.5);
 }
 
 .intestazione {
@@ -14,8 +14,8 @@
     position: relative;
     margin:auto;
     top: 50%;
-    width: 93vw;  /* Imposta la larghezza del campo da calcio */
-    height: 93vh; /* Imposta l'altezza del campo da calcio */
+    width: 85vw;  /* Imposta la larghezza del campo da calcio */
+    height: 95vh; /* Imposta l'altezza del campo da calcio */
     border: 6px solid #f5deb3;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
@@ -32,8 +32,8 @@
     height: 500px;
 }
 .background {
-    width: 93vw;  /* Imposta la larghezza del campo da calcio */
-    height: 93vh; /* Imposta l'altezza del campo da calcio */
+    width: 85vw;  /* Imposta la larghezza del campo da calcio */
+    height: 95vh; /* Imposta l'altezza del campo da calcio */
     position: center;
     border-radius: 6px;
 
@@ -101,6 +101,7 @@
     width: 500px;
     height: 500px;
     table-layout: fixed;
+    border-radius: 10px;
 }
 
 .greencell {
@@ -139,35 +140,11 @@
     transform: scale(1.1);
 }
 
-.torre{
+.torre, .alfiere, .cavallo, .regina, .re, .pedone{
     width: 60px;
     height: 60px;
 }
 
-.alfiere{
-    width: 60px;
-    height: 60px;
-}
-
-.cavallo{
-    width: 60px;
-    height: 60px;
-}
-
-.regina{
-    width: 60px;
-    height: 60px;
-}
-
-.re{
-    width: 60px;
-    height: 60px;
-}
-
-.pedone{
-    width: 60px;
-    height: 60px;
-}
 
 .santino {
     max-width: 80px;
@@ -234,4 +211,50 @@ td {
 
 .nero{
     background-color: rgb(63, 63, 63);
+}
+
+.condition-container {
+    position: absolute;
+    top: 5.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    height: 5%;
+    background: linear-gradient(to right ,#1b014e,#4a01de);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 2;
+}
+
+.condition-title {
+    margin: 0;
+    font-size: 2.2em;
+    color: #d4d3d3;
+    line-height: 1.5;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.timer-container {
+    position: absolute;
+    top: 5.5%;
+    left: 93%;
+    transform: translate(-50%, -50%);
+    animation: glow 2s infinite alternate;
+    width: 5%;
+    height: 2%;
+    background-color: #4a01de;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 2;
+    border: 3px solid #f5deb3;
 }
