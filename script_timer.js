@@ -1,19 +1,30 @@
 let timeLeft = 30;
 let timerId = null;
-let isWhiteTurn = false; // false = turno nero (per allinearsi con turnoNero = true in script_movimento_pedine.js)
 
 function updateTimer() {
-    const timerDisplay = document.querySelector('.timer-container .condition-title');
-    const turnIndicator = document.getElementById('turnIndicator');
+    const timerDisplay = document.getElementById('timer');
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    turnIndicator.textContent = !isWhiteTurn ? "Turno Nero" : "Turno Bianco";
     
     if (timeLeft === 0) {
+        clearInterval(timerId); // Ferma il timer corrente
+        timerId = null;
         timeLeft = 30; // Riporta il timer a 30 secondi
-        if(isWhiteTurn) isWhiteTurn = false; // cambia turno
-        else isWhiteTurn = true;
+        
+        // Se c'è una pedina selezionata, rimuovi l'evidenziazione
+        if (window.selectedCell) {
+            window.selectedCell.classList.remove("highlighted");
+            window.selectedElement = null;
+            window.selectedCell = null;
+            window.selectedImage = null;
+        }
+        
+        // Cambia il turno
+        window.turnoNero = !window.turnoNero;
+        window.aggiornaStatoPedine();
+        
+        startTimer(); // Riavvia il timer
         return;
     }
     
@@ -28,26 +39,19 @@ function updateTimer() {
 
 function startTimer() {
     if (timerId === null) {
+        updateTimer(); // Aggiorna subito il display
         timerId = setInterval(updateTimer, 1000);
     }
 }
 
 function resetTimer() {
+    clearInterval(timerId); // Ferma il timer corrente
+    timerId = null;
     timeLeft = 30;
-    isWhiteTurn = !isWhiteTurn; // Cambia il turno
-    updateTimer();
-}
-
-function isPieceWhite(pieceId) {
-    return pieceId === pieceId.toUpperCase(); // Se l'ID è maiuscolo, è una pedina bianca
-}
-
-function canMovePiece(pieceId) {
-    return isWhiteTurn === isPieceWhite(pieceId);
+    startTimer(); // Riavvia il timer con il nuovo tempo
 }
 
 // Inizializza il timer quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {
-    updateTimer();
     startTimer();
 }); 

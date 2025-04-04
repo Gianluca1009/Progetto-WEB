@@ -1,7 +1,13 @@
-let selectedElement = null;
-let selectedCell = null;  // Memorizza la cella selezionata
-let selectedImage = null;  // Memorizza l'immagine selezionata
-let turnoNero = true; // Supponiamo che il nero inizi per primo
+// Variabili globali per la gestione del gioco
+window.selectedElement = null;
+window.selectedCell = null;  // Memorizza la cella selezionata
+window.selectedImage = null;  // Memorizza l'immagine selezionata
+window.turnoNero = true; // Supponiamo che il nero inizi per primo
+
+// Funzione per verificare se una pedina può essere mossa
+window.canMovePiece = function(pieceId) {
+    return window.turnoNero === (pieceId.toLowerCase() === pieceId);
+}
 
 // Funzione di supporto per verificare se ci sono pedine nel percorso
 function checkPathClear(start_x, start_y, end_x, end_y) {
@@ -139,10 +145,10 @@ function validationMove(elem,dest_cell){
     return valid;
 }
 
-function aggiornaStatoPedine() {
+window.aggiornaStatoPedine = function() {
     document.querySelectorAll(".pedina").forEach(pedina => {
-        if ((turnoNero && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
-            (!turnoNero && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
+        if ((window.turnoNero && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
+            (!window.turnoNero && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
             pedina.classList.remove("no-hover");
         } else {
             pedina.classList.add("no-hover");
@@ -151,7 +157,7 @@ function aggiornaStatoPedine() {
 
     // Aggiorna l'effetto di brillantezza della scacchiera
     const scacchiera = document.querySelector('.scacchiera');
-    if (!turnoNero) {  // Se NON è il turno del nero, significa che è il turno del bianco
+    if (!window.turnoNero) {  // Se NON è il turno del nero, significa che è il turno del bianco
         scacchiera.classList.remove('turno-nero');
         scacchiera.classList.add('turno-bianco');
     } else {  // Se è il turno del nero
@@ -170,65 +176,65 @@ function aggiornaStatoPedine() {
 document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
     pedina.addEventListener("click", function(event) {
         // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
-        if (selectedImage === event.target) {
-            selectedCell.classList.remove("highlighted");
-            selectedElement = null;
-            selectedCell = null;
-            selectedImage = null;
+        if (window.selectedImage === event.target) {
+            window.selectedCell.classList.remove("highlighted");
+            window.selectedElement = null;
+            window.selectedCell = null;
+            window.selectedImage = null;
             return;  // Importante: esce dalla funzione dopo la deselezione
         }
 
         // Rimuovi l'evidenziazione precedente se presente
-        if (selectedCell) {
-            selectedCell.classList.remove("highlighted");
+        if (window.selectedCell) {
+            window.selectedCell.classList.remove("highlighted");
         }
 
         // Seleziona l'elemento (pedina) da spostare
-        selectedImage = event.target; //immagine
-        selectedElement = selectedImage.parentElement;
-        selectedCell = selectedElement.parentElement;  // Memorizza la cella sorgente
+        window.selectedImage = event.target; //immagine
+        window.selectedElement = window.selectedImage.parentElement;
+        window.selectedCell = window.selectedElement.parentElement;  // Memorizza la cella sorgente
 
         // Verifica se è il turno corretto per muovere questa pedina
-        if (!canMovePiece(selectedElement.id)) {
+        if (!window.canMovePiece(window.selectedElement.id)) {
             // Se non è il turno corretto, deseleziona tutto
-            selectedElement = null;
-            selectedCell = null;
-            selectedImage = null;
+            window.selectedElement = null;
+            window.selectedCell = null;
+            window.selectedImage = null;
             return;
         }
         
         // Evidenzia la cella sorgente in giallo
-        selectedCell.classList.add("highlighted");
+        window.selectedCell.classList.add("highlighted");
     });
 });
 
 // Aggiungi un event listener per le celle per gestire il click di destinazione
 document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     cell.addEventListener("click", function(event) {
-        if (selectedElement) {
+        if (window.selectedElement) {
             // Verifica che la cella cliccata non contenga già una pedina
-            if (this.tagName === "TD" && !this.contains(selectedElement)) {
+            if (this.tagName === "TD" && !this.contains(window.selectedElement)) {
                 // Sposta la pedina nella cella cliccata
-                if (validationMove(selectedImage, this)) {
-                    this.appendChild(selectedElement);
+                if (validationMove(window.selectedImage, this)) {
+                    this.appendChild(window.selectedElement);
                     resetTimer(); // Resetta il timer quando la mossa è valida
                     
                     // Cambia turno dopo una mossa valida
-                    turnoNero = !turnoNero;
-                    aggiornaStatoPedine();
+                    window.turnoNero = !window.turnoNero;
+                    window.aggiornaStatoPedine();
                 }
 
                 // Resetta l'elemento selezionato
-                selectedElement = null;
-                selectedImage = null;
+                window.selectedElement = null;
+                window.selectedImage = null;
 
                 // Rimuovi l'evidenziazione dalla cella sorgente
-                selectedCell.classList.remove("highlighted");
-                selectedCell = null;
+                window.selectedCell.classList.remove("highlighted");
+                window.selectedCell = null;
             }
         }
     });
 });
 
 // Inizializza lo stato delle pedine all'avvio
-aggiornaStatoPedine();
+window.aggiornaStatoPedine();
