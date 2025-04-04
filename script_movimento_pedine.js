@@ -4,10 +4,14 @@ window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
 window.turnoNero = true; // Supponiamo che il nero inizi per primo
 
-// Funzione per verificare se una pedina può essere mossa
-window.canMovePiece = function(pieceId) {
+// Funzione per verificare se una pedina può essere mossa in quel turno
+
+// ---- IMPORTANTE ---- //
+
+function canMovePiece(pieceId) {
     return window.turnoNero === (pieceId.toLowerCase() === pieceId);
 }
+
 
 // Funzione di supporto per verificare se ci sono pedine nel percorso
 function checkPathClear(start_x, start_y, end_x, end_y) {
@@ -145,7 +149,7 @@ function validationMove(elem,dest_cell){
     return valid;
 }
 
-window.aggiornaStatoPedine = function() {
+function aggiornaStatoPedine() {
     document.querySelectorAll(".pedina").forEach(pedina => {
         if ((window.turnoNero && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
             (!window.turnoNero && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
@@ -167,7 +171,7 @@ window.aggiornaStatoPedine = function() {
 }
 
 /*
-*    LISTNER PER MUOVERE LE PEDINE:
+*    LISTENER PER MUOVERE LE PEDINE:
 *           1. seleziona il pezzo che voglio muovere 
 *           2. seleziona la cella di destinazione dove voglio spostare il pezzo -> se valida -> sposta il pezzo in quella cella
 */
@@ -190,9 +194,9 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
         }
 
         // Seleziona l'elemento (pedina) da spostare
-        window.selectedImage = event.target; //immagine
-        window.selectedElement = window.selectedImage.parentElement;
-        window.selectedCell = window.selectedElement.parentElement;  // Memorizza la cella sorgente
+        window.selectedImage = event.target; //immagine selezionata
+        window.selectedElement = window.selectedImage.parentElement; //elemento selezionato (div)
+        window.selectedCell = window.selectedElement.parentElement;  // Memorizza la cella sorgente (td)
 
         // Verifica se è il turno corretto per muovere questa pedina
         if (!window.canMovePiece(window.selectedElement.id)) {
