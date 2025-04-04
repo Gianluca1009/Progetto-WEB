@@ -30,6 +30,32 @@
 }
 
 /* Table and Chessboard Classes */
+@keyframes glowWhite {
+    from {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+                   0 0 40px rgba(255, 255, 255, 0.4),
+                   0 0 60px rgba(255, 255, 255, 0.2);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+                   0 0 50px rgba(255, 255, 255, 0.6),
+                   0 0 70px rgba(255, 255, 255, 0.4);
+    }
+}
+
+@keyframes glowBlack {
+    from {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6),
+                   0 0 40px rgba(0, 0, 0, 0.4),
+                   0 0 60px rgba(0, 0, 0, 0.2);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.8),
+                   0 0 50px rgba(0, 0, 0, 0.6),
+                   0 0 70px rgba(0, 0, 0, 0.4);
+    }
+}
+
 .scacchiera {
     position: absolute;
     top: 50%;
@@ -39,6 +65,15 @@
     height: 500px;
     table-layout: fixed;
     border-radius: 10px;
+    transition: box-shadow 0.5s ease;
+}
+
+.scacchiera.turno-bianco {
+    animation: glowBlack 2s infinite alternate;
+}
+
+.scacchiera.turno-nero {
+    animation: glowWhite 2s infinite alternate;
 }
 
 .table_draft_dx {
@@ -143,25 +178,62 @@ td {
 
 /* UI Elements */
 .intestazione {
-    display: inline;
+    display: block;
     position: relative;
-    transform: translate(-50%, -50%);
+    width: 100%;
+    margin: 0;
+    padding: 0;
     z-index: 10;
+}
+
+.title-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 20px;
+    border: 2px solid black;
+    box-shadow: 0 4px 80px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right ,#18004d,#3a00af);
+}
+
+.menu-button {
+    position: absolute;
+    left: 20px;
+    padding: 20px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    background-image: url(images/menu.png);
+    background-size: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-button:hover {
+    transform: scale(1.1);
 }
 
 .title {
     text-align: center;
-    font-size: 60px;
+    font-size: 85px;
     font-weight: bold;
-    margin-top: 20px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     color: #f5deb3;
-    text-shadow: 15px 3px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(245, 222, 179, 0.3);
     font-family: 'Georgia', serif;
     letter-spacing: 2px;
-    background: linear-gradient(to right, #f5deb3, #f5deb3);
+    background: linear-gradient(to right, #efe0c4, #e8c481);
     background-clip: text;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    text-shadow: 10px 2px 5px rgba(0, 0, 0, 0.7);
 }
 
 .info {
@@ -186,7 +258,7 @@ td {
     transition: opacity 0.3s;
     width: 600px;
     text-align: center;
-    top: 110%;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -216,6 +288,7 @@ td {
     text-align: center;
     vertical-align: middle;
     z-index: 2;
+    border: 1.5px solid #f5deb3;
 }
 
 .condition-title {
@@ -245,19 +318,7 @@ td {
     text-align: center;
     vertical-align: middle;
     z-index: 2;
-    border: 3px solid #f5deb3;
-}
-
-.turn-indicator {
-    margin: 0;
-    font-size: 1.2em;
-    color: #d4d3d3;
-    line-height: 1.5;
-    font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    border: 1.5px solid #f5deb3;
 }
 
 /* General Styling */
@@ -269,4 +330,8 @@ body {
 
 .grid-container, .tooltip, .table_draft_dx, .table_draft_sx, .condition-container, .timer-container {
     box-shadow: 15px 15px 15px rgba(15, 12, 12, 0.5);
+}
+
+.no-hover {
+    pointer-events: none;
 }

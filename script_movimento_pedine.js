@@ -1,6 +1,7 @@
 let selectedElement = null;
 let selectedCell = null;  // Memorizza la cella selezionata
 let selectedImage = null;  // Memorizza l'immagine selezionata
+let turnoNero = true; // Supponiamo che il nero inizi per primo
 
 // Funzione di supporto per verificare se ci sono pedine nel percorso
 function checkPathClear(start_x, start_y, end_x, end_y) {
@@ -138,6 +139,27 @@ function validationMove(elem,dest_cell){
     return valid;
 }
 
+function aggiornaStatoPedine() {
+    document.querySelectorAll(".pedina").forEach(pedina => {
+        if ((turnoNero && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
+            (!turnoNero && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
+            pedina.classList.remove("no-hover");
+        } else {
+            pedina.classList.add("no-hover");
+        }
+    });
+
+    // Aggiorna l'effetto di brillantezza della scacchiera
+    const scacchiera = document.querySelector('.scacchiera');
+    if (!turnoNero) {  // Se NON è il turno del nero, significa che è il turno del bianco
+        scacchiera.classList.remove('turno-nero');
+        scacchiera.classList.add('turno-bianco');
+    } else {  // Se è il turno del nero
+        scacchiera.classList.remove('turno-bianco');
+        scacchiera.classList.add('turno-nero');
+    }
+}
+
 /*
 *    LISTNER PER MUOVERE LE PEDINE:
 *           1. seleziona il pezzo che voglio muovere 
@@ -172,15 +194,13 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
             selectedElement = null;
             selectedCell = null;
             selectedImage = null;
-            return;s
+            return;
         }
         
         // Evidenzia la cella sorgente in giallo
         selectedCell.classList.add("highlighted");
     });
 });
-
-
 
 // Aggiungi un event listener per le celle per gestire il click di destinazione
 document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
@@ -189,9 +209,13 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
             // Verifica che la cella cliccata non contenga già una pedina
             if (this.tagName === "TD" && !this.contains(selectedElement)) {
                 // Sposta la pedina nella cella cliccata
-                if(validationMove(selectedImage, this)) {
+                if (validationMove(selectedImage, this)) {
                     this.appendChild(selectedElement);
                     resetTimer(); // Resetta il timer quando la mossa è valida
+                    
+                    // Cambia turno dopo una mossa valida
+                    turnoNero = !turnoNero;
+                    aggiornaStatoPedine();
                 }
 
                 // Resetta l'elemento selezionato
@@ -205,3 +229,6 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
         }
     });
 });
+
+// Inizializza lo stato delle pedine all'avvio
+aggiornaStatoPedine();

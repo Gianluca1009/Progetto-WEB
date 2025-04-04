@@ -1,6 +1,6 @@
 let timeLeft = 30;
 let timerId = null;
-let isWhiteTurn = true; // true = turno bianco, false = turno nero
+let isWhiteTurn = false; // false = turno nero (per allinearsi con turnoNero = true in script_movimento_pedine.js)
 
 function updateTimer() {
     const timerDisplay = document.querySelector('.timer-container .condition-title');
@@ -8,14 +8,22 @@ function updateTimer() {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    turnIndicator.textContent = isWhiteTurn ? "Turno Bianco" : "Turno Nero";
+    turnIndicator.textContent = !isWhiteTurn ? "Turno Nero" : "Turno Bianco";
     
     if (timeLeft === 0) {
         timeLeft = 30; // Riporta il timer a 30 secondi
+        if(isWhiteTurn) isWhiteTurn = false; // cambia turno
+        else isWhiteTurn = true;
         return;
     }
     
     timeLeft--;
+
+    if (timeLeft < 10) {
+        timerDisplay.style.color = 'red';
+    } else {
+        timerDisplay.style.color = 'white';
+    }
 }
 
 function startTimer() {
@@ -31,7 +39,7 @@ function resetTimer() {
 }
 
 function isPieceWhite(pieceId) {
-    return pieceId === pieceId.toLowerCase(); // Se l'ID è minuscolo, è una pedina bianca
+    return pieceId === pieceId.toUpperCase(); // Se l'ID è maiuscolo, è una pedina bianca
 }
 
 function canMovePiece(pieceId) {
