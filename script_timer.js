@@ -1,6 +1,7 @@
 let timeLeft = 30;
 let timerId = null;
 const TOTAL_TIME = 30; // Costante per il tempo totale
+let gameStarted = false;
 
 function updateTimer() {
     const timerDisplay = document.getElementById('timer');
@@ -21,8 +22,8 @@ function updateTimer() {
         timeLeft = 30;
         
         // Riempimento istantaneo della barra
-        progressBar.classList.add('instant');    //praticamente la barra è fluida quindi allo scadere 
-        progressBar.style.width = '100%';        //non si riempiva istantaneamente e mi dava fastidio
+        progressBar.classList.add('instant');
+        progressBar.style.width = '100%';
         
         if (window.selectedCell) {
             window.selectedCell.classList.remove("highlighted");
@@ -40,19 +41,18 @@ function updateTimer() {
     
     timeLeft--;
 
-    if (timeLeft < 10) timerDisplay.style.color = 'red';    //timer di colore rosso quando sta per scadere
-    else timerDisplay.style.color = 'white';                //colore normale
+    if (timeLeft < 10) timerDisplay.style.color = 'red';
+    else timerDisplay.style.color = 'white';
 }
 
 function startTimer() {
-    if (timerId === null) {
+    if (timerId === null && gameStarted) {
         const progressBar = document.querySelector('.progress-bar');
         progressBar.classList.add('instant');
         progressBar.style.width = '100%';
         
-        // Rimuoviamo la classe instant nel prossimo frame per permettere la transizione fluida
         requestAnimationFrame(() => {
-            progressBar.classList.remove('instant');        //gestione del riempimento della barra istantaneo
+            progressBar.classList.remove('instant');
             updateTimer();
         });
         
@@ -61,22 +61,54 @@ function startTimer() {
 }
 
 function resetTimer() {
-    clearInterval(timerId);     // Ferma il timer corrente
+    if (!gameStarted) return;
+    
+    clearInterval(timerId);
     timerId = null;
     timeLeft = 30;
     
-    // Riempimento istantaneo della barra
     const progressBar = document.querySelector('.progress-bar');
     progressBar.classList.add('instant');
     progressBar.style.width = '100%';
     
-    // Avvia il timer nel prossimo frame
     requestAnimationFrame(() => {
         startTimer();
     });
 }
 
-// Inizializza il timer quando la pagina si carica
-document.addEventListener('DOMContentLoaded', () => {
+function startGame() {
+    gameStarted = true;
+    document.getElementById('startButton').classList.add('hidden');
+    document.querySelector('.condition-container').classList.remove('hidden');
+    document.querySelector('.timer-container').classList.remove('hidden');
+    document.querySelector('.progress-container').classList.remove('hidden');
+    
+    // Rimuove la classe che disabilita l'hover
+    document.querySelector('.game-container').classList.remove('game-not-started');
+    
+    // Aggiunge la classe active a tutte le pedine
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.add('pedina-active');
+    });
+    
+    // Abilita il movimento delle pedine
+    window.canMovePiece = function(pieceId) {
+        return gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
+    };
+    
     startTimer();
+}
+
+// Inizializza il gioco quando la pagina si carica
+document.addEventListener('DOMContentLoaded', () => {
+    const startButton = document.getElementById('startButton');
+    startButton.addEventListener('click', startGame);
+    
+    // Aggiunge la classe che disabilita l'hover all'inizio
+    document.querySelector('.game-container').classList.add('game-not-started');
+    
+    // Disabilita inizialmente il movimento delle pedine
+    window.canMovePiece = function() {
+        return false;
+    };
 }); 

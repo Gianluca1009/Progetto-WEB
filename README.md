@@ -15,7 +15,7 @@ la pedina è un div con all'inteno due foto
 
 # To-do:
     sfondo non scrollabile
-    adattabilita alla pagina/risoluzione
+    adattabilita alla pagina/risoluzione    ✅
     organizzare il progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
 
 # Login-page:
@@ -34,11 +34,19 @@ la pedina è un div con all'inteno due foto
     stile css
 
 # Game-page:
-    mosse valide      ✅
+    mosse valide                ✅
     consiglia-mosse
     log delle mosse
-    muovere pezzi     ✅
-    deselezionare pedina
+    muovere pezzi               ✅
+    deselezionare pedina        ✅
     bottone torna alla home
     logica pedina mangiata
     stile css
+
+# elenco delle possibili condizioni da cercare in un database:
+    goal fatti in carriera
+    assist fatti in carriera
+    numero di presenze in carriera
+    cartellini gialli ricevuti in carriera
+    numero di maglia attuale più alto
+    

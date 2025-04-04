@@ -10,6 +10,10 @@
     border-radius: 0.625rem;
     box-shadow: 0 0 1.25rem rgba(245, 222, 179, 0.6);
     animation: glow 2s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-container {
@@ -119,8 +123,14 @@ td {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.pedina:hover {
+/* Rimuovo l'hover diretto dalla classe pedina e lo sposto in una nuova classe */
+.pedina-active:hover {
     transform: scale(1.1);
+}
+
+.game-not-started .pedina { /*classe per le pedine non attive prima di iniziare il gioco*/
+    pointer-events: none;
+    cursor: default;
 }
 
 .torre, .alfiere, .cavallo, .regina, .re, .pedone {
@@ -149,6 +159,9 @@ td {
     margin: 0;
     padding: 0;
     z-index: 10;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
 }
 
 .title-container {
@@ -158,15 +171,16 @@ td {
     margin: 0;
     padding: 1.25rem;
     border: 0.125rem solid black;
-    box-shadow: 0 0.25rem 5rem rgba(0, 0, 0, 0.5);
-    border-radius: 0.625rem;
+    box-shadow: 0 0.25rem 1rem rgba(1, 0, 0, 0.5);
     text-align: center;
     margin-bottom: 1.875rem;
     margin-top: -0.625rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right ,#18004d,#3a00af);
+    background: linear-gradient(to right ,#0f002d,#2c0182);
+    left: 0;
+    right: 0;
 }
 
 .menu-button {
@@ -259,7 +273,7 @@ td {
 .condition-title {
     margin: 0;
     font-size: 2.2em;
-    color: #d4d3d3;
+    color: #f5deb3;
     line-height: 1.5;
     font-weight: bold;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -291,6 +305,10 @@ body {
     min-height: 300vh;
     background: linear-gradient(to right ,#1b014e,#4a01de);
     overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .grid-container, .tooltip, .table_draft_dx, .table_draft_sx, .condition-container, .timer-container {
@@ -324,4 +342,115 @@ body {
 /* Classe per rimuovere la transizione quando la barra si riempie */
 .progress-bar.instant {
     transition: none;
+}
+
+/* Media Queries per la responsività */
+@media screen and (max-width: 1400px) {
+    .table_draft_sx, .table_draft_dx {
+        position: static;
+        transform: none;
+        margin: 1rem auto;
+        width: 90%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        padding: 2rem 0;
+    }
+
+    .grid-container {
+        position: relative;
+        order: 1;
+        margin: 2rem auto;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .condition-container {
+        position: relative;
+        width: 90%;
+        margin: 1rem auto;
+        transform: none;
+        top: 0;
+    }
+
+    .timer-container {
+        position: relative;
+        width: 20%;
+        margin: 1rem auto;
+        transform: none;
+        bottom: 0;
+    }
+
+    .progress-container {
+        position: relative;
+        width: 90%;
+        margin: 1rem auto;
+        transform: none;
+        bottom: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-container, .scacchiera {
+        width: 90vw;
+        height: 90vw;
+    }
+
+    td {
+        width: calc(90vw / 6);
+        height: calc(90vw / 6);
+    }
+
+    .pedina {
+        width: 100%;
+        height: 100%;
+    }
+
+    .torre, .alfiere, .cavallo, .regina, .re, .pedone {
+        width: 80%;
+        height: 80%;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .condition-title {
+        font-size: 1.5em;
+    }
+}
+
+.start-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f5deb3;
+    background: linear-gradient(to right, #0f002d, #2c0182);
+    border: 2px solid #f5deb3;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.start-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
+}
+
+.hidden {
+    display: none;
 }

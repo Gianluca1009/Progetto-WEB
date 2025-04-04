@@ -10,8 +10,8 @@ function posizion_iniziali(){
 
     let torre_nera = document.createElement("div");
     let torre_bianca = document.createElement("div");
-    torre_bianca.className = "pedina";
-    torre_nera.className = "pedina";
+    torre_bianca.className = "pedina no-hover";
+    torre_nera.className = "pedina no-hover";
     torre_bianca.id = "t";
     torre_nera.id = "T";
     
@@ -40,8 +40,8 @@ function posizion_iniziali(){
 
     let alfiere_nero = document.createElement("div");
     let alfiere_bianco = document.createElement("div");
-    alfiere_bianco.className = "pedina";
-    alfiere_nero.className = "pedina";
+    alfiere_bianco.className = "pedina no-hover";
+    alfiere_nero.className = "pedina no-hover";
     alfiere_bianco.id = "a";
     alfiere_nero.id = "A";
 
@@ -68,8 +68,8 @@ function posizion_iniziali(){
 
     let regina_nera = document.createElement("div");
     let regina_bianca = document.createElement("div");
-    regina_bianca.className = "pedina";
-    regina_nera.className = "pedina";
+    regina_bianca.className = "pedina no-hover";
+    regina_nera.className = "pedina no-hover";
     regina_bianca.id = "q"; 
     regina_nera.id = "Q";
 
@@ -96,8 +96,8 @@ function posizion_iniziali(){
 
     let re_nero = document.createElement("div");
     let re_bianco = document.createElement("div");
-    re_bianco.className = "pedina";
-    re_nero.className = "pedina";
+    re_bianco.className = "pedina no-hover";
+    re_nero.className = "pedina no-hover";
     re_bianco.id = "r"; 
     re_nero.id = "R";
 
@@ -124,8 +124,8 @@ function posizion_iniziali(){
 
     let cavallo_nero = document.createElement("div");
     let cavallo_bianco = document.createElement("div");
-    cavallo_bianco.className = "pedina";
-    cavallo_nero.className = "pedina";
+    cavallo_bianco.className = "pedina no-hover";
+    cavallo_nero.className = "pedina no-hover";
     cavallo_bianco.id = "c";
     cavallo_nero.id = "C";
 
@@ -152,8 +152,8 @@ function posizion_iniziali(){
         let cell4 = document.getElementById("4"+i);
         let pedone_nero = document.createElement("div");
         let pedone_bianco = document.createElement("div");
-        pedone_nero.className = "pedina";
-        pedone_bianco.className = "pedina";
+        pedone_nero.className = "pedina no-hover";
+        pedone_bianco.className = "pedina no-hover";
         pedone_bianco.id = "p";
         pedone_nero.id = "P";
 
