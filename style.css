@@ -29,33 +29,6 @@
     border-radius: 6px;
 }
 
-/* Table and Chessboard Classes */
-@keyframes glowWhite {
-    from {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
-                   0 0 40px rgba(255, 255, 255, 0.4),
-                   0 0 60px rgba(255, 255, 255, 0.2);
-    }
-    to {
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
-                   0 0 50px rgba(255, 255, 255, 0.6),
-                   0 0 70px rgba(255, 255, 255, 0.4);
-    }
-}
-
-@keyframes glowBlack {
-    from {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6),
-                   0 0 40px rgba(0, 0, 0, 0.4),
-                   0 0 60px rgba(0, 0, 0, 0.2);
-    }
-    to {
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.8),
-                   0 0 50px rgba(0, 0, 0, 0.6),
-                   0 0 70px rgba(0, 0, 0, 0.4);
-    }
-}
-
 .scacchiera {
     position: absolute;
     top: 50%;
@@ -66,14 +39,6 @@
     table-layout: fixed;
     border-radius: 10px;
     transition: box-shadow 0.5s ease;
-}
-
-.scacchiera.turno-bianco {
-    animation: glowBlack 2s infinite alternate;
-}
-
-.scacchiera.turno-nero {
-    animation: glowWhite 2s infinite alternate;
 }
 
 .table_draft_dx {
@@ -305,8 +270,8 @@ td {
 
 .timer-container {
     position: absolute;
-    top: 5.5%;
-    left: 93%;
+    bottom: -30px;
+    left: 50%;
     transform: translate(-50%, -50%);
     animation: glow 2s infinite alternate;
     width: 5%;
@@ -334,4 +299,29 @@ body {
 
 .no-hover {
     pointer-events: none;
+}
+
+/* Progress Bar */
+.progress-container {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #f5deb3;
+    transition: width 1s linear 0s;
+}
+
+/* Classe per rimuovere la transizione quando la barra si riempie */
+.progress-bar.instant {
+    transition: none;
 }

@@ -2,14 +2,14 @@
 window.selectedElement = null;
 window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
-window.turnoNero = true; // Supponiamo che il nero inizi per primo
+window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 
 // Funzione per verificare se una pedina può essere mossa in quel turno
 
 // ---- IMPORTANTE ---- //
 
 function canMovePiece(pieceId) {
-    return window.turnoNero === (pieceId.toLowerCase() === pieceId);
+    return window.turnoBianco === (pieceId.toLowerCase() === pieceId);
 }
 
 
@@ -151,8 +151,8 @@ function validationMove(elem,dest_cell){
 
 function aggiornaStatoPedine() {
     document.querySelectorAll(".pedina").forEach(pedina => {
-        if ((window.turnoNero && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
-            (!window.turnoNero && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
+        if ((window.turnoBianco && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
+            (!window.turnoBianco && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
             pedina.classList.remove("no-hover");
         } else {
             pedina.classList.add("no-hover");
@@ -161,7 +161,7 @@ function aggiornaStatoPedine() {
 
     // Aggiorna l'effetto di brillantezza della scacchiera
     const scacchiera = document.querySelector('.scacchiera');
-    if (!window.turnoNero) {  // Se NON è il turno del nero, significa che è il turno del bianco
+    if (!window.turnoBianco) {  // Se NON è il turno del nero, significa che è il turno del bianco
         scacchiera.classList.remove('turno-nero');
         scacchiera.classList.add('turno-bianco');
     } else {  // Se è il turno del nero
@@ -224,7 +224,7 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                     resetTimer(); // Resetta il timer quando la mossa è valida
                     
                     // Cambia turno dopo una mossa valida
-                    window.turnoNero = !window.turnoNero;
+                    window.turnoBianco = !window.turnoBianco;
                     window.aggiornaStatoPedine();
                 }
 
