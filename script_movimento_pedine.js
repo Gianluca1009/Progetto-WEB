@@ -19,7 +19,7 @@ function canMovePiece(pieceId) {
 
 // Funzione per verificare se due pedine sono dello stesso colore
 function areSameColor(piece1Id, piece2Id) {
-    return (piece1Id.toUpperCase() === piece1Id) === (piece2Id.toUpperCase() === piece2Id);
+   return (piece1Id.toUpperCase() === piece1Id) === (piece2Id.toUpperCase() === piece2Id);
 }
 
 // Funzione di supporto per verificare se ci sono pedine nel percorso
@@ -61,27 +61,27 @@ function validationMove(elem,dest_cell){
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
-        // Calcola la direzione del movimento (-1 per nero, +1 per bianco)
+        // Calcola la direzione del movimento (1 per nero, -1 per bianco)
         let direction = (div_pezzo.id == 'p') ? -1 : 1;
         let forward_x = curr_x + direction;
 
+        valid = false;
         // Movimento in verticale (senza cattura)
         if (dest_cell_x == forward_x && dest_cell_y == curr_y){
             // Il movimento in verticale è valido solo se la cella di destinazione è vuota
             valid = !dest_cell.querySelector('.pedina');
         }
         // Movimento in diagonale (con cattura)
-        else if (dest_cell_x == forward_x && Math.abs(dest_cell_y - curr_y) == 1){
+        if (dest_cell_x == forward_x && Math.abs(dest_cell_y - curr_y) == 1){
             // La cattura è valida solo se c'è una pedina avversaria
             let pedinaBersaglio = dest_cell.querySelector('.pedina');
             if(pedinaBersaglio && pedinaBersaglio.parentElement){
                 // Verifica che la pedina sia del colore opposto
-                valid = !areSameColor(div_pezzo.id, pedinaBersaglio.parentElement.id);
+                valid = !areSameColor(div_pezzo.id, pedinaBersaglio.id); //old cond >div_pezzo.id, pedinaBersaglio.parentElement.id
             } else {
                 valid = false;
             }
         }
-        else valid = false;
     }
 
     if(div_pezzo.id=='t' || div_pezzo.id=='T'){
@@ -233,10 +233,9 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     cell.addEventListener("click", function(event) {
         if (window.selectedElement && this.tagName === "TD") {
             let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
-            
             // IMPORTANTE: Se c'è una pedina nella cella di destinazione, verifica che non sia dello stesso colore
             if (pedinaBersaglio && pedinaBersaglio.parentElement) {
-                if (areSameColor(window.selectedElement.id, pedinaBersaglio.parentElement.id)) {
+                if (areSameColor(window.selectedElement.id, pedinaBersaglio.id)) {  //old param (window.selectedElement.id, pedinaBersaglio.parentElement.id
                     return; // Non permettere la mossa se le pedine sono dello stesso colore
                 }
             }
