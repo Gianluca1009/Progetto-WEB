@@ -275,7 +275,7 @@ td {
 
 .condition-title {
     margin: 0;
-    font-size: calc(var(--cell-size) * 0.44);
+    font-size: 1.75rem;
     color: #f5deb3;
     line-height: 1.5;
     font-weight: bold;

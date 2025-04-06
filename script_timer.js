@@ -1,6 +1,6 @@
-let timeLeft = 30;
+window.timeLeft = 59;
 let timerId = null;
-const TOTAL_TIME = 30; // Costante per il tempo totale
+const TOTAL_TIME = 59; // Costante per il tempo totale
 let gameStarted = false;
 
 function updateTimer() {
@@ -19,7 +19,7 @@ function updateTimer() {
     if (timeLeft === 0) {
         clearInterval(timerId);
         timerId = null;
-        timeLeft = 30;
+        timeLeft = 59;
         
         // Riempimento istantaneo della barra
         progressBar.classList.add('instant');
@@ -34,6 +34,8 @@ function updateTimer() {
         
         window.turnoBianco = !window.turnoBianco;
         window.aggiornaStatoPedine();
+        
+        updateCondition();
         
         startTimer();
         return;
@@ -65,7 +67,7 @@ function resetTimer() {
     
     clearInterval(timerId);
     timerId = null;
-    timeLeft = 30;
+    timeLeft = 59;
     
     const progressBar = document.querySelector('.progress-bar');
     progressBar.classList.add('instant');

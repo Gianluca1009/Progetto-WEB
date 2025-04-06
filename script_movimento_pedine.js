@@ -217,7 +217,7 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     cell.addEventListener("click", function(event) {
         if (window.selectedElement) {
             // Verifica che la cella cliccata non contenga già una pedina
-            if (this.tagName === "TD" && !this.contains(window.selectedElement)) {
+            if (this.tagName === "TD" && !this.querySelector('.pedina')) {
                 // Sposta la pedina nella cella cliccata
                 if (validationMove(window.selectedImage, this)) {
                     this.appendChild(window.selectedElement);
@@ -226,6 +226,7 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                     // Cambia turno dopo una mossa valida
                     window.turnoBianco = !window.turnoBianco;
                     window.aggiornaStatoPedine();
+                    updateCondition(); // Aggiorna la condizione quando cambia il turno
                 }
 
                 // Resetta l'elemento selezionato

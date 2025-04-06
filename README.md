@@ -15,22 +15,22 @@ la pedina è un div con all'inteno due foto
 
 # To-do:
     sfondo non scrollabile
-    adattabilita alla pagina/risoluzione    ✅
+    adattabilita alla pagina/risoluzione
     organizzare il progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
 
 # Login-page:
     descrizione gioco e regole
     immagini 
-    capirte come fare la parte di login
+    capire come fare la parte di login
     navbar informativa
     stile css
 
 # Prep-page:
-    assegnare giocatori con icona giocatore
     bottone start
     bottone random
     bottone torna alla home
     modificare tabella draft (meno celle, nomi e stats giocatori)
+    drag and drop dei giocatori
     stile css
 
 # Game-page:
@@ -44,9 +44,16 @@ la pedina è un div con all'inteno due foto
     stile css
 
 # elenco delle possibili condizioni da cercare in un database:
-    goal fatti in carriera
-    assist fatti in carriera
-    numero di presenze in carriera
-    cartellini gialli ricevuti in carriera
-    numero di maglia attuale più alto
+    1.goal fatti in carriera
+    2.assist fatti in carriera
+    3.presenze in carriera
+    4.cartellini gialli ricevuti in carriera
+    5.cartellini rossi ricevuti in carriera
+    6.numero di maglia attuale più alto
+    7.vittorie in carriera
+    8.numero di trofei vinti in carriera
+    9.record di gol stagionale
+    10.record di assist stagionale
+
+    
     
