@@ -9,9 +9,18 @@ window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 // ---- IMPORTANTE ---- //
 
 function canMovePiece(pieceId) {
-    return window.turnoBianco === (pieceId.toLowerCase() === pieceId);
+    // Se è turno del bianco (true), può muovere solo pedine maiuscole (bianche)
+    if (window.turnoBianco) {
+        return pieceId === pieceId.toUpperCase();
+    }
+    // Se è turno del nero (false), può muovere solo pedine minuscole (nere)
+    return pieceId === pieceId.toLowerCase();
 }
 
+// Funzione per verificare se due pedine sono dello stesso colore
+function areSameColor(piece1Id, piece2Id) {
+    return (piece1Id.toUpperCase() === piece1Id) === (piece2Id.toUpperCase() === piece2Id);
+}
 
 // Funzione di supporto per verificare se ci sono pedine nel percorso
 function checkPathClear(start_x, start_y, end_x, end_y) {
@@ -46,24 +55,30 @@ function validationMove(elem,dest_cell){
     let td_cell = div_pezzo.parentElement; //variabile per la cella selezionata
 
     if(div_pezzo.id=='P' || div_pezzo.id=='p'){
-
-        if(div_pezzo.id=='p'){
-            var valid_cell_x = parseInt(td_cell.id[0])-1;  //x dello spostamento valido
-        }
-        if(div_pezzo.id=='P'){
-            var valid_cell_x = parseInt(td_cell.id[0])+1;
-        }
-        let valid_cell_y = parseInt(td_cell.id[1]);    //y dello spostamento valido
-
+        // Determina la direzione del movimento in base al colore del pedone
+        let curr_x = parseInt(td_cell.id[0]);           //posizione iniziale x
+        let curr_y = parseInt(td_cell.id[1]);           //posizione iniziale y
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
-        if (dest_cell_x==valid_cell_x && dest_cell_y==valid_cell_y){
-            // Verifica che non ci siano pedine nella cella di destinazione
-            if (dest_cell.querySelector('.pedina')) {
-                valid = false;
+        // Calcola la direzione del movimento (-1 per nero, +1 per bianco)
+        let direction = (div_pezzo.id == 'p') ? -1 : 1;
+        let forward_x = curr_x + direction;
+
+        // Movimento in verticale (senza cattura)
+        if (dest_cell_x == forward_x && dest_cell_y == curr_y){
+            // Il movimento in verticale è valido solo se la cella di destinazione è vuota
+            valid = !dest_cell.querySelector('.pedina');
+        }
+        // Movimento in diagonale (con cattura)
+        else if (dest_cell_x == forward_x && Math.abs(dest_cell_y - curr_y) == 1){
+            // La cattura è valida solo se c'è una pedina avversaria
+            let pedinaBersaglio = dest_cell.querySelector('.pedina');
+            if(pedinaBersaglio && pedinaBersaglio.parentElement){
+                // Verifica che la pedina sia del colore opposto
+                valid = !areSameColor(div_pezzo.id, pedinaBersaglio.parentElement.id);
             } else {
-                valid = true;
+                valid = false;
             }
         }
         else valid = false;
@@ -179,13 +194,15 @@ function aggiornaStatoPedine() {
 // Aggiungi un event listener per selezionare la pedina
 document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
     pedina.addEventListener("click", function(event) {
+        event.stopPropagation(); // Impedisce che l'evento si propaghi alla cella
+
         // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
         if (window.selectedImage === event.target) {
             window.selectedCell.classList.remove("highlighted");
             window.selectedElement = null;
             window.selectedCell = null;
             window.selectedImage = null;
-            return;  // Importante: esce dalla funzione dopo la deselezione
+            return;
         }
 
         // Rimuovi l'evidenziazione precedente se presente
@@ -194,20 +211,19 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
         }
 
         // Seleziona l'elemento (pedina) da spostare
-        window.selectedImage = event.target; //immagine selezionata
-        window.selectedElement = window.selectedImage.parentElement; //elemento selezionato (div)
-        window.selectedCell = window.selectedElement.parentElement;  // Memorizza la cella sorgente (td)
+        window.selectedImage = event.target;
+        window.selectedElement = window.selectedImage.parentElement;
+        window.selectedCell = window.selectedElement.parentElement;
 
         // Verifica se è il turno corretto per muovere questa pedina
-        if (!window.canMovePiece(window.selectedElement.id)) {
-            // Se non è il turno corretto, deseleziona tutto
+        if (!canMovePiece(window.selectedElement.id)) {
             window.selectedElement = null;
             window.selectedCell = null;
             window.selectedImage = null;
             return;
         }
-        
-        // Evidenzia la cella sorgente in giallo
+
+        // Evidenzia la cella sorgente
         window.selectedCell.classList.add("highlighted");
     });
 });
@@ -215,25 +231,33 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
 // Aggiungi un event listener per le celle per gestire il click di destinazione
 document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     cell.addEventListener("click", function(event) {
-        if (window.selectedElement) {
-            // Verifica che la cella cliccata non contenga già una pedina
-            if (this.tagName === "TD" && !this.querySelector('.pedina')) {
-                // Sposta la pedina nella cella cliccata
-                if (validationMove(window.selectedImage, this)) {
-                    this.appendChild(window.selectedElement);
-                    resetTimer(); // Resetta il timer quando la mossa è valida
-                    
-                    // Cambia turno dopo una mossa valida
-                    window.turnoBianco = !window.turnoBianco;
-                    window.aggiornaStatoPedine();
-                    updateCondition(); // Aggiorna la condizione quando cambia il turno
+        if (window.selectedElement && this.tagName === "TD") {
+            let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
+            
+            // IMPORTANTE: Se c'è una pedina nella cella di destinazione, verifica che non sia dello stesso colore
+            if (pedinaBersaglio && pedinaBersaglio.parentElement) {
+                if (areSameColor(window.selectedElement.id, pedinaBersaglio.parentElement.id)) {
+                    return; // Non permettere la mossa se le pedine sono dello stesso colore
                 }
+            }
 
-                // Resetta l'elemento selezionato
-                window.selectedElement = null;
-                window.selectedImage = null;
+            // Verifica se la mossa è valida secondo le regole degli scacchi
+            if (validationMove(window.selectedImage, this)) {
+                if(this.hasChildNodes() && pedinaBersaglio){    //se la cella di destinazione ha già una pedina,
+                    this.removeChild(pedinaBersaglio);          //la rimuovo
+                }
+                this.appendChild(window.selectedElement);
+                resetTimer();
+                
+                window.turnoBianco = !window.turnoBianco;
+                window.aggiornaStatoPedine();
+                updateCondition();
+            }
 
-                // Rimuovi l'evidenziazione dalla cella sorgente
+            // Resetta la selezione
+            window.selectedElement = null;
+            window.selectedImage = null;
+            if (window.selectedCell) {
                 window.selectedCell.classList.remove("highlighted");
                 window.selectedCell = null;
             }
@@ -243,3 +267,4 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
 
 // Inizializza lo stato delle pedine all'avvio
 window.aggiornaStatoPedine();
+

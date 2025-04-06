@@ -41,6 +41,7 @@ la pedina è un div con all'inteno due foto
     deselezionare pedina        ✅
     bottone torna alla home
     logica pedina mangiata
+    pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
     stile css
 
 # elenco delle possibili condizioni da cercare in un database:
