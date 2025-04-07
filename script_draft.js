@@ -68,12 +68,17 @@ function listner_DrugDrop_caclciatori(){
                 }
                 
                 // Imposta il testo dell'h1 con l'id del calciatore
+                div_pedina.style.position = "relative";
                 h1.textContent = idCalciatore;
                 h1.style.color = "black";
                 h1.style.fontSize = "1.2em";
                 h1.style.margin = "0";
                 h1.style.padding = "0";
                 h1.style.textAlign = "center";
+                h1.style.position = "absolute";
+                h1.style.bottom = "0";
+                h1.style.width = "100%";
+                h1.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
             }
         });
     });
