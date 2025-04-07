@@ -1,0 +1,24 @@
+/*stile progress bar*/
+.progress-container {
+    position: absolute;
+    bottom: calc(var(--cell-size) * 1.125);
+    left: 50%;
+    transform: translateX(-50%);
+    width: var(--grid-size);
+    height: calc(var(--cell-size) * 0.3125);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 0.3125rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #f5deb3;
+    transition: width 1s linear 0s;
+}
+
+/* Classe per rimuovere la transizione quando la barra si riempie */
+.progress-bar.instant {
+    transition: none;
+}

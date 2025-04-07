@@ -1,0 +1,116 @@
+/*stile div barra superiore*/
+.intestazione {
+    display: block;
+    position: relative;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+}
+
+/*stile container del titolo*/
+.title-container {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: calc(var(--cell-size) * 0.25);
+    border: 0.125rem solid black;
+    box-shadow: 0 0.25rem 1rem rgba(1, 0, 0, 0.5);
+    margin-bottom: calc(var(--cell-size) * 0.375);
+    margin-top: calc(var(--cell-size) * -0.125);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right ,#0f002d,#2c0182);
+}
+
+/*stile bottone menù*/
+.menu-button {
+    position: absolute;
+    left: 1.25rem;
+    padding: 1.25rem 1.25rem;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    background-image: url(images/menu.png);
+    background-size: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/*hover bottone menù*/
+.menu-button:hover {
+    transform: scale(1.1);
+}
+
+/*stile titolo*/
+.title {
+    text-align: center;
+    font-size: calc(var(--cell-size) * 1.06);
+    font-weight: bold;
+    margin: 0;
+    color: #f5deb3;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.125rem;
+    background: linear-gradient(to right, #efe0c4, #e8c481);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
+}
+
+/*stile bottone info*/
+.info {
+    width: 1.875rem;
+    height: 1.875rem;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+}
+
+.tooltip {
+    z-index: 1000;
+    position: absolute;
+    background-color: black;
+    color: white;
+    padding: 0.625rem;
+    border-radius: 0.3125rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    width: 37.5rem;
+    text-align: center;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+}
+
+/* .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-width: 0.3125rem;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+    transform: translateX(-50%);
+} 
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to right ,#1b014e,#4a01de);
+    overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */

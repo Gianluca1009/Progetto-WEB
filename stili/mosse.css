@@ -1,0 +1,51 @@
+
+/*stile mosse disponibili*/
+.available-move {
+    position: relative;
+    cursor: pointer;
+}
+
+/*stile mosse di cattura*/
+.eating-move{
+    position: relative;
+    cursor: pointer;
+}
+
+/*stile mosse disponibili*/
+.available-move::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 255, 0, 0.2);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/*stile mosse di cattura*/
+.eating-move::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 0, 0, 0.3);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/*stile mosse disponibili*/
+.available-move:hover::after {
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+/*stile mosse di cattura*/
+.eating-move:hover::after {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+

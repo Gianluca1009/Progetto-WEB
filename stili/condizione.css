@@ -1,0 +1,50 @@
+/*stile container condizioni*/
+.condition-container {
+    position: absolute;
+    top: 5.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--grid-size) * 0.96);
+    height: 5%;
+    background: linear-gradient(to right ,#1b014e,#4a01de);
+    border-radius: 0.625rem;
+    padding: calc(var(--cell-size) * 0.25);
+    margin: calc(var(--cell-size) * 0.25) auto;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 2;
+    border: 0.09375rem solid #f5deb3;
+    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+}
+
+/*stile titolo condizioni*/
+.condition-title {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #f5deb3;
+    line-height: 1.5;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.timer-container {
+    position: absolute;
+    bottom: calc(var(--cell-size) * -0.375);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: glow 2s infinite alternate;
+    width: 5%;
+    height: 2%;
+    background-color: #4a01de;
+    border-radius: 0.625rem;
+    padding: calc(var(--cell-size) * 0.25);
+    margin: calc(var(--cell-size) * 0.25) auto;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 2;
+    border: 0.09375rem solid #f5deb3;
+    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+}

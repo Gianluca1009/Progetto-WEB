@@ -10,6 +10,7 @@
     width: var(--draft-width);
     height: var(--grid-size);
     border: 0.0625rem solid black;
+    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 
 .table_draft_dx {
@@ -20,12 +21,6 @@
 .table_draft_sx {
     left: 50%;
     transform: translate(-200%, -50%);
-}
-
-/*stile table*/
-table {
-    border-collapse: collapse;
-    border: 0.125rem solid black;
 }
 
 .draftcell {

@@ -1,0 +1,45 @@
+:root {
+    --grid-size: 31.25vw;
+    --cell-size: calc(var(--grid-size) / 6);
+}
+
+/*stile pedine*/
+/* .pedina {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+} */
+
+/*hover sulla pedina attiva*/
+.pedina-active:hover {
+    transform: scale(1.1);
+}
+
+/*classe per le pedine non attive prima di iniziare il gioco*/
+.game-not-started .pedina { 
+    pointer-events: none;
+    cursor: default;
+}
+
+/*stile pedine*/
+.torre, .alfiere, .cavallo, .regina, .re, .pedone {
+    width: calc(var(--cell-size) * 0.75);
+    height: calc(var(--cell-size) * 0.75);
+}
+
+.santino {
+    max-width: var(--cell-size);
+    max-height: var(--cell-size);
+    width: auto;
+    height: auto;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.santino:hover {
+    transform: scale(1.04);
+} 
