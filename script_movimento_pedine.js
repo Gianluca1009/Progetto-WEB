@@ -185,6 +185,29 @@ function aggiornaStatoPedine() {
     }
 }
 
+// Funzione per evidenziare le caselle disponibili
+function highlightAvailableMoves(piece) {
+    // Rimuovi eventuali evidenziazioni precedenti
+    document.querySelectorAll('.available-move').forEach(cell => {
+        cell.classList.remove('available-move');
+    });
+
+    let startCell = piece.parentElement;
+
+    // Controlla tutte le caselle della scacchiera 6x6
+    for (let x = 0; x < 6; x++) {
+        for (let y = 0; y < 6; y++) {
+            let targetCell = document.getElementById(x + "" + y);
+            if (targetCell && targetCell !== startCell) {
+                // Verifica se la mossa è valida
+                if (validationMove(piece, targetCell)) {
+                    targetCell.classList.add('available-move');
+                }
+            }
+        }
+    }
+}
+
 /*
 *    LISTENER PER MUOVERE LE PEDINE:
 *           1. seleziona il pezzo che voglio muovere 
@@ -194,11 +217,14 @@ function aggiornaStatoPedine() {
 // Aggiungi un event listener per selezionare la pedina
 document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
     pedina.addEventListener("click", function(event) {
-        event.stopPropagation(); // Impedisce che l'evento si propaghi alla cella
+        event.stopPropagation();
 
         // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
         if (window.selectedImage === event.target) {
             window.selectedCell.classList.remove("highlighted");
+            document.querySelectorAll('.available-move').forEach(cell => {
+                cell.classList.remove('available-move');
+            });
             window.selectedElement = null;
             window.selectedCell = null;
             window.selectedImage = null;
@@ -208,6 +234,9 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
         // Rimuovi l'evidenziazione precedente se presente
         if (window.selectedCell) {
             window.selectedCell.classList.remove("highlighted");
+            document.querySelectorAll('.available-move').forEach(cell => {
+                cell.classList.remove('available-move');
+            });
         }
 
         // Seleziona l'elemento (pedina) da spostare
@@ -223,8 +252,9 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
             return;
         }
 
-        // Evidenzia la cella sorgente
+        // Evidenzia la cella sorgente e le caselle disponibili
         window.selectedCell.classList.add("highlighted");
+        highlightAvailableMoves(window.selectedElement);
     });
 });
 

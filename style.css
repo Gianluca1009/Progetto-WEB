@@ -509,3 +509,25 @@ body {
         display: block;
     }
 }
+
+.available-move {
+    position: relative;
+    cursor: pointer;
+}
+
+.available-move::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(0, 255, 0, 0.3);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.available-move:hover::after {
+    background-color: rgba(0, 255, 0, 0.5);
+}
