@@ -185,16 +185,23 @@ function aggiornaStatoPedine() {
 // Funzione per evidenziare le caselle disponibili
 function SuggerisciMosse() {
     // Rimuovi eventuali evidenziazioni precedenti
-
     let startCell = window.selectedElement.parentElement;  //cella di partenza
-    console.log(startCell);
+
     // Controlla tutte le caselle della scacchiera 6x6
     for (let x = 0; x < 6; x++) {
         for (let y = 0; y < 6; y++) {
+            
             let targetCell = document.getElementById(x + "" + y);
+            let pedinaBersaglio = targetCell.querySelector('.pedina');
             if (targetCell && targetCell !== startCell) {
                 // Verifica se la mossa è valida
                 if (validationMove(window.selectedImage, targetCell)) {
+                    if(targetCell.hasChildNodes() && pedinaBersaglio){
+                        targetCell.classList.add('eating-move');
+                    }
+                    else{
+                        targetCell.classList.add('available-move');
+                    }
                     targetCell.classList.add('available-move');
                 }
             }
@@ -218,6 +225,9 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
             window.selectedCell.classList.remove("highlighted");
             document.querySelectorAll('.available-move').forEach(cell => {
                 cell.classList.remove('available-move');
+            });
+            document.querySelectorAll('.eating-move').forEach(cell => {
+                cell.classList.remove('eating-move');
             });
             window.selectedElement = null;
             window.selectedCell = null;
@@ -258,11 +268,7 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
         if (window.selectedElement && this.tagName === "TD") {
             let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
             // IMPORTANTE: Se c'è una pedina nella cella di destinazione, verifica che non sia dello stesso colore
-            /*if (pedinaBersaglio && pedinaBersaglio.parentElement) {
-                if (areSameColor(window.selectedElement.id, pedinaBersaglio.id)) {  //old param (window.selectedElement.id, pedinaBersaglio.parentElement.id
-                    return; // Non permettere la mossa se le pedine sono dello stesso colore
-                }
-            }*/
+            
 
             // Verifica se la mossa è valida secondo le regole degli scacchi
             if (validationMove(window.selectedImage, this)) {
@@ -274,6 +280,10 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                 document.querySelectorAll('.available-move').forEach(cell => {
                     cell.classList.remove('available-move');
                 });
+                document.querySelectorAll('.eating-move').forEach(cell => {
+                    cell.classList.remove('eating-move');
+                });
+
 
                 resetTimer();
                 
