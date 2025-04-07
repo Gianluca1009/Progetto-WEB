@@ -1,30 +1,38 @@
 function sx_draft(){
     let scell00 = document.getElementById("s00");
     let s00 = document.createElement("img");
+    s00.id = "messi";
     s00.className = "santino";
     s00.src = "https://img.a.transfermarkt.technology/portrait/header/28003-1740766555.jpg?lm=1";
     s00.alt = "Messi";
+    s00.draggable = true;
     scell00.appendChild(s00);
 
     let scell01 = document.getElementById("s01");
     let s01 = document.createElement("img");
+    s01.id = "ronaldo";
     s01.className = "santino";
     s01.src = "https://img.a.transfermarkt.technology/portrait/header/8198-1694609670.jpg?lm=1";
     s01.alt = "Ronaldo";
+    s01.draggable = true;
     scell01.appendChild(s01);
 
     let scell02 = document.getElementById("s02");
     let s02 = document.createElement("img");
+    s02.id = "neymar";
     s02.className = "santino";
     s02.src = "https://img.a.transfermarkt.technology/portrait/header/68290-1692601435.jpg?lm=1";
     s02.alt = "Neymar";
+    s02.draggable = true;
     scell02.appendChild(s02);
 
     let scell03 = document.getElementById("s03");
     let s03 = document.createElement("img");
+    s03.id = "isla";
     s03.className = "santino";
     s03.src = "https://img.a.transfermarkt.technology/portrait/header/43722-1718986946.jpg?lm=1";
-    s03.alt = "Oriolo";
+    s03.alt = "Isla";
+    s03.draggable = true;
     scell03.appendChild(s03);
 }
 
@@ -32,8 +40,8 @@ function sx_draft(){
 function listner_DrugDrop_caclciatori(){
     //selziona tutti le img calciatore -> drag elem
     //list dragElement.addEventListener("dragstart", function(event)
-    document.querySelectorAll(".dragCell .div").forEach(santino_div => {   //devono essere div
-        santino_div.addEventListener("dragstart", function(event) {
+    document.querySelectorAll(".santino").forEach(santino_img => {   //devono essere div
+        santino_img.addEventListener("dragstart", function(event) {
             event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
         }
     );
@@ -52,7 +60,7 @@ function listner_DrugDrop_caclciatori(){
     document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(drop_cell => {
         drop_cell.addEventListener("drop", function(event) {
             event.preventDefault();
-            var data = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
+            var name = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
             console.log(data)
             //var draggedElement = document.getElementById(data);
             //dropZone.appendChild(draggedElement);
@@ -63,6 +71,7 @@ function listner_DrugDrop_caclciatori(){
 }
 
 sx_draft();
+listner_DrugDrop_caclciatori();
 
     /*
     

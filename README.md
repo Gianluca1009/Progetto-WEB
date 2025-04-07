@@ -21,13 +21,13 @@ la pedina è un div con all'inteno due foto
 
 # Login-page:
     descrizione gioco e regole
-    immagini 
+    immagini
     capire come fare la parte di login
     navbar informativa
     stile css
 
 # Prep-page:
-    bottone start           ✅
+    bottone start                                                                                   ✅
     bottone random
     bottone torna alla home
     modificare tabella draft (meno celle, nomi e stats giocatori)
@@ -38,13 +38,13 @@ la pedina è un div con all'inteno due foto
     stile css
 
 # Game-page:
-    mosse valide                ✅
-    consiglia-mosse             ✅
+    mosse valide                                                                                    ✅
+    consiglia-mosse                                                                                 ✅
     log delle mosse
-    muovere pezzi               ✅
-    deselezionare pedina        ✅
+    muovere pezzi                                                                                   ✅
+    deselezionare pedina                                                                            ✅
     bottone torna alla home
-    logica pedina mangiata      ✅
+    logica pedina mangiata                                                                          ✅
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
     stile css
 
