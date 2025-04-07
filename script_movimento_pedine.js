@@ -150,6 +150,13 @@ function validationMove(img,dest_cell){
         
         valid = dx <= 1 && dy <= 1;
     }
+    let pedinaBersaglio = dest_cell.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
+        // IMPORTANTE: Se c'è una pedina nella cella di destinazione, verifica che non sia dello stesso colore
+        if (pedinaBersaglio && pedinaBersaglio.parentElement) {
+            if (areSameColor(window.selectedElement.id, pedinaBersaglio.id)) {  //old param (window.selectedElement.id, pedinaBersaglio.parentElement.id
+                return false; // Non permettere la mossa se le pedine sono dello stesso colore
+            }
+        }
 
     return valid;
 }
@@ -251,11 +258,11 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
         if (window.selectedElement && this.tagName === "TD") {
             let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
             // IMPORTANTE: Se c'è una pedina nella cella di destinazione, verifica che non sia dello stesso colore
-            if (pedinaBersaglio && pedinaBersaglio.parentElement) {
+            /*if (pedinaBersaglio && pedinaBersaglio.parentElement) {
                 if (areSameColor(window.selectedElement.id, pedinaBersaglio.id)) {  //old param (window.selectedElement.id, pedinaBersaglio.parentElement.id
                     return; // Non permettere la mossa se le pedine sono dello stesso colore
                 }
-            }
+            }*/
 
             // Verifica se la mossa è valida secondo le regole degli scacchi
             if (validationMove(window.selectedImage, this)) {
