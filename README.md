@@ -17,6 +17,7 @@ la pedina è un div con all'inteno due foto
     adattabilita alla pagina/risoluzione
     progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
     pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità
+    separazione tra listener e funzioni in file separati
 
 # Login-page:
     descrizione gioco e regole
@@ -60,5 +61,8 @@ la pedina è un div con all'inteno due foto
     9.record di gol stagionale
     10.record di assist stagionale
 
+# utilizzo DataBase
+    provare l'utilizzo di database gratuiti come SportsDB o altri, tenendo in considerazione
+    la limitazione di richieste al minuto.
     
     

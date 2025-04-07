@@ -6,6 +6,7 @@
 /*stile tabelle per il draft*/
 .table_draft_dx, .table_draft_sx {
     position: absolute;
+    table-layout: fixed;
     top: 50%;
     width: var(--draft-width);
     height: var(--grid-size);
@@ -15,12 +16,12 @@
 
 .table_draft_dx {
     left: 50%;
-    transform: translate(100%, -50%);
+    transform: translate(90%, -50%);
 }
 
 .table_draft_sx {
     left: 50%;
-    transform: translate(-200%, -50%);
+    transform: translate(-190%, -50%);
 }
 
 .draftcell {

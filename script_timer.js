@@ -30,7 +30,11 @@ function updateTimer() {
             resetSelezione();
         }
         
-        cambioTurno();
+        // Cambio turno
+        window.turnoBianco = !window.turnoBianco;
+        aggiornaStatoPedine();
+        updateCondition();
+        
         return;
     }
     

@@ -1,39 +1,119 @@
 function sx_draft(){
-    let scell00 = document.getElementById("s00");
-    let s00 = document.createElement("img");
-    s00.id = "Messi";
-    s00.className = "santino";
-    s00.src = "https://img.a.transfermarkt.technology/portrait/header/28003-1740766555.jpg?lm=1";
-    s00.alt = "Messi";
-    s00.draggable = true;
-    scell00.appendChild(s00);
-
-    let scell01 = document.getElementById("s01");
-    let s01 = document.createElement("img");
-    s01.id = "Ronaldo";
-    s01.className = "santino";
-    s01.src = "https://img.a.transfermarkt.technology/portrait/header/8198-1694609670.jpg?lm=1";
-    s01.alt = "Ronaldo";
-    s01.draggable = true;
-    scell01.appendChild(s01);
-
-    let scell02 = document.getElementById("s02");
-    let s02 = document.createElement("img");
-    s02.id = "Neymar";
-    s02.className = "santino";
-    s02.src = "https://img.a.transfermarkt.technology/portrait/header/68290-1692601435.jpg?lm=1";
-    s02.alt = "Neymar";
-    s02.draggable = true;
-    scell02.appendChild(s02);
-
-    let scell03 = document.getElementById("s03");
-    let s03 = document.createElement("img");
-    s03.id = "Isla";
-    s03.className = "santino";
-    s03.src = "https://img.a.transfermarkt.technology/portrait/header/43722-1718986946.jpg?lm=1";
-    s03.alt = "Isla";
-    s03.draggable = true;
-    scell03.appendChild(s03);
+    // Dati dei calciatori con tutte le informazioni necessarie
+    const calciatori = [
+        {
+            id: "Messi",
+            cellId: "s00",
+            src: "https://img.a.transfermarkt.technology/portrait/big/28003-1631171950.jpg",
+            alt: "Messi"
+        },
+        {
+            id: "Ronaldo",
+            cellId: "s01",
+            src: "https://img.a.transfermarkt.technology/portrait/big/8198-1631171948.jpg",
+            alt: "Ronaldo"
+        },
+        {
+            id: "Neymar",
+            cellId: "s02",
+            src: "https://img.a.transfermarkt.technology/portrait/big/68290-1673352915.jpg",
+            alt: "Neymar"
+        },
+        {
+            id: "Isla",
+            cellId: "s03",
+            src: "https://img.a.transfermarkt.technology/portrait/big/43722-1627911509.jpg",
+            alt: "Isla"
+        },
+        {
+            id: "Mbappé",
+            cellId: "s04",
+            src: "https://img.a.transfermarkt.technology/portrait/big/342229-1682683695.jpg",
+            alt: "Mbappé"
+        },
+        {
+            id: "Haaland",
+            cellId: "s05",
+            src: "https://img.a.transfermarkt.technology/portrait/big/418560-1656179352.jpg",
+            alt: "Haaland"
+        },
+        {
+            id: "Lewandowski",
+            cellId: "s06",
+            src: "https://img.a.transfermarkt.technology/portrait/big/38253-1642434447.jpg",
+            alt: "Lewandowski"
+        },
+        {
+            id: "Salah",
+            cellId: "s07",
+            src: "https://img.a.transfermarkt.technology/portrait/big/148455-1546611604.jpg",
+            alt: "Salah"
+        },
+        {
+            id: "De Bruyne",
+            cellId: "s08",
+            src: "https://img.a.transfermarkt.technology/portrait/big/88755-1515761259.jpg",
+            alt: "De Bruyne"
+        },
+        {
+            id: "Benzema",
+            cellId: "s09",
+            src: "https://img.a.transfermarkt.technology/portrait/big/18922-1665519061.jpg",
+            alt: "Benzema"
+        },
+        {
+            id: "Modric",
+            cellId: "s10",
+            src: "https://img.a.transfermarkt.technology/portrait/big/27992-1659368550.jpg",
+            alt: "Modric"
+        },
+        {
+            id: "Vinicius",
+            cellId: "s11",
+            src: "https://img.a.transfermarkt.technology/portrait/big/371998-1661444379.jpg",
+            alt: "Vinicius Jr"
+        },
+        {
+            id: "Bellingham",
+            cellId: "s12",
+            src: "https://img.a.transfermarkt.technology/portrait/big/581678-1657024915.jpg",
+            alt: "Bellingham"
+        },
+        {
+            id: "Kane",
+            cellId: "s13",
+            src: "https://img.a.transfermarkt.technology/portrait/big/132098-1599987413.jpg",
+            alt: "Kane"
+        },
+        {
+            id: "Martinez",
+            cellId: "s14",
+            src: "https://img.a.transfermarkt.technology/portrait/big/406625-1666080081.jpg",
+            alt: "Lautaro Martinez"
+        },
+        {
+            id: "Donnarumma",
+            cellId: "s15",
+            src: "https://img.a.transfermarkt.technology/portrait/big/315858-1606296225.jpg",
+            alt: "Donnarumma"
+        }
+    ];
+    
+    // Creazione degli elementi con un ciclo
+    calciatori.forEach(calciatore => {
+        let cell = document.getElementById(calciatore.cellId);
+        if (cell) { // Verifica che la cella esista prima di procedere
+            let img = document.createElement("img");
+            
+            img.id = calciatore.id;
+            img.className = "santino";
+            img.src = calciatore.src;
+            img.alt = calciatore.alt;
+            img.draggable = true;
+            
+            cell.appendChild(img);
+        }
+    });
 }
 
 //funzione per assegnare il cognome del calciatore al testo del div_pedina
