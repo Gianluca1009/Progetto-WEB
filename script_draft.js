@@ -28,4 +28,64 @@ function sx_draft(){
     scell03.appendChild(s03);
 }
 
+
+function listner_DrugDrop_caclciatori(){
+    //selziona tutti le img calciatore -> drag elem
+    //list dragElement.addEventListener("dragstart", function(event)
+    document.querySelectorAll(".dragCell .div").forEach(santino_div => {   //devono essere div
+        santino_div.addEventListener("dragstart", function(event) {
+            event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
+        }
+    );
+    });
+
+    //selziona tutte le caselle pezzi -> drop zone
+    //list dropZone.addEventListener("dragover", function(event) {
+    document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(drop_cell => {
+        drop_cell.addEventListener("dragover", function(event) {
+            event.preventDefault();
+        }
+    );
+    });
+
+    //list dropZone.addEventListener("drop", function(event) 
+    document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(drop_cell => {
+        drop_cell.addEventListener("drop", function(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
+            console.log(data)
+            //var draggedElement = document.getElementById(data);
+            //dropZone.appendChild(draggedElement);
+    
+            }
+        );
+    });
+}
+
 sx_draft();
+
+    /*
+    
+        // Prendere gli elementi dal DOM
+        var dragElement = document.getElementById("dragElement");
+        var dropZone = document.getElementById("dropZone");
+
+        // Permettere il drag (trascinamento)
+        dragElement.addEventListener("dragstart", function(event) {
+            // Salva l'elemento da trascinare (qui utilizziamo l'id)
+            event.dataTransfer.setData("text", event.target.id);
+        });
+
+        // Permettere il drop (rilascio)
+        dropZone.addEventListener("dragover", function(event) {
+            event.preventDefault();  // Necessario per consentire il drop
+        });
+
+        dropZone.addEventListener("drop", function(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
+            var draggedElement = document.getElementById(data);
+            dropZone.appendChild(draggedElement);  // Sposta l'elemento nella zona di drop
+        });
+    */
+    
