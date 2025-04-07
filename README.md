@@ -31,6 +31,8 @@ la pedina è un div con all'inteno due foto
     bottone torna alla home
     modificare tabella draft (meno celle, nomi e stats giocatori)
     drag and drop dei giocatori
+    assegnare attributi ai giocatori tramite oggetti javascript
+    fare query SQL in base all'url dell'immagine e popolare gli attributi di ogni pedina
     stile css
 
 # Game-page:

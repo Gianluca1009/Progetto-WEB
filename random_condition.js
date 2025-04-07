@@ -4,7 +4,7 @@ const conditions = [
     "Presenze collezionate in carriera",
     "Cartellini gialli subiti in carriera",
     "Cartellini rossi subiti in carriera",
-    "Vittorie ottenute in carriera in carriera",
+    "Vittorie ottenute in carriera",
     "Numeri di trofei vinti in carriera",
     "Record di goal stagionale",
     "Record di assist stagionale",
