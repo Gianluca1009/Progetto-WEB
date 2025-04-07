@@ -47,11 +47,10 @@ function checkPathClear(start_x, start_y, end_x, end_y) {
     return true;
 }
 
-function validationMove(elem,dest_cell){
+function validationMove(img,dest_cell){
+    let valid = false; // Inizialmente la mossa non è valida
 
-    let valid = true; //booleano che decide se la mossa sia valida o meno secondo le regole
-
-    let div_pezzo = elem.parentElement; //variabile per il pezzo selezionato
+    let div_pezzo = img.parentElement; //variabile per il pezzo selezionato
     let td_cell = div_pezzo.parentElement; //variabile per la cella selezionata
 
     if(div_pezzo.id=='P' || div_pezzo.id=='p'){
@@ -65,7 +64,6 @@ function validationMove(elem,dest_cell){
         let direction = (div_pezzo.id == 'p') ? -1 : 1;
         let forward_x = curr_x + direction;
 
-        valid = false;
         // Movimento in verticale (senza cattura)
         if (dest_cell_x == forward_x && dest_cell_y == curr_y){
             // Il movimento in verticale è valido solo se la cella di destinazione è vuota
@@ -77,15 +75,12 @@ function validationMove(elem,dest_cell){
             let pedinaBersaglio = dest_cell.querySelector('.pedina');
             if(pedinaBersaglio && pedinaBersaglio.parentElement){
                 // Verifica che la pedina sia del colore opposto
-                valid = !areSameColor(div_pezzo.id, pedinaBersaglio.id); //old cond >div_pezzo.id, pedinaBersaglio.parentElement.id
-            } else {
-                valid = false;
+                valid = !areSameColor(div_pezzo.id, pedinaBersaglio.id);
             }
         }
     }
 
     if(div_pezzo.id=='t' || div_pezzo.id=='T'){
-
         let start_cell_x = parseInt(td_cell.id[0]);
         let start_cell_y = parseInt(td_cell.id[1]);
         
@@ -96,25 +91,22 @@ function validationMove(elem,dest_cell){
             // Verifica che il percorso sia libero
             valid = checkPathClear(start_cell_x, start_cell_y, dest_cell_x, dest_cell_y);
         }
-        else valid = false;
     }
 
     if(div_pezzo.id=='a' || div_pezzo.id=='A'){
-
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
         
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
-        if(Math.abs(dest_cell_x-curr_x) != Math.abs(dest_cell_y-curr_y)) return false;
-        
-        // Verifica che il percorso sia libero
-        valid = checkPathClear(curr_x, curr_y, dest_cell_x, dest_cell_y);
+        if(Math.abs(dest_cell_x-curr_x) == Math.abs(dest_cell_y-curr_y)) {
+            // Verifica che il percorso sia libero
+            valid = checkPathClear(curr_x, curr_y, dest_cell_x, dest_cell_y);
+        }
     }
 
     if(div_pezzo.id=='c' || div_pezzo.id=='C'){
-
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
         
@@ -125,11 +117,10 @@ function validationMove(elem,dest_cell){
         let dx = Math.abs(dest_cell_x - curr_x);
         let dy = Math.abs(dest_cell_y - curr_y);
         
-        if (!((dx === 2 && dy === 1) || (dx === 1 && dy === 2))) return false;
+        valid = (dx === 2 && dy === 1) || (dx === 1 && dy === 2);
     }
 
     if(div_pezzo.id=='q' || div_pezzo.id=='Q'){
-
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
         
@@ -140,25 +131,24 @@ function validationMove(elem,dest_cell){
         let dx = Math.abs(dest_cell_x - curr_x);
         let dy = Math.abs(dest_cell_y - curr_y);
         
-        if (!(dx === 0 || dy === 0 || dx === dy)) return false;
-        
-        // Verifica che il percorso sia libero
-        valid = checkPathClear(curr_x, curr_y, dest_cell_x, dest_cell_y);
+        if (dx === 0 || dy === 0 || dx === dy) {
+            // Verifica che il percorso sia libero
+            valid = checkPathClear(curr_x, curr_y, dest_cell_x, dest_cell_y);
+        }
     }
 
     if(div_pezzo.id=='r' || div_pezzo.id=='R'){
-
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
         
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
-        // Il re si muove di una casella in qualsiasi direzione e non serve controllare il percorso
+        // Il re si muove di una casella in qualsiasi direzione
         let dx = Math.abs(dest_cell_x - curr_x);
         let dy = Math.abs(dest_cell_y - curr_y);
         
-        if (dx > 1 || dy > 1) return false;
+        valid = dx <= 1 && dy <= 1;
     }
 
     return valid;
@@ -186,10 +176,10 @@ function aggiornaStatoPedine() {
 }
 
 // Funzione per evidenziare le caselle disponibili
-function SuggerisciMosse(selectedElement) {
+function SuggerisciMosse() {
     // Rimuovi eventuali evidenziazioni precedenti
 
-    let startCell = selectedElement.parentElement;  //cella di partenza
+    let startCell = window.selectedElement.parentElement;  //cella di partenza
     console.log(startCell);
     // Controlla tutte le caselle della scacchiera 6x6
     for (let x = 0; x < 6; x++) {
@@ -197,9 +187,7 @@ function SuggerisciMosse(selectedElement) {
             let targetCell = document.getElementById(x + "" + y);
             if (targetCell && targetCell !== startCell) {
                 // Verifica se la mossa è valida
-                console.log(selectedElement);
-                console.log(targetCell);
-                if (validationMove(selectedElement, targetCell)) {
+                if (validationMove(window.selectedImage, targetCell)) {
                     targetCell.classList.add('available-move');
                 }
             }
