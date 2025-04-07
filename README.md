@@ -26,23 +26,24 @@ la pedina è un div con all'inteno due foto
     stile css
 
 # Prep-page:
-    bottone start
+    bottone start           ✅
     bottone random
     bottone torna alla home
     modificare tabella draft (meno celle, nomi e stats giocatori)
     drag and drop dei giocatori
+    posizionare cognome del giocatore sotto la pedina
     assegnare attributi ai giocatori tramite oggetti javascript
     fare query SQL in base all'url dell'immagine e popolare gli attributi di ogni pedina
     stile css
 
 # Game-page:
     mosse valide                ✅
-    consiglia-mosse
+    consiglia-mosse             ✅
     log delle mosse
     muovere pezzi               ✅
     deselezionare pedina        ✅
     bottone torna alla home
-    logica pedina mangiata
+    logica pedina mangiata      ✅
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
     stile css
 
