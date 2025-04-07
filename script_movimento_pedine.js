@@ -1,13 +1,13 @@
-// Variabili globali per la gestione del gioco
-window.selectedElement = null;
+// ---- VARIABILI IMPORTANTI PER LA GESTIONE DEL GIOCO ---- //
+
+window.selectedElement = null; // div pezzo selezionato
 window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
 window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 
+// ---- FUNZIONI AUSILIARIE IMPORTANTI ---- //
+
 // Funzione per verificare se una pedina può essere mossa in quel turno
-
-// ---- IMPORTANTE ---- //
-
 function canMovePiece(pieceId) {
     // Se è turno del bianco (true), può muovere solo pedine maiuscole (bianche)
     if (window.turnoBianco) {
@@ -47,6 +47,7 @@ function checkPathClear(start_x, start_y, end_x, end_y) {
     return true;
 }
 
+// Funzione per verifcare se la mossa è valida
 function validationMove(img,dest_cell){
     let valid = false; // Inizialmente la mossa non è valida
 
@@ -161,6 +162,7 @@ function validationMove(img,dest_cell){
     return valid;
 }
 
+// Funzione per attivare l'hover delle pedine spostabili nel turno
 function aggiornaStatoPedine() {
     document.querySelectorAll(".pedina").forEach(pedina => {
         if ((window.turnoBianco && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
@@ -209,38 +211,66 @@ function SuggerisciMosse() {
     }
 }
 
+// Funzione per resettare i suggerimenti
+function resetSuggerimenti(){
+    document.querySelectorAll('.available-move').forEach(cell => {
+        cell.classList.remove('available-move');
+    });
+    document.querySelectorAll('.eating-move').forEach(cell => {
+        cell.classList.remove('eating-move');
+    });
+}
+
+// Funzione per evidenziare la cella selezionata
+function addHighlighted(){
+    window.selectedCell.classList.add("highlighted");
+}
+
+// Funzione per resettare l'evidenziazione della cella selezionata
+function resetHighlighted(){
+    window.selectedCell.classList.remove("highlighted");
+}
+
+// Funzione per cambiare turno
+function cambioTurno(){
+    resetTimer();
+    window.turnoBianco = !window.turnoBianco;
+    window.aggiornaStatoPedine();
+    updateCondition();
+}
+
+// Funzione per resettare la selezione degli elementi image,element,cell
+function resetSelezione(){
+    window.selectedElement = null;
+    window.selectedCell = null;
+    window.selectedImage = null;
+}
 /*
 *    LISTENER PER MUOVERE LE PEDINE:
 *           1. seleziona il pezzo che voglio muovere 
 *           2. seleziona la cella di destinazione dove voglio spostare il pezzo -> se valida -> sposta il pezzo in quella cella
 */
 
-// Aggiungi un event listener per selezionare la pedina
+
+
+// SELEZIONA LA PEDINA
+
 document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedina => {
     pedina.addEventListener("click", function(event) {
         event.stopPropagation();
 
         // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
         if (window.selectedImage === event.target) {
-            window.selectedCell.classList.remove("highlighted");
-            document.querySelectorAll('.available-move').forEach(cell => {
-                cell.classList.remove('available-move');
-            });
-            document.querySelectorAll('.eating-move').forEach(cell => {
-                cell.classList.remove('eating-move');
-            });
-            window.selectedElement = null;
-            window.selectedCell = null;
-            window.selectedImage = null;
+            resetHighlighted();
+            resetSuggerimenti(); //resetta i suggerimenti
+            resetSelezione();
             return;
         }
 
         // Rimuovi l'evidenziazione precedente se presente
         if (window.selectedCell) {
-            window.selectedCell.classList.remove("highlighted");
-            document.querySelectorAll('.available-move').forEach(cell => {
-                cell.classList.remove('available-move');
-            });
+            resetHighlighted();
+            resetSuggerimenti();
         }
 
         // Seleziona l'elemento (pedina) da spostare
@@ -250,19 +280,20 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
 
         // Verifica se è il turno corretto per muovere questa pedina
         if (!canMovePiece(window.selectedElement.id)) {
-            window.selectedElement = null;
-            window.selectedCell = null;
-            window.selectedImage = null;
+            resetSelezione();
             return;
         }
 
         // Evidenzia la cella sorgente e le caselle disponibili
-        window.selectedCell.classList.add("highlighted");
+        addHighlighted();
         SuggerisciMosse(window.selectedElement);
     });
 });
 
-// Aggiungi un event listener per le celle per gestire il click di destinazione
+
+
+// SELEZIONA LA CELLA DI DESTINAZIONE
+
 document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     cell.addEventListener("click", function(event) {
         if (window.selectedElement && this.tagName === "TD") {
@@ -277,32 +308,21 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                 }
                 this.appendChild(window.selectedElement);
                 //resetta la selezione delle mosse suggerite
-                document.querySelectorAll('.available-move').forEach(cell => {
-                    cell.classList.remove('available-move');
-                });
-                document.querySelectorAll('.eating-move').forEach(cell => {
-                    cell.classList.remove('eating-move');
-                });
-
-
-                resetTimer();
-                
-                window.turnoBianco = !window.turnoBianco;
-                window.aggiornaStatoPedine();
-                updateCondition();
+                resetSuggerimenti();
+                cambioTurno();
             }
 
-            // Resetta la selezione
-            window.selectedElement = null;
-            window.selectedImage = null;
-            if (window.selectedCell) {
-                window.selectedCell.classList.remove("highlighted");
-                window.selectedCell = null;
-            }
+            // Resetta la selezione e l'evidenziazione
+            resetHighlighted();
+            resetSelezione();   
         }
     });
 });
 
+
+//----FUNZIONI PER INIZIALIZZARE IL GIOCO----//
+
 // Inizializza lo stato delle pedine all'avvio
 window.aggiornaStatoPedine();
 
+//----FUNZIONI PER INIZIALIZZARE IL GIOCO----//

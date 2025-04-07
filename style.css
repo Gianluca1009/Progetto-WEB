@@ -76,14 +76,6 @@ table {
     border: 0.125rem solid black;
 }
 
-td {
-    width: var(--cell-size);
-    height: var(--cell-size);
-    text-align: center;
-    justify-content: center;
-    border: 0.125rem solid black;
-}
-
 /* Cell Colors and States */
 .greencell {
     background-color: rgb(116, 172, 116);
@@ -95,12 +87,20 @@ td {
 
 .greencell, .creamcell {
     transition: background-color 0.5s ease;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    text-align: center;
+    justify-content: center;
+    border: 0.125rem solid black;
 }
 
 .draftcell {
     background-color: #6b6a6a;
     width: 5rem;
     height: 5rem;
+    text-align: center;
+    justify-content: center;
+    border: 0.125rem solid black;
 }
 
 .highlighted {
@@ -526,9 +526,9 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background-color: rgba(0, 255, 0, 0.3);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 255, 0, 0.2);
     border-radius: 50%;
     z-index: 1;
 }
@@ -539,18 +539,18 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 0, 0, 0.3);
     border-radius: 50%;
     z-index: 1;
 }
 
-    .available-move:hover::after {
-        background-color: rgba(0, 255, 0, 0.5);
-    }
+.available-move:hover::after {
+    background-color: rgba(0, 255, 0, 0.3);
+}
 
-    .eating-move:hover::after {
-        background-color: rgba(255, 0, 0, 0.5);
-    }
+.eating-move:hover::after {
+    background-color: rgba(255, 0, 0, 0.4);
+}
 
