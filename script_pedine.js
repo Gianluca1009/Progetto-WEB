@@ -1,6 +1,5 @@
 function posizion_iniziali(){
 
-    let draggedElement = null;
     // Posizionamento torri
 
     let cell00 = document.getElementById("00");

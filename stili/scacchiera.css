@@ -1,0 +1,43 @@
+:root {
+    --grid-size: 31.25vw;
+    --cell-size: calc(var(--grid-size) / 6);
+    --draft-width: calc(var(--grid-size) * 0.58);
+}
+
+/*stile div padre di scacchiera*/
+.grid-container {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--grid-size);
+    height: var(--grid-size);
+}
+
+/*stile tabella class = 'scacchiera'*/
+.scacchiera {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--grid-size);
+    height: var(--grid-size);
+    table-layout: fixed;
+    border-radius: 0.625rem;
+    transition: box-shadow 0.5s ease;
+}
+
+/*stili celle scacchiera*/
+.greencell {
+    background-color: rgb(116, 172, 116);
+}
+
+.creamcell {
+    background-color: #f5deb3;
+}
+
+.greencell, .creamcell {
+    transition: background-color 0.5s ease;
+}
+

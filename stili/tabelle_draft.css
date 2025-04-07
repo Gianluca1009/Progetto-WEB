@@ -1,0 +1,38 @@
+:root {
+    --grid-size: 31.25vw;
+    --draft-width: calc(var(--grid-size) * 0.58);
+}
+
+/*stile tabelle per il draft*/
+.table_draft_dx, .table_draft_sx {
+    position: absolute;
+    top: 50%;
+    width: var(--draft-width);
+    height: var(--grid-size);
+    border: 0.0625rem solid black;
+}
+
+.table_draft_dx {
+    left: 50%;
+    transform: translate(100%, -50%);
+}
+
+.table_draft_sx {
+    left: 50%;
+    transform: translate(-200%, -50%);
+}
+
+/*stile table*/
+table {
+    border-collapse: collapse;
+    border: 0.125rem solid black;
+}
+
+.draftcell {
+    background-color: #6b6a6a;
+    width: 5rem;
+    height: 5rem;
+    text-align: center;
+    justify-content: center;
+    border: 0.125rem solid black;
+}
