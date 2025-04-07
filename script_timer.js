@@ -25,7 +25,7 @@ function updateTimer() {
         progressBar.classList.add('instant');
         progressBar.style.width = '100%';
         
-        if (window.selectedCell) {
+        if (window.selectedCell) {      //se allo scadere hai una cella selezionata, la rimuovi
             window.selectedCell.classList.remove("highlighted");
             window.selectedElement = null;
             window.selectedCell = null;
