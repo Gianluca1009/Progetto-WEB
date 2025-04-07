@@ -1,5 +1,5 @@
 class Pedina {
-    constructor(nome) {
+    constructor() {
         this.nome = nome;
         this.img_url = null;
         this.goal = 0;
