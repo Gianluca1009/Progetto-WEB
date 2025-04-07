@@ -240,9 +240,9 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
         }
 
         // Seleziona l'elemento (pedina) da spostare
-        window.selectedImage = event.target;
-        window.selectedElement = window.selectedImage.parentElement;
-        window.selectedCell = window.selectedElement.parentElement;
+        window.selectedImage = event.target;        //immagine della pedina selezionata
+        window.selectedElement = window.selectedImage.parentElement; //div pezzo della pedina selezionata
+        window.selectedCell = window.selectedElement.parentElement; //cella della pedina selezionata
 
         // Verifica se è il turno corretto per muovere questa pedina
         if (!canMovePiece(window.selectedElement.id)) {
