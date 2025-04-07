@@ -33,6 +33,9 @@
             </div>
         </div>
     </div>
+
+    <!-- CONTAINER DEL GIOCO -->
+
     <div class="game-container">
         <img src = images/soccer_field.jpg class = "background">
         
@@ -47,7 +50,9 @@
         </div>
 
         <div id="grid-container" class="grid-container" z-index="1">
-            <!-- scacchiera -->
+
+            <!-- GRIGLIA SCACCHIERA -->
+        
             <table class = 'scacchiera'>
                 <tbody>
                     <tr>
@@ -100,11 +105,9 @@
                     </tr>
                 </tbody>
             </table>
-            <script src="script_pedine.js"></script>
-            <script src="script_movimento_pedine.js"></script>
         </div>
 
-        <!-- griglie draft-->
+        <!-- TABELLA DRAFT DX -->
 
         <div id="dx-container">
             <table class="table_draft_dx">
@@ -148,6 +151,9 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- TABELLA DRAFT SX -->
+
         <div id="sx-container">
             <table class="table_draft_sx">
                 <tbody>
@@ -195,8 +201,13 @@
             <div class="progress-bar"></div>
         </div>
     </div>
+
+    <!-- AVVIO DEGLI SCRIPT NECESSARI PER LA PAGINA -->
+    <script src="script_pedine.js"></script>
+    <script src="script_movimento_pedine.js"></script>
     <script src="script_regole.js"></script>
     <script src="script_timer.js"></script>
     <script src="random_condition.js"></script>
+
 </body>
 </html>

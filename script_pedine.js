@@ -1,6 +1,5 @@
 function posizion_iniziali(){
 
-    let draggedElement = null;
     // Posizionamento torri
 
     let cell00 = document.getElementById("00");
@@ -16,8 +15,10 @@ function posizion_iniziali(){
     torre_nera.id = "T";
     
     let torre_bianca_img = document.createElement("img");
-    let torre_nera_img = document.createElement("img");
-    
+    let torre_nera_img = document.createElement("img"); 
+    torre_bianca_img.draggable = false;
+    torre_nera_img.draggable = false;
+
     torre_bianca_img.className = "torre";
     torre_bianca_img.src = "images/pedine/torre_bianca.png";
     torre_bianca_img.alt = "Torre nera";
@@ -42,11 +43,15 @@ function posizion_iniziali(){
     let alfiere_bianco = document.createElement("div");
     alfiere_bianco.className = "pedina no-hover";
     alfiere_nero.className = "pedina no-hover";
+    alfiere_bianco.draggable = false;
+    alfiere_nero.draggable = false; 
     alfiere_bianco.id = "a";
     alfiere_nero.id = "A";
 
     let alfiere_nero_img = document.createElement("img");
-    let alfiere_bianco_img = document.createElement("img");
+    let alfiere_bianco_img = document.createElement("img"); 
+    alfiere_bianco_img.draggable = false;
+    alfiere_nero_img.draggable = false;
 
     alfiere_bianco_img.className = "alfiere";
     alfiere_bianco_img.src = "images/pedine/alfiere_bianco.png";
@@ -70,11 +75,15 @@ function posizion_iniziali(){
     let regina_bianca = document.createElement("div");
     regina_bianca.className = "pedina no-hover";
     regina_nera.className = "pedina no-hover";
+    regina_bianca.draggable = false;
+    regina_nera.draggable = false;
     regina_bianca.id = "q"; 
     regina_nera.id = "Q";
 
     let regina_bianca_img = document.createElement("img");
     let regina_nera_img = document.createElement("img");
+    regina_bianca_img.draggable = false;
+    regina_nera_img.draggable = false;
 
     regina_bianca_img.className = "regina";
     regina_bianca_img.src = "images/pedine/regina_bianca.png";
@@ -98,11 +107,15 @@ function posizion_iniziali(){
     let re_bianco = document.createElement("div");
     re_bianco.className = "pedina no-hover";
     re_nero.className = "pedina no-hover";
+    re_bianco.draggable = false;
+    re_nero.draggable = false;
     re_bianco.id = "r"; 
     re_nero.id = "R";
 
     let re_bianco_img = document.createElement("img");
     let re_nero_img = document.createElement("img");
+    re_bianco_img.draggable = false;
+    re_nero_img.draggable = false;
 
     re_bianco_img.className = "re";
     re_bianco_img.src = "images/pedine/re_bianco.png";
@@ -124,6 +137,8 @@ function posizion_iniziali(){
 
     let cavallo_nero = document.createElement("div");
     let cavallo_bianco = document.createElement("div");
+    cavallo_bianco.draggable = false;
+    cavallo_nero.draggable = false;
     cavallo_bianco.className = "pedina no-hover";
     cavallo_nero.className = "pedina no-hover";
     cavallo_bianco.id = "c";
@@ -131,6 +146,8 @@ function posizion_iniziali(){
 
     let cavallo_bianco_img = document.createElement("img");
     let cavallo_nero_img = document.createElement("img");
+    cavallo_bianco_img.draggable = false;
+    cavallo_nero_img.draggable = false;
 
     cavallo_bianco_img.className = "cavallo";
     cavallo_bianco_img.src = "images/pedine/cavallo_bianco.png";
@@ -154,11 +171,15 @@ function posizion_iniziali(){
         let pedone_bianco = document.createElement("div");
         pedone_nero.className = "pedina no-hover";
         pedone_bianco.className = "pedina no-hover";
+        pedone_bianco.draggable = false;
+        pedone_nero.draggable = false;
         pedone_bianco.id = "p";
         pedone_nero.id = "P";
 
         let pedone_bianco_img = document.createElement("img");
         let pedone_nero_img = document.createElement("img");
+        pedone_bianco_img.draggable = false;
+        pedone_nero_img.draggable = false;
 
         pedone_bianco_img.className = "pedone";
         pedone_bianco_img.src = "images/pedine/pedone_bianco.png";
