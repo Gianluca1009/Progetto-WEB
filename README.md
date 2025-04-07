@@ -17,6 +17,7 @@ la pedina è un div con all'inteno due foto
     sfondo non scrollabile
     adattabilita alla pagina/risoluzione
     organizzare il progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
+    pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità
 
 # Login-page:
     descrizione gioco e regole
