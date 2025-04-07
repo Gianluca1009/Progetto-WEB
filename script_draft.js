@@ -76,7 +76,7 @@ function listner_DrugDrop_caclciatori(){
                 h1.style.padding = "0";
                 h1.style.textAlign = "center";
                 h1.style.position = "absolute";
-                h1.style.bottom = "0";
+                h1.style.bottom = "-0.9em";
                 h1.style.width = "100%";
             }
         });
