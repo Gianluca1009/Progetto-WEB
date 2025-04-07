@@ -8,7 +8,7 @@ la pedina è un div con all'inteno due foto
 <td cella>
     <div pedina>
         <img tipo_pedina>
-        <img calciatore>
+        <h1 testo calciatore>
     </div>
 </td>
 ```

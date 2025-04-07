@@ -39,34 +39,43 @@ function sx_draft(){
 
 function listner_DrugDrop_caclciatori(){
     //selziona tutti le img calciatore -> drag elem
-    //list dragElement.addEventListener("dragstart", function(event)
-    document.querySelectorAll(".santino").forEach(santino_img => {   //devono essere div
+    document.querySelectorAll(".santino").forEach(santino_img => {
         santino_img.addEventListener("dragstart", function(event) {
             event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
-        }
-    );
+        });
     });
 
     //selziona tutte le caselle pezzi -> drop zone
-    //list dropZone.addEventListener("dragover", function(event) {
-    document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(drop_cell => {
+    document.querySelectorAll(".greencell, .creamcell").forEach(drop_cell => {
+        // Gestisci l'evento dragover
         drop_cell.addEventListener("dragover", function(event) {
             event.preventDefault();
-        }
-    );
-    });
+            event.dataTransfer.dropEffect = "move";
+        });
 
-    //list dropZone.addEventListener("drop", function(event) 
-    document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(drop_cell => {
+        // Gestisci l'evento drop
         drop_cell.addEventListener("drop", function(event) {
             event.preventDefault();
-            var name = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
-            console.log(data)
-            //var draggedElement = document.getElementById(data);
-            //dropZone.appendChild(draggedElement);
-    
+            var idCalciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
+            let div_pedina = drop_cell.querySelector('.pedina');
+            
+            if (div_pedina) {
+                // Crea l'elemento h1 se non esiste
+                let h1 = div_pedina.querySelector('h1');
+                if (!h1) {
+                    h1 = document.createElement('h1');
+                    div_pedina.appendChild(h1);
+                }
+                
+                // Imposta il testo dell'h1 con l'id del calciatore
+                h1.textContent = idCalciatore;
+                h1.style.color = "black";
+                h1.style.fontSize = "1.2em";
+                h1.style.margin = "0";
+                h1.style.padding = "0";
+                h1.style.textAlign = "center";
             }
-        );
+        });
     });
 }
 
