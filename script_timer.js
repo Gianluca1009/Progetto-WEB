@@ -3,6 +3,9 @@ let timerId = null;
 const TOTAL_TIME = 59; // Costante per il tempo totale
 let gameStarted = false;
 
+// ---- FUNZIONI PER LA GESTIONE DEL TIMER ---- //
+
+// Funzione per aggiornare il timer
 function updateTimer() {
     const timerDisplay = document.getElementById('timer');
     const progressBar = document.querySelector('.progress-bar');
@@ -34,6 +37,7 @@ function updateTimer() {
         window.turnoBianco = !window.turnoBianco;
         aggiornaStatoPedine();
         updateCondition();
+        startTimer();
         
         return;
     }
@@ -44,6 +48,7 @@ function updateTimer() {
     else timerDisplay.style.color = 'white';
 }
 
+// Funzione per avviare il timer
 function startTimer() {
     if (timerId === null && gameStarted) {
         const progressBar = document.querySelector('.progress-bar');
@@ -59,6 +64,7 @@ function startTimer() {
     }
 }
 
+// Funzione per resettare il timer
 function resetTimer() {
     if (!gameStarted) return;
     
@@ -75,6 +81,7 @@ function resetTimer() {
     });
 }
 
+// Funzione per avviare il gioco
 function startGame() {
     gameStarted = true;
     document.getElementById('startButton').classList.add('hidden');
@@ -97,6 +104,8 @@ function startGame() {
     
     startTimer();
 }
+
+// ---- INIZIALIZZAZIONE DEL GIOCO ---- //
 
 // Inizializza il gioco quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {

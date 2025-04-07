@@ -32,7 +32,7 @@
 
 .timer-container {
     position: absolute;
-    bottom: calc(var(--cell-size) * -0.375);
+    bottom: calc(var(--cell-size) * -0.455)!important;
     left: 50%;
     transform: translate(-50%, -50%);
     animation: glow 2s infinite alternate;

@@ -8,27 +8,43 @@
     position: absolute;
     table-layout: fixed;
     top: 50%;
-    width: var(--draft-width);
+    width: var(--draft-width*0.8);
     height: var(--grid-size);
     border: 0.0625rem solid black;
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+    border-collapse: collapse;
 }
 
 .table_draft_dx {
-    left: 50%;
-    transform: translate(90%, -50%);
+    right: 5%;
+    transform: translateY(-50%);
 }
 
 .table_draft_sx {
-    left: 50%;
-    transform: translate(-190%, -50%);
+    left: 5%;
+    transform: translateY(-50%);
 }
 
 .draftcell {
-    background-color: #6b6a6a;
-    width: 5rem;
+    background-color: #878686;
+    width: 4.1rem;
     height: 5rem;
     text-align: center;
     justify-content: center;
     border: 0.125rem solid black;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0;
+}
+
+.draftcell div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }

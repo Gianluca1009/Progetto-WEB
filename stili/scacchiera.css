@@ -1,5 +1,5 @@
 :root {
-    --grid-size: 31.25vw;
+    --grid-size: 33.5vw !important;
     --cell-size: calc(var(--grid-size) / 6);
     --draft-width: calc(var(--grid-size) * 0.58);
 }
@@ -11,8 +11,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: var(--grid-size);
-    height: var(--grid-size);
+    width: var(--grid-size) !important;
+    height: var(--grid-size) !important;
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 
@@ -22,8 +22,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: var(--grid-size);
-    height: var(--grid-size);
+    width: var(--grid-size) !important;
+    height: var(--grid-size) !important;
     table-layout: fixed;
     border-radius: 0.625rem;
     transition: box-shadow 0.5s ease;

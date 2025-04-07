@@ -11,10 +11,14 @@ const conditions = [
     "Numero di maglia attuale più alto"
 ];
 
+// ---- FUNZIONI PER LA GESTIONE DELLA CONDIZIONE ---- //
+
+// Funzione per ottenere una condizione casuale
 function getRandomCondition() {
     return conditions[Math.floor(Math.random() * conditions.length)];
 }
 
+// Funzione per aggiornare la condizione
 function updateCondition() {
     const conditionElement = document.getElementById('condition');
     if (conditionElement) {

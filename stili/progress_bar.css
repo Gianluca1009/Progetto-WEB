@@ -1,7 +1,7 @@
 /*stile progress bar*/
 .progress-container {
     position: absolute;
-    bottom: calc(var(--cell-size) * 1.125);
+    bottom: calc(var(--cell-size) * 1);
     left: 50%;
     transform: translateX(-50%);
     width: var(--grid-size);

@@ -4,8 +4,6 @@ window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
 window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 
-// Nota: queste variabili sono definite globalmente nel file script_movimento_pedine.js come window.variabile
-
 // ---- FUNZIONI AUSILIARIE IMPORTANTI ---- //
 
 // Funzione per verificare se una pedina può essere mossa in quel turno
