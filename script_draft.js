@@ -36,8 +36,14 @@ function sx_draft(){
     scell03.appendChild(s03);
 }
 
+//funzione per assegnare il cognome del calciatore al testo del div_pedina
+function assegnaCognome(text,cognome_calciatore){
+    text.textContent = cognome_calciatore;
+    text.classList.add('nome-giocatore');
+}
 
-function listner_DrugDrop_caclciatori(){
+//funzione per gestire il drag e drop
+function DragDrop(){
     //selziona tutti le img calciatore -> drag elem
     document.querySelectorAll(".santino").forEach(santino_img => {
         santino_img.addEventListener("dragstart", function(event) {
@@ -56,35 +62,26 @@ function listner_DrugDrop_caclciatori(){
         // Gestisci l'evento drop
         drop_cell.addEventListener("drop", function(event) {
             event.preventDefault();
-            var idCalciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
+            var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
             let div_pedina = drop_cell.querySelector('.pedina');
             
             if (div_pedina) {
                 // Crea l'elemento h1 se non esiste
-                let h1 = div_pedina.querySelector('h1');
-                if (!h1) {
-                    h1 = document.createElement('h1');
-                    div_pedina.appendChild(h1);
+                let text = div_pedina.querySelector('text');
+                if (!text) {
+                    text = document.createElement('text');
+                    div_pedina.appendChild(text);
                 }
                 
-                // Imposta il testo dell'h1 con l'id del calciatore
-                div_pedina.style.position = "relative";
-                h1.textContent = idCalciatore;
-                h1.style.color = "black";
-                h1.style.fontSize = "1.2em";
-                h1.style.margin = "0";
-                h1.style.padding = "0";
-                h1.style.textAlign = "center";
-                h1.style.position = "absolute";
-                h1.style.bottom = "-0.9em";
-                h1.style.width = "100%";
+                // Imposta il testo dell'h1 con l'id del calciatore e aggiunge la classe
+                assegnaCognome(text,cognome_calciatore);
             }
         });
     });
 }
 
 sx_draft();
-listner_DrugDrop_caclciatori();
+DragDrop();
 
     /*
     

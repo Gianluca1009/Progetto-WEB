@@ -14,16 +14,15 @@ la pedina è un div con all'inteno due foto
 ```
 
 # To-do:
-    sfondo non scrollabile
     adattabilita alla pagina/risoluzione
-    organizzare il progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
+    progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
     pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità
 
 # Login-page:
     descrizione gioco e regole
     immagini
     capire come fare la parte di login
-    navbar informativa
+    navigation bar informativa
     stile css
 
 # Prep-page:
@@ -46,6 +45,7 @@ la pedina è un div con all'inteno due foto
     bottone torna alla home
     logica pedina mangiata                                                                          ✅
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
+    generalizzare lo script di creazione pedine                                                     ✅
     stile css
 
 # elenco delle possibili condizioni da cercare in un database:

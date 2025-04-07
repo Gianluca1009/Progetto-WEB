@@ -1,200 +1,111 @@
-function posizion_iniziali(){
+function posizion_iniziali() {
+    // Configurazione delle pedine
+    const pezzi = {
+        torre: {
+            posizioni: [
+                { pos: '00', colore: 'nero' },
+                { pos: '05', colore: 'nero' },
+                { pos: '55', colore: 'bianco' },
+                { pos: '50', colore: 'bianco' }
+            ],
+            class: 'torre',
+            id: { bianco: 't', nero: 'T' },
+            img: {
+                bianco: 'images/pedine/torre_bianca.png',
+                nero: 'images/pedine/torre_nera.png'
+            }
+        },
+        alfiere: {
+            posizioni: [
+                { pos: '01', colore: 'nero' },
+                { pos: '54', colore: 'bianco' }
+            ],
+            class: 'alfiere',
+            id: { bianco: 'a', nero: 'A' },
+            img: {
+                bianco: 'images/pedine/alfiere_bianco.png',
+                nero: 'images/pedine/alfiere_nero.png'
+            }
+        },
+        regina: {
+            posizioni: [
+                { pos: '02', colore: 'nero' },
+                { pos: '52', colore: 'bianco' }
+            ],
+            class: 'regina',
+            id: { bianco: 'q', nero: 'Q' },
+            img: {
+                bianco: 'images/pedine/regina_bianca.png',
+                nero: 'images/pedine/regina_nera.png'
+            }
+        },
+        re: {
+            posizioni: [
+                { pos: '03', colore: 'nero' },
+                { pos: '53', colore: 'bianco' }
+            ],
+            class: 're',
+            id: { bianco: 'r', nero: 'R' },
+            img: {
+                bianco: 'images/pedine/re_bianco.png',
+                nero: 'images/pedine/re_nero.png'
+            }
+        },
+        cavallo: {
+            posizioni: [
+                { pos: '04', colore: 'nero' },
+                { pos: '51', colore: 'bianco' }
+            ],
+            class: 'cavallo',
+            id: { bianco: 'c', nero: 'C' },
+            img: {
+                bianco: 'images/pedine/cavallo_bianco.png',
+                nero: 'images/pedine/cavallo_nero.png'
+            }
+        },
+        pedone: {
+            class: 'pedone',
+            id: { bianco: 'p', nero: 'P' },
+            img: {
+                bianco: 'images/pedine/pedone_bianco.png',
+                nero: 'images/pedine/pedone_nero.png'
+            }
+        }
+    };
 
-    // Posizionamento torri
-
-    let cell00 = document.getElementById("00");
-    let cell05 = document.getElementById("05");
-    let cell50 = document.getElementById("50");
-    let cell55 = document.getElementById("55");
-
-    let torre_nera = document.createElement("div");
-    let torre_bianca = document.createElement("div");
-    torre_bianca.className = "pedina no-hover";
-    torre_nera.className = "pedina no-hover";
-    torre_bianca.id = "t";
-    torre_nera.id = "T";
-    
-    let torre_bianca_img = document.createElement("img");
-    let torre_nera_img = document.createElement("img"); 
-    torre_bianca_img.draggable = false;
-    torre_nera_img.draggable = false;
-
-    torre_bianca_img.className = "torre";
-    torre_bianca_img.src = "images/pedine/torre_bianca.png";
-    torre_bianca_img.alt = "Torre nera";
-    torre_bianca.appendChild(torre_bianca_img);
-
-    torre_nera_img.className = "torre";
-    torre_nera_img.src = "images/pedine/torre_nera.png";
-    torre_nera_img.alt = "Torre bianca";
-    torre_nera.appendChild(torre_nera_img);
-
-    cell00.appendChild(torre_nera);
-    cell05.appendChild(torre_nera.cloneNode(true));
-    cell50.appendChild(torre_bianca);
-    cell55.appendChild(torre_bianca.cloneNode(true));
-
-    //posizionamento alfieri
-
-    let cell01 = document.getElementById("01");
-    let cell54 = document.getElementById("54");
-
-    let alfiere_nero = document.createElement("div");
-    let alfiere_bianco = document.createElement("div");
-    alfiere_bianco.className = "pedina no-hover";
-    alfiere_nero.className = "pedina no-hover";
-    alfiere_bianco.draggable = false;
-    alfiere_nero.draggable = false; 
-    alfiere_bianco.id = "a";
-    alfiere_nero.id = "A";
-
-    let alfiere_nero_img = document.createElement("img");
-    let alfiere_bianco_img = document.createElement("img"); 
-    alfiere_bianco_img.draggable = false;
-    alfiere_nero_img.draggable = false;
-
-    alfiere_bianco_img.className = "alfiere";
-    alfiere_bianco_img.src = "images/pedine/alfiere_bianco.png";
-    alfiere_bianco_img.alt = "Alfiere bianco";
-    alfiere_bianco.appendChild(alfiere_bianco_img);
-    
-    alfiere_nero_img.className = "alfiere";
-    alfiere_nero_img.src = "images/pedine/alfiere_nero.png";
-    alfiere_nero_img.alt = "Alfiere nero";
-    alfiere_nero.appendChild(alfiere_nero_img);
-
-    cell01.appendChild(alfiere_nero);
-    cell54.appendChild(alfiere_bianco);
-
-    //posizionamento regine
-
-    let cell02 = document.getElementById("02");
-    let cell52 = document.getElementById("52");
-
-    let regina_nera = document.createElement("div");
-    let regina_bianca = document.createElement("div");
-    regina_bianca.className = "pedina no-hover";
-    regina_nera.className = "pedina no-hover";
-    regina_bianca.draggable = false;
-    regina_nera.draggable = false;
-    regina_bianca.id = "q"; 
-    regina_nera.id = "Q";
-
-    let regina_bianca_img = document.createElement("img");
-    let regina_nera_img = document.createElement("img");
-    regina_bianca_img.draggable = false;
-    regina_nera_img.draggable = false;
-
-    regina_bianca_img.className = "regina";
-    regina_bianca_img.src = "images/pedine/regina_bianca.png";
-    regina_bianca_img.alt = "Regina bianca";
-    regina_bianca.appendChild(regina_bianca_img);
+    // Funzione per creare una pedina
+    function creaPedina(tipo, colore, posizione) {
+        const cell = document.getElementById(posizione);
+        const pedina = document.createElement('div');
+        const img = document.createElement('img');
         
-    regina_nera_img.className = "regina";
-    regina_nera_img.src = "images/pedine/regina_nera.png";
-    regina_nera_img.alt = "Regina nera";
-    regina_nera.appendChild(regina_nera_img);
-
-    cell02.appendChild(regina_nera);
-    cell52.appendChild(regina_bianca);
-
-    //posizionamento re
-
-    let cell03 = document.getElementById("03");
-    let cell53 = document.getElementById("53");
-
-    let re_nero = document.createElement("div");
-    let re_bianco = document.createElement("div");
-    re_bianco.className = "pedina no-hover";
-    re_nero.className = "pedina no-hover";
-    re_bianco.draggable = false;
-    re_nero.draggable = false;
-    re_bianco.id = "r"; 
-    re_nero.id = "R";
-
-    let re_bianco_img = document.createElement("img");
-    let re_nero_img = document.createElement("img");
-    re_bianco_img.draggable = false;
-    re_nero_img.draggable = false;
-
-    re_bianco_img.className = "re";
-    re_bianco_img.src = "images/pedine/re_bianco.png";
-    re_bianco_img.alt = "Re bianco";
-    re_bianco.appendChild(re_bianco_img);
-
-    re_nero_img.className = "re";
-    re_nero_img.src = "images/pedine/re_nero.png";
-    re_nero_img.alt = "Re nero";
-    re_nero.appendChild(re_nero_img);
-
-    cell03.appendChild(re_nero);
-    cell53.appendChild(re_bianco);
-
-    //posizionamento cavalli
-
-    let cell04 = document.getElementById("04");
-    let cell51 = document.getElementById("51");
-
-    let cavallo_nero = document.createElement("div");
-    let cavallo_bianco = document.createElement("div");
-    cavallo_bianco.draggable = false;
-    cavallo_nero.draggable = false;
-    cavallo_bianco.className = "pedina no-hover";
-    cavallo_nero.className = "pedina no-hover";
-    cavallo_bianco.id = "c";
-    cavallo_nero.id = "C";
-
-    let cavallo_bianco_img = document.createElement("img");
-    let cavallo_nero_img = document.createElement("img");
-    cavallo_bianco_img.draggable = false;
-    cavallo_nero_img.draggable = false;
-
-    cavallo_bianco_img.className = "cavallo";
-    cavallo_bianco_img.src = "images/pedine/cavallo_bianco.png";
-    cavallo_bianco_img.alt = "Cavallo bianco";
-    cavallo_bianco.appendChild(cavallo_bianco_img);
-
-    cavallo_nero_img.className = "cavallo";
-    cavallo_nero_img.src = "images/pedine/cavallo_nero.png";
-    cavallo_nero_img.alt = "Cavallo nero";
-    cavallo_nero.appendChild(cavallo_nero_img);
-
-    cell04.appendChild(cavallo_nero);
-    cell51.appendChild(cavallo_bianco);
-
-    //posizionamento pedoni
-    
-    for (let i = 0; i < 6; i++) {
-        let cell1 = document.getElementById("1"+i);
-        let cell4 = document.getElementById("4"+i);
-        let pedone_nero = document.createElement("div");
-        let pedone_bianco = document.createElement("div");
-        pedone_nero.className = "pedina no-hover";
-        pedone_bianco.className = "pedina no-hover";
-        pedone_bianco.draggable = false;
-        pedone_nero.draggable = false;
-        pedone_bianco.id = "p";
-        pedone_nero.id = "P";
-
-        let pedone_bianco_img = document.createElement("img");
-        let pedone_nero_img = document.createElement("img");
-        pedone_bianco_img.draggable = false;
-        pedone_nero_img.draggable = false;
-
-        pedone_bianco_img.className = "pedone";
-        pedone_bianco_img.src = "images/pedine/pedone_bianco.png";
-        pedone_bianco_img.alt = "Pedone bianco";
-        pedone_bianco.appendChild(pedone_bianco_img);
-
-        pedone_nero_img.className = "pedone";
-        pedone_nero_img.src = "images/pedine/pedone_nero.png";
-        pedone_nero_img.alt = "Pedone nero";
-        pedone_nero.appendChild(pedone_nero_img);
+        pedina.className = 'pedina no-hover';
+        pedina.id = pezzi[tipo].id[colore];
+        pedina.draggable = false;
         
-        cell1.appendChild(pedone_nero);
-        cell4.appendChild(pedone_bianco);
+        img.className = tipo;
+        img.src = pezzi[tipo].img[colore];
+        img.alt = `${tipo.charAt(0).toUpperCase() + tipo.slice(1)} ${colore}`;
+        img.draggable = false;
+        
+        pedina.appendChild(img);
+        cell.appendChild(pedina);
     }
 
+    // Posizionamento delle pedine principali
+    for (const [tipo, config] of Object.entries(pezzi)) {  //object.entries() -> restituisce un array di coppie chiave-valore
+        if (tipo !== 'pedone' && config.posizioni) {
+            config.posizioni.forEach(({pos, colore}) => {
+                creaPedina(tipo, colore, pos);
+            });
+        }
+    }
+
+    // Posizionamento dei pedoni
+    for (let i = 0; i < 6; i++) {
+        creaPedina('pedone', 'nero', `1${i}`);
+        creaPedina('pedone', 'bianco', `4${i}`);
+    }
 }
 
 window.onload = posizion_iniziali();
