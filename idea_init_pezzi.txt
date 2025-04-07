@@ -1,0 +1,20 @@
+class pezzo {
+    int id;
+    int n_gol;
+    int n_cartellini;
+    int presenze;
+    str type;
+
+    constructor pezzo (id, n_gol, n_cartell, presenza, type){
+        this.id = id;
+        ...
+        this.type
+    }
+}
+
+
+listener sul drop dell'img sulla pedina
+    query al db per id, n_gol, n_cartell, presenza, type
+    pezzo = constructore (id == id html, n_gol, n_cartell, presenza, type)
+
+    ogni volta che mangio prendo con l'id del pezzo l'oggetto corrispondente per prendere gli attributi interessati
