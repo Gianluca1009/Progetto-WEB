@@ -186,21 +186,20 @@ function aggiornaStatoPedine() {
 }
 
 // Funzione per evidenziare le caselle disponibili
-function highlightAvailableMoves(piece) {
+function SuggerisciMosse(selectedElement) {
     // Rimuovi eventuali evidenziazioni precedenti
-    document.querySelectorAll('.available-move').forEach(cell => {
-        cell.classList.remove('available-move');
-    });
 
-    let startCell = piece.parentElement;
-
+    let startCell = selectedElement.parentElement;  //cella di partenza
+    console.log(startCell);
     // Controlla tutte le caselle della scacchiera 6x6
     for (let x = 0; x < 6; x++) {
         for (let y = 0; y < 6; y++) {
             let targetCell = document.getElementById(x + "" + y);
             if (targetCell && targetCell !== startCell) {
                 // Verifica se la mossa è valida
-                if (validationMove(piece, targetCell)) {
+                console.log(selectedElement);
+                console.log(targetCell);
+                if (validationMove(selectedElement, targetCell)) {
                     targetCell.classList.add('available-move');
                 }
             }
@@ -254,7 +253,7 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
 
         // Evidenzia la cella sorgente e le caselle disponibili
         window.selectedCell.classList.add("highlighted");
-        highlightAvailableMoves(window.selectedElement);
+        SuggerisciMosse(window.selectedElement);
     });
 });
 
@@ -276,6 +275,11 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                     this.removeChild(pedinaBersaglio);          //la rimuovo
                 }
                 this.appendChild(window.selectedElement);
+                //resetta la selezione delle mosse suggerite
+                document.querySelectorAll('.available-move').forEach(cell => {
+                    cell.classList.remove('available-move');
+                });
+
                 resetTimer();
                 
                 window.turnoBianco = !window.turnoBianco;
