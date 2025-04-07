@@ -1,7 +1,7 @@
 function sx_draft(){
     let scell00 = document.getElementById("s00");
     let s00 = document.createElement("img");
-    s00.id = "messi";
+    s00.id = "Messi";
     s00.className = "santino";
     s00.src = "https://img.a.transfermarkt.technology/portrait/header/28003-1740766555.jpg?lm=1";
     s00.alt = "Messi";
@@ -10,7 +10,7 @@ function sx_draft(){
 
     let scell01 = document.getElementById("s01");
     let s01 = document.createElement("img");
-    s01.id = "ronaldo";
+    s01.id = "Ronaldo";
     s01.className = "santino";
     s01.src = "https://img.a.transfermarkt.technology/portrait/header/8198-1694609670.jpg?lm=1";
     s01.alt = "Ronaldo";
@@ -19,7 +19,7 @@ function sx_draft(){
 
     let scell02 = document.getElementById("s02");
     let s02 = document.createElement("img");
-    s02.id = "neymar";
+    s02.id = "Neymar";
     s02.className = "santino";
     s02.src = "https://img.a.transfermarkt.technology/portrait/header/68290-1692601435.jpg?lm=1";
     s02.alt = "Neymar";
@@ -28,7 +28,7 @@ function sx_draft(){
 
     let scell03 = document.getElementById("s03");
     let s03 = document.createElement("img");
-    s03.id = "isla";
+    s03.id = "Isla";
     s03.className = "santino";
     s03.src = "https://img.a.transfermarkt.technology/portrait/header/43722-1718986946.jpg?lm=1";
     s03.alt = "Isla";
@@ -78,7 +78,6 @@ function listner_DrugDrop_caclciatori(){
                 h1.style.position = "absolute";
                 h1.style.bottom = "0";
                 h1.style.width = "100%";
-                h1.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
             }
         });
     });

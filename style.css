@@ -140,8 +140,8 @@ table {
 }
 
 .torre, .alfiere, .cavallo, .regina, .re, .pedone {
-    width: calc(var(--cell-size) * 0.75);
-    height: calc(var(--cell-size) * 0.75);
+    width: calc(var(--cell-size) * 0.5);
+    height: calc(var(--cell-size) * 0.5);
 }
 
 .santino {
