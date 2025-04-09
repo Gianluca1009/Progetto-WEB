@@ -8,95 +8,23 @@ function sx_draft(){
             alt: "Messi"
         },
         {
-            id: "Ronaldo",
-            cellId: "s01",
-            src: "https://img.a.transfermarkt.technology/portrait/big/8198-1631171948.jpg",
-            alt: "Ronaldo"
-        },
-        {
-            id: "Neymar",
-            cellId: "s02",
-            src: "https://img.a.transfermarkt.technology/portrait/big/68290-1673352915.jpg",
-            alt: "Neymar"
-        },
-        {
-            id: "Isla",
-            cellId: "s03",
-            src: "https://img.a.transfermarkt.technology/portrait/big/43722-1627911509.jpg",
-            alt: "Isla"
-        },
-        {
             id: "Mbappé",
-            cellId: "s04",
+            cellId: "d10",
             src: "https://img.a.transfermarkt.technology/portrait/big/342229-1682683695.jpg",
             alt: "Mbappé"
         },
         {
             id: "Haaland",
-            cellId: "s05",
+            cellId: "d20",
             src: "https://img.a.transfermarkt.technology/portrait/big/418560-1656179352.jpg",
             alt: "Haaland"
         },
         {
             id: "Lewandowski",
-            cellId: "s06",
+            cellId: "d30",
             src: "https://img.a.transfermarkt.technology/portrait/big/38253-1642434447.jpg",
             alt: "Lewandowski"
         },
-        {
-            id: "Salah",
-            cellId: "s07",
-            src: "https://img.a.transfermarkt.technology/portrait/big/148455-1546611604.jpg",
-            alt: "Salah"
-        },
-        {
-            id: "De Bruyne",
-            cellId: "s08",
-            src: "https://img.a.transfermarkt.technology/portrait/big/88755-1515761259.jpg",
-            alt: "De Bruyne"
-        },
-        {
-            id: "Benzema",
-            cellId: "s09",
-            src: "https://img.a.transfermarkt.technology/portrait/big/18922-1665519061.jpg",
-            alt: "Benzema"
-        },
-        {
-            id: "Modric",
-            cellId: "s10",
-            src: "https://img.a.transfermarkt.technology/portrait/big/27992-1659368550.jpg",
-            alt: "Modric"
-        },
-        {
-            id: "Vinicius",
-            cellId: "s11",
-            src: "https://img.a.transfermarkt.technology/portrait/big/371998-1661444379.jpg",
-            alt: "Vinicius Jr"
-        },
-        {
-            id: "Bellingham",
-            cellId: "s12",
-            src: "https://img.a.transfermarkt.technology/portrait/big/581678-1657024915.jpg",
-            alt: "Bellingham"
-        },
-        {
-            id: "Kane",
-            cellId: "s13",
-            src: "https://img.a.transfermarkt.technology/portrait/big/132098-1599987413.jpg",
-            alt: "Kane"
-        },
-        {
-            id: "Martinez",
-            cellId: "s14",
-            src: "https://img.a.transfermarkt.technology/portrait/big/406625-1666080081.jpg",
-            alt: "Lautaro Martinez"
-        },
-        {
-            id: "Donnarumma",
-            cellId: "s15",
-            src: "https://img.a.transfermarkt.technology/portrait/big/315858-1606296225.jpg",
-            alt: "Donnarumma"
-        }
     ];
     
     // Creazione degli elementi con un ciclo

@@ -29,6 +29,10 @@
     border: 0;
 }
 
+.tr-ombrata{
+    cursor: default;
+}
+
 .foto_draftcell {
     background-color: #f5deb3;
     width: 30%;
