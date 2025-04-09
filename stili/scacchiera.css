@@ -1,7 +1,7 @@
 :root {
     --grid-size: 33.5vw;
     --cell-size: calc(var(--grid-size) / 6);
-    --draft-width: calc(var(--grid-size) * 0.58);
+    --draft-width: calc(var(--grid-size) * 0.7);
 }
 
 /*stile div padre di scacchiera*/
@@ -11,8 +11,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: var(--grid-size) !important;
-    height: var(--grid-size) !important;
+    width: var(--grid-size);
+    height: var(--grid-size);
+    aspect-ratio: 1;
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 
@@ -23,9 +24,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: var(--grid-size) !important;
-    height: var(--grid-size) !important;
-    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
     border-radius: 0.625rem;
     transition: box-shadow 0.5s ease;
 }
@@ -33,6 +34,8 @@
 table {
     border-collapse: collapse;
     border: 0.125rem solid black;
+    width: 100%;
+    height: 100%;
 }
 
 /*stili celle scacchiera*/
@@ -46,11 +49,13 @@ table {
 
 .greencell, .creamcell {
     transition: background-color 0.5s ease;
-    width: var(--cell-size);
-    height: var(--cell-size);
+    width: calc(100% / 6);
+    height: calc(100% / 6);
+    aspect-ratio: 1;
     text-align: center;
     justify-content: center;
     border: 0.125rem solid black;
+    padding: 0;
 }
 
 /*colore cella pedina selezionata*/
@@ -58,6 +63,6 @@ table {
     background-color: yellow;
 }
 
-.grid-container, .tooltip, .table_draft_dx, .table_draft_sx, .condition-container, .timer-container {
+.grid-container{
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }

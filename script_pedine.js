@@ -79,7 +79,7 @@ function posizion_iniziali() {
         const pedina = document.createElement('div');
         const img = document.createElement('img');
         
-        pedina.className = 'pedina no-hover';
+        pedina.className = 'pedina';
         pedina.id = pezzi[tipo].id[colore];
         pedina.draggable = false;
         

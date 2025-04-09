@@ -36,6 +36,9 @@ la pedina è un div con all'inteno due foto
     assegnare attributi ai giocatori tramite oggetti javascript
     fare query SQL in base all'url dell'immagine e popolare gli attributi di ogni pedina
     stile css
+    fare una tabella con colonne asimmetriche per il draft
+    tre righe ogni 10 secondi per poter assegnare a una pedina
+    
 
 # Game-page:
     mosse valide                                                                                    ✅
@@ -48,6 +51,7 @@ la pedina è un div con all'inteno due foto
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
     generalizzare lo script di creazione pedine                                                     ✅
     stile css
+    abolire i ruoli 
 
 # elenco delle possibili condizioni da cercare in un database:
     1.goal fatti in carriera

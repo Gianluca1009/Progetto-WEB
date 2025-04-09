@@ -1,16 +1,21 @@
 :root {
     --grid-size: 31.25vw;
-    --cell-size: calc(var(--grid-size) / 3);
+    --draft-grid-height: 35.5vw;
+    --draft-grid-width: calc(var(--draft-grid-height) * 0.7);
+    --cell-size: calc(var(--grid-size) / 6);
+    --draft-cell-height: calc(var(--draft-cell-height) / 3);
+    --draft-cell-width: calc(var(var(--draft-cell-width) / 3));
 }
 
 /*stile pedine*/
- .pedina {
+.pedina {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
+    width: 100%;
+    height: 100%;
 }
 
 /*hover sulla pedina attiva*/
@@ -24,20 +29,29 @@
     cursor: default;
 }
 
+.pedina-no-hover {
+    pointer-events: none;
+    cursor: default;
+}
+
 /*stile pedine*/
 .torre, .alfiere, .cavallo, .regina, .re, .pedone {
-    width: calc(var(--cell-size) * 0.55);
-    height: calc(var(--cell-size) * 0.55);
+    width: calc(var(--cell-size) * 1.9);
+    height: calc(var(--cell-size) * 1.9);
+    margin: auto;
+    display: block;
+    object-fit: contain;
 }
 
 /* immagine calciatore */
 .santino {
-    max-width: var(--cell-size);
-    max-height: var(--cell-size);
-    width: auto;
-    height: auto;
+    width: calc(var(--cell-size) * 1.5);
+    height: calc(var(--cell-size) * 1.5);
+    margin: auto;
+    display: block;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: contain;
 }
 
 .santino:hover {
