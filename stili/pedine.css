@@ -45,21 +45,7 @@
     margin: auto;
     display: block;
     object-fit: contain;
-}
-
-/* immagine calciatore */
-.santino {
-    width: calc(var(--cell-size) * 1.5);
-    height: calc(var(--cell-size) * 1.5);
-    margin: auto;
-    display: block;
-    position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: contain;
-}
-
-.santino:hover {
-    transform: scale(1.04);
+    
 }
 
 /*nome calciatore*/

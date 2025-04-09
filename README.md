@@ -11,6 +11,12 @@ la pedina è un div con all'inteno due foto
         <h1 testo calciatore>
     </div>
 </td>
+
+<td foto_draftcell>
+    <div santino-container>
+        <img class="santino">
+    <div>
+</div>
 ```
 
 # To-do:
@@ -38,7 +44,7 @@ la pedina è un div con all'inteno due foto
     stile css
     fare una tabella con colonne asimmetriche per il draft
     tre righe ogni 10 secondi per poter assegnare a una pedina
-    
+
 
 # Game-page:
     mosse valide                                                                                    ✅

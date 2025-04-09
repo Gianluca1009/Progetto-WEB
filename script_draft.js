@@ -25,6 +25,13 @@ function sx_draft(){
             src: "https://img.a.transfermarkt.technology/portrait/big/38253-1642434447.jpg",
             alt: "Lewandowski"
         },
+        {
+            id: "Ronaldo",
+            cellId: "d50",
+            src: "https://img.a.transfermarkt.technology/portrait/big/131965-1642434447.jpg",
+            alt: "Ronaldo"
+        }
+
     ];
     
     // Creazione degli elementi con un ciclo

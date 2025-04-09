@@ -8,8 +8,8 @@
     height: 5%;
     background: linear-gradient(to right ,#1b014e,#4a01de);
     border-radius: 0.625rem;
-    padding: calc(var(--cell-size) * 0.25);
     margin: calc(var(--cell-size) * 0.25) auto;
+    font-size: calc(var(--cell-size) * 0.25);
     text-align: center;
     vertical-align: middle;
     z-index: 2;
@@ -20,7 +20,7 @@
 /*stile titolo condizioni*/
 .condition-title {
     margin: 0;
-    font-size: 1.75rem;
+    font-size: calc(var(--cell-size));
     color: #f5deb3;
     line-height: 1.5;
     font-weight: bold;
