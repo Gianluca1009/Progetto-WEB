@@ -78,6 +78,9 @@ function validationMove(img, dest_cell){
                 valid = !areSameColor(div_pezzo.id, pedinaBersaglio.id);
             }
         }
+        //promozione pedone quando arriva in fondo
+            //bianco arriva in cima
+       
     }
 
     if(div_pezzo.id=='t' || div_pezzo.id=='T'){
@@ -243,4 +246,33 @@ function resetSelezione(){
     window.selectedElement = null;
     window.selectedCell = null;
     window.selectedImage = null;
+}
+
+
+function upgrade_pedone(img_pedina, cella_dest){
+    let cur_row = parseInt(cella_dest.id[0]);
+    let div_pedina = img_pedina.parentElement;
+    console.log("dentro upgrade_pedone")
+    //bianco arriva al top scacchiera
+    if(div_pedina.id == "p" ){
+        if(cur_row == 0){
+            //utente seleziona il nuovo
+            tipo = 'regina'
+            //modifica il div con un nuovo pezzo
+            div_pedina.id = pezzi[tipo].id.bianco ;
+            img_pedina.src = pezzi[tipo].img.bianco;
+            
+        }
+
+    }
+    ////nero arriva al fondo scacchiera
+    if(div_pedina.id == "P" ){
+        if(cur_row == 5){
+             //utente seleziona il nuovo
+             tipo = 'regina'
+             //modifica il div con un nuovo pezzo
+             div_pedina.id = pezzi[tipo].id.nero ;
+             img_pedina.src = pezzi[tipo].img.nero;
+        } 
+    }
 }

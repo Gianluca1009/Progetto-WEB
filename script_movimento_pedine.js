@@ -54,6 +54,8 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                     this.removeChild(pedinaBersaglio);          //la rimuovo
                 }
                 this.appendChild(window.selectedElement);
+                //promozione del pedone se arriva alla fine della scacchiera 
+                upgrade_pedone(window.selectedImage, this);
                 //resetta la selezione delle mosse suggerite
                 resetSuggerimenti();
                 cambioTurno();
@@ -68,3 +70,4 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
 
 // Inizializza lo stato delle pedine all'avvio
 aggiornaStatoPedine();
+

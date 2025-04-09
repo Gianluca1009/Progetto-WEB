@@ -1,77 +1,79 @@
+const pezzi = {
+    torre: {
+        posizioni: [
+            { pos: '00', colore: 'nero' },
+            { pos: '05', colore: 'nero' },
+            { pos: '55', colore: 'bianco' },
+            { pos: '50', colore: 'bianco' }
+        ],
+        class: 'torre',
+        id: { bianco: 't', nero: 'T' },
+        img: {
+            bianco: 'images/pedine/torre_bianca.png',
+            nero: 'images/pedine/torre_nera.png'
+        }
+    },
+    alfiere: {
+        posizioni: [
+            { pos: '01', colore: 'nero' },
+            { pos: '54', colore: 'bianco' }
+        ],
+        class: 'alfiere',
+        id: { bianco: 'a', nero: 'A' },
+        img: {
+            bianco: 'images/pedine/alfiere_bianco.png',
+            nero: 'images/pedine/alfiere_nero.png'
+        }
+    },
+    regina: {
+        posizioni: [
+            { pos: '02', colore: 'nero' },
+            { pos: '52', colore: 'bianco' }
+        ],
+        class: 'regina',
+        id: { bianco: 'q', nero: 'Q' },
+        img: {
+            bianco: 'images/pedine/regina_bianca.png',
+            nero: 'images/pedine/regina_nera.png'
+        }
+    },
+    re: {
+        posizioni: [
+            { pos: '03', colore: 'nero' },
+            { pos: '53', colore: 'bianco' }
+        ],
+        class: 're',
+        id: { bianco: 'r', nero: 'R' },
+        img: {
+            bianco: 'images/pedine/re_bianco.png',
+            nero: 'images/pedine/re_nero.png'
+        }
+    },
+    cavallo: {
+        posizioni: [
+            { pos: '04', colore: 'nero' },
+            { pos: '51', colore: 'bianco' }
+        ],
+        class: 'cavallo',
+        id: { bianco: 'c', nero: 'C' },
+        img: {
+            bianco: 'images/pedine/cavallo_bianco.png',
+            nero: 'images/pedine/cavallo_nero.png'
+        }
+    },
+    pedone: {
+        class: 'pedone',
+        id: { bianco: 'p', nero: 'P' },
+        img: {
+            bianco: 'images/pedine/pedone_bianco.png',
+            nero: 'images/pedine/pedone_nero.png'
+        }
+    }
+};
+
 function posizion_iniziali() {
     // Configurazione delle pedine
-    const pezzi = {
-        torre: {
-            posizioni: [
-                { pos: '00', colore: 'nero' },
-                { pos: '05', colore: 'nero' },
-                { pos: '55', colore: 'bianco' },
-                { pos: '50', colore: 'bianco' }
-            ],
-            class: 'torre',
-            id: { bianco: 't', nero: 'T' },
-            img: {
-                bianco: 'images/pedine/torre_bianca.png',
-                nero: 'images/pedine/torre_nera.png'
-            }
-        },
-        alfiere: {
-            posizioni: [
-                { pos: '01', colore: 'nero' },
-                { pos: '54', colore: 'bianco' }
-            ],
-            class: 'alfiere',
-            id: { bianco: 'a', nero: 'A' },
-            img: {
-                bianco: 'images/pedine/alfiere_bianco.png',
-                nero: 'images/pedine/alfiere_nero.png'
-            }
-        },
-        regina: {
-            posizioni: [
-                { pos: '02', colore: 'nero' },
-                { pos: '52', colore: 'bianco' }
-            ],
-            class: 'regina',
-            id: { bianco: 'q', nero: 'Q' },
-            img: {
-                bianco: 'images/pedine/regina_bianca.png',
-                nero: 'images/pedine/regina_nera.png'
-            }
-        },
-        re: {
-            posizioni: [
-                { pos: '03', colore: 'nero' },
-                { pos: '53', colore: 'bianco' }
-            ],
-            class: 're',
-            id: { bianco: 'r', nero: 'R' },
-            img: {
-                bianco: 'images/pedine/re_bianco.png',
-                nero: 'images/pedine/re_nero.png'
-            }
-        },
-        cavallo: {
-            posizioni: [
-                { pos: '04', colore: 'nero' },
-                { pos: '51', colore: 'bianco' }
-            ],
-            class: 'cavallo',
-            id: { bianco: 'c', nero: 'C' },
-            img: {
-                bianco: 'images/pedine/cavallo_bianco.png',
-                nero: 'images/pedine/cavallo_nero.png'
-            }
-        },
-        pedone: {
-            class: 'pedone',
-            id: { bianco: 'p', nero: 'P' },
-            img: {
-                bianco: 'images/pedine/pedone_bianco.png',
-                nero: 'images/pedine/pedone_nero.png'
-            }
-        }
-    };
+    //vedi glob var pezzi
 
     // Funzione per creare una pedina
     function creaPedina(tipo, colore, posizione) {
