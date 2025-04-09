@@ -1,3 +1,57 @@
+/*stile root*/
+:root {
+    --game-width: 90vw;
+    --game-height: 90vh;
+    --grid-size: 33vw;
+    --cell-size: calc(var(--grid-size) / 6);
+    --draft-width: calc(var(--grid-size) * 0.58);
+    --draft-grid-height: 35.5vw;
+    --draft-grid-width: calc(var(--draft-grid-height) * 0.7);
+    --draft-cell-height: calc(var(--draft-cell-height) / 3);
+    --draft-cell-width: calc(var(var(--draft-cell-width) / 3));
+}
+
+/* Elenco delle classi CSS in questo file:
+
+ * .grid-container - contenitore della griglia
+ * .tooltip - tooltip
+ * .tr-ombrata - riga ombrata
+ * .condition-container - contenitore delle condizioni
+ * .timer-container - contenitore del timer
+ * table - tabella
+ * body - corpo del documento
+ * .no-hover - classe per disabilitare il hover
+ * .hidden - classe per nascondere un elemento
+ */
+ 
 .grid-container, .tooltip, .tr-ombrata, .condition-container, .timer-container {
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+}
+
+table {
+    border-collapse: collapse;
+    border: 0.125rem solid black;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(to right ,#1b014e,#4a01de);
+    overscroll-behavior: none;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.no-hover {
+    pointer-events: none;
+}
+
+.hidden {
+    display: none;
 }

@@ -1,11 +1,11 @@
-:root {
-    --grid-size: 31.25vw;
-    --draft-grid-height: 35.5vw;
-    --draft-grid-width: calc(var(--draft-grid-height) * 0.7);
-    --cell-size: calc(var(--grid-size) / 6);
-    --draft-cell-height: calc(var(--draft-cell-height) / 3);
-    --draft-cell-width: calc(var(var(--draft-cell-width) / 3));
-}
+/* Elenco delle classi CSS in questo file:
+
+ * .pedina - pedine
+ * .pedina-active - pedine attive
+ * .pedina-no-hover - pedine non attive prima di iniziare il gioco
+ * .torre, .alfiere, .cavallo, .regina, .re, .pedone - pedine
+ * .nome-giocatore - nome del giocatore
+ */
 
 /*stile pedine*/
 .pedina {
@@ -33,15 +33,10 @@
     cursor: default;
 }
 
-.pedina-no-hover {
-    pointer-events: none;
-    cursor: default;
-}
-
 /*stile pedine*/
 .torre, .alfiere, .cavallo, .regina, .re, .pedone {
-    width: calc(var(--cell-size) * 1.9);
-    height: calc(var(--cell-size) * 1.9);
+    width: calc(var(--cell-size)*0.7);
+    height: calc(var(--cell-size)*0.7);
     margin: auto;
     display: block;
     object-fit: contain;

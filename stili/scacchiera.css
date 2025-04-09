@@ -1,8 +1,11 @@
-:root {
-    --grid-size: 33.5vw;
-    --cell-size: calc(var(--grid-size) / 6);
-    --draft-width: calc(var(--grid-size) * 0.7);
-}
+/* Elenco delle classi CSS in questo file:
+
+ * .grid-container - contenitore della griglia
+ * .scacchiera - tabella class = 'scacchiera'
+ * .greencell - cella verde
+ * .creamcell - cella crema
+ * .highlighted - cella evidenziata
+ */
 
 /*stile div padre di scacchiera*/
 .grid-container {
@@ -24,18 +27,11 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+    width: calc(var(--grid-size));
+    height: calc(var(--grid-size));
     aspect-ratio: 1;
     border-radius: 0.625rem;
     transition: box-shadow 0.5s ease;
-}
-
-table {
-    border-collapse: collapse;
-    border: 0.125rem solid black;
-    width: 100%;
-    height: 100%;
 }
 
 /*stili celle scacchiera*/

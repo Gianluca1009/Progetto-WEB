@@ -1,15 +1,22 @@
+
+/* Elenco delle classi CSS in questo file:
+
+ * .condition-container - contenitore delle condizioni
+ * .condition-title - titolo delle condizioni
+ * .timer-container - contenitore del timer
+ */
+
 /*stile container condizioni*/
 .condition-container {
     position: absolute;
     top: 5.5%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(var(--grid-size) * 0.96);
-    height: 5%;
+    width: calc(var(--grid-size));
+    height: 8%;
     background: linear-gradient(to right ,#1b014e,#4a01de);
     border-radius: 0.625rem;
     margin: calc(var(--cell-size) * 0.25) auto;
-    font-size: calc(var(--cell-size) * 0.25);
     text-align: center;
     vertical-align: middle;
     z-index: 2;
@@ -24,6 +31,7 @@
     color: #f5deb3;
     line-height: 1.5;
     font-weight: bold;
+    font-size: calc(var(--cell-size)*0.3);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     position: relative;
     top: 50%;

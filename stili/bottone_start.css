@@ -2,6 +2,13 @@
     --grid-size: 33.5vw;
 }
 
+/* Elenco delle classi CSS in questo file:
+
+ * .start-button - bottone d'inizio
+ * .start-button:hover - hover del bottone d'inizio
+ */
+
+
 /*stile bottone d'inizio*/
 .start-button {
     position: absolute;

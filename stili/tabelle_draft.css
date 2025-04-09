@@ -1,17 +1,27 @@
-:root {
-    --draft-grid-height: 1.5vw;
-    --draft-grid-width: calc(var(--draft-grid-height) * 0.7);
-}
+/* Elenco delle classi CSS in questo file:
 
-/*stile tabelle per il draft*/
+ * .table_draft_dx - tabelle per il draft
+ * .table_draft_sx - tabelle per il draft
+ * .tr-ombrata - riga ombrata
+ * .foto_draftcell - cella per l'immagine del calciatore
+ * .info_draftcell - cella per le informazioni del calciatore
+ * .santino-container - contenitore per l'immagine del calciatore
+ * .santino - immagine del calciatore
+ * .santino:hover - hover dell'immagine del calciatore
+ * @media screen and (max-width: 1200px) - media query per le tabelle draft
+ * @media screen and (max-width: 768px) - media query per le tabelle draft
+ * @media screen and (max-width: 480px) - media query per le tabelle draft
+ * @media screen and (max-height: 600px) - media query per le tabelle draft
+ * @media screen and (orientation: landscape) - media query per le tabelle draft
+ */
+
+
 .table_draft_dx, .table_draft_sx {
     position: absolute;
     table-layout: fixed;
     top: 50%;
-    /* width: var(--draft-width);
-    height: var(--draft-grid-height); */
-    width: 45%;
-    height: 45%;
+    width: calc(var(--game-width) * 0.2); /* 20% della larghezza del game container */
+    height: calc(var(--game-width) * 0.2); /* Mantiene proporzioni quadrate */
     background: transparent;
     border-collapse: separate;
     border-spacing: 0 1rem;
@@ -31,28 +41,37 @@
 
 .tr-ombrata{
     cursor: default;
-    height: 30%;
-    width: 100%;
+    height: 33.33%; /* Mantiene la proporzione all'interno della tabella */
+    width: 100%; /* Riempe la larghezza della tabella */
+    display: table-row;
+    vertical-align: middle;
+    min-height: 12vh;
+    max-height: 12vh;
 }
 
 .foto_draftcell {
     background-color: #f5deb3;
     width: 30%;
-    height: var(--cell-size);
+    height: 100%;
     text-align: center;
     justify-content: center;
     border: calc(var(--cell-size) * 0.03) solid black;
+    border-right: 0;
     box-sizing: border-box;
     position: relative;
     padding: 0;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    display: table-cell;
+    vertical-align: middle;
+    min-height: 12vh; /* Altezza minima relativa alla viewport */
+    max-height: 12vh;
 }
 
 .info_draftcell {
     background-color: #f5deb3;
     width: 70%;
-    height: var(--cell-size);
+    height: 100%;
     text-align: center;
     justify-content: center;
     border: calc(var(--cell-size) * 0.03) solid black;
@@ -61,6 +80,10 @@
     padding: 0;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    display: table-cell;
+    vertical-align: middle;
+    min-height: 12vh; /* Altezza minima relativa alla viewport */
+    max-height: 12vh;
 }
 
 .santino-container {
@@ -72,6 +95,7 @@
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
+    min-height: 12vh; /* Altezza minima relativa alla viewport */
 }
 
 /* immagine calciatore */
@@ -82,7 +106,7 @@
     display: block;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: contain;
+    object-fit: cover;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     max-width: 100%;

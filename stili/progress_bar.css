@@ -1,4 +1,11 @@
-/*stile progress bar*/
+
+/* Elenco delle classi CSS in questo file:
+
+ * .progress-container - contenitore della progress bar
+ * .progress-bar - barra di progressione
+ * .progress-bar.instant - barra di progressione istantanea
+ */
+
 .progress-container {
     position: absolute;
     bottom: calc(var(--cell-size) * 1);

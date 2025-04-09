@@ -9,6 +9,12 @@ function sx_draft(){
         },
         {
             id: "Mbappé",
+            cellId: "s10",
+            src: "https://img.a.transfermarkt.technology/portrait/big/342229-1682683695.jpg",
+            alt: "Mbappé"
+        },
+        {
+            id: "Mbappé",
             cellId: "d10",
             src: "https://img.a.transfermarkt.technology/portrait/big/342229-1682683695.jpg",
             alt: "Mbappé"
@@ -26,11 +32,12 @@ function sx_draft(){
             alt: "Lewandowski"
         },
         {
-            id: "Ronaldo",
-            cellId: "d50",
-            src: "https://img.a.transfermarkt.technology/portrait/big/131965-1642434447.jpg",
-            alt: "Ronaldo"
-        }
+            id: "Haaland",
+            cellId: "d00",
+            src: "https://img.a.transfermarkt.technology/portrait/big/418560-1656179352.jpg",
+            alt: "Haaland"
+        },
+        
 
     ];
     
