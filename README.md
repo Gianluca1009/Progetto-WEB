@@ -1,26 +1,28 @@
 # Progetto-WEB
 ## progetto scacchi - calcio
 ### nota struttara pedine-celle
-la cella è un elem td 
-la pedina è un div con all'inteno due foto
 
-```html
-<td cella>
-    <div pedina>
-        <img tipo_pedina>
-        <h1 testo calciatore>
+-STRUTTURA PEDINA-CELLA NELLA SCACCHIERA
+
+    ```html
+    <td cella>
+        <div pedina>
+            <img tipo_pedina>
+            <h1 testo calciatore>
+        </div>
+    </td>
+
+-STRUTTURA CALCIATORE-CELLA NELLE TABELLE DRAFT
+
+    <td foto_draftcell>
+        <div santino-container>
+            <img class="santino">
+        <div>
     </div>
-</td>
-
-<td foto_draftcell>
-    <div santino-container>
-        <img class="santino">
-    <div>
-</div>
-```
+    ```
 
 # To-do:
-    adattabilita alla pagina/risoluzione
+    adattabilita alla pagina/risoluzione                                                            ✅
     progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
     pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità
     separazione tra listener e funzioni in file separati
@@ -29,16 +31,16 @@ la pedina è un div con all'inteno due foto
     descrizione gioco e regole
     immagini
     capire come fare la parte di login
-    navigation bar informativa
+    navigation bar informativa                                                                      ✅
     stile css
 
 # Prep-page:
     bottone start                                                                                   ✅
     bottone random
     bottone torna alla home
-    modificare tabella draft (meno celle, nomi e stats giocatori)
-    drag and drop dei giocatori
-    posizionare cognome del giocatore sotto la pedina
+    modificare tabella draft (meno celle, nomi e stats giocatori)                                   ✅ 
+    drag and drop dei giocatori                                                                     ✅
+    posizionare cognome del giocatore sotto la pedina                                               ✅
     assegnare attributi ai giocatori tramite oggetti javascript
     fare query SQL in base all'url dell'immagine e popolare gli attributi di ogni pedina
     stile css
@@ -57,7 +59,8 @@ la pedina è un div con all'inteno due foto
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
     generalizzare lo script di creazione pedine                                                     ✅
     stile css
-    abolire i ruoli 
+    abolire i ruoli
+    far apparire dei log con statistiche ai lati della scacchiera (listener) 
 
 # elenco delle possibili condizioni da cercare in un database:
     1.goal fatti in carriera
