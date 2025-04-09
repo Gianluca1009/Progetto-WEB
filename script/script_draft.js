@@ -14,28 +14,29 @@ function sx_draft(){
             alt: "Mbappé"
         },
         {
-            id: "Mbappé",
-            cellId: "d10",
-            src: "https://img.a.transfermarkt.technology/portrait/big/342229-1682683695.jpg",
-            alt: "Mbappé"
+            id: "Ramos",
+            cellId: "s20",
+            src: "https://img.a.transfermarkt.technology/portrait/header/25557-1694502812.jpg?lm=1",
+            alt: "Sergio Ramos"
+        },
+        
+        {
+            id: "Buffon",
+            cellId: "d00",
+            src: "https://img.a.transfermarkt.technology/portrait/header/5023-1713425275.jpg?lm=1",
+            alt: "Buffon"
         },
         {
             id: "Haaland",
-            cellId: "d20",
+            cellId: "d10",
             src: "https://img.a.transfermarkt.technology/portrait/big/418560-1656179352.jpg",
             alt: "Haaland"
         },
         {
             id: "Lewandowski",
-            cellId: "d30",
-            src: "https://img.a.transfermarkt.technology/portrait/big/38253-1642434447.jpg",
+            cellId: "d20",
+            src: "https://img.a.transfermarkt.technology/portrait/header/38253-1701118759.jpg?lm=1",
             alt: "Lewandowski"
-        },
-        {
-            id: "Haaland",
-            cellId: "d00",
-            src: "https://img.a.transfermarkt.technology/portrait/big/418560-1656179352.jpg",
-            alt: "Haaland"
         },
         
 
