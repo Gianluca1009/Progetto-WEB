@@ -16,7 +16,6 @@
     border: calc(var(--grid-size) * 0.003) solid #f5deb3;
     box-shadow: calc(var(--grid-size) * 0.03) calc(var(--grid-size) * 0.03) calc(var(--grid-size) * 0.03) rgba(15, 12, 12, 0.5);
     border-collapse: collapse;
-    transition: all 0.3s ease-in-out;
 }
 
 .table_draft_dx {

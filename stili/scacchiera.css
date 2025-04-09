@@ -1,5 +1,5 @@
 :root {
-    --grid-size: 33.5vw !important;
+    --grid-size: 33.5vw;
     --cell-size: calc(var(--grid-size) / 6);
     --draft-width: calc(var(--grid-size) * 0.58);
 }
@@ -19,6 +19,7 @@
 /*stile tabella class = 'scacchiera'*/
 .scacchiera {
     position: absolute;
+    table-layout: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
