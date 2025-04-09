@@ -9,7 +9,6 @@
 /* Elenco delle classi CSS in questo file:
 
  * .game-container - contenitore del gioco
- * .grid-container - contenitore della griglia
  * .background - immagine di sfondo
  * .no-hover - classe per disabilitare il hover
  * .hidden - classe per nascondere un elemento
@@ -31,16 +30,6 @@
     justify-content: center;
     overflow: hidden;
     gap: 20%;
-}
-
-.grid-container {
-    z-index: 1;
-    position: relative;
-    width: var(--grid-size);
-    height: var(--grid-size);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .background {

@@ -2,7 +2,7 @@
 :root {
     --game-width: 90vw;
     --game-height: 90vh;
-    --grid-size: 33vw;
+    --grid-size: 35vw;
     --cell-size: calc(var(--grid-size) / 6);
     --draft-width: calc(var(--grid-size) * 0.58);
     --draft-grid-height: 35.5vw;

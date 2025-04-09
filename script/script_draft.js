@@ -66,23 +66,49 @@ function assegnaCognome(text,cognome_calciatore){
 
 //funzione per gestire il drag e drop
 function DragDrop(){
+    // Memorizza i riferimenti agli event listener per poterli rimuovere
+    const dragListeners = new Map();
+    const dragoverListeners = new Map();
+    const dropListeners = new Map();
+    
     //selziona tutti le img calciatore -> drag elem
     document.querySelectorAll(".santino").forEach(santino_img => {
-        santino_img.addEventListener("dragstart", function(event) {
+        const dragstartListener = function(event) {
+            // Se il gioco è iniziato, non fare nulla
+            if (window.gameStarted) {
+                event.preventDefault();
+                return false;
+            }
             event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
-        });
+        };
+        
+        santino_img.addEventListener("dragstart", dragstartListener);
+        dragListeners.set(santino_img, dragstartListener);
     });
 
     //selziona tutte le caselle pezzi -> drop zone
     document.querySelectorAll(".greencell, .creamcell").forEach(drop_cell => {
         // Gestisci l'evento dragover
-        drop_cell.addEventListener("dragover", function(event) {
+        const dragoverListener = function(event) {
+            // Se il gioco è iniziato, non fare nulla
+            if (window.gameStarted) {
+                event.preventDefault();
+                return false;
+            }
             event.preventDefault();
             event.dataTransfer.dropEffect = "move";
-        });
+        };
+        
+        drop_cell.addEventListener("dragover", dragoverListener);
+        dragoverListeners.set(drop_cell, dragoverListener);
 
         // Gestisci l'evento drop
-        drop_cell.addEventListener("drop", function(event) {
+        const dropListener = function(event) {
+            // Se il gioco è iniziato, non fare nulla
+            if (window.gameStarted) {
+                event.preventDefault();
+                return false;
+            }
             event.preventDefault();
             var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
             let div_pedina = drop_cell.querySelector('.pedina');
@@ -92,41 +118,45 @@ function DragDrop(){
                 let text = div_pedina.querySelector('text');
                 if (!text) {
                     text = document.createElement('text');
+                    text.classList.add('nome-giocatore');
                     div_pedina.appendChild(text);
                 }
                 
                 // Imposta il testo dell'h1 con l'id del calciatore e aggiunge la classe
                 assegnaCognome(text,cognome_calciatore);
             }
-        });
+        };
+        
+        drop_cell.addEventListener("drop", dropListener);
+        dropListeners.set(drop_cell, dropListener);
     });
+    
+    // Funzione per disabilitare completamente il drag and drop
+    window.disableDragDrop = function() {
+        // Rimuovi tutti i listener dragstart
+        dragListeners.forEach((listener, element) => {
+            element.removeEventListener("dragstart", listener);
+        });
+        
+        // Rimuovi tutti i listener dragover
+        dragoverListeners.forEach((listener, element) => {
+            element.removeEventListener("dragover", listener);
+        });
+        
+        // Rimuovi tutti i listener drop
+        dropListeners.forEach((listener, element) => {
+            element.removeEventListener("drop", listener);
+        });
+        
+        // Imposta tutti gli elementi santino come non trascinabili
+        document.querySelectorAll(".santino").forEach(santino_img => {
+            santino_img.draggable = false;
+        });
+        
+        console.log("Drag and drop disabilitato");
+    };
 }
 
 sx_draft();
-DragDrop();
-
-    /*
-    
-        // Prendere gli elementi dal DOM
-        var dragElement = document.getElementById("dragElement");
-        var dropZone = document.getElementById("dropZone");
-
-        // Permettere il drag (trascinamento)
-        dragElement.addEventListener("dragstart", function(event) {
-            // Salva l'elemento da trascinare (qui utilizziamo l'id)
-            event.dataTransfer.setData("text", event.target.id);
-        });
-
-        // Permettere il drop (rilascio)
-        dropZone.addEventListener("dragover", function(event) {
-            event.preventDefault();  // Necessario per consentire il drop
-        });
-
-        dropZone.addEventListener("drop", function(event) {
-            event.preventDefault();
-            var data = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
-            var draggedElement = document.getElementById(data);
-            dropZone.appendChild(draggedElement);  // Sposta l'elemento nella zona di drop
-        });
-    */
+DragDrop(); // Inizializza il drag and drop all'avvio
     

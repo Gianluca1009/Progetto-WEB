@@ -1,7 +1,6 @@
 window.timeLeft = 59;
 let timerId = null;
 const TOTAL_TIME = 59; // Costante per il tempo totale
-let gameStarted = false;
 
 // ---- FUNZIONI PER LA GESTIONE DEL TIMER ---- //
 
@@ -45,7 +44,10 @@ function updateTimer() {
     timeLeft--;
 
     if (timeLeft < 10) timerDisplay.style.color = 'red';
-    else timerDisplay.style.color = 'white';
+    else {
+        if(window.turnoBianco) timerDisplay.style.color = 'black';
+        else timerDisplay.style.color = 'white';
+    }
 }
 
 // Funzione per avviare il timer
@@ -79,30 +81,6 @@ function resetTimer() {
     requestAnimationFrame(() => {
         startTimer();
     });
-}
-
-// Funzione per avviare il gioco
-function startGame() {
-    gameStarted = true;
-    document.getElementById('startButton').classList.add('hidden');
-    document.querySelector('.condition-container').classList.remove('hidden');
-    document.querySelector('.timer-container').classList.remove('hidden');
-    document.querySelector('.progress-container').classList.remove('hidden');
-    
-    // Rimuove la classe che disabilita l'hover
-    document.querySelector('.game-container').classList.remove('game-not-started');
-    
-    // Aggiunge la classe active a tutte le pedine
-    document.querySelectorAll('.pedina').forEach(pedina => {
-        pedina.classList.add('pedina-active');
-    });
-    
-    // Abilita il movimento delle pedine
-    window.canMovePiece = function(pieceId) {
-        return gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
-    };
-    
-    startTimer();
 }
 
 // ---- INIZIALIZZAZIONE DEL GIOCO ---- //

@@ -1,4 +1,3 @@
-
 /* Elenco delle classi CSS in questo file:
 
  * .progress-container - contenitore della progress bar
@@ -8,24 +7,47 @@
 
 .progress-container {
     position: absolute;
-    bottom: calc(var(--cell-size) * 1);
+    bottom: calc(var(--cell-size) * 0.1);
     left: 50%;
     transform: translateX(-50%);
-    width: var(--grid-size);
+    width: calc(var(--grid-size));
     height: calc(var(--cell-size) * 0.3125);
-    background-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(to right ,#1b014e,#4b01de);
+    border: 0.09375rem solid #f5deb3;
     border-radius: 0.3125rem;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .progress-bar {
     height: 100%;
-    width: 100%;
+    width: 5%;
     background-color: #f5deb3;
-    transition: width 1s linear 0s;
+    transition: width 1s linear;
+    position: relative;
+    border: 0.09375rem solid #f5deb3;
 }
 
 /* Classe per rimuovere la transizione quando la barra si riempie */
 .progress-bar.instant {
     transition: none;
+}
+
+/* Stile per il timer all'interno della progress bar */
+.timer-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: calc(var(--cell-size)*0.3);
+    font-weight: bold;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    width: 100%;
+    text-align: center;
 }

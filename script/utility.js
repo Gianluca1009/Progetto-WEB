@@ -3,6 +3,7 @@ window.selectedElement = null; // div pezzo selezionato
 window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
 window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
+window.gameStarted = false; // Controlla se il gioco è iniziato
 
 // ---- FUNZIONI AUSILIARIE IMPORTANTI ---- //
 
@@ -275,4 +276,47 @@ function upgrade_pedone(img_pedina, cella_dest){
              img_pedina.src = pezzi[tipo].img.nero;
         } 
     }
+}
+
+/**
+ * Funzione per avviare il gioco
+ * Imposta gameStarted a true, disabilita il drag and drop, ingrandisce la scacchiera,
+ * mostra le condizioni, il timer e nasconde elementi non necessari
+ */
+function startGame() {
+    window.gameStarted = true;
+    
+    // Disabilita il drag and drop
+    if (window.disableDragDrop) {
+        window.disableDragDrop();
+    }
+    
+    // Ingrandisci la scacchiera
+    const scacchiera = document.querySelector('.scacchiera');
+    if (scacchiera) {
+        scacchiera.classList.add('scacchiera-size-di-gioco');
+    }
+
+    document.getElementById('startButton').classList.add('hidden');
+    document.querySelector('.condition-container').classList.remove('hidden');
+    document.querySelector('.timer-text').classList.remove('hidden');
+    document.querySelector('.progress-container').classList.remove('hidden');
+    document.querySelector('.progress-bar').classList.remove('hidden');
+    document.querySelector('.table_draft_dx').classList.add('hidden');
+    document.querySelector('.table_draft_sx').classList.add('hidden');
+    
+    // Rimuove la classe che disabilita l'hover
+    document.querySelector('.game-container').classList.remove('game-not-started');
+    
+    // Aggiunge la classe active a tutte le pedine
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.add('pedina-active');
+    });
+    
+    // Abilita il movimento delle pedine
+    window.canMovePiece = function(pieceId) {
+        return gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
+    };
+    
+    startTimer();
 }

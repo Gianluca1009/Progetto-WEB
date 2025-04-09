@@ -5,6 +5,7 @@
  * .greencell - cella verde
  * .creamcell - cella crema
  * .highlighted - cella evidenziata
+ * .grid-container-enlarged - contenitore ingrandito per il gioco
  */
 
 /*stile div padre di scacchiera*/
@@ -18,8 +19,12 @@
     height: var(--grid-size);
     aspect-ratio: 1;
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+    margin-bottom: 10%;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center top;
 }
 
+/* Classe per ingrandire la scacchiera all'avvio del gioco */
 /*stile tabella class = 'scacchiera'*/
 .scacchiera {
     position: absolute;
@@ -27,11 +32,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: calc(var(--grid-size));
-    height: calc(var(--grid-size));
+    width: calc(var(--grid-size)*1.25);
+    height: calc(var(--grid-size)*1.25);
     aspect-ratio: 1;
     border-radius: 0.625rem;
     transition: box-shadow 0.5s ease;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center top;
+}
+
+.scacchiera-size-di-gioco{
+    width: calc(var(--grid-size) * 1.15);
+    height: calc(var(--grid-size) * 1.15);
+    top: 56%;
 }
 
 /*stili celle scacchiera*/
