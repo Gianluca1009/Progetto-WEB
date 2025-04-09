@@ -1,6 +1,6 @@
 :root {
     --grid-size: 31.25vw;
-    --cell-size: calc(var(--grid-size) / 6);
+    --cell-size: calc(var(--grid-size) / 3);
 }
 
 /*stile pedine*/
