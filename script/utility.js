@@ -326,9 +326,9 @@ function startGame() {
     }
     
     // Ingrandisci la scacchiera
-    const scacchiera = document.querySelector('.scacchiera');
-    if (scacchiera) {
-        scacchiera.classList.add('scacchiera-size-di-gioco');
+    const gridContainer = document.querySelector('.grid-container');
+    if (gridContainer) {
+        gridContainer.classList.add('grid-container-enlarged');
     }
 
     document.getElementById('startButton').classList.add('hidden');

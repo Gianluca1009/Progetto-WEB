@@ -9,10 +9,11 @@
 /*stile container condizioni*/
 .condition-container {
     position: absolute;
-    top: 5%;
     left: 50%;
+    top: 3%;
+    margin-bottom: 3%;
     transform: translate(-50%, -50%);
-    width: calc(var(--grid-size));
+    width: 50%;
     height: 10%;
     background: linear-gradient(to right ,#1b014e,#4a01de);
     border-radius: 0.625rem;

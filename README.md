@@ -17,7 +17,7 @@
     <td foto_draftcell>
         <div santino-container>
             <img class="santino">
-        <div>
+        </div>
     </div>
     ```
 
@@ -35,8 +35,9 @@
     stile css
 
 # Prep-page:
-    bottone start                                                                                   ✅
+    bottone start                                                                                   
     bottone random
+    doppio bottone pronto post-draft
     bottone torna alla home
     modificare tabella draft (meno celle, nomi e stats giocatori)                                   ✅ 
     drag and drop dei giocatori                                                                     ✅
