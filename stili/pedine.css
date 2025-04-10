@@ -35,8 +35,8 @@
 
 /*stile pedine*/
 .torre, .alfiere, .cavallo, .regina, .re, .pedone {
-    width: calc(var(--cell-size)*0.7);
-    height: calc(var(--cell-size)*0.7);
+    width: 70%;
+    height: 70%;
     margin: auto;
     display: block;
     object-fit: contain;

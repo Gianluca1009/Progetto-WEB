@@ -10,7 +10,7 @@
 
     <!-- LINK STILI -->
     <link href="stili/barra_superiore.css" rel="stylesheet" type="text/css">
-    <link href="stili/bottone_start.css" rel="stylesheet" type="text/css">
+    <link href="stili/bottoni.css" rel="stylesheet" type="text/css">
     <link href="stili/condizione.css" rel="stylesheet" type="text/css">
     <link href="stili/container.css" rel="stylesheet" type="text/css">
     <link href="stili/mosse.css" rel="stylesheet" type="text/css">
@@ -42,7 +42,49 @@
     <div class="game-container">
         <img src = images/soccer_field.jpg class = "background">
         
-        <button id="startButton" class="start-button">PRONTO</button>
+        <button id="startButton" class="start-button">GIOCA</button>
+
+        <!-- TABELLA DRAFT SX -->
+        <div class="table_draft_sx">
+            <button id="player1button" class="pronto-button player1 no-hover">PRONTO</button>
+            <table>
+                <tbody>
+                    <tr class="tr-ombrata">
+                        <td class="foto_draftcell"> <div class="santino-container"id="s00"></div></td>
+                        <td class="info_draftcell"> <div class="santino-container"id="s01"></div></td>
+                    </tr>
+                    <tr class="tr-ombrata">
+                        <td class="foto_draftcell"> <div class="santino-container" id="s10"></div></td>
+                        <td class="info_draftcell"> <div class="santino-container" id="s11"></div></td>
+                    </tr>
+                    <tr class="tr-ombrata">
+                        <td class="foto_draftcell"> <div class="santino-container" id="s20"></div></td>
+                        <td class="info_draftcell"> <div class="santino-container" id="s21"></div></td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- TABELLA DRAFT DX -->
+        <div class="table_draft_dx">
+            <button id="player2button" class="pronto-button player2 no-hover">PRONTO</button>
+            <table>
+                <tbody>
+                    <tr class="tr-ombrata">
+                        <td class="foto_draftcell"> <div class="santino-container" id="d00"></div></td>
+                        <td class="info_draftcell"> <div class="santino-container" id="d01"></div></td>
+                    </tr>
+                    <tr class="tr-ombrata">
+                        <td class="foto_draftcell"> <div class="santino-container" id="d10"></div></td>
+                        <td class="info_draftcell"> <div class="santino-container" id="d11"></div></td>
+                    </tr>
+                    <tr class="tr-ombrata">
+                        <td class="foto_draftcell"> <div class="santino-container" id="d20"></div></td>
+                        <td class="info_draftcell"> <div class="santino-container" id="d21"></div></td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
 
         <div class="condition-container hidden">
             <h1 class="condition-title" id="condition"></h1>
@@ -106,44 +148,6 @@
             </table>
         </div>
 
-        <!-- TABELLA DRAFT DX -->
-
-        <table class="table_draft_dx">
-            <tbody>
-                <tr class="tr-ombrata">
-                    <td class="foto_draftcell"> <div class="santino-container" id="d00"></div></td>
-                    <td class="info_draftcell"> <div class="santino-container" id="d01"></div></td>
-                </tr>
-                <tr class="tr-ombrata">
-                    <td class="foto_draftcell"> <div class="santino-container" id="d10"></div></td>
-                    <td class="info_draftcell"> <div class="santino-container" id="d11"></div></td>
-                </tr>
-                <tr class="tr-ombrata">
-                    <td class="foto_draftcell"> <div class="santino-container" id="d20"></div></td>
-                    <td class="info_draftcell"> <div class="santino-container" id="d21"></div></td>
-                </tr> 
-            </tbody>
-        </table>
-        
-
-        <!-- TABELLA DRAFT SX -->
-
-        <table class="table_draft_sx">
-            <tbody>
-                <tr class="tr-ombrata">
-                    <td class="foto_draftcell"> <div class="santino-container"id="s00"></div></td>
-                    <td class="info_draftcell"> <div class="santino-container"id="s01"></div></td>
-                </tr>
-                <tr class="tr-ombrata">
-                    <td class="foto_draftcell"> <div class="santino-container" id="s10"></div></td>
-                    <td class="info_draftcell"> <div class="santino-container" id="s11"></div></td>
-                </tr>
-                <tr class="tr-ombrata">
-                    <td class="foto_draftcell"> <div class="santino-container" id="s20"></div></td>
-                    <td class="info_draftcell"> <div class="santino-container" id="s21"></div></td>
-                </tr> 
-            </tbody>
-        </table>
         <div class="progress-container hidden">
             <div class="progress-bar"></div>
             <h1 class="timer-text hidden" id="timer"></h1>

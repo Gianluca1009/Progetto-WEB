@@ -10,8 +10,8 @@
     bottom: calc(var(--cell-size) * 0.1);
     left: 50%;
     transform: translateX(-50%);
-    width: calc(var(--grid-size));
-    height: calc(var(--cell-size) * 0.3125);
+    width: 50%;
+    height: 3%;
     background: linear-gradient(to right ,#1b014e,#4b01de);
     border: 0.09375rem solid #f5deb3;
     border-radius: 0.3125rem;

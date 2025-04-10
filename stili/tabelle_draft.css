@@ -8,11 +8,6 @@
  * .santino-container - contenitore per l'immagine del calciatore
  * .santino - immagine del calciatore
  * .santino:hover - hover dell'immagine del calciatore
- * @media screen and (max-width: 1200px) - media query per le tabelle draft
- * @media screen and (max-width: 768px) - media query per le tabelle draft
- * @media screen and (max-width: 480px) - media query per le tabelle draft
- * @media screen and (max-height: 600px) - media query per le tabelle draft
- * @media screen and (orientation: landscape) - media query per le tabelle draft
  */
 
 
@@ -20,33 +15,57 @@
     position: absolute;
     table-layout: fixed;
     top: 50%;
-    width: calc(var(--game-width) * 0.2); /* 20% della larghezza del game container */
-    height: calc(var(--game-width) * 0.2); /* Mantiene proporzioni quadrate */
+    width: calc(var(--grid-size) * 0.4);
+    height: calc(var(--grid-size) * 0.45);
+    max-width: 30vw;
+    max-height: 85%;
     background: transparent;
-    border-collapse: separate;
-    border-spacing: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-50%);
 }
 
 .table_draft_dx {
     right: 5%;
-    transform: translateY(-50%);
     border: 0;
 }
 
 .table_draft_sx {
     left: 5%;
-    transform: translateY(-50%);
     border: 0;
 }
 
-.tr-ombrata{
+/* Aggiungo stile specifico per le tabelle all'interno dei container */
+.table_draft_dx table, .table_draft_sx table {
+    width: 100%;
+    height: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+    border: none;
+    display: table;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    max-height: 100%;
+    table-layout: fixed;
+}
+
+/* Aggiungo stile per il contenitore dei bottoni */
+.table_draft_dx > button, .table_draft_sx > button {
+    position: absolute;
+    top: calc(50% - (var(--game-width) * 0.2 / 2) - calc(var(--grid-size) * 0.1) - 1vh);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tr-ombrata {
     cursor: default;
-    height: 33.33%; /* Mantiene la proporzione all'interno della tabella */
-    width: 100%; /* Riempe la larghezza della tabella */
+    height: calc(100% / 3); /* Divido l'altezza della tabella in 3 parti uguali */
+    width: 100%;
     display: table-row;
     vertical-align: middle;
-    min-height: 12vh;
-    max-height: 12vh;
+    box-sizing: border-box;
 }
 
 .foto_draftcell {
@@ -64,8 +83,6 @@
     border-bottom-left-radius: 10px;
     display: table-cell;
     vertical-align: middle;
-    min-height: 12vh; /* Altezza minima relativa alla viewport */
-    max-height: 12vh;
 }
 
 .info_draftcell {
@@ -82,8 +99,6 @@
     border-bottom-right-radius: 10px;
     display: table-cell;
     vertical-align: middle;
-    min-height: 12vh; /* Altezza minima relativa alla viewport */
-    max-height: 12vh;
 }
 
 .santino-container {
@@ -125,77 +140,71 @@
     padding-bottom: 22%;
 }
 
-/* Media queries per le tabelle draft */
+/* Regolazione per quando la scacchiera è ingrandita */
+.grid-container-enlarged ~ .table_draft_dx .tr-ombrata,
+.grid-container-enlarged ~ .table_draft_sx .tr-ombrata {
+    height: calc(var(--grid-size) * 0.07); /* Si riduce quando la scacchiera è più grande */
+}
+
+/* Dimensionamento specifico per le varie risoluzioni, ma con aspect ratio costante */
 @media screen and (max-width: 1200px) {
-    :root {
-        --cell-size: calc(var(--grid-size) * 0.09);
+    .table_draft_dx, .table_draft_sx {
+        width: calc(var(--grid-size) * 0.38);
+        max-width: 28vw;
     }
     
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.75);
+    .tr-ombrata {
+        height: calc(var(--grid-size) * 0.08);
     }
 }
 
 @media screen and (max-width: 768px) {
-    :root {
-        --cell-size: calc(var(--grid-size) * 0.08);
+    .table_draft_dx, .table_draft_sx {
+        width: calc(var(--grid-size) * 0.35);
+        max-width: 25vw;
     }
     
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.7);
+    .tr-ombrata {
+        height: calc(var(--grid-size) * 0.07);
+    }
+    
+    .nome-giocatore {
+        font-size: calc(var(--cell-size) * 0.18);
     }
 }
 
 @media screen and (max-width: 480px) {
-    :root {
-        --cell-size: calc(var(--grid-size) * 0.07);
+    .table_draft_dx, .table_draft_sx {
+        width: calc(var(--grid-size) * 0.3);
+        max-width: 22vw;
     }
     
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.65);
+    .tr-ombrata {
+        height: calc(var(--grid-size) * 0.06);
+    }
+    
+    .nome-giocatore {
+        font-size: calc(var(--cell-size) * 0.15);
+        padding-bottom: 15%;
     }
 }
 
-/* Regole per altezze specifiche */
-@media screen and (max-height: 600px) {
-    :root {
-        --cell-size: calc(var(--grid-size) * 0.06);
+/* Aggiunta per schermi molto piccoli */
+@media screen and (max-width: 320px) {
+    .table_draft_dx, .table_draft_sx {
+        width: calc(var(--grid-size) * 0.25);
+        max-width: 20vw;
     }
     
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.6);
+    .tr-ombrata {
+        height: calc(var(--grid-size) * 0.05);
     }
 }
 
-/* Regole per orientamento orizzontale */
-@media screen and (orientation: landscape) {
-    :root {
-        --cell-size: calc(var(--grid-size) * 0.05);
-    }
-    
+/* Regolazioni per schermi con aspect ratio particolari */
+@media screen and (max-aspect-ratio: 4/3) {
     .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.55);
-    }
-    
-    /* Per schermi con aspect ratio molto largo */
-    @media (min-aspect-ratio: 16/9) {
-        :root {
-            --cell-size: calc(var(--grid-size) * 0.045);
-        }
-        
-        .table_draft_dx, .table_draft_sx {
-            width: calc(var(--grid-size) * 0.5);
-        }
-    }
-    
-    /* Per schermi con aspect ratio molto stretto */
-    @media (max-aspect-ratio: 4/3) {
-        :root {
-            --cell-size: calc(var(--grid-size) * 0.055);
-        }
-        
-        .table_draft_dx, .table_draft_sx {
-            width: calc(var(--grid-size) * 0.6);
-        }
+        width: calc(var(--grid-size) * 0.28);
+        max-width: 25vw;
     }
 }
