@@ -61,16 +61,14 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
 
                 //promozione del pedone se arriva alla fine della scacchiera 
                 upgrade_pedone(window.selectedImage, this);
-                //update posizione del re se cambiata
-                update_re_position(window.selectedImage, this);
                 //resetta la selezione delle mosse suggerite
                 resetSuggerimenti();
-                //controlla se la mossa corrente mette sottoscacco  il re dell'avversario
+                //update posizione del re + reset della cella del re se non più in scacco
+                update_re_position(window.selectedImage, this);
+                //controlla se dopo la mossa corrente mette sottoscacco  il re dell'AVVERSARIO (LOGICA INV)
+                highlight_re_if_sottoscacco();
 
-                cambioTurno();
-
-              //highlight_re_if_sottoscacco();
-                
+                cambioTurno();  
                 
             }
 
