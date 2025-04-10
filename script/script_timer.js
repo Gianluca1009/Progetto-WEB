@@ -82,19 +82,3 @@ function resetTimer() {
         startTimer();
     });
 }
-
-// ---- INIZIALIZZAZIONE DEL GIOCO ---- //
-
-// Inizializza il gioco quando la pagina si carica
-document.addEventListener('DOMContentLoaded', () => {
-    const startButton = document.getElementById('startButton');
-    startButton.addEventListener('click', startGame);
-    
-    // Aggiunge la classe che disabilita l'hover all'inizio
-    document.querySelector('.game-container').classList.add('game-not-started');
-    
-    // Disabilita inizialmente il movimento delle pedine
-    window.canMovePiece = function() {
-        return false;
-    };
-}); 

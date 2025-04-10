@@ -281,12 +281,16 @@ function upgrade_pedone(img_pedina, cella_dest){
     }
 }
 
+//Funzione per iniziare la preparazione del draft
+function Gioca(){
+    document.querySelector('.table_draft_dx').classList.remove('hidden');
+    document.querySelector('.table_draft_sx').classList.remove('hidden');
+    document.querySelector('.background').classList.remove('disabled');
+    document.querySelector('.grid-container').classList.remove('disabled');
+    
+}
 
-/**
- * Funzione per avviare il gioco
- * Imposta gameStarted a true, disabilita il drag and drop, ingrandisce la scacchiera,
- * mostra le condizioni, il timer e nasconde elementi non necessari
- */
+// Funzione per avviare il gioco
 function startGame() {
     window.gameStarted = true;
     
@@ -301,13 +305,14 @@ function startGame() {
         gridContainer.classList.add('grid-container-enlarged');
     }
 
-    document.getElementById('startButton').classList.add('hidden');
     document.querySelector('.condition-container').classList.remove('hidden');
-    document.querySelector('.timer-text').classList.remove('hidden');
+    document.querySelector('.timer-text').classList.remove('hidden');    
     document.querySelector('.progress-container').classList.remove('hidden');
     document.querySelector('.progress-bar').classList.remove('hidden');
-    document.querySelector('.table_draft_dx').classList.add('hidden');
     document.querySelector('.table_draft_sx').classList.add('hidden');
+    document.querySelector('.table_draft_dx').classList.add('hidden');
+    document.getElementById('player1button').classList.add('hidden');
+    document.getElementById('player2button').classList.add('hidden');
     
     // Rimuove la classe che disabilita l'hover
     document.querySelector('.game-container').classList.remove('game-not-started');

@@ -61,16 +61,17 @@
 
 .tr-ombrata {
     cursor: default;
-    height: calc(100% / 3); /* Divido l'altezza della tabella in 3 parti uguali */
+    height: 20%; /* Divido l'altezza della tabella in 3 parti uguali */
     width: 100%;
     display: table-row;
     vertical-align: middle;
     box-sizing: border-box;
+    margin-bottom: 0.5rem;
 }
 
 .foto_draftcell {
-    background-color: #f5deb3;
-    width: 30%;
+    background-color: #000000;
+    width: 35%;
     height: 100%;
     text-align: center;
     justify-content: center;
@@ -83,11 +84,12 @@
     border-bottom-left-radius: 10px;
     display: table-cell;
     vertical-align: middle;
+    aspect-ratio: 3/4; /* Mantiene sempre questo aspect ratio */
 }
 
 .info_draftcell {
     background-color: #c1c1c1;
-    width: 70%;
+    width: 65%;
     height: 100%;
     text-align: center;
     justify-content: center;
@@ -110,7 +112,7 @@
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
-    min-height: 12vh; /* Altezza minima relativa alla viewport */
+    min-height: 10vh; /* Riduco l'altezza minima */
 }
 
 /* immagine calciatore */
@@ -121,7 +123,7 @@
     display: block;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: cover;
+    object-fit: contain; /* Cambio da cover a contain per evitare distorsioni */
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     max-width: 100%;
@@ -146,6 +148,11 @@
     height: calc(var(--grid-size) * 0.07); /* Si riduce quando la scacchiera è più grande */
 }
 
+.grid-container-enlarged ~ .table_draft_dx .foto_draftcell,
+.grid-container-enlarged ~ .table_draft_sx .foto_draftcell {
+    aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio quando la scacchiera è ingrandita */
+}
+
 /* Dimensionamento specifico per le varie risoluzioni, ma con aspect ratio costante */
 @media screen and (max-width: 1200px) {
     .table_draft_dx, .table_draft_sx {
@@ -155,6 +162,10 @@
     
     .tr-ombrata {
         height: calc(var(--grid-size) * 0.08);
+    }
+    
+    .foto_draftcell {
+        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
     }
 }
 
@@ -166,6 +177,10 @@
     
     .tr-ombrata {
         height: calc(var(--grid-size) * 0.07);
+    }
+    
+    .foto_draftcell {
+        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
     }
     
     .nome-giocatore {
@@ -183,6 +198,10 @@
         height: calc(var(--grid-size) * 0.06);
     }
     
+    .foto_draftcell {
+        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
+    }
+    
     .nome-giocatore {
         font-size: calc(var(--cell-size) * 0.15);
         padding-bottom: 15%;
@@ -198,6 +217,10 @@
     
     .tr-ombrata {
         height: calc(var(--grid-size) * 0.05);
+    }
+    
+    .foto_draftcell {
+        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
     }
 }
 

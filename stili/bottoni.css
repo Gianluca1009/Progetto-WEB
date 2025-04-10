@@ -10,23 +10,25 @@
 
 
 /*stile bottone d'inizio*/
-.start-button {
+.gioca-button {
     position: absolute;
-    width: calc(var(--grid-size) * 0.3);
-    height: calc(var(--grid-size) * 0.1);
+    width: 35%;
+    height: 20%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: calc(var(--grid-size) * 0.05);
+    font-size: calc(var(--grid-size) * 0.08);
     font-weight: bold;
+    font-family: 'Georgia', serif;
     text-align: center;
-    color: #f5deb3;
-    background: linear-gradient(to right, #0f002d, #2c0182);
-    border: 2px solid #f5deb3;
+    color: #030303;
+    background: linear-gradient(to right, #44c300, #027a16);
+    border: 2px solid #000000;
     border-radius: 10px;
     cursor: pointer;
     z-index: 100;
     transition: all 0.3s ease;
+    pointer-events: auto;
 }
 
 .pronto-button {
@@ -34,30 +36,32 @@
     height: calc(var(--grid-size) * 0.1);
     font-size: calc(var(--grid-size) * 0.05);
     font-weight: bold;
+    font-family: 'Georgia', serif;
     text-align: center;
-    color: #f5deb3;
-    background: linear-gradient(to right, #0f002d, #2c0182);
     border: 2px solid #f5deb3;
     border-radius: 10px;
     cursor: pointer;
     z-index: 100;
     transition: all 0.3s ease;
-    margin-bottom: 10%;
+    top: 50%;
     position: absolute;
+    transform: translateY(-50%);
 }
 
 .pronto-button.player1 {
-    top: -47.5%;
-    left: 50%;
+    left: 8%;
+    background: linear-gradient(to right, #ffffff, #c1c0c0);
+    color: #000000;
 }
 
 .pronto-button.player2 {
-    top: -47.5%;
-    right: 150%;
+    right: 8%;
+    color: #ffffff;
+    background: linear-gradient(to right, #333333, #000000);
 }
 
 /*hover bottone d'inizio*/
-.start-button:hover {
+.gioca-button:hover {
     transform: translate(-50%, -50%) scale(1.1);
     box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
 }
@@ -65,5 +69,5 @@
 /* Aggiungo stile hover per i bottoni pronto */
 .pronto-button:hover {
     box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
-    transform: scale(1.1);
+    transform: translateY(-50%) scale(1.1);
 }
