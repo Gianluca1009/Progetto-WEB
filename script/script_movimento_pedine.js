@@ -11,6 +11,7 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
     pedina.addEventListener("click", function(event) {
         event.stopPropagation();
 
+
         // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
         if (window.selectedImage === event.target) {
             resetHighlighted();
@@ -47,7 +48,7 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     cell.addEventListener("click", function(event) {
         if (window.selectedElement && this.tagName === "TD") {
             let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
-            
+            let div_pezzo = window.selectedElement
             // Verifica se la mossa è valida secondo le regole degli scacchi
             if (validationMove(window.selectedImage, this)) {
                 if(this.hasChildNodes() && pedinaBersaglio){    //se la cella di destinazione ha già una pedina,
@@ -57,16 +58,19 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                     */
                 }
                 this.appendChild(window.selectedElement);
+
                 //promozione del pedone se arriva alla fine della scacchiera 
                 upgrade_pedone(window.selectedImage, this);
+                //update posizione del re se cambiata
+                update_re_position(window.selectedImage, this);
                 //resetta la selezione delle mosse suggerite
                 resetSuggerimenti();
-                
-                /*
-                * check_re_sottoscacco(window.selectedImage);
-                */
-                
+                //controlla se la mossa corrente mette sottoscacco  il re dell'avversario
+
                 cambioTurno();
+
+              //highlight_re_if_sottoscacco();
+                
                 
             }
 

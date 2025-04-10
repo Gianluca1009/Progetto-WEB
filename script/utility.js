@@ -4,6 +4,8 @@ window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
 window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 window.gameStarted = false; // Controlla se il gioco è iniziato
+window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
+window.idCellReNero = "03"; //id della cella su cui c'è il re nero
 
 // ---- FUNZIONI AUSILIARIE IMPORTANTI ---- //
 
@@ -234,6 +236,20 @@ function resetHighlighted(){
     window.selectedCell.classList.remove("highlighted");
 }
 
+//Funzione che resetta la cella del re dell'avversario sottoscacco quando è il mio turno
+/*
+* fare meglio la logica di cancellazione
+*/
+function resetSottoscacco (){
+    if (turnoBianco){
+        let cella_bianca_sottoscacco = document.getElementById(window.idCellReBianco);
+        cella_bianca_sottoscacco.classList.remove("sottoscacco");
+    }else{  
+        let cella_nera_sottoscacco = document.getElementById(window.idCellReNero);
+        cella_nera_sottoscacco.classList.remove("sottoscacco");
+    }
+}
+
 // Funzione per cambiare turno
 function cambioTurno(){
     resetTimer();
@@ -256,7 +272,6 @@ function resetSelezione(){
 function upgrade_pedone(img_pedina, cella_dest){
     let cur_row = parseInt(cella_dest.id[0]);
     let div_pedina = img_pedina.parentElement;
-    console.log("dentro upgrade_pedone")
     //bianco arriva al top scacchiera
     if(div_pedina.id == "p" ){
         if(cur_row == 0){
@@ -279,37 +294,73 @@ function upgrade_pedone(img_pedina, cella_dest){
     }
 }
 
-//Funzione per controllare se l'ultima mossa fatta dall'avversario mette sotto scacco il proprio re
-function check_re_sottoscacco(img_pedina_mossa){
-    //cerco cella re avversario 
-    // valid = mossa_valida(pezzo_appena_mosso_da_me, cella_re_avversario) -> il pezzo potrebbe magiare il re
-    // if valid cella re rossa - re sottoscacco
+//Funzione update variabili window posizione re (ovvero id cella dove è posiz)
+function update_re_position (img_pezzo, new_cell_re){
+    let div_pezzo = img_pezzo.parentElement;
+    if (div_pezzo.id == "r"){
+        window.idCellReBianco = new_cell_re.id;
+    }
+    if (div_pezzo.id == "R"){
+        window.idCellReNero = new_cell_re.id;
+    }  
+}
 
-    //prendo la cella del re avversario e vedo se -> cell_re
+function highlight_re_if_sottoscacco(){
+    //se il re è sottoscacco lo evidenzio
+    console.log("turno bianco" + window.turnoBianco);
+    if(check_re_sottoscacco()){
+        if(window.turnoBianco){
+            let cella_reBianco = document.getElementById(window.idCellReBianco);
+            cella_reBianco.classList.add('sottoscacco')
+        } else{
+            let cella_reNero = document.getElementById(window.idCellReNero);
+            cella_reNero.classList.add('sottoscacco');
+        }
+    //se il re non è più sottoscacco de evidenzio 
+    }else{
+        resetSottoscacco();
+    }
+}
+
+//Funzione per controllare se l'ultima mossa fatta dall'avversario mette sotto scacco il proprio re
+function check_re_sottoscacco(){
+    //ho la cella del mio re
+    //controllo su tutti i pezzi avversari
+    //se qualcuno di questi ha una mossa valida sulla cella del mio re allora sono sottoscacco
     let sottoscacco = false;
-    for(let row = 0; row<6; row++){ 
-        for (let col = 0; col <6; col++){
-        //itero sulle celle per trovare la cella del re avversario
-            let curr_cel = document.getElementById(row+''+col);
-            let div_pezzo = curr_cel.querySelector('.pedina'); 
-            //nella cella selezionata ho un re?
-            if (curr_cel && div_pezzo){
-                //cerco il re dell'avversario
-                if(turnoBianco && div_pezzo.id == 'Q'){
-                    cell_re_avversario = curr_cel;
-                    sottoscacco = validationMove(img_pedina_mossa, cell_re_avversario);
-                    //cambia colore cella re 
-                    return;
-                }
-                if(!turnoBianco && div_pezzo.id == 'q'){
-                    cell_re_avversario = curr_cel;
-                    sottoscacco = validationMove(img_pedina_mossa, cell_re_avversario);
-                    //cambia colore cella re 
-                    return;
+
+    if (window.turnoBianco){
+       //al turno bianco controllo che il re bianco non è sottoscco dai neri
+       let cella_reBianco = document.getElementById(window.idCellReBianco);
+       let div_tutti_pezzi = document.querySelectorAll(".pedina");
+       for (let div_pezzo of div_tutti_pezzi){
+            //se è avversario controllo se può fare scacco
+            if(!areSameColor(div_pezzo.id, 'r')){
+                let img_pezzo_avversario = div_pezzo.firstChild;
+                console.log(img_pezzo_avversario);
+                if(validationMove(img_pezzo_avversario, cella_reBianco)){
+                    sottoscacco = true;
+                    return sottoscacco;
                 }
             }
-        }
+       }
+    }else{
+        //al turno nero controllo che il re nero non è sottoscco dai bianchi
+       let cella_reNero = document.getElementById(window.idCellReNero);
+       let div_tutti_pezzi = document.querySelectorAll(".pedina");
+       for (let div_pezzo of div_tutti_pezzi){
+            //se è avversario controllo se può fare scacco
+            if(!areSameColor(div_pezzo.id, 'R')){
+                let img_pezzo_avversario = div_pezzo.firstChild;
+                console.log(img_pezzo_avversario);
+                if(validationMove(img_pezzo_avversario, cella_reNero)){
+                    sottoscacco = true;
+                    return sottoscacco;
+                }
+            }
+       }
     }
+    return sottoscacco;
 }
 
 /**
