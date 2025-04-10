@@ -1,4 +1,4 @@
-function sx_draft(){
+function populate_draft(){
     // Dati dei calciatori con tutte le informazioni necessarie
     const calciatori = [
         {
@@ -66,7 +66,7 @@ function assegnaCognome(text,cognome_calciatore){
 }
 
 //funzione per gestire il drag e drop
-function DragDrop(){
+function DragDrop_draft(){
     // Memorizza i riferimenti agli event listener per poterli rimuovere
     const dragListeners = new Map();
     const dragoverListeners = new Map();
@@ -115,7 +115,7 @@ function DragDrop(){
             let div_pedina = drop_cell.querySelector('.pedina');
             
             if (div_pedina) {
-                // Crea l'elemento h1 se non esiste
+                // Crea l'elemento h1 se non esiste -cognome sotto alla pedina
                 let text = div_pedina.querySelector('text');
                 if (!text) {
                     text = document.createElement('text');
@@ -158,6 +158,6 @@ function DragDrop(){
     };
 }
 
-sx_draft();
-DragDrop(); // Inizializza il drag and drop all'avvio
+populate_draft();
+DragDrop_draft(); // Inizializza il drag and drop all'avvio
     

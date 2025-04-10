@@ -52,13 +52,22 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
             if (validationMove(window.selectedImage, this)) {
                 if(this.hasChildNodes() && pedinaBersaglio){    //se la cella di destinazione ha già una pedina,
                     this.removeChild(pedinaBersaglio);          //la rimuovo
+                    /*
+                    *CHIAMA QUI LA FUNC DI LOGICA DI MANGIATA CALCISTICA (da implement)
+                    */
                 }
                 this.appendChild(window.selectedElement);
                 //promozione del pedone se arriva alla fine della scacchiera 
                 upgrade_pedone(window.selectedImage, this);
                 //resetta la selezione delle mosse suggerite
                 resetSuggerimenti();
+                
+                /*
+                * check_re_sottoscacco(window.selectedImage);
+                */
+                
                 cambioTurno();
+                
             }
 
             // Resetta la selezione e l'evidenziazione

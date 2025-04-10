@@ -249,7 +249,10 @@ function resetSelezione(){
     window.selectedImage = null;
 }
 
-
+//promuove il pedone se arriva in fondo 
+/*
+* STILL TO_DO : chiedere ad utente il tipo di pezzo per promozione
+*/
 function upgrade_pedone(img_pedina, cella_dest){
     let cur_row = parseInt(cella_dest.id[0]);
     let div_pedina = img_pedina.parentElement;
@@ -262,11 +265,9 @@ function upgrade_pedone(img_pedina, cella_dest){
             //modifica il div con un nuovo pezzo
             div_pedina.id = pezzi[tipo].id.bianco ;
             img_pedina.src = pezzi[tipo].img.bianco;
-            
         }
-
     }
-    ////nero arriva al fondo scacchiera
+    //nero arriva al fondo scacchiera
     if(div_pedina.id == "P" ){
         if(cur_row == 5){
              //utente seleziona il nuovo
@@ -275,6 +276,39 @@ function upgrade_pedone(img_pedina, cella_dest){
              div_pedina.id = pezzi[tipo].id.nero ;
              img_pedina.src = pezzi[tipo].img.nero;
         } 
+    }
+}
+
+//Funzione per controllare se l'ultima mossa fatta dall'avversario mette sotto scacco il proprio re
+function check_re_sottoscacco(img_pedina_mossa){
+    //cerco cella re avversario 
+    // valid = mossa_valida(pezzo_appena_mosso_da_me, cella_re_avversario) -> il pezzo potrebbe magiare il re
+    // if valid cella re rossa - re sottoscacco
+
+    //prendo la cella del re avversario e vedo se -> cell_re
+    let sottoscacco = false;
+    for(let row = 0; row<6; row++){ 
+        for (let col = 0; col <6; col++){
+        //itero sulle celle per trovare la cella del re avversario
+            let curr_cel = document.getElementById(row+''+col);
+            let div_pezzo = curr_cel.querySelector('.pedina'); 
+            //nella cella selezionata ho un re?
+            if (curr_cel && div_pezzo){
+                //cerco il re dell'avversario
+                if(turnoBianco && div_pezzo.id == 'Q'){
+                    cell_re_avversario = curr_cel;
+                    sottoscacco = validationMove(img_pedina_mossa, cell_re_avversario);
+                    //cambia colore cella re 
+                    return;
+                }
+                if(!turnoBianco && div_pezzo.id == 'q'){
+                    cell_re_avversario = curr_cel;
+                    sottoscacco = validationMove(img_pedina_mossa, cell_re_avversario);
+                    //cambia colore cella re 
+                    return;
+                }
+            }
+        }
     }
 }
 
