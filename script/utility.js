@@ -297,10 +297,57 @@ function reAvvMangiato(div_pezzo_magiato){
 
 }
 
+// Funzione per rendere visibile un elemento con animazione
+function makeVisible(element) {
+    if (!element) return;
+    
+    // Rimuovi la classe hidden se presente
+    if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+    }
+    
+    // Salva lo stile di display originale se non è già stato salvato
+    if (!element.dataset.originalDisplay) {
+        element.dataset.originalDisplay = window.getComputedStyle(element).display;
+    }
+    
+    // Imposta l'opacità a 0 e il display al valore originale
+    element.style.opacity = '0';
+    element.style.display = element.dataset.originalDisplay;
+    
+    // Forza un reflow per avviare l'animazione
+    element.offsetHeight;
+    
+    // Anima l'opacità
+    element.style.transition = 'opacity 0.8s ease';
+    element.style.opacity = '1';
+}
+
+// Funzione per nascondere un elemento con animazione
+function makeHidden(element) {
+    if (!element) return;
+    
+    // Salva lo stile di display originale se non è già stato salvato
+    if (!element.dataset.originalDisplay) {
+        element.dataset.originalDisplay = window.getComputedStyle(element).display;
+    }
+    
+    // Anima l'opacità
+    element.style.transition = 'opacity 0.8s ease';
+    element.style.opacity = '0';
+    
+    // Dopo l'animazione, imposta display a none
+    setTimeout(() => {
+        element.style.display = 'none';
+    }, 800);
+}
+
 //Funzione per iniziare la preparazione del draft
 function Gioca(){
-    document.querySelector('.table_draft_dx').classList.remove('hidden');
-    document.querySelector('.table_draft_sx').classList.remove('hidden');
+    makeHidden(document.querySelector('.gioca-button'));
+    makeVisible(document.querySelector('.table_draft_dx'));
+    makeVisible(document.querySelector('.table_draft_sx'));
+
     document.querySelector('.background').classList.remove('disabled');
     document.querySelector('.grid-container').classList.remove('disabled');
     
@@ -321,14 +368,12 @@ function startGame() {
         gridContainer.classList.add('grid-container-enlarged');
     }
 
-    document.querySelector('.condition-container').classList.remove('hidden');
-    document.querySelector('.timer-text').classList.remove('hidden');    
-    document.querySelector('.progress-container').classList.remove('hidden');
-    document.querySelector('.progress-bar').classList.remove('hidden');
-    document.querySelector('.table_draft_sx').classList.add('hidden');
-    document.querySelector('.table_draft_dx').classList.add('hidden');
-    document.getElementById('player1button').classList.add('hidden');
-    document.getElementById('player2button').classList.add('hidden');
+    makeVisible(document.querySelector('.condition-container'));
+    makeVisible(document.querySelector('.timer-text'));
+    makeVisible(document.querySelector('.progress-container'));
+    makeVisible(document.querySelector('.progress-bar'));
+    makeHidden(document.querySelector('.table_draft_sx'));
+    makeHidden(document.querySelector('.table_draft_dx'));
     
     // Rimuove la classe che disabilita l'hover
     document.querySelector('.game-container').classList.remove('game-not-started');
@@ -345,3 +390,4 @@ function startGame() {
     
     startTimer();
 }
+

@@ -6,12 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const giocaButton = document.getElementById('giocaButton');
     const player1Button = document.getElementById('player1button');
     const player2Button = document.getElementById('player2button');
-    const startButton = document.getElementById('startButton');
     
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
-    player1Button.classList.add('hidden');
-    player2Button.classList.add('hidden');
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');
     
@@ -32,10 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Listener per il bottone principale Gioca
     giocaButton.addEventListener('click', () => {
-        document.querySelector('.game-container').classList.remove('disabled');
-        giocaButton.classList.add('hidden');
-        player1Button.classList.remove('hidden');
-        player2Button.classList.remove('hidden');
         Gioca(); // Prepara il draft
     });
     
