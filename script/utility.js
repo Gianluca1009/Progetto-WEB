@@ -283,11 +283,9 @@ function upgrade_pedone(img_pedina, cella_dest){
 
 //Funzione termina la partita se magio il re
 function reAvvMangiato(pedina_mangiata){
-    //ho mangiato il re
-    if (pedina_mangiata.id == 'r' || pedina_mangiata.id == 'R'){
-        window.selectedCell.appendChild(window.selectedElement);
-        //mostra la schermata di fine partita
-
+    // Verifica se la pedina mangiata esiste ed è un re
+    if (pedina_mangiata && (pedina_mangiata.id === 'r' || pedina_mangiata.id === 'R')){
+        // Mostra la schermata di fine partita
         makeVisible(document.querySelector('.game-over'));
         document.querySelector('.game-container').classList.add('game-not-started');
         return true;
