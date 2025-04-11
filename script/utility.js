@@ -288,13 +288,9 @@ function reAvvMangiato(div_pezzo_magiato){
         //logica di append pezzo attaccante al posto del re
         window.selectedCell.remove(div_pezzo_magiato); //elimina il re dalla sua cella
         window.selectedCell.appendChild(window.selectedElement); //mette la nuova pedina 
-        /*
-        * LOGICA FINE PARTITA
-        */
+        
         window.alert("Partita terminata per scacco al re");
-    
     }
-
 }
 
 // Funzione per rendere visibile un elemento con animazione
@@ -368,6 +364,8 @@ function startGame() {
         gridContainer.classList.add('grid-container-enlarged');
     }
 
+    // Gestione della visibilità dei vari elementi
+    
     makeVisible(document.querySelector('.condition-container'));
     makeVisible(document.querySelector('.timer-text'));
     makeVisible(document.querySelector('.progress-container'));

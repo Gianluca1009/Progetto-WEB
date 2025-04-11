@@ -63,12 +63,12 @@ function highlight_re_if_sottoscacco(){
         if(!window.turnoBianco){
             let cella_reNero = document.getElementById(window.idCellReNero);
             cella_reNero.classList.add('sottoscacco');
-            window.alert('player black hai messo il tuo re sottoscacco... IMPARI A GIOCARE');
+            window.alert('player black hai lasciato il tuo re sottoscacco... IMPARI A GIOCARE');
         } 
         else{
             let cella_reBianco = document.getElementById(window.idCellReBianco);
             cella_reBianco.classList.add('sottoscacco');
-            window.alert('player white hai messo il tuo re sottoscacco... IMPARI A GIOCARE');
+            window.alert('player white hai lasciato il tuo re sottoscacco... IMPARI A GIOCARE');
         }
     }
     // NOTA:  PULIZIA DELLA CELLA SOTTOSCACCO IN UPDATE_RE_POSITION
