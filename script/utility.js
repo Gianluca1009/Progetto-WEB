@@ -282,15 +282,17 @@ function upgrade_pedone(img_pedina, cella_dest){
 }
 
 //Funzione termina la partita se magio il re
-function reAvvMangiato(div_pezzo_magiato){
+function reAvvMangiato(pedina_mangiata){
     //ho mangiato il re
-    if (div_pezzo_magiato.id == 'r' || div_pezzo_magiato.id == 'R'){
-        //logica di append pezzo attaccante al posto del re
-        window.selectedCell.remove(div_pezzo_magiato); //elimina il re dalla sua cella
-        window.selectedCell.appendChild(window.selectedElement); //mette la nuova pedina 
-        
-        window.alert("Partita terminata per scacco al re");
+    if (pedina_mangiata.id == 'r' || pedina_mangiata.id == 'R'){
+        window.selectedCell.appendChild(window.selectedElement);
+        //mostra la schermata di fine partita
+
+        makeVisible(document.querySelector('.game-over'));
+        document.querySelector('.game-container').classList.add('game-not-started');
+        return true;
     }
+    return false;
 }
 
 // Funzione per rendere visibile un elemento con animazione

@@ -42,24 +42,24 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
     });
 });
 
+function mangia(pedinaBersaglio,cella_dest){
+    if(cella_dest.hasChildNodes() && pedinaBersaglio){    //se la cella di destinazione ha già una pedina,
+        cella_dest.removeChild(pedinaBersaglio);          //la rimuovo
+    }
+}
+
 // SELEZIONA LA CELLA DI DESTINAZIONE
 document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
     cell.addEventListener("click", function(event) {
         if (window.selectedElement && this.tagName === "TD") {
             let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
-            let div_pezzo = window.selectedElement
             // Verifica se la mossa è valida secondo le regole degli scacchi
             if (validationMove(window.selectedImage, this)) {
-                if(this.hasChildNodes() && pedinaBersaglio){    //se la cella di destinazione ha già una pedina,
-                    this.removeChild(pedinaBersaglio);          //la rimuovo
-                    /*
-                    *CHIAMA QUI LA FUNC DI LOGICA DI MANGIATA CALCISTICA (da implement)
-                    */
-                    //è stato magiato il re? -> temina partita
-                    reAvvMangiato(pedinaBersaglio);
-                }
+            
+                mangia(pedinaBersaglio,this); //mangia la pedina bersaglio
                 this.appendChild(window.selectedElement);
-                
+                // Verifica se il re è stato mangiato
+                reAvvMangiato(pedinaBersaglio);
                 //promozione del pedone se arriva alla fine della scacchiera 
                 upgrade_pedone(window.selectedImage, this);
                 //resetta la selezione delle mosse suggerite
