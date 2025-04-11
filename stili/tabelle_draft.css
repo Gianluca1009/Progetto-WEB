@@ -19,21 +19,21 @@
     height: calc(var(--grid-size) * 0.65);
     max-width: 30vw;
     max-height: 85%;
+    border-spacing: 0;
     background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     transform: translateY(-50%);
-    padding-top: calc(var(--grid-size) * 0.05);
 }
 
 .table_draft_dx {
-    right: 5%;
+    right: 6%;
     border: 0;
 }
 
 .table_draft_sx {
-    left: 5%;
+    left: 6%;
     border: 0;
 }
 
@@ -42,14 +42,27 @@
     width: 100%;
     height: 90%;
     border-collapse: separate;
-    border-spacing: 0 0.8rem;
-    border: none;
+    border-spacing: 0 8px; /* spazio verticale tra righe */
+    border: 0;
     display: table;
     position: relative;
     max-height: 95%;
     table-layout: fixed;
     overflow-y: auto;
     top: 0;
+}
+
+.table_draft_dx table tr:not(:last-child),
+.table_draft_sx table tr:not(:last-child) {
+    border: 2px solid #000;
+    border: 2px solid black;
+    border-radius: 12px;
+    border-radius: 10px;
+}
+
+.table_draft_dx table td,
+.table_draft_sx table td {
+    border: 1px solid #000;
 }
 
 /* Aggiungo stile per il container tbody */
@@ -61,25 +74,18 @@
 /* Stile per le righe con ombre */
 .tr-ombrata {
     cursor: default;
-    height: 33%;
+    height: 30%;
     width: 100%;
     display: table-row;
     vertical-align: middle;
     box-sizing: border-box;
-    margin-bottom: 0.5rem;
     transition: all 0.2s ease;
     position: relative;
+    margin-bottom: 2%;
 }
 
-/* Aggiungo ombre alle celle come unità */
-.tr-ombrata td {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease;
-}
-
-.tr-ombrata:hover td {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-    transform: translateY(-2px);
+.tr-ombrata:last-child {
+    margin-bottom: 0;
 }
 
 .foto_draftcell {
@@ -89,13 +95,11 @@
     text-align: center;
     justify-content: center;
     border: calc(var(--cell-size) * 0.03) solid black;
-    border-right: 0;
-    box-sizing: border-box;
+    /* border-right: calc(var(--cell-size) * 0.03) solid black; */
     position: relative;
     padding: 0;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    display: table-cell;
     vertical-align: middle;
     aspect-ratio: 3/4;
     overflow: hidden;
@@ -108,7 +112,7 @@
     text-align: center;
     justify-content: center;
     border: calc(var(--cell-size) * 0.03) solid black;
-    box-sizing: border-box;
+    border-left: 0;
     position: relative;
     padding: 0;
     border-top-right-radius: 10px;
