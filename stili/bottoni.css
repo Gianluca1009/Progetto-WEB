@@ -43,13 +43,12 @@
     cursor: pointer;
     z-index: 100;
     transition: all 0.3s ease;
-    top: 50%;
     position: absolute;
     transform: translateY(-50%);
 }
 
 .pronto-button.player1 {
-    left: 8%;
+    left: 50%;
     background: linear-gradient(to right, #ffffff, #c1c0c0);
     color: #000000;
 }
@@ -69,5 +68,5 @@
 /* Aggiungo stile hover per i bottoni pronto */
 .pronto-button:hover {
     box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
-    transform: translateY(-50%) scale(1.1);
+    transform: scale(1.1);
 }
