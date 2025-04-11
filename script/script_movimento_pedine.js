@@ -55,9 +55,11 @@ document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
                     /*
                     *CHIAMA QUI LA FUNC DI LOGICA DI MANGIATA CALCISTICA (da implement)
                     */
+                    //è stato magiato il re? -> temina partita
+                    reAvvMangiato(pedinaBersaglio);
                 }
                 this.appendChild(window.selectedElement);
-
+                
                 //promozione del pedone se arriva alla fine della scacchiera 
                 upgrade_pedone(window.selectedImage, this);
                 //resetta la selezione delle mosse suggerite

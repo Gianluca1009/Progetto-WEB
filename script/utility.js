@@ -281,6 +281,22 @@ function upgrade_pedone(img_pedina, cella_dest){
     }
 }
 
+//Funzione termina la partita se magio il re
+function reAvvMangiato(div_pezzo_magiato){
+    //ho mangiato il re
+    if (div_pezzo_magiato.id == 'r' || div_pezzo_magiato.id == 'R'){
+        //logica di append pezzo attaccante al posto del re
+        window.selectedCell.remove(div_pezzo_magiato); //elimina il re dalla sua cella
+        window.selectedCell.appendChild(window.selectedElement); //mette la nuova pedina 
+        /*
+        * LOGICA FINE PARTITA
+        */
+        window.alert("Partita terminata per scacco al re");
+    
+    }
+
+}
+
 //Funzione per iniziare la preparazione del draft
 function Gioca(){
     document.querySelector('.table_draft_dx').classList.remove('hidden');

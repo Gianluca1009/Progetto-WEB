@@ -24,8 +24,8 @@
 # To-do:
     adattabilita alla pagina/risoluzione                                                            ✅
     progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
-    pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità
-    separazione tra listener e funzioni in file separati
+    pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità           ✅
+    separazione tra listener e funzioni in file separati                                            ✅
 
 # Login-page:
     descrizione gioco e regole
@@ -35,9 +35,9 @@
     stile css
 
 # Prep-page:
-    bottone start                                                                                   
+    bottone start                                                                                   ✅
     bottone random
-    doppio bottone pronto post-draft
+    doppio bottone pronto post-draft                                                                ✅
     bottone torna alla home
     modificare tabella draft (meno celle, nomi e stats giocatori)                                   ✅ 
     drag and drop dei giocatori                                                                     ✅
@@ -45,7 +45,7 @@
     assegnare attributi ai giocatori tramite oggetti javascript
     fare query SQL in base all'url dell'immagine e popolare gli attributi di ogni pedina
     stile css
-    fare una tabella con colonne asimmetriche per il draft
+    fare una tabella con colonne asimmetriche per il draft                                          ✅
     tre righe ogni 10 secondi per poter assegnare a una pedina
 
 
@@ -62,6 +62,13 @@
     stile css
     abolire i ruoli
     far apparire dei log con statistiche ai lati della scacchiera (listener) 
+    logica scacco al re                                                                            ✅                      
+    termina partita se re mangiato                                                                  
+    logica di partita terminata
+
+    (2.0)
+    assegnazione dei punti al player vincitore 
+    mercato dei calciatori
 
 # elenco delle possibili condizioni da cercare in un database:
     1.goal fatti in carriera
