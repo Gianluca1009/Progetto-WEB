@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.table_draft_dx').classList.add('hidden');
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');
+    document.querySelector('.game-over').classList.add('hidden');
     
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');

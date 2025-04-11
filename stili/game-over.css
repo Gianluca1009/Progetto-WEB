@@ -1,0 +1,24 @@
+.game-over{
+    position: absolute;
+    width: 35%;
+    height: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4.5vh;
+    font-weight: bold;
+    font-family: 'Georgia', serif;
+    text-align: center;
+    color: #030303;
+    background: linear-gradient(to right, #dadada, #6a6a6a);
+    border: 2px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
