@@ -43,6 +43,7 @@
     cursor: pointer;
     z-index: 100;
     transition: all 0.3s ease;
+    top: 10%;
 }
 
 .pronto-button.player1 {

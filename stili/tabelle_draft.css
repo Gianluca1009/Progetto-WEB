@@ -24,7 +24,6 @@
     flex-direction: column;
     align-items: center;
     transform: translateY(-50%);
-    overflow: hidden;
     padding-top: calc(var(--grid-size) * 0.05);
 }
 
@@ -47,7 +46,6 @@
     border: none;
     display: table;
     position: relative;
-    margin-top: 40px;
     max-height: 95%;
     table-layout: fixed;
     overflow-y: auto;
@@ -63,7 +61,7 @@
 /* Stile per le righe con ombre */
 .tr-ombrata {
     cursor: default;
-    height: 26%;
+    height: 33%;
     width: 100%;
     display: table-row;
     vertical-align: middle;
@@ -157,115 +155,4 @@
     color: #000000;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     padding-bottom: 22%;
-}
-
-/* Regolazione per quando la scacchiera è ingrandita */
-.grid-container-enlarged ~ .table_draft_dx .tr-ombrata,
-.grid-container-enlarged ~ .table_draft_sx .tr-ombrata {
-    height: calc(var(--grid-size) * 0.07);
-}
-
-.grid-container-enlarged ~ .table_draft_dx .foto_draftcell,
-.grid-container-enlarged ~ .table_draft_sx .foto_draftcell {
-    aspect-ratio: 3/4;
-}
-
-/* Dimensionamento specifico per le varie risoluzioni, ma con aspect ratio costante */
-@media screen and (max-width: 1200px) {
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.38);
-        max-width: 28vw;
-    }
-    
-    .tr-ombrata {
-        height: calc(var(--grid-size) * 0.08);
-    }
-    
-    .foto_draftcell {
-        aspect-ratio: 3/4;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.35);
-        max-width: 25vw;
-    }
-    
-    .tr-ombrata {
-        height: calc(var(--grid-size) * 0.07);
-    }
-    
-    .foto_draftcell {
-        aspect-ratio: 3/4;
-    }
-    
-    .nome-giocatore {
-        font-size: calc(var(--cell-size) * 0.18);
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.3);
-        max-width: 22vw;
-    }
-    
-    .tr-ombrata {
-        height: calc(var(--grid-size) * 0.06);
-    }
-    
-    .foto_draftcell {
-        aspect-ratio: 3/4;
-    }
-    
-    .nome-giocatore {
-        font-size: calc(var(--cell-size) * 0.15);
-        padding-bottom: 15%;
-    }
-}
-
-/* Aggiunta per schermi molto piccoli */
-@media screen and (max-width: 320px) {
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.25);
-        max-width: 20vw;
-    }
-    
-    .tr-ombrata {
-        height: calc(var(--grid-size) * 0.05);
-    }
-    
-    .foto_draftcell {
-        aspect-ratio: 3/4;
-    }
-}
-
-/* Regolazioni per schermi con aspect ratio particolari */
-@media screen and (max-aspect-ratio: 4/3) {
-    .table_draft_dx, .table_draft_sx {
-        width: calc(var(--grid-size) * 0.28);
-        max-width: 25vw;
-    }
-}
-
-/* Miglioro il posizionamento del bottone pronto relativo alla tabella */
-.pronto-button {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 101;
-    margin-bottom: 0;
-}
-
-/* Per gestire l'hover correttamente */
-.pronto-button:hover {
-    top: 0;
-    transform: translateX(-50%) scale(1.1);
-}
-
-/* Rimuovo le ombre dalle singole celle */
-.foto_draftcell, .info_draftcell {
-    border-radius: 10px;
 }
