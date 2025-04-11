@@ -16,7 +16,7 @@
     table-layout: fixed;
     top: 50%;
     width: calc(var(--grid-size) * 0.4);
-    height: calc(var(--grid-size) * 0.45);
+    height: calc(var(--grid-size) * 0.65);
     max-width: 30vw;
     max-height: 85%;
     background: transparent;
@@ -24,6 +24,8 @@
     flex-direction: column;
     align-items: center;
     transform: translateY(-50%);
+    overflow: hidden;
+    padding-top: calc(var(--grid-size) * 0.05);
 }
 
 .table_draft_dx {
@@ -36,37 +38,50 @@
     border: 0;
 }
 
-/* Aggiungo stile specifico per le tabelle all'interno dei container */
+/* Posiziono specificatamente la tabella per avere spazio per il bottone in alto */
 .table_draft_dx table, .table_draft_sx table {
     width: 100%;
-    height: 100%;
+    height: 90%;
     border-collapse: separate;
-    border-spacing: 0 1rem;
+    border-spacing: 0 0.8rem;
     border: none;
     display: table;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    max-height: 100%;
+    position: relative;
+    margin-top: 40px;
+    max-height: 95%;
     table-layout: fixed;
+    overflow-y: auto;
+    top: 0;
 }
 
-/* Aggiungo stile per il contenitore dei bottoni */
-.table_draft_dx > button, .table_draft_sx > button {
-    position: absolute;
-    top: calc(50% - (var(--game-width) * 0.2 / 2) - calc(var(--grid-size) * 0.1) - 1vh);
-    left: 50%;
-    transform: translateX(-50%);
+/* Aggiungo stile per il container tbody */
+.table_draft_dx table tbody, .table_draft_sx table tbody {
+    display: table-row-group;
+    height: 100%;
 }
 
+/* Stile per le righe con ombre */
 .tr-ombrata {
     cursor: default;
-    height: 20%; /* Divido l'altezza della tabella in 3 parti uguali */
+    height: 26%;
     width: 100%;
     display: table-row;
     vertical-align: middle;
     box-sizing: border-box;
     margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+/* Aggiungo ombre alle celle come unità */
+.tr-ombrata td {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease;
+}
+
+.tr-ombrata:hover td {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
 }
 
 .foto_draftcell {
@@ -84,7 +99,8 @@
     border-bottom-left-radius: 10px;
     display: table-cell;
     vertical-align: middle;
-    aspect-ratio: 3/4; /* Mantiene sempre questo aspect ratio */
+    aspect-ratio: 3/4;
+    overflow: hidden;
 }
 
 .info_draftcell {
@@ -101,6 +117,7 @@
     border-bottom-right-radius: 10px;
     display: table-cell;
     vertical-align: middle;
+    overflow: hidden;
 }
 
 .santino-container {
@@ -112,22 +129,22 @@
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
-    min-height: 10vh; /* Riduco l'altezza minima */
+    min-height: calc(var(--grid-size) * 0.05);
 }
 
 /* immagine calciatore */
 .santino {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     margin: auto;
     display: block;
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    object-fit: contain; /* Cambio da cover a contain per evitare distorsioni */
+    transition: transform 0.3s ease;
+    object-fit: contain;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    max-width: 100%;
-    max-height: 100%;
 }
 
 .santino:hover {
@@ -145,12 +162,12 @@
 /* Regolazione per quando la scacchiera è ingrandita */
 .grid-container-enlarged ~ .table_draft_dx .tr-ombrata,
 .grid-container-enlarged ~ .table_draft_sx .tr-ombrata {
-    height: calc(var(--grid-size) * 0.07); /* Si riduce quando la scacchiera è più grande */
+    height: calc(var(--grid-size) * 0.07);
 }
 
 .grid-container-enlarged ~ .table_draft_dx .foto_draftcell,
 .grid-container-enlarged ~ .table_draft_sx .foto_draftcell {
-    aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio quando la scacchiera è ingrandita */
+    aspect-ratio: 3/4;
 }
 
 /* Dimensionamento specifico per le varie risoluzioni, ma con aspect ratio costante */
@@ -165,7 +182,7 @@
     }
     
     .foto_draftcell {
-        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
+        aspect-ratio: 3/4;
     }
 }
 
@@ -180,7 +197,7 @@
     }
     
     .foto_draftcell {
-        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
+        aspect-ratio: 3/4;
     }
     
     .nome-giocatore {
@@ -199,7 +216,7 @@
     }
     
     .foto_draftcell {
-        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
+        aspect-ratio: 3/4;
     }
     
     .nome-giocatore {
@@ -220,7 +237,7 @@
     }
     
     .foto_draftcell {
-        aspect-ratio: 3/4; /* Mantiene lo stesso aspect ratio */
+        aspect-ratio: 3/4;
     }
 }
 
@@ -230,4 +247,25 @@
         width: calc(var(--grid-size) * 0.28);
         max-width: 25vw;
     }
+}
+
+/* Miglioro il posizionamento del bottone pronto relativo alla tabella */
+.pronto-button {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 101;
+    margin-bottom: 0;
+}
+
+/* Per gestire l'hover correttamente */
+.pronto-button:hover {
+    top: 0;
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* Rimuovo le ombre dalle singole celle */
+.foto_draftcell, .info_draftcell {
+    border-radius: 10px;
 }

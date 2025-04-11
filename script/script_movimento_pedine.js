@@ -11,7 +11,6 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
     pedina.addEventListener("click", function(event) {
         event.stopPropagation();
 
-
         // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
         if (window.selectedImage === event.target) {
             resetHighlighted();

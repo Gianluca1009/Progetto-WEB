@@ -1,4 +1,3 @@
-
 /*
 *  INIZIO LOGICA DEL RE IN SCACCO
 */
@@ -8,7 +7,7 @@ window.idCellReNero = "03"; //id della cella su cui c'è il re nero
 
 //Funzione update variabili window posizione re (ovvero id cella dove è posiz)
 // + pulisce la vecchia cella del re se sottoscacco
-function update_re_position (img_pezzo, new_cell_re){
+function update_re_position(img_pezzo, new_cell_re){
     //prima di cambiare posizione salvo la vecchia posiz del re
     let old_king_cell = (window.turnoBianco)? document.getElementById(window.idCellReBianco) : document.getElementById(window.idCellReNero);
     let div_pezzo = img_pezzo.parentElement;
@@ -140,7 +139,6 @@ function check_mio_re_sottoscacco(){
             //se è avversario controllo se può fare scacco
             if(!areSameColor(div_pezzo.id, 'R')){
                 let img_pezzo_avversario = div_pezzo.firstChild;
-
                 if(validationMove(img_pezzo_avversario, cella_reNero)){
                     sottscacco = true;
                     return sottscacco;
