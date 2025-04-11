@@ -24,7 +24,7 @@
  * .hidden - classe per nascondere un elemento
  */
  
-.grid-container, .tooltip, .tr-ombrata, .condition-container, .timer-container {
+.grid-container, .tooltip, .condition-container, .timer-container {
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 
