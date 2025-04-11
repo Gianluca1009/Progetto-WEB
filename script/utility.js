@@ -389,3 +389,7 @@ function startGame() {
     startTimer();
 }
 
+function restartGame(){
+    window.location.reload();
+}
+

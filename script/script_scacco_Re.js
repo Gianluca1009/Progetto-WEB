@@ -65,12 +65,14 @@ function highlight_re_if_sottoscacco(){
             cella_reNero.classList.add('sottoscacco');
             makeVisible(document.querySelector('.game-over'));
             document.querySelector('.game-container').classList.add('game-not-started');
+            setTimeout(restartGame, 3000);
         } 
         else{
             let cella_reBianco = document.getElementById(window.idCellReBianco);
             cella_reBianco.classList.add('sottoscacco');
             makeVisible(document.querySelector('.game-over'));
             document.querySelector('.game-container').classList.add('game-not-started');
+            setTimeout(restartGame, 3000);
         }
     }
     // NOTA:  PULIZIA DELLA CELLA SOTTOSCACCO IN UPDATE_RE_POSITION
