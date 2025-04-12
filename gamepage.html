@@ -46,11 +46,6 @@
 
         <!-- BOTTONE INIZIO GIOCO -->
         <button id="giocaButton" class="gioca-button">INIZIA A GIOCARE</button>
-
-        <!-- CONTAINER GAME OVER -->
-        <div class="game-over">PARTITA TERMINATA
-            <button id="restartButton" class="restart-button">RIGIOCA</button>
-        </div>
         
         <!-- TABELLA DRAFT SX -->
         <div class="table_draft_sx">
@@ -98,10 +93,14 @@
             <h1 class="condition-title" id="condition"></h1>
         </div>
 
-        <div id="grid-container" class="grid-container" z-index="1">
+        <!-- GRIGLIA SCACCHIERA -->
 
-            <!-- GRIGLIA SCACCHIERA -->
-        
+        <div id="grid-container" class="grid-container" z-index="1">
+            
+            <!-- CONTAINER GAME OVER -->
+            <div class="game-over">PARTITA TERMINATA
+                <button id="restartButton" class="restart-button">RIGIOCA</button>
+            </div>
             <table class = 'scacchiera'>
                 <tbody>
                     <tr>
