@@ -1,17 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap'); */
 
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    height: 100vh;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     position: relative;
     overflow: hidden;
+    padding: 1rem;
 }
 
 body::before {
@@ -24,82 +29,128 @@ body::before {
     pointer-events: none;
 }
 
-.container {
-    text-align: center;
-    padding: 3rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    z-index: 1;
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
-}
-
-.soccer-icon {
-    font-size: 5rem;
-    margin-bottom: 1.5rem;
-    animation: bounce 2s infinite;
-}
-
-.login-btn {
-    display: inline-block;
-    padding: 1.2rem 2.5rem;
-    font-size: 1.3rem;
-    color: white;
-    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: bold;
-}
-
-.login-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #ff8e8e, #ff6b6b);
-}
-
 .field-lines {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
+    background: #2d5a27;
+    opacity: 0.1;
+    z-index: 1;
 }
 
 .field-lines::before {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
 }
 
 .field-lines::after {
     content: '';
     position: absolute;
-    width: 2px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.container {
+    display: flex;
+    z-index: 2;
+    text-align: center;
+    width: 40%;
+    height: 70vh;
+    background: rgba(94, 163, 243, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    /* backdrop-filter: blur(10px); */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y:hidden;
+}
+
+.soccer-icon {
+    font-size: clamp(3rem, 8vw, 4rem);
+    margin-bottom: 0.5rem;
+    animation: bounce 2s infinite;
+}
+
+.container h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(45deg, #4a01de, #2c0182);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size:100%;
+    color: #f5deb3;
+    margin-bottom: 0.5rem;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.button-container {
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* distribuisce bene i bottoni */
+    width: 60%;
+    height:60%;
+    gap: 0.5rem;
+    margin-block: auto;
+}
+
+.login-btn {
+    display: flex;
+    width: 100%;
+    padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2rem);
+    background: linear-gradient(45deg, #4a01de, #2c0182);
+    color: #f5deb3;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+}
+
+.login-btn:hover::after {
+    transform: translateX(100%);
 }
 
 @keyframes bounce {
@@ -107,9 +158,3 @@ h1 {
     50% { transform: translateY(-20px); }
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-style: italic;
-}
