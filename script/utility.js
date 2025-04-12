@@ -342,6 +342,35 @@ function makeHidden(element) {
     }, 800);
 }
 
+// Funzione per scrollare la pagina verso il game container
+function scrollToGameContainer(){
+    const gameContainer = document.querySelector('.game-container');
+    setTimeout(() => {
+        const startPosition = window.pageYOffset;
+        const endPosition = gameContainer.offsetTop - (window.innerHeight - gameContainer.offsetHeight) / 2;
+        const distance = endPosition - startPosition;
+        const duration = 1000; // 1 secondo
+        let startTime = null;
+
+        function scrollStep(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = timestamp - startTime;
+            const percentage = Math.min(progress / duration, 1);
+            
+            // Funzione di easing per un movimento più naturale
+            const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+            const currentPosition = startPosition + (distance * easeInOutCubic(percentage));
+            
+            window.scrollTo(0, currentPosition);
+            
+            if (progress < duration) {
+                window.requestAnimationFrame(scrollStep);
+            }
+        }
+
+        window.requestAnimationFrame(scrollStep);
+    }, 10); // Piccolo ritardo prima di iniziare lo scroll
+}
 
 
 

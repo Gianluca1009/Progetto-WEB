@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const player1Button = document.getElementById('player1button');
     const player2Button = document.getElementById('player2button');
     const restartButton = document.getElementById('restartButton');
-
+    
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
     document.querySelector('.background').classList.add('disabled');
@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Listener per il bottone principale Gioca
     giocaButton.addEventListener('click', () => {
-        Gioca(); // Prepara il draft
+        Gioca();                    // Prepara il draft
+        scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
     });
     
     // Listener per il bottone del giocatore 1
