@@ -61,10 +61,10 @@
     generalizzare lo script di creazione pedine                                                     ✅
     stile css
     abolire i ruoli
-    far apparire dei log con statistiche ai lati della scacchiera (listener) 
-    logica scacco al re                                                                            ✅                      
-    termina partita se re mangiato                                                                  
-    logica di partita terminata
+    far apparire dei log con statistiche ai lati della scacchi
+    termina partita se re mangiato                                                                  ✅
+    logica di partita terminata (funzione endgame)
+    funzione rigioca                                                                                ✅
 
     (2.0)
     assegnazione dei punti al player vincitore 

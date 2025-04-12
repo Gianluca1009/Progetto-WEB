@@ -1,4 +1,5 @@
 // ---- VARIABILI IMPORTANTI PER LA GESTIONE DEL GIOCO ---- //
+
 window.selectedElement = null; // div pezzo selezionato
 window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
@@ -7,7 +8,10 @@ window.gameStarted = false; // Controlla se il gioco è iniziato
 
 
 
-// ---- FUNZIONI AUSILIARIE IMPORTANTI ---- //
+
+//
+// ---- FUNZIONI AUSILIARIE PER LE PEDINE ---- //
+//
 
 // Funzione per verificare se una pedina può essere mossa in quel turno
 function canMovePiece(pieceId) {
@@ -167,6 +171,43 @@ function validationMove(img, dest_cell){
     return valid;
 }
 
+// Funzione per cambiare turno
+function cambioTurno(){
+    resetTimer();
+    window.turnoBianco = !window.turnoBianco;
+    aggiornaStatoPedine();
+    updateCondition();
+}
+
+//promuove il pedone se arriva in fondo 
+/*
+* STILL TO_DO : chiedere ad utente il tipo di pezzo per promozione
+*/
+function upgrade_pedone(img_pedina, cella_dest){
+    let cur_row = parseInt(cella_dest.id[0]);
+    let div_pedina = img_pedina.parentElement;
+    //bianco arriva al top scacchiera
+    if(div_pedina.id == "p" ){
+        if(cur_row == 0){
+            //utente seleziona il nuovo
+            tipo = 'regina'
+            //modifica il div con un nuovo pezzo
+            div_pedina.id = pezzi[tipo].id.bianco ;
+            img_pedina.src = pezzi[tipo].img.bianco;
+        }
+    }
+    //nero arriva al fondo scacchiera
+    if(div_pedina.id == "P" ){
+        if(cur_row == 5){
+             //utente seleziona il nuovo
+             tipo = 'regina'
+             //modifica il div con un nuovo pezzo
+             div_pedina.id = pezzi[tipo].id.nero ;
+             img_pedina.src = pezzi[tipo].img.nero;
+        } 
+    }
+}
+
 // Funzione per attivare l'hover delle pedine spostabili nel turno
 function aggiornaStatoPedine() {
     document.querySelectorAll(".pedina").forEach(pedina => {
@@ -216,6 +257,13 @@ function SuggerisciMosse() {
     }
 }
 
+
+
+
+//
+// ---- FUNZIONI AUSILIARIE PER LA GRAFICA ---- //
+//
+
 // Funzione per resettare i suggerimenti
 function resetSuggerimenti(){
     document.querySelectorAll('.available-move').forEach(cell => {
@@ -236,61 +284,11 @@ function resetHighlighted(){
     window.selectedCell.classList.remove("highlighted");
 }
 
-
-// Funzione per cambiare turno
-function cambioTurno(){
-    resetTimer();
-    window.turnoBianco = !window.turnoBianco;
-    aggiornaStatoPedine();
-    updateCondition();
-}
-
 // Funzione per resettare la selezione degli elementi image,element,cell
 function resetSelezione(){
     window.selectedElement = null;
     window.selectedCell = null;
     window.selectedImage = null;
-}
-
-//promuove il pedone se arriva in fondo 
-/*
-* STILL TO_DO : chiedere ad utente il tipo di pezzo per promozione
-*/
-function upgrade_pedone(img_pedina, cella_dest){
-    let cur_row = parseInt(cella_dest.id[0]);
-    let div_pedina = img_pedina.parentElement;
-    //bianco arriva al top scacchiera
-    if(div_pedina.id == "p" ){
-        if(cur_row == 0){
-            //utente seleziona il nuovo
-            tipo = 'regina'
-            //modifica il div con un nuovo pezzo
-            div_pedina.id = pezzi[tipo].id.bianco ;
-            img_pedina.src = pezzi[tipo].img.bianco;
-        }
-    }
-    //nero arriva al fondo scacchiera
-    if(div_pedina.id == "P" ){
-        if(cur_row == 5){
-             //utente seleziona il nuovo
-             tipo = 'regina'
-             //modifica il div con un nuovo pezzo
-             div_pedina.id = pezzi[tipo].id.nero ;
-             img_pedina.src = pezzi[tipo].img.nero;
-        } 
-    }
-}
-
-//Funzione termina la partita se magio il re
-function reAvvMangiato(pedina_mangiata){
-    // Verifica se la pedina mangiata esiste ed è un re
-    if (pedina_mangiata && (pedina_mangiata.id === 'r' || pedina_mangiata.id === 'R')){
-        // Mostra la schermata di fine partita
-        makeVisible(document.querySelector('.game-over'));
-        document.querySelector('.game-container').classList.add('game-not-started');
-        return true;
-    }
-    return false;
 }
 
 // Funzione per rendere visibile un elemento con animazione
@@ -337,6 +335,15 @@ function makeHidden(element) {
         element.style.display = 'none';
     }, 800);
 }
+
+
+
+
+
+
+// 
+//---- FUNZIONI PER LA GESTIONE DELLA PARTITA ----//
+// 
 
 //Funzione per iniziare la preparazione del draft
 function Gioca(){
@@ -389,6 +396,17 @@ function startGame() {
     startTimer();
 }
 
+// Funzione per terminare la partita
+function endGame(){
+    window.gameStarted = false;
+    freezeTimer();
+    makeVisible(document.querySelector('.game-over'));
+    makeHidden(document.querySelector('.progress-container'));
+    makeHidden(document.querySelector('.condition-container'));
+    document.querySelector('.game-container').classList.add('game-not-started');
+}
+
+// Funzione per rigiocare la partita
 function restartGame(){
     window.location.reload();
 }

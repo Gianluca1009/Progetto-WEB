@@ -82,3 +82,11 @@ function resetTimer() {
         startTimer();
     });
 }
+
+// Funzione per freezare il timer
+function freezeTimer() {
+    clearInterval(timerId);
+    timerId = null;
+}
+
+
