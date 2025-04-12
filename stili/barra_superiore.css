@@ -28,7 +28,7 @@
 .title-container {
     position: relative;
     width: 100%;
-    height: 25%;
+    height: 15%;
     box-sizing: border-box;
     margin: 0;
     padding: calc(var(--cell-size) * 0.5);
@@ -76,6 +76,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
 
 /*stile bottone info*/
@@ -87,6 +88,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
+    cursor: pointer;
 }
 
 .tooltip {

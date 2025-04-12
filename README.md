@@ -23,14 +23,14 @@
 
 # To-do:
     adattabilita alla pagina/risoluzione                                                            ✅
-    progetto in tre(/due) pagine (login + info/(preparazione partita/pagina di gioco))
+    progetto in tre due pagine (login + info/(preparazione partita/pagina di gioco))
     pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità           ✅
     separazione tra listener e funzioni in file separati                                            ✅
 
 # Login-page:
     descrizione gioco e regole
     immagini
-    capire come fare la parte di login
+    login / account
     navigation bar informativa                                                                      ✅
     stile css
 
@@ -39,6 +39,7 @@
     bottone random
     doppio bottone pronto post-draft                                                                ✅
     bottone torna alla home
+    ricarica la pagina cliccando il titolo                                                          ✅
     modificare tabella draft (meno celle, nomi e stats giocatori)                                   ✅ 
     drag and drop dei giocatori                                                                     ✅
     posizionare cognome del giocatore sotto la pedina                                               ✅

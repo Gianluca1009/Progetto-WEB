@@ -76,4 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
     restartButton.addEventListener('click', () => {
         restartGame();
     });
+
+    //Listener sul titolo della pagina
+    document.querySelector('.title').addEventListener('click', () => {
+        window.location.reload();
+    });
 });
