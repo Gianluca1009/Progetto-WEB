@@ -214,8 +214,10 @@ function aggiornaStatoPedine() {
         if ((window.turnoBianco && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
             (!window.turnoBianco && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
             pedina.classList.remove("no-hover");
+            pedina.style.cursor = 'pointer';
         } else {
             pedina.classList.add("no-hover");
+            pedina.style.cursor = 'default';
         }
     });
 
@@ -228,6 +230,10 @@ function aggiornaStatoPedine() {
         scacchiera.classList.remove('turno-bianco');
         scacchiera.classList.add('turno-nero');
     }
+
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.style.cursor = 'pointer';
+    });
 }
 
 // Funzione per evidenziare le caselle disponibili
@@ -353,12 +359,16 @@ function Gioca(){
 
     document.querySelector('.background').classList.remove('disabled');
     document.querySelector('.grid-container').classList.remove('disabled');
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.style.cursor = 'default';
+    });
     
 }
 
 // Funzione per avviare il gioco
 function startGame() {
     window.gameStarted = true;
+    aggiornaStatoPedine();
     
     // Disabilita il drag and drop
     if (window.disableDragDrop) {
@@ -379,6 +389,7 @@ function startGame() {
     makeVisible(document.querySelector('.progress-bar'));
     makeHidden(document.querySelector('.table_draft_sx'));
     makeHidden(document.querySelector('.table_draft_dx'));
+
     
     // Rimuove la classe che disabilita l'hover
     document.querySelector('.game-container').classList.remove('game-not-started');

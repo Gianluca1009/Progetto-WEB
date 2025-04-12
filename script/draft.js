@@ -81,10 +81,19 @@ function DragDrop_draft(){
                 return false;
             }
             event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
+            document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
         };
         
         santino_img.addEventListener("dragstart", dragstartListener);
         dragListeners.set(santino_img, dragstartListener);
+
+        // Aggiungi un listener per il dragend per ripristinare il cursore
+        const dragendListener = function(event) {
+            document.body.style.cursor = 'default';  // Ripristina il cursore default
+        };
+        
+        santino_img.addEventListener("dragend", dragendListener);
+        dragListeners.set(santino_img, dragendListener);
     });
 
     //selziona tutte le caselle pezzi -> drop zone

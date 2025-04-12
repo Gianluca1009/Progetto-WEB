@@ -7,7 +7,7 @@
  * .nome-giocatore - nome del giocatore
  */
 
-/*stile pedine*/
+ /* STILE CLASSE PEDINA BASE NUDA E CRUDA */
 .pedina {
     display: flex;
     justify-content: center;
