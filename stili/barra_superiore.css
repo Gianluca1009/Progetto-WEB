@@ -11,6 +11,11 @@
  * .tooltip - tooltip della barra superiore
  */
 
+ :root {
+    --grid-size: 31.25vw;
+    --cell-size: calc(var(--grid-size) / 6);
+}
+
 .intestazione {
     display: block;
     position: relative;
