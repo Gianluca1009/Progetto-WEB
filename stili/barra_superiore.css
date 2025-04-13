@@ -71,7 +71,7 @@
 /*stile titolo*/
 .title {
     text-align: center;
-    font-size: calc(var(--cell-size) * 1.06);
+    font-size: calc(var(--cell-size) * 0.95);
     font-weight: bold;
     margin: 0;
     color: #f5deb3;

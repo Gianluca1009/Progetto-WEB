@@ -21,14 +21,21 @@ body {
     height:90%;
     /* width: 20%; */
     background-color: #447dcd;
-    border-radius: 60px;
-    border:10px solid #f5deb3;
+    border-radius: 30px;
+    border:5px solid #f5deb3;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-decoration: none;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     aspect-ratio: 3/4;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {  
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* 🖼️ Immagine: 85% */
@@ -36,7 +43,7 @@ body {
     height: 85%;
     width: 100%;
     object-fit: cover;
-    border-bottom:10px solid #f5deb3;
+    border-bottom:5px solid #f5deb3;
 }
 
 /* 📝 Testo: 15% e centrato */
@@ -54,7 +61,4 @@ body {
     font-family: 'Georgia', serif;
 }
 
-h2:hover {
-    cursor: pointer;
-}
 
