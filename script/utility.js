@@ -263,6 +263,19 @@ function SuggerisciMosse() {
     }
 }
 
+// Funzione per ripristinare le posizioni delle pedine
+function resetPedine(){
+    // Rimuove tutte le pedine esistenti
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.remove();
+    });
+
+    // Riposiziona le pedine usando la funzione esistente
+    posizion_iniziali();
+
+    // Aggiorna lo stato delle pedine
+    aggiornaStatoPedine();
+}
 
 
 
@@ -447,7 +460,13 @@ function endGame(){
 }
 
 // Funzione per rigiocare la partita
-function restartGame(){
+function restartGame() {
+    //to do
+}
+
+// Funzione per gestire il ripristino della pagina
+function inizializzaPagina() {
     window.location.reload();
 }
+
 

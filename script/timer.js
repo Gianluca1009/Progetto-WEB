@@ -53,6 +53,13 @@ function updateTimer() {
 // Funzione per avviare il timer
 function startTimer() {
     if (timerId === null && gameStarted) {
+        // Se il timer non è a 59 secondi, resettalo
+        if (window.timeLeft !== 59) {
+            window.timeLeft = 59;
+            const timerDisplay = document.getElementById('timer');
+            timerDisplay.textContent = '0:59';
+        }
+
         const progressBar = document.querySelector('.progress-bar');
         progressBar.classList.add('instant');
         progressBar.style.width = '100%';
