@@ -25,7 +25,9 @@
 body {
     height: 100%;
     background: linear-gradient(to right, #0f002d, #2c0182, #3a0ca3, #7209b7);
+    scroll-behavior: none;
 }
+
 .card-container {
     display: flex;
     justify-content: center; /* centra orizzontalmente */

@@ -80,6 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Listener sul titolo della pagina
     document.querySelector('.title').addEventListener('click', () => {
-        window.location.reload();
+        inizializzaPagina();
     });
 });
