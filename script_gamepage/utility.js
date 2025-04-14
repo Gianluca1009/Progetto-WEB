@@ -443,7 +443,7 @@ function startGame() {
     
     // Abilita il movimento delle pedine
     window.canMovePiece = function(pieceId) {
-        return gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
+        return window.gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
     };
     
     startTimer();
@@ -461,7 +461,13 @@ function endGame(){
 
 // Funzione per rigiocare la partita
 function restartGame() {
-    //to do
+    resetSottoscacco();
+    resetPedine();
+    window.turnoBianco = true; // Reset del turno al bianco
+    window.gameStarted = false; // Reset dello stato del gioco
+    document.querySelector('.game-container').classList.remove('game-not-started');
+    makeHidden(document.querySelector('.game-over'));
+    startGame();
 }
 
 // Funzione per cambiare il draft
