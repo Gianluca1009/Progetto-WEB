@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Se il giocatore era già pronto, torna indietro
             window.player1Ready = false;
             player1Button.disabled = false;
-            player1Button.style.color = "black";
+            player1Button.style.background = "linear-gradient(to right, #cbcbcb, #a4a4a4)";
         } else {
             // Se il giocatore non era pronto, imposta come pronto
             window.player1Ready = true;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Se il giocatore era già pronto, torna indietro
             window.player2Ready = false;
             player2Button.disabled = false;
-            player2Button.style.color = "white";
+            player2Button.style.background = "linear-gradient(to right, #cbcbcb, #a4a4a4)";
         } else {
             // Se il giocatore non era pronto, imposta come pronto
             window.player2Ready = true;

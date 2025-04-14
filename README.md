@@ -61,7 +61,7 @@
     fare query SQL in base all'url dell'immagine e popolare gli attributi di ogni pedina
     stile css
     fare una tabella con colonne asimmetriche per il draft                                          ✅
-    tre righe ogni 10 secondi per poter assegnare a una pedina
+    tre righe ogni 10 secondi per poter assegnare un giocatore a una pedina
 
     mosse valide                                                                                    ✅
     consiglia-mosse                                                                                 ✅
