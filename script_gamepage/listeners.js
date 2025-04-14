@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const giocaButton = document.getElementById('giocaButton');
     const player1Button = document.getElementById('player1button');
     const player2Button = document.getElementById('player2button');
-    const restartButton = document.getElementById('restartButton');
+    const restartGameButton = document.getElementById('restartButton');
+    const restartDraftButton = document.getElementById('restartDraftButton');
+    const goHomeButton = document.getElementById('goHomeButton');
     
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
@@ -69,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // LISTENER PER IL BOTTONE DI RIPARTENZA
-    restartButton.addEventListener('click', () => {
+    restartGameButton.addEventListener('click', () => {
         restartGame();
         window.location.reload();
 
