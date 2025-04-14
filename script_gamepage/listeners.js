@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const player2Button = document.getElementById('player2button');
     const restartGameButton = document.getElementById('restartButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
-    const goHomeButton = document.getElementById('goHomeButton'); //prova gianluca
+    const goHomeButton = document.getElementById('goHomeButton');
     
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
