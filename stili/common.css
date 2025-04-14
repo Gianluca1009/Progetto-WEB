@@ -13,15 +13,12 @@
 
 /* Elenco delle classi CSS in questo file:
 
- * .grid-container - contenitore della griglia
- * .tooltip - tooltip
- * .tr-ombrata - riga ombrata
- * .condition-container - contenitore delle condizioni
- * .timer-container - contenitore del timer
  * table - tabella
  * body - corpo del documento
  * .no-hover - classe per disabilitare il hover
  * .hidden - classe per nascondere un elemento
+ * .disabled - classe per disabilitare un elemento
+ * .game-not-started - classe per il gioco non iniziato
  */
  
 .grid-container, .tooltip, .condition-container, .timer-container, .game-over , 

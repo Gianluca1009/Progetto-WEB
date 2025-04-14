@@ -3,7 +3,7 @@
 // Inizializza il gioco quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {
     
-    posizion_iniziali();
+    StartPosition();
 
     // Riferimenti ai bottoni
     const giocaButton = document.getElementById('giocaButton');

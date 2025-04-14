@@ -23,8 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Calcola la larghezza del game-container
             const gameWidth = gameContainer.offsetWidth;
             
-            // Calcola la larghezza degli sfondi: (larghezza game - larghezza grid) / 2
-            const sideWidth = (gameWidth - gridWidth) / 2;
+            // Calcola lo spazio disponibile per lato
+            const availableSideSpace = (gameWidth - gridWidth) / 2;
+            
+            // Imposta la larghezza massima al 22% del game container
+            const maxWidth = gameWidth * 0.22;
+            
+            // Usa il valore più piccolo tra lo spazio disponibile e la larghezza massima
+            const sideWidth = Math.min(availableSideSpace, maxWidth);
             
             // Imposta le larghezze degli sfondi
             sfondoSx.style.width = sideWidth + 'px';
@@ -34,10 +40,59 @@ document.addEventListener('DOMContentLoaded', function() {
             sfondoSx.style.left = '0px';
             sfondoDx.style.right = '0px';
             
+            // Adatta dimensioni delle tabelle interne
+            const tableDraftSx = document.querySelector('.table_draft_sx');
+            const tableDraftDx = document.querySelector('.table_draft_dx');
+            
+            if (tableDraftSx && tableDraftDx) {
+                // Imposta la larghezza delle tabelle all'interno degli sfondi
+                // Ridotta al 75% della larghezza dello sfondo, minimo 10px
+                const tableWidth = Math.max(sideWidth * 0.75, 10);
+                
+                tableDraftSx.style.width = tableWidth + 'px';
+                tableDraftDx.style.width = tableWidth + 'px';
+                
+                // Centra le tabelle negli sfondi
+                tableDraftSx.style.left = '50%';
+                tableDraftSx.style.transform = 'translateX(-50%) translateY(-50%)';
+                tableDraftDx.style.right = '50%';
+                tableDraftDx.style.transform = 'translateX(50%) translateY(-50%)';
+                
+                // Aggiorno larghezza di tabelle e bottoni
+                adjustTablesAndButtons(tableDraftSx, tableWidth);
+                adjustTablesAndButtons(tableDraftDx, tableWidth);
+            }
+            
             // Debug
             console.log('Grid Width:', gridWidth);
             console.log('Game Width:', gameWidth);
-            console.log('Side Width:', sideWidth);
+            console.log('Available Side Space:', availableSideSpace);
+            console.log('Max Width (22%):', maxWidth);
+            console.log('Final Side Width:', sideWidth);
+        }
+    }
+    
+    // Funzione per adattare tabelle e bottoni
+    function adjustTablesAndButtons(tableElement, tableWidth) {
+        // Aggiusta i bottoni
+        const buttons = tableElement.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.style.width = (tableWidth * 0.7) + 'px'; // 70% della larghezza della tabella
+            button.style.maxWidth = '100%';
+        });
+        
+        // Aggiusta la tabella interna
+        const table = tableElement.querySelector('table');
+        if (table) {
+            table.style.width = '95%';
+            table.style.maxWidth = '95%';
+            
+            // Assicura che le celle non sfondino
+            const cells = table.querySelectorAll('td');
+            cells.forEach(cell => {
+                cell.style.maxWidth = '100%';
+                cell.style.overflow = 'hidden';
+            });
         }
     }
     

@@ -218,7 +218,7 @@ function resetPedine(){
     window.idCellReNero = "03"; //id della cella su cui c'è il re nero
 
     // Riposiziona le pedine usando la funzione esistente
-    posizion_iniziali();
+    StartPosition();
 
     // Aggiorna lo stato delle pedine
     aggiornaStatoPedine();

@@ -1,3 +1,12 @@
+
+/* Elenco delle classi CSS in questo file:
+
+ * .game-over - div del game over
+ * .bottoni-gameover-container - container dei bottoni del game over
+ * .bottoni-gameover - bottoni del game over
+ * .bottoni-gameover:hover - hover dei bottoni del game over
+ */
+
 .game-over{
     position: absolute;
     width: 75%;

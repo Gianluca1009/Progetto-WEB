@@ -1,3 +1,13 @@
+
+/* Elenco delle classi CSS in questo file:
+
+ * .card-container - container delle card
+ * .card - card
+ * .card:hover - hover della card
+ * .card img - immagine della card
+ * .card h2 - testo della card
+ */
+
 body {
     background: linear-gradient(to right, #0f002d, #2c0182, #3a0ca3, #7209b7);
     margin: 0;

@@ -71,7 +71,7 @@ const pezzi = {
     }
 };
 
-function posizion_iniziali() {
+function StartPosition() {
     // Configurazione delle pedine
     //vedi glob var pezzi
 

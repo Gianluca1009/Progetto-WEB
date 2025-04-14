@@ -10,8 +10,6 @@
 
  * .game-container - contenitore del gioco
  * .background - immagine di sfondo
- * .no-hover - classe per disabilitare il hover
- * .hidden - classe per nascondere un elemento
  */
 
 .game-container {
@@ -33,11 +31,6 @@
     max-width: 100%;
     max-height: 100%;
     aspect-ratio: 16/9;
-}
-
-.game-not-started {
-    cursor: default;
-    pointer-events: none;
 }
 
 .background {

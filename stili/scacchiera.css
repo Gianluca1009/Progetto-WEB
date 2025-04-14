@@ -1,11 +1,12 @@
 /* Elenco delle classi CSS in questo file:
 
  * .grid-container - contenitore della griglia
+ * .grid-container-enlarged - contenitore ingrandito per il gioco
  * .scacchiera - tabella class = 'scacchiera'
  * .greencell - cella verde
  * .creamcell - cella crema
  * .highlighted - cella evidenziata
- * .grid-container-enlarged - contenitore ingrandito per il gioco
+ * .sottoscacco - cella sottoscacca
  */
 
 /*stile div padre di scacchiera*/

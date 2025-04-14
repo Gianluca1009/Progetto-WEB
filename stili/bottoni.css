@@ -6,6 +6,9 @@
 
  * .start-button - bottone d'inizio
  * .start-button:hover - hover del bottone d'inizio
+ * .random-button - bottone casuale
+ * .pronto-button - bottone pronto
+ * .pronto-button:hover - hover del bottone pronto
  */
 
 
@@ -73,7 +76,7 @@
 }
 
 /* Aggiungo stile hover per i bottoni pronto */
-.pronto-button:hover, .pronto-button:focus {
-    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-    transform: translateY(-0.25em);
+.pronto-button:hover {
+    box-shadow: 0 0 20px #027a16;
 }
+

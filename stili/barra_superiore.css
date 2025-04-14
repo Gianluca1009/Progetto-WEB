@@ -9,6 +9,9 @@
  * .title - titolo della barra superiore
  * .info - info della barra superiore
  * .tooltip - tooltip della barra superiore
+ * .tooltip:hover - hover del tooltip
+ * .info:hover - hover dell'info
+ 
  */
 
  :root {
