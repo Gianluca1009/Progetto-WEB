@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');
     document.querySelector('.game-over').classList.add('hidden');
+    document.getElementById("div_ped_promotion").classList.add('hidden');
     
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');
