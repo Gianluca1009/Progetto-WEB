@@ -12,19 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartGameButton = document.getElementById('restartButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
     const goHomeButton = document.getElementById('goHomeButton');
+
+    //ELEMENTI DA NASCONDERE ALL'INIZIO
     
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');
     document.querySelector('.game-over').classList.add('hidden');
-    document.getElementById("div_ped_promotion").classList.add('hidden');
-    
+    document.getElementById('div_ped_promotion').classList.add('hidden');
+
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');
 
     
-    // Variabili per tenere traccia dello stato dei bottoni
+    // Variabili per tenere traccia dello stato dei bottoni pronto
     window.player1Ready = false;
     window.player2Ready = false;
     
