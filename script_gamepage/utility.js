@@ -487,7 +487,6 @@ function restartGame() {
 // Funzione per cambiare il draft
 function restartDraft(){
 
-    document.
     //avvio il draft
     startDraft();
 
@@ -498,13 +497,12 @@ function restartDraft(){
     const popUp = document.querySelector('.game-over');
     makeHidden(popUp);
 
-    //resetto il colore delle celle
-    resetSottoscacco();
-
     //resetto i bottoni pronto
     resetProntoButton();
 
-    document.querySelector(".game-container").classList.remove(".game-not-started");
+    resetSottoscacco();
+
+    document.querySelector(".game-container").classList.remove('game-not-started');
 }
 
 // Funzione per tornare alla home
@@ -512,9 +510,5 @@ function goHome(){
     window.location.href = 'index.html';
 }
 
-// Funzione per gestire il ripristino della pagina
-function inizializzaPagina() {
-    window.location.reload();
-}
 
 
