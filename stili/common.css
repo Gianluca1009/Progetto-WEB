@@ -55,3 +55,8 @@ body {
     filter: grayscale(100%);
     transition: all 1s ease;
 }
+
+.game-not-started {
+    cursor: default;
+    pointer-events: none;
+}

@@ -35,7 +35,7 @@
     aspect-ratio: 16/9;
 }
 
-.game-container.game-not-started {
+.game-not-started {
     cursor: default;
     pointer-events: none;
 }

@@ -25,7 +25,6 @@ function ListenerMovimentoPedine(){
                 resetHighlighted();
                 resetSuggerimenti();
             }
-            console.log("arrivato a reset selezione")
             // Seleziona l'elemento (pedina) da spostare
             window.selectedImage = event.target;        //immagine della pedina selezionata
             window.selectedElement = window.selectedImage.parentElement; //div pezzo della pedina selezionata
@@ -36,11 +35,9 @@ function ListenerMovimentoPedine(){
                 resetSelezione();
                 return;
             }
-            console.log("arrivato a movepiece")
             // Evidenzia la cella sorgente e le caselle disponibili
             addHighlighted();
             SuggerisciMosse();
-            console.log("arrivato a suggerimenti")
         });
     });
 

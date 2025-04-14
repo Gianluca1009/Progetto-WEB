@@ -485,6 +485,7 @@ function restartGame() {
 // Funzione per cambiare il draft
 function restartDraft(){
 
+    document.
     //avvio il draft
     startDraft();
 
