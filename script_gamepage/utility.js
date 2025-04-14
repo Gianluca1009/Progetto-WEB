@@ -277,6 +277,17 @@ function resetPedine(){
     aggiornaStatoPedine();
 }
 
+function resetProntoButton() {
+
+    //reimposto lo stato
+    window.player1Ready = false;
+    window.player2Ready = false;
+
+    //reimposto il colore
+    document.getElementById('player1button').style.color = "black";
+    document.getElementById('player2button').style.color = "white";
+}
+
 
 
 //
@@ -472,7 +483,21 @@ function restartGame() {
 
 // Funzione per cambiare il draft
 function restartDraft(){
-    window.location.reload();
+    //avvio il draft
+    startDraft();
+
+    //riposiziono le pedine nelle posizioni iniziali
+    resetPedine();
+
+    // nascondo il pop up del game over
+    const popUp = document.querySelector('.game-over');
+    makeHidden(popUp);
+
+    //resetto il colore delle celle
+    resetSottoscacco();
+
+    //resetto i bottoni pronto
+    resetProntoButton();
 }
 
 // Funzione per tornare alla home

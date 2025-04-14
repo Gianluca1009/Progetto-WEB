@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // Variabili per tenere traccia dello stato dei bottoni
-    let player1Ready = false;
-    let player2Ready = false;
+    window.player1Ready = false;
+    window.player2Ready = false;
     
     // Funzione per controllare se entrambi i giocatori sono pronti
     function checkBothPlayersReady() {
-        if (player1Ready && player2Ready) {
+        if (window.player1Ready && window.player2Ready) {
             startGame();
         }
     }
@@ -43,14 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // LISTENER PER IL BOTTONE DEL GIOCATORE 1
     player1Button.addEventListener('click', () => {
-        if (player1Ready) {
+        if (window.player1Ready) {
             // Se il giocatore era già pronto, torna indietro
-            player1Ready = false;
+            window.player1Ready = false;
             player1Button.disabled = false;
             player1Button.style.color = "black";
         } else {
             // Se il giocatore non era pronto, imposta come pronto
-            player1Ready = true;
+            window.player1Ready = true;
             player1Button.style.color = "green";
             checkBothPlayersReady();
         }
@@ -58,14 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // LISTENER PER IL BOTTONE DEL GIOCATORE 2
     player2Button.addEventListener('click', () => {
-        if (player2Ready) {
+        if (window.player2Ready) {
             // Se il giocatore era già pronto, torna indietro
-            player2Ready = false;
+            window.player2Ready = false;
             player2Button.disabled = false;
             player2Button.style.color = "white";
         } else {
             // Se il giocatore non era pronto, imposta come pronto
-            player2Ready = true;
+            window.player2Ready = true;
             player2Button.style.color = "green";
             checkBothPlayersReady();
         }
