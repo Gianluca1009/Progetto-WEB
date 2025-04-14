@@ -269,6 +269,8 @@ function resetPedine(){
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.remove();
     });
+    window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
+    window.idCellReNero = "03"; //id della cella su cui c'è il re nero
 
     // Riposiziona le pedine usando la funzione esistente
     posizion_iniziali();
