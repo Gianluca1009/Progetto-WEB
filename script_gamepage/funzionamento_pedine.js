@@ -43,6 +43,8 @@ document.querySelectorAll(".greencell .pedina, .creamcell .pedina").forEach(pedi
 });
 
 function mangia(pedinaBersaglio,cella_dest){
+    //controllo condizione per mangiare la pedina
+    
     if(cella_dest.hasChildNodes() && pedinaBersaglio){    //se la cella di destinazione ha già una pedina,
         cella_dest.removeChild(pedinaBersaglio);          //la rimuovo
     }

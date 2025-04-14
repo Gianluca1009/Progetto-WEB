@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     giocaButton.addEventListener('click', () => {
-        Gioca();                    // Prepara il draft
+        startDraft();                    // Prepara il draft
         scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
     });
     
@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // LISTENER PER IL BOTTONE DI RIPARTENZA
     restartButton.addEventListener('click', () => {
         restartGame();
+        window.location.reload();
+
     });
 
     //LISTENER SUL TITOLO DELLA PAGINA

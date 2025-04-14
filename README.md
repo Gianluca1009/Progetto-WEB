@@ -21,20 +21,28 @@
     </div>
     ```
 
-# To-do:
+# Generic To-do:
     adattabilita alla pagina/risoluzione                                                            ✅
     progetto in tre due pagine (login + info/(preparazione partita/pagina di gioco))
     pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità           ✅
     separazione tra listener e funzioni in file separati                                            ✅
 
-# Login-page:
+# index-page:
     descrizione gioco e regole
     immagini
-    login / account
+    
     navigation bar informativa                                                                      ✅
     stile css
 
-# Prep-page:
+# mercato page:
+    to-do
+    
+# rose-page:
+    printare il database su una pagina html
+
+
+# Game-page:
+    login / account
     bottone start                                                                                   ✅
     bottone random
     doppio bottone pronto post-draft                                                                ✅
@@ -49,8 +57,6 @@
     fare una tabella con colonne asimmetriche per il draft                                          ✅
     tre righe ogni 10 secondi per poter assegnare a una pedina
 
-
-# Game-page:
     mosse valide                                                                                    ✅
     consiglia-mosse                                                                                 ✅
     log delle mosse
@@ -70,18 +76,11 @@
     (2.0)
     assegnazione dei punti al player vincitore 
     mercato dei calciatori
+    pulsanti e funzioni:
+    -restart game
+    -restart draft
+    -go home
 
-# elenco delle possibili condizioni da cercare in un database:
-    1.goal fatti in carriera
-    2.assist fatti in carriera
-    3.presenze in carriera
-    4.cartellini gialli ricevuti in carriera
-    5.cartellini rossi ricevuti in carriera
-    6.numero di maglia attuale più alto
-    7.vittorie in carriera
-    8.numero di trofei vinti in carriera
-    9.record di gol stagionale
-    10.record di assist stagionale
 
 # utilizzo DataBase
     provare l'utilizzo di database gratuiti come SportsDB o altri, tenendo in considerazione

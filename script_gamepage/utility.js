@@ -394,7 +394,7 @@ function scrollToGameContainer(){
 // 
 
 //Funzione per iniziare la preparazione del draft
-function Gioca(){
+function startDraft(){
     makeHidden(document.querySelector('.gioca-button'));
     makeVisible(document.querySelector('.table_draft_dx'));
     makeVisible(document.querySelector('.table_draft_sx'));
@@ -462,6 +462,16 @@ function endGame(){
 // Funzione per rigiocare la partita
 function restartGame() {
     //to do
+}
+
+// Funzione per cambiare il draft
+function restartDraft(){
+    window.location.reload();
+}
+
+// Funzione per tornare alla home
+function goHome(){
+    window.location.href = 'index.html';
 }
 
 // Funzione per gestire il ripristino della pagina
