@@ -211,8 +211,8 @@ function upgrade_pedone(img_pedina, cella_dest){
 // Funzione per attivare l'hover delle pedine spostabili nel turno
 function aggiornaStatoPedine() {
     document.querySelectorAll(".pedina").forEach(pedina => {
-        if ((window.turnoBianco && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è nera
-            (!window.turnoBianco && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è bianca
+        if ((window.turnoBianco && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è bianca
+            (!window.turnoBianco && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è nera
             pedina.classList.remove("no-hover");
             pedina.style.cursor = 'pointer';
         } else {
@@ -421,6 +421,7 @@ function startDraft(){
 // Funzione per avviare il gioco
 function startGame() {
     window.gameStarted = true;
+    window.turnoBianco = true; // Reset del turno al bianco
     aggiornaStatoPedine();
     
     // Disabilita il drag and drop
@@ -474,10 +475,11 @@ function endGame(){
 function restartGame() {
     resetSottoscacco();
     resetPedine();
-    window.turnoBianco = true; // Reset del turno al bianco
     window.gameStarted = false; // Reset dello stato del gioco
-    document.querySelector('.game-container').classList.remove('game-not-started');
+    
     makeHidden(document.querySelector('.game-over'));
+    document.querySelector('.game-container').classList.remove('game-not-started');
+    aggiornaStatoPedine();
     startGame();
 }
 

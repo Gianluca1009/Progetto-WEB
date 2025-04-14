@@ -5,6 +5,8 @@
 // Inizializza il gioco quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {
     
+    posizion_iniziali();
+
     // Riferimenti ai bottoni
     const giocaButton = document.getElementById('giocaButton');
     const player1Button = document.getElementById('player1button');

@@ -108,6 +108,6 @@ function posizion_iniziali() {
         creaPedina('pedone', 'nero', `1${i}`);
         creaPedina('pedone', 'bianco', `4${i}`);
     }
+    ListenerMovimentoPedine();
 }
 
-window.onload = posizion_iniziali();
