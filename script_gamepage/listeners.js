@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const player2Button = document.getElementById('player2button');
     const restartGameButton = document.getElementById('restartButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
-    const goHomeButton = document.getElementById('goHomeButton'); //prova marco
+    const goHomeButton = document.getElementById('goHomeButton');
     
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
@@ -73,9 +73,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // LISTENER PER IL BOTTONE DI RIPARTENZA
     restartGameButton.addEventListener('click', () => {
         restartGame();
-        window.location.reload();
-
     });
+
+    //LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
+    restartDraftButton.addEventListener('click', () => {
+        restartDraft();
+    });
+    
+    //LISTENER PER IL BOTTONE DI TORNA ALLA HOME
+    goHomeButton.addEventListener('click', () => {
+        goHome();
+    });
+    
 
     //LISTENER SUL TITOLO DELLA PAGINA
     document.querySelector('.title').addEventListener('click', () => {
