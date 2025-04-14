@@ -417,7 +417,6 @@ function startDraft(){
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.style.cursor = 'default';
     });
-    
 }
 
 // Funzione per avviare il gioco
@@ -487,6 +486,7 @@ function restartGame() {
 
 // Funzione per cambiare il draft
 function restartDraft(){
+
     //avvio il draft
     startDraft();
 
@@ -502,6 +502,8 @@ function restartDraft(){
 
     //resetto i bottoni pronto
     resetProntoButton();
+
+    document.querySelector(".game-container").classList.remove(".game-not-started");
 }
 
 // Funzione per tornare alla home
