@@ -93,4 +93,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.title').addEventListener('click', () => {
         inizializzaPagina();
     });
+
+    //LISTENER SUL RICARICA DELLA PAGINA
+    window.addEventListener('beforeunload', (event) => {
+        // Mostra il messaggio di conferma
+        event.preventDefault();
+        event.returnValue = 'Sei sicuro di voler lasciare la pagina? Tutti i progressi non salvati andranno persi.';
+        return event.returnValue;
+    });
 });
