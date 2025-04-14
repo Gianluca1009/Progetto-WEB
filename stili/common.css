@@ -24,7 +24,8 @@
  * .hidden - classe per nascondere un elemento
  */
  
-.grid-container, .tooltip, .condition-container, .timer-container {
+.grid-container, .tooltip, .condition-container, .timer-container, .game-over , 
+.random-button, .pronto-button, .tr-ombrata{
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 

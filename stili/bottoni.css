@@ -40,7 +40,7 @@
     font-family: 'Georgia', serif;
     text-align: center;
     color: #f5deb3;
-    border: 2px solid #f5deb3;
+    border: 2px solid #000000;
     background: linear-gradient(to right ,#1b014e,#4a01de);
     border-radius: 10px;
     cursor: pointer;
@@ -55,24 +55,15 @@
     font-weight: bold;
     margin-bottom: 10%;
     font-family: 'Georgia', serif;
+    color: #000000;
     text-align: center;
-    border: 2px solid #f5deb3;
+    border: 2px solid #000000;
+    background: linear-gradient(to right, #cbcbcb, #a4a4a4);
     border-radius: 10px;
     cursor: pointer;
     z-index: 100;
     transition: all 0.3s ease;
     top: 10%;
-}
-
-.pronto-button.player1 {
-    
-    background: linear-gradient(to right, #ffffff, #c1c0c0);
-    color: #000000;
-}
-
-.pronto-button.player2 {
-    color: #ffffff;
-    background: linear-gradient(to right, #333333, #000000);
 }
 
 /*hover bottone d'inizio*/
@@ -83,5 +74,5 @@
 
 /* Aggiungo stile hover per i bottoni pronto */
 .pronto-button:hover {
-    box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
+    box-shadow: 0 0 20px #027a16;
 }
