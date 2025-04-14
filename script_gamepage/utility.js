@@ -487,6 +487,8 @@ function restartGame() {
 // Funzione per cambiare il draft
 function restartDraft(){
 
+    resetSottoscacco();
+
     //avvio il draft
     startDraft();
 
@@ -499,8 +501,6 @@ function restartDraft(){
 
     //resetto i bottoni pronto
     resetProntoButton();
-
-    resetSottoscacco();
 
     document.querySelector(".game-container").classList.remove('game-not-started');
 }
