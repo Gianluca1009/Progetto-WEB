@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const gameContainer = document.querySelector('.game-container');
         
         if (gridContainer && sfondoSx && sfondoDx && gameContainer) {
+            // Adatta il grid-container alla larghezza del game-container
+            adjustGridContainer(gridContainer, gameContainer);
+            
             // Calcola la larghezza del grid-container
             const gridWidth = gridContainer.offsetWidth;
             
@@ -70,6 +73,25 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Max Width (22%):', maxWidth);
             console.log('Final Side Width:', sideWidth);
         }
+    }
+    
+    // Funzione per adattare la larghezza del grid-container
+    function adjustGridContainer(gridContainer, gameContainer) {
+        // Calcola la larghezza del game-container
+        const gameWidth = gameContainer.offsetWidth;
+        
+        // Calcola l'altezza del game-container
+        const gameHeight = gameContainer.offsetHeight;
+        
+        // Determina la dimensione più piccola tra altezza e larghezza considerando proporzioni
+        // Scegliamo di limitare la dimensione a circa il 70-75% della larghezza o altezza del gameContainer
+        const maxSize = Math.min(gameHeight * 0.78, gameWidth * 0.70);
+        
+        // Impostiamo una dimensione che si adatta a entrambe le direzioni, mantenendo l'aspect ratio 1:1
+        gridContainer.style.height = maxSize + 'px';
+        gridContainer.style.width = maxSize + 'px';
+        
+        console.log('Adjusted Grid Size:', maxSize);
     }
     
     // Funzione per adattare tabelle e bottoni
