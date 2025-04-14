@@ -60,9 +60,11 @@ function ListenerMovimentoPedine(){
                     mangia(pedinaBersaglio,this); //mangia la pedina bersaglio
                     this.appendChild(window.selectedElement);
                     // Verifica se il re è stato mangiato
-                    isReMangiato(pedinaBersaglio);
+                        //isReMangiato(pedinaBersaglio);
                     //promozione del pedone se arriva alla fine della scacchiera 
-                    upgrade_pedone(window.selectedImage, this);
+                    if(!isReMangiato(pedinaBersaglio)){
+                        upgrade_pedone(window.selectedImage, this);
+                    }
                     //resetta la selezione delle mosse suggerite
                     resetSuggerimenti();
                     //update posizione del re + reset della cella del re se non più in scacco

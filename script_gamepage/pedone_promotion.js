@@ -20,15 +20,17 @@ function upgrade_pedone(img_pedina, cella_dest){
 
 function list_pedPromotion(pedina_d, img_pedina, turnoBianco){
     // Rimuovo event listener esistenti prima di aggiungerne di nuovi
-    const reginaElement = document.getElementById('pedonepromotion_regina');
-    const cavalloElement = document.getElementById('pedonepromotion_cavallo');
+    const PulsanteReginaVecchio = document.getElementById('pedonepromotion_regina');  //prende le celle della tabella di promozione
+    const PulsanteCavalloVecchio = document.getElementById('pedonepromotion_cavallo');
     
     // Rimuovo vecchi listener usando cloni della tabella perche sui vecchi rimane il listener precedente
-    const reginaClone = reginaElement.cloneNode(true);
-    const cavalloClone = cavalloElement.cloneNode(true);
-    
-    reginaElement.parentNode.replaceChild(reginaClone, reginaElement);      
-    cavalloElement.parentNode.replaceChild(cavalloClone, cavalloElement);
+    const PulsanteReginaNuovo = PulsanteReginaVecchio.cloneNode(true);  //sostituisce con nuove celle nella tabella di promozione
+    const PulsanteCavalloNuovo = PulsanteCavalloVecchio.cloneNode(true);
+
+    //scambia le celle vecchie con quelle nuove per eliminare i vecchi listener
+
+    PulsanteReginaVecchio.parentNode.replaceChild(PulsanteReginaNuovo, PulsanteReginaVecchio);      
+    PulsanteCavalloVecchio.parentNode.replaceChild(PulsanteCavalloNuovo, PulsanteCavalloVecchio);
     
     // Aggiungo nuovi listener che agiscono solo sul pedone attuale
     document.getElementById('pedonepromotion_regina').addEventListener('click', () =>{

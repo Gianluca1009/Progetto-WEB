@@ -50,7 +50,7 @@
 
 # Game-page:
     bottone start                                                                                   ✅
-    bottone random
+    bottone random                                                                                  ✅
     doppio bottone pronto post-draft                                                                ✅
     bottone torna alla home                                                                         ✅
     ricarica la pagina cliccando il titolo                                                          ✅
@@ -70,7 +70,7 @@
     deselezionare pedina                                                                            ✅
     bottone torna alla home                                                                         ✅
     logica pedina mangiata                                                                          ✅
-    pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
+    pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera                              ✅
     generalizzare lo script di creazione pedine                                                     ✅
     stile css                                                                                       ✅
     abolire i ruoli                                                                                 ✅
@@ -80,7 +80,7 @@
     funzione rigioca                                                                                ✅
 
     (2.0)
-    assegnazione dei punti al player vincitore 
+    assegnazione dei punti al player vincitore
     mercato dei calciatori
     pulsanti e funzioni:
     -restart game                                                                                   ✅
