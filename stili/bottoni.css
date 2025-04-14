@@ -31,11 +31,29 @@
     pointer-events: auto;
 }
 
+.random-button {
+    width: calc(var(--grid-size) * 0.3);
+    height: calc(var(--grid-size) * 0.2);
+    font-size: calc(var(--grid-size) * 0.05);
+    font-weight: bold;
+    margin-top: 10%;
+    font-family: 'Georgia', serif;
+    text-align: center;
+    color: #f5deb3;
+    border: 2px solid #f5deb3;
+    background: linear-gradient(to right ,#1b014e,#4a01de);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
 .pronto-button {
     width: calc(var(--grid-size) * 0.3);
     height: calc(var(--grid-size) * 0.1);
     font-size: calc(var(--grid-size) * 0.05);
     font-weight: bold;
+    margin-bottom: 10%;
     font-family: 'Georgia', serif;
     text-align: center;
     border: 2px solid #f5deb3;

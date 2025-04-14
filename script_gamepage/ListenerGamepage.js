@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Se il giocatore non era pronto, imposta come pronto
             window.player1Ready = true;
-            player1Button.style.color = "green";
+            player1Button.style.background = "linear-gradient(to right, #44c300, #027a16)";
             checkBothPlayersReady();
         }
     });
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             // Se il giocatore non era pronto, imposta come pronto
             window.player2Ready = true;
-            player2Button.style.color = "green";
+            player2Button.style.background = "linear-gradient(to right, #44c300, #027a16)";
             checkBothPlayersReady();
         }
     });
