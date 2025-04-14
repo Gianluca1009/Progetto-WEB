@@ -29,9 +29,6 @@ function upgrade_pedone(img_pedina, cella_dest){
         
     //bianco arriva al top scacchiera
     if(div_pedina.id == "p" ){
-        // Imposta le immagini per la promozione del pedone bianco
-        ReginaSostitutiva.src = "images/pedine/regina_bianca.png";
-        CavalloSostitutivo.src = "images/pedine/cavallo_bianco.png";
         if(current_row == 0){
             makeVisible(divPromotion);
             list_pedPromotion(div_pedina, img_pedina, true); // Passa true perché è un pedone bianco
@@ -39,9 +36,6 @@ function upgrade_pedone(img_pedina, cella_dest){
     }
     //nero arriva al fondo scacchiera
     if(div_pedina.id == "P" ){
-        // Imposta le immagini per la promozione del pedone nero
-        ReginaSostitutiva.src = "images/pedine/regina_nera.png";
-        CavalloSostitutivo.src = "images/pedine/cavallo_nero.png";
         if(current_row == 5){
             makeVisible(divPromotion);
             list_pedPromotion(div_pedina, img_pedina, false); // Passa false perché è un pedone nero
