@@ -3,6 +3,7 @@
 window.selectedElement = null; // div pezzo selezionato
 window.selectedCell = null;  // Memorizza la cella selezionata
 window.selectedImage = null;  // Memorizza l'immagine selezionata
+
 window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 window.gameStarted = false; // Controlla se il gioco è iniziato
 
@@ -236,33 +237,6 @@ function aggiornaStatoPedine() {
     });
 }
 
-// Funzione per evidenziare le caselle disponibili
-function SuggerisciMosse() {
-    // Rimuovi eventuali evidenziazioni precedenti
-    let startCell = window.selectedElement.parentElement;  //cella di partenza
-
-    // Controlla tutte le caselle della scacchiera 6x6
-    for (let x = 0; x < 6; x++) {
-        for (let y = 0; y < 6; y++) {
-            
-            let targetCell = document.getElementById(x + "" + y);
-            let pedinaBersaglio = targetCell.querySelector('.pedina');
-            if (targetCell && targetCell !== startCell) {
-                // Verifica se la mossa è valida
-                if (validationMove(window.selectedImage, targetCell)) {
-                    if(targetCell.hasChildNodes() && pedinaBersaglio){
-                        targetCell.classList.add('eating-move');
-                    }
-                    else{
-                        targetCell.classList.add('available-move');
-                    }
-                    targetCell.classList.add('available-move');
-                }
-            }
-        }
-    }
-}
-
 // Funzione per ripristinare le posizioni delle pedine
 function resetPedine(){
     // Rimuove tutte le pedine esistenti
@@ -295,6 +269,33 @@ function resetProntoButton() {
 //
 // ---- FUNZIONI AUSILIARIE PER LA GRAFICA ---- //
 //
+
+// Funzione per evidenziare le caselle disponibili
+function SuggerisciMosse() {
+    // Rimuovi eventuali evidenziazioni precedenti
+    let startCell = window.selectedElement.parentElement;  //cella di partenza
+
+    // Controlla tutte le caselle della scacchiera 6x6
+    for (let x = 0; x < 6; x++) {
+        for (let y = 0; y < 6; y++) {
+            
+            let targetCell = document.getElementById(x + "" + y);
+            let pedinaBersaglio = targetCell.querySelector('.pedina');
+            if (targetCell && targetCell !== startCell) {
+                // Verifica se la mossa è valida
+                if (validationMove(window.selectedImage, targetCell)) {
+                    if(targetCell.hasChildNodes() && pedinaBersaglio){
+                        targetCell.classList.add('eating-move');
+                    }
+                    else{
+                        targetCell.classList.add('available-move');
+                    }
+                    targetCell.classList.add('available-move');
+                }
+            }
+        }
+    }
+}
 
 // Funzione per resettare i suggerimenti
 function resetSuggerimenti(){

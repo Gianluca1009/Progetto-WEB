@@ -1,6 +1,4 @@
-// ---- INIZIALIZZAZIONE DEL GIOCO ---- //
-
-//Modificato da gianluca prova 
+// ---- INIZIALIZZAZIONE DEL GIOCO ---- // 
 
 // Inizializza il gioco quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {

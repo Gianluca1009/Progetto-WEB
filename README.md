@@ -1,7 +1,7 @@
 # Progetto-WEB
 ## progetto scacchi - calcio
-### nota struttara pedine-celle
 
+### APPUNTI STRUTTURE
 -STRUTTURA PEDINA-CELLA NELLA SCACCHIERA
 
     ```html
@@ -20,33 +20,39 @@
         </div>
     </div>
     ```
+###
+
+
+
 
 # Generic To-do:
     adattabilita alla pagina/risoluzione                                                            ✅
-    progetto in tre due pagine (login + info/(preparazione partita/pagina di gioco))
+    progetto in tre due pagine (login + info/(preparazione partita/pagina di gioco))                ✅
     pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità           ✅
     separazione tra listener e funzioni in file separati                                            ✅
 
 # index-page:
     descrizione gioco e regole
-    immagini
+    immagini                                                                                        ✅
     
     navigation bar informativa                                                                      ✅
-    stile css
+    stile css                                                                                       ✅
+    login / account
+    informazioni account con php
 
 # mercato page:
     to-do
     
 # rose-page:
     printare il database su una pagina html
+    gestione programmatica statistiche dei calciatori
 
 
 # Game-page:
-    login / account
     bottone start                                                                                   ✅
     bottone random
     doppio bottone pronto post-draft                                                                ✅
-    bottone torna alla home
+    bottone torna alla home                                                                         ✅
     ricarica la pagina cliccando il titolo                                                          ✅
     modificare tabella draft (meno celle, nomi e stats giocatori)                                   ✅ 
     drag and drop dei giocatori                                                                     ✅
@@ -62,24 +68,24 @@
     log delle mosse
     muovere pezzi                                                                                   ✅
     deselezionare pedina                                                                            ✅
-    bottone torna alla home
+    bottone torna alla home                                                                         ✅
     logica pedina mangiata                                                                          ✅
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera
     generalizzare lo script di creazione pedine                                                     ✅
-    stile css
-    abolire i ruoli
-    far apparire dei log con statistiche ai lati della scacchi
+    stile css                                                                                       ✅
+    abolire i ruoli                                                                                 ✅
+    far apparire dei log con statistiche ai lati della scacchiera
     termina partita se re mangiato                                                                  ✅
-    logica di partita terminata (funzione endgame)
+    logica di partita terminata (funzione endgame)                                                  ✅
     funzione rigioca                                                                                ✅
 
     (2.0)
     assegnazione dei punti al player vincitore 
     mercato dei calciatori
     pulsanti e funzioni:
-    -restart game
-    -restart draft
-    -go home
+    -restart game                                                                                   ✅
+    -restart draft                                                                                  ✅
+    -go home                                                                                        ✅
 
 
 # utilizzo DataBase
