@@ -1,0 +1,29 @@
+.div_scelte {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.foto_ped_promotion {
+    background-color: transparent;
+    width: 35%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    border: calc(var(--cell-size) * 0.03) solid black;
+    /* border-right: calc(var(--cell-size) * 0.03) solid black; */
+    position: relative;
+    padding: 0;
+    border-radius: 10px;
+    vertical-align: middle;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}

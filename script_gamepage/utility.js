@@ -180,35 +180,6 @@ function cambioTurno(){
     updateCondition();
 }
 
-//promuove il pedone se arriva in fondo 
-/*
-* STILL TO_DO : chiedere ad utente il tipo di pezzo per promozione
-*/
-function upgrade_pedone(img_pedina, cella_dest){
-    let cur_row = parseInt(cella_dest.id[0]);
-    let div_pedina = img_pedina.parentElement;
-    //bianco arriva al top scacchiera
-    if(div_pedina.id == "p" ){
-        if(cur_row == 0){
-            //utente seleziona il nuovo
-            tipo = 'regina'
-            //modifica il div con un nuovo pezzo
-            div_pedina.id = pezzi[tipo].id.bianco ;
-            img_pedina.src = pezzi[tipo].img.bianco;
-        }
-    }
-    //nero arriva al fondo scacchiera
-    if(div_pedina.id == "P" ){
-        if(cur_row == 5){
-             //utente seleziona il nuovo
-             tipo = 'regina'
-             //modifica il div con un nuovo pezzo
-             div_pedina.id = pezzi[tipo].id.nero ;
-             img_pedina.src = pezzi[tipo].img.nero;
-        } 
-    }
-}
-
 // Funzione per attivare l'hover delle pedine spostabili nel turno
 function aggiornaStatoPedine() {
     document.querySelectorAll(".pedina").forEach(pedina => {
