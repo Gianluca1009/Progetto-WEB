@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Listener per il bottone principale Gioca
+    // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     giocaButton.addEventListener('click', () => {
         Gioca();                    // Prepara il draft
         scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
     });
     
-    // Listener per il bottone del giocatore 1
+    // LISTENER PER IL BOTTONE DEL GIOCATORE 1
     player1Button.addEventListener('click', () => {
         if (player1Ready) {
             // Se il giocatore era già pronto, torna indietro
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // Listener per il bottone del giocatore 2
+    // LISTENER PER IL BOTTONE DEL GIOCATORE 2
     player2Button.addEventListener('click', () => {
         if (player2Ready) {
             // Se il giocatore era già pronto, torna indietro
@@ -65,20 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
             checkBothPlayersReady();
         }
     });
-    
-    // Aggiunge la classe che disabilita l'hover all'inizio
-    
-    // Disabilita inizialmente il movimento delle pedine
-    window.canMovePiece = function() {
-        return false;
-    };
 
-    // Listener per il bottone di ripartenza
+    // LISTENER PER IL BOTTONE DI RIPARTENZA
     restartButton.addEventListener('click', () => {
         restartGame();
     });
 
-    //Listener sul titolo della pagina
+    //LISTENER SUL TITOLO DELLA PAGINA
     document.querySelector('.title').addEventListener('click', () => {
         inizializzaPagina();
     });
