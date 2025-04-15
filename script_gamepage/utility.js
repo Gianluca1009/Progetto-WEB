@@ -9,7 +9,6 @@ window.gameStarted = false; // Controlla se il gioco è iniziato
 
 
 
-
 //
 // ---- FUNZIONI AUSILIARIE PER LE PEDINE ---- //
 //
@@ -170,6 +169,21 @@ function validationMove(img, dest_cell){
         }
 
     return valid;
+}
+
+// Funzione per mangiare una pedina
+function mangia(pedinaBersaglio,cella_dest){
+    //controllo condizione per mangiare la pedina
+    
+    if(cella_dest.hasChildNodes()){    //se la cella di destinazione ha già una pedina,
+        cella_dest.removeChild(pedinaBersaglio);          //la rimuovo
+    }
+    avanza(cella_dest); //SPOSTAMENTO PEDINA
+}
+
+// Funzione per spostare una pedina
+function avanza(cella_dest){
+    cella_dest.appendChild(window.selectedElement); //SPOSTAMENTO PEDINA
 }
 
 // Funzione per cambiare turno
@@ -372,8 +386,6 @@ function scrollToGameContainer(){
 
 
 
-
-
 // 
 //---- FUNZIONI PER LA GESTIONE DELLA PARTITA ----//
 // 
@@ -381,6 +393,7 @@ function scrollToGameContainer(){
 //Funzione per iniziare la preparazione del draft
 function startDraft(){
     makeHidden(document.querySelector('.gioca-button'));
+    makeVisible(document.querySelector('.background-overlay'));
     makeVisible(document.querySelector('.table_draft_dx'));
     makeVisible(document.querySelector('.table_draft_sx'));
 

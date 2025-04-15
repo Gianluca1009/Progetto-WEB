@@ -36,18 +36,11 @@ function ListenerMovimentoPedine(){
                 return;
             }
             // Evidenzia la cella sorgente e le caselle disponibili
+            playSound("selezione", 0.6);
             addHighlighted();
             SuggerisciMosse();
         });
     });
-
-    function mangia(pedinaBersaglio,cella_dest){
-        //controllo condizione per mangiare la pedina
-        
-        if(cella_dest.hasChildNodes() && pedinaBersaglio){    //se la cella di destinazione ha già una pedina,
-            cella_dest.removeChild(pedinaBersaglio);          //la rimuovo
-        }
-    }
 
     // SELEZIONA LA CELLA DI DESTINAZIONE
     document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
@@ -57,11 +50,17 @@ function ListenerMovimentoPedine(){
                 // Verifica se la mossa è valida secondo le regole degli scacchi
                 if (validationMove(window.selectedImage, this)) {
                 
-                    mangia(pedinaBersaglio,this); //mangia la pedina bersaglio
-                    this.appendChild(window.selectedElement);
-                    // Verifica se il re è stato mangiato
-                        //isReMangiato(pedinaBersaglio);
-                    //promozione del pedone se arriva alla fine della scacchiera 
+                    if(pedinaBersaglio){
+                        mangia(pedinaBersaglio,this); //mangia la pedina bersaglio se presente
+                        playSound("mangia", 0.7);
+                    } 
+                    else{
+                        avanza(this); //SPOSTAMENTO PEDINA
+                        playSound("mossa", 0.5);
+                    }
+                    
+
+                    //CONTROLLA SIA LO STATO DEL RE, SIA PROMUOVE IL PEDONE SE IL RE E' VIVO
                     if(!isReMangiato(pedinaBersaglio)){
                         upgrade_pedone(window.selectedImage, this);
                     }

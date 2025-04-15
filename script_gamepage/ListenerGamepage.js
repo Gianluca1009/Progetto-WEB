@@ -3,6 +3,9 @@
 // Inizializza il gioco quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Pre-carico i suoni
+    preloadSounds();
+    
     StartPosition();
 
     // Riferimenti ai bottoni
@@ -21,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.grid-container').classList.add('disabled');
     document.querySelector('.game-over').classList.add('hidden');
     document.getElementById('div_ped_promotion').classList.add('hidden');
+    document.querySelector('.background-overlay').classList.add('hidden');
 
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');
@@ -39,8 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     giocaButton.addEventListener('click', () => {
+        
+        preparaSounds();        // Inizializza i suoni al primo click
         startDraft();                    // Prepara il draft
         scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
+
     });
     
     // LISTENER PER IL BOTTONE DEL GIOCATORE 1
