@@ -12,12 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const giocaButton = document.getElementById('giocaButton');
     const player1Button = document.getElementById('player1button');
     const player2Button = document.getElementById('player2button');
-    const restartGameButton = document.getElementById('restartButton');
+    const restartGameAtEnd = document.getElementById('restartGameButton');
+    const restartDraftAtEnd = document.getElementById('restartDraftButton');
+    const goHomeButtonAtEnd = document.getElementById('goHomeButton');
+
+    const restartGameButton = document.getElementById('restartGameButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
     const goHomeButton = document.getElementById('goHomeButton');
 
     //ELEMENTI DA NASCONDERE ALL'INIZIO
     
+    restartGameButton.classList.add('hidden');
+    restartDraftButton.classList.add('hidden');
+    goHomeButton.classList.add('hidden');
+
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
     document.querySelector('.background').classList.add('disabled');
@@ -31,16 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
         pedina.classList.add('game-not-started');
     });
     
-    // Variabili per tenere traccia dello stato dei bottoni pronto
-    window.player1Ready = false;
-    window.player2Ready = false;
-    
-    // Funzione per controllare se entrambi i giocatori sono pronti
-    function checkBothPlayersReady() {
-        if (window.player1Ready && window.player2Ready) {
-            startGame();
-        }
-    }
     
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     giocaButton.addEventListener('click', () => {
@@ -81,18 +79,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // LISTENER PER IL BOTTONE DI RIPARTENZA
     restartGameButton.addEventListener('click', () => {
         restartGame();
     });
 
-    //LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
     restartDraftButton.addEventListener('click', () => {
+        restartDraft();
+    });
+
+
+    // LISTENER PER IL BOTTONE DI RIPARTENZA
+    restartGameAtEnd.addEventListener('click', () => {
+        restartGame();
+    });
+
+    //LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
+    restartDraftAtEnd.addEventListener('click', () => {
         restartDraft();
     });
     
     //LISTENER PER IL BOTTONE DI TORNA ALLA HOME
-    goHomeButton.addEventListener('click', () => {
+    goHomeButtonAtEnd.addEventListener('click', () => {
         goHome();
     });
     

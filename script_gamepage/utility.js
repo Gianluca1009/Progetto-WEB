@@ -7,6 +7,9 @@ window.selectedImage = null;  // Memorizza l'immagine selezionata
 window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 window.gameStarted = false; // Controlla se il gioco è iniziato
 
+window.player1Ready = false;
+window.player2Ready = false;
+
 
 
 //
@@ -385,10 +388,16 @@ function scrollToGameContainer(){
 }
 
 
-
 // 
 //---- FUNZIONI PER LA GESTIONE DELLA PARTITA ----//
 // 
+
+// Funzione per controllare se entrambi i giocatori sono pronti
+function checkBothPlayersReady() {
+    if (window.player1Ready && window.player2Ready) {
+        startGame();
+    }
+}
 
 //Funzione per iniziare la preparazione del draft
 function startDraft(){
@@ -396,13 +405,10 @@ function startDraft(){
     makeVisible(document.querySelector('.background-overlay'));
     makeVisible(document.querySelector('.table_draft_dx'));
     makeVisible(document.querySelector('.table_draft_sx'));
+    makeVisible(document.querySelector('.restart-draft'));
 
     document.querySelector('.background').classList.remove('disabled');
     document.querySelector('.grid-container').classList.remove('disabled');
-    document.querySelectorAll('.pedina').forEach(pedina => {
-        pedina.style.cursor = 'default';
-
-    });
 }
 
 // Funzione per avviare il gioco
@@ -426,8 +432,11 @@ function startGame() {
     makeVisible(document.querySelector('.timer-text'));
     makeVisible(document.querySelector('.progress-container'));
     makeVisible(document.querySelector('.progress-bar'));
+    makeVisible(document.querySelector('.restart-button'));
+    
     makeHidden(document.querySelector('.table_draft_sx'));
     makeHidden(document.querySelector('.table_draft_dx'));
+    
 
     
     // Rimuove la classe che disabilita l'hover
@@ -458,14 +467,16 @@ function endGame(){
 
 // Funzione per rigiocare la partita
 function restartGame() {
-    resetSottoscacco();
-    resetPedine();
-    window.gameStarted = false; // Reset dello stato del gioco
+    if(window.gameStarted){
+        resetSottoscacco();
+        resetPedine();
+        window.gameStarted = false; // Reset dello stato del gioco
     
-    makeHidden(document.querySelector('.game-over'));
-    document.querySelector('.game-container').classList.remove('game-not-started');
-    aggiornaStatoPedine();
-    startGame();
+        makeHidden(document.querySelector('.game-over'));
+        document.querySelector('.game-container').classList.remove('game-not-started');
+        aggiornaStatoPedine();
+        startGame();
+    }
 }
 
 // Funzione per cambiare il draft
@@ -474,14 +485,24 @@ function restartDraft(){
     resetSottoscacco();
 
     //avvio il draft
-    startDraft();
+    window.gameStarted = false;
+    window.turnoBianco = true;
 
+    makeHidden(document.querySelector('.game-over'));
+    makeHidden(document.querySelector('.progress-container'));
+    makeHidden(document.querySelector('.condition-container'));
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.add('game-not-started');
+    });
+
+    document.querySelector('.grid-container').classList.remove('grid-container-enlarged');
+
+    startDraft();
+    
     //riposiziono le pedine nelle posizioni iniziali
     resetPedine();
 
-    // nascondo il pop up del game over
-    const popUp = document.querySelector('.game-over');
-    makeHidden(popUp);
+    
 
     //resetto i bottoni pronto
     resetProntoButton();

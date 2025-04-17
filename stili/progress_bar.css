@@ -7,12 +7,12 @@
 
 .progress-container {
     position: absolute;
-    bottom: calc(var(--cell-size) * 0.1);
+    bottom: 1%;
     left: 50%;
     transform: translateX(-50%);
     width: 50%;
     height: 3%;
-    background: linear-gradient(to right ,#1b014e,#4b01de);
+    background: transparent;
     border: 0.09375rem solid #f5deb3;
     border-radius: 0.3125rem;
     overflow: hidden;
