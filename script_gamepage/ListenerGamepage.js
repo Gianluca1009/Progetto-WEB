@@ -103,9 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //LISTENER SUL RICARICA DELLA PAGINA
     window.addEventListener('beforeunload', (event) => {
-        // Mostra il messaggio di conferma
-        event.preventDefault();
-        event.returnValue = 'Sei sicuro di voler lasciare la pagina? Tutti i progressi non salvati andranno persi.';
-        return event.returnValue;
+        if(window.gameStarted){
+            event.preventDefault();
+            event.returnValue = 'Se lasci la pagina ora, perderai la partita.';
+            return event.returnValue;
+        }
     });
 });

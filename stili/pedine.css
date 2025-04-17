@@ -22,11 +22,6 @@
     -ms-user-select: none;
 }
 
-/*hover sulla pedina attiva*/
-.pedina-active:hover {
-    transform: scale(1.1);
-}
-
 /*classe per le pedine non attive prima di iniziare il gioco*/
 .game-not-started .pedina { 
     pointer-events: none;
@@ -35,22 +30,13 @@
 
 /*stile pedine*/
 .torre, .alfiere, .cavallo, .regina, .re, .pedone {
-    width: 70%;
-    height: 70%;
+    width: 65%;
+    height: 65%;
     margin: auto;
     display: block;
     object-fit: contain;
-    
+    transition: transform 0.2s ease;
 }
-
-/*nome calciatore*/
-.nome-giocatore {
-    color: black;
-    font-size: 1.2em;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    position: absolute;
-    bottom: -0.9em;
-    width: 100%;
+.torre:hover, .alfiere:hover, .cavallo:hover, .regina:hover, .re:hover, .pedone:hover {
+    transform: scale(1.075);
 }

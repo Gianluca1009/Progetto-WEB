@@ -84,7 +84,7 @@
     display: table-row;
     vertical-align: middle;
     box-sizing: border-box;
-    transition: none !important;
+    transition: all 0.2s ease;
     position: relative;
     margin-bottom: 2%;
 }
@@ -140,7 +140,7 @@
 }
 
 /* immagine calciatore */
-.santino {
+.santino-dx, .santino-sx {
     width: auto;
     height: auto;
     max-width: 100%;
@@ -155,16 +155,19 @@
     cursor: grab;
 }
 
-.santino:hover {
+.santino-dx:hover, .santino-sx:hover {
     transform: scale(1.04);
 }
 
 .nome-giocatore {
-    font-size: calc(var(--cell-size) * 0.22);
+    font-size: 85%;
+    font-family: 'Georgia', serif;
     font-weight: bold;
     color: #000000;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    padding-bottom: 22%;
+    text-align: center;
+    position: absolute;
+    bottom: 1%;
 }
 
 .sfondo_draft_sx, .sfondo_draft_dx{

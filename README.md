@@ -62,8 +62,9 @@
     stile css
     fare una tabella con colonne asimmetriche per il draft                                          ✅
     tre righe ogni 10 secondi per poter assegnare un giocatore a una pedina
-    permettere di fare drag and drop tra santini e pedine dello stesso colore
-    
+    permettere di fare drag and drop tra santini e pedine dello stesso colore                       ✅
+    trovare una soluzione ai nomi lunghi nelle celle div
+    gestire meglio il banner pre-ricarica della pagina
 
     mosse valide                                                                                    ✅
     consiglia-mosse                                                                                 ✅

@@ -47,9 +47,13 @@ function populate_draft(){
         let cell = document.getElementById(calciatore.cellId);
         if (cell) { // Verifica che la cella esista prima di procedere
             let img = document.createElement("img");
-            
+            if(calciatore.cellId.includes("s")){
+                img.className = "santino-sx";
+            }
+            else{
+                img.className = "santino-dx";
+            }
             img.id = calciatore.id;
-            img.className = "santino";
             img.src = calciatore.src;
             img.alt = calciatore.alt;
             img.draggable = true;
@@ -67,104 +71,97 @@ function assegnaCognome(text,cognome_calciatore){
 
 //funzione per gestire il drag e drop
 function DragDrop_draft(){
-    // Memorizza i riferimenti agli event listener per poterli rimuovere
-    const dragListeners = new Map();
-    const dragoverListeners = new Map();
-    const dropListeners = new Map();
-    
-    //selziona tutti le img calciatore -> drag elem
-    document.querySelectorAll(".santino").forEach(santino_img => {
-        const dragstartListener = function(event) {
+    //selziona tutti le img calciatore -> drag elem sx
+    document.querySelectorAll(".santino-sx").forEach(santino_img => {
+        // Evento dragstart
+        santino_img.addEventListener("dragstart", function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
                 return false;
             }
             event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
+            event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
-        };
-        
-        santino_img.addEventListener("dragstart", dragstartListener);
-        dragListeners.set(santino_img, dragstartListener);
+        });
 
-        // Aggiungi un listener per il dragend per ripristinare il cursore
-        const dragendListener = function(event) {
+        // Evento dragend
+        santino_img.addEventListener("dragend", function(event) {
             document.body.style.cursor = 'default';  // Ripristina il cursore default
-        };
-        
-        santino_img.addEventListener("dragend", dragendListener);
-        dragListeners.set(santino_img, dragendListener);
+        });
+    });
+
+    //selziona tutti le img calciatore -> drag elem dx
+    document.querySelectorAll(".santino-dx").forEach(santino_img => {
+        // Evento dragstart
+        santino_img.addEventListener("dragstart", function(event) {
+            // Se il gioco è iniziato, non fare nulla
+            if (window.gameStarted) {
+                event.preventDefault();
+                return false;
+            }
+            event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
+            event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
+            document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
+        });
+
+        // Evento dragend
+        santino_img.addEventListener("dragend", function(event) {
+            document.body.style.cursor = 'default';  // Ripristina il cursore default
+        });
     });
 
     //selziona tutte le caselle pezzi -> drop zone
     document.querySelectorAll(".greencell, .creamcell").forEach(drop_cell => {
         // Gestisci l'evento dragover
-        const dragoverListener = function(event) {
+        drop_cell.addEventListener("dragover", function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
                 return false;
             }
+            
             event.preventDefault();
             event.dataTransfer.dropEffect = "move";
-        };
-        
-        drop_cell.addEventListener("dragover", dragoverListener);
-        dragoverListeners.set(drop_cell, dragoverListener);
+        });
 
         // Gestisci l'evento drop
-        const dropListener = function(event) {
+        drop_cell.addEventListener("drop", function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
                 return false;
             }
+            
             event.preventDefault();
             var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
+            var tipoSantino = event.dataTransfer.getData("type"); // Ottieni il tipo di santino (sx o dx)
+            
             let div_pedina = drop_cell.querySelector('.pedina');
             
             if (div_pedina) {
-                // Crea l'elemento h1 se non esiste -cognome sotto alla pedina
-                let text = div_pedina.querySelector('text');
-                if (!text) {
-                    text = document.createElement('text');
-                    text.classList.add('nome-giocatore');
-                    div_pedina.appendChild(text);
-                }
+                // Ottieni l'id della pedina
+                const pedinaId = div_pedina.id;
                 
-                // Imposta il testo dell'h1 con l'id del calciatore e aggiunge la classe
-                assegnaCognome(text,cognome_calciatore);
+                // Verifica se la pedina è bianca (id minuscolo) o nera (id maiuscolo)
+                const isPedinaBianca = pedinaId === pedinaId.toLowerCase() && pedinaId !== pedinaId.toUpperCase();
+                
+                // Controlla se è possibile effettuare il drop in base al tipo di santino e di pedina
+                if ((tipoSantino === "sx" && isPedinaBianca) || (tipoSantino === "dx" && !isPedinaBianca)) {
+                    // Crea l'elemento text se non esiste -cognome sotto alla pedina
+                    let text = div_pedina.querySelector('text');
+                    if (!text) {
+                        text = document.createElement('text');
+                        text.classList.add('nome-giocatore');
+                        div_pedina.appendChild(text);
+                    }
+                    
+                    // Imposta il testo con l'id del calciatore e aggiunge la classe
+                    assegnaCognome(text, cognome_calciatore);
+                }
             }
-        };
-        
-        drop_cell.addEventListener("drop", dropListener);
-        dropListeners.set(drop_cell, dropListener);
+        });
     });
-    
-    // Funzione per disabilitare completamente il drag and drop
-    window.disableDragDrop = function() {
-        // Rimuovi tutti i listener dragstart
-        dragListeners.forEach((listener, element) => {
-            element.removeEventListener("dragstart", listener);
-        });
-        
-        // Rimuovi tutti i listener dragover
-        dragoverListeners.forEach((listener, element) => {
-            element.removeEventListener("dragover", listener);
-        });
-        
-        // Rimuovi tutti i listener drop
-        dropListeners.forEach((listener, element) => {
-            element.removeEventListener("drop", listener);
-        });
-        
-        // Imposta tutti gli elementi santino come non trascinabili
-        document.querySelectorAll(".santino").forEach(santino_img => {
-            santino_img.draggable = false;
-        });
-        
-        console.log("Drag and drop disabilitato");
-    };
 }
 
 populate_draft();
