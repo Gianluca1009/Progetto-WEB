@@ -1,4 +1,3 @@
-
 /* Elenco delle classi CSS in questo file:
 
  * .condition-container - contenitore delle condizioni
@@ -10,14 +9,12 @@
 .condition-container {
     position: absolute;
     left: 50%;
-    top: 3%;
-    margin-bottom: 3%;
-    transform: translate(-50%, -50%);
+    top: 1%;
+    transform: translateX(-50%);
     width: 50%;
     height: 10%;
     background: linear-gradient(to right ,#1b014e,#4a01de);
     border-radius: 0.625rem;
-    margin: calc(var(--cell-size) * 0.25) auto;
     text-align: center;
     vertical-align: middle;
     z-index: 2;

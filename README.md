@@ -36,7 +36,6 @@
     immagini                                                                                        ✅
     
     navigation bar informativa                                                                      ✅
-    stile css                                                                                       ✅
     login / account
     informazioni account con php
 
@@ -59,7 +58,6 @@
     posizionare cognome del giocatore sotto la pedina                                               ✅
     assegnare attributi ai giocatori tramite oggetti javascript
     fare query SQL in base all'url dell'immagine e popolare gli attributi di ogni pedina
-    stile css
     fare una tabella con colonne asimmetriche per il draft                                          ✅
     tre righe ogni 10 secondi per poter assegnare un giocatore a una pedina
     permettere di fare drag and drop tra santini e pedine dello stesso colore                       ✅
@@ -76,13 +74,13 @@
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera                              ✅
     bloccare il turno finche la pedina promossa non viene sostituita
     generalizzare lo script di creazione pedine                                                     ✅
-    stile css                                                                                       ✅
     abolire i ruoli                                                                                 ✅
     far apparire dei log con statistiche ai lati della scacchiera
     termina partita se re mangiato                                                                  ✅
     logica di partita terminata (funzione endgame)                                                  ✅
     funzione rigioca                                                                                ✅
     funzione torna alla home                                                                        ✅
+    aggiungere bottoni restart, restart draft e go home anche durante la partita
 
     (2.0)
     assegnazione dei punti al player vincitore
@@ -97,4 +95,15 @@
     provare l'utilizzo di database gratuiti come SportsDB o altri, tenendo in considerazione
     la limitazione di richieste al minuto.
     
+    
+# CSS
+
+    1. gampage
+
+    modularizzare le classi creando classi base generiche (bottoni, testo, ecc...)
+    correggere lo script per l'adattamento del grid container
+    trovare degli hover carini per bottoni
+    adattare una singola classe bottone da utilizzare sempre
+
+
     

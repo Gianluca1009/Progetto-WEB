@@ -1,19 +1,39 @@
-:root {
-    --grid-size: 33.5vw;
-}
-
 /* Elenco delle classi CSS in questo file:
 
+ * .button - classe base per i bottoni
+
  * .start-button - bottone d'inizio
- * .start-button:hover - hover del bottone d'inizio
  * .random-button - bottone casuale
  * .pronto-button - bottone pronto
  * .pronto-button:hover - hover del bottone pronto
+ * .restart-button - bottone restart
+ * .restart-button:hover - hover del bottone restart
+ * .go-home-button - bottone go home
+ * .go-home-button:hover - hover del bottone go home
+ * .start-button:hover - hover del bottone d'inizio
+ * .random-button:hover - hover del bottone casuale
  */
 
 
-/*stile bottone d'inizio*/
-.gioca-button {
+.button {
+    border: 2px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    font-family: 'Georgia', serif;
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+}
+
+.b-image {
+    object-fit: contain;
+    width: 70%;
+    height: 70%;
+}
+
+.button.gioca-button {
     position: absolute;
     width: 35%;
     height: 20%;
@@ -21,52 +41,41 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: calc(var(--grid-size) * 0.08);
-    font-weight: bold;
-    font-family: 'Georgia', serif;
-    text-align: center;
     color: #030303;
     background: linear-gradient(to right, #44c300, #027a16);
-    border: 2px solid #000000;
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s ease;
     pointer-events: auto;
 }
 
-.random-button {
+.button.random-button {
     width: calc(var(--grid-size) * 0.3);
     height: calc(var(--grid-size) * 0.2);
     font-size: calc(var(--grid-size) * 0.05);
-    font-weight: bold;
     margin-top: 10%;
-    font-family: 'Georgia', serif;
-    text-align: center;
     color: #f5deb3;
-    border: 2px solid #000000;
     background: linear-gradient(to right ,#1b014e,#4a01de);
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s ease;
 }
 
-.pronto-button {
+.button.pronto-button {
     width: calc(var(--grid-size) * 0.3);
     height: calc(var(--grid-size) * 0.1);
     font-size: calc(var(--grid-size) * 0.05);
-    font-weight: bold;
     margin-bottom: 10%;
-    font-family: 'Georgia', serif;
     color: #000000;
-    text-align: center;
-    border: 2px solid #000000;
     background: linear-gradient(to right, #cbcbcb, #a4a4a4);
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 100;
-    transition: all 0.3s ease;
     top: 10%;
+}
+
+.button.restart-button {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    width: 4%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(to right, #cbcbcb, #a4a4a4);
+    border-color: #f5deb3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /*hover bottone d'inizio*/

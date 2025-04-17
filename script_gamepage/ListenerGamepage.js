@@ -25,10 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.game-over').classList.add('hidden');
     document.getElementById('div_ped_promotion').classList.add('hidden');
     document.querySelector('.background-overlay').classList.add('hidden');
-
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');
-
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.add('game-not-started');
+    });
     
     // Variabili per tenere traccia dello stato dei bottoni pronto
     window.player1Ready = false;
@@ -98,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //LISTENER SUL TITOLO DELLA PAGINA
     document.querySelector('.title').addEventListener('click', () => {
-        inizializzaPagina();
+        window.location.reload();
     });
 
     //LISTENER SUL RICARICA DELLA PAGINA

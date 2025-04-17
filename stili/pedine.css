@@ -22,12 +22,6 @@
     -ms-user-select: none;
 }
 
-/*classe per le pedine non attive prima di iniziare il gioco*/
-.game-not-started .pedina { 
-    pointer-events: none;
-    cursor: default;
-}
-
 /*stile pedine*/
 .torre, .alfiere, .cavallo, .regina, .re, .pedone {
     width: 65%;

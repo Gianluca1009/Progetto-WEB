@@ -401,6 +401,7 @@ function startDraft(){
     document.querySelector('.grid-container').classList.remove('disabled');
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.style.cursor = 'default';
+
     });
 }
 
@@ -408,12 +409,10 @@ function startDraft(){
 function startGame() {
     window.gameStarted = true;
     window.turnoBianco = true; // Reset del turno al bianco
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.remove('game-not-started');
+    });
     aggiornaStatoPedine();
-    
-    // Disabilita il drag and drop
-    if (window.disableDragDrop) {
-        window.disableDragDrop();
-    }
     
     // Ingrandisci la scacchiera
     const gridContainer = document.querySelector('.grid-container');
