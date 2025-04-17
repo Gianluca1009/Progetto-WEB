@@ -12,19 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const giocaButton = document.getElementById('giocaButton');
     const player1Button = document.getElementById('player1button');
     const player2Button = document.getElementById('player2button');
-    const restartGameAtEnd = document.getElementById('restartGameButton');
-    const restartDraftAtEnd = document.getElementById('restartDraftButton');
-    const goHomeButtonAtEnd = document.getElementById('goHomeButton');
+    const restartButtonAtEnd = document.getElementById('restartButtonAtEnd');
+    const restartDraftButtonAtEnd = document.getElementById('restartDraftButtonAtEnd');
+    const HomeButtonAtEnd = document.getElementById('HomeButtonAtEnd');
 
-    const restartGameButton = document.getElementById('restartGameButton');
+    const restartButton = document.getElementById('restartButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
-    const goHomeButton = document.getElementById('goHomeButton');
+    const HomeButton = document.getElementById('HomeButton');
 
     //ELEMENTI DA NASCONDERE ALL'INIZIO
     
-    restartGameButton.classList.add('hidden');
+    restartButton.classList.add('hidden');
     restartDraftButton.classList.add('hidden');
-    goHomeButton.classList.add('hidden');
 
     document.querySelector('.table_draft_sx').classList.add('hidden');
     document.querySelector('.table_draft_dx').classList.add('hidden');
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    restartGameButton.addEventListener('click', () => {
+    restartButton.addEventListener('click', () => {
         restartGame();
     });
 
@@ -87,19 +86,22 @@ document.addEventListener('DOMContentLoaded', () => {
         restartDraft();
     });
 
+    HomeButton.addEventListener('click', () => {
+        goHome();
+    });
 
     // LISTENER PER IL BOTTONE DI RIPARTENZA
-    restartGameAtEnd.addEventListener('click', () => {
+    restartButtonAtEnd.addEventListener('click', () => {
         restartGame();
     });
 
     //LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
-    restartDraftAtEnd.addEventListener('click', () => {
+    restartDraftButtonAtEnd.addEventListener('click', () => {
         restartDraft();
     });
     
     //LISTENER PER IL BOTTONE DI TORNA ALLA HOME
-    goHomeButtonAtEnd.addEventListener('click', () => {
+    HomeButtonAtEnd.addEventListener('click', () => {
         goHome();
     });
     

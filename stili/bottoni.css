@@ -1,6 +1,7 @@
 /* Elenco delle classi CSS in questo file:
 
  * .button - classe base per i bottoni
+ * .b-image - classe base per le immagini dei bottoni
 
  * .start-button - bottone d'inizio
  * .random-button - bottone casuale
@@ -20,7 +21,6 @@
     border-radius: 10px;
     cursor: pointer;
     z-index: 100;
-    transition: all 0.3s ease;
     font-family: 'Georgia', serif;
     text-align: center;
     font-weight: bold;
@@ -31,6 +31,17 @@
     object-fit: contain;
     width: 70%;
     height: 70%;
+}
+
+.container-bottoni {
+    position: absolute;
+    width: 20%;
+    height: 8%;
+    top: 1%;
+    right: 1%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
 }
 
 .button.gioca-button {
@@ -65,31 +76,33 @@
     top: 10%;
 }
 
-.button.restart-button {
-    position: absolute;
-    top: 10%;
-    right: 1%;
-    width: 4%;
+.button.home-button {
+    width: 25%;
     aspect-ratio: 1/1;
     background: linear-gradient(to right, #cbcbcb, #a4a4a4);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 1%;
 }
 
 .button.restart-draft {
-    position: absolute;
-    top: 1%;
-    right: 1%;
-    width: 4%;
+    width: 25%;
     aspect-ratio: 1/1;
     background: linear-gradient(to right, #cbcbcb, #a4a4a4);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1%;
 }
+
+.button.restart-button {
+    width: 25%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(to right, #cbcbcb, #a4a4a4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /*hover bottone d'inizio*/
 .gioca-button:hover {
     transform: translate(-50%, -50%) scale(1.1);

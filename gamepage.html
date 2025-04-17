@@ -49,12 +49,20 @@
 
         <!-- BOTTONE INIZIO GIOCO -->
         <button id="giocaButton" class="button gioca-button">INIZIA A GIOCARE</button>
-        <button id="restartGameButton" class="button restart-button">
-            <img src="images/restartGame.png" alt="restartGame" class="b-image">
-        </button>
-        <button id="restartDraftButton" class="button restart-draft">
-            <img src="images/restartGame.png" alt="restartDraft" class="b-image">
-        </button>
+
+        <!-- CONTAINER BOTTONI -->
+        <div class="container-bottoni">
+            <button id="HomeButton" class="button home-button">
+                <img src="images/Home.png" alt="Home" class="b-image">
+            </button>
+            <button id="restartButton" class="button restart-button">
+                <img src="images/restartGame.png" alt="restartGame" class="b-image">
+            </button>
+            <button id="restartDraftButton" class="button restart-draft">
+                <img src="images/restartGame.png" alt="restartDraft" class="b-image">
+            </button>
+        </div>
+        
         <!-- TABELLA DRAFT SX -->
          <div class="sfondo_draft_sx">
             <div class="table_draft_sx">
@@ -114,9 +122,9 @@
             <!-- CONTAINER GAME OVER -->
             <div class="game-over">PARTITA TERMINATA
                 <div class="bottoni-gameover-container">
-                    <button id="restartButton" class="bottoni-gameover">RIGIOCA</button>
-                    <button id="restartDraftButton" class="bottoni-gameover">RIGIOCA DRAFT</button>
-                    <button id="goHomeButton" class="bottoni-gameover">TORNA ALLA HOME</button>
+                    <button id="restartButtonAtEnd" class="bottoni-gameover">RIGIOCA</button>
+                    <button id="restartDraftButtonAtEnd" class="bottoni-gameover">RIGIOCA DRAFT</button>
+                    <button id="HomeButtonAtEnd" class="bottoni-gameover">TORNA ALLA HOME</button>
                 </div>
             </div>
 

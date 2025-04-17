@@ -432,7 +432,7 @@ function startGame() {
     makeVisible(document.querySelector('.timer-text'));
     makeVisible(document.querySelector('.progress-container'));
     makeVisible(document.querySelector('.progress-bar'));
-    makeVisible(document.querySelector('.restart-button'));
+    makeVisible(document.getElementById('restartButton'));
     
     makeHidden(document.querySelector('.table_draft_sx'));
     makeHidden(document.querySelector('.table_draft_dx'));
@@ -467,16 +467,14 @@ function endGame(){
 
 // Funzione per rigiocare la partita
 function restartGame() {
-    if(window.gameStarted){
-        resetSottoscacco();
-        resetPedine();
-        window.gameStarted = false; // Reset dello stato del gioco
-    
-        makeHidden(document.querySelector('.game-over'));
-        document.querySelector('.game-container').classList.remove('game-not-started');
-        aggiornaStatoPedine();
-        startGame();
-    }
+    resetSottoscacco();
+    resetPedine();
+    window.gameStarted = false; // Reset dello stato del gioco
+
+    makeHidden(document.querySelector('.game-over'));
+    document.querySelector('.game-container').classList.remove('game-not-started');
+    aggiornaStatoPedine();
+    startGame();
 }
 
 // Funzione per cambiare il draft
@@ -491,6 +489,7 @@ function restartDraft(){
     makeHidden(document.querySelector('.game-over'));
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
+    makeHidden(document.querySelector('.restart-button'));
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('game-not-started');
     });
