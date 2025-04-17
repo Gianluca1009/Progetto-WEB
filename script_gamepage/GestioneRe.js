@@ -58,6 +58,9 @@ function highlight_re_if_sottoscacco(){
             cella_reBianco.classList.add('sottoscacco')
         }
     }
+    if(!check_reAvversario_sottoscacco()){
+        resetSottoscacco();
+    }
     //check se metto o tolgo il MIO re sottoscacco quando muovo
     if(check_mio_re_sottoscacco()){ //il mio re è sottoscacco con la mia mossa = ho perso
         if(!window.turnoBianco){
@@ -68,6 +71,9 @@ function highlight_re_if_sottoscacco(){
             let cella_reBianco = document.getElementById(window.idCellReBianco);
             cella_reBianco.classList.add('sottoscacco');
         }
+    }
+    if(!check_mio_re_sottoscacco()){
+        resetSottoscacco();
     }
     // NOTA:  PULIZIA DELLA CELLA SOTTOSCACCO IN UPDATE_RE_POSITION
 }

@@ -118,8 +118,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Esegui l'aggiustamento quando la pagina viene caricata
-    setTimeout(adjustBackgrounds, 100);
+    // Esegui l'aggiustamento quando la pagina viene caricata (immediatamente, senza timeout)
+    adjustBackgrounds();
     
     // Aggiungi un listener per il ridimensionamento della finestra
     window.addEventListener('resize', adjustBackgrounds);
@@ -128,8 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const startButton = document.getElementById('giocaButton');
     if (startButton) {
         startButton.addEventListener('click', function() {
-            // Attendi che le animazioni di inizio gioco siano completate
-            setTimeout(adjustBackgrounds, 800);
+            // Esegui l'aggiustamento immediatamente senza attendere
+            adjustBackgrounds();
         });
     }
 }); 

@@ -58,21 +58,25 @@ function ListenerMovimentoPedine(){
                         avanza(this); //SPOSTAMENTO PEDINA
                         playSound("mossa", 0.5);
                     }
+                    resetSuggerimenti();        //resetta la selezione delle mosse suggerite
+                        
+                    update_re_position(window.selectedImage, this);     // reset della cella del re se non più in scacco
                     
-
+                    highlight_re_if_sottoscacco();      //controlla se dopo la mossa corrente mette sottoscacco il re dell'AVVERSARIO (LOGICA INV) 
+                    
+                    
                     //CONTROLLA SIA LO STATO DEL RE, SIA PROMUOVE IL PEDONE SE IL RE E' VIVO
                     if(!isReMangiato(pedinaBersaglio)){
-                        upgrade_pedone(window.selectedImage, this);
-                    }
-                    //resetta la selezione delle mosse suggerite
-                    resetSuggerimenti();
-                    //update posizione del re + reset della cella del re se non più in scacco
-                    update_re_position(window.selectedImage, this);
-                    //controlla se dopo la mossa corrente mette sottoscacco  il re dell'AVVERSARIO (LOGICA INV)
-                    highlight_re_if_sottoscacco();
+                        let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
 
-                    cambioTurno();  
-                    
+                        // Cambio turno solo se non c'è promozione del pedone in corso
+                        if (!isPedonePromosso) {
+                            cambioTurno();
+                        }
+                    } else {
+                        // Se il re è stato mangiato, cambia comunque il turno
+                        cambioTurno();
+                    }
                 }
 
                 // Resetta la selezione e l'evidenziazione

@@ -62,6 +62,8 @@
     stile css
     fare una tabella con colonne asimmetriche per il draft                                          ✅
     tre righe ogni 10 secondi per poter assegnare un giocatore a una pedina
+    permettere di fare drag and drop tra santini e pedine dello stesso colore
+    
 
     mosse valide                                                                                    ✅
     consiglia-mosse                                                                                 ✅
@@ -71,6 +73,7 @@
     bottone torna alla home                                                                         ✅
     logica pedina mangiata                                                                          ✅
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera                              ✅
+    bloccare il turno finche la pedina promossa non viene sostituita
     generalizzare lo script di creazione pedine                                                     ✅
     stile css                                                                                       ✅
     abolire i ruoli                                                                                 ✅
@@ -78,6 +81,7 @@
     termina partita se re mangiato                                                                  ✅
     logica di partita terminata (funzione endgame)                                                  ✅
     funzione rigioca                                                                                ✅
+    funzione torna alla home                                                                        ✅
 
     (2.0)
     assegnazione dei punti al player vincitore

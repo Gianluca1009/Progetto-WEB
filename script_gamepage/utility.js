@@ -245,8 +245,8 @@ function resetProntoButton() {
     window.player2Ready = false;
 
     //reimposto il colore
-    document.getElementById('player1button').style.color = "black";
-    document.getElementById('player2button').style.color = "white";
+    document.getElementById('player1button').style.background = "linear-gradient(to right, #cbcbcb, #a4a4a4)";
+    document.getElementById('player2button').style.background = "linear-gradient(to right, #cbcbcb, #a4a4a4)";
 }
 
 

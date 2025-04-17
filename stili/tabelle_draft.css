@@ -84,7 +84,7 @@
     display: table-row;
     vertical-align: middle;
     box-sizing: border-box;
-    transition: all 0.2s ease;
+    transition: none !important;
     position: relative;
     margin-bottom: 2%;
 }
