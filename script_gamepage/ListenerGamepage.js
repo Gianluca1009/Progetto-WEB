@@ -34,9 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.background-overlay').classList.add('hidden');
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');
-    document.querySelectorAll('.pedina').forEach(pedina => {
-        pedina.classList.add('game-not-started');
-    });
+    disabilitaPedine();
     
     
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA

@@ -18,11 +18,11 @@
  * .no-hover - classe per disabilitare il hover
  * .hidden - classe per nascondere un elemento
  * .disabled - classe per disabilitare un elemento
- * .game-not-started - classe per il gioco non iniziato
+ * .game-not-started - classe per il gioco non iniziato da applicare agli elementi
  */
  
 .grid-container, .tooltip, .condition-container, .timer-container, .game-over , 
-.random-button, .pronto-button, .tr-ombrata{
+.button, .tr-ombrata{
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 

@@ -237,8 +237,16 @@ function resetPedine(){
     // Riposiziona le pedine usando la funzione esistente
     StartPosition();
 
-    // Aggiorna lo stato delle pedine
-    aggiornaStatoPedine();
+    // Aggiorna lo stato delle pedine solo se il gioco è iniziato
+    if (window.gameStarted) {
+        aggiornaStatoPedine();
+    } else {
+        // In modalità draft, disabilita l'hover per tutte le pedine
+        document.querySelectorAll('.pedina').forEach(pedina => {
+            pedina.classList.add('no-hover');
+            pedina.style.cursor = 'default';
+        });
+    }
 }
 
 function resetProntoButton() {
@@ -355,6 +363,21 @@ function makeHidden(element) {
     setTimeout(() => {
         element.style.display = 'none';
     }, 800);
+}
+
+//abilita movimento e hover pedine
+function abilitaPedine(){
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.remove('no-hover');
+        pedina.classList.add('pedina-active');
+    });
+}
+
+//disabilita movimento e hover pedine
+function disabilitaPedine(){
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.add('no-hover');  // Aggiungo la classe no-hover per disabilitare l'hover
+    });
 }
 
 // Funzione per scrollare la pagina verso il game container
@@ -490,18 +513,14 @@ function restartDraft(){
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
     makeHidden(document.querySelector('.restart-button'));
-    document.querySelectorAll('.pedina').forEach(pedina => {
-        pedina.classList.add('game-not-started');
-    });
-
     document.querySelector('.grid-container').classList.remove('grid-container-enlarged');
+
+    disabilitaPedine();
 
     startDraft();
     
     //riposiziono le pedine nelle posizioni iniziali
     resetPedine();
-
-    
 
     //resetto i bottoni pronto
     resetProntoButton();
