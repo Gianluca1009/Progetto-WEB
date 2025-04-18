@@ -73,7 +73,7 @@
 /* Aggiungo stile per il container tbody */
 .table_draft_dx table tbody, .table_draft_sx table tbody {
     display: table-row-group;
-    height: 100%;
+    height: 75%;
 }
 
 /* Stile per le righe con ombre */

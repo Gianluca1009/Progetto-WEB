@@ -73,9 +73,9 @@
 }
 
 .button.pronto-button {
-    width: calc(var(--grid-size) * 0.3);
-    height: calc(var(--grid-size) * 0.1);
-    font-size: calc(var(--grid-size) * 0.05);
+    width: 65%;
+    height: 100%;
+    font-size: 80%;
     margin-bottom: 10%;
     color: #000000;
     background: linear-gradient(to right, #cbcbcb, #a4a4a4);
