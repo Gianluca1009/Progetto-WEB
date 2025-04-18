@@ -18,9 +18,9 @@
     position: absolute;
     table-layout: fixed;
     top: 50%;
-    width: calc(var(--grid-size) * 0.4);
+    width: 80%;
     max-width: 30vw;
-    max-height: 85%;
+    height: 80%;
     border-spacing: 0;
     background: transparent;
     display: flex;
@@ -53,16 +53,7 @@
     position: relative;
     max-height: 95%;
     table-layout: fixed;
-    overflow-y: auto;
     top: 0;
-}
-
-.table_draft_dx table tr:not(:last-child),
-.table_draft_sx table tr:not(:last-child) {
-    border: 2px solid #000;
-    border: 2px solid black;
-    border-radius: 12px;
-    border-radius: 10px;
 }
 
 .table_draft_dx table td,
