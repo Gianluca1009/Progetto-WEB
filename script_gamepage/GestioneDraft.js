@@ -69,6 +69,47 @@ function assegnaCognome(text,cognome_calciatore){
     text.classList.add('nome-giocatore');
 }
 
+//funzione per sottolineare le celle di drop della squadra nera
+function evidenziaCelleDropNero(){
+    for(let i = 0; i < 2; i++){
+        for(let j = 0; j < 6; j++){
+            const cella = document.getElementById(`${i}${j}`);
+            // Controlla se c'è una pedina
+            if(cella.children.length == 1){
+                const pedina = cella.querySelector('.pedina');
+                // Controlla se la pedina esiste e non ha già un nome giocatore assegnato
+                if(pedina && !pedina.querySelector('.nome-giocatore')){
+                    cella.classList.add('highlight-drop-cell');
+                }
+            }
+        }
+    }
+}
+
+//funzione per sottolineare le celle di drop della squadra bianca
+function evidenziaCelleDropBianco(){
+    for(let i = 4; i < 6; i++){
+        for(let j = 0; j < 6; j++){
+            const cella = document.getElementById(`${i}${j}`);
+            // Controlla se c'è una pedina
+            if(cella.children.length == 1){
+                const pedina = cella.querySelector('.pedina');
+                // Controlla se la pedina esiste e non ha già un nome giocatore assegnato
+                if(pedina && !pedina.querySelector('.nome-giocatore')){
+                    cella.classList.add('highlight-drop-cell');
+                }
+            }
+        }
+    }
+}
+
+//funzione per resettare le celle di drop
+function resetEvidenziaCelleDrop(){
+    document.querySelectorAll(".highlight-drop-cell").forEach(cell => {
+        cell.classList.remove('highlight-drop-cell');
+    });
+}
+
 //funzione per gestire il drag e drop
 function DragDrop_draft(){
     //selziona tutti le img calciatore -> drag elem sx
@@ -83,11 +124,13 @@ function DragDrop_draft(){
             event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
+            evidenziaCelleDropBianco();
         });
 
         // Evento dragend
         santino_img.addEventListener("dragend", function(event) {
             document.body.style.cursor = 'default';  // Ripristina il cursore default
+            resetEvidenziaCelleDrop();
         });
     });
 
@@ -103,11 +146,13 @@ function DragDrop_draft(){
             event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
+            evidenziaCelleDropNero();
         });
 
         // Evento dragend
         santino_img.addEventListener("dragend", function(event) {
             document.body.style.cursor = 'default';  // Ripristina il cursore default
+            resetEvidenziaCelleDrop();
         });
     });
 
