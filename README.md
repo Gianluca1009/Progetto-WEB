@@ -26,12 +26,16 @@
 
 
 # Generic To-do:
+
     adattabilita alla pagina/risoluzione                                                            ✅
     progetto in tre due pagine (login + info/(preparazione partita/pagina di gioco))                ✅
     pulire il codice, commentare e usare piu funzioni possibili per mantenere leggibilità           ✅
     separazione tra listener e funzioni in file separati                                            ✅
+    rendere la ricarica della pagina più smooth
+    rallentare le animazioni per non far vedere gli elementi che spariscono alla ricarica
 
 # index-page:
+
     descrizione gioco e regole
     immagini                                                                                        ✅
     
@@ -40,14 +44,17 @@
     informazioni account con php
 
 # mercato page:
+
     to-do
     
 # rose-page:
+
     printare il database su una pagina html
     gestione programmatica statistiche dei calciatori
 
 
 # Game-page:
+
     bottone start                                                                                   ✅
     bottone random                                                                                  ✅
     doppio bottone pronto post-draft                                                                ✅
@@ -99,12 +106,23 @@
     
 # CSS
 
-    1. gampage
+1. index
+
+    rendere la pagina più accogliente
+    completare hover e puntatori sui bottoni delle altre pagine
+
+
+
+
+
+2. gampage
 
     modularizzare le classi creando classi base generiche (bottoni, testo, ecc...)
     correggere lo script per l'adattamento del grid container
     trovare degli hover carini per bottoni
     adattare una singola classe bottone da utilizzare sempre
+
+    
 
 
     
