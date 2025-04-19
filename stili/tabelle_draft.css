@@ -16,11 +16,10 @@
 
 .table_draft_dx, .table_draft_sx {
     position: absolute;
-    table-layout: fixed;
     top: 50%;
     width: 80%;
     max-width: 30vw;
-    height: 80%;
+    height: 75%;
     border-spacing: 0;
     background: transparent;
     display: flex;
@@ -32,52 +31,38 @@
 
 .table_draft_dx {
     right: 50%;
-    border: 0;
     transform: translate(50%, -50%);
 }
 
 .table_draft_sx {
     left: 50%;
-    border: 0;
     transform: translate(-50%, -50%);
 }
 
-/* Posiziono specificatamente la tabella per avere spazio per il bottone in alto */
+/* Tabella come grid container */
 .table_draft_dx table, .table_draft_sx table {
     width: 100%;
-    height: 90%;
-    border-collapse: separate;
-    border-spacing: 0 8px; /* spazio verticale tra righe */
+    height: 70%;
     border: 0;
-    display: table;
     position: relative;
-    max-height: 95%;
-    table-layout: fixed;
     top: 0;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr); /* Tre righe di uguale altezza */
+    gap: 8px; /* Spazio tra le righe */
 }
 
-.table_draft_dx table td,
-.table_draft_sx table td {
-    border: 1px solid #000;
-}
-
-/* Aggiungo stile per il container tbody */
+/* Rimuovo il tbody perché non necessario in un grid layout */
 .table_draft_dx table tbody, .table_draft_sx table tbody {
-    display: table-row-group;
-    height: 75%;
+    display: contents; /* Permette di distribuire i figli del tbody nella griglia */
 }
 
-/* Stile per le righe con ombre */
+/* Stile per le righe con ombre - ora ciascuna riga è un grid element */
 .tr-ombrata {
-    cursor: default;
-    height: 30%;
-    width: 100%;
-    display: table-row;
-    vertical-align: middle;
-    box-sizing: border-box;
     transition: all 0.2s ease;
     position: relative;
-    margin-bottom: 2%;
+    display: grid;
+    grid-template-columns: 35% 65%; /* Distribuisco lo spazio tra foto e info */
+    height: 100%; /* Ogni riga occuperà il 100% della sua cella grid */
 }
 
 .tr-ombrata:last-child {
@@ -86,25 +71,22 @@
 
 .foto_draftcell {
     background-color: #000000;
-    width: 35%;
-    height: 100%;
     text-align: center;
     justify-content: center;
     border: calc(var(--cell-size) * 0.03) solid black;
-    /* border-right: calc(var(--cell-size) * 0.03) solid black; */
     position: relative;
     padding: 0;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    vertical-align: middle;
-    aspect-ratio: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    height: 100%;
 }
 
 .info_draftcell {
     background-color: #c1c1c1;
-    width: 65%;
-    height: 100%;
     text-align: center;
     justify-content: center;
     border: calc(var(--cell-size) * 0.03) solid black;
@@ -113,29 +95,32 @@
     padding: 0;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    height: 100%;
 }
 
 .santino-container {
     width: 100%;
     height: 100%;
     margin: auto;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     overflow: hidden;
     max-width: 100%;
     max-height: 100%;
-    min-height: calc(var(--grid-size) * 0.05);
 }
 
 /* immagine calciatore */
 .santino-dx, .santino-sx {
     width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90%;
     margin: auto;
     display: block;
     position: relative;

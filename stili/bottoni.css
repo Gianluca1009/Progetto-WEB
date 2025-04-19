@@ -64,19 +64,19 @@
 }
 
 .button.random-button {
-    width: calc(var(--grid-size) * 0.3);
-    height: calc(var(--grid-size) * 0.2);
-    font-size: calc(var(--grid-size) * 0.05);
-    margin-top: 10%;
+    width: 70%;
+    height: 20%;
+    font-size: 100%;
+    bottom: 0%;
     color: #f5deb3;
     background: linear-gradient(to right ,#1b014e,#4a01de);
 }
 
 .button.pronto-button {
     width: 65%;
-    height: 40%;
+    height: 10%;
     font-size: 80%;
-    margin-bottom: 10%;
+    top: 50%;
     color: #000000;
     background: linear-gradient(to right, #cbcbcb, #a4a4a4);
     display: flex;
