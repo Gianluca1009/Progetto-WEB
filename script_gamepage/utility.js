@@ -490,7 +490,8 @@ function endGame(){
 
 // Funzione per rigiocare la partita
 function restartGame() {
-    resetSottoscacco();
+    resetNumCelleRe();
+    resetColoreSottoscacco();
     resetPedine();
     window.gameStarted = false; // Reset dello stato del gioco
 

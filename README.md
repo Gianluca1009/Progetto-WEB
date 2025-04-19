@@ -70,6 +70,7 @@
     permettere di fare drag and drop tra santini e pedine dello stesso colore                       ✅
     trovare una soluzione ai nomi lunghi nelle celle div
     gestire meglio il banner pre-ricarica della pagina
+    correggere il fatto che il re rimane in scacco quando non dovrebbe nella promozione pedone
 
     mosse valide                                                                                    ✅
     consiglia-mosse                                                                                 ✅
