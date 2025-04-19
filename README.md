@@ -71,6 +71,7 @@
     trovare una soluzione ai nomi lunghi nelle celle div
     gestire meglio il banner pre-ricarica della pagina
     correggere il fatto che il re rimane in scacco quando non dovrebbe nella promozione pedone
+    correggere il fatto che posso spostare altre pedine durante la promozione pedone
 
     mosse valide                                                                                    ✅
     consiglia-mosse                                                                                 ✅
@@ -80,7 +81,7 @@
     bottone torna alla home                                                                         ✅
     logica pedina mangiata                                                                          ✅
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera                              ✅
-    bloccare il turno finche la pedina promossa non viene sostituita
+    bloccare il turno finche la pedina promossa non viene sostituita                                ✅
     gestire la promozione del pedone allo scadere del timer
     generalizzare lo script di creazione pedine                                                     ✅
     abolire i ruoli                                                                                 ✅
@@ -89,20 +90,19 @@
     logica di partita terminata (funzione endgame)                                                  ✅
     funzione rigioca                                                                                ✅
     funzione torna alla home                                                                        ✅
-    aggiungere bottoni restart, restart draft e go home anche durante la partita
+    aggiungere bottoni restart, restart draft e go home anche durante la partita                    ✅
 
     (2.0)
     assegnazione dei punti al player vincitore
     mercato dei calciatori
-    pulsanti e funzioni:
+    pulsanti e funzioni:                                                                            ✅
     -restart game                                                                                   ✅
     -restart draft                                                                                  ✅
     -go home                                                                                        ✅
 
 
 # utilizzo DataBase
-    provare l'utilizzo di database gratuiti come SportsDB o altri, tenendo in considerazione
-    la limitazione di richieste al minuto.
+    provare l'utilizzo di database gratuiti come SportsDB o altri
     
     
 # CSS
