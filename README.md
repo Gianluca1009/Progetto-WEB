@@ -83,6 +83,7 @@
     pedone diventa qualsiasi pedine se arriva in fondo alla scacchiera                              ✅
     bloccare il turno finche la pedina promossa non viene sostituita                                ✅
     gestire la promozione del pedone allo scadere del timer
+    se il re si muove non si aggiorna la posizione del re per il colore dello scacco
     generalizzare lo script di creazione pedine                                                     ✅
     abolire i ruoli                                                                                 ✅
     far apparire dei log con statistiche ai lati della scacchiera

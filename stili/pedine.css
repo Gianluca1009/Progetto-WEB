@@ -1,10 +1,8 @@
 /* Elenco delle classi CSS in questo file:
 
  * .pedina - pedine
- * .pedina-active - pedine attive
- * .pedina-no-hover - pedine non attive prima di iniziare il gioco
  * .torre, .alfiere, .cavallo, .regina, .re, .pedone - pedine
- * .nome-giocatore - nome del giocatore
+ * .torre:hover, .alfiere:hover, .cavallo:hover, .regina:hover, .re:hover, .pedone:hover - hover delle pedine
  */
 
  /* STILE CLASSE PEDINA BASE NUDA E CRUDA */

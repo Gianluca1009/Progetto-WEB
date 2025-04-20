@@ -3,6 +3,7 @@
  * .progress-container - contenitore della progress bar
  * .progress-bar - barra di progressione
  * .progress-bar.instant - barra di progressione istantanea
+ * .timer-text - testo del timer all'interno della progress bar
  */
 
 .progress-container {
