@@ -43,7 +43,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-    font-size: calc(var(--cell-size)*0.3);
+    font-size: 100%;
     font-weight: bold;
     z-index: 2;
     margin: 0;

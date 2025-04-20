@@ -26,10 +26,6 @@
  * .game-not-started - classe per il gioco non iniziato da applicare agli elementi
  */
  
-.grid-container, .tooltip, .condition-container, .timer-container, .game-over , 
-.button, .tr-ombrata{
-    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
-}
 
 body {
     min-height: 100vh;
@@ -63,4 +59,16 @@ body {
 .game-not-started {
     cursor: default;
     pointer-events: none;
+}
+
+
+
+/* OMBRE COMUNI */
+
+.game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .tr-ombrata, .menu-button{
+    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+}
+
+.button{
+    box-shadow: 0 0.9375rem 0.9375rem rgba(15, 12, 0, 0.5);
 }
