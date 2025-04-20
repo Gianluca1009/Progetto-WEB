@@ -18,7 +18,7 @@
     text-align: center;
     vertical-align: middle;
     z-index: 2;
-    border: 0.09375rem solid #f5deb3;
+    border: 0.09375rem solid var(--color-crema);
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 
@@ -26,7 +26,7 @@
 .condition-title {
     margin: 0;
     font-size: calc(var(--cell-size));
-    color: #f5deb3;
+    color: var(--color-crema);
     line-height: 1.5;
     font-weight: bold;
     font-size: calc(var(--cell-size)*0.3);

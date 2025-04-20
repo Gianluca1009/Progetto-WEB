@@ -69,7 +69,7 @@
     font-size: 12vh;
     font-weight: bold;
     margin: 0;
-    color: #f5deb3;
+    color: var(--color-crema);
     font-family: 'Georgia', serif;
     letter-spacing: 0.125rem;
     background: linear-gradient(to right, #efe0c4, #e8c481);
