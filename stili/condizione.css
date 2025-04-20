@@ -13,7 +13,7 @@
     transform: translateX(-50%);
     width: 50%;
     height: 10%;
-    background: linear-gradient(to right ,#1b014e,#4a01de);
+    background: var(--background-sfumato-violaceo);
     border-radius: 0.625rem;
     text-align: center;
     vertical-align: middle;

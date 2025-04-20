@@ -9,6 +9,9 @@
     --draft-grid-width: calc(var(--draft-grid-height) * 0.7);
     --draft-cell-height: calc(var(--draft-cell-height) / 3);
     --draft-cell-width: calc(var(var(--draft-cell-width) / 3));
+
+    /* COLORI UTILIZZATI */
+    --background-sfumato-violaceo: linear-gradient(to right ,#1b014e,#4a01de);
 }
 
 /* Elenco delle classi CSS in questo file:
@@ -28,7 +31,7 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(to right ,#1b014e,#4a01de);
+    background: var(--background-sfumato-violaceo);
     overscroll-behavior: none;
     margin: 0;
     padding: 0;
@@ -37,6 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .no-hover {

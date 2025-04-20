@@ -14,10 +14,9 @@
  
  */
 
- :root {
-    --grid-size: 31.25vw;
-    --cell-size: calc(var(--grid-size) / 6);
-}
+
+
+/* SEZIONE BARRA SUPERIORE */
 
 .intestazione {
     display: block;
@@ -34,15 +33,13 @@
     width: 100%;
     height: 15%;
     box-sizing: border-box;
-    padding: calc(var(--cell-size) * 0.5);
     border: 0.125rem solid black;
     box-shadow: 0 0.25rem 1rem rgba(1, 0, 0, 0.5);
-    margin-bottom: calc(var(--cell-size) * 0.375);
-    margin-top: calc(var(--cell-size) * -0.125);
+    margin-bottom: 2%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right ,#0f002d,#2c0182);
+    background: var(--background-sfumato-violaceo);
 }
 
 /*stile bottone menù*/
@@ -69,7 +66,7 @@
 /*stile titolo*/
 .title {
     text-align: center;
-    font-size: calc(var(--cell-size) * 0.95);
+    font-size: 12vh;
     font-weight: bold;
     margin: 0;
     color: #f5deb3;
@@ -82,7 +79,12 @@
     cursor: pointer;
 }
 
-/*stile bottone info*/
+
+
+
+
+/* SEZIONE INFO */
+
 .info {
     width: 2%;
     height: 2%;
@@ -103,11 +105,11 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s;
-    width: var(--grid-size);
-    height: var(--grid-size)*0.7;
-    padding: 5%;
+    width: 30%;
+    height: 80%;
+    padding: 1%;
     text-align: center;
-    font-size: calc(var(--cell-size) * 0.2);
+    font-size: 90%;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
