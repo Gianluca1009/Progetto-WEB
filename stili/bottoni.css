@@ -88,7 +88,7 @@
 .button.home-button {
     width: 25%;
     aspect-ratio: 1/1;
-    background: linear-gradient(to right, #cbcbcb, #a4a4a4);
+    background-color: var(--color-crema);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,7 +97,7 @@
 .button.restart-draft {
     width: 25%;
     aspect-ratio: 1/1;
-    background: linear-gradient(to right, #cbcbcb, #a4a4a4);
+    background-color: var(--color-crema);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,7 +106,7 @@
 .button.restart-button {
     width: 25%;
     aspect-ratio: 1/1;
-    background: linear-gradient(to right, #cbcbcb, #a4a4a4);
+    background-color: var(--color-crema);
     display: flex;
     align-items: center;
     justify-content: center;
