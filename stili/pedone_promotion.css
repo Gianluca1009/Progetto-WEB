@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    background: linear-gradient(to right, #dadada7c, #6a6a6a75);
+    background: linear-gradient(to right, #dadadadc, #6a6a6adc);
     width: 20%;
     height: 30%;
     z-index: 3;
@@ -24,19 +24,21 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    width: 100%;
 }
 
 .foto_ped_promotion {
     background: linear-gradient(to right, #dadada, #6a6a6a);
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1/1;
-    text-align: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    border: calc(var(--cell-size) * 0.03) solid black;
+    border: 1px solid black;
     position: relative;
     padding: 0;
     border-radius: 10px;
-    vertical-align: middle;
     overflow: hidden;
     cursor: pointer;
+    margin: 0 auto;
 }

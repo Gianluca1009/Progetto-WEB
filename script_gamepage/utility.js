@@ -476,6 +476,8 @@ function startGame() {
         return window.gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
     };
     
+    // Reset dei timer e avvio
+    resetTimers();
     startTimer();
 }
 
@@ -483,6 +485,7 @@ function startGame() {
 function endGame(){
     window.gameStarted = false;
     freezeTimer();
+    
     makeVisible(document.querySelector('.game-over'));
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
@@ -526,6 +529,9 @@ function restartDraft(){
 
     //resetto i bottoni pronto
     resetProntoButton();
+    
+    //resetto i timer
+    resetTimers();
 
     document.querySelector(".game-container").classList.remove('game-not-started');
 }

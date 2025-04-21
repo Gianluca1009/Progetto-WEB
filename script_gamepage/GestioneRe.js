@@ -153,7 +153,14 @@ function isReMangiato(pedina_mangiata){
     // Verifica se la pedina mangiata esiste ed è un re
     if (pedina_mangiata && (pedina_mangiata.id === 'r' || pedina_mangiata.id === 'R')){
         
-        endGame(); //chiama la funzione per terminare la partita
+        let message = "";
+        if (pedina_mangiata.id === 'r') {
+            message = "Il Re Bianco è stato catturato! Vince il Nero!";
+        } else {
+            message = "Il Re Nero è stato catturato! Vince il Bianco!";
+        }
+        
+        endGame(message); //chiama la funzione per terminare la partita con il messaggio
         return true;
     }
     return false;
