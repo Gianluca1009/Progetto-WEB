@@ -175,13 +175,15 @@ function validationMove(img, dest_cell){
 }
 
 // Funzione per mangiare una pedina
-function mangia(pedinaBersaglio,cella_dest){
-    //controllo condizione per mangiare la pedina
-    
-    if(cella_dest.hasChildNodes()){    //se la cella di destinazione ha già una pedina,
-        cella_dest.removeChild(pedinaBersaglio);          //la rimuovo
+function mangia(pedinaBersaglio, cella_dest) {
+    // Se la cella di destinazione contiene la pedina bersaglio
+    if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
+        // Rimuovo solo la pedina, non tutta la cella
+        pedinaBersaglio.remove();
     }
-    avanza(cella_dest); //SPOSTAMENTO PEDINA
+    
+    // Sposto la pedina selezionata nella cella di destinazione
+    avanza(cella_dest);
 }
 
 // Funzione per spostare una pedina
@@ -231,8 +233,7 @@ function resetPedine(){
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.remove();
     });
-    window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
-    window.idCellReNero = "03"; //id della cella su cui c'è il re nero
+    resetNumCelleRe();
 
     // Riposiziona le pedine usando la funzione esistente
     StartPosition();

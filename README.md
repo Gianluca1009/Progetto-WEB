@@ -120,9 +120,8 @@
 2. gampage
 
     modularizzare le classi creando classi base generiche (bottoni, testo, ecc...)
-    correggere lo script per l'adattamento del grid container
+    correggere lo script per l'adattamento del grid container                                       ✅
     trovare degli hover carini per bottoni
-    adattare una singola classe bottone da utilizzare sempre
 
     
 

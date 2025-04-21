@@ -32,6 +32,7 @@ function upgrade_pedone(img_pedina, cella_dest){
     if(div_pedina.id == "p" ){
         if(current_row == 0){
             makeVisible(divPromotion);
+            disabilitaPedine(); // Disabilita tutte le pedine quando divPromotion diventa visibile
             ListenerPromozione(div_pedina, img_pedina, true); // Passa true perché è un pedone bianco
             isPedonePromosso = true;
         }
@@ -40,6 +41,7 @@ function upgrade_pedone(img_pedina, cella_dest){
     if(div_pedina.id == "P" ){
         if(current_row == 5){
             makeVisible(divPromotion);
+            disabilitaPedine(); // Disabilita tutte le pedine quando divPromotion diventa visibile
             ListenerPromozione(div_pedina, img_pedina, false); // Passa false perché è un pedone nero
             isPedonePromosso = true;
         } 
@@ -103,6 +105,9 @@ function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
         
         // Cambio turno dopo la promozione
         cambioTurno();
+        
+        // Riabilita le pedine dopo la promozione
+        aggiornaStatoPedine();
     });
 
     document.getElementById('pedonepromotion_cavallo').addEventListener('click', () =>{
@@ -145,6 +150,9 @@ function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
         
         // Cambio turno dopo la promozione
         cambioTurno();
+        
+        // Riabilita le pedine dopo la promozione
+        aggiornaStatoPedine();
     });
 }
 
