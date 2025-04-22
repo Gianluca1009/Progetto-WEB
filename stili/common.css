@@ -4,11 +4,6 @@
     --game-height: 90vh;
     --grid-size: 35vw;
     --cell-size: calc(var(--grid-size) / 6);
-    --draft-width: calc(var(--grid-size) * 0.58);
-    --draft-grid-height: 35.5vw;
-    --draft-grid-width: calc(var(--draft-grid-height) * 0.7);
-    --draft-cell-height: calc(var(--draft-cell-height) / 3);
-    --draft-cell-width: calc(var(var(--draft-cell-width) / 3));
 
     /* COLORI UTILIZZATI */
     --background-sfumato-violaceo: linear-gradient(to right ,#1b014e,#4a01de);

@@ -73,7 +73,7 @@
     background-color: #000000;
     text-align: center;
     justify-content: center;
-    border: calc(var(--cell-size) * 0.03) solid black;
+    border: 2px solid black;
     position: relative;
     padding: 0;
     border-top-left-radius: 10px;
@@ -89,7 +89,7 @@
     background-color: #c1c1c1;
     text-align: center;
     justify-content: center;
-    border: calc(var(--cell-size) * 0.03) solid black;
+    border: 2px solid black;
     border-left: 0;
     position: relative;
     padding: 0;

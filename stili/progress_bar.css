@@ -44,7 +44,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-    font-size: 140%;  /* Aumento dimensione font */
+    font-size: 3vh;  /* Aumento dimensione font */
     font-weight: bold;
     z-index: 3;  /* Sopra la barra di progresso */
     margin: 0;

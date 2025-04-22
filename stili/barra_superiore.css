@@ -45,7 +45,7 @@
 /*stile bottone menù*/
 .menu-button {
     position: absolute;
-    left: 1.25rem;
+    left: 5%;
     padding: 2% 2%;
     font-size: 1rem;
     border: none;
@@ -66,7 +66,7 @@
 /*stile titolo*/
 .title {
     text-align: center;
-    font-size: 12vh;
+    font-size: 8vw;
     font-weight: bold;
     margin: 0;
     color: var(--color-crema);
