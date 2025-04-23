@@ -122,6 +122,7 @@
     modularizzare le classi creando classi base generiche (bottoni, testo, ecc...)
     correggere lo script per l'adattamento del grid container                                       ✅
     trovare degli hover carini per bottoni
+    modificare le barre dei timer e separarle
 
     
 

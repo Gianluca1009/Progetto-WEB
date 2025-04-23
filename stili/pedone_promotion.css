@@ -12,7 +12,6 @@
     position: absolute;
     background: linear-gradient(to right, #dadadadc, #6a6a6adc);
     width: 20%;
-    height: 30%;
     z-index: 3;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
