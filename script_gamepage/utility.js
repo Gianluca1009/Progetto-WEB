@@ -424,13 +424,22 @@ function checkBothPlayersReady() {
 }
 
 //Funzione per iniziare la preparazione del draft
-function startDraft(){
+async function startDraft(){
     makeHidden(document.querySelector('.gioca-button'));
     makeVisible(document.querySelector('.background-overlay'));
     makeVisible(document.querySelector('.table_draft_dx'));
     makeVisible(document.querySelector('.table_draft_sx'));
     makeVisible(document.querySelector('.restart-draft'));
 
+    const listaOggettiCalciatori = await fetch('http://localhost:3306/calciatori')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error fetching calciatori:', error);
+        });
+    
     document.querySelector('.background').classList.remove('disabled');
     document.querySelector('.grid-container').classList.remove('disabled');
 }
