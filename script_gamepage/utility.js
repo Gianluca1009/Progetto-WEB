@@ -431,14 +431,10 @@ async function startDraft(){
     makeVisible(document.querySelector('.table_draft_sx'));
     makeVisible(document.querySelector('.restart-draft'));
 
-    const listaOggettiCalciatori = await fetch('http://localhost:3000/calciatori')
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error fetching calciatori:', error);
-        });
+    await populate_draft();
+    DragDrop_draft();
+
+    // Gestione della visibilità dei vari elementi
     
     document.querySelector('.background').classList.remove('disabled');
     document.querySelector('.grid-container').classList.remove('disabled');

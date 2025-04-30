@@ -144,22 +144,83 @@ function DragDrop_draft(){
     });
 }
 
-async function populate_draft() {
-    
-    fetch('http://localhost:3000/populate-draft')
-    .then(response => response.json())
-    .then(data => {
-    console.log('Dati dal DB:', data);
-  });
+async function fetchCalciatori() {
+    const response = await fetch('http://localhost:3000/populate-draft');
+    const data = await response.json();
+    return data;
 }
 
-// Inizializza il draft quando la pagina è caricata
-document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        await populate_draft();
-        DragDrop_draft(); // Inizializza il drag and drop dopo che il draft è popolato
-    } catch (error) {
-        console.error('Error initializing draft:', error);
+// Funzione per mescolare un array (Fisher-Yates shuffle)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Scambia elementi
     }
-});
-    
+}
+
+async function populate_draft() {
+    try {
+        const array_calciatori_partita = await fetchCalciatori();
+        console.log('Raw data received:', array_calciatori_partita); // Log raw data
+        console.log('Dati dal DB:', array_calciatori_partita);
+
+        if (!array_calciatori_partita || array_calciatori_partita.length < 6) {
+            console.error('Non ci sono abbastanza calciatori per popolare il draft (necessari almeno 6).');
+            // Qui potresti voler mostrare un messaggio all'utente
+            return;
+        }
+
+        // Mescola l'array dei calciatori
+        shuffleArray(array_calciatori_partita);
+
+        // Seleziona i primi 6 calciatori casuali
+        const selectedPlayers = array_calciatori_partita.slice(0, 6);
+
+        // Seleziona i container del draft
+        const santiniSxContainers = [
+            document.getElementById('s00'),
+            document.getElementById('s10'),
+            document.getElementById('s20')
+        ];
+        const santiniDxContainers = [
+            document.getElementById('d00'),
+            document.getElementById('d10'),
+            document.getElementById('d20')
+        ];
+
+        // Popola i container di sinistra (primi 3 giocatori)
+        for (let i = 0; i < 3; i++) {
+            const player = selectedPlayers[i];
+            const container = santiniSxContainers[i];
+            if (container && player) {
+                container.innerHTML = ''; // Pulisci il container precedente se necessario
+                const img = document.createElement('img');
+                img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
+                img.alt = player.cognome; // Usa 'cognome' come alt text
+                img.id = player.cognome; // Usa 'cognome' come ID per il drag & drop
+                img.classList.add('santino-sx'); // Aggiungi la classe per lo stile e il drag&drop
+                img.draggable = true;
+                container.appendChild(img);
+            }
+        }
+
+        // Popola i container di destra (giocatori da 3 a 5)
+        for (let i = 3; i < 6; i++) {
+            const player = selectedPlayers[i];
+            const container = santiniDxContainers[i - 3]; // Usa l'indice corretto per i container di dx
+            if (container && player) {
+                container.innerHTML = ''; // Pulisci il container precedente se necessario
+                const img = document.createElement('img');
+                img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
+                img.alt = player.cognome; // Usa 'cognome' come alt text
+                img.id = player.cognome; // Usa 'cognome' come ID per il drag & drop
+                img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
+                img.draggable = true;
+                container.appendChild(img);
+            }
+        }
+
+    } catch (error) {
+        console.error('Errore durante il popolamento del draft:', error);
+    }
+}

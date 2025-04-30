@@ -3,7 +3,6 @@ const express = require('express');
 const mysql = require('mysql2/promise');
 const path = require('path');
 const cors = require('cors');
-// Rimosso l'import da connection.js
 
 class Calciatore {
     constructor(nome, cognome, img_url, data_nascita, nazionalita, ruolo, squadra, numero_maglia, goal, assist, presenze, cartellini_gialli, cartellini_rossi, trofei, record_goal, record_assist) {
@@ -66,7 +65,7 @@ async function get72RandomCalciatori() {
 }
 
 
-async function populate_draft() {
+async function ArrayCalciatoriCreation() {
     try {
         const random_calciatori = await get72RandomCalciatori();
         const OggettiCalciatori = random_calciatori.map(info_calciatore => 
@@ -89,7 +88,6 @@ async function populate_draft() {
                 info_calciatore.record_assist
             )
         );
-        console.log(OggettiCalciatori);
         return OggettiCalciatori;
     } catch (error) {
         console.error('Error populating draft:', error);
@@ -102,22 +100,13 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-// Route per populate_draft ???? ma che cazzo fa chiama di nuovo populate draft?
+// Route per populate_draft
 app.get('/populate-draft', async (req, res) => {
     try {
-        const result = await populate_draft();
+        const result = await ArrayCalciatoriCreation();
         res.json(result);
     } catch (error) {
         res.status(500).json({ error: 'Error populating draft' });
-    }
-});
-
-app.get('/calciatori', async (req, res) => {
-    try {
-        const calciatori = await get72RandomCalciatori();
-        res.json(calciatori);
-    } catch (error) {
-        res.status(500).json({ error: 'Error fetching calciatori' });
     }
 });
 
