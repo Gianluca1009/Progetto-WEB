@@ -1,31 +1,31 @@
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
-function DatabaseConnection() {
-    const connection = mysql.createConnection({
+async function createConnection() {
+    const connection = await mysql.createConnection({
         host: 'localhost',
         user: 'user',
         password: 'userpwd',
         database: 'ChessDB'
     });
-
-    connection.connect((err) => {
-        if (err) throw err;
-        console.log('Connected to MySQL database');
-    });
-
+    
+    console.log('Connected to MySQL database');
     return connection;
 }
 
-const connection = DatabaseConnection();
-
-function get72RandomCalciatori() {
-    const query = 'SELECT * FROM Calciatore ORDER BY RAND() LIMIT 72;';
-    connection.query(query, (err, results) => {
-        if (err) throw err;
-        console.log(results);
-        connection.end();
-    });
-    return results;
+async function get72RandomCalciatori() {
+    const connection = await createConnection();
+    try {
+        const [results] = await connection.execute(
+            'SELECT * FROM Calciatore ORDER BY RAND() LIMIT 72'
+        );
+        return results;
+    } catch (error) {
+        console.error('Error fetching calciatori:', error);
+        throw error;
+    } finally {
+        await connection.end();
+    }
 }
 
 module.exports = { get72RandomCalciatori };
+

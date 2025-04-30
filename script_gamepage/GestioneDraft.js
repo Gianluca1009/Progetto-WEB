@@ -144,6 +144,28 @@ function DragDrop_draft(){
     });
 }
 
-populate_draft();
-DragDrop_draft(); // Inizializza il drag and drop all'avvio
+async function populate_draft() {
+    try {
+        const response = await fetch('http://localhost:3000/populate-draft');
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        console.log('Draft populated:', data);
+        return data;
+    } catch (error) {
+        console.error('Error populating draft:', error);
+        throw error;
+    }
+}
+
+// Inizializza il draft quando la pagina è caricata
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        await populate_draft();
+        DragDrop_draft(); // Inizializza il drag and drop dopo che il draft è popolato
+    } catch (error) {
+        console.error('Error initializing draft:', error);
+    }
+});
     
