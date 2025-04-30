@@ -145,18 +145,12 @@ function DragDrop_draft(){
 }
 
 async function populate_draft() {
-    try {
-        const response = await fetch('http://localhost:3000/populate-draft');
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log('Draft populated:', data);
-        return data;
-    } catch (error) {
-        console.error('Error populating draft:', error);
-        throw error;
-    }
+    
+    fetch('http://localhost:3000/populate-draft')
+    .then(response => response.json())
+    .then(data => {
+    console.log('Dati dal DB:', data);
+  });
 }
 
 // Inizializza il draft quando la pagina è caricata

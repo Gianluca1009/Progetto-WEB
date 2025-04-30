@@ -1,7 +1,9 @@
-// const express = require('express');
+
 const express = require('express');
+const mysql = require('mysql2/promise');
 const path = require('path');
-const { get72RandomCalciatori } = require('./connection.js');
+const cors = require('cors');
+// Rimosso l'import da connection.js
 
 class Calciatore {
     constructor(nome, cognome, img_url, data_nascita, nazionalita, ruolo, squadra, numero_maglia, goal, assist, presenze, cartellini_gialli, cartellini_rossi, trofei, record_goal, record_assist) {
@@ -28,17 +30,41 @@ const app = express();
 const port = 3000; // Changed from 3306 to avoid conflict with MySQL
 
 // Configurazione CORS
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-});
+app.use(cors());
+app.use(express.json());
 
 // Configurazione per servire file statici
 app.use(express.static(path.join(__dirname, '..')));
 
-app.use(express.json());
+// Funzione per creare una connessione al database
+async function createConnection() {
+    const connection = await mysql.createConnection({
+        host: 'localhost',
+        user: 'user',
+        password: 'userpwd',
+        database: 'ChessDB'
+    });
+    
+    console.log('Connected to MySQL database');
+    return connection;
+}
+
+// Funzione spostata da connection.js
+async function get72RandomCalciatori() {
+    const connection = await createConnection();
+    try {
+        const [results] = await connection.execute(
+            'SELECT * FROM Calciatore ORDER BY RAND() LIMIT 72'
+        );
+        return results;
+    } catch (error) {
+        console.error('Error fetching calciatori:', error);
+        throw error;
+    } finally {
+        await connection.end();
+    }
+}
+
 
 async function populate_draft() {
     try {
@@ -95,6 +121,8 @@ app.get('/calciatori', async (req, res) => {
     }
 });
 
+
+// Avvia il server e mettiti in ascolto sulla porta specificata
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

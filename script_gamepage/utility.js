@@ -431,7 +431,7 @@ async function startDraft(){
     makeVisible(document.querySelector('.table_draft_sx'));
     makeVisible(document.querySelector('.restart-draft'));
 
-    const listaOggettiCalciatori = await fetch('http://localhost:3306/calciatori')
+    const listaOggettiCalciatori = await fetch('http://localhost:3000/calciatori')
         .then(response => response.json())
         .then(data => {
             console.log(data);
