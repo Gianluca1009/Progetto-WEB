@@ -90,7 +90,7 @@ async function ArrayCalciatoriCreation() {
         );
         return OggettiCalciatori;
     } catch (error) {
-        console.error('Error populating draft:', error);
+        console.error('Error populating draft in the function ArrayCalciatoriCreation', error);
         throw error;
     }
 }
@@ -109,7 +109,7 @@ app.get('/populate-draft', async (req, res) => {
         res.json(result);
     } catch (error) {
         console.error(`[${new Date().toISOString()}] Error in /populate-draft route:`, error); // Log error in route
-        res.status(500).json({ error: 'Error populating draft' });
+        res.status(500).json({ error: 'Error populating draft in the endpoint' });
     }
 });
 
