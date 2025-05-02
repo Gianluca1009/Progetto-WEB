@@ -3,5 +3,11 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "mysql2": "^3.14.1"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

@@ -97,7 +97,7 @@ async function ArrayCalciatoriCreation() {
 
 // Route per la homepage
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'index.html')); 
 });
 
 // Route per populate_draft
@@ -105,10 +105,8 @@ app.get('/populate-draft', async (req, res) => {
     console.log(`[${new Date().toISOString()}] Received request for /populate-draft`); // Log request received
     try {
         const result = await ArrayCalciatoriCreation();
-        console.log(`[${new Date().toISOString()}] Successfully fetched data for /populate-draft`);
-        res.json(result);
+        res.send(result);
     } catch (error) {
-        console.error(`[${new Date().toISOString()}] Error in /populate-draft route:`, error); // Log error in route
         res.status(500).json({ error: 'Error populating draft in the endpoint' });
     }
 });

@@ -431,7 +431,9 @@ async function startDraft(){
     makeVisible(document.querySelector('.table_draft_sx'));
     makeVisible(document.querySelector('.restart-draft'));
 
-    await populate_draft();
+    await CreaListeCalciatori(); // Popola l'array di calciatori
+    await populateDraft("bianco");
+    await populateDraft("nero");
     DragDrop_draft();
 
     // Gestione della visibilità dei vari elementi

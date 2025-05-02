@@ -1,7 +1,18 @@
+window.array_calciatori_partita = [];
+window.array_calciatori_partita_neri = [];
+window.array_calciatori_partita_bianchi = [];
+window.DraggedClassCalciatoreBianco = null; // Variabile per memorizzare il calciatore trascinato
+window.DraggedClassCalciatoreNero = null; // Variabile per memorizzare il calciatore trascinato
+
+window.MappaPedineCalciatori = {}
+
+
 //funzione per assegnare il cognome del calciatore al testo del div_pedina
 function assegnaCognome(text,cognome_calciatore){
-    text.textContent = cognome_calciatore;
-    text.classList.add('nome-giocatore');
+    if (!text.textContent){
+        text.textContent = cognome_calciatore;
+        text.classList.add('nome-giocatore');
+    }
 }
 
 //funzione per sottolineare le celle di drop della squadra nera
@@ -56,7 +67,9 @@ function DragDrop_draft(){
                 event.preventDefault();
                 return false;
             }
-            event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
+            OggettoCalciatoreBianco = JSON.parse(santino_img.id); //parsing dell'oggetto JSON
+            window.DraggedClassCalciatoreBianco = OggettoCalciatoreBianco; // Salva il calciatore trascinato
+            event.dataTransfer.setData("text", OggettoCalciatoreBianco.cognome);  //salva id del div nell'evento            
             event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
             evidenziaCelleDropBianco();
@@ -78,7 +91,9 @@ function DragDrop_draft(){
                 event.preventDefault();
                 return false;
             }
-            event.dataTransfer.setData("text", event.target.id);  //salva id del div nell'evento
+            OggettoCalciatoreNero = JSON.parse(santino_img.id); //parsing dell'oggetto JSON
+            window.DraggedClassCalciatoreNero = OggettoCalciatoreNero;
+            event.dataTransfer.setData("text", OggettoCalciatoreNero.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
             evidenziaCelleDropNero();
@@ -138,6 +153,13 @@ function DragDrop_draft(){
                     
                     // Imposta il testo con l'id del calciatore e aggiunge la classe
                     assegnaCognome(text, cognome_calciatore);
+                    populateDraft(tipoSantino === "sx" ? "bianco" : "nero"); // Popola il draft con i calciatori rimanenti
+                    if(isPedinaBianca && !MappaPedineCalciatori[div_pedina.id]){
+                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreBianco; // Salva la mappatura del calciatore e della pedina 
+                    }
+                    else if(!isPedinaBianca && !MappaPedineCalciatori[div_pedina.id]){
+                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreNero; // Salva la mappatura del calciatore e della pedina 
+                    }
                 }
             }
         });
@@ -146,8 +168,8 @@ function DragDrop_draft(){
 
 async function fetchCalciatori() {
     const response = await fetch('http://localhost:3000/populate-draft');
-    const data = await response.json();
-    return data;
+    const data = await response.json(); // Estrai i dati JSON dalla risposta
+    return data; // Restituisci l'array di calciatori
 }
 
 // Funzione per mescolare un array (Fisher-Yates shuffle)
@@ -158,62 +180,87 @@ function shuffleArray(array) {
     }
 }
 
-async function populate_draft() {
-    try {
-        const array_calciatori_partita = await fetchCalciatori();
-        console.log('Dati dal DB:', array_calciatori_partita);
+function get3Calciatori(colore) {
+    if(colore== "nero"){
+        shuffleArray(array_calciatori_partita_neri);
+        return array_calciatori_partita_neri.slice(0, 3);
+    }
+    else if(colore== "bianco"){
+        shuffleArray(array_calciatori_partita_bianchi);
+        return array_calciatori_partita_bianchi.slice(0, 3);
+    }   
+}
 
-        if (!array_calciatori_partita || array_calciatori_partita.length < 6) {
-            console.error('Non ci sono abbastanza calciatori per popolare il draft (necessari almeno 6).');
-            // Qui potresti voler mostrare un messaggio all'utente
+function remove3Calciatori(colore) {
+    if(colore== "nero"){
+        // Rimuovi i primi 3 calciatori dall'array dei neri
+        array_calciatori_partita_neri.splice(0, 3);
+    }
+    else if(colore== "bianco"){
+        // Rimuovi i primi 3 calciatori dall'array dei bianchi
+        array_calciatori_partita_bianchi.splice(0, 3);
+    }
+}
+
+async function CreaListeCalciatori() {
+    window.array_calciatori_partita = await fetchCalciatori();
+    window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri
+    window.array_calciatori_partita_bianchi = window.array_calciatori_partita.slice(36, 72); // Gli ultimi 36 calciatori sono bianchi
+    console.log("calciatori:", array_calciatori_partita_neri);
+}
+
+async function populateDraft(colore) {
+    try {
+        
+
+        if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length < 3)) {
             return;
         }
 
-        // Mescola l'array dei calciatori
-        shuffleArray(array_calciatori_partita);
+        else if (colore=="bianco" && (!array_calciatori_partita_bianchi || array_calciatori_partita_bianchi.length < 3)) {
+            return;
+        }
 
         // Seleziona i primi 6 calciatori casuali
-        const selectedPlayers = array_calciatori_partita.slice(0, 6);
+        const selectedPlayers = get3Calciatori(colore);
 
-        // Seleziona i container del draft
-        const santiniSxContainers = [
-            document.getElementById('s00'),
-            document.getElementById('s10'),
-            document.getElementById('s20')
-        ];
-        const santiniDxContainers = [
-            document.getElementById('d00'),
-            document.getElementById('d10'),
-            document.getElementById('d20')
-        ];
+        // Rimuovi i calciatori selezionati dall'array originale
+        remove3Calciatori(colore);
 
-        // Popola i container di sinistra (primi 3 giocatori)
-        for (let i = 0; i < 3; i++) {
-            const player = selectedPlayers[i];
-            const container = santiniSxContainers[i];
-            if (container && player) {
-                container.innerHTML = ''; // Pulisci il container precedente se necessario
-                const img = document.createElement('img');
-                img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
-                img.alt = player.cognome; // Usa 'cognome' come alt text
-                img.id = player.cognome; // Usa 'cognome' come ID per il drag & drop
-                img.classList.add('santino-sx'); // Aggiungi la classe per lo stile e il drag&drop
-                img.draggable = true;
-                container.appendChild(img);
-            }
+        console.log("calciatori:", array_calciatori_partita_neri);
+
+        santiniContainers = [];
+
+        if(colore == "nero"){
+            santiniContainers = [
+                document.getElementById('d00'),
+                document.getElementById('d10'),
+                document.getElementById('d20')
+            ];
+        } else if(colore == "bianco"){
+            santiniContainers = [
+                document.getElementById('s00'),
+                document.getElementById('s10'),
+                document.getElementById('s20')
+            ];
         }
 
         // Popola i container di destra (giocatori da 3 a 5)
-        for (let i = 3; i < 6; i++) {
+        for (let i = 0; i < 3; i++) {
             const player = selectedPlayers[i];
-            const container = santiniDxContainers[i - 3]; // Usa l'indice corretto per i container di dx
+            const container = santiniContainers[i]; // Usa l'indice corretto per i container di dx
             if (container && player) {
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
                 const img = document.createElement('img');
                 img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
                 img.alt = player.cognome; // Usa 'cognome' come alt text
-                img.id = player.cognome; // Usa 'cognome' come ID per il drag & drop
-                img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
+                img.id = JSON.stringify(selectedPlayers[i]); // Usa 'cognome' come ID per il drag & drop
+                if(colore == "nero"){
+                    img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
+                } 
+                else if(colore == "bianco"){
+                    img.classList.add('santino-sx'); // Aggiungi la classe per lo stile e il drag&drop
+                }
                 img.draggable = true;
                 container.appendChild(img);
             }
