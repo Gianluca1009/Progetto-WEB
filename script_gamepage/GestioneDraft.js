@@ -161,7 +161,6 @@ function shuffleArray(array) {
 async function populate_draft() {
     try {
         const array_calciatori_partita = await fetchCalciatori();
-        console.log('Raw data received:', array_calciatori_partita); // Log raw data
         console.log('Dati dal DB:', array_calciatori_partita);
 
         if (!array_calciatori_partita || array_calciatori_partita.length < 6) {

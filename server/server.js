@@ -72,7 +72,7 @@ async function ArrayCalciatoriCreation() {
             new Calciatore(
                 info_calciatore.nome,
                 info_calciatore.cognome,
-                info_calciatore.img_url,
+                info_calciatore.url_foto,
                 info_calciatore.data_nascita,
                 info_calciatore.nazionalita,
                 info_calciatore.ruolo,
@@ -102,16 +102,20 @@ app.get('/', (req, res) => {
 
 // Route per populate_draft
 app.get('/populate-draft', async (req, res) => {
+    console.log(`[${new Date().toISOString()}] Received request for /populate-draft`); // Log request received
     try {
         const result = await ArrayCalciatoriCreation();
+        console.log(`[${new Date().toISOString()}] Successfully fetched data for /populate-draft`);
         res.json(result);
     } catch (error) {
+        console.error(`[${new Date().toISOString()}] Error in /populate-draft route:`, error); // Log error in route
         res.status(500).json({ error: 'Error populating draft' });
     }
 });
 
 
 // Avvia il server e mettiti in ascolto sulla porta specificata
+console.log(`[${new Date().toISOString()}] Attempting to start server on port ${port}...`); // Log before listen
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`[${new Date().toISOString()}] Server successfully started and running on port ${port}`); // Log successful start
 });
