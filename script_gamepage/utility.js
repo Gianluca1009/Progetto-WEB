@@ -434,7 +434,7 @@ async function startDraft(){
     await CreaListeCalciatori(); // Popola l'array di calciatori
     await populateDraft("bianco");
     await populateDraft("nero");
-    DragDrop_draft();
+    await DragDrop_draft();
 
     // Gestione della visibilità dei vari elementi
     

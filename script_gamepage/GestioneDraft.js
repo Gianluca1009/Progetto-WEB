@@ -12,7 +12,9 @@ function assegnaCognome(text,cognome_calciatore){
     if (!text.textContent){
         text.textContent = cognome_calciatore;
         text.classList.add('nome-giocatore');
+        return true;
     }
+    return false;
 }
 
 //funzione per sottolineare le celle di drop della squadra nera
@@ -56,12 +58,10 @@ function resetEvidenziaCelleDrop(){
     });
 }
 
-//funzione per gestire il drag e drop
-function DragDrop_draft(){
-    //selziona tutti le img calciatore -> drag elem sx
+async function DragDropSantiniOnly(){
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
         // Evento dragstart
-        santino_img.addEventListener("dragstart", function(event) {
+        santino_img.addEventListener("dragstart", async function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
@@ -85,7 +85,7 @@ function DragDrop_draft(){
     //selziona tutti le img calciatore -> drag elem dx
     document.querySelectorAll(".santino-dx").forEach(santino_img => {
         // Evento dragstart
-        santino_img.addEventListener("dragstart", function(event) {
+        santino_img.addEventListener("dragstart", async function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
@@ -100,16 +100,23 @@ function DragDrop_draft(){
         });
 
         // Evento dragend
-        santino_img.addEventListener("dragend", function(event) {
+        santino_img.addEventListener("dragend", async function(event) {
             document.body.style.cursor = 'default';  // Ripristina il cursore default
             resetEvidenziaCelleDrop();
         });
     });
+}
+
+
+//funzione per gestire il drag e drop
+async function DragDrop_draft(){
+    //selziona tutti le img calciatore -> drag elem sx
+    DragDropSantiniOnly(); // Inizializza il drag&drop per i santini
 
     //selziona tutte le caselle pezzi -> drop zone
     document.querySelectorAll(".greencell, .creamcell").forEach(drop_cell => {
         // Gestisci l'evento dragover
-        drop_cell.addEventListener("dragover", function(event) {
+        drop_cell.addEventListener("dragover", async function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
@@ -121,7 +128,7 @@ function DragDrop_draft(){
         });
 
         // Gestisci l'evento drop
-        drop_cell.addEventListener("drop", function(event) {
+        drop_cell.addEventListener("drop", async function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
@@ -152,8 +159,11 @@ function DragDrop_draft(){
                     }
                     
                     // Imposta il testo con l'id del calciatore e aggiunge la classe
-                    assegnaCognome(text, cognome_calciatore);
-                    populateDraft(tipoSantino === "sx" ? "bianco" : "nero"); // Popola il draft con i calciatori rimanenti
+                    if(!assegnaCognome(text, cognome_calciatore)) return;
+                    if(isPedinaBianca)
+                        await populateDraft("bianco"); // Popola il draft per la squadra
+                    if(!isPedinaBianca)
+                        await populateDraft("nero"); // Popola il draft per la squadra
                     if(isPedinaBianca && !MappaPedineCalciatori[div_pedina.id]){
                         MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreBianco; // Salva la mappatura del calciatore e della pedina 
                     }
@@ -161,6 +171,7 @@ function DragDrop_draft(){
                         MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreNero; // Salva la mappatura del calciatore e della pedina 
                     }
                 }
+                console.log(MappaPedineCalciatori)
             }
         });
     });
@@ -195,11 +206,14 @@ function remove3Calciatori(colore) {
     if(colore== "nero"){
         // Rimuovi i primi 3 calciatori dall'array dei neri
         array_calciatori_partita_neri.splice(0, 3);
+        console.log("rimossi 3 neri");
     }
     else if(colore== "bianco"){
         // Rimuovi i primi 3 calciatori dall'array dei bianchi
         array_calciatori_partita_bianchi.splice(0, 3);
+        console.log("rimossi 3 bianchi");
     }
+    
 }
 
 async function CreaListeCalciatori() {
@@ -265,6 +279,8 @@ async function populateDraft(colore) {
                 container.appendChild(img);
             }
         }
+
+        DragDropSantiniOnly();
 
     } catch (error) {
         console.error('Errore durante il popolamento del draft:', error);
