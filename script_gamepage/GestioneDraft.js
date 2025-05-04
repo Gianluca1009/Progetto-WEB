@@ -69,7 +69,7 @@ async function DragDropSantiniOnly(){
             }
             OggettoCalciatoreBianco = JSON.parse(santino_img.id); //parsing dell'oggetto JSON
             window.DraggedClassCalciatoreBianco = OggettoCalciatoreBianco; // Salva il calciatore trascinato
-            event.dataTransfer.setData("text", OggettoCalciatoreBianco.cognome);  //salva id del div nell'evento            
+            event.dataTransfer.setData("text", OggettoCalciatoreBianco.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
             evidenziaCelleDropBianco();
@@ -122,7 +122,7 @@ async function DragDrop_draft(){
                 event.preventDefault();
                 return false;
             }
-            
+
             event.preventDefault();
             event.dataTransfer.dropEffect = "move";
         });
@@ -134,20 +134,20 @@ async function DragDrop_draft(){
                 event.preventDefault();
                 return false;
             }
-            
+
             event.preventDefault();
             var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
             var tipoSantino = event.dataTransfer.getData("type"); // Ottieni il tipo di santino (sx o dx)
-            
+
             let div_pedina = drop_cell.querySelector('.pedina');
-            
+
             if (div_pedina) {
                 // Ottieni l'id della pedina
                 const pedinaId = div_pedina.id;
-                
+
                 // Verifica se la pedina è bianca (id minuscolo) o nera (id maiuscolo)
                 const isPedinaBianca = pedinaId === pedinaId.toLowerCase() && pedinaId !== pedinaId.toUpperCase();
-                
+
                 // Controlla se è possibile effettuare il drop in base al tipo di santino e di pedina
                 if ((tipoSantino === "sx" && isPedinaBianca) || (tipoSantino === "dx" && !isPedinaBianca)) {
                     // Crea l'elemento text se non esiste -cognome sotto alla pedina
@@ -157,7 +157,7 @@ async function DragDrop_draft(){
                         text.classList.add('nome-giocatore');
                         div_pedina.appendChild(text);
                     }
-                    
+
                     // Imposta il testo con l'id del calciatore e aggiunge la classe
                     if(!assegnaCognome(text, cognome_calciatore)) return;
                     if(isPedinaBianca)
@@ -165,10 +165,10 @@ async function DragDrop_draft(){
                     if(!isPedinaBianca)
                         await populateDraft("nero"); // Popola il draft per la squadra
                     if(isPedinaBianca && !MappaPedineCalciatori[div_pedina.id]){
-                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreBianco; // Salva la mappatura del calciatore e della pedina 
+                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreBianco; // Salva la mappatura del calciatore e della pedina
                     }
                     else if(!isPedinaBianca && !MappaPedineCalciatori[div_pedina.id]){
-                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreNero; // Salva la mappatura del calciatore e della pedina 
+                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreNero; // Salva la mappatura del calciatore e della pedina
                     }
                 }
                 console.log(MappaPedineCalciatori)
@@ -199,7 +199,7 @@ function get3Calciatori(colore) {
     else if(colore== "bianco"){
         shuffleArray(array_calciatori_partita_bianchi);
         return array_calciatori_partita_bianchi.slice(0, 3);
-    }   
+    }
 }
 
 function remove3Calciatori(colore) {
@@ -213,7 +213,15 @@ function remove3Calciatori(colore) {
         array_calciatori_partita_bianchi.splice(0, 3);
         console.log("rimossi 3 bianchi");
     }
-    
+}
+
+function getListaCalciatori(colore) {
+    if(colore== "nero"){
+        return array_calciatori_partita_neri;
+    }
+    else if(colore== "bianco"){
+        return array_calciatori_partita_bianchi;
+    }
 }
 
 async function CreaListeCalciatori() {
@@ -225,13 +233,19 @@ async function CreaListeCalciatori() {
 
 async function populateDraft(colore) {
     try {
-        
+
 
         if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length < 3)) {
+            makeHidden(document.getElementById('draft_table_dx'));
+            makeHidden(document.getElementById('random2'));
+            document.getElementById('player2button').style.transform = "translateY(450%) scale(1.1)";
             return;
         }
 
         else if (colore=="bianco" && (!array_calciatori_partita_bianchi || array_calciatori_partita_bianchi.length < 3)) {
+            makeHidden(document.getElementById('draft_table_sx'));
+            makeHidden(document.getElementById('random1'));
+            document.getElementById('player1button').style.transform = "translateY(450%) scale(1.1)";
             return;
         }
 
@@ -271,7 +285,7 @@ async function populateDraft(colore) {
                 img.id = JSON.stringify(selectedPlayers[i]); // Usa 'cognome' come ID per il drag & drop
                 if(colore == "nero"){
                     img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
-                } 
+                }
                 else if(colore == "bianco"){
                     img.classList.add('santino-sx'); // Aggiungi la classe per lo stile e il drag&drop
                 }
@@ -284,5 +298,98 @@ async function populateDraft(colore) {
 
     } catch (error) {
         console.error('Errore durante il popolamento del draft:', error);
+    }
+}
+
+function populateRandom(colore) {
+    // Verifica se ci sono abbastanza calciatori disponibili
+    if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length === 0)) {
+        console.log("Non ci sono abbastanza calciatori neri disponibili");
+        return;
+    }
+    else if (colore=="bianco" && (!array_calciatori_partita_bianchi || array_calciatori_partita_bianchi.length === 0)) {
+        console.log("Non ci sono abbastanza calciatori bianchi disponibili");
+        return;
+    }
+
+    if(colore=="nero"){
+        makeHidden(document.getElementById('draft_table_dx'));
+        makeHidden(document.getElementById('random2'));
+        document.getElementById('player2button').style.transform = "translateY(450%) scale(1.1)";
+    }
+    else if(colore=="bianco"){
+        makeHidden(document.getElementById('draft_table_sx'));
+        makeHidden(document.getElementById('random1'));
+        document.getElementById('player1button').style.transform = "translateY(450%) scale(1.1)";
+    }
+
+    // Ottieni la lista dei calciatori rimanenti
+    let listaCalciatoriRimanenti = getListaCalciatori(colore);
+
+    // Mescola l'array dei calciatori per assegnazione casuale
+    shuffleArray(listaCalciatoriRimanenti);
+
+    // Seleziona le pedine in base al colore
+    let pedine = [];
+    if (colore === "nero") {
+        // Seleziona tutte le pedine nere (id maiuscolo)
+        document.querySelectorAll(".pedina").forEach(pedina => {
+            const pedinaId = pedina.id;
+            // Verifica se la pedina è nera (id maiuscolo)
+            const isPedinaNera = pedinaId === pedinaId.toUpperCase();
+
+            if (isPedinaNera && !pedina.querySelector('.nome-giocatore')) {
+                pedine.push(pedina);
+            }
+        });
+    } else if (colore === "bianco") {
+        // Seleziona tutte le pedine bianche (id minuscolo)
+        document.querySelectorAll(".pedina").forEach(pedina => {
+            const pedinaId = pedina.id;
+            // Verifica se la pedina è bianca (id minuscolo)
+            const isPedinaBianca = pedinaId === pedinaId.toLowerCase() && pedinaId !== pedinaId.toUpperCase();
+
+            if (isPedinaBianca && !pedina.querySelector('.nome-giocatore')) {
+                pedine.push(pedina);
+            }
+        });
+    }
+
+    // Calcola quanti calciatori assegnare (un terzo dei rimanenti o tutti se sono meno delle pedine)
+    const numCalciatoriDaAssegnare = Math.min(
+        Math.ceil((listaCalciatoriRimanenti.length / 3) + 1),
+        pedine.length,
+        listaCalciatoriRimanenti.length
+    );
+
+
+    // Assegna i calciatori alle pedine
+    for (let i = 0; i < numCalciatoriDaAssegnare; i++) {
+        if (i >= pedine.length || i >= listaCalciatoriRimanenti.length) break;
+
+        const pedina = pedine[i];
+        const calciatore = listaCalciatoriRimanenti[i];
+
+        // Crea l'elemento text se non esiste
+        let text = pedina.querySelector('text');
+        if (!text) {
+            text = document.createElement('text');
+            text.classList.add('nome-giocatore');
+            pedina.appendChild(text);
+        }
+
+        // Assegna il cognome del calciatore
+        text.textContent = calciatore.cognome;
+
+        // Salva la mappatura del calciatore e della pedina
+        MappaPedineCalciatori[pedina.id] = calciatore;
+    }
+
+    
+    // Rimuovi i calciatori assegnati dall'array originale
+    if (colore === "nero") {
+        array_calciatori_partita_neri.splice(0, numCalciatoriDaAssegnare);
+    } else if (colore === "bianco") {
+        array_calciatori_partita_bianchi.splice(0, numCalciatoriDaAssegnare);
     }
 }

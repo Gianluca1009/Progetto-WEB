@@ -21,7 +21,7 @@
     <link href="stili/game-over.css" rel="stylesheet" type="text/css">
     <link href="stili/common.css" rel="stylesheet" type="text/css">
     <link href="stili/pedone_promotion.css" rel="stylesheet" type="text/css">
-    
+
     <!-- TITOLO PAGINA -->
     <title>Soc-c-hess</title>
 </head>
@@ -62,12 +62,12 @@
                 <img src="images/restartDraft.png" alt="restartDraft" class="b-image">
             </button>
         </div>
-        
+
         <!-- TABELLA DRAFT SX -->
          <div class="sfondo_draft_sx">
             <div class="table_draft_sx">
                 <button id="player1button" class="button pronto-button player1">PRONTO</button>
-                <table>
+                <table id="draft_table_sx">
                     <tbody>
                         <tr class="tr-ombrata">
                             <td class="foto_draftcell"> <div class="santino-container" id="s00"></div></td>
@@ -80,7 +80,7 @@
                         <tr class="tr-ombrata">
                             <td class="foto_draftcell"> <div class="santino-container" id="s20"></div></td>
                             <td class="info_draftcell"> <div class="santino-container" id="s21"></div></td>
-                        </tr> 
+                        </tr>
                     </tbody>
                 </table>
                 <button id="random1" class="button random-button">RANDOM DRAFT</button>
@@ -91,7 +91,7 @@
         <div class="sfondo_draft_dx">
             <div class="table_draft_dx">
                 <button id="player2button" class="button pronto-button player2">PRONTO</button>
-                <table>
+                <table id="draft_table_dx">
                     <tbody>
                         <tr class="tr-ombrata">
                             <td class="foto_draftcell"> <div class="santino-container" id="d00"></div></td>
@@ -104,13 +104,13 @@
                         <tr class="tr-ombrata">
                             <td class="foto_draftcell"> <div class="santino-container" id="d20"></div></td>
                             <td class="info_draftcell"> <div class="santino-container" id="d21"></div></td>
-                        </tr> 
+                        </tr>
                     </tbody>
                 </table>
                 <button id="random2" class="button random-button">RANDOM DRAFT</button>
             </div>
         </div>
-
+        
         <div class="condition-container">
             <h1 class="condition-title" id="condition"></h1>
         </div>
@@ -118,7 +118,7 @@
         <!-- GRIGLIA SCACCHIERA -->
 
         <div id="grid-container" class="grid-container" z-index="1">
-            
+
             <!-- CONTAINER GAME OVER -->
             <div class="game-over">PARTITA TERMINATA
                 <div class="bottoni-gameover-container">
@@ -133,14 +133,14 @@
                 <table class="tabella_pedone_promotion">
                     <tbody>
                         <tr>
-                            <td class="foto_ped_promotion"> 
+                            <td class="foto_ped_promotion">
                                 <div class="santino-container">
                                     <img alt="regina" id="pedonepromotion_regina" class="regina">
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="foto_ped_promotion"> 
+                            <td class="foto_ped_promotion">
                                 <div class="santino-container">
                                     <img alt="cavallo" id="pedonepromotion_cavallo" class="cavallo">
                                 </div>
@@ -151,7 +151,7 @@
             </div>
 
             <!-- SCACCHIERA -->
-             
+
             <table class = 'scacchiera'>
                 <tbody>
                     <tr>
@@ -226,6 +226,6 @@
     <script src="script_gamepage/GestioneDraft.js"></script>
     <script src="script_gamepage/PromozionePedone.js"></script>
     <script src="script_gamepage/script_class_calcaitori.js"></script>
-    
+
 </body>
 </html>

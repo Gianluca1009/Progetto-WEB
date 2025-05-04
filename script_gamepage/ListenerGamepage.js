@@ -1,11 +1,11 @@
-// ---- INIZIALIZZAZIONE DEL GIOCO ---- // 
+// ---- INIZIALIZZAZIONE DEL GIOCO ---- //
 
 // Inizializza il gioco quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Pre-carico i suoni
     preloadSounds();
-    
+
     StartPosition();
 
     // Riferimenti ai bottoni
@@ -15,13 +15,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const restartButtonAtEnd = document.getElementById('restartButtonAtEnd');
     const restartDraftButtonAtEnd = document.getElementById('restartDraftButtonAtEnd');
     const HomeButtonAtEnd = document.getElementById('HomeButtonAtEnd');
-
     const restartButton = document.getElementById('restartButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
     const HomeButton = document.getElementById('HomeButton');
 
+    // Riferimenti ai bottoni random draft
+    const randomButton1 = document.getElementById('random1');
+    const randomButton2 = document.getElementById('random2');
+    const randomBothButton = document.getElementById('randomBoth');
+
     //ELEMENTI DA NASCONDERE ALL'INIZIO
-    
+
     restartButton.classList.add('hidden');
     restartDraftButton.classList.add('hidden');
 
@@ -35,17 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');
     disabilitaPedine();
-    
-    
+
+
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     giocaButton.addEventListener('click', () => {
-        
+
         preparaSounds();        // Inizializza i suoni al primo click
         startDraft();                    // Prepara il draft
         scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
 
     });
-    
+
     // LISTENER PER IL BOTTONE DEL GIOCATORE 1
     player1Button.addEventListener('click', () => {
         if (window.player1Ready) {
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
             checkBothPlayersReady();
         }
     });
-    
+
     // LISTENER PER IL BOTTONE DEL GIOCATORE 2
     player2Button.addEventListener('click', () => {
         if (window.player2Ready) {
@@ -88,6 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
         goHome();
     });
 
+    // LISTENER PER I BOTTONI RANDOM DRAFT
+    randomButton1.addEventListener('click', () => {
+        // Popola casualmente le pedine bianche
+        populateRandom("bianco");
+    });
+
+    randomButton2.addEventListener('click', () => {
+        // Popola casualmente le pedine nere
+        populateRandom("nero");
+    });
+
     // LISTENER PER IL BOTTONE DI RIPARTENZA
     restartButtonAtEnd.addEventListener('click', () => {
         restartGame();
@@ -97,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
     restartDraftButtonAtEnd.addEventListener('click', () => {
         restartDraft();
     });
-    
+
     //LISTENER PER IL BOTTONE DI TORNA ALLA HOME
     HomeButtonAtEnd.addEventListener('click', () => {
         goHome();
     });
-    
+
 
     //LISTENER SUL TITOLO DELLA PAGINA
     document.querySelector('.title').addEventListener('click', () => {

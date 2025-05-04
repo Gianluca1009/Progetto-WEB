@@ -36,17 +36,17 @@ function checkPathClear(start_x, start_y, end_x, end_y) {
     let dx = end_x - start_x;
     let dy = end_y - start_y;
     let steps = Math.max(Math.abs(dx), Math.abs(dy));
-    
+
     // Calcola la direzione del movimento
     let step_x = dx === 0 ? 0 : dx / Math.abs(dx);
     let step_y = dy === 0 ? 0 : dy / Math.abs(dy);
-    
+
     // Controlla ogni casella nel percorso
     for (let i = 1; i < steps; i++) {
         let check_x = start_x + (i * step_x);
         let check_y = start_y + (i * step_y);
         let check_cell = document.getElementById(check_x + "" + check_y);
-        
+
         // Se la cella contiene una pedina, il percorso non è libero e ritorna false
         if (check_cell && check_cell.querySelector('.pedina')) {
             return false;
@@ -90,13 +90,13 @@ function validationMove(img, dest_cell){
         }
         //promozione pedone quando arriva in fondo
             //bianco arriva in cima
-       
+
     }
 
     if(div_pezzo.id=='t' || div_pezzo.id=='T'){
         let start_cell_x = parseInt(td_cell.id[0]);
         let start_cell_y = parseInt(td_cell.id[1]);
-        
+
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
@@ -109,7 +109,7 @@ function validationMove(img, dest_cell){
     if(div_pezzo.id=='a' || div_pezzo.id=='A'){
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
-        
+
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
@@ -122,28 +122,28 @@ function validationMove(img, dest_cell){
     if(div_pezzo.id=='c' || div_pezzo.id=='C'){
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
-        
+
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
         // Il cavallo può saltare, quindi non serve controllare il percorso
         let dx = Math.abs(dest_cell_x - curr_x);
         let dy = Math.abs(dest_cell_y - curr_y);
-        
+
         valid = (dx === 2 && dy === 1) || (dx === 1 && dy === 2);
     }
 
     if(div_pezzo.id=='q' || div_pezzo.id=='Q'){
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
-        
+
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
         // La regina si muove come torre o alfiere
         let dx = Math.abs(dest_cell_x - curr_x);
         let dy = Math.abs(dest_cell_y - curr_y);
-        
+
         if (dx === 0 || dy === 0 || dx === dy) {
             // Verifica che il percorso sia libero
             valid = checkPathClear(curr_x, curr_y, dest_cell_x, dest_cell_y);
@@ -153,14 +153,14 @@ function validationMove(img, dest_cell){
     if(div_pezzo.id=='r' || div_pezzo.id=='R'){
         let curr_x = parseInt(td_cell.id[0]);
         let curr_y = parseInt(td_cell.id[1]);
-        
+
         let dest_cell_x = parseInt(dest_cell.id[0]);    //x dello spostamento desiderato
         let dest_cell_y = parseInt(dest_cell.id[1]);    //y dello spostamento desiderato
 
         // Il re si muove di una casella in qualsiasi direzione
         let dx = Math.abs(dest_cell_x - curr_x);
         let dy = Math.abs(dest_cell_y - curr_y);
-        
+
         valid = dx <= 1 && dy <= 1;
     }
     let pedinaBersaglio = dest_cell.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
@@ -181,7 +181,7 @@ function mangia(pedinaBersaglio, cella_dest) {
         // Rimuovo solo la pedina, non tutta la cella
         pedinaBersaglio.remove();
     }
-    
+
     // Sposto la pedina selezionata nella cella di destinazione
     avanza(cella_dest);
 }
@@ -275,7 +275,7 @@ function SuggerisciMosse() {
     // Controlla tutte le caselle della scacchiera 6x6
     for (let x = 0; x < 6; x++) {
         for (let y = 0; y < 6; y++) {
-            
+
             let targetCell = document.getElementById(x + "" + y);
             let pedinaBersaglio = targetCell.querySelector('.pedina');
             if (targetCell && targetCell !== startCell) {
@@ -324,24 +324,24 @@ function resetSelezione(){
 // Funzione per rendere visibile un elemento con animazione
 function makeVisible(element) {
     if (!element) return;
-    
+
     // Rimuovi la classe hidden se presente
     if (element.classList.contains('hidden')) {
         element.classList.remove('hidden');
     }
-    
+
     // Salva lo stile di display originale se non è già stato salvato
     if (!element.dataset.originalDisplay) {
         element.dataset.originalDisplay = window.getComputedStyle(element).display;
     }
-    
+
     // Imposta l'opacità a 0 e il display al valore originale
     element.style.opacity = '0';
     element.style.display = element.dataset.originalDisplay;
-    
+
     // Forza un reflow per avviare l'animazione
     element.offsetHeight;
-    
+
     // Anima l'opacità
     element.style.transition = 'opacity 0.8s ease';
     element.style.opacity = '1';
@@ -350,16 +350,16 @@ function makeVisible(element) {
 // Funzione per nascondere un elemento con animazione
 function makeHidden(element) {
     if (!element) return;
-    
+
     // Salva lo stile di display originale se non è già stato salvato
     if (!element.dataset.originalDisplay) {
         element.dataset.originalDisplay = window.getComputedStyle(element).display;
     }
-    
+
     // Anima l'opacità
     element.style.transition = 'opacity 0.8s ease';
     element.style.opacity = '0';
-    
+
     // Dopo l'animazione, imposta display a none
     setTimeout(() => {
         element.style.display = 'none';
@@ -395,13 +395,13 @@ function scrollToGameContainer(){
             if (!startTime) startTime = timestamp;
             const progress = timestamp - startTime;
             const percentage = Math.min(progress / duration, 1);
-            
+
             // Funzione di easing per un movimento più naturale
             const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
             const currentPosition = startPosition + (distance * easeInOutCubic(percentage));
-            
+
             window.scrollTo(0, currentPosition);
-            
+
             if (progress < duration) {
                 window.requestAnimationFrame(scrollStep);
             }
@@ -412,9 +412,9 @@ function scrollToGameContainer(){
 }
 
 
-// 
+//
 //---- FUNZIONI PER LA GESTIONE DELLA PARTITA ----//
-// 
+//
 
 // Funzione per controllare se entrambi i giocatori sono pronti
 function checkBothPlayersReady() {
@@ -430,6 +430,7 @@ async function startDraft(){
     makeVisible(document.querySelector('.table_draft_dx'));
     makeVisible(document.querySelector('.table_draft_sx'));
     makeVisible(document.querySelector('.restart-draft'));
+    makeVisible(document.querySelector('.populate-random-both-container'));
 
     await CreaListeCalciatori(); // Popola l'array di calciatori
     await populateDraft("bianco");
@@ -437,7 +438,7 @@ async function startDraft(){
     await DragDrop_draft();
 
     // Gestione della visibilità dei vari elementi
-    
+
     document.querySelector('.background').classList.remove('disabled');
     document.querySelector('.grid-container').classList.remove('disabled');
 }
@@ -450,7 +451,7 @@ function startGame() {
         pedina.classList.remove('game-not-started');
     });
     aggiornaStatoPedine();
-    
+
     // Ingrandisci la scacchiera
     const gridContainer = document.querySelector('.grid-container');
     if (gridContainer) {
@@ -458,31 +459,32 @@ function startGame() {
     }
 
     // Gestione della visibilità dei vari elementi
-    
+
     makeVisible(document.querySelector('.condition-container'));
     makeVisible(document.querySelector('.timer-text'));
     makeVisible(document.querySelector('.progress-container'));
     makeVisible(document.querySelector('.progress-bar'));
     makeVisible(document.getElementById('restartButton'));
-    
+
     makeHidden(document.querySelector('.table_draft_sx'));
     makeHidden(document.querySelector('.table_draft_dx'));
-    
+    makeHidden(document.querySelector('.populate-random-both-container'));
 
-    
+
+
     // Rimuove la classe che disabilita l'hover
     document.querySelector('.game-container').classList.remove('game-not-started');
-    
+
     // Aggiunge la classe active a tutte le pedine
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('pedina-active');
     });
-    
+
     // Abilita il movimento delle pedine
     window.canMovePiece = function(pieceId) {
         return window.gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
     };
-    
+
     // Reset dei timer e avvio
     resetTimers();
     startTimer();
@@ -492,7 +494,7 @@ function startGame() {
 function endGame(){
     window.gameStarted = false;
     freezeTimer();
-    
+
     makeVisible(document.querySelector('.game-over'));
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
@@ -526,17 +528,23 @@ function restartDraft(){
     makeHidden(document.querySelector('.condition-container'));
     makeHidden(document.querySelector('.restart-button'));
     document.querySelector('.grid-container').classList.remove('grid-container-enlarged');
+    makeVisible(document.getElementById('draft_table_dx'));
+    makeVisible(document.getElementById('draft_table_sx'));
+    makeVisible(document.getElementById('random1'));
+    makeVisible(document.getElementById('random2'));
+    document.getElementById('player1button').style.transform = "translateY(0) scale(1)";
+    document.getElementById('player2button').style.transform = "translateY(0) scale(1)";
 
     disabilitaPedine();
 
     startDraft();
-    
+
     //riposiziono le pedine nelle posizioni iniziali
     resetPedine();
 
     //resetto i bottoni pronto
     resetProntoButton();
-    
+
     //resetto i timer
     resetTimers();
 
