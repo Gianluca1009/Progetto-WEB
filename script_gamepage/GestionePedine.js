@@ -59,7 +59,7 @@ function ListenerMovimentoPedine(){
                         playSound("mossa", 0.5);
                     }
                     resetSuggerimenti();        //resetta la selezione delle mosse suggerite
-                        
+                    reset
                     update_re_position(window.selectedImage, this);     // reset della cella del re se non più in scacco
                     
                     highlight_re_if_sottoscacco();      //controlla se dopo la mossa corrente mette sottoscacco il re dell'AVVERSARIO (LOGICA INV) 

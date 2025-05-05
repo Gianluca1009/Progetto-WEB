@@ -17,7 +17,7 @@ function assegnaCognome(text,cognome_calciatore){
     return false;
 }
 
-//funzione per sottolineare le celle di drop della squadra nera
+//funzione per evidenziare le celle di drop della squadra nera
 function evidenziaCelleDropNero(){
     for(let i = 0; i < 2; i++){
         for(let j = 0; j < 6; j++){
@@ -58,6 +58,7 @@ function resetEvidenziaCelleDrop(){
     });
 }
 
+//funzione per gestire il drag e drop dei santini
 async function DragDropSantiniOnly(){
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
         // Evento dragstart
@@ -106,7 +107,6 @@ async function DragDropSantiniOnly(){
         });
     });
 }
-
 
 //funzione per gestire il drag e drop
 async function DragDrop_draft(){
@@ -177,6 +177,7 @@ async function DragDrop_draft(){
     });
 }
 
+//ottiene i calciatori dal server
 async function fetchCalciatori() {
     const response = await fetch('http://localhost:3000/populate-draft');
     const data = await response.json(); // Estrai i dati JSON dalla risposta
@@ -191,6 +192,7 @@ function shuffleArray(array) {
     }
 }
 
+// Funzione per ottenere 3 calciatori casuali da un array
 function get3Calciatori(colore) {
     if(colore== "nero"){
         shuffleArray(array_calciatori_partita_neri);
@@ -202,6 +204,7 @@ function get3Calciatori(colore) {
     }
 }
 
+// Funzione per rimuovere 3 calciatori da un array
 function remove3Calciatori(colore) {
     if(colore== "nero"){
         // Rimuovi i primi 3 calciatori dall'array dei neri
@@ -215,6 +218,7 @@ function remove3Calciatori(colore) {
     }
 }
 
+// Funzione per ottenere la lista dei calciatori in base al colore
 function getListaCalciatori(colore) {
     if(colore== "nero"){
         return array_calciatori_partita_neri;
@@ -224,6 +228,7 @@ function getListaCalciatori(colore) {
     }
 }
 
+// Funzione per creare le liste dei calciatori
 async function CreaListeCalciatori() {
     window.array_calciatori_partita = await fetchCalciatori();
     window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri
@@ -231,6 +236,7 @@ async function CreaListeCalciatori() {
     console.log("calciatori:", array_calciatori_partita_neri);
 }
 
+// Funzione per popolare il draft con i calciatori selezionati
 async function populateDraft(colore) {
     try {
 
@@ -301,6 +307,7 @@ async function populateDraft(colore) {
     }
 }
 
+// Funzione per popolare i calciatori casuali
 function populateRandom(colore) {
     // Verifica se ci sono abbastanza calciatori disponibili
     if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length === 0)) {

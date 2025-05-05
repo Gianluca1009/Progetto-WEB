@@ -5,6 +5,7 @@ CREATE TABLE Player (
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
+    punti INT NOT NULL,
     UNIQUE (username, email)
 );
 

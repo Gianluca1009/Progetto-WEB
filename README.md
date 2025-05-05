@@ -92,18 +92,24 @@
     funzione rigioca                                                                                ✅
     funzione torna alla home                                                                        ✅
     aggiungere bottoni restart, restart draft e go home anche durante la partita                    ✅
+    funzione random draft
+    pulsanti e funzioni:                                                                            ✅
+    -restart game                                                                                   ✅
+    -restart draft                                                                                  ✅
+    -go home
+    assegnazione punteggi
 
     (2.0)
     assegnazione dei punti al player vincitore
     mercato dei calciatori
-    pulsanti e funzioni:                                                                            ✅
-    -restart game                                                                                   ✅
-    -restart draft                                                                                  ✅
-    -go home                                                                                        ✅
+                                                                                           ✅
 
 
 # utilizzo DataBase
-    provare l'utilizzo di database gratuiti come SportsDB o altri
+    creazione tabelle
+    inserimento tuple con file init
+    connettersi al codice nodejs
+    fare query per popolare il draft
     
     
 # CSS
