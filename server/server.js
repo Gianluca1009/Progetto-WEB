@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, '..')));
 // Funzione per creare una connessione al database
 async function createConnection() {
     const connection = await mysql.createConnection({
-        host: 'localhost',
+        host: 'database',
         user: 'user',
         password: 'userpwd',
         database: 'ChessDB'
@@ -97,7 +97,7 @@ async function ArrayCalciatoriCreation() {
 
 // Route per la homepage
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'index.html')); 
+    res.sendFile(path.join(__dirname, 'index.html')); 
 });
 
 // Route per populate_draft

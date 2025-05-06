@@ -4,7 +4,8 @@ FROM node:18
 WORKDIR /app
 
 # Copia i file del progetto  con CONTEXT : . (ProgettoWEB)
-COPY /server .
+COPY ./server .
+COPY ./publicHTML .
 
 RUN npm install
 
@@ -12,4 +13,4 @@ RUN npm install
 EXPOSE 3000
 
 # Comando di avvio
-CMD ["node", "server/server.js"]
+CMD ["node", "server.js"]

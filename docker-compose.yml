@@ -1,0 +1,31 @@
+services:
+  
+  database:
+    image: mysql:8.0
+    container_name: database
+    environment:
+      MYSQL_USER: user
+      MYSQL_ROOT_PASSWORD: rootpwd
+      MYSQL_PASSWORD: userpwd
+      MYSQL_DATABASE: ChessDB
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db_data:/var/lib/mysql
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  server:
+    build:
+      context: .
+      dockerfile: ./server/dockerfile
+    container_name: server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    environment:
+      DB_HOST: database
+      DB_USER: user
+      DB_ROOT_PASSWORD: rootpwd
+      DB_PASSWORD: userpwd
+      DB_NAME: ChessDB
