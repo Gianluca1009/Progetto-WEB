@@ -1,0 +1,15 @@
+FROM node:18
+
+# Crea una directory per l'app
+WORKDIR /app
+
+# Copia i file del progetto  con CONTEXT : . (ProgettoWEB)
+COPY /server .
+
+RUN npm install
+
+# Espone la porta dell'app
+EXPOSE 3000
+
+# Comando di avvio
+CMD ["node", "server/server.js"]

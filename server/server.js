@@ -102,7 +102,6 @@ app.get('/', (req, res) => {
 
 // Route per populate_draft
 app.get('/populate-draft', async (req, res) => {
-    console.log(`[${new Date().toISOString()}] Received request for /populate-draft`); // Log request received
     try {
         const result = await ArrayCalciatoriCreation();
         res.send(result);
@@ -113,7 +112,6 @@ app.get('/populate-draft', async (req, res) => {
 
 
 // Avvia il server e mettiti in ascolto sulla porta specificata
-console.log(`[${new Date().toISOString()}] Attempting to start server on port ${port}...`); // Log before listen
 app.listen(port, () => {
     console.log(`[${new Date().toISOString()}] Server successfully started and running on port ${port}`); // Log successful start
 });
