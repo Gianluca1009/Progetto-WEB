@@ -68,7 +68,7 @@ async function DragDropSantiniOnly(){
                 event.preventDefault();
                 return false;
             }
-            OggettoCalciatoreBianco = JSON.parse(santino_img.id); //parsing dell'oggetto JSON
+            OggettoCalciatoreBianco = JSON.parse(santino_img.id); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
             window.DraggedClassCalciatoreBianco = OggettoCalciatoreBianco; // Salva il calciatore trascinato
             event.dataTransfer.setData("text", OggettoCalciatoreBianco.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
@@ -240,7 +240,6 @@ async function CreaListeCalciatori() {
 async function populateDraft(colore) {
     try {
 
-
         if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length < 3)) {
             makeHidden(document.getElementById('draft_table_dx'));
             makeHidden(document.getElementById('random2'));
@@ -260,8 +259,6 @@ async function populateDraft(colore) {
 
         // Rimuovi i calciatori selezionati dall'array originale
         remove3Calciatori(colore);
-
-        console.log("calciatori:", array_calciatori_partita_neri);
 
         santiniContainers = [];
 
@@ -288,7 +285,7 @@ async function populateDraft(colore) {
                 const img = document.createElement('img');
                 img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
                 img.alt = player.cognome; // Usa 'cognome' come alt text
-                img.id = JSON.stringify(selectedPlayers[i]); // Usa 'cognome' come ID per il drag & drop
+                img.id = JSON.stringify(selectedPlayers[i]); // Usa il JSON della classe com id dell'immagine
                 if(colore == "nero"){
                     img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
                 }

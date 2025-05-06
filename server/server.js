@@ -1,4 +1,3 @@
-
 const express = require('express');
 const mysql = require('mysql2/promise');
 const path = require('path');
@@ -33,7 +32,7 @@ app.use(cors());
 app.use(express.json());
 
 // Configurazione per servire file statici
-app.use(express.static(path.join(__dirname, '..')));
+app.use(express.static(path.join(__dirname, 'publicHTML')));
 
 // Funzione per creare una connessione al database
 async function createConnection() {
@@ -97,7 +96,7 @@ async function ArrayCalciatoriCreation() {
 
 // Route per la homepage
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html')); 
+    res.sendFile(path.join(__dirname, 'publicHTML', 'index.html'));
 });
 
 // Route per populate_draft

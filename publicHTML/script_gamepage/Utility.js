@@ -178,7 +178,10 @@ function validationMove(img, dest_cell){
 function mangia(pedinaBersaglio, cella_dest) {
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
-        // Rimuovo solo la pedina, non tutta la cella
+        //prendo ogg calciatore di ped bersagli
+        //div - img.id = json oggetto
+        //prendo ogg calciatore di ped attacco
+        //prendo la condizione e confronto
         pedinaBersaglio.remove();
     }
 
