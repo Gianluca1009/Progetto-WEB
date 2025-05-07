@@ -61,7 +61,7 @@ function resetEvidenziaCelleDrop(){
 //funzione per gestire il drag e drop dei santini
 async function DragDropSantiniOnly(){
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
-        // Evento dragstart
+        console.log(santino_img)
         santino_img.addEventListener("dragstart", async function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
