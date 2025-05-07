@@ -307,7 +307,11 @@ async function populateDraft(colore) {
                 const li2_info = document.createElement('li');
                 const li3_info = document.createElement('li');
                 const li4_info = document.createElement('li');
-                li1_info.textContent = `${player.nome} ${player.cognome}`;
+                if (player.nome != null){
+                    li1_info.textContent = `${player.nome} ${player.cognome}`;
+                }else{
+                    li1_info.textContent = `${player.cognome}`;
+                }
                 li2_info.textContent = `${player.squadra} `;
                 li3_info.textContent = `${player.ruolo} `;
                 li4_info.textContent = `${player.data_nascita} `;
