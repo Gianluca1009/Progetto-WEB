@@ -2,6 +2,10 @@ window.array_calciatori_partita = [];
 window.array_calciatori_partita_neri = [];
 window.array_calciatori_partita_bianchi = [];
 
+window.DraggedClassCalciatoreBianco = null; // Inizializza la variabile per il calciatore bianco
+window.DraggedClassCalciatoreNero = null; // Inizializza la variabile per il calciatore nero
+
+
 
 //funzione per assegnare il cognome del calciatore al testo del div_pedina
 function assegnaCognome(text,cognome_calciatore){
@@ -56,6 +60,7 @@ function resetEvidenziaCelleDrop(){
 
 //funzione per gestire il drag e drop dei santini
 async function DragDropSantiniOnly(){
+    
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
         console.log(santino_img)
         santino_img.addEventListener("dragstart", async function(event) {
@@ -64,8 +69,8 @@ async function DragDropSantiniOnly(){
                 event.preventDefault();
                 return false;
             }
-            OggettoCalciatoreBianco = JSON.parse(santino_img.id); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
-            event.dataTransfer.setData("text", OggettoCalciatoreBianco.cognome);  //salva id del div nell'evento
+            window.DraggedClassCalciatoreBianco = JSON.parse(santino_img.id); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
+            event.dataTransfer.setData("text", window.DraggedClassCalciatoreBianco.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
             evidenziaCelleDropBianco();
@@ -87,8 +92,8 @@ async function DragDropSantiniOnly(){
                 event.preventDefault();
                 return false;
             }
-            OggettoCalciatoreNero = JSON.parse(santino_img.id); //parsing dell'oggetto JSON
-            event.dataTransfer.setData("text", OggettoCalciatoreNero.cognome);  //salva id del div nell'evento
+            window.DraggedClassCalciatoreNero = JSON.parse(santino_img.id); //parsing dell'oggetto JSON
+            event.dataTransfer.setData("text", window.DraggedClassCalciatoreNero.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
             evidenziaCelleDropNero();
@@ -148,6 +153,10 @@ async function DragDrop_draft(){
                     let text = div_pedina.querySelector('text');
                     if (!text) {
                         text = document.createElement('text');
+                        if(isPedinaBianca)
+                            text.id = JSON.stringify(DraggedClassCalciatoreBianco); // Usa il JSON della classe com id del testo
+                        else if(!isPedinaBianca)
+                            text.id = JSON.stringify(DraggedClassCalciatoreNero); // Usa il JSON della classe com id del testo
                         text.classList.add('nome-giocatore');
                         div_pedina.appendChild(text);
                     }
