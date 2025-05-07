@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 
 class Calciatore {
-    constructor(nome, cognome, img_url, data_nascita, nazionalita, ruolo, squadra, numero_maglia, goal, assist, presenze, cartellini_gialli, cartellini_rossi, trofei, record_goal, record_assist) {
+    constructor(nome, cognome, img_url, data_nascita, nazionalita, ruolo, squadra, numero_maglia, goal, assist, presenze, cartellini_gialli, cartellini_rossi, trofei, record_goal, record_assist, altezza) {
         this.nome = nome;
         this.cognome = cognome;
         this.img_url = img_url;
@@ -21,6 +21,7 @@ class Calciatore {
         this.trofei = trofei;
         this.record_goal = record_goal;
         this.record_assist = record_assist;
+        this.altezza= altezza;
     }
 }
 
@@ -87,7 +88,8 @@ async function ArrayCalciatoriCreation() {
                 info_calciatore.cartellini_rossi,
                 info_calciatore.trofei,
                 info_calciatore.record_goal,
-                info_calciatore.record_assist
+                info_calciatore.record_assist,
+                info_calciatore.altezza
             )
         );
         return OggettiCalciatori;

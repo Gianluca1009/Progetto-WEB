@@ -7,13 +7,13 @@ function get_condition (){
 function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = get_condition();
 
-    console.log("json");
-    console.log(div_calc_att.children[0]);
     calc_att = JSON.parse(div_calc_att.children[0].id);  //classi giocatore ottenute parsando il json di text.id
     calc_dif = JSON.parse(div_calc_dif.children[0].id);
 
-    console.log("classe");
+    console.log("classe att");
     console.log(calc_att);
+    console.log("classe dif");
+    console.log(calc_dif);
 
     if (cond === "Goal segnati in carriera"){
        return calc_att.goal >= calc_dif.goal;
@@ -58,6 +58,7 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
     let td
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
+        console.log(logica_mangiata(window.selectedElement, pedinaBersaglio));
         if(logica_mangiata(window.selectedElement, pedinaBersaglio)){
             pedinaBersaglio.remove();
             avanza(cella_dest);
