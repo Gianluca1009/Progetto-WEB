@@ -9,6 +9,7 @@ CREATE TABLE player (
     UNIQUE (username, email)
 );
 
+
 CREATE TABLE calciatore (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50),
