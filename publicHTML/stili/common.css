@@ -2,8 +2,8 @@
 :root {
     --game-width: 90vw;
     --game-height: 90vh;
-    --grid-size: 35vw;
-    --cell-size: calc(var(--grid-size) / 6);
+    /* --grid-size: 35vw;
+    --cell-size: calc(var(--grid-size) / 6); */
 
     /* COLORI UTILIZZATI */
     --background-sfumato-violaceo: linear-gradient(to right ,#1b014e,#4a01de);

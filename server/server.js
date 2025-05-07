@@ -69,9 +69,7 @@ async function get72RandomCalciatori() {
 
 async function ArrayCalciatoriCreation() {
     try {
-        const random_calciatori = await get72RandomCalciatori();
-        console.log("query calcait");
-        console.log(random_calciatori);
+        const random_calciatori = await get72RandomCalciatori();;
         const OggettiCalciatori = random_calciatori.map(info_calciatore => 
             new Calciatore(
                 info_calciatore.nome,

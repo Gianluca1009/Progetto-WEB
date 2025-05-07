@@ -171,7 +171,6 @@ async function DragDrop_draft(){
                         MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreNero; // Salva la mappatura del calciatore e della pedina
                     }
                 }
-                console.log(MappaPedineCalciatori)
             }
         });
     });
@@ -233,7 +232,6 @@ async function CreaListeCalciatori() {
     window.array_calciatori_partita = await fetchCalciatori();
     window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri
     window.array_calciatori_partita_bianchi = window.array_calciatori_partita.slice(36, 72); // Gli ultimi 36 calciatori sono bianchi
-    console.log("calciatori:", array_calciatori_partita_neri);
 }
 
 // Funzione per popolare il draft con i calciatori selezionati

@@ -1,11 +1,19 @@
 // ---- INIZIALIZZAZIONE DEL GIOCO ---- //
 
+let resizeTimeout;
+
+// Aggiungi un listener per l'evento di ridimensionamento della finestra
+window.addEventListener('resize', function() {
+    setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
+});
+
+
 // Inizializza il gioco quando la pagina si carica
 document.addEventListener('DOMContentLoaded', () => {
 
     // Pre-carico i suoni
     preloadSounds();
-
+    setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori in base alla grandezza della cella
     StartPosition();
 
     // Riferimenti ai bottoni
