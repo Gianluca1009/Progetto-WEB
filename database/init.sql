@@ -14,7 +14,7 @@ CREATE TABLE calciatore (
     nome VARCHAR(50),
     cognome VARCHAR(50) NOT NULL,
     url_foto VARCHAR(255) NOT NULL,
-    data_nascita DATE NOT NULL,
+    data_nascita VARCHAR(25) NOT NULL,
     nazionalita VARCHAR(50) NOT NULL,
     ruolo VARCHAR(50) NOT NULL,
     squadra VARCHAR(50) NOT NULL,
