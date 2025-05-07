@@ -17,7 +17,7 @@
     <link href="stili/pedine.css" rel="stylesheet" type="text/css">
     <link href="stili/progress_bar.css" rel="stylesheet" type="text/css">
     <link href="stili/scacchiera.css" rel="stylesheet" type="text/css">
-    <link href="stili/tabelle_draft.css" rel="stylesheet" type="text/css">
+    <link href="stili/draft.css" rel="stylesheet" type="text/css">
     <link href="stili/game-over.css" rel="stylesheet" type="text/css">
     <link href="stili/common.css" rel="stylesheet" type="text/css">
     <link href="stili/pedone_promotion.css" rel="stylesheet" type="text/css">
@@ -67,27 +67,26 @@
         </div>
 
         <!-- TABELLA DRAFT SX -->
-         <div class="sfondo_draft_sx">
-            <div class="table_draft_sx">
-                <button id="player1button" class="button pronto-button player1">PRONTO</button>
-                <table id="draft_table_sx">
-                    <tbody>
-                        <tr class="tr-ombrata">
-                            <td class="foto_draftcell"> <div class="santino-container" id="s00"></div></td>
-                            <td class="info_draftcell"> <div class="santino-container" id="s01"></div></td>
-                        </tr>
-                        <tr class="tr-ombrata">
-                            <td class="foto_draftcell"> <div class="santino-container" id="s10"></div></td>
-                            <td class="info_draftcell"> <div class="santino-container" id="s11"></div></td>
-                        </tr>
-                        <tr class="tr-ombrata">
-                            <td class="foto_draftcell"> <div class="santino-container" id="s20"></div></td>
-                            <td class="info_draftcell"> <div class="santino-container" id="s21"></div></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button id="random1" class="button random-button">RANDOM DRAFT</button>
+         <div class="sezione_sx">
+
+            <button id="player1button" class="button pronto-button player1">PRONTO</button>
+
+            <div id="draft_table_sx" class="tabella_draft">
+                <div class="riga_draft">
+                    <div class="foto_draftcell" id="s00"></div>
+                    <div class="info_draftcell" id="s01"></div>
+                </div>
+                <div class="riga_draft">
+                    <div class="foto_draftcell" id="s10"></div>
+                    <div class="info_draftcell" id="s11"></div>
+                </div>
+                <div class="riga_draft">
+                    <div class="foto_draftcell" id="s20"></div>
+                    <div class="info_draftcell" id="s21"></div>
+                </div>
             </div>
+
+            <button id="random1" class="button random-button">RANDOM DRAFT</button>
 
             <div class="campo-giocatore" id="player_bianco">
                 <h1 class="nome-player">Player Bianco</h1>
@@ -97,27 +96,26 @@
         </div>
 
         <!-- TABELLA DRAFT DX -->
-        <div class="sfondo_draft_dx">
-            <div class="table_draft_dx">
-                <button id="player2button" class="button pronto-button player2">PRONTO</button>
-                <table id="draft_table_dx">
-                    <tbody>
-                        <tr class="tr-ombrata">
-                            <td class="foto_draftcell"> <div class="santino-container" id="d00"></div></td>
-                            <td class="info_draftcell"> <div class="santino-container" id="d01"></div></td>
-                        </tr>
-                        <tr class="tr-ombrata">
-                            <td class="foto_draftcell"> <div class="santino-container" id="d10"></div></td>
-                            <td class="info_draftcell"> <div class="santino-container" id="d11"></div></td>
-                        </tr>
-                        <tr class="tr-ombrata">
-                            <td class="foto_draftcell"> <div class="santino-container" id="d20"></div></td>
-                            <td class="info_draftcell"> <div class="santino-container" id="d21"></div></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button id="random2" class="button random-button">RANDOM DRAFT</button>
+        <div class="sezione_dx">
+
+            <button id="player2button" class="button pronto-button player2">PRONTO</button>
+
+            <div id="draft_table_dx" class="tabella_draft">
+                <div class="riga_draft">
+                    <div class="foto_draftcell" id="d00"></div>
+                    <div class="info_draftcell" id="d01"></div>
+                </div>
+                <div class="riga_draft">
+                    <div class="foto_draftcell" id="d10"></div>
+                    <div class="info_draftcell" id="d11"></div>
+                </div>
+                <div class="riga_draft">
+                    <div class="foto_draftcell" id="d20"></div>
+                    <div class="info_draftcell" id="d21"></div>
+                </div>
             </div>
+
+            <button id="random2" class="button random-button">RANDOM DRAFT</button>
 
             <div class="campo-giocatore" id="player_nero">
                 <h1 class="nome-player">Player Nero</h1>
@@ -228,7 +226,7 @@
 
     </div>
 
-    <!-- AVVIO DEGLI SCRIPT NECESSARI PER LA PAGINA -->
+    <!-- AVVIO DEGLI SCRIPT NECESSARI PER LA LOGICA DELLA PAGINA -->
 
     <script src="script_gamepage/GameRules.js"></script>
     <script src="script_gamepage/GestioneSuoni.js"></script>
@@ -243,8 +241,8 @@
     <script src="script_gamepage/PromozionePedone.js"></script>
     <script src="script_gamepage/script_class_calcaitori.js"></script>
 
-    <!-- SCRIPT PER MISURARE DIMENSIONI CELLE -->
-    <script src="stili/GrandezzeScacchiera.js"></script>
+    <!-- AVVIO SCRIPT NECESSARI PER LO STILE DELLA PAGINA -->
+    <script src="stili/ResponsiveHelper.js"></script>
 
 </body>
 </html>

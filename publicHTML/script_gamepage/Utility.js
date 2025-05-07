@@ -430,8 +430,8 @@ function checkBothPlayersReady() {
 async function startDraft(){
     makeHidden(document.querySelector('.gioca-button'));
     makeVisible(document.querySelector('.background-overlay'));
-    makeVisible(document.querySelector('.table_draft_dx'));
-    makeVisible(document.querySelector('.table_draft_sx'));
+    makeVisible(document.querySelector('.sezione_dx'));
+    makeVisible(document.querySelector('.sezione_sx'));
     makeVisible(document.querySelector('.restart-draft'));
     makeVisible(document.querySelector('.populate-random-both-container'));
 
@@ -469,8 +469,8 @@ function startGame() {
     makeVisible(document.querySelector('.progress-bar'));
     makeVisible(document.getElementById('restartButton'));
 
-    makeHidden(document.querySelector('.table_draft_sx'));
-    makeHidden(document.querySelector('.table_draft_dx'));
+    makeHidden(document.querySelector('.sezione_sx'));
+    makeHidden(document.querySelector('.sezione_dx'));
     makeHidden(document.querySelector('.populate-random-both-container'));
 
 

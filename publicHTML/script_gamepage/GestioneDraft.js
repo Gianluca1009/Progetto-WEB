@@ -304,10 +304,12 @@ async function populateDraft(colore) {
                 div_info = info_statistiche[i];
                     //crea la lista puntata
                 const ul_info = document.createElement('ul');
+                ul_info.classList.add('lista-info'); // Aggiungi la classe per lo stile
                 const li1_info = document.createElement('li');
                 const li2_info = document.createElement('li');
                 const li3_info = document.createElement('li');
                 const li4_info = document.createElement('li');
+                
                 if (player.nome != null){
                     li1_info.textContent = `${player.nome} ${player.cognome}`;
                 }else{
@@ -357,12 +359,10 @@ function populateRandom(colore) {
     if(colore=="nero"){
         makeHidden(document.getElementById('draft_table_dx'));
         makeHidden(document.getElementById('random2'));
-        document.getElementById('player2button').style.transform = "translateY(450%) scale(1.1)";
     }
     else if(colore=="bianco"){
         makeHidden(document.getElementById('draft_table_sx'));
         makeHidden(document.getElementById('random1'));
-        document.getElementById('player1button').style.transform = "translateY(450%) scale(1.1)";
     }
 
     // Ottieni la lista dei calciatori rimanenti

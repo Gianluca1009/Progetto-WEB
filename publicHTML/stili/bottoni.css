@@ -58,7 +58,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     transition: all 0.3s ease;
-    font-size: calc(var(--grid-size) * 0.08);
+    font-size: 190%;
     color: #030303;
     background: linear-gradient(to right, #44c300, #027a16);
     pointer-events: auto;

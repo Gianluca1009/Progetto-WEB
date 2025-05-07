@@ -1,19 +1,25 @@
-// ---- INIZIALIZZAZIONE DEL GIOCO ---- //
+// ---- AGGIORNAMENTO RISOLUZIONE ---- //
 
-let resizeTimeout;
-
-// Aggiungi un listener per l'evento di ridimensionamento della finestra
 window.addEventListener('resize', function() {
+
     setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
+    setSezioniDimensions(); // Imposta le dimensioni delle sezioni
+    setSoccerPlayerInfoFontSize(); // Imposta la grandezza del font delle informazioni dei calciatori
+
 });
 
 
+
+// ---- INIZIALIZZAZIONE DEL GIOCO ---- //
 // Inizializza il gioco quando la pagina si carica
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Pre-carico i suoni
     preloadSounds();
     setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori in base alla grandezza della cella
+    setSezioniDimensions(); // Imposta le dimensioni delle sezioni in base alla grandezza del contenitore del gioco
+    setSoccerPlayerInfoFontSize(); // Imposta la grandezza del font delle informazioni dei calciatori in base alla grandezza della cella
     StartPosition();
 
     // Riferimenti ai bottoni
@@ -37,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     restartButton.classList.add('hidden');
     restartDraftButton.classList.add('hidden');
 
-    document.querySelector('.table_draft_sx').classList.add('hidden');
-    document.querySelector('.table_draft_dx').classList.add('hidden');
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');
+    document.querySelector('.sezione_sx').classList.add('hidden');
+    document.querySelector('.sezione_dx').classList.add('hidden');
     document.querySelector('.game-over').classList.add('hidden');
     document.getElementById('div_ped_promotion').classList.add('hidden');
     document.querySelector('.background-overlay').classList.add('hidden');

@@ -17,13 +17,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: min(60%, 80vh);
-    height: min(60vw, 80vh);
+    width: min(55%, 80vh);
     aspect-ratio: 1/1;
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
     margin-bottom: 2vh;
-    transition: box-shadow 0.5s ease;
-    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
 }
 
@@ -36,24 +33,24 @@
 
 
 .scacchiera {
-    position: absolute;
     table-layout: fixed;
-    top: 50%;
-    left: 50%;
     border-collapse: collapse;
     border: 0.125rem solid black;
-    transform: translate(-50%, -50%);
-    height: 101%;
-    aspect-ratio: 1;
+    width: 100%;
+    aspect-ratio: 1/1 !important;
 }
 
 
 .greencell {
     background-color: var(--color-verde);
+    width: 100%;
+    aspect-ratio: 1/1;
 }
 
 .creamcell {
     background-color: var(--color-crema);
+    width: 100%;
+    aspect-ratio: 1/1;
 }
 
 .greencell, .creamcell {
