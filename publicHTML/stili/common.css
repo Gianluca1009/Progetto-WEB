@@ -44,7 +44,7 @@ body {
     display: none !important;
 }
 
-.disabled {
+.disabled { 
     pointer-events: none;
     cursor: default;
     filter: grayscale(100%);
