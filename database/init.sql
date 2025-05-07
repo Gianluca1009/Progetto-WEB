@@ -1,12 +1,7 @@
-CREATE DATABASE IF NOT EXISTS ChessDB;
-USE ChessDB;
+CREATE DATABASE ChessDB;
 
-CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'userpwd';
-GRANT ALL PRIVILEGES ON ChessDB.* TO 'user'@'%';
-FLUSH PRIVILEGES;
-
-CREATE TABLE Player (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE player (
+    id SERIAL PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
@@ -14,8 +9,8 @@ CREATE TABLE Player (
     UNIQUE (username, email)
 );
 
-CREATE TABLE Calciatore (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE calciatore (
+    id SERIAL PRIMARY KEY,
     nome VARCHAR(50),
     cognome VARCHAR(50) NOT NULL,
     url_foto VARCHAR(255) NOT NULL,
@@ -38,7 +33,11 @@ CREATE TABLE Calciatore (
     FOREIGN KEY (idPlayer) REFERENCES Player(id)
 );
 
-INSERT INTO Calciatore (
+CREATE USER admin WITH PASSWORD 'adminpwd';
+GRANT SELECT ON TABLE calciatore TO admin;
+
+
+INSERT INTO calciatore (
     nome, cognome, url_foto, data_nascita, nazionalita, ruolo,
     squadra, numero_maglia, goal, assist, presenze, cartellini_gialli,
     cartellini_rossi, trofei, record_goal, record_assist, altezza, idPlayer
@@ -78,7 +77,7 @@ INSERT INTO Calciatore (
 ('Milan', 'Škriniar', 'images/santini/milan_skriniar.webp', '1995-02-11', 'Slovacchia', 'Difensore', 'Paris Saint-Germain', 37, 10, 10, 310, 35, 2, 7, 10, 6, 188, NULL),
 ('Álvaro', 'Morata', 'images/santini/alvaro_morata.webp', '1992-10-23', 'Spagna', 'Attaccante', 'Atlético Madrid', 19, 180, 60, 400, 25, 0, 6, 32, 18, 189, NULL),
 ('Raphaël', 'Varane', 'images/santini/raphael_varane.webp', '1993-04-25', 'Francia', 'Difensore', 'Manchester United', 19, 15, 10, 430, 28, 0, 16, 10, 6, 191, NULL),
-("N'Golo", 'Kanté', 'images/santini/ngolo_kante.webp', '1991-03-29', 'Francia', 'Centrocampista', 'Al Ittihad', 7, 20, 40, 380, 12, 0, 9, 18, 15, 168, NULL),
+('N''Golo', 'Kanté', 'images/santini/ngolo_kante.webp', '1991-03-29', 'Francia', 'Centrocampista', 'Al Ittihad', 7, 20, 40, 380, 12, 0, 9, 18, 15, 168, NULL),
 ('Ilkay', 'Gündoğan', 'images/santini/ilkay_gundogan.webp', '1990-10-24', 'Germania', 'Centrocampista', 'FC Barcelona', 22, 80, 60, 470, 20, 0, 11, 25, 20, 180, NULL),
 ('Christian', 'Pulisic', 'images/santini/christian_pulisic.webp', '1998-09-18', 'USA', 'Attaccante', 'AC Milan', 11, 60, 40, 190, 12, 0, 3, 22, 18, 177, NULL),
 (NULL, 'Ederson', 'images/santini/ederson.webp', '1993-08-17', 'Brasile', 'Portiere', 'Manchester City', 31, 0, 2, 380, 5, 0, 15, 0, 2, 188, NULL),

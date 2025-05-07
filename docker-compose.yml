@@ -1,17 +1,16 @@
 services:
   
   database:
-    image: mysql:8.0
+    image: postgres:latest
     container_name: database
     environment:
-      MYSQL_USER: user
-      MYSQL_ROOT_PASSWORD: rootpwd
-      MYSQL_PASSWORD: userpwd
-      MYSQL_DATABASE: ChessDB
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: userpwd
+      POSTGRES_DB: ChessDB
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - ./db_data:/var/lib/mysql
+      - ./db_data:/var/lib/postgresql/data
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   server:
@@ -26,6 +25,5 @@ services:
     environment:
       DB_HOST: database
       DB_USER: user
-      DB_ROOT_PASSWORD: rootpwd
       DB_PASSWORD: userpwd
       DB_NAME: ChessDB

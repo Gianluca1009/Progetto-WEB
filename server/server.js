@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
+const {Client} = require('pg');
 const path = require('path');
 const cors = require('cors');
 
@@ -36,25 +36,28 @@ app.use(express.static(path.join(__dirname, 'publicHTML')));
 
 // Funzione per creare una connessione al database
 async function createConnection() {
-    const connection = await mysql.createConnection({
-        host: 'database',
-        user: 'user',
-        password: 'userpwd',
-        database: 'ChessDB'
+
+    const client = new Client({
+        host: 'database',          // usa 'db' se il container PostgreSQL nel docker-compose si chiama 'db'
+        user: 'admin',
+        password: 'adminpwd',
+        database: 'ChessDB',
+        port: 5432           // porta standard PostgreSQL
     });
     
-    console.log('Connected to MySQL database');
-    return connection;
+    await client.connect();
+    console.log('Connected to Postgre database');
+    return client;
 }
 
 // Funzione spostata da connection.js
 async function get72RandomCalciatori() {
     const connection = await createConnection();
     try {
-        const [results] = await connection.execute(
-            'SELECT * FROM Calciatore ORDER BY RAND() LIMIT 72'
+        const results = await connection.query(
+            'SELECT * FROM calciatore ORDER BY RANDOM() LIMIT 72'
         );
-        return results;
+        return results.rows;
     } catch (error) {
         console.error('Error fetching calciatori:', error);
         throw error;
