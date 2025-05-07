@@ -268,12 +268,22 @@ async function populateDraft(colore) {
                 document.getElementById('d10'),
                 document.getElementById('d20')
             ];
+            info_statistiche = [
+                document.getElementById('d01'),   //div -> elenco puntato
+                document.getElementById('d11'),
+                document.getElementById('d21')
+            ]
         } else if(colore == "bianco"){
             santiniContainers = [
                 document.getElementById('s00'),
                 document.getElementById('s10'),
                 document.getElementById('s20')
             ];
+            info_statistiche = [
+                document.getElementById('s01'),
+                document.getElementById('s11'),
+                document.getElementById('s21')
+            ]
         }
 
         // Popola i container di destra (giocatori da 3 a 5)
@@ -281,11 +291,34 @@ async function populateDraft(colore) {
             const player = selectedPlayers[i];
             const container = santiniContainers[i]; // Usa l'indice corretto per i container di dx
             if (container && player) {
+                //POPOlAMENTO IMG
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
                 const img = document.createElement('img');
                 img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
                 img.alt = player.cognome; // Usa 'cognome' come alt text
                 img.id = JSON.stringify(selectedPlayers[i]); // Usa il JSON della classe com id dell'immagine
+
+                //POPOLAMENTO INFO
+                
+                div_info = info_statistiche[i];
+                    //crea la lista puntata
+                const ul_info = document.createElement('ul');
+                const li1_info = document.createElement('li');
+                const li2_info = document.createElement('li');
+                const li3_info = document.createElement('li');
+                const li4_info = document.createElement('li');
+                li1_info.textContent = `${player.nome} ${player.cognome}`;
+                li2_info.textContent = `${player.squadra} `;
+                li3_info.textContent = `${player.ruolo} `;
+                li4_info.textContent = `${player.data_nascita} `;
+
+                ul_info.appendChild(li1_info);
+                ul_info.appendChild(li2_info);
+                ul_info.appendChild(li3_info);
+                ul_info.appendChild(li4_info);
+
+                div_info.appendChild(ul_info);
+
                 if(colore == "nero"){
                     img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
                 }
