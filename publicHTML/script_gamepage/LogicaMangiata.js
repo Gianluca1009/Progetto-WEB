@@ -42,3 +42,21 @@ function logica_mangiata( calc_att, calc_dif){  //true se l'att magna
         console.log("condizione di confronto per mangiata inesistente");
     }
 }
+
+
+//logica mangiata pedina
+function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
+
+    let td
+    // Se la cella di destinazione contiene la pedina bersaglio
+    if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
+        //prendo ogg calciatore di ped bersagli
+        //div - img.id = json oggetto
+        //prendo ogg calciatore di ped attacco
+        //prendo la condizione e confronto
+        pedinaBersaglio.remove();
+    }
+
+    // Sposto la pedina selezionata nella cella di destinazione
+    avanza(cella_dest);
+}
