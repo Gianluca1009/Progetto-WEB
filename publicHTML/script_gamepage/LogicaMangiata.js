@@ -6,9 +6,14 @@ function get_condition (){
 
 function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = get_condition();
-    console.log(div_calc_att.children[1]);
-    calc_att = JSON.parse(div_calc_att.children[1].id);  //classi giocatore ottenute parsando il json di text.id
-    calc_dif = JSON.parse(div_calc_dif.children[1].id);
+
+    console.log("json");
+    console.log(div_calc_att.children[0]);
+    calc_att = JSON.parse(div_calc_att.children[0].id);  //classi giocatore ottenute parsando il json di text.id
+    calc_dif = JSON.parse(div_calc_dif.children[0].id);
+
+    console.log("classe");
+    console.log(calc_att);
 
     if (cond === "Goal segnati in carriera"){
        return calc_att.goal >= calc_dif.goal;
@@ -55,9 +60,11 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
         if(logica_mangiata(window.selectedElement, pedinaBersaglio)){
             pedinaBersaglio.remove();
+            avanza(cella_dest);
         }
+        else cambioTurno(); // Se non è possibile mangiare, cambio turno
     }
 
     // Sposto la pedina selezionata nella cella di destinazione
-    avanza(cella_dest);
+    
 }

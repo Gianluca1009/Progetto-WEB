@@ -409,6 +409,8 @@ function populateRandom(colore) {
         const pedina = pedine[i];
         const calciatore = listaCalciatoriRimanenti[i];
 
+        pedina.firstChild.id = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
+
         // Crea l'elemento text se non esiste
         let text = pedina.querySelector('text');
         if (!text) {
@@ -421,7 +423,6 @@ function populateRandom(colore) {
         text.textContent = calciatore.cognome;
 
         // Salva la mappatura del calciatore e della pedina
-        MappaPedineCalciatori[pedina.id] = calciatore;
     }
 
     setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori in base alla grandezza della cella
