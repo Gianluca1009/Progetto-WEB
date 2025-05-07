@@ -6,6 +6,9 @@ function get_condition (){
 
 function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = get_condition();
+    console.log(div_calc_att.children[1]);
+    calc_att = JSON.parse(div_calc_att.children[1].id);  //classi giocatore ottenute parsando il json di text.id
+    calc_dif = JSON.parse(div_calc_dif.children[1].id);
 
     if (cond === "Goal segnati in carriera"){
        return calc_att.goal >= calc_dif.goal;
@@ -50,11 +53,9 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
     let td
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
-        //prendo ogg calciatore di ped bersagli
-        //div - img.id = json oggetto
-        //prendo ogg calciatore di ped attacco
-        //prendo la condizione e confronto
-        pedinaBersaglio.remove();
+        if(logica_mangiata(window.selectedElement, pedinaBersaglio)){
+            pedinaBersaglio.remove();
+        }
     }
 
     // Sposto la pedina selezionata nella cella di destinazione

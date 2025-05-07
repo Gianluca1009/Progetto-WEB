@@ -174,21 +174,6 @@ function validationMove(img, dest_cell){
     return valid;
 }
 
-// Funzione per mangiare una pedina
-function mangia(pedinaBersaglio, cella_dest) {
-    // Se la cella di destinazione contiene la pedina bersaglio
-    if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
-        //prendo ogg calciatore di ped bersagli
-        //div - img.id = json oggetto
-        //prendo ogg calciatore di ped attacco
-        //prendo la condizione e confronto
-        pedinaBersaglio.remove();
-    }
-
-    // Sposto la pedina selezionata nella cella di destinazione
-    avanza(cella_dest);
-}
-
 // Funzione per spostare una pedina
 function avanza(cella_dest){
     cella_dest.appendChild(window.selectedElement); //SPOSTAMENTO PEDINA
