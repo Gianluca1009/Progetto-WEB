@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pre-carico i suoni
     preloadSounds();
-    setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori in base alla grandezza della cella
     setSezioniDimensions(); // Imposta le dimensioni delle sezioni in base alla grandezza del contenitore del gioco
     setSoccerPlayerInfoFontSize(); // Imposta la grandezza del font delle informazioni dei calciatori in base alla grandezza della cella
     StartPosition();

@@ -33,7 +33,7 @@
 
 
 .scacchiera {
-    table-layout: fixed;
+    table-layout: fixed !important;
     border-collapse: collapse;
     border: 0.125rem solid black;
     width: 100%;

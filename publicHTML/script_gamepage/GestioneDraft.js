@@ -164,12 +164,6 @@ async function DragDrop_draft(){
                         await populateDraft("bianco"); // Popola il draft per la squadra
                     if(!isPedinaBianca)
                         await populateDraft("nero"); // Popola il draft per la squadra
-                    if(isPedinaBianca && !MappaPedineCalciatori[div_pedina.id]){
-                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreBianco; // Salva la mappatura del calciatore e della pedina
-                    }
-                    else if(!isPedinaBianca && !MappaPedineCalciatori[div_pedina.id]){
-                        MappaPedineCalciatori[div_pedina.id] = DraggedClassCalciatoreNero; // Salva la mappatura del calciatore e della pedina
-                    }
                 }
             }
         });
@@ -426,6 +420,9 @@ function populateRandom(colore) {
         // Salva la mappatura del calciatore e della pedina
         MappaPedineCalciatori[pedina.id] = calciatore;
     }
+
+    setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori in base alla grandezza della cella
+
 
     
     // Rimuovi i calciatori assegnati dall'array originale
