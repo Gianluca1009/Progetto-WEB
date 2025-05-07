@@ -1,6 +1,7 @@
 
 function get_condition (){
     const condition_text = document.getElementById('condition').textContent;
+    return condition_text;
 }
 
 
@@ -61,9 +62,8 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
         console.log(logica_mangiata(window.selectedElement, pedinaBersaglio));
         if(logica_mangiata(window.selectedElement, pedinaBersaglio)){
             pedinaBersaglio.remove();
-            avanza(cella_dest);
+            avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
         }
-        else cambioTurno(); // Se non è possibile mangiare, cambio turno
     }
 
     // Sposto la pedina selezionata nella cella di destinazione

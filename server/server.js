@@ -21,7 +21,7 @@ class Calciatore {
         this.trofei = trofei;
         this.record_goal = record_goal;
         this.record_assist = record_assist;
-        this.altezza= altezza;
+        this.altezza = altezza;
     }
 }
 
