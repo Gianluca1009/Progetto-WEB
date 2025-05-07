@@ -13,7 +13,6 @@
  * .sfondo_draft_dx - sfondo del draft destro
  */
 
-
 .table_draft_dx, .table_draft_sx {
     position: absolute;
     top: 50%;
@@ -136,7 +135,7 @@
 }
 
 .nome-giocatore {
-    font-size: 85%;
+    font-size: var(--cell-size*0.1);
     font-family: 'Georgia', serif;
     font-weight: bold;
     color: #000000;
