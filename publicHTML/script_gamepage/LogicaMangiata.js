@@ -4,7 +4,7 @@ function get_condition (){
 }
 
 
-function logica_mangiata( calc_att, calc_dif){  //true se l'att magna 
+function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = get_condition();
 
     if (cond === "Goal segnati in carriera"){

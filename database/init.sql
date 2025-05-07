@@ -29,9 +29,9 @@ CREATE TABLE calciatore (
     record_goal INT NOT NULL,
     record_assist INT NOT NULL,
     altezza INT NOT NULL,
-    idPlayer INT,
+    id_player INT,
 
-    FOREIGN KEY (idPlayer) REFERENCES Player(id)
+    FOREIGN KEY (id_player) REFERENCES player(id)
 );
 
 CREATE USER admin WITH PASSWORD 'adminpwd';
@@ -41,7 +41,7 @@ GRANT SELECT ON TABLE calciatore TO admin;
 INSERT INTO calciatore (
     nome, cognome, url_foto, data_nascita, nazionalita, ruolo,
     squadra, numero_maglia, goal, assist, presenze, cartellini_gialli,
-    cartellini_rossi, trofei, record_goal, record_assist, altezza, idPlayer
+    cartellini_rossi, trofei, record_goal, record_assist, altezza, id_player
 ) VALUES
 ('Lionel', 'Messi', 'images/santini/lionel_messi.webp', '1987-06-24', 'Argentina', 'Attaccante', 'Paris Saint-Germain', 30, 672, 300, 810, 75, 3, 38, 91, 35, 170, NULL),
 ('Cristiano', 'Ronaldo', 'images/santini/cristiano_ronaldo.webp', '1985-02-05', 'Portogallo', 'Attaccante', 'Al Nassr', 7, 800, 250, 1100, 70, 4, 39, 89, 40, 187, NULL),
