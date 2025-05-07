@@ -308,6 +308,7 @@ async function populateDraft(colore) {
 
                 //Breve sezione stile
                 ul_info.style.padding = "0"; // Rimuovi il padding della lista
+                ul_info.style.margin = "0"; // Rimuovi i punti elenco
                 li1_info.style.fontWeight = "bold"; // Imposta il testo in grassetto
                 li4_info.style.fontStyle = "italic"; // Imposta il testo in corsivo
 
