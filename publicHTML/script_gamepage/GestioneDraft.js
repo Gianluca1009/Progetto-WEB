@@ -291,15 +291,18 @@ async function populateDraft(colore) {
             const player = selectedPlayers[i];
             const container = santiniContainers[i]; // Usa l'indice corretto per i container di dx
             if (container && player) {
-                //POPOlAMENTO IMG
+                //pulizia dei campi precedenti
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
+                if (info_statistiche[i].hasChildNodes()){
+                    info_statistiche[i].removeChild(info_statistiche[i].firstChild);
+                }
+                //POPOlAMENTO IMG
                 const img = document.createElement('img');
                 img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
                 img.alt = player.cognome; // Usa 'cognome' come alt text
                 img.id = JSON.stringify(selectedPlayers[i]); // Usa il JSON della classe com id dell'immagine
 
                 //POPOLAMENTO INFO
-                
                 div_info = info_statistiche[i];
                     //crea la lista puntata
                 const ul_info = document.createElement('ul');
@@ -322,7 +325,7 @@ async function populateDraft(colore) {
                 ul_info.appendChild(li4_info);
 
                 div_info.appendChild(ul_info);
-
+        
                 if(colore == "nero"){
                     img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
                 }
