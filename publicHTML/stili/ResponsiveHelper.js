@@ -69,6 +69,8 @@ function setSezioniDimensions(){
     document.querySelector('.sezione_dx').style.width = `${larghezzaSezione}px`;
 }
 
+
+
 function setSoccerPlayerInfoFontSize(){
     const lista = document.querySelectorAll('lista-info');
     const textElements = document.getElementsByTagName('li');
