@@ -47,7 +47,6 @@ async function createConnection() {
     });
     
     await client.connect();
-    console.log('Connected to Postgre database');
     return client;
 }
 
