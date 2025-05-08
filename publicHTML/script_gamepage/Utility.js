@@ -462,7 +462,7 @@ async function startDraft(){
     makeVisible(document.querySelector('.sezione_sx'));
     makeVisible(document.querySelector('.restart-draft'));
     makeVisible(document.querySelector('.populate-random-both-container'));
-    makeVisible(document.querySelector('switch'));
+    makeVisible(document.querySelector('.switch'));
 
     await CreaListeCalciatori(); // Popola l'array di calciatori
     await populateDraft("bianco");

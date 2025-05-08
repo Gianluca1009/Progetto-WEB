@@ -64,13 +64,12 @@
     pointer-events: auto;
 }
 
-.button.random-button {
+.random-ico {
     width: 30%;
     height: 10%;
     font-size: 100%;
     bottom: 0%;
-    color: var(--color-crema);
-    background: var(--background-sfumato-violaceo);
+    background: transparent;
 }
 
 .populate-random-both-container {
