@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pre-carico i suoni
     preloadSounds();
     setSezioniDimensions(); // Imposta le dimensioni delle sezioni in base alla grandezza del contenitore del gioco
+    setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
     //setSoccerPlayerInfoFontSize(); // Imposta la grandezza del font delle informazioni dei calciatori in base alla grandezza della cella
     StartPosition();
 
@@ -41,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     restartButton.classList.add('hidden');
     restartDraftButton.classList.add('hidden');
+    player1Button.classList.add('hidden');
+    player2Button.classList.add('hidden');
 
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');

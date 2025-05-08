@@ -18,7 +18,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: min(55%, 80vh);
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1 !important;
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
     margin-bottom: 2vh;
     transform-origin: center;
@@ -37,14 +37,14 @@
     border-collapse: collapse;
     border: 0.125rem solid black;
     width: 100%;
-    aspect-ratio: 1/1 !important;
+    height: 100%;
 }
 
 
 .greencell {
     background-color: var(--color-verde);
     width: 100%;
-    aspect-ratio: 1/1;
+    height: 100%;
 }
 
 .creamcell {

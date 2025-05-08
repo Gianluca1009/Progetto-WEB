@@ -238,14 +238,14 @@ async function populateDraft(colore) {
         if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length < 3)) {
             makeHidden(document.getElementById('draft_table_dx'));
             makeHidden(document.getElementById('random2'));
-            document.getElementById('player2button').style.transform = "translateY(450%) scale(1.1)";
+            makeVisible(document.getElementById('player2button'));
             return;
         }
 
         else if (colore=="bianco" && (!array_calciatori_partita_bianchi || array_calciatori_partita_bianchi.length < 3)) {
             makeHidden(document.getElementById('draft_table_sx'));
             makeHidden(document.getElementById('random1'));
-            document.getElementById('player1button').style.transform = "translateY(450%) scale(1.1)";
+            makeVisible(document.getElementById('player1button'));
             return;
         }
 
@@ -306,6 +306,8 @@ async function populateDraft(colore) {
                 const li3_info = document.createElement('li');
                 const li4_info = document.createElement('li');
 
+                setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
+
                 //Breve sezione stile
                 ul_info.style.padding = "0"; // Rimuovi il padding della lista
                 ul_info.style.margin = "0"; // Rimuovi i punti elenco
@@ -351,20 +353,12 @@ function populateRandom(colore) {
     // Verifica se ci sono abbastanza calciatori disponibili
     if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length === 0)) {
         console.log("Non ci sono abbastanza calciatori neri disponibili");
+
         return;
     }
     else if (colore=="bianco" && (!array_calciatori_partita_bianchi || array_calciatori_partita_bianchi.length === 0)) {
         console.log("Non ci sono abbastanza calciatori bianchi disponibili");
         return;
-    }
-
-    if(colore=="nero"){
-        makeHidden(document.getElementById('draft_table_dx'));
-        makeHidden(document.getElementById('random2'));
-    }
-    else if(colore=="bianco"){
-        makeHidden(document.getElementById('draft_table_sx'));
-        makeHidden(document.getElementById('random1'));
     }
 
     // Ottieni la lista dei calciatori rimanenti
@@ -430,14 +424,32 @@ function populateRandom(colore) {
         // Salva la mappatura del calciatore e della pedina
     }
 
-    setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori in base alla grandezza della cella
-
-
+    setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
     
     // Rimuovi i calciatori assegnati dall'array originale
     if (colore === "nero") {
         array_calciatori_partita_neri.splice(0, numCalciatoriDaAssegnare);
     } else if (colore === "bianco") {
         array_calciatori_partita_bianchi.splice(0, numCalciatoriDaAssegnare);
+    }
+
+
+
+
+    //AGGIORNAMENTO GRAFICHE
+
+    if(colore=="nero"){
+        makeHidden(document.getElementById('draft_table_dx'));
+        makeHidden(document.getElementById('random2'));
+        setTimeout(() => {
+            makeVisible(document.getElementById('player2button'));
+        }, 1000); // Mostra il bottone dopo 1 secondo
+    }
+    else if(colore=="bianco"){
+        makeHidden(document.getElementById('draft_table_sx'));
+        makeHidden(document.getElementById('random1'));
+        setTimeout(() => {
+            makeVisible(document.getElementById('player1button'));
+        }, 1000);
     }
 }

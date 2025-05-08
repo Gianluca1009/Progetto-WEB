@@ -14,3 +14,20 @@ infoIcon.addEventListener("mouseleave", function() {
     tooltip.style.visibility = "hidden";
     tooltip.style.opacity = "0";
 });
+
+const toggle = document.getElementById('toggle');
+const text = toggle.nextElementSibling.querySelector('.modetext');
+
+// aggiorna il testo all'avvio
+updateText(toggle.checked);
+
+// aggiorna il testo ogni volta che cambia
+toggle.addEventListener('change', () => {
+  stile = updateText(toggle.checked);
+  changeStyle(stile);
+});
+
+function updateText(checked) {
+  text.textContent = checked ? 'CLASSIC' : 'MODERN';
+  return text.textContent;
+}

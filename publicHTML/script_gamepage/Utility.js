@@ -399,6 +399,19 @@ function scrollToGameContainer(){
     }, 10); // Piccolo ritardo prima di iniziare lo scroll
 }
 
+function changeStyle(stile) {
+    const pedine = document.querySelectorAll('.pedina');
+    pedine.forEach(pedina => {
+        immaginevecchia = pedina.firstChild.src; //immagine vecchia
+        if (stile == 'CLASSIC') {
+            pedina.firstChild.src = immaginevecchia.replace('_prova.png', '.png'); //imposto stile MODERN
+        } else {
+            pedina.firstChild.src = immaginevecchia.replace('.png', '_prova.png'); //ripristina l'immagine per lo stile CLASSIC
+        }
+    });
+}
+
+
 
 //
 //---- FUNZIONI PER LA GESTIONE DELLA PARTITA ----//
@@ -445,6 +458,7 @@ function startGame() {
     if (gridContainer) {
         gridContainer.classList.add('grid-container-enlarged');
     }
+    makeHidden(document.querySelector('.switch'));
 
     // Gestione della visibilità dei vari elementi
 
