@@ -21,7 +21,7 @@ class Calciatore {
         this.trofei = trofei;
         this.record_goal = record_goal;
         this.record_assist = record_assist;
-        this.altezza= altezza;
+        this.altezza = altezza;
     }
 }
 
@@ -47,7 +47,6 @@ async function createConnection() {
     });
     
     await client.connect();
-    console.log('Connected to Postgre database');
     return client;
 }
 

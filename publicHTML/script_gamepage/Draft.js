@@ -301,12 +301,17 @@ async function populateDraft(colore) {
                 div_info = info_statistiche[i];
                     //crea la lista puntata
                 const ul_info = document.createElement('ul');
-                ul_info.classList.add('lista-info'); // Aggiungi la classe per lo stile
                 const li1_info = document.createElement('li');
                 const li2_info = document.createElement('li');
                 const li3_info = document.createElement('li');
                 const li4_info = document.createElement('li');
-                
+
+                //Breve sezione stile
+                ul_info.style.padding = "0"; // Rimuovi il padding della lista
+                ul_info.style.margin = "0"; // Rimuovi i punti elenco
+                li1_info.style.fontWeight = "bold"; // Imposta il testo in grassetto
+                li4_info.style.fontStyle = "italic"; // Imposta il testo in corsivo
+
                 if (player.nome != null){
                     li1_info.textContent = `${player.nome} ${player.cognome}`;
                 }else{
@@ -314,7 +319,7 @@ async function populateDraft(colore) {
                 }
                 li2_info.textContent = `${player.squadra} `;
                 li3_info.textContent = `${player.ruolo} `;
-                li4_info.textContent = `${player.data_nascita} `;
+                li4_info.textContent = `${convertDate(player.data_nascita)} `;
 
                 ul_info.appendChild(li1_info);
                 ul_info.appendChild(li2_info);
