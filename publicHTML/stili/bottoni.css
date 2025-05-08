@@ -146,34 +146,37 @@
 
 .switch {
     position: absolute;
-    bottom: 0.3%;
+    z-index: 20000;
+    bottom: 0.7%;
     left: 50%;
     transform: translateX(-50%);
     display: inline-block;
     width: 14%;
-    height: 34px;
-  }
+    height: 4%;
+}
   
   /* Nasconde il checkbox originale */
-  .switch input {
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
+}
   
   /* Slider */
-  .slider {
+.slider {
     position: absolute;
     cursor: pointer;
     inset: 0;
     background-color: #ccc;
+    border: 2px solid #000000;
+    height: 100%;
+    width: 100%;
     transition: 0.4s;
     border-radius: 34px;
     transition: background-color 0.3s ease;
-  }
+}
   
-  .modetext {
-    z-index: 20000;
+.modetext {
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
@@ -183,9 +186,9 @@
     color: #000000;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     font-size: 80%;
-  }
+}
   /* Il cerchio dentro lo switch */
-  .slider::before {
+.slider::before {
     position: absolute;
     content: "";
     aspect-ratio: 1/1;
@@ -194,19 +197,20 @@
     background-color: white;
     transition: 0.4s;
     border-radius: 50%;
-  }
+}
   
   /* Quando il checkbox è attivo (checked) */
-  input:checked + .slider {
-    background-color: #4caf50;
-  }
+input:checked + .slider {
+    background-color: #000000;
+}
   
-  input:checked + .slider::before {
+input:checked + .slider::before {
     left:84%;
-  }
+}
 
-  .dado{
+.dado{
     height: 90%;
     width: 90%;
     object-fit: contain;
-  }
+    cursor: pointer;
+}
