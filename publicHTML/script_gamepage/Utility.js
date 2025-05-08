@@ -331,7 +331,7 @@ function makeVisible(element) {
     element.offsetHeight;
 
     // Anima l'opacità
-    element.style.transition = 'opacity 0.8s ease';
+    element.style.transition = 'opacity 1.5s ease';
     element.style.opacity = '1';
 }
 
@@ -345,7 +345,7 @@ function makeHidden(element) {
     }
 
     // Anima l'opacità
-    element.style.transition = 'opacity 0.8s ease';
+    element.style.transition = 'opacity 1.5s ease';
     element.style.opacity = '0';
 
     // Dopo l'animazione, imposta display a none
@@ -399,15 +399,45 @@ function scrollToGameContainer(){
     }, 10); // Piccolo ritardo prima di iniziare lo scroll
 }
 
+//Funzione per cambiare il rapporto delle pedine in base allo stile
+function ratioPedine(stile) {
+    if (stile == 'CLASSIC') {
+        document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
+            pedina.style.width = '58%'; // Imposta la larghezza al 100%
+            pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
+        })
+        document.querySelectorAll('.cavallo, .alfiere').forEach(pedina => {
+            pedina.style.width = '65%'; // Imposta la larghezza al 100%
+            pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
+        })
+        document.querySelectorAll('.torre').forEach(pedina => {
+            pedina.style.width = '61%'; // Imposta la larghezza al 100%
+            pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
+        });
+    }
+    if (stile == 'MODERN') {
+        document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
+            pedina.style.width = '70%'; // Ripristina la larghezza originale
+            pedina.style.aspectRatio = '1/1'; // Ripristina l'aspect ratio originale
+        })
+    }
+
+}
+
+//Funzione per cambiare lo stile delle pedine
 function changeStyle(stile) {
     const pedine = document.querySelectorAll('.pedina');
     pedine.forEach(pedina => {
         immaginevecchia = pedina.firstChild.src; //immagine vecchia
         if (stile == 'CLASSIC') {
-            pedina.firstChild.src = immaginevecchia.replace('_prova.png', '.png'); //imposto stile MODERN
-        } else {
-            pedina.firstChild.src = immaginevecchia.replace('.png', '_prova.png'); //ripristina l'immagine per lo stile CLASSIC
+            pedina.firstChild.src = immaginevecchia.replace('.png', '_prova.png'); //imposto stile MODERN
+            ratioPedine(stile); //cambio il rapporto delle pedine
         }
+        if (stile == 'MODERN') {
+            pedina.firstChild.src = immaginevecchia.replace('_prova.png', '.png'); //ripristina l'immagine per lo stile CLASSIC
+            ratioPedine(stile); //ripristino il rapporto delle pedine
+        }
+        makeVisible(pedina); //rendo visibile l'immagine
     });
 }
 
@@ -432,6 +462,7 @@ async function startDraft(){
     makeVisible(document.querySelector('.sezione_sx'));
     makeVisible(document.querySelector('.restart-draft'));
     makeVisible(document.querySelector('.populate-random-both-container'));
+    makeVisible(document.querySelector('switch'));
 
     await CreaListeCalciatori(); // Popola l'array di calciatori
     await populateDraft("bianco");

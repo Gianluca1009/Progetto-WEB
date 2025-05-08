@@ -8,7 +8,9 @@ window.addEventListener('resize', function() {
 
 });
 
-
+window.onload = function() {
+    ratioPedine('CLASSIC');
+}
 
 // ---- INIZIALIZZAZIONE DEL GIOCO ---- //
 // Inizializza il gioco quando la pagina si carica
@@ -54,12 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.background-overlay').classList.add('hidden');
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');
+    document.querySelector('.switch').classList.add('hidden');
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.add('hidden');
+    });
     disabilitaPedine();
 
 
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     giocaButton.addEventListener('click', () => {
-
+        document.querySelectorAll('.pedina').forEach(pedina => {
+            makeVisible(pedina); // Rende visibili le pedine
+        });
         preparaSounds();        // Inizializza i suoni al primo click
         startDraft();                    // Prepara il draft
         scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile

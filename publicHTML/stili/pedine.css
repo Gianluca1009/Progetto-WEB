@@ -31,20 +31,7 @@
     bottom: 0;
     display: block;
     object-fit: contain;
-    transition: transform 0.2s ease;
-}
-
-.cavallo, .alfiere {
-    width: 65%;
-    aspect-ratio: 1/1;
-}
-.torre{
-    width: 61%;
-    aspect-ratio: 1/1;
-}
-.pedone{
-    width: 58%;
-    aspect-ratio: 1/1;
+    transition: transform 0.5s ease;
 }
 
 .torre:hover, .alfiere:hover, .cavallo:hover, .regina:hover, .re:hover, .pedone:hover {

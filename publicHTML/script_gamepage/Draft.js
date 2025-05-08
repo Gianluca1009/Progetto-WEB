@@ -443,13 +443,13 @@ function populateRandom(colore) {
         makeHidden(document.getElementById('random2'));
         setTimeout(() => {
             makeVisible(document.getElementById('player2button'));
-        }, 1000); // Mostra il bottone dopo 1 secondo
+        }, 500); // Mostra il bottone dopo 1 secondo
     }
     else if(colore=="bianco"){
         makeHidden(document.getElementById('draft_table_sx'));
         makeHidden(document.getElementById('random1'));
         setTimeout(() => {
             makeVisible(document.getElementById('player1button'));
-        }, 1000);
+        }, 500);
     }
 }

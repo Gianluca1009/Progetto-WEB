@@ -28,6 +28,6 @@ toggle.addEventListener('change', () => {
 });
 
 function updateText(checked) {
-  text.textContent = checked ? 'CLASSIC' : 'MODERN';
+  text.textContent = checked ? 'MODERN' : 'CLASSIC';
   return text.textContent;
 }
