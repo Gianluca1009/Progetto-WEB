@@ -19,14 +19,41 @@
 
 
 /* CLASSI BASE */
-.button {
-    border: 2px solid #000000;
-    border-radius: 10px;
-    cursor: pointer;
-    z-index: 100;
-    font-family: 'Georgia', serif;
-    text-align: center;
-    font-weight: bold;
+button{
+  /* Variables */
+  --button_radius: 0.75em;
+  --button_color: #e8e8e8;
+  --button_outline_color: #000000;
+  font-size: 17px;
+  font-weight: bold;
+  z-index: 1000;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--button_radius);
+  background: var(--button_outline_color);
+}
+
+.button_top {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid var(--button_outline_color);
+  border-radius: var(--button_radius);
+  padding: 0.75em 1.5em;
+  background: var(--button_color);
+  color: var(--button_outline_color);
+  transform: translateY(-0.2em);
+  transition: transform 0.1s ease;
+}
+
+button:hover .button_top {
+  /* Pull the button upwards when hovered */
+  transform: translateY(-0.33em);
+}
+
+button:active .button_top {
+  /* Push the button downwards when pressed */
+  transform: translateY(0);
 }
 
 .b-image {
@@ -50,18 +77,11 @@
 
 /* BOTTONI */
 
-.button.gioca-button {
+.gioca-button {
     position: absolute;
-    width: 35%;
-    height: 20%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.3s ease;
-    font-size: 190%;
-    color: #030303;
-    background: linear-gradient(to right, #44c300, #027a16);
-    pointer-events: auto;
 }
 
 .random-ico {
@@ -82,7 +102,7 @@
     display: none; /* Inizialmente nascosto, verrà mostrato con JavaScript */
 }
 
-.button.populate-random-both {
+.populate-random-both {
     width: 100%;
     height: 50px;
     font-size: 100%;
@@ -92,22 +112,22 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-.button.pronto-button {
+.pronto-button {
+    position: absolute;
     width: 65%;
     height: 10%;
-    font-size: 80%;
     top: 50%;
-    color: #000000;
-    background: linear-gradient(to right, #cbcbcb, #a4a4a4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
     top : 50%;
-    transition:all 0.3s ease;
+    background-color: var(--color-crema);
 }
 
-.button.home-button {
+.home-button {
+    width: 25%;
+    aspect-ratio: 1/1;
+    background-color: var(--color-crema);
+}
+
+.restart-draft {
     width: 25%;
     aspect-ratio: 1/1;
     background-color: var(--color-crema);
@@ -116,32 +136,13 @@
     justify-content: center;
 }
 
-.button.restart-draft {
+.restart-button {
     width: 25%;
     aspect-ratio: 1/1;
     background-color: var(--color-crema);
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.button.restart-button {
-    width: 25%;
-    aspect-ratio: 1/1;
-    background-color: var(--color-crema);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.gioca-button:hover {
-    transform: translate(-50%, -50%) scale(1.1);
-    box-shadow: 0 0 20px rgba(245, 222, 179, 0.6);
-}
-
-/* Aggiungo stile hover per i bottoni pronto */
-.pronto-button:hover {
-    box-shadow: 0 0 20px #027a16;
 }
 
 .switch {

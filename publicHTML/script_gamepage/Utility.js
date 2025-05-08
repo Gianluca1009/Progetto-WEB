@@ -331,7 +331,7 @@ function makeVisible(element) {
     element.offsetHeight;
 
     // Anima l'opacità
-    element.style.transition = 'opacity 1.5s ease';
+    element.style.transition = 'opacity 1s ease';
     element.style.opacity = '1';
 }
 
@@ -345,7 +345,7 @@ function makeHidden(element) {
     }
 
     // Anima l'opacità
-    element.style.transition = 'opacity 1.5s ease';
+    element.style.transition = 'opacity 1s ease';
     element.style.opacity = '0';
 
     // Dopo l'animazione, imposta display a none
@@ -428,6 +428,7 @@ function ratioPedine(stile) {
 function changeStyle(stile) {
     const pedine = document.querySelectorAll('.pedina');
     pedine.forEach(pedina => {
+        pedina.classList.add('hidden'); // Nascondo l'immagine corrente
         immaginevecchia = pedina.firstChild.src; //immagine vecchia
         if (stile == 'CLASSIC') {
             pedina.firstChild.src = immaginevecchia.replace('.png', '_prova.png'); //imposto stile MODERN
