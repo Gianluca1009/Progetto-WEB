@@ -64,12 +64,20 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
 //logica mangiata pedina
 function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
 
-    let td
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
         if(logica_mangiata(window.selectedElement, pedinaBersaglio)){
             pedinaBersaglio.remove();
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
+        }else{
+            Swal.fire({
+            title: 'Errore',
+            text: 'La pedina avversaria ha respinto l\'attacco!',
+            icon: 'error',
+            showConfirmButton: false,
+            width: '300px',
+            timer: 2000
+            });
         }
     }
 
