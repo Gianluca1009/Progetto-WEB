@@ -1,11 +1,14 @@
 
 function get_condition (){
     const condition_text = document.getElementById('condition').textContent;
+    return condition_text;
 }
 
 
 function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = get_condition();
+    console.log('condiz');
+    console.log(cond);
 
     calc_att = JSON.parse(div_calc_att.children[0].id);  //classi giocatore ottenute parsando il json di text.id
     calc_dif = JSON.parse(div_calc_dif.children[0].id);
@@ -46,8 +49,9 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
         return calc_att.record_assist>= calc_dif.record_assist;
 
     }else{
-        return false;
         console.log("condizione di confronto per mangiata inesistente");
+        return false;
+        
     }
 }
 
