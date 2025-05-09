@@ -130,6 +130,13 @@
     trovare degli hover carini per bottoni
     modificare le barre dei timer e separarle
 
+    ERRORI
+    promozione pedone avviene anche quando fallisce la mangiata anche la mangiata del re
+
+    a volte le pedine non possono mangiare
+
+    bisogna obbligare il player a mettere giocatori su tutte le pedine
+
     
 
 

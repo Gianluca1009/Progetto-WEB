@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const HomeButtonAtEnd = document.getElementById('HomeButtonAtEnd');
     const restartButton = document.getElementById('restartButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
-    const HomeButton = document.getElementById('HomeButton');
-
+    
     // Riferimenti ai bottoni random draft
     const randomButton1 = document.getElementById('random1');
     const randomButton2 = document.getElementById('random2');
@@ -110,10 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     restartDraftButton.addEventListener('click', () => {
         restartDraft();
-    });
-
-    HomeButton.addEventListener('click', () => {
-        goHome();
     });
 
     // LISTENER PER I BOTTONI RANDOM DRAFT

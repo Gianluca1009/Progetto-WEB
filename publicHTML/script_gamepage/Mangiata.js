@@ -7,8 +7,6 @@ function get_condition (){
 
 function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = get_condition();
-    console.log('condiz');
-    console.log(cond);
 
     calc_att = JSON.parse(div_calc_att.children[0].id);  //classi giocatore ottenute parsando il json di text.id
     calc_dif = JSON.parse(div_calc_dif.children[0].id);
@@ -75,8 +73,13 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
             text: 'La pedina avversaria ha respinto l\'attacco!',
             icon: 'error',
             showConfirmButton: false,
-            width: '300px',
-            timer: 2000
+            width: '20vw',
+            timer: 1000,
+            customClass: {
+                htmlContainer: 'swal-text',
+                title: 'swal-title',
+                icon: 'swal-icon'
+            },
             });
         }
     }

@@ -46,3 +46,17 @@
     transform: translateY(-50%);
 }
 
+.swal-text{
+    font-size: calc(0.5vh + 0.5vw);
+}
+
+.swal-title{
+    font-size: calc(0.5vh + 0.5vw);
+    font-weight: bold;
+}
+
+.swal-icon{
+    width: 5vw;
+    height: 5vw;
+}
+

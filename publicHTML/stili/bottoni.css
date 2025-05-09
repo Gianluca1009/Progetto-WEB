@@ -24,7 +24,7 @@ button{
   --button_radius: 0.75em;
   --button_color: #e8e8e8;
   --button_outline_color: #000000;
-  font-size: 17px;
+  font-size: calc(1vh + 1vw);
   font-weight: bold;
   z-index: 1000;
   padding: 0;
@@ -44,6 +44,7 @@ button{
   color: var(--button_outline_color);
   transform: translateY(-0.2em);
   transition: transform 0.1s ease;
+  object-fit: contain;
 }
 
 button:hover .button_top {
@@ -58,6 +59,7 @@ button:active .button_top {
 
 .b-image {
     object-fit: contain;
+    z-index: 10000;
     width: 70%;
     height: 70%;
 }
@@ -92,57 +94,20 @@ button:active .button_top {
     background: transparent;
 }
 
-.populate-random-both-container {
-    position: absolute;
-    width: 30%;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2;
-    display: none; /* Inizialmente nascosto, verrà mostrato con JavaScript */
-}
-
-.populate-random-both {
-    width: 100%;
-    height: 50px;
-    font-size: 100%;
-    color: var(--color-crema);
-    background: linear-gradient(to right, #4a01de, #1b014e);
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-}
-
 .pronto-button {
     position: absolute;
     width: 65%;
     height: 10%;
     top: 50%;
     top : 50%;
-    background-color: var(--color-crema);
-}
-
-.home-button {
-    width: 25%;
-    aspect-ratio: 1/1;
-    background-color: var(--color-crema);
 }
 
 .restart-draft {
-    width: 25%;
     aspect-ratio: 1/1;
-    background-color: var(--color-crema);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .restart-button {
-    width: 25%;
     aspect-ratio: 1/1;
-    background-color: var(--color-crema);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .switch {
