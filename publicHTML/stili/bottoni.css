@@ -38,6 +38,7 @@
 
 .gioca-button {
     position: absolute;
+    width: 20%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -60,12 +61,18 @@
 }
 
 .container-bottoni-login{
-    position: absolute;
     display: flex;
     flex-direction: row;
     width: 20%;
-    height: 8%;
-    right: 1%;
+    gap: 2%;
+    position: absolute;
+    right: 2vw;
+    top: 40%;
+}
+
+.btn-sezione-login{
+    width: 40%;
+    height: 100%;
 }
 
 .restart-draft {

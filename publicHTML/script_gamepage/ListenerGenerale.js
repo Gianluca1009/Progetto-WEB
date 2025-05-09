@@ -3,7 +3,7 @@
 window.addEventListener('resize', function() {
 
     setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
-    setSezioniDimensions(); // Imposta le dimensioni delle sezioni
+    //setSezioniDimensions(); // Imposta le dimensioni delle sezioni
     //setSoccerPlayerInfoFontSize(); // Imposta la grandezza del font delle informazioni dei calciatori
 
 });
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Pre-carico i suoni
     preloadSounds();
-    setSezioniDimensions(); // Imposta le dimensioni delle sezioni in base alla grandezza del contenitore del gioco
+    //setSezioniDimensions(); // Imposta le dimensioni delle sezioni in base alla grandezza del contenitore del gioco
     setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
     //setSoccerPlayerInfoFontSize(); // Imposta la grandezza del font delle informazioni dei calciatori in base alla grandezza della cella
     StartPosition();
