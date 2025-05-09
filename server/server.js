@@ -114,11 +114,6 @@ app.get('/populate-draft', async (req, res) => {
 });
 
 
-// Avvia il server e mettiti in ascolto sulla porta specificata
-app.listen(port, () => {
-    console.log(`[${new Date().toISOString()}] Server successfully started and running on port ${port}`); // Log successful start
-});
-
 // REGISTRAZIONE
 app.post('/register', async (req, res) => {
     const connection = await createConnection();
@@ -153,3 +148,29 @@ app.post('/register', async (req, res) => {
       res.status(401).send('Username o password errati');
     }
   });
+
+
+  //GET GIOCATORE LIBERI -> MERCATO
+  app.get('/get_giocatori_mercato', async (req, res) => {
+        const connection = await createConnection();
+      
+        try {
+          const results = await connection.query("SELECT * FROM calciatore WHERE id_player IS NULL");
+      
+          if (results.rows.length > 0) {
+            // Invia l'elenco dei giocatori liberi al client
+            res.json(results.rows); // invia solo i dati
+          } else {
+            res.status(404).send('Nessun giocatore libero trovato');
+          }
+        } catch (error) {
+          console.error('Errore durante la query:', error);
+          res.status(500).send('Errore interno al server');
+        }
+      });
+
+
+  // Avvia il server e mettiti in ascolto sulla porta specificata
+app.listen(port, () => {
+    console.log(`[${new Date().toISOString()}] Server successfully started and running on port ${port}`); // Log successful start
+});
