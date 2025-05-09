@@ -62,14 +62,13 @@ function resetEvidenziaCelleDrop(){
 async function DragDropSantiniOnly(){
     
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
-        console.log(santino_img)
         santino_img.addEventListener("dragstart", async function(event) {
             // Se il gioco è iniziato, non fare nulla
             if (window.gameStarted) {
                 event.preventDefault();
                 return false;
             }
-            window.DraggedClassCalciatoreBianco = JSON.parse(santino_img.id); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
+            window.DraggedClassCalciatoreBianco = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
             event.dataTransfer.setData("text", window.DraggedClassCalciatoreBianco.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
@@ -92,7 +91,7 @@ async function DragDropSantiniOnly(){
                 event.preventDefault();
                 return false;
             }
-            window.DraggedClassCalciatoreNero = JSON.parse(santino_img.id); //parsing dell'oggetto JSON
+            window.DraggedClassCalciatoreNero = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON
             event.dataTransfer.setData("text", window.DraggedClassCalciatoreNero.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
@@ -143,7 +142,7 @@ async function DragDrop_draft(){
             if (div_pedina) {
                 // Ottieni l'id della pedina
                 const pedinaId = div_pedina.id;
-
+                
                 // Verifica se la pedina è bianca (id minuscolo) o nera (id maiuscolo)
                 const isPedinaBianca = pedinaId === pedinaId.toLowerCase() && pedinaId !== pedinaId.toUpperCase();
 
@@ -153,20 +152,20 @@ async function DragDrop_draft(){
                     let text = div_pedina.querySelector('text');
                     if (!text) {
                         text = document.createElement('text');
-                        if(isPedinaBianca)
-                            text.id = JSON.stringify(DraggedClassCalciatoreBianco); // Usa il JSON della classe com id del testo
-                        else if(!isPedinaBianca)
-                            text.id = JSON.stringify(DraggedClassCalciatoreNero); // Usa il JSON della classe com id del testo
                         text.classList.add('nome-giocatore');
                         div_pedina.appendChild(text);
                     }
 
                     // Imposta il testo con l'id del calciatore e aggiunge la classe
                     if(!assegnaCognome(text, cognome_calciatore)) return;
-                    if(isPedinaBianca)
+                    if(isPedinaBianca){
+                        div_pedina.firstChild.dataset.json = JSON.stringify(window.DraggedClassCalciatoreBianco); // Usa il JSON della classe com id dell'immagine
                         await populateDraft("bianco"); // Popola il draft per la squadra
-                    if(!isPedinaBianca)
+                    }
+                    if(!isPedinaBianca){
+                        div_pedina.firstChild.dataset.json = JSON.stringify(window.DraggedClassCalciatoreNero); // Usa il JSON della classe com id dell'immagine
                         await populateDraft("nero"); // Popola il draft per la squadra
+                    }
                 }
             }
         });
@@ -205,12 +204,11 @@ function remove3Calciatori(colore) {
     if(colore== "nero"){
         // Rimuovi i primi 3 calciatori dall'array dei neri
         array_calciatori_partita_neri.splice(0, 3);
-        console.log("rimossi 3 neri");
     }
     else if(colore== "bianco"){
         // Rimuovi i primi 3 calciatori dall'array dei bianchi
         array_calciatori_partita_bianchi.splice(0, 3);
-        console.log("rimossi 3 bianchi");
+
     }
 }
 
@@ -295,7 +293,7 @@ async function populateDraft(colore) {
                 const img = document.createElement('img');
                 img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
                 img.alt = player.cognome; // Usa 'cognome' come alt text
-                img.id = JSON.stringify(selectedPlayers[i]); // Usa il JSON della classe com id dell'immagine
+                img.dataset.json = JSON.stringify(selectedPlayers[i]); // Usa il JSON della classe com id dell'immagine
 
                 //POPOLAMENTO INFO
                 div_info = info_statistiche[i];
@@ -408,7 +406,7 @@ function populateRandom(colore) {
         const pedina = pedine[i];
         const calciatore = listaCalciatoriRimanenti[i];
 
-        pedina.firstChild.id = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
+        pedina.firstChild.dataset.json = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
 
         // Crea l'elemento text se non esiste
         let text = pedina.querySelector('text');

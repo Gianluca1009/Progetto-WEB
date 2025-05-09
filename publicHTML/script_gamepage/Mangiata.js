@@ -8,8 +8,8 @@ function get_condition (){
 function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = get_condition();
 
-    calc_att = JSON.parse(div_calc_att.children[0].id);  //classi giocatore ottenute parsando il json di text.id
-    calc_dif = JSON.parse(div_calc_dif.children[0].id);
+    calc_att = JSON.parse(div_calc_att.children[0].dataset.json);  //classi giocatore ottenute parsando il json di text.id
+    calc_dif = JSON.parse(div_calc_dif.children[0].dataset.json);  //classi difensore ottenute parsando il json di text.id
 
     if (cond === "Goal segnati in carriera"){
         console.log("goal attuale: " + calc_att.goal + " goal difensore: " + calc_dif.goal);
@@ -61,7 +61,7 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
 
 //logica mangiata pedina
 function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
-
+    console.log(pedinaBersaglio);
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
         if(logica_mangiata(window.selectedElement, pedinaBersaglio)){
@@ -78,7 +78,6 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
             customClass: {
                 htmlContainer: 'swal-text',
                 title: 'swal-title',
-                icon: 'swal-icon'
             },
             });
         }
