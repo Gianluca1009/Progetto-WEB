@@ -9,8 +9,8 @@ const pezzi = {
         class: 'torre',
         id: { bianco: 't', nero: 'T' },
         img: {
-            bianco: 'images/pedine/torre_bianca.png',
-            nero: 'images/pedine/torre_nera.png'
+            bianco: 'images/pedine/torre_bianca_prova.png',
+            nero: 'images/pedine/torre_nera_prova.png'
         }
     },
     alfiere: {
@@ -21,8 +21,8 @@ const pezzi = {
         class: 'alfiere',
         id: { bianco: 'a', nero: 'A' },
         img: {
-            bianco: 'images/pedine/alfiere_bianco.png',
-            nero: 'images/pedine/alfiere_nero.png'
+            bianco: 'images/pedine/alfiere_bianco_prova.png',
+            nero: 'images/pedine/alfiere_nero_prova.png'
         }
     },
     regina: {
@@ -33,8 +33,8 @@ const pezzi = {
         class: 'regina',
         id: { bianco: 'q', nero: 'Q' },
         img: {
-            bianco: 'images/pedine/regina_bianca.png',
-            nero: 'images/pedine/regina_nera.png'
+            bianco: 'images/pedine/regina_bianca_prova.png',
+            nero: 'images/pedine/regina_nera_prova.png'
         }
     },
     re: {
@@ -45,8 +45,8 @@ const pezzi = {
         class: 're',
         id: { bianco: 'r', nero: 'R' },
         img: {
-            bianco: 'images/pedine/re_bianco.png',
-            nero: 'images/pedine/re_nero.png'
+            bianco: 'images/pedine/re_bianco_prova.png',
+            nero: 'images/pedine/re_nero_prova.png'
         }
     },
     cavallo: {
@@ -57,16 +57,16 @@ const pezzi = {
         class: 'cavallo',
         id: { bianco: 'c', nero: 'C' },
         img: {
-            bianco: 'images/pedine/cavallo_bianco.png',
-            nero: 'images/pedine/cavallo_nero.png'
+            bianco: 'images/pedine/cavallo_bianco_prova.png',
+            nero: 'images/pedine/cavallo_nero_prova.png'
         }
     },
     pedone: {
         class: 'pedone',
         id: { bianco: 'p', nero: 'P' },
         img: {
-            bianco: 'images/pedine/pedone_bianco.png',
-            nero: 'images/pedine/pedone_nero.png'
+            bianco: 'images/pedine/pedone_bianco_prova.png',
+            nero: 'images/pedine/pedone_nero_prova.png'
         }
     }
 };

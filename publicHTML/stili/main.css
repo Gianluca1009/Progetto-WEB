@@ -12,7 +12,6 @@
     width: var(--game-width);
     height: var(--game-height);
     border: 0.375rem solid var(--color-crema);
-    border-radius: 0.625rem;
     box-shadow: 0 0 1.25rem rgba(245, 222, 179, 0.6);
     animation: glow 2s infinite alternate;
     display: flex;

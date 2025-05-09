@@ -18,7 +18,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: min(55%, 80vh);
-    aspect-ratio: 1/1;
+    aspect-ratio: 1/1 !important;
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
     margin-bottom: 2vh;
     transform-origin: center;
@@ -35,16 +35,16 @@
 .scacchiera {
     table-layout: fixed !important;
     border-collapse: collapse;
-    border: 0.125rem solid black;
+    border: clamp(0.1px, 1vh, 2.5px) solid black;
     width: 100%;
-    aspect-ratio: 1/1 !important;
+    height: 100%;
 }
 
 
 .greencell {
     background-color: var(--color-verde);
     width: 100%;
-    aspect-ratio: 1/1;
+    height: 100%;
 }
 
 .creamcell {
@@ -56,7 +56,7 @@
 .greencell, .creamcell {
     transition: background-color 0.5s ease;
     height: calc(100% / 6);
-    border: 0.125rem solid black;
+    border: 0.15vh solid black;
     padding: 0;
 }
 

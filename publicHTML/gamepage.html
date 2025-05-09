@@ -51,17 +51,27 @@
         <div class="background-overlay"></div>
 
         <!-- BOTTONE INIZIO GIOCO -->
-        <button id="giocaButton" class="button gioca-button">INIZIA A GIOCARE</button>
+        <button id="giocaButton" class="gioca-button" type="button">
+            <span class="button_top"> INIZIA A GIOCARE </span>
+        </button>
+
+        <!-- CONTENITORE SWITCH STILE PEDINE-->
+        <label class="switch">
+            <input type="checkbox" id="toggle">
+            <span class="slider">
+                <span class="modetext">OFF</span>
+            </span>
+        </label>
 
         <!-- CONTAINER BOTTONI -->
         <div class="container-bottoni">
-            <button id="HomeButton" class="button home-button">
+            <button id="HomeButton" class="home-button">
                 <img src="images/Home.png" alt="Home" class="b-image">
             </button>
-            <button id="restartButton" class="button restart-button">
+            <button id="restartButton" class="restart-button">
                 <img src="images/restartGame.png" alt="restartGame" class="b-image">
             </button>
-            <button id="restartDraftButton" class="button restart-draft">
+            <button id="restartDraftButton" class="restart-draft">
                 <img src="images/restartDraft.png" alt="restartDraft" class="b-image">
             </button>
         </div>
@@ -69,8 +79,12 @@
         <!-- TABELLA DRAFT SX -->
          <div class="sezione_sx">
 
-            <button id="player1button" class="button pronto-button player1">PRONTO</button>
+            <button id="player1button" class="pronto-button player1">PRONTO</button>
 
+            <div id="random1" class="random-ico">
+                <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
+            </div>
+            
             <div id="draft_table_sx" class="tabella_draft">
                 <div class="riga_draft">
                     <div class="foto_draftcell" id="s00"></div>
@@ -88,7 +102,7 @@
                 </div>
             </div>
 
-            <button id="random1" class="button random-button">RANDOM DRAFT</button>
+            
 
             <div class="campo-giocatore" id="player_bianco">
                 <h1 class="nome-player">Player Bianco</h1>
@@ -100,8 +114,8 @@
         <!-- TABELLA DRAFT DX -->
         <div class="sezione_dx">
 
-            <button id="player2button" class="button pronto-button player2">PRONTO</button>
-
+            <button id="player2button" class="pronto-button player2">PRONTO</button>
+            
             <div id="draft_table_dx" class="tabella_draft">
                 <div class="riga_draft">
                     <div class="foto_draftcell" id="d00"></div>
@@ -117,7 +131,9 @@
                 </div>
             </div>
 
-            <button id="random2" class="button random-button">RANDOM DRAFT</button>
+            <div id="random2" class="random-ico">
+                <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
+            </div>
 
             <div class="campo-giocatore" id="player_nero">
                 <h1 class="nome-player">Player Nero</h1>

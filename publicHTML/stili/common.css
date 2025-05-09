@@ -8,7 +8,7 @@
     /* COLORI UTILIZZATI */
     --background-sfumato-violaceo: linear-gradient(to right ,#1b014e,#4a01de);
     --color-verde: rgb(116, 172, 116);
-    --color-crema: #f5deb3;
+    --color-crema: #dcc59c;
 }
 
 /* Elenco delle classi CSS in questo file:
@@ -74,5 +74,5 @@ ul{
 }
 
 li{
-    font-size: clamp(0.8rem, 1vw + 0.5vh, 1.4rem);
+    font-size: clamp(0.1rem, 0.7vw + 0.7vh, 1rem);
 }
