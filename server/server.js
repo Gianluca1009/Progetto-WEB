@@ -118,3 +118,30 @@ app.get('/populate-draft', async (req, res) => {
 app.listen(port, () => {
     console.log(`[${new Date().toISOString()}] Server successfully started and running on port ${port}`); // Log successful start
 });
+
+// REGISTRAZIONE
+app.post('/register', async (req, res) => {
+    const connection = await createConnection();
+    const { username, password, email } = req.body;
+  
+    try {
+      await connection.query('INSERT INTO player (username, password, email) VALUES ($1, $2, $3)', [username, password, email]);
+      res.status(201).send('Registrazione avvenuta');
+    } catch (err) {
+      res.status(500).send('Errore durante la registrazione');
+    }
+  });
+  
+  // LOGIN
+  app.post('/login', async (req, res) => {
+    const connection = await createConnection();
+    const { username, password} = req.body;
+  
+    const result = await connection.query('SELECT * FROM player WHERE username = $1 AND password = $2' , [username, password]);
+  
+    if (result.rows.length > 0) {
+      res.send('Login riuscito');
+    } else {
+      res.status(401).send('Username o password errati');
+    }
+  });

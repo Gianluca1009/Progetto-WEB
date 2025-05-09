@@ -5,8 +5,8 @@ CREATE TABLE player (
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
-    punti INT NOT NULL,
-    UNIQUE (username, email)
+    punti INT DEFAULT 100,
+    UNIQUE (username, email) 
 );
 
 
@@ -35,7 +35,13 @@ CREATE TABLE calciatore (
 );
 
 CREATE USER admin WITH PASSWORD 'adminpwd';
-GRANT SELECT ON TABLE calciatore TO admin;
+-- Permessi sulle SEQUENZE
+GRANT USAGE, SELECT, UPDATE ON SEQUENCE player_id_seq TO admin;
+GRANT USAGE, SELECT, UPDATE ON SEQUENCE calciatore_id_seq TO admin;
+
+-- Permessi sulle TABELLE
+GRANT INSERT, SELECT, UPDATE ON player TO admin;
+GRANT INSERT, SELECT, UPDATE ON calciatore TO admin;
 
 
 INSERT INTO calciatore (
