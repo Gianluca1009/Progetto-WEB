@@ -78,7 +78,6 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
             customClass: {
                 htmlContainer: 'swal-text',
                 title: 'swal-title',
-                icon: 'swal-icon'
             },
             });
         }

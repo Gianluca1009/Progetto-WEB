@@ -47,16 +47,11 @@
 }
 
 .swal-text{
-    font-size: calc(0.5vh + 0.5vw);
+    font-size: calc(0.7vh + 0.7vw);
 }
 
 .swal-title{
-    font-size: calc(0.5vh + 0.5vw);
+    font-size: calc(0.7vh + 0.7vw);
     font-weight: bold;
-}
-
-.swal-icon{
-    width: 5vw;
-    height: 5vw;
 }
 
