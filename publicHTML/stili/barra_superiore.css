@@ -18,13 +18,23 @@
 
 /* SEZIONE BARRA SUPERIORE */
 
-.intestazione {
+.intestazione-gamepage{
     display: block;
     position: relative;
     width: 100vw;
     height: 40%;
     left: 0;
     right: 0;
+    top: 0;
+}
+
+.intestazione-mercato{
+    display: block;
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    top: 0;
 }
 
 /*stile container del titolo*/
