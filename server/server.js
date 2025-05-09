@@ -128,7 +128,7 @@ app.post('/register', async (req, res) => {
   });
   
   // LOGIN
-  app.post('/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     const connection = await createConnection();
     const { username, password} = req.body;
   
@@ -168,6 +168,29 @@ app.post('/register', async (req, res) => {
           res.status(500).send('Errore interno al server');
         }
       });
+
+
+  //GET GIOCATORE ID User -> ROSE
+  app.get('/get_giocatori_rose', async (req, res) => {
+    const connection = await createConnection();
+    const id_player_log = req.query.id; // ← prende dalla query string ?id=...
+  
+    try {
+      const results = await connection.query(
+        'SELECT * FROM calciatore WHERE id_player = $1',
+        [id_player_log]
+      );
+  
+      if (results.rows.length > 0) {
+        res.json(results.rows);
+      } else {
+        res.status(404).send('Nessun giocatore trovato nella rosa');
+      }
+    } catch (error) {
+      console.error('Errore durante la query:', error);
+      res.status(500).send('Errore interno al server');
+    }
+  });
 
 
   // Avvia il server e mettiti in ascolto sulla porta specificata
