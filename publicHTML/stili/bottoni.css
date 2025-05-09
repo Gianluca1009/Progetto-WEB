@@ -18,45 +18,6 @@
  */
 
 
-/* CLASSI BASE */
-button{
-  /* Variables */
-  --button_radius: 0.75em;
-  --button_color: #e8e8e8;
-  --button_outline_color: #000000;
-  font-size: calc(1vh + 1vw);
-  font-weight: bold;
-  z-index: 1000;
-  padding: 0;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--button_radius);
-  background: var(--button_outline_color);
-}
-
-.button_top {
-  display: block;
-  box-sizing: border-box;
-  border: 2px solid var(--button_outline_color);
-  border-radius: var(--button_radius);
-  padding: 0.75em 1.5em;
-  background: var(--button_color);
-  color: var(--button_outline_color);
-  transform: translateY(-0.2em);
-  transition: transform 0.1s ease;
-  object-fit: contain;
-}
-
-button:hover .button_top {
-  /* Pull the button upwards when hovered */
-  transform: translateY(-0.33em);
-}
-
-button:active .button_top {
-  /* Push the button downwards when pressed */
-  transform: translateY(0);
-}
-
 .b-image {
     object-fit: contain;
     z-index: 10000;
@@ -74,10 +35,6 @@ button:active .button_top {
     flex-direction: row-reverse;
     justify-content: flex-start;
 }
-
-
-
-/* BOTTONI */
 
 .gioca-button {
     position: absolute;
@@ -100,6 +57,16 @@ button:active .button_top {
     height: 10%;
     top: 50%;
     top : 50%;
+}
+
+.container-bottoni-login{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    height: 8%;
+    transform: translateY(50%);
+    right: 1%;
 }
 
 .restart-draft {
