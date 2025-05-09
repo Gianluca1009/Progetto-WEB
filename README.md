@@ -137,6 +137,10 @@
 
     bisogna obbligare il player a mettere giocatori su tutte le pedine
 
+    i brasiliani senza nome non hanno parsing corretto di NULL
+
+    L'ultimo cognome che draggi manuale nel draft ha font piu grande
+
     
 
 
