@@ -28,33 +28,7 @@
     top: 0;
 }
 
-.intestazione-mercato{
-    display: block;
-    position: absolute;
-    width: 100vw;
-    left: 0;
-    right: 0;
-    top: 0;
-}
-
 /*stile container del titolo*/
-.title-container-mercato {
-    position: relative;
-    width: 100%;
-    height: 15%;
-    box-sizing: border-box;
-    border: 0.125rem solid black;
-    margin:0;
-    padding:0;
-    box-shadow: 0 0.25rem 1rem rgba(1, 0, 0, 0.5);
-    margin-bottom: 2%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5%;
-    background: var(--background-sfumato-violaceo);
-}
 
 .title-container-gamepage {
     position: relative;
