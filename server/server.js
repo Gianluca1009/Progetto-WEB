@@ -140,7 +140,15 @@ app.post('/register', async (req, res) => {
     const result = await connection.query('SELECT * FROM player WHERE username = $1 AND password = $2' , [username, password]);
   
     if (result.rows.length > 0) {
-      res.send('Login riuscito');
+        // Estrai l'ID e altri dati necessari
+        const user = result.rows[0]; // primo risultato -> username è unico
+        // Rispondi con i dati dell'utente (come id, username, punti)
+        res.json({
+        userId: user.id,
+        username: user.username,
+        point: user.punti 
+        });
+
     } else {
       res.status(401).send('Username o password errati');
     }

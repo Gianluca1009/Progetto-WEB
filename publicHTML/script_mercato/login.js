@@ -21,7 +21,15 @@ function openLogPopup() {
         })
         .then(response => {
           if (!response.ok) throw new Error('Credenziali non valide');
-          return response.text();
+          return response.json(); // Restituiamo la risposta JSON
+        })
+        .then(data => {
+          // Se la risposta è positiva, la variabile `data` contiene i dati dell'utente
+          const { userId, username, point } = data;
+          // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
+          loginMercato(userId, username, point);
+          // Mostriamo il messaggio di successo
+          Swal.fire('Login effettuato!');
         })
         .catch(error => {
           Swal.showValidationMessage(error.message);
