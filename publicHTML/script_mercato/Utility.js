@@ -41,6 +41,7 @@ function BuildRowForCalciatore(calciatore){
     campoInfo.className = 'campo_info';
     const nomeCognome = document.createElement('h2');
     nomeCognome.style.marginBlockEnd = '0.20em';
+    nomeCognome.style.fontSize = 'min(1.5vw, 1.5em)';
 
     const informazioni = document.createElement('div');
     informazioni.className = 'informazioni';

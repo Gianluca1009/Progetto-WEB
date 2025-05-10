@@ -442,6 +442,19 @@ function changeStyle(stile) {
     });
 }
 
+// Funzione per restituire lo stile delle pedine
+function getStyle(){
+    const pedine = document.querySelectorAll('.pedina');
+    let stile = 'CLASSIC'; // Valore di default
+    pedine.forEach(pedina => {
+        if (pedina.firstChild.src.includes('_prova.png')) {
+            stile = 'CLASSIC';
+        } else {
+            stile = 'MODERN';
+        }
+    });
+    return stile;
+}
 
 
 //

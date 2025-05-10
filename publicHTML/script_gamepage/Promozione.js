@@ -57,11 +57,23 @@ function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
     
     // Aggiorno esplicitamente le immagini (anche se già fatto in upgrade_pedone)
     if (turnoBianco) {
-        CellaReginaVecchia.src = "images/pedine/regina_bianca.png";
-        CellaCavalloVecchia.src = "images/pedine/cavallo_bianco.png";
+        if(getStyle() == "MODERN"){
+            CellaReginaVecchia.src = "images/pedine/regina_bianca.png";
+            CellaCavalloVecchia.src = "images/pedine/cavallo_bianco.png";
+        }
+        else{
+            CellaReginaVecchia.src = "images/pedine/regina_bianca_prova.png";
+            CellaCavalloVecchia.src = "images/pedine/cavallo_bianco_prova.png";
+        }
     } else {
-        CellaReginaVecchia.src = "images/pedine/regina_nera.png";
-        CellaCavalloVecchia.src = "images/pedine/cavallo_nero.png";
+        if(getStyle() == "MODERN"){
+            CellaReginaVecchia.src = "images/pedine/regina_nera.png";
+            CellaCavalloVecchia.src = "images/pedine/cavallo_nero.png";
+        }
+        else{
+            CellaReginaVecchia.src = "images/pedine/regina_nera_prova.png";
+            CellaCavalloVecchia.src = "images/pedine/cavallo_nero_prova.png";
+        }
     }
     
     // Rimuovo vecchi listener usando cloni della tabella perche sui vecchi rimane il listener precedente
@@ -70,11 +82,23 @@ function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
 
     // Aggiorno anche le immagini nei cloni (importante!)
     if (turnoBianco) {
-        CellaReginaNuova.src = "images/pedine/regina_bianca.png";
-        CellaCavalloNuova.src = "images/pedine/cavallo_bianco.png";
+        if(getStyle() == "MODERN"){
+            CellaReginaNuova.src = "images/pedine/regina_bianca.png";
+            CellaCavalloNuova.src = "images/pedine/cavallo_bianco.png";
+        }
+        else{
+            CellaReginaNuova.src = "images/pedine/regina_bianca_prova.png";
+            CellaCavalloNuova.src = "images/pedine/cavallo_bianco_prova.png";
+        }
     } else {
-        CellaReginaNuova.src = "images/pedine/regina_nera.png";
-        CellaCavalloNuova.src = "images/pedine/cavallo_nero.png";
+        if(getStyle() == "MODERN"){
+            CellaReginaNuova.src = "images/pedine/regina_nera.png";
+            CellaCavalloNuova.src = "images/pedine/cavallo_nero.png";
+        }
+        else{
+            CellaReginaNuova.src = "images/pedine/regina_nera_prova.png";
+            CellaCavalloNuova.src = "images/pedine/cavallo_nero_prova.png";
+        }
     }
 
     //scambia le celle vecchie con quelle nuove per eliminare i vecchi listener

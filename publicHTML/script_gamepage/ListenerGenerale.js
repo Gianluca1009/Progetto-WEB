@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Riferimenti ai bottoni
     const giocaButton = document.getElementById('giocaButton');
-    const player1Button = document.getElementById('player1button');
-    const player2Button = document.getElementById('player2button');
+    const player1Button = document.getElementById('top_player1');
+    const player2Button = document.getElementById('top_player2');
     const restartButtonAtEnd = document.getElementById('restartButtonAtEnd');
     const restartDraftButtonAtEnd = document.getElementById('restartDraftButtonAtEnd');
     const HomeButtonAtEnd = document.getElementById('HomeButtonAtEnd');
@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     restartButton.classList.add('hidden');
     restartDraftButton.classList.add('hidden');
-    player1Button.classList.add('hidden');
-    player2Button.classList.add('hidden');
 
+    document.getElementById('player1button').classList.add('hidden');
+    document.getElementById('player2button').classList.add('hidden');
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');
     document.querySelector('.sezione_sx').classList.add('hidden');
@@ -78,8 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.player1Ready) {
             // Se il giocatore era già pronto, torna indietro
             window.player1Ready = false;
-            player1Button.disabled = false;
-            player1Button.style.background = "linear-gradient(to right, #cbcbcb, #a4a4a4)";
+            player1Button.style.background = "var(--button_color)";
         } else {
             // Se il giocatore non era pronto, imposta come pronto
             window.player1Ready = true;
