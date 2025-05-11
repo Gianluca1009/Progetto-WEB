@@ -9,7 +9,7 @@
 
 .game-over{
     position: absolute;
-    width: 75%;
+    width: 85%;
     height: 30%;
     top: 50%;
     left: 50%;
@@ -34,25 +34,15 @@
 .bottoni-gameover-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    height: 20%;
+    justify-content: center;
+    height: 30%;
+    width: 100%;
     align-items: center;
     pointer-events: auto;
+    gap: 1%;
 }
 
-.button.bottoni-gameover{
-    width: 40%;
+.top-gameover{
     height: 100%;
-    font-size: 1.5vh;
-    background: linear-gradient(to right, #ffffff, #e0e0e0);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-right: 2%;
-    margin-left: 2%;
-}
-
-.bottoni-gameover:hover {
-    background: linear-gradient(to right, #dadada, #6a6a6a);
-    transform: scale(1.1);
 }
 

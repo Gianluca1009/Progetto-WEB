@@ -38,6 +38,7 @@
 
 .gioca-button {
     position: absolute;
+    height: 10%;
     width: 20%;
     top: 50%;
     left: 50%;
