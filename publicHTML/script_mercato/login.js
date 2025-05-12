@@ -31,7 +31,7 @@ function openLogPopup() {
           // Mostriamo il messaggio di successo
           Swal.fire('Login effettuato!');
           //popola il mercato subito dopo il log
-          BuildMercato();
+          //BuildMercato(); popla il mercato sempre e gestisci il log nella logica del listner del bottone
         })
         .catch(error => {
           Swal.showValidationMessage(error.message);
