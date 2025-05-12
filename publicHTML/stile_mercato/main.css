@@ -66,18 +66,18 @@ body{
 }
 
 .campo_foto{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    position: absolute;
+    left: 0;
     object-fit: cover;
-    width: 30%;
+    width: 22%;
     height: 100%;
+    background-color: var(--color-crema);
+    border: 1px solid black;
 }
 
-.campo_foto img{
-    width: 100%;
-    height: 100%;
+.foto_calciatore{
+    width: 90%;
+    height: 90%;
     object-fit: contain;
     border-radius: 0.5rem;
 }
@@ -89,6 +89,8 @@ body{
     flex-direction: column;
     width: 50%;
     height: 100%;
+    position: absolute;
+    left: 30%;
 }
 
 .informazioni{

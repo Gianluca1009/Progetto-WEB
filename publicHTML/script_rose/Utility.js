@@ -50,7 +50,16 @@ function BuildRowForCalciatore(calciatore){
     campoFoto.className = 'campo_foto';
     const img = document.createElement('img');
     img.src = calciatore.url_foto;
+    img.className = 'foto_calciatore';
+    const img_graff = document.createElement('img');
+    img_graff.src = "images/graffetta.png";
+    img_graff.style.position = "absolute";
+    img_graff.style.width = "20%";
+    img_graff.style.aspectRatio = "1/1";
+    img_graff.style.top = "0";
+    img_graff.style.left = "0";
     campoFoto.appendChild(img);
+    campoFoto.appendChild(img_graff);
 
     //creo il campo info nella riga
 

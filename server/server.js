@@ -195,7 +195,7 @@ app.post('/login', async (req, res) => {
 
   // Avvia il server e mettiti in ascolto sulla porta specificata
 app.listen(port, () => {
-    console.log(`[Server Node x Soc-c-hess] Server successfully started and running on port ${port}`); // Log successful start
+    console.log(`[SOC-C-HESS © Server] Server successfully started and running on port ${port}`); // Log successful start
 });
 
 
