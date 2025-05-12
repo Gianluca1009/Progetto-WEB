@@ -29,7 +29,7 @@ function openLogPopup() {
           // Chiamata alla funzione LS_loginRose per salvare i dati nel localStorage
           LS_loginRose(userId, username, point);
           //popola l'area di log con i calciatori della rosa
-          populate_rosa();
+          BuildRosa();
           // Mostriamo il messaggio di successo
           Swal.fire('Login effettuato!');
         })
