@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no">
@@ -7,8 +7,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="stylesheet" href="stile_COMMON/common.css">
-    <link rel="stylesheet" href="stile_gamepage/bottoni.css">
+    <link rel="stylesheet" href="COMMON_stile/common.css">
+    <link rel="stylesheet" href="COMMON_stile/bottoni-login.css">
     <link rel="stylesheet" href="stile_rosa/main.css">
     <title>Rosa</title>
 </head>
@@ -19,13 +19,19 @@
             <h1 class="title">ROSA</h1>
 
             <div class="container-bottoni-login">
-                <button class="btn-sezione-login" onclick="openLogPopup()">
+                <button class="btn-sezione-login" id="loginbutton" onclick="openLogPopup()">
                     <span class="button_top login"> Login </span>
                 </button>
 
-                <button class="btn-sezione-login" onclick="openRegPopup()">
+                <button class="btn-sezione-login" id="registerbutton" onclick="openRegPopup()">
                     <span class="button_top login"> Registrati </span>
                 </button>
+
+                <button class="btn-sezione-login" id="logoutbutton" onclick="openLogoutPopup()">
+                    <span class="button_top login"> Logout </span>
+                </button>
+
+                <p id="playerusername" class="p-username"></p>
 
             </div>
         </div>
@@ -37,9 +43,11 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="script_rose/login.js"> </script>
-    <script src="script_rose/local_storage.js"> </script>
-    <script src="script_rose/Utility.js"> </script>
-    <script src="script_rose/ListenerRosa.js"> </script>
+    <script src="script_rose/Login.js"></script>
+    <script src="script_rose/local_storage.js"></script>
+    <script src="script_rose/Utility.js"></script>
+    <script src="script_rose/ListenerRosa.js"></script>
+    <script src="COMMON_utility/Utility.js"></script>
+
 </body>
 </html>

@@ -32,6 +32,7 @@ function openLogPopup() {
           BuildRosa();
           // Mostriamo il messaggio di successo
           Swal.fire('Login effettuato!');
+
         })
         .catch(error => {
           Swal.showValidationMessage(error.message);
@@ -40,45 +41,69 @@ function openLogPopup() {
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire('Login effettuato!');
+        makeVisible(document.getElementById("logoutbutton"));
+        document.getElementById("playerusername").textContent = `${LS_get_usernamePlayerRose()}`;
+        makeVisible(document.getElementById("playerusername"));
+        makeHidden(document.getElementById("loginbutton"));
+        makeHidden(document.getElementById("registerbutton"));
       }
     });
   }
 
 
-  function openRegPopup() {
-    Swal.fire({
-      title: 'Registrazione utente',
-      html:
-        '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
-        '<input type="password" id="password" class="swal2-input" placeholder="Password">'+
-        '<input type="email" id="email" class="swal2-input" placeholder="Email">',
-      confirmButtonText: 'Registrati',
-      preConfirm: () => {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const email = document.getElementById('email').value;
+function openRegPopup() {
+  Swal.fire({
+    title: 'Registrazione utente',
+    html:
+      '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
+      '<input type="password" id="password" class="swal2-input" placeholder="Password">'+
+      '<input type="email" id="email" class="swal2-input" placeholder="Email">',
+    confirmButtonText: 'Registrati',
+    preConfirm: () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const email = document.getElementById('email').value;
 
-        if (!username || !password  || !email) {
-          Swal.showValidationMessage('Tutti i campi sono obbligatori');
-          return false;
-        }
+      if (!username || !password  || !email) {
+        Swal.showValidationMessage('Tutti i campi sono obbligatori');
+        return false;
+      }
 
-        return fetch('/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password, email })
-        })
-        .then(response => {
-          if (!response.ok) throw new Error('Credenziali non valide');
-          return response.text();
-        })
-        .catch(error => {
-          Swal.showValidationMessage(error.message);
-        });
-      }
-    }).then(result => {
-      if (result.isConfirmed) {
-        Swal.fire('Registrazione avvenuta!');
-      }
-    });
-  }
+      return fetch('/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, email })
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Credenziali non valide');
+        return response.text();
+      })
+      .catch(error => {
+        Swal.showValidationMessage(error.message);
+      });
+    }
+  }).then(result => {
+    if (result.isConfirmed) {
+      Swal.fire('Registrazione avvenuta!');
+      makeHidden(document.getElementById("registerbutton"));
+    }
+  });
+}
+
+
+function openLogoutPopup() {
+  Swal.fire({
+    title: 'Logout utente',
+    html:
+      `<h1> Logout effettuato per l\'utente ${LS_get_usernamePlayerRose()}</h1>`,
+    confirmButtonText: 'OK'
+  })
+    LS_logoutRose();
+    const finestra = document.getElementById("finestrarosa");
+    const rows = finestra.querySelectorAll("div");
+    rows.forEach(div => div.remove());
+    makeHidden(document.getElementById("logoutbutton"));
+    makeHidden(document.getElementById("playerusername"));
+    makeVisible(document.getElementById("loginbutton"));
+    makeVisible(document.getElementById("registerbutton"));
+}

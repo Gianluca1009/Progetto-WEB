@@ -1,7 +1,16 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inizializza la pagina con i giocatori
-    // BuildRosa();
+    document.getElementById("logoutbutton").classList.add("hidden");
+    document.getElementById("playerusername").classList.add("hidden");
+
+
+    if(LS_get_idPlayerRose()){
+        document.getElementById("logoutbutton").classList.remove("hidden");
+        document.getElementById("playerusername").classList.remove("hidden");
+        document.getElementById("registerbutton").classList.add("hidden");
+        document.getElementById("loginbutton").classList.add("hidden");
+        BuildRosa();
+    } 
 })
 
 

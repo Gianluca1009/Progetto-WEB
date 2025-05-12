@@ -1,0 +1,30 @@
+.container-bottoni-login{
+    width: 20%;
+    position: absolute;
+    right: 2vw;
+    top: 40%;
+}
+
+.btn-login{
+    width: 40%;
+    height: 100%;
+    left: 0;
+}
+
+.btn-register{
+    width: 40%;
+    height: 100%;
+    right: 0;
+}
+
+.btn-logout{
+    width: 40%;
+    height: 100%;
+    right: 0;
+}
+
+.p-username{
+    width: 40%;
+    height: 100%;
+    left: 0;
+}
