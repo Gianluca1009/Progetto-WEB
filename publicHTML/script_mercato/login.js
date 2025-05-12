@@ -27,9 +27,11 @@ function openLogPopup() {
           // Se la risposta è positiva, la variabile `data` contiene i dati dell'utente
           const { userId, username, point } = data;
           // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
-          loginMercato(userId, username, point);
+          LS_loginMercato(userId, username, point);
           // Mostriamo il messaggio di successo
           Swal.fire('Login effettuato!');
+          //popola il mercato subito dopo il log
+          BuildMercato();
         })
         .catch(error => {
           Swal.showValidationMessage(error.message);

@@ -1,5 +1,5 @@
 // Login sulla pagina Mercato
-function loginMercato(userId, username, point) {
+function LS_loginMercato(userId, username, point) {
     // Salva i dati dell'utente nella pagina Mercato
     localStorage.setItem('mercato_userId', userId);
     localStorage.setItem('mercato_user_point', point);
@@ -8,7 +8,7 @@ function loginMercato(userId, username, point) {
     alert('Login per il Mercato effettuato con successo');
   }
 
-function logoutMercato() {
+function LS_logoutMercato() {
     localStorage.removeItem('mercato_userId');
     localStorage.removeItem('mercato_user_point');
     localStorage.removeItem('mercato_username');
@@ -16,7 +16,7 @@ function logoutMercato() {
   }
 
   // Recuperare i dati dell'utente dalla pagina Mercato
-function getUserMercatoData() {
+function LS_getUserMercatoData() {
     const userId = localStorage.getItem('mercato_userId');
     const point = localStorage.getItem('mercato_user_pont');
     const name = localStorage.getItem('mercato_username');

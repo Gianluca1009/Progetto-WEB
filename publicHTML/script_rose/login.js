@@ -26,10 +26,10 @@ function openLogPopup() {
         .then(data => {
           // Se la risposta è positiva, la variabile `data` contiene i dati dell'utente
           const { userId, username, point } = data;
-          // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
+          // Chiamata alla funzione LS_loginRose per salvare i dati nel localStorage
           LS_loginRose(userId, username, point);
           //popola l'area di log con i calciatori della rosa
-          populate_rosa()
+          populate_rosa();
           // Mostriamo il messaggio di successo
           Swal.fire('Login effettuato!');
         })

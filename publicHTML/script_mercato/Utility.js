@@ -95,6 +95,7 @@ function BuildRowForCalciatore(calciatore){
     const spanbottone = document.createElement('span');
     spanbottone.textContent = 'Acquista';
     spanbottone.className = 'button_top';
+    // add listner
     bottone.appendChild(spanbottone);
     row.appendChild(bottone);
     document.getElementById('finestramercato').appendChild(row);
