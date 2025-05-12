@@ -32,6 +32,7 @@ function openLogPopup() {
           BuildRosa();
           // Mostriamo il messaggio di successo
           Swal.fire('Login effettuato!');
+          
         })
         .catch(error => {
           Swal.showValidationMessage(error.message);

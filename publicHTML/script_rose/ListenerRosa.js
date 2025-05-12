@@ -1,7 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Inizializza la pagina con i giocatori
-    // BuildRosa();
+    if(LS_get_idPlayerRose()) BuildRosa();
 })
 
 

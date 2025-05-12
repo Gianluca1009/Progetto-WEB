@@ -4,25 +4,7 @@ async function fetchCalciatoriLiberi() {
     return results;
 }
 
-function KeyConverter(key){
-    keytoReturn = key.replace(/_/g, ' ');
-    keytoReturn = keytoReturn.charAt(0).toUpperCase() + keytoReturn.slice(1);
-    return keytoReturn;
-}
-
-// Funzione per convertire la data in formato italiano
-function convertDate(stringa){
-    const mesi = {"01": "Gennaio", "02": "Febbraio", "03": "Marzo", "04": "Aprile", "05": "Maggio", "06": "Giugno",
-     "07": "Luglio", "08": "Agosto", "09": "Settembre", "10": "Ottobre", "11": "Novembre", "12": "Dicembre"};
-    const anno = stringa.substring(0,4);
-    const mese = mesi[stringa.substring(5,7)];
-    const giorno = stringa.substring(8);
-    
-    return `${giorno} ${mese} ${anno}`;
-
-}
-
-
+//Funzione per costruire la riga della rosa
 function BuildRowForCalciatore(calciatore){
     //creo la riga
     const row = document.createElement('div');
@@ -124,6 +106,7 @@ function BuildRowForCalciatore(calciatore){
     document.getElementById('finestramercato').appendChild(row);
 }
 
+//Funzione per costruire la rosa
 async function BuildMercato(){
     results = await fetchCalciatoriLiberi();
     for (let i = 0; i < results.length; i++){
