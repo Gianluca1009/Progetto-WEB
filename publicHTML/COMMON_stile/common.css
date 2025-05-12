@@ -73,6 +73,7 @@ button{
 .button_top {
     display: flex;
     justify-content: center;
+    align-content: center;
     box-sizing: border-box;
     border: 2px solid var(--button_outline_color);
     border-radius: var(--button_radius);
@@ -82,7 +83,7 @@ button{
     transform: translateY(-0.4vh);
     transition: transform 0.1s ease;
     object-fit: contain;
-    font-size: 90%;
+    font-size: calc(0.8vh + 0.8vw);
     height: 100%;
 }
 
@@ -100,7 +101,7 @@ button:active .button_top {
 
 /* OMBRE COMUNI */
 
-.game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .tr-ombrata, .menu-button{
+.game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .tr-ombrata, .menu-button, .riga_finestra{
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 

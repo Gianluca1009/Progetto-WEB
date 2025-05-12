@@ -20,11 +20,16 @@ async function fetchMiaRosa(){
     
 }
 
+//Funzione che mette l'username nel campo dedicato dopo il login
+function fillUsernameRosa(){
+    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_get_usernamePlayerRose()}`;
+}
+
 //Funzione per costruire la riga della rosa
 function BuildRowForCalciatore(calciatore){
     //creo la riga
     const row = document.createElement('div');
-    row.className = 'riga_rosa';
+    row.className = 'riga_finestra';
 
     //creo il campo foto nella riga
     const campoFoto = document.createElement('div');
