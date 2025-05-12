@@ -25,7 +25,8 @@ body{
 
 .riga_finestra {
     transition: all 0.2s ease;
-    margin-top: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
     position: relative;
     display: flex;
     flex-direction: row;
