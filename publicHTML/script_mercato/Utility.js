@@ -110,6 +110,7 @@ function BuildRowForCalciatore(calciatore){
     bottone.style.position = 'absolute';
     bottone.style.right = "5%";
     bottone.style.height = "30%";
+    bottone.style.top = "50%";
     //log d'acquisto
     bottone.onclick = async () => {
         try {
