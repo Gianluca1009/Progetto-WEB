@@ -102,3 +102,18 @@ body{
 ul{
     padding-left: 1em;
 }
+
+.title {
+    text-align: center;
+    font-size: 8vw;
+    font-weight: bold;
+    margin: 0;
+    color: var(--color-crema);
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.125rem;
+    background: linear-gradient(to right, #efe0c4, #e8c481);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
