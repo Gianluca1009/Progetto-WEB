@@ -1,8 +1,18 @@
 //Funzione per recuperare la rosa dal db
 async function fetchMiaRosa(){
-    const data = await fetch('/get_giocatori_rosa')
-    results = await data.json();
-    return results;
+    if (LS_get_idPlayerRose()){
+        const id_player = LS_get_idPlayerRose();
+        fetch(`/get_giocatori_rosa?id=${id_player}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Nessun giocatore in rosa');
+            }
+            return response.json();
+        })
+        .catch(error => {
+            console.error('Errore:', error.message);
+        });
+    }
 }
 
 //Funzione per convertire le chiavi in un formato più leggibile

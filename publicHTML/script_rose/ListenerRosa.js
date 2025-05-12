@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Inizializza la pagina con i giocatori
-    BuildRosa();
+    // BuildRosa();
 })
 
 
