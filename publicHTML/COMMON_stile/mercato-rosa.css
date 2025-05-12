@@ -7,33 +7,11 @@ body{
     min-height: 100vh;
 }
 
-.intestazione-mercato{
-    display: block;
-    width: 100%;
-}
-
-.title-container-mercato {
-    position: relative;
-    width: 100%;
-    min-height: 15vh; /* Cambia height con min-height per maggiore flessibilità */
-    border: 0.125rem solid black;
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 0.25rem 1rem rgba(1, 0, 0, 0.5);
-    margin-bottom: 2%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 5%;
-    background: var(--background-sfumato-violaceo);
-}
-
 .container-mercato{
     position: relative;
     width: 70%;
     border: 0.375rem solid var(--color-crema);
-    /* background-color: rgb(61, 61, 61); */
+    margin-top: 30vh;
     background-image: url(../images/texture_legno.png);
     background-repeat: repeat;
     box-shadow: 0 0 1.25rem rgba(245, 222, 179, 0.6);
@@ -42,6 +20,7 @@ body{
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
+    margin-bottom: 10vh;
 }
 
 .riga_finestra {
@@ -65,6 +44,8 @@ body{
     justify-content: center;
     align-items: center;
     position: absolute;
+    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
     left: 0;
     object-fit: cover;
     width: 22%;
@@ -103,19 +84,4 @@ body{
 
 ul{
     padding-left: 1em;
-}
-
-.title {
-    text-align: center;
-    font-size: 8vw;
-    font-weight: bold;
-    margin: 0;
-    color: var(--color-crema);
-    font-family: 'Georgia', serif;
-    letter-spacing: 0.125rem;
-    background: linear-gradient(to right, #efe0c4, #e8c481);
-    background-clip: text;
-    -webkit-background-clip: text;
-    text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
-    cursor: pointer;
 }
