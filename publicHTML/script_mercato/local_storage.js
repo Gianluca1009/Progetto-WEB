@@ -17,7 +17,7 @@ function LS_logoutMercato() {
   // Recuperare i dati dell'utente dalla pagina Mercato
 function LS_getUserMercatoData() {
     const userId = localStorage.getItem('mercato_userId');
-    const point = localStorage.getItem('mercato_user_pont');
+    const point = localStorage.getItem('mercato_user_point');
     const name = localStorage.getItem('mercato_username');
 
     return [ userId, name, point ];

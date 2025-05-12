@@ -206,7 +206,7 @@ app.post('/update_punti', async (req, res) => {
     const { userid, new_punti} = req.body;
   
     try {
-      await connection.query('UPDATE player SET punti = ($1) WHERE id= $(2)', [userid, new_punti]);
+      await connection.query('UPDATE player SET punti = $1 WHERE id = $2', [new_punti, userid]);
       res.status(201).send('update punti avvenuto');
     } catch (err) {
       res.status(500).send('Errore durante l\'aggiornamento dei punti');
@@ -219,7 +219,7 @@ app.post('/buy_calciatore', async (req, res) => {
     const { userid, calc_id} = req.body;
   
     try {
-      await connection.query('UPDATE calciatore SET id_player = ($1) WHERE id= $(2)', [userid, calc_id]);
+      await connection.query('UPDATE calciatore SET id_player = $1 WHERE id= $2', [userid, calc_id]);
       res.status(201).send('acquisto calciatore avvenuto');
     } catch (err) {
       res.status(500).send('Errore durante l\'acquisto calciatore');
