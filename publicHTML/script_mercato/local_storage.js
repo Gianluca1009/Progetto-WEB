@@ -11,7 +11,6 @@ function LS_logoutMercato() {
     localStorage.removeItem('mercato_userId');
     localStorage.removeItem('mercato_user_point');
     localStorage.removeItem('mercato_username');
-    
   }
 
   // Recuperare i dati dell'utente dalla pagina Mercato
