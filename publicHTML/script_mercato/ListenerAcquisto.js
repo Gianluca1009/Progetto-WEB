@@ -1,7 +1,7 @@
-function ListAcquista(calciatore){
+function ListAcquista(calciatore, bottone){
     //se non sei loggato disabilita il bottone
     if (! LS_getUserMercatoData) {
-        this.disable = true; //bottone
+        bottone.disable = true; //bottone
         Swal.fire(`Loggati per poter acquistare ${calciatore.cognome}!`);
     }
     //se sei loggato al click:
@@ -17,8 +17,7 @@ function ListAcquista(calciatore){
             aggiornaPunti(id, miei_punti);
             localStorage.setItem('mercato_user_point', miei_punti);
             // disabilita il pulsanete acquista perchè è già comprato
-            this.disable = true;
-
+            bottone.hidden = true;
             //pop up acquisto effettuato
             Swal.fire(`Congratualzioni ${nome}! ${calciatore.cognome} è stato aggiunto alla tua rosa con successo!`);
         }

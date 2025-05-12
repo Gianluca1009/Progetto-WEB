@@ -98,7 +98,7 @@ function BuildRowForCalciatore(calciatore){
     //log d'acquisto
     bottone.onclick = async () => {
         try {
-            await ListAcquista(calciatore);
+            await ListAcquista(calciatore,bottone);
         } catch (error) {
             console.error('Errore durante l\'acquisto:', error);
         }
