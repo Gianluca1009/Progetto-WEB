@@ -42,12 +42,14 @@ function openLogPopup() {
             // Salvi i dati dei due giochi nel localStorage
             LS_login1Game(game1Data.userId, game1Data.username, game1Data.point);
             LS_login2Game(game2Data.userId, game2Data.username, game2Data.point);
-            
+
             //aggirno la ui con i nomi dei player
             document.getElementById('nome_player_1').textContent = game1Data.username;
             document.getElementById('nome_player_2').textContent = game2Data.username;
             document.getElementById('punt_player_1').textContent = game1Data.point;
             document.getElementById('punt_player_2').textContent = game2Data.point;
+
+            //nasconde i bottone di login e registrazione
         })
         .catch(error => {
             Swal.showValidationMessage(error.message);
@@ -56,13 +58,12 @@ function openLogPopup() {
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire('Login effettuato per entrambi i giocatori!');
+        makeVisible(document.getElementById("logoutbutton"));
+        makeHidden(document.getElementById("loginbutton"));
+        makeHidden(document.getElementById("registerbutton"));
       }
     });
   }
-
-
-
-
 
 
   function openRegPopup() {
@@ -99,6 +100,24 @@ function openLogPopup() {
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire('Registrazione avvenuta!');
+        makeHidden(document.getElementById("registerbutton"));
       }
     });
+  }
+
+  function openLogoutPopup(){
+    Swal.fire({
+        title: 'Logout',
+        html:
+        `<h1> Logout effettuato per entrambi gli utenti</h1>`,
+        confirmButtonText: 'OK'
+    })
+    //cancella LS
+    LS_logoutGame();
+        
+    //rende visibili i bottoni
+    makeHidden(document.getElementById("logoutbutton"));
+    makeHidden(document.getElementById("playerusername"));
+    makeVisible(document.getElementById("loginbutton"));
+    makeVisible(document.getElementById("registerbutton"));
   }
