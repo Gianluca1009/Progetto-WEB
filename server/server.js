@@ -198,3 +198,30 @@ app.post('/login', async (req, res) => {
 app.listen(port, () => {
     console.log(`[Server Node x Soc-c-hess] Server successfully started and running on port ${port}`); // Log successful start
 });
+
+
+//update punti player 
+app.post('/update_punti', async (req, res) => {
+    const connection = await createConnection();
+    const { userid, new_punti} = req.body;
+  
+    try {
+      await connection.query('UPDATE player SET punti = ($1) WHERE id= $(2)', [userid, new_punti]);
+      res.status(201).send('update punti avvenuto');
+    } catch (err) {
+      res.status(500).send('Errore durante l\'aggiornamento dei punti');
+    }
+  });
+
+  //abina un nuovo calciatore al player -> ROSE
+app.post('/buy_calciatore', async (req, res) => {
+    const connection = await createConnection();
+    const { userid, calc_id} = req.body;
+  
+    try {
+      await connection.query('UPDATE calciatore SET id_player = ($1) WHERE id= $(2)', [userid, calc_id]);
+      res.status(201).send('acquisto calciatore avvenuto');
+    } catch (err) {
+      res.status(500).send('Errore durante l\'acquisto calciatore');
+    }
+  });
