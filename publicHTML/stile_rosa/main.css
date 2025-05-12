@@ -1,3 +1,47 @@
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.intestazione-mercato{
+    display: block;
+    width: 100%;
+}
+
+.title-container-mercato {
+    position: relative;
+    width: 100%;
+    min-height: 15vh; /* Cambia height con min-height per maggiore flessibilità */
+    border: 0.125rem solid black;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 0.25rem 1rem rgba(1, 0, 0, 0.5);
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    background: var(--background-sfumato-violaceo);
+}
+
+.container-mercato{
+    position: relative;
+    width: 70%; /* Mantieni una sola dichiarazione di width */
+    border: 0.375rem solid var(--color-crema);
+    background-color: rgb(61, 61, 61);
+    box-shadow: 0 0 1.25rem rgba(245, 222, 179, 0.6);
+    animation: glow 2s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; /* Aggiungi flex-grow per fare in modo che questo elemento occupi lo spazio rimanente */
+}
+
 .riga_rosa {
     transition: all 0.2s ease;
     margin-top: 5%;
@@ -18,10 +62,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    position: absolute;
+    left: 0;
     object-fit: cover;
-    width: 30%;
+    width: 22%;
     height: 100%;
+    background-color: var(--color-crema);
+    border: 1px solid black;
 }
 
 .foto_calciatore{
@@ -38,6 +85,8 @@
     flex-direction: column;
     width: 50%;
     height: 100%;
+    position: absolute;
+    left: 30%;
 }
 
 .informazioni{
