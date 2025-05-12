@@ -8,7 +8,6 @@ async function fetchMiaRosa(){
                 throw new Error("errore server");
             }
             const results = await data.json();
-            console.log("riuscito");
             return results;
             
         }
