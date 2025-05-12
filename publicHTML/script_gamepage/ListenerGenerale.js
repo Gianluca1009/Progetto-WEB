@@ -116,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     restartDraftButton.addEventListener('click', () => {
+        window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
+        window.idCellReNero = "03"; //id della cella su cui c'è il re nero
         restartDraft();
     });
 
@@ -133,6 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // LISTENER PER IL BOTTONE DI RIPARTENZA
     restartButtonAtEnd.addEventListener('click', () => {
         restartGame();
+        window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
+        window.idCellReNero = "03"; //id della cella su cui c'è il re nero
     });
 
     //LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT

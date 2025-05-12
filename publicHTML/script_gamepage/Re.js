@@ -18,10 +18,12 @@ function update_re_position(img_pezzo, new_cell_re){
     let div_pezzo = img_pezzo.parentElement;
     if (div_pezzo.id == "r"){
         window.idCellReBianco = new_cell_re.id;
+        window.cellaReBianco =  document.getElementById(new_cell_re.id);
         resetSottoscacco_cella(old_king_cell); // ormai il re ha cambiato cella -> non più quella cella sotto scacco
     }
     if (div_pezzo.id == "R"){
         window.idCellReNero = new_cell_re.id;
+        window.cellaReNero =  document.getElementById(new_cell_re.id);
         resetSottoscacco_cella(old_king_cell);
     }
     //il mio re non è più sottoscacco -> ripulisco la vecchia cella del re
