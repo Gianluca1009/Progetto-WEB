@@ -17,6 +17,12 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    //mostra logout se l'utente è già loggato
+    if(LS_getUser1Game()[0] != null && LS_getUser2Game()[0] != null){
+        document.getElementById("logoutbutton").classList.remove("hidden");
+        document.getElementById("registerbutton").classList.add("hidden");
+        document.getElementById("loginbutton").classList.add("hidden");
+    }
     // Pre-carico i suoni
     preloadSounds();
     //setSezioniDimensions(); // Imposta le dimensioni delle sezioni in base alla grandezza del contenitore del gioco
