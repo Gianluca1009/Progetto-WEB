@@ -1,5 +1,5 @@
 async function fetchCalciatoriLiberi() {
-    const data = await fetch('/get_giocatori_mercato')
+    const data = await fetch('/get_giocatori_mercato');
     results = await data.json();
     return results;
 }

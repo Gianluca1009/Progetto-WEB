@@ -172,6 +172,7 @@ app.post('/login', async (req, res) => {
 
   //GET GIOCATORE ID User -> ROSE
   app.get('/get_giocatori_rosa', async (req, res) => {
+    console.log("richiesta rosa ricevuta da:", req.query.id);
     const connection = await createConnection();
     const id_player_log = req.query.id; // ← prende dalla query string ?id=...
   
@@ -181,10 +182,10 @@ app.post('/login', async (req, res) => {
         [id_player_log]
       );
   
-      if (results.rows.length > 0) {
+      if (results.rows.length >= 0) {
         res.json(results.rows);
       } else {
-        res.status(404).send('Nessun giocatore trovato nella rosa');
+        res.status(404).send('Errore server');
       }
     } catch (error) {
       console.error('Errore durante la query:', error);
