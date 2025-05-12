@@ -4,11 +4,16 @@ async function fetchCalciatoriLiberi() {
     return results;
 }
 
+//Funzione che mette l'username nel campo dedicato dopo il login
+function fillUsernameMercato(){
+    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_getUserMercatoData()[1]}`;
+}
+
 //Funzione per costruire la riga della rosa
 function BuildRowForCalciatore(calciatore){
     //creo la riga
     const row = document.createElement('div');
-    row.className = 'riga_mercato';
+    row.className = 'riga_finestra';
 
     //creo il campo foto nella riga
     const campoFoto = document.createElement('div');

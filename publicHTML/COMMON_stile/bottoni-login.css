@@ -1,30 +1,41 @@
 .container-bottoni-login{
+    display: flex;
+    justify-content: center;
     width: 20%;
     position: absolute;
     right: 2vw;
     top: 40%;
+    height: 35%;
 }
 
 .btn-login{
-    width: 40%;
+    position: absolute;
+    width: 46%;
     height: 100%;
     left: 0;
 }
 
 .btn-register{
-    width: 40%;
+    position: absolute;
+    width: 46%;
     height: 100%;
     right: 0;
 }
 
 .btn-logout{
-    width: 40%;
+    position: absolute;
+    width: 46%;
     height: 100%;
     right: 0;
 }
 
 .p-username{
-    width: 40%;
+    position: absolute;
+    bottom:-90%;
+    width: 46%;
     height: 100%;
     left: 0;
+    color: aliceblue;
+    font-family: 'Georgia', serif;
+    font-size: 1.1vw;
 }

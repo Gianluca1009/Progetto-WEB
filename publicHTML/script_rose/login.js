@@ -42,7 +42,7 @@ function openLogPopup() {
       if (result.isConfirmed) {
         Swal.fire('Login effettuato!');
         makeVisible(document.getElementById("logoutbutton"));
-        document.getElementById("playerusername").textContent = `${LS_get_usernamePlayerRose()}`;
+        fillUsernameRosa();
         makeVisible(document.getElementById("playerusername"));
         makeHidden(document.getElementById("loginbutton"));
         makeHidden(document.getElementById("registerbutton"));

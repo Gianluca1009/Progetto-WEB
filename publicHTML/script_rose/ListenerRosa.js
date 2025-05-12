@@ -3,38 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("logoutbutton").classList.add("hidden");
     document.getElementById("playerusername").classList.add("hidden");
 
-
+    //se la sessione è ancora aperta, non serve fare login o registrazioni, mostro pulsante logout e username
     if(LS_get_idPlayerRose()){
+        fillUsernameRosa();
         document.getElementById("logoutbutton").classList.remove("hidden");
-        document.getElementById("playerusername").classList.remove("hidden");
+        makeVisible(document.getElementById("playerusername"));
         document.getElementById("registerbutton").classList.add("hidden");
         document.getElementById("loginbutton").classList.add("hidden");
         BuildRosa();
-    } 
+    }
 })
-
-
-// function populate_rosa(){
-//         if (LS_get_idPlayerRose()){
-//             const id_player = LS_get_idPlayerRose();
-//             fetch(`/get_giocatori_rose?id=${id_player}`)
-//                 .then(response => {
-//                     if (!response.ok) {
-//                         throw new Error('Nessun giocatore libero trovato');
-//                     }
-//                     return response.json();
-//                 })
-//                 .then(giocatori => {
-//                     giocatori.forEach(giocatore => {
-//                         console.log(giocatore)
-//                         //crea la tabella nell'html con les specifiche del giolcatore e la foto e bottone compra
-//                     });
-//                 })
-//                 .catch(error => {
-//                     console.error('Errore:', error.message);
-//                 });
-//         }
-//         else{
-//             console.log("utente non loggato");
-//         }
-// }

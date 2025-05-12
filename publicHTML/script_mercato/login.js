@@ -30,8 +30,11 @@ function openLogPopup() {
           LS_loginMercato(userId, username, point);
           // Mostriamo il messaggio di successo
           Swal.fire('Login effettuato!');
-          //popola il mercato subito dopo il log
-          //BuildMercato(); popla il mercato sempre e gestisci il log nella logica del listner del bottone
+          makeVisible(document.getElementById("logoutbutton"));
+          fillUsernameMercato();
+          makeVisible(document.getElementById("playerusername"));
+          makeHidden(document.getElementById("loginbutton"));
+          makeHidden(document.getElementById("registerbutton"));
         })
         .catch(error => {
           Swal.showValidationMessage(error.message);
@@ -79,6 +82,21 @@ function openLogPopup() {
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire('Registrazione avvenuta!');
+        makeHidden(document.getElementById("registerbutton"));
       }
     });
   }
+
+function openLogoutPopup() {
+  Swal.fire({
+    title: 'Logout utente',
+    html:
+      `<h1> Logout effettuato per l\'utente ${LS_getUserMercatoData()[1]}</h1>`,
+    confirmButtonText: 'OK'
+  })
+    LS_logoutMercato();
+    makeHidden(document.getElementById("logoutbutton"));
+    makeHidden(document.getElementById("playerusername"));
+    makeVisible(document.getElementById("loginbutton"));
+    makeVisible(document.getElementById("registerbutton"));
+}
