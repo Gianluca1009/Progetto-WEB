@@ -114,7 +114,8 @@ function openLogPopup() {
     })
     //cancella LS
     LS_logoutGame();
-        
+    //faccio uscire gli utenti fuori dalla partita
+    window.location.reload();
     //rende visibili i bottoni
     makeHidden(document.getElementById("logoutbutton"));
     makeHidden(document.getElementById("playerusername"));
