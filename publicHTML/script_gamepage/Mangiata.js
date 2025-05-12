@@ -67,6 +67,7 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
         if(logica_mangiata(window.selectedElement, pedinaBersaglio)){
             pedinaBersaglio.remove();
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
+            return true;
         }else{
             Swal.fire({
             title: 'Errore',
@@ -80,6 +81,7 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
                 title: 'swal-title',
             },
             });
+            return false;
         }
     }
 

@@ -46,12 +46,13 @@ function ListenerMovimentoPedine(){
     document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
         cell.addEventListener("click", function(event) {
             if (window.selectedElement && this.tagName === "TD") {
+                let pedinaAvanza = true;
                 let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
                 // Verifica se la mossa è valida secondo le regole degli scacchi
                 if (validationMove(window.selectedImage, this)) {
                 
                     if(pedinaBersaglio){
-                        mangia(pedinaBersaglio,this); //mangia la pedina bersaglio se presente
+                        if(! mangia(pedinaBersaglio,this) ) pedinaAvanza = false; //mangia la pedina bersaglio se presente e condiz vera
                         playSound("mangia", 0.7);
                     } 
                     else{
@@ -59,13 +60,15 @@ function ListenerMovimentoPedine(){
                         playSound("mossa", 0.5);
                     }
                     resetSuggerimenti();        //resetta la selezione delle mosse suggerite
-                    update_re_position(window.selectedImage, this);     // reset della cella del re se non più in scacco
+
+                    if (pedinaAvanza) update_re_position(window.selectedImage, this);     // reset della cella del re se non più in scacco
                     
                     highlight_re_if_sottoscacco();      //controlla se dopo la mossa corrente mette sottoscacco il re dell'AVVERSARIO (LOGICA INV) 
                     
-                    
+                    console.log("pendiaAvanza");
+                    console.log(pedinaAvanza);
                     //CONTROLLA SIA LO STATO DEL RE, SIA PROMUOVE IL PEDONE SE IL RE E' VIVO
-                    if(!isReMangiato(pedinaBersaglio)){
+                    if(!isReMangiato(pedinaBersaglio) && pedinaAvanza){
                         let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
 
                         // Cambio turno solo se non c'è promozione del pedone in corso
@@ -81,6 +84,7 @@ function ListenerMovimentoPedine(){
                 // Resetta la selezione e l'evidenziazione
                 resetHighlighted();
                 resetSelezione();   
+                highlight_re_if_sottoscacco(); // controllo se il mio re è sottoscacco 
             }
         });
     });
