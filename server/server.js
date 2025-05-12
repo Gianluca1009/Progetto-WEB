@@ -172,7 +172,6 @@ app.post('/login', async (req, res) => {
 
   //GET GIOCATORE ID User -> ROSE
   app.get('/get_giocatori_rosa', async (req, res) => {
-    console.log("richiesta rosa ricevuta da:", req.query.id);
     const connection = await createConnection();
     const id_player_log = req.query.id; // ← prende dalla query string ?id=...
   
