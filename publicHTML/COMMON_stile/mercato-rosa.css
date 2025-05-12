@@ -31,15 +31,17 @@ body{
 
 .container-mercato{
     position: relative;
-    width: 70%; /* Mantieni una sola dichiarazione di width */
+    width: 70%;
     border: 0.375rem solid var(--color-crema);
-    background-color: rgb(61, 61, 61);
+    /* background-color: rgb(61, 61, 61); */
+    background-image: url(../images/texture_legno.png);
+    background-repeat: repeat;
     box-shadow: 0 0 1.25rem rgba(245, 222, 179, 0.6);
     animation: glow 2s infinite alternate;
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-grow: 1; /* Aggiungi flex-grow per fare in modo che questo elemento occupi lo spazio rimanente */
+    flex-grow: 1;
 }
 
 .riga_finestra {

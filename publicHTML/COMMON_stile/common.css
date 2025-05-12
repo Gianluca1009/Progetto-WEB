@@ -44,6 +44,10 @@ body {
     display: none !important;
 }
 
+.fade-hidden{
+    opacity: 0;
+}
+
 .disabled { 
     pointer-events: none;
     cursor: default;

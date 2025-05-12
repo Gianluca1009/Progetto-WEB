@@ -92,7 +92,7 @@
     funzione rigioca                                                                                ✅
     funzione torna alla home                                                                        ✅
     aggiungere bottoni restart, restart draft e go home anche durante la partita                    ✅
-    funzione random draft
+    funzione random draft                                                                           ✅
     pulsanti e funzioni:                                                                            ✅
     -restart game                                                                                   ✅
     -restart draft                                                                                  ✅
@@ -133,11 +133,11 @@
     ERRORI
     promozione pedone avviene anche quando fallisce la mangiata anche la mangiata del re
 
-    a volte le pedine non possono mangiare
+    a volte le pedine non possono mangiare                                                          ✅
 
     bisogna obbligare il player a mettere giocatori su tutte le pedine
 
-    i brasiliani senza nome non hanno parsing corretto di NULL
+    i brasiliani senza nome non hanno parsing corretto di NULL                                      ✅
 
     L'ultimo cognome che draggi manuale nel draft ha font piu grande
 
