@@ -1,8 +1,8 @@
-.intestazione-gamepage{
+.intestazione-index{
     display: block;
     position: relative;
     width: 100vw;
-    height: 40%;
+    height: 40vh;
     left: 0;
     right: 0;
     top: 0;
@@ -10,7 +10,7 @@
 
 /*stile container del titolo*/
 
-.title-container-gamepage {
+.title-container-index {
     position: relative;
     width: 100%;
     height: 15%;
