@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const comandoRose = document.getElementById('comandoRose');
     comandoRose.addEventListener('click', function() {
-        window.location.href = 'rose.html';
+        window.location.href = 'rosa.html';
     });
 });
 

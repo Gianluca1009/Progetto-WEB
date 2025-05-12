@@ -171,7 +171,7 @@ app.post('/login', async (req, res) => {
 
 
   //GET GIOCATORE ID User -> ROSE
-  app.get('/get_giocatori_rose', async (req, res) => {
+  app.get('/get_giocatori_rosa', async (req, res) => {
     const connection = await createConnection();
     const id_player_log = req.query.id; // ← prende dalla query string ?id=...
   
@@ -195,5 +195,5 @@ app.post('/login', async (req, res) => {
 
   // Avvia il server e mettiti in ascolto sulla porta specificata
 app.listen(port, () => {
-    console.log(`[${new Date().toISOString()}] Server successfully started and running on port ${port}`); // Log successful start
+    console.log(`[Server Node x Soc-c-hess] Server successfully started and running on port ${port}`); // Log successful start
 });
