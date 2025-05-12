@@ -64,13 +64,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     giocaButton.addEventListener('click', () => {
-        document.querySelectorAll('.pedina').forEach(pedina => {
+        if(LS_getUser1Game()[0] != null && LS_getUser2Game()[0] != null){
+            document.querySelectorAll('.pedina').forEach(pedina => {
             makeVisible(pedina); // Rende visibili le pedine
-        });
-        preparaSounds();        // Inizializza i suoni al primo click
-        startDraft();                    // Prepara il draft
-        scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
-
+            });
+            preparaSounds();        // Inizializza i suoni al primo click
+            startDraft();                    // Prepara il draft
+            scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
+        } else{
+            Swal.fire('Loggarsi prima di iniziare la partita!');
+        }
     });
 
     // LISTENER PER IL BOTTONE DEL GIOCATORE 1
