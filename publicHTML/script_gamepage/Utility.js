@@ -497,7 +497,7 @@ function endGame(){
     window.gameStarted = false;
     freezeTimer();
 
-    makeVisible(document.querySelector('.game-over'));
+    //makeVisible(document.querySelector('.game-over'));
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
     document.querySelector('.game-container').classList.add('game-not-started');
@@ -510,7 +510,7 @@ function restartGame() {
     resetPedine();
     window.gameStarted = false; // Reset dello stato del gioco
 
-    makeHidden(document.querySelector('.game-over'));
+    //makeHidden(document.querySelector('.game-over'));
     document.querySelector('.game-container').classList.remove('game-not-started');
     aggiornaStatoPedine();
     startGame();
@@ -525,7 +525,7 @@ function restartDraft(){
     window.gameStarted = false;
     window.turnoBianco = true;
 
-    makeHidden(document.querySelector('.game-over'));
+    //makeHidden(document.querySelector('.game-over'));
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
     makeHidden(document.querySelector('.restart-button'));

@@ -64,9 +64,7 @@ function ListenerMovimentoPedine(){
                     if (pedinaAvanza) update_re_position(window.selectedImage, this);     // reset della cella del re se non più in scacco
                     
                     highlight_re_if_sottoscacco();      //controlla se dopo la mossa corrente mette sottoscacco il re dell'AVVERSARIO (LOGICA INV) 
-                    
-                    console.log("pendiaAvanza");
-                    console.log(pedinaAvanza);
+               
                     //CONTROLLA SIA LO STATO DEL RE, SIA PROMUOVE IL PEDONE SE IL RE E' VIVO
                     if(!isReMangiato(pedinaBersaglio) && pedinaAvanza){
                         let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
@@ -75,9 +73,44 @@ function ListenerMovimentoPedine(){
                         if (!isPedonePromosso) {
                             cambioTurno();
                         }
-                    } else {
+                    //pedina non avanza e re vivo
+                    } else if(!isReMangiato(pedinaBersaglio)) {
+                            cambioTurno();
+                        }
+                    else {
+                        let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
                         // Se il re è stato mangiato, cambia comunque il turno
                         cambioTurno();
+            
+                        Swal.fire({
+                            title: 'PARTITA TERMINATA',
+                            width: '500px', 
+
+                            html: `
+            
+                            <div class="game-over" style="text-align: center;">
+                                <p style="font-size: 1.2em; margin-bottom: 1em;">Congratulazioni ${vincitore} +20 pt!</p>
+                                <div class="bottoni-gameover-container">
+                                     <button id="restartButtonAtEnd" class="button bottoni-gameover">
+                                     <span class="button_top top-gameover"> RIGIOCA </span>
+                                     </button>
+                                    <button id="restartDraftButtonAtEnd" class="button bottoni-gameover" onclick = "restartDraft()">
+                                    <span class="button_top top-gameover"> RIGIOCA DRAFT </span>
+                                    </button>
+                                    <button id="HomeButtonAtEnd" class="button bottoni-gameover" onclick = "goHome()">
+                                    <span class="button_top top-gameover"> TORNA ALLA HOME </span>
+                                    </button>
+                                </div>
+                            </div>
+                            `,
+                            showConfirmButton: false
+                            // customClass: {
+                            //     popup: 'popup-gameover'
+                            // }
+                        });
+                        window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
+                        window.idCellReNero = "03"; //id della cella su cui c'è il re nero
+                        //clean scacchiera
                     }
                 }
 
