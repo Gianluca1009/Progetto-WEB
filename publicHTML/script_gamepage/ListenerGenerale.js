@@ -126,12 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         populateRandom("nero");
     });
 
-
-    //LISTENER SUL TITOLO DELLA PAGINA
-    document.querySelector('.title').addEventListener('click', () => {
-        window.location.reload();
-    });
-
     //LISTENER SUL RICARICA DELLA PAGINA
     window.addEventListener('beforeunload', (event) => {
         if(window.gameStarted){
