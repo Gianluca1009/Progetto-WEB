@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.sezione_sx').classList.add('hidden');
     document.querySelector('.sezione_dx').classList.add('hidden');
     //document.querySelector('.game-over').classList.add('hidden');
-    document.getElementById('div_ped_promotion').classList.add('hidden');
+    // Non nascondere div_ped_promotion qui perché verrà creato solo quando necessario
     document.querySelector('.background-overlay').classList.add('hidden');
     document.querySelector('.condition-container').classList.add('hidden');
     document.querySelector('.progress-container').classList.add('hidden');

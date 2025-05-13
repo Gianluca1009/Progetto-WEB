@@ -1,7 +1,72 @@
 const gridContainer = document.querySelector('.grid-container');
-const divPromotion = document.getElementById("div_ped_promotion");
-const ReginaSostitutiva = document.getElementById("pedonepromotion_regina");
-const CavalloSostitutivo = document.getElementById("pedonepromotion_cavallo");
+let divPromotion = null; // Sarà creato dinamicamente quando necessario
+
+// Funzione per creare il div di promozione pedone dinamicamente
+function createPromotionDiv() {
+    // Se il div è già stato creato, rimuoviamolo prima
+    if (divPromotion) {
+        divPromotion.remove();
+    }
+    
+    // Crea il div principale
+    divPromotion = document.createElement('div');
+    divPromotion.id = 'div_ped_promotion';
+    divPromotion.className = 'div_scelte';
+    
+    // Crea la struttura HTML con createElement
+    const table = document.createElement('table');
+    table.className = 'tabella_pedone_promotion';
+    
+    const tbody = document.createElement('tbody');
+    
+    // Prima riga per la Regina
+    const trRegina = document.createElement('tr');
+    const tdRegina = document.createElement('td');
+    tdRegina.className = 'foto_ped_promotion';
+    
+    const santinoDivRegina = document.createElement('div');
+    santinoDivRegina.className = 'santino-container';
+    
+    const imgRegina = document.createElement('img');
+    imgRegina.alt = 'regina';
+    imgRegina.id = 'pedonepromotion_regina';
+    imgRegina.className = 'regina';
+    
+    santinoDivRegina.appendChild(imgRegina);
+    tdRegina.appendChild(santinoDivRegina);
+    trRegina.appendChild(tdRegina);
+    
+    // Seconda riga per il Cavallo
+    const trCavallo = document.createElement('tr');
+    const tdCavallo = document.createElement('td');
+    tdCavallo.className = 'foto_ped_promotion';
+    
+    const santinoDivCavallo = document.createElement('div');
+    santinoDivCavallo.className = 'santino-container';
+    
+    const imgCavallo = document.createElement('img');
+    imgCavallo.alt = 'cavallo';
+    imgCavallo.id = 'pedonepromotion_cavallo';
+    imgCavallo.className = 'cavallo';
+    
+    santinoDivCavallo.appendChild(imgCavallo);
+    tdCavallo.appendChild(santinoDivCavallo);
+    trCavallo.appendChild(tdCavallo);
+    
+    // Assembla la struttura
+    tbody.appendChild(trRegina);
+    tbody.appendChild(trCavallo);
+    table.appendChild(tbody);
+    divPromotion.appendChild(table);
+    
+    // Aggiungi il div al grid-container
+    gridContainer.appendChild(divPromotion);
+    
+    // Nascondi inizialmente il div
+    divPromotion.classList.add('hidden');
+    
+    return divPromotion;
+}
 
 function setDivPosition(cella_dest){
 
@@ -26,11 +91,13 @@ function upgrade_pedone(img_pedina, cella_dest){
     let div_pedina = img_pedina.parentElement;
     let isPedonePromosso = false;
     
-    setDivPosition(cella_dest);  //imposta la posizione del div_scelte a destra della cella del pedone
-        
     //bianco arriva al top scacchiera
     if(div_pedina.id == "p" ){
         if(current_row == 0){
+            // Crea il div di promozione dinamicamente
+            createPromotionDiv();
+            // Posiziona il div
+            setDivPosition(cella_dest);
             makeVisible(divPromotion);
             disabilitaPedine(); // Disabilita tutte le pedine quando divPromotion diventa visibile
             ListenerPromozione(div_pedina, img_pedina, true); // Passa true perché è un pedone bianco
@@ -40,6 +107,10 @@ function upgrade_pedone(img_pedina, cella_dest){
     //nero arriva al fondo scacchiera
     if(div_pedina.id == "P" ){
         if(current_row == 5){
+            // Crea il div di promozione dinamicamente
+            createPromotionDiv();
+            // Posiziona il div
+            setDivPosition(cella_dest);
             makeVisible(divPromotion);
             disabilitaPedine(); // Disabilita tutte le pedine quando divPromotion diventa visibile
             ListenerPromozione(div_pedina, img_pedina, false); // Passa false perché è un pedone nero
@@ -51,11 +122,11 @@ function upgrade_pedone(img_pedina, cella_dest){
 }
 
 function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
-    // Rimuovo event listener esistenti prima di aggiungerne di nuovi
-    const CellaReginaVecchia = document.getElementById('pedonepromotion_regina');  //prende le celle della tabella di promozione
+    // Ottieni i riferimenti alle immagini dal div creato dinamicamente
+    const CellaReginaVecchia = document.getElementById('pedonepromotion_regina');
     const CellaCavalloVecchia = document.getElementById('pedonepromotion_cavallo');
     
-    // Aggiorno esplicitamente le immagini (anche se già fatto in upgrade_pedone)
+    // Imposta le immagini corrette in base al turno e allo stile
     if (turnoBianco) {
         if(getStyle() == "MODERN"){
             CellaReginaVecchia.src = "images/pedine/regina_bianca.png";
@@ -76,11 +147,11 @@ function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
         }
     }
     
-    // Rimuovo vecchi listener usando cloni della tabella perche sui vecchi rimane il listener precedente
-    const CellaReginaNuova = CellaReginaVecchia.cloneNode(true);  //sostituisce con nuove celle nella tabella di promozione
+    // Rimuovi eventuali listener precedenti creando nuove versioni degli elementi
+    const CellaReginaNuova = CellaReginaVecchia.cloneNode(true);
     const CellaCavalloNuova = CellaCavalloVecchia.cloneNode(true);
 
-    // Aggiorno anche le immagini nei cloni (importante!)
+    // Aggiorna le immagini anche nei cloni
     if (turnoBianco) {
         if(getStyle() == "MODERN"){
             CellaReginaNuova.src = "images/pedine/regina_bianca.png";
@@ -101,7 +172,7 @@ function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
         }
     }
 
-    //scambia le celle vecchie con quelle nuove per eliminare i vecchi listener
+    // Sostituisci gli elementi vecchi con quelli nuovi per rimuovere i listener precedenti
     CellaReginaVecchia.parentNode.replaceChild(CellaReginaNuova, CellaReginaVecchia);      
     CellaCavalloVecchia.parentNode.replaceChild(CellaCavalloNuova, CellaCavalloVecchia);
     
