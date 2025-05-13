@@ -1,11 +1,7 @@
 // ---- AGGIORNAMENTO RISOLUZIONE ---- //
 
 window.addEventListener('resize', function() {
-
-    setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
-    //setSezioniDimensions(); // Imposta le dimensioni delle sezioni
-    //setSoccerPlayerInfoFontSize(); // Imposta la grandezza del font delle informazioni dei calciatori
-
+    setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatore
 });
 
 window.onload = function() {
@@ -36,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const giocaButton = document.getElementById('giocaButton');
     const player1Button = document.getElementById('top_player1');
     const player2Button = document.getElementById('top_player2');
-    const restartDraftButtonAtEnd = document.getElementById('restartDraftButtonAtEnd');
-    const HomeButtonAtEnd = document.getElementById('HomeButtonAtEnd');
     const restartButton = document.getElementById('restartButton');
     const restartDraftButton = document.getElementById('restartDraftButton');
     
@@ -78,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             startDraft();                    // Prepara il draft
             scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
         } else{
-            Swal.fire('Loggarsi prima di iniziare la partita!');
+            Swal.fire('Accedi per scendere in campo!');
         }
     });
 
@@ -130,23 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     randomButton2.addEventListener('click', () => {
         // Popola casualmente le pedine nere
         populateRandom("nero");
-    });
-
-    // LISTENER PER IL BOTTONE DI RIPARTENZA
-    restartButtonAtEnd.addEventListener('click', () => {
-        restartGame();
-        window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
-        window.idCellReNero = "03"; //id della cella su cui c'è il re nero
-    });
-
-    // LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
-    restartDraftButtonAtEnd.addEventListener('click', () => {
-        restartDraft();
-    });
-
-    // LISTENER PER IL BOTTONE DI TORNA ALLA HOME
-    HomeButtonAtEnd.addEventListener('click', () => {
-        goHome();
     });
 
 

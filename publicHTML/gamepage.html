@@ -32,6 +32,30 @@
 </head>
 <body>
 
+
+    <!-- AVVIO DEGLI SCRIPT NECESSARI PER LA LOGICA DELLA PAGINA -->
+
+    <script src="script_gamepage/M.js"></script>
+    <script src="script_gamepage/Suoni.js"></script>
+    <script src="script_gamepage/Utility.js"></script>
+    <script src="COMMON_utility/Utility.js"></script>
+    <script src="script_gamepage/ListenerGenerale.js"></script>
+    <script src="script_gamepage/CreazionePedine.js"></script>
+    <script src="script_gamepage/MovimentoPedine.js"></script>
+    <script src="script_gamepage/Re.js"></script>
+    <script src="script_gamepage/Timer.js"></script>
+    <script src="script_gamepage/Condizione.js"></script>
+    <script src="script_gamepage/Draft.js"></script>
+    <script src="script_gamepage/Promozione.js"></script>
+    <script src="script_gamepage/Mangiata.js"></script>
+    <script src = "script_gamepage/gestione_log/local_storage.js"></script>
+    <script src = "script_gamepage/gestione_log/login.js"></script>
+
+    <!-- AVVIO SCRIPT NECESSARI PER LO STILE DELLA PAGINA -->
+    <script src="stile_gamepage/ResponsiveHelper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
     <!-- BARRA SUPERIORE -->
     <div class="intestazione-gamepage">
         
@@ -78,8 +102,8 @@
         <!-- CONTENITORE SWITCH STILE PEDINE-->
         <label class="switch">
             <input type="checkbox" id="toggle">
-            <span class="slider">
-                <span class="modetext">OFF</span>
+            <span class="slider" onc>
+                <span class="modetext">CLASSIC</span>
             </span>
         </label>
 
@@ -180,21 +204,6 @@
 
         <div id="grid-container" class="grid-container" z-index="1">
 
-            <!-- CONTAINER GAME OVER
-            <div class="game-over">PARTITA TERMINATA
-                <div class="bottoni-gameover-container">
-                    <button id="restartButtonAtEnd" class="button bottoni-gameover">
-                        <span class="button_top top-gameover"> RIGIOCA </span>
-                    </button>
-                    <button id="restartDraftButtonAtEnd" class="button bottoni-gameover">
-                        <span class="button_top top-gameover"> RIGIOCA DRAFT </span>
-                    </button>
-                    <button id="HomeButtonAtEnd" class="button bottoni-gameover">
-                        <span class="button_top top-gameover"> TORNA ALLA HOME </span>
-                    </button>
-                </div>
-            </div> -->
-
             <!-- CONTAINER PROMOZIONE PEDONI -->
             <div id="div_ped_promotion" class="div_scelte">
                 <table class="tabella_pedone_promotion">
@@ -279,30 +288,6 @@
         </div>
 
     </div>
-
-
-    <!-- AVVIO DEGLI SCRIPT NECESSARI PER LA LOGICA DELLA PAGINA -->
-
-    <script src="script_gamepage/Regole.js"></script>
-    <script src="script_gamepage/Suoni.js"></script>
-    <script src="script_gamepage/Utility.js"></script>
-    <script src="COMMON_utility/Utility.js"></script>
-    <script src="script_gamepage/ListenerGenerale.js"></script>
-    <script src="script_gamepage/CreazionePedine.js"></script>
-    <script src="script_gamepage/MovimentoPedine.js"></script>
-    <script src="script_gamepage/Re.js"></script>
-    <script src="script_gamepage/Timer.js"></script>
-    <script src="script_gamepage/Condizione.js"></script>
-    <script src="script_gamepage/Draft.js"></script>
-    <script src="script_gamepage/Promozione.js"></script>
-    <script src="script_gamepage/Mangiata.js"></script>
-    <script src = "script_gamepage/gestione_log/local_storage.js"></script>
-    <script src = "script_gamepage/gestione_log/login.js"></script>
-
-    <!-- AVVIO SCRIPT NECESSARI PER LO STILE DELLA PAGINA -->
-    <script src="stile_gamepage/ResponsiveHelper.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 
 </body>
 </html>
