@@ -155,7 +155,7 @@ app.post('/login', async (req, res) => {
         const connection = await createConnection();
       
         try {
-          const results = await connection.query("SELECT * FROM calciatore WHERE id_player IS NULL");
+          const results = await connection.query("SELECT * FROM calciatore WHERE id_player IS NULL ORDER BY prezzo DESC");
       
           if (results.rows.length > 0) {
             // Invia l'elenco dei giocatori liberi al client
