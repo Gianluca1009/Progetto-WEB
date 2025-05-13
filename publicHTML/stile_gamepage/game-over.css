@@ -55,13 +55,3 @@
     font-size: calc(1vh + 1vw);
 }
 
-.no-title-padding .swal2-title {
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.no-title-padding.swal2-popup {
-    padding: 0 !important;
-}
-

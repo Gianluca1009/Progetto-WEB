@@ -29,7 +29,6 @@ function openLogPopup() {
           // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
           LS_loginMercato(userId, username, point);
           // Mostriamo il messaggio di successo
-          Swal.fire('Login effettuato!');
           makeVisible(document.getElementById("logoutbutton"));
           fillUsernameMercato();
           makeVisible(document.getElementById("playerusername"));
@@ -88,12 +87,6 @@ function openLogPopup() {
   }
 
 function openLogoutPopup() {
-  Swal.fire({
-    title: 'Logout utente',
-    html:
-      `<h1> Logout effettuato per l\'utente ${LS_getUserMercatoData()[1]}</h1>`,
-    confirmButtonText: 'OK'
-  })
     LS_logoutMercato();
     makeHidden(document.getElementById("logoutbutton"));
     makeHidden(document.getElementById("playerusername"));

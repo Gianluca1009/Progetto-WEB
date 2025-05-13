@@ -31,7 +31,6 @@ function openLogPopup() {
           //popola l'area di log con i calciatori della rosa
           BuildRosa();
           // Mostriamo il messaggio di successo
-          Swal.fire('Login effettuato!');
 
         })
         .catch(error => {
@@ -40,7 +39,6 @@ function openLogPopup() {
       }
     }).then(result => {
       if (result.isConfirmed) {
-        Swal.fire('Login effettuato!');
         makeVisible(document.getElementById("logoutbutton"));
         fillUsernameRosa();
         makeVisible(document.getElementById("playerusername"));
@@ -92,12 +90,6 @@ function openRegPopup() {
 
 
 function openLogoutPopup() {
-  Swal.fire({
-    title: 'Logout utente',
-    html:
-      `<h1> Logout effettuato per l\'utente ${LS_get_usernamePlayerRose()}</h1>`,
-    confirmButtonText: 'OK'
-  })
     LS_logoutRose();
     const finestra = document.getElementById("finestrarosa");
     const rows = finestra.querySelectorAll("div");
