@@ -13,24 +13,43 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
     overscroll-behavior: none;
 }
 
-.card-container {
-    height:50%;
-    width: 90%;
+.container {
+    width: 100vw;
+    height: 80vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+}
+
+p {
+    color: #f5deb3;
+    font-size: calc(1vw + 1vh);
+    text-align: center;
+    margin-top: 20vh;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.5px;
+}
+
+.card-container {
+    width: 95%;
+    height: 50%;
+    display: flex;
     gap: 2%;
     justify-content: center;
-    align-content: center;
-    padding: 5%;
     margin-top:2%;
+    /* aspect-ratio: 5 / 2; */
 }
 
 .card {
     height:90%;
-    /* width: 20%; */
     background-color: #447dcd;
     border-radius: 30px;
     border:5px solid #f5deb3;

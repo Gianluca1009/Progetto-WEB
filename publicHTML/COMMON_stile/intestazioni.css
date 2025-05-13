@@ -10,7 +10,7 @@
 .title-container{
     position: relative;
     width: 100%;
-    min-height: 15vh; /* Cambia height con min-height per maggiore flessibilità */
+    height: 100%;
     border: 0.125rem solid black;
     margin: 0;
     padding: 0;
