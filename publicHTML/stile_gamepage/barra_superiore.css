@@ -81,38 +81,3 @@
     text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
     cursor: pointer;
 }
-
-
-/* SEZIONE INFO */
-
-.info {
-    width: 2%;
-    position: relative;
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transform-origin: center;
-    cursor: pointer;
-    margin-bottom: 10%;
-    z-index: 1;
-}
-
-.tooltip {
-    z-index: 1000;
-    position: absolute;
-    background-color: black;
-    color: white;
-    border-radius: 0.3125rem;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s;
-    width: 30%;
-    height: 80%;
-    padding: 1%;
-    text-align: center;
-    font-size: 90%;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
-}

@@ -91,7 +91,7 @@ function ListenerMovimentoPedine(){
                                 <div class="bottoni-gameover-container">
                                     
                                     <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft()">
-                                        <span class="button_top top-gameover"> RIGIOCA DRAFT </span>
+                                        <span class="button_top top-gameover"> DRAFT </span>
                                     </button>
 
                                     <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome()">
