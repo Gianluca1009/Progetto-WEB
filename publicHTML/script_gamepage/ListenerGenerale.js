@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.grid-container').classList.add('disabled');
     document.querySelector('.sezione_sx').classList.add('hidden');
     document.querySelector('.sezione_dx').classList.add('hidden');
-    document.querySelector('.game-over').classList.add('hidden');
+    //document.querySelector('.game-over').classList.add('hidden');
     document.getElementById('div_ped_promotion').classList.add('hidden');
     document.querySelector('.background-overlay').classList.add('hidden');
     document.querySelector('.condition-container').classList.add('hidden');
@@ -140,14 +140,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     //LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
-    restartDraftButtonAtEnd.addEventListener('click', () => {
-        restartDraft();
-    });
+    // restartDraftButtonAtEnd.addEventListener('click', () => {
+    //     restartDraft();
+    // });
 
     //LISTENER PER IL BOTTONE DI TORNA ALLA HOME
-    HomeButtonAtEnd.addEventListener('click', () => {
-        goHome();
-    });
+    // HomeButtonAtEnd.addEventListener('click', () => {
+    //     goHome();
+    // });
 
 
     //LISTENER SUL TITOLO DELLA PAGINA
