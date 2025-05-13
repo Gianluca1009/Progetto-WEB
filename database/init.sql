@@ -82,7 +82,7 @@ INSERT INTO calciatore (
 (NULL, 'Rodri', 'images/santini/rodri.webp', '1996-06-22', 'Spagna', 'Centrocampista', 'Manchester City', 16, 35, 75, 380, 26, 0, 15, 30, 28, 191, NULL,85),
 ('Bukayo', 'Saka', 'images/santini/bukayo_saka.webp', '2001-09-05', 'Inghilterra', 'Attaccante', 'Arsenal', 7, 85, 75, 240, 14, 0, 5, 32, 26, 178, NULL,80),
 ('Lautaro', 'Martínez', 'images/santini/lautaro_martinez.webp', '1997-08-22', 'Argentina', 'Attaccante', 'Inter', 10, 185, 75, 320, 26, 0, 12, 42, 25, 174, NULL,95),
-('Wojciech', 'Szczęsny', 'images/santini/wojciech_szczesny.webp', '1990-04-18', 'Polonia', 'Portiere', 'FC Barcelona', 25, 0, 1, 540, 8, 0, 16, 0, 1, 196, NULL,65),
+-- ('Wojciech', 'Szczęsny', 'images/santini/wojciech_szczesny.webp', '1990-04-18', 'Polonia', 'Portiere', 'FC Barcelona', 25, 0, 1, 540, 8, 0, 16, 0, 1, 196, NULL,65),
 -- (NULL, 'Ederson', 'images/santini/ederson.webp', '1993-08-17', 'Brasile', 'Portiere', 'Manchester City', 31, 0, 4, 450, 8, 0, 18, 0, 3, 188, NULL,80),
 -- ('Jan', 'Oblak', 'images/santini/jan_oblak.webp', '1993-01-07', 'Slovenia', 'Portiere', 'Atlético Madrid', 13, 0, 2, 510, 6, 0, 11, 0, 2, 188, NULL,75),
 ('Martin', 'Ødegaard', 'images/santini/martin_odegaard.webp', '1998-12-17', 'Norvegia', 'Centrocampista', 'Arsenal', 8, 70, 95, 300, 12, 0, 6, 32, 30, 178, NULL,85),
