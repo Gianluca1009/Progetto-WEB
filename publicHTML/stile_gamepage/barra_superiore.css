@@ -83,20 +83,17 @@
 }
 
 
-
-
-
 /* SEZIONE INFO */
 
 .info {
     width: 2%;
-    height: 2%;
     position: relative;
-    top: 80%;
+    top: 5%;
     left: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center;
     cursor: pointer;
+    margin-bottom: 10%;
 }
 
 .tooltip {
