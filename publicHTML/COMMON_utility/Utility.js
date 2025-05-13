@@ -61,3 +61,12 @@ function KeyConverter(key){
     keytoReturn = keytoReturn.charAt(0).toUpperCase() + keytoReturn.slice(1);
     return keytoReturn;
 }
+
+//Funzione per far funzionare il menu
+function handleHamburgerMenu() {
+    const hamburger = document.querySelector('.hamburger');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+    });
+}
