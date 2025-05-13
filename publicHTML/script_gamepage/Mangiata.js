@@ -21,7 +21,7 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
     }
     if (cond === "Presenze collezionate in carriera"){
         console.log("presenza attuale: " + calc_att.presenza + " presenza difensore: " + calc_dif.presenza);
-        return calc_att.presenza >= calc_dif.presenza;
+        return calc_att.presenze >= calc_dif.presenze;
     }
     if (cond === "Minor numero di cartellini gialli in carriera"){
         console.log("cartellini gialli attuale: " + calc_att.cartellini_gialli + " cartellini gialli difensore: " + calc_dif.cartellini_gialli);

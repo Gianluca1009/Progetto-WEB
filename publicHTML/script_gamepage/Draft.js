@@ -304,6 +304,10 @@ async function populateDraft(colore) {
                 const li3_info = document.createElement('li');
                 const li4_info = document.createElement('li');
 
+                console.log(player);
+                //approfondimento statistiche sul click
+                div_info.addEventListener('click', () => listener_disply_statistiche_draft(player))
+
                 setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
 
                 //Breve sezione stile
@@ -450,4 +454,22 @@ function populateRandom(colore) {
             makeVisible(document.getElementById('player1button'));
         }, 500);
     }
+}
+
+function listener_disply_statistiche_draft(player){
+    let listaHTML = '<ul>';
+    for (const [chiave, valore] of Object.entries(player)) {
+        if (chiave != 'img_url')
+            listaHTML += `<li><strong>${chiave}</strong> = ${valore}</li>`;
+    }
+    listaHTML += '</ul>';
+
+    // Visualizzazione con Swal
+    Swal.fire({
+        title: 'Dettagli Giocatore',
+        html: listaHTML,
+        width: 600,
+        icon: 'info',
+        confirmButtonText: 'Chiudi'
+    });
 }
