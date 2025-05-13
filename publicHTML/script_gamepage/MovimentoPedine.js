@@ -83,30 +83,33 @@ function ListenerMovimentoPedine(){
                         cambioTurno();
             
                         Swal.fire({
-                            title: 'PARTITA TERMINATA',
-                            width: '500px', 
-
+                            title: null,
                             html: `
-            
-                            <div class="game-over" style="text-align: center;">
-                                <p style="font-size: 1.2em; margin-bottom: 1em;">Congratulazioni ${vincitore} +20 pt!</p>
+                            <div>
+                                <p class="title-gameover"> PARTITA TERMINATA </p>
+                                <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
                                 <div class="bottoni-gameover-container">
-                                     <button id="restartButtonAtEnd" class="button bottoni-gameover">
-                                     <span class="button_top top-gameover"> RIGIOCA </span>
-                                     </button>
-                                    <button id="restartDraftButtonAtEnd" class="button bottoni-gameover" onclick = "restartDraft()">
-                                    <span class="button_top top-gameover"> RIGIOCA DRAFT </span>
+                                    
+                                    <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft()">
+                                        <span class="button_top top-gameover"> RIGIOCA DRAFT </span>
                                     </button>
-                                    <button id="HomeButtonAtEnd" class="button bottoni-gameover" onclick = "goHome()">
-                                    <span class="button_top top-gameover"> TORNA ALLA HOME </span>
+
+                                    <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome()">
+                                        <span class="button_top"> HOME </span>
                                     </button>
+
                                 </div>
                             </div>
                             `,
-                            showConfirmButton: false
-                            // customClass: {
-                            //     popup: 'popup-gameover'
-                            // }
+                            showConfirmButton: false,
+                            customClass: {
+                                popup: 'no-title-padding',
+                                htmlContainer: 'popup-gameover',
+                            },
+                            didOpen: () => {
+                                const titleEl = document.querySelector('.swal2-title');
+                                if (titleEl) titleEl.remove();
+                            }
                         });
                         window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
                         window.idCellReNero = "03"; //id della cella su cui c'è il re nero

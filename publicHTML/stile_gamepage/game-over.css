@@ -7,10 +7,9 @@
  * .bottoni-gameover:hover - hover dei bottoni del game over
  */
 
-.game-over{
+.popup-gameover{
     position: absolute;
-    width: 85%;
-    height: 30%;
+    width: 65%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -42,7 +41,21 @@
     gap: 1%;
 }
 
-.top-gameover{
+.button-gameover{
+    width: 40%;
     height: 100%;
+}
+
+.title-gameover{
+    font-size: calc(1.2vh + 1.2vw);
+    font-weight: bold;
+}
+
+.text-gameover{
+    font-size: calc(1vh + 1vw);
+}
+
+.swal2-popup.no-title-padding {
+  padding-top: 0 !important;
 }
 
