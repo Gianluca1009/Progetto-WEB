@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const giocaButton = document.getElementById('giocaButton');
     const player1Button = document.getElementById('top_player1');
     const player2Button = document.getElementById('top_player2');
-    const restartButtonAtEnd = document.getElementById('restartButtonAtEnd');
     const restartDraftButtonAtEnd = document.getElementById('restartDraftButtonAtEnd');
     const HomeButtonAtEnd = document.getElementById('HomeButtonAtEnd');
     const restartButton = document.getElementById('restartButton');
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Riferimenti ai bottoni random draft
     const randomButton1 = document.getElementById('random1');
     const randomButton2 = document.getElementById('random2');
-    const randomBothButton = document.getElementById('randomBoth');
 
     //ELEMENTI DA NASCONDERE ALL'INIZIO
 
@@ -141,15 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
         window.idCellReNero = "03"; //id della cella su cui c'è il re nero
     });
 
-    //LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
-    // restartDraftButtonAtEnd.addEventListener('click', () => {
-    //     restartDraft();
-    // });
+    // LISTENER PER IL BOTTONE DI RIPARTENZA DEL DRAFT
+    restartDraftButtonAtEnd.addEventListener('click', () => {
+        restartDraft();
+    });
 
-    //LISTENER PER IL BOTTONE DI TORNA ALLA HOME
-    // HomeButtonAtEnd.addEventListener('click', () => {
-    //     goHome();
-    // });
+    // LISTENER PER IL BOTTONE DI TORNA ALLA HOME
+    HomeButtonAtEnd.addEventListener('click', () => {
+        goHome();
+    });
 
 
     //LISTENER SUL TITOLO DELLA PAGINA

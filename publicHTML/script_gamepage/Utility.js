@@ -558,6 +558,40 @@ function goHome(){
     window.location.href = 'index.html';
 }
 
+// Funzione che lancia il popup di fine partita
+function launchEndgameSwal(){
 
+    let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
 
+    Swal.fire({
+        title: '',
+        html: `
+        <div>
+            <p class="title-gameover"> PARTITA TERMINATA </p>
+            <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
+            <div class="bottoni-gameover-container">
+                 
+                <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft(); Swal.close();">
+                    <span class="button_top top-gameover"> DRAFT </span>
+                </button>
+
+                <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome(); Swal.close();">
+                    <span class="button_top"> HOME </span>
+                </button>
+
+            </div>
+        </div>
+        `,
+        showConfirmButton: false,
+        customClass: {
+            popup: 'no-title-padding',
+            htmlContainer: 'popup-gameover',
+        },
+        didOpen: () => {
+            document.body.style.overflow = 'auto';
+            const titleEl = document.querySelector('.swal2-title');
+            if (titleEl) titleEl.remove();
+        }
+    });
+}
 
