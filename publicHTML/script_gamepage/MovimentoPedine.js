@@ -82,35 +82,35 @@ function ListenerMovimentoPedine(){
                         // Se il re è stato mangiato, cambia comunque il turno
                         cambioTurno();
             
-                        Swal.fire({
-                            title: null,
-                            html: `
-                            <div>
-                                <p class="title-gameover"> PARTITA TERMINATA </p>
-                                <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
-                                <div class="bottoni-gameover-container">
+                        // Swal.fire({
+                        //     title: null,
+                        //     html: `
+                        //     <div>
+                        //         <p class="title-gameover"> PARTITA TERMINATA </p>
+                        //         <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
+                        //         <div class="bottoni-gameover-container">
                                     
-                                    <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft()">
-                                        <span class="button_top top-gameover"> RIGIOCA DRAFT </span>
-                                    </button>
+                        //             <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft()">
+                        //                 <span class="button_top top-gameover"> RIGIOCA DRAFT </span>
+                        //             </button>
 
-                                    <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome()">
-                                        <span class="button_top"> HOME </span>
-                                    </button>
+                        //             <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome()">
+                        //                 <span class="button_top"> HOME </span>
+                        //             </button>
 
-                                </div>
-                            </div>
-                            `,
-                            showConfirmButton: false,
-                            customClass: {
-                                popup: 'no-title-padding',
-                                htmlContainer: 'popup-gameover',
-                            },
-                            didOpen: () => {
-                                const titleEl = document.querySelector('.swal2-title');
-                                if (titleEl) titleEl.remove();
-                            }
-                        });
+                        //         </div>
+                        //     </div>
+                        //     `,
+                        //     showConfirmButton: false,
+                        //     customClass: {
+                        //         popup: 'no-title-padding',
+                        //         htmlContainer: 'popup-gameover',
+                        //     },
+                        //     didOpen: () => {
+                        //         const titleEl = document.querySelector('.swal2-title');
+                        //         if (titleEl) titleEl.remove();
+                        //     }
+                        // });
                         window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
                         window.idCellReNero = "03"; //id della cella su cui c'è il re nero
                         //clean scacchiera
