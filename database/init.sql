@@ -135,7 +135,7 @@ INSERT INTO calciatore (
 ('Riccardo', 'Calafiori', 'images/santini/riccardo_calafiori.webp', '2002-05-19', 'Italia', 'Difensore', 'Juventus', 4, 10, 12, 135, 10, 1, 3, 5, 6, 190, NULL,60),
 ('Yann', 'Bisseck', 'images/santini/yann_bisseck.webp', '2000-11-29', 'Germania', 'Difensore', 'Inter', 31, 8, 6, 90, 6, 0, 3, 3, 3, 196, NULL,45),
 ('Castello', 'Lukeba', 'images/santini/castello_lukeba.webp', '2002-12-17', 'Francia', 'Difensore', 'RB Lipsia', 4, 6, 8, 110, 8, 0, 2, 3, 3, 184, NULL,50),
-('Yan', 'Couto', 'images/santini/yan_couto.webp', '2002-06-03', 'Brasile', 'Difensore', 'FC Barcelona', 2, 8, 20, 115, 6, 0, 3, 5, 8, 168, NULL,45),
+('Yan', 'Couto', 'images/santini/yan_couto.webp', '2002-06-03', 'Brasile', 'Difensore', 'FC Barcelona', 2, 8, 20, 115, 6, 0, 3, 5, 8, 168, NULL,45);
 -- ('Diogo', 'Costa', 'images/santini/diogo_costa.webp', '1999-09-19', 'Portogallo', 'Portiere', 'Manchester United', 1, 0, 1, 160, 3, 0, 3, 0, 1, 187, NULL,80);
 
 
