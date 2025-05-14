@@ -172,6 +172,8 @@ function validationMove(img, dest_cell){
 // Funzione per spostare una pedina
 function avanza(cella_dest){
     cella_dest.appendChild(window.selectedElement); //SPOSTAMENTO PEDINA
+    update_re_position(window.selectedImage, cella_dest); //aggiorna la posizione del re
+    highlight_re_if_sottoscacco();      //controlla se dopo la mossa corrente mette sottoscacco il re dell'AVVERSARIO (LOGICA INV) 
 }
 
 // Funzione per cambiare turno
@@ -180,6 +182,8 @@ function cambioTurno(){
     window.turnoBianco = !window.turnoBianco;
     aggiornaStatoPedine();
     updateCondition();
+    resetSuggerimenti();        //resetta la selezione delle mosse suggerite
+
 }
 
 // Funzione per attivare l'hover delle pedine spostabili nel turno

@@ -48,65 +48,54 @@ function ListenerMovimentoPedine(){
             if (window.selectedElement && this.tagName === "TD") {
                 let pedinaAvanza = true;
                 let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
-                // Verifica se la mossa è valida secondo le regole degli scacchi
+
+                //controlla che la mossia sia valida per le regole
                 if (validationMove(window.selectedImage, this)) {
-                
-                    if(pedinaBersaglio){
-                        if(!mangia(pedinaBersaglio,this)) pedinaAvanza = false; //mangia la pedina bersaglio se presente e condiz vera
-                        playSound("mangia", 0.7);
-                    } 
-                    else{
+
+                    //se la cella è libera
+                    if (!pedinaBersaglio){
                         avanza(this); //SPOSTAMENTO PEDINA
                         playSound("mossa", 0.5);
+                        cambioTurno();
                     }
-                    resetSuggerimenti();        //resetta la selezione delle mosse suggerite
 
-                    if (pedinaAvanza) update_re_position(window.selectedImage, this);     // reset della cella del re se non più in scacco
-                    
-                    highlight_re_if_sottoscacco();      //controlla se dopo la mossa corrente mette sottoscacco il re dell'AVVERSARIO (LOGICA INV) 
-               
-                    //CONTROLLA SIA LO STATO DEL RE, SIA PROMUOVE IL PEDONE SE IL RE E' VIVO
-                    if(!isReMangiato(pedinaBersaglio) && pedinaAvanza){
-                        let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
+                    //se c'è un bersaglio
+                    if(pedinaBersaglio){
 
-                        // Cambio turno solo se non c'è promozione del pedone in corso
-                        if (!isPedonePromosso) {
+                        //condizione sfavorevole
+                        if(!mangia(pedinaBersaglio,this)){
+                            pedinaAvanza = false;               //pedina non avanzata
                             cambioTurno();
                         }
-                    //pedina non avanza e re vivo
-                    } else if(!isReMangiato(pedinaBersaglio)) {
-                            cambioTurno();
-                    }
-                    else if(isReMangiato(pedinaBersaglio) && !pedinaAvanza){
-                        // FINE PARTITA
-                        let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
-                        let id_vincitore = window.turnoBianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
-                        let punti = window.turnoBianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
-                        let new_punti = parseInt(punti) + 20;
 
-                        //incrementa punti del vincitore
-                        aggiornaPunti(id_vincitore, new_punti);
-                        update_LS_winner(id_vincitore, vincitore, new_punti);
+                        //condizione favorevole
+                        else{
+                            pedinaAvanza = true;               //pedina avanzata
+                            playSound("mangia", 0.7);
+                            
+                            //se il ho mangiato il re
+                            if(isReMangiato(pedinaBersaglio)){
+                                resetSottoscacco();
+                                endGame();
 
-                        // Se il re è stato mangiato, cambia comunque il turno
-                        resetSottoscacco();
-                        cambioTurno();
-            
-                        endGame();
+                            }
 
-                        window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
-                        window.idCellReNero = "03"; //id della cella su cui c'è il re nero
-                        //clean scacchiera
-                    }
-                    else{
-                        cambioTurno();
-                    }
+                            //se ho mangiato un pezzo avversario diverso dal re
+                            else{
+                                let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
+                                if (!isPedonePromosso) cambioTurno();   //cambia turno solo se non c'è promozione del pedone in corso
+                            }
+                        }
+                        
+                    } 
+                    
+                    
+                                        
                 }
 
                 // Resetta la selezione e l'evidenziazione
                 resetHighlighted();
                 resetSelezione();   
-                highlight_re_if_sottoscacco(); // controllo se il mio re è sottoscacco 
             }
         });
     });

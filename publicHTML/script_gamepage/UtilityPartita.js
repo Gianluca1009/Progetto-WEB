@@ -122,14 +122,37 @@ function startGame() {
 
 // Funzione per terminare la partita
 function endGame(){
+
+    //PARTE DEL PUNTEGGIO
+    let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
+    let id_vincitore = window.turnoBianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
+    let punti = window.turnoBianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
+    let new_punti = parseInt(punti) + 20;
+
+    //incrementa punti del vincitore
+    aggiornaPunti(id_vincitore, new_punti);
+    update_LS_winner(id_vincitore, vincitore, new_punti);
+
     window.gameStarted = false;
     freezeTimer();
+    resetTimers();
+    cambioTurno();
+    
+    resetSottoscacco();
 
     launchEndgameSwal();
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
     document.querySelector('.game-container').classList.add('game-not-started');
+
+    window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
+    window.idCellReNero = "03"; //id della cella su cui c'è il re nero
+    window.cellaReBianco = document.getElementById(window.idCellReBianco);
+    window.cellaReNero = document.getElementById(window.idCellReNero);
+    resetSottoscacco();
+
 }
+
 
 //@deprecated
 
