@@ -194,3 +194,11 @@ async function aggiornaPunti(userid, new_punti) {
     console.error('Errore durante l\'aggiornamento dei punti:', error);
   }
 }
+
+function update_LS_winner(id, name, pti){
+    if (window.turnoBianco)
+            LS_login1Game(id,name,pti);
+
+    else LS_login2Game(id,name,pti);
+  
+}

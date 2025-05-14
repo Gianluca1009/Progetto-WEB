@@ -78,6 +78,21 @@ function ListenerMovimentoPedine(){
                             cambioTurno();
                         }
                     else {
+                        // FINE PARTITA
+                        let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
+                        let id_vincitore = window.turnoBianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
+                        let punti = window.turnoBianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
+                        let new_punti = parseInt(punti) + 20;
+
+                        console.log('up punti');
+                        console.log(id_vincitore);
+                        console.log(new_punti);
+                        //incrementa punti del vincitore
+                        aggiornaPunti(id_vincitore, new_punti);
+                        update_LS_winner(id_vincitore, vincitore, new_punti);
+
+                        console.log('fine aggiorna punti');
+
                         // Se il re è stato mangiato, cambia comunque il turno
                         cambioTurno();
             
