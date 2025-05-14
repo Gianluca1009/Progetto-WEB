@@ -52,7 +52,7 @@ function ListenerMovimentoPedine(){
                 if (validationMove(window.selectedImage, this)) {
                 
                     if(pedinaBersaglio){
-                        if(! mangia(pedinaBersaglio,this) ) pedinaAvanza = false; //mangia la pedina bersaglio se presente e condiz vera
+                        if(!mangia(pedinaBersaglio,this)) pedinaAvanza = false; //mangia la pedina bersaglio se presente e condiz vera
                         playSound("mangia", 0.7);
                     } 
                     else{
@@ -76,24 +76,20 @@ function ListenerMovimentoPedine(){
                     //pedina non avanza e re vivo
                     } else if(!isReMangiato(pedinaBersaglio)) {
                             cambioTurno();
-                        }
-                    else {
+                    }
+                    else if(isReMangiato(pedinaBersaglio) && !pedinaAvanza){
                         // FINE PARTITA
                         let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
                         let id_vincitore = window.turnoBianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
                         let punti = window.turnoBianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
                         let new_punti = parseInt(punti) + 20;
 
-                        console.log('up punti');
-                        console.log(id_vincitore);
-                        console.log(new_punti);
                         //incrementa punti del vincitore
                         aggiornaPunti(id_vincitore, new_punti);
                         update_LS_winner(id_vincitore, vincitore, new_punti);
 
-                        console.log('fine aggiorna punti');
-
                         // Se il re è stato mangiato, cambia comunque il turno
+                        resetSottoscacco();
                         cambioTurno();
             
                         endGame();
@@ -101,6 +97,9 @@ function ListenerMovimentoPedine(){
                         window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
                         window.idCellReNero = "03"; //id della cella su cui c'è il re nero
                         //clean scacchiera
+                    }
+                    else{
+                        cambioTurno();
                     }
                 }
 

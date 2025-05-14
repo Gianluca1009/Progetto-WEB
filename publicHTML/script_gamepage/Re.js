@@ -154,8 +154,6 @@ function check_mio_re_sottoscacco(){
 function isReMangiato(pedina_mangiata){
     // Verifica se la pedina mangiata esiste ed è un re
     if (pedina_mangiata && (pedina_mangiata.id === 'r' || pedina_mangiata.id === 'R')){
-        
-        endGame(); //chiama la funzione per terminare la partita con il messaggio
         return true;
     }
     return false;

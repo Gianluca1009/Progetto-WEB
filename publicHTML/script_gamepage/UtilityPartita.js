@@ -1,23 +1,63 @@
+window.player1Ready = false;
+window.player2Ready = false;
+
+
 //
 //---- FUNZIONI PER LA GESTIONE DELLA PARTITA ----//
 //
 
-// Funzione per controllare se entrambi i giocatori sono pronti
+// Funzione per controllare se entrambi i giocatori sono pronti e INIZIA LA PARTITA
 function checkBothPlayersReady() {
     if (window.player1Ready && window.player2Ready) {
         startGame();
     }
 }
 
+// Funzione che gestisce il bottone pronto del giocatore 1
+function handleButtonP1(){
+    if (window.player1Ready) {
+            window.player1Ready = false;
+            document.getElementById('top_player1').style.background = "var(--button_color)";
+        } else {
+            // Se il giocatore non era pronto, imposta come pronto
+            window.player1Ready = true;
+            document.getElementById('top_player1').style.background = "linear-gradient(to right, #44c300, #027a16)";
+            checkBothPlayersReady();
+        }
+}
+
+// Funzione che gestisce il bottone pronto del giocatore 2
+function handleButtonP2(){
+    if (window.player2Ready) {
+            window.player2Ready = false;
+            document.getElementById('top_player2').style.background = "var(--button_color)";
+        } else {
+            // Se il giocatore non era pronto, imposta come pronto
+            window.player2Ready = true;
+            document.getElementById('top_player2').style.background = "linear-gradient(to right, #44c300, #027a16)";
+            checkBothPlayersReady();
+        }
+}
+
 //Funzione per iniziare la preparazione del draft
 async function startDraft(){
+
+    // ELEMENTI DA NASCONDERE (bottoni pronto, giocaButton)
     makeHidden(document.querySelector('.gioca-button'));
+    document.getElementById('player1button').classList.add('hidden');
+    document.getElementById('player2button').classList.add('hidden');
+    
+    // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine)
     makeVisible(document.querySelector('.background-overlay'));
     makeVisible(document.querySelector('.sezione_dx'));
     makeVisible(document.querySelector('.sezione_sx'));
     makeVisible(document.querySelector('.restart-draft'));
-    makeVisible(document.querySelector('.populate-random-both-container'));
     makeVisible(document.querySelector('.switch'));
+    document.querySelectorAll('.pedina').forEach(pedina => {
+            makeVisible(pedina); // Rende visibili le pedine
+    });
+
+    //Gestione funzione per draft da DB
 
     await CreaListeCalciatori(); // Popola l'array di calciatori
     await populateDraft("bianco");
@@ -32,49 +72,51 @@ async function startDraft(){
 
 // Funzione per avviare il gioco
 function startGame() {
+
+    // ELEMENTI DA MOSTRARE (condizione, progress, restartButton)
+    makeVisible(document.querySelector('.condition-container'));
+    makeVisible(document.querySelector('.progress-container'));
+
+    // ELEMENTI DA NASCONDERE (sezioni, switch)
+    makeHidden(document.querySelector('.sezione_dx'));
+    makeHidden(document.querySelector('.sezione_sx'));
+    makeHidden(document.querySelector('.switch'));
+
+    //Riaggiorno posizioni re
+    window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
+    window.idCellReNero = "03"; //id della cella su cui c'è il re nero
+
     window.gameStarted = true;
     window.turnoBianco = true; // Reset del turno al bianco
-    document.querySelectorAll('.pedina').forEach(pedina => {
-        pedina.classList.remove('game-not-started');
-    });
-    aggiornaStatoPedine();
 
-    // Ingrandisci la scacchiera
+    // Ridimensione la scacchiera
     const gridContainer = document.querySelector('.grid-container');
     if (gridContainer) {
         gridContainer.classList.add('grid-container-enlarged');
     }
-    makeHidden(document.querySelector('.switch'));
-
-    // Gestione della visibilità dei vari elementi
-
-    makeVisible(document.querySelector('.condition-container'));
-    makeVisible(document.querySelector('.timer-text'));
-    makeVisible(document.querySelector('.progress-container'));
-    makeVisible(document.querySelector('.progress-bar'));
-    makeVisible(document.getElementById('restartButton'));
-
-    makeHidden(document.querySelector('.sezione_sx'));
-    makeHidden(document.querySelector('.sezione_dx'));
-    makeHidden(document.querySelector('.populate-random-both-container'));
-
-
 
     // Rimuove la classe che disabilita l'hover
     document.querySelector('.game-container').classList.remove('game-not-started');
+
+    document.querySelectorAll('.pedina').forEach(pedina => {
+        pedina.classList.remove('game-not-started');
+    });
+   
+    //PEDINE
 
     // Aggiunge la classe active a tutte le pedine
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('pedina-active');
     });
-
+    
     // Abilita il movimento delle pedine
     window.canMovePiece = function(pieceId) {
         return window.gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
     };
+    aggiornaStatoPedine();
 
     // Reset dei timer e avvio
-    resetTimers();
+    resetTimer();
     startTimer();
 }
 
@@ -89,54 +131,59 @@ function endGame(){
     document.querySelector('.game-container').classList.add('game-not-started');
 }
 
-// Funzione per rigiocare la partita
-function restartGame() {
-    resetNumCelleRe();
-    resetColoreSottoscacco();
-    resetPedine();
-    window.gameStarted = false; // Reset dello stato del gioco
+//@deprecated
 
-    //makeHidden(document.querySelector('.game-over'));
-    document.querySelector('.game-container').classList.remove('game-not-started');
-    aggiornaStatoPedine();
-    startGame();
-}
+// Funzione per rigiocare la partita
+// function restartGame() { 
+//     resetNumCelleRe();
+//     resetColoreSottoscacco();
+//     resetPedine();
+//     window.gameStarted = false; // Reset dello stato del gioco
+
+//     //makeHidden(document.querySelector('.game-over'));
+//     document.querySelector('.game-container').classList.remove('game-not-started');
+//     aggiornaStatoPedine();
+//     startGame();
+// }
 
 // Funzione per cambiare il draft
-function restartDraft(){
+async function restartDraft(){
+
+    //ELEMENTI DA MOSTRARE (sezioni, switch)
+    makeVisible(document.querySelector('.sezione_dx'));
+    makeVisible(document.querySelector('.sezione_sx'));
+    makeVisible(document.getElementById('draft_table_dx'));
+    makeVisible(document.getElementById('draft_table_sx'));
+    makeVisible(document.getElementById('random1'));
+    makeVisible(document.getElementById('random2'));
+
+    //ELEMENTI DA NASCONDERE (condition, progress-container, bottoni pronto)
+    makeHidden(document.querySelector('.condition-container'));
+    makeHidden(document.querySelector('.progress-container'));
+    document.getElementById('player1button').classList.add('hidden');
+    document.getElementById('player2button').classList.add('hidden');
 
     resetSottoscacco();
+    resetProntoButton();
 
     //avvio il draft
     window.gameStarted = false;
     window.turnoBianco = true;
 
-    //makeHidden(document.querySelector('.game-over'));
-    makeHidden(document.querySelector('.progress-container'));
-    makeHidden(document.querySelector('.condition-container'));
-    makeHidden(document.querySelector('.restart-button'));
     document.querySelector('.grid-container').classList.remove('grid-container-enlarged');
-    makeVisible(document.getElementById('draft_table_dx'));
-    makeVisible(document.getElementById('draft_table_sx'));
-    makeVisible(document.getElementById('random1'));
-    makeVisible(document.getElementById('random2'));
-    document.getElementById('player1button').style.transform = "translateY(0) scale(1)";
-    document.getElementById('player2button').style.transform = "translateY(0) scale(1)";
 
     disabilitaPedine();
-
-    startDraft();
-
-    //riposiziono le pedine nelle posizioni iniziali
-    resetPedine();
-
-    //resetto i bottoni pronto
-    resetProntoButton();
-
-    //resetto i timer
-    resetTimers();
+    resetPedine();  //riposiziono le pedine nelle posizioni iniziali
+    resetTimer();  //resetto il timer
 
     document.querySelector(".game-container").classList.remove('game-not-started');
+    
+    //Gestione funzione per draft da DB
+
+    await CreaListeCalciatori(); // Popola l'array di calciatori
+    await populateDraft("bianco");
+    await populateDraft("nero");
+    await DragDrop_draft();
 }
 
 // Funzione per tornare alla home

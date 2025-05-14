@@ -7,11 +7,6 @@ window.selectedImage = null;  // Memorizza l'immagine selezionata
 window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
 window.gameStarted = false; // Controlla se il gioco è iniziato
 
-window.player1Ready = false;
-window.player2Ready = false;
-
-
-
 //
 // ---- FUNZIONI AUSILIARIE PER LE PEDINE ---- //
 //
@@ -238,6 +233,7 @@ function resetPedine(){
     }
 }
 
+// Funzione per riportare i bottoni allo stato iniziale
 function resetProntoButton() {
 
     //reimposto lo stato
@@ -245,7 +241,7 @@ function resetProntoButton() {
     window.player2Ready = false;
 
     //reimposto il colore
-    document.getElementById('player1button').style.background = "linear-gradient(to right, #cbcbcb, #a4a4a4)";
-    document.getElementById('player2button').style.background = "linear-gradient(to right, #cbcbcb, #a4a4a4)";
+    document.getElementById('top_player1').style.background = "var(--button_color)";
+    document.getElementById('top_player2').style.background = "var(--button_color)";
 }
 

@@ -164,14 +164,8 @@
 
         <!-- CONTAINER BOTTONI -->
         <div class="container-bottoni">
-
-            <button id="restartButton" class="restart-button">
-                <span class="button_top"> 
-                    <img src="images/restartGame.png" alt="restartGame" class="b-image">
-                </span>
-            </button>
-
-            <button id="restartDraftButton" class="restart-draft">
+            
+            <button id="restartDraftButton" onclick="restartDraft()" class="restart-draft">
                 <span class="button_top"> 
                     <img src="images/restartDraft.png" alt="restartDraft" class="b-image">
                 </span>
@@ -182,11 +176,11 @@
         <!-- TABELLA DRAFT SX -->
          <div class="sezione_sx">
 
-            <button id="player1button" class="pronto-button player1">
-                <spamn id="top_player1" class="button_top">PRONTO</span>
+            <button id="player1button" onclick="handleButtonP1()" class="pronto-button player1">
+                <span id="top_player1" class="button_top">PRONTO</span>
             </button>
 
-            <div id="random1" class="random-ico">
+            <div id="random1" onclick="populateRandom('bianco')" class="random-ico">
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
             
@@ -220,7 +214,7 @@
         <!-- TABELLA DRAFT DX -->
         <div class="sezione_dx">
 
-            <button id="player2button" class="pronto-button player2">
+            <button id="player2button" onclick="handleButtonP2()" class="pronto-button player2">
                 <span id="top_player2" class="button_top">PRONTO</span>
             </button>
             
@@ -239,7 +233,7 @@
                 </div>
             </div>
 
-            <div id="random2" class="random-ico">
+            <div id="random2" onclick="populateRandom('nero')" class="random-ico">
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
 
@@ -255,7 +249,7 @@
             <h1 class="condition-title" id="condition"></h1>
         </div>
 
-        <div class="progress-container hidden">
+        <div class="progress-container">
             <div class="progress-bar"></div>
             <h1 class="timer-text" id="timer"></h1>
         </div>
