@@ -492,7 +492,7 @@ function display_statistiche_draftSX(calciatore, div_info){
 
     divStatistiche.appendChild(listaStatistiche);
     div_info.parentElement.appendChild(divStatistiche);
-    setPositionRelativeToDiv(div_info, divStatistiche, 'right', 50);
+    setPositionRelativeToDiv(div_info, divStatistiche, 'right', 52);
 
     document.addEventListener('click', () => {
         document.querySelectorAll('.statistiche-draft').forEach(div => {
@@ -523,7 +523,7 @@ function display_statistiche_draftDX(calciatore, div_info){
 
     divStatistiche.appendChild(listaStatistiche);
     div_info.parentElement.appendChild(divStatistiche);
-    setPositionRelativeToDiv(div_info, divStatistiche, 'left', 100);
+    setPositionRelativeToDiv(div_info, divStatistiche, 'left', 119);
 
     document.addEventListener('click', () => {
         document.querySelectorAll('.statistiche-draft').forEach(div => {
