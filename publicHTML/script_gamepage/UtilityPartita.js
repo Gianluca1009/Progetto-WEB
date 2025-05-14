@@ -202,7 +202,7 @@ async function restartDraft(){
     
     //Gestione funzione per draft da DB
 
-    await CreaListeCalciatori(); // Popola l'array di calciatori
+    await CreaListeCalciatori();        // Popola l'array di calciatori
     await populateDraft("bianco");
     await populateDraft("nero");
     await DragDrop_draft();

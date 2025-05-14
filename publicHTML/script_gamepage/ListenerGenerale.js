@@ -75,4 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return event.returnValue;
         }
     });
+
+
+    // PERMETTE DI NON FAR VEDERE IL MENU DI CONTESTO PER IL GAME CONTAINER COL TASTO DESTRO 
+    document.querySelectorAll('.riga_draft').forEach(container => {
+        container.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+    });
 });

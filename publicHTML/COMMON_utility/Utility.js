@@ -1,3 +1,7 @@
+//
+//----- FUNZIONI UTILIZZATE IN TUTTO IL PROGETTO -----//
+//
+
 //Funzione per far vedere un elemento con animazione
 function makeVisible(element) {
     if (!element) return;
@@ -69,4 +73,31 @@ function handleHamburgerMenu() {
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
     });
+}
+
+// Funzione per far apparire div in posizione desiderata rispetto a un altro div
+function setPositionRelativeToDiv(targetElement, floatingElement, side = 'right', offsetPercent = 1) {
+    console.log("targetElement", targetElement);
+    const targetRect = targetElement.getBoundingClientRect();
+    const parentRect = targetElement.offsetParent.getBoundingClientRect();
+
+    // Calcolo posizione verticale centrata
+    const relativeTop = ((targetRect.top - parentRect.top + targetRect.height / 2) / parentRect.height) * 100;
+
+    // Calcolo posizione orizzontale (destra o sinistra)
+    let relativeLeft;
+    if (side === 'right') {
+        relativeLeft = ((targetRect.right - parentRect.left) / parentRect.width) * 100 + offsetPercent;
+    } else if (side === 'left') {
+        relativeLeft = ((targetRect.left - parentRect.left) / parentRect.width) * 100 - offsetPercent;
+    } else {
+        console.warn("Parametro 'side' non valido. Usa 'left' o 'right'.");
+        return;
+    }
+
+    // Applica lo stile di posizionamento
+    floatingElement.style.position = 'absolute';
+    floatingElement.style.left = `${relativeLeft}%`;
+    floatingElement.style.top = `${relativeTop}%`;
+    floatingElement.style.transform = 'translateY(-50%)';
 }

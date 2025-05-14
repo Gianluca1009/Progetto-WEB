@@ -68,24 +68,6 @@ function createPromotionDiv() {
     return divPromotion;
 }
 
-function setDivPosition(cella_dest){
-
-    // Posiziona il div_scelte alla destra della cella del pedone
-    
-    const cellRect = cella_dest.getBoundingClientRect(); //ottiene le dimensioni e la posizione della cella
-    const gridRect = gridContainer.getBoundingClientRect(); //ottiene le dimensioni e la posizione della griglia
-    
-    // Calcola la posizione relativa rispetto al contenitore della griglia
-    const relativeLeft = ((cellRect.right - gridRect.left) / gridRect.width) * 100;
-    const relativeTop = ((cellRect.top - gridRect.top + cellRect.height/2) / gridRect.height) * 100;
-    
-    // Imposta la posizione del div di promozione
-    divPromotion.style.left = `${relativeLeft+0.1}%`;
-    divPromotion.style.top = `${relativeTop}%`;
-    divPromotion.style.transform = 'translateY(-50%)';
-
-}
-
 function upgrade_pedone(img_pedina, cella_dest){
     let current_row = parseInt(cella_dest.id[0]);
     let div_pedina = img_pedina.parentElement;
@@ -97,7 +79,7 @@ function upgrade_pedone(img_pedina, cella_dest){
             // Crea il div di promozione dinamicamente
             createPromotionDiv();
             // Posiziona il div
-            setDivPosition(cella_dest);
+            setPositionRelativeToDiv(cella_dest, divPromotion, 'right', 1);
             makeVisible(divPromotion);
             disabilitaPedine(); // Disabilita tutte le pedine quando divPromotion diventa visibile
             ListenerPromozione(div_pedina, img_pedina, true); // Passa true perché è un pedone bianco

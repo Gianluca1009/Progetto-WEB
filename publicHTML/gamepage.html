@@ -154,7 +154,7 @@
         </button>
 
         <!-- CONTENITORE SWITCH STILE PEDINE-->
-        <label class="switch">
+        <label class="switch" title="Cambia lo stile delle pedine">
             <input type="checkbox" id="toggle">
             <span class="slider" onc>
                 <span class="modetext">CLASSIC</span>
@@ -164,7 +164,7 @@
 
         <!-- BOTTONE RESTART DRAFT -->
         
-        <button id="restartDraftButton" onclick="restartDraft()" class="restart-draft">
+        <button id="restartDraftButton" onclick="restartDraft()" class="restart-draft" title="Restart Draft">
             <span class="button_top"> 
                 <img src="images/restartDraft.png" alt="restartDraft" class="b-image">
             </span>
@@ -177,7 +177,7 @@
                 <span id="top_player1" class="button_top">PRONTO</span>
             </button>
 
-            <div id="random1" onclick="populateRandom('bianco')" class="random-ico">
+            <div id="random1" onclick="populateRandom('bianco')" class="random-ico" title="Random Draft">
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
             
@@ -230,7 +230,7 @@
                 </div>
             </div>
 
-            <div id="random2" onclick="populateRandom('nero')" class="random-ico">
+            <div id="random2" onclick="populateRandom('nero')" class="random-ico" title="Random Draft">
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
 

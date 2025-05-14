@@ -305,8 +305,22 @@ async function populateDraft(colore) {
                 const li4_info = document.createElement('li');
 
                 //approfondimento statistiche sul click
-                if (colore === 'bianco') div_info.addEventListener('click', () => display_statistiche_draftSX(player));
-                else div_info.addEventListener('click', () => display_statistiche_draftDX(player));
+                if (colore === 'bianco'){
+                    div_info.addEventListener('mousedown', function(event){
+                        if(event.button === 2){
+                            console.log("clickdestro");
+                            display_statistiche_draftSX(player, this);
+                        }
+                    });
+                }
+                else{
+                    div_info.addEventListener('mousedown', function(event){
+                        if(event.button === 2){
+                            console.log("clickdestro");
+                            display_statistiche_draftDX(player, this);
+                        }
+                    });
+                } 
 
                 setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
 
@@ -456,48 +470,64 @@ function populateRandom(colore) {
     }
 }
 
-function display_statistiche_draftSX(calciatore){
-    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player'].includes(key));
+function display_statistiche_draftSX(calciatore, div_info){
+    console.log("costruendo statistiche...")
 
-    let listaHTML = ''; 
-    for (const key of keys) {
-        if (key != 'img_url')
-            listaHTML += `<p style="font-size: 0.6em;"><strong>${KeyConverter(key)}</strong>:  ${calciatore[key]}</p>`; 
+    // Controlla se esiste già un div con le statistiche e rimuovilo
+    if (document.querySelector('.statistiche-draft')) {
+        document.querySelector('.statistiche-draft').remove();
     }
 
-    // Visualizzazione con Swal
-    Swal.fire({
-        position: 'center-start',
-        title: 'Dettagli Calciatore',
-        html: listaHTML,
-        width: 300,
-        confirmButtonText: 'Chiudi',
-        didOpen: () => {
-            const popup = Swal.getPopup();
-            popup.style.marginLeft = '230px';  
-        } 
+
+    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player'].includes(key));
+
+    const divStatistiche = document.createElement('div');
+    divStatistiche.classList.add('statistiche-draft');
+    const listaStatistiche = document.createElement('ul');
+    for (const key of keys) {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong> ${KeyConverter(key)}</strong>:  ${calciatore[key]}`;
+            listaStatistiche.appendChild(li);
+    }
+
+    divStatistiche.appendChild(listaStatistiche);
+    div_info.parentElement.appendChild(divStatistiche);
+    setPositionRelativeToDiv(div_info, divStatistiche, 'right', 50);
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.statistiche-draft').forEach(div => {
+            div.remove(); // Rimuovi il div delle statistiche
+        });
     });
 }
 
-function display_statistiche_draftDX(calciatore){
-    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player'].includes(key));
+function display_statistiche_draftDX(calciatore, div_info){
+    console.log("costruendo statistiche...")
 
-    let listaHTML = ''; 
-    for (const key of keys) {
-        if (key != 'img_url')
-            listaHTML += `<p style="font-size: 0.6em;"><strong>${KeyConverter(key)}</strong>:  ${calciatore[key]}</p>`; 
+    // Controlla se esiste già un div con le statistiche e rimuovilo
+    if (document.querySelector('.statistiche-draft')) {
+        document.querySelector('.statistiche-draft').remove();
     }
 
-    // Visualizzazione con Swal
-    Swal.fire({
-        position: 'center-end',
-        title: '', 
-        html: listaHTML,
-        width: 300,
-        confirmButtonText: 'Chiudi',
-        didOpen: () => {
-            const popup = Swal.getPopup();
-            popup.style.marginRight = '230px';  
-        }
+
+    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player'].includes(key));
+
+    const divStatistiche = document.createElement('div');
+    divStatistiche.classList.add('statistiche-draft');
+    const listaStatistiche = document.createElement('ul');
+    for (const key of keys) {
+            const li = document.createElement('li');
+            li.textContent = `${KeyConverter(key)}: ${calciatore[key]}`;
+            listaStatistiche.appendChild(li);
+    }
+
+    divStatistiche.appendChild(listaStatistiche);
+    div_info.parentElement.appendChild(divStatistiche);
+    setPositionRelativeToDiv(div_info, divStatistiche, 'left', 100);
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.statistiche-draft').forEach(div => {
+            div.remove(); // Rimuovi il div delle statistiche
+        });
     });
 }
