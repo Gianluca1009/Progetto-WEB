@@ -4,7 +4,7 @@ const conditions = [
     "Presenze collezionate in carriera",
     "Minor numero di cartellini gialli in carriera",
     "Minor numero di cartellini rossi in carriera",
-    "Numeri di trofei vinti in carriera",
+    "Numero di trofei vinti in carriera",
     "Record di goal stagionale",
     "Record di assist stagionale",
     "Numero di maglia più alto",

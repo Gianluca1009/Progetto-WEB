@@ -81,7 +81,7 @@ function ListenerMovimentoPedine(){
                         // Se il re è stato mangiato, cambia comunque il turno
                         cambioTurno();
             
-                        launchEndgameSwal();
+                        endGame();
 
                         window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
                         window.idCellReNero = "03"; //id della cella su cui c'è il re nero
@@ -97,6 +97,4 @@ function ListenerMovimentoPedine(){
         });
     });
 }
-// Inizializza lo stato delle pedine all'avvio
-aggiornaStatoPedine();
 

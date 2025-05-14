@@ -83,7 +83,7 @@ function endGame(){
     window.gameStarted = false;
     freezeTimer();
 
-    //makeVisible(document.querySelector('.game-over'));
+    launchEndgameSwal();
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
     document.querySelector('.game-container').classList.add('game-not-started');

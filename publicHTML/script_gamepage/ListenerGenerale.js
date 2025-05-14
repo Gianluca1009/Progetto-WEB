@@ -71,7 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
             preparaSounds();        // Inizializza i suoni al primo click
             startDraft();                    // Prepara il draft
             scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
-        } else{
+            aggiornaStatoPedine();     // Inizializza lo stato delle pedine all'avvio
+            
+        } else {
             Swal.fire('Accedi per scendere in campo!');
         }
     });

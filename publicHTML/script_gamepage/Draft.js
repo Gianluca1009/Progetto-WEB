@@ -304,9 +304,8 @@ async function populateDraft(colore) {
                 const li3_info = document.createElement('li');
                 const li4_info = document.createElement('li');
 
-                console.log(player);
                 //approfondimento statistiche sul click
-                div_info.addEventListener('click', () => listener_disply_statistiche_draft(player))
+                div_info.addEventListener('click', () => display_statistiche_draft(player));
 
                 setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
 
@@ -456,20 +455,21 @@ function populateRandom(colore) {
     }
 }
 
-function listener_disply_statistiche_draft(player){
+function display_statistiche_draft(calciatore){
+    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player'].includes(key));
+
     let listaHTML = '<ul>';
-    for (const [chiave, valore] of Object.entries(player)) {
-        if (chiave != 'img_url')
-            listaHTML += `<li><strong>${chiave}</strong> = ${valore}</li>`;
+    for (const key of keys) {
+        if (key != 'img_url')
+            listaHTML += `<li><strong>${KeyConverter(key)}</strong>:  ${calciatore[key]}</li>`;
     }
     listaHTML += '</ul>';
 
     // Visualizzazione con Swal
     Swal.fire({
-        title: 'Dettagli Giocatore',
+        title: 'Dettagli Calciatore',
         html: listaHTML,
-        width: 600,
-        icon: 'info',
+        width: 300,
         confirmButtonText: 'Chiudi'
     });
 }

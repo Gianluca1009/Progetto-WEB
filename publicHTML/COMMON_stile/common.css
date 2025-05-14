@@ -28,7 +28,7 @@ body {
     overscroll-behavior: none;
     margin: 0;
     padding: 0;
-    width: 100vw;
+    min-width: 100vw;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -82,7 +82,7 @@ button{
     box-sizing: border-box;
     border: 2px solid var(--button_outline_color);
     border-radius: var(--button_radius);
-    padding: 0.75em 1.5em;
+    padding: 0;
     background: var(--button_color);
     color: var(--button_outline_color);
     transform: translateY(-0.4vh);
