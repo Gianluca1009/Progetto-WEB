@@ -101,30 +101,31 @@ function scrollToGameContainer(){
     }, 10); // Piccolo ritardo prima di iniziare lo scroll
 }
 
+//@deprecated
 //Funzione per cambiare il rapporto delle pedine in base allo stile
-function ratioPedine(stile) {
-    if (stile == 'CLASSIC') {
-        document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
-            pedina.style.width = '58%'; // Imposta la larghezza al 100%
-            pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
-        })
-        document.querySelectorAll('.cavallo, .alfiere').forEach(pedina => {
-            pedina.style.width = '65%'; // Imposta la larghezza al 100%
-            pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
-        })
-        document.querySelectorAll('.torre').forEach(pedina => {
-            pedina.style.width = '61%'; // Imposta la larghezza al 100%
-            pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
-        });
-    }
-    if (stile == 'MODERN') {
-        document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
-            pedina.style.width = '70%'; // Ripristina la larghezza originale
-            pedina.style.aspectRatio = '1/1'; // Ripristina l'aspect ratio originale
-        })
-    }
+// function ratioPedine(stile) {
+//     if (stile == 'CLASSIC') {
+//         document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
+//             pedina.style.width = '58%'; // Imposta la larghezza al 100%
+//             pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
+//         })
+//         document.querySelectorAll('.cavallo, .alfiere').forEach(pedina => {
+//             pedina.style.width = '65%'; // Imposta la larghezza al 100%
+//             pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
+//         })
+//         document.querySelectorAll('.torre').forEach(pedina => {
+//             pedina.style.width = '61%'; // Imposta la larghezza al 100%
+//             pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
+//         });
+//     }
+//     if (stile == 'MODERN') {
+//         document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
+//             pedina.style.width = '70%'; // Ripristina la larghezza originale
+//             pedina.style.aspectRatio = '1/1'; // Ripristina l'aspect ratio originale
+//         })
+//     }
 
-}
+// }
 
 //Funzione per cambiare lo stile delle pedine
 function changeStyle(stile) {
@@ -134,11 +135,9 @@ function changeStyle(stile) {
         immaginevecchia = pedina.firstChild.src; //immagine vecchia
         if (stile == 'CLASSIC') {
             pedina.firstChild.src = immaginevecchia.replace('.png', '_prova.png'); //imposto stile MODERN
-            ratioPedine(stile); //cambio il rapporto delle pedine
         }
         if (stile == 'MODERN') {
             pedina.firstChild.src = immaginevecchia.replace('_prova.png', '.png'); //ripristina l'immagine per lo stile CLASSIC
-            ratioPedine(stile); //ripristino il rapporto delle pedine
         }
         makeVisible(pedina); //rendo visibile l'immagine
     });

@@ -56,11 +56,11 @@
 }
 
 .hamburger{
-    display: none;
+    z-index: 10000;
     position: absolute;
     top: 0;
     left: 0;
     width: 20vw;
-    height: 100vh;
+    height: 100;
     background-color: #e8c481;
 }

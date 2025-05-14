@@ -5,7 +5,7 @@ window.addEventListener('resize', function() {
 });
 
 window.onload = function() {
-    ratioPedine('CLASSIC');
+    // ratioPedine('CLASSIC');
 }
 
 // ---- INIZIALIZZAZIONE DEL GIOCO ---- //
@@ -83,4 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
         });
     });
+
+
+    // PERMETTE DI RIDURRE AL MINIMO I RITARDI DEI SUONI
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            window.audioCtx.resume().then(() => {
+                forzaAudio(); // suona un colpo vuoto
+            });
+        }
+    });
+
+    
 });

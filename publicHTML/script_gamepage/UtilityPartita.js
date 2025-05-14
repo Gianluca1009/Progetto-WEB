@@ -170,7 +170,7 @@ function endGame(){
 
 // Funzione per cambiare il draft
 async function restartDraft(){
-
+    
     //ELEMENTI DA MOSTRARE (sezioni, switch)
     makeVisible(document.querySelector('.sezione_dx'));
     makeVisible(document.querySelector('.sezione_sx'));
@@ -187,7 +187,7 @@ async function restartDraft(){
 
     resetSottoscacco();
     resetProntoButton();
-
+    
     //avvio il draft
     window.gameStarted = false;
     window.turnoBianco = true;
