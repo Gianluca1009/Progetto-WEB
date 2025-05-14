@@ -60,11 +60,12 @@
 }
 
 .restart-draft {
+    position: absolute;
+    width: 5%;
     aspect-ratio: 1/1;
-}
-
-.restart-button {
-    aspect-ratio: 1/1;
+    top: 2%;
+    right: 1%;
+    z-index: 10000;
 }
 
 .switch {

@@ -29,7 +29,6 @@
     background-color: var(--color-crema);
     transition: width 1s linear;
     position: relative;
-    border-right: 0.09375rem solid var(--color-crema);
 }
 
 /* Classe per rimuovere la transizione quando la barra si riempie */
