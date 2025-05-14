@@ -134,8 +134,7 @@ async function BuildMercato(stringaDiRicerca){
     const ricerca = (stringaDiRicerca || "").toLowerCase();
 
     function processNext() {
-        // if (i < results.length) {
-        if (i < 3) {
+        if (i < results.length) {
             const calciatore = results[i]
             let nomeCognome;
             if(calciatore.nome == null) nomeCognome = `${calciatore.cognome}`;
