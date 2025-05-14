@@ -4,9 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Regole di gioco</title>
+
+    <link href="COMMON_stile/common.css" rel="stylesheet" type="text/css">
+    <link href="COMMON_stile/intestazioni.css" rel="stylesheet" type="text/css">
+    <link href="stile_regole/stile_regole.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <h1>Pagina per la visualizzazione delle regole</h1>
-    <h3>TO-DO</h3>
+    
+    
+    <div class="intestazione">
+        <div class="title-container">
+            <button class="menu-button"></button>
+            <h1 class="title">REGOLE</h1>
+        </div>
+    </div>
+
+    <div class = "containerRegole">
+        <div class = "regoleImgDx">
+            <ul class = listaRegole>
+                <li class = "titoloLista">REGOLE DI GIOCO</li>
+                <li>Assegna dei calciatori alle tue pedine tramite un draft (manuale o randomico)</li>
+                <li>I pedoni non possono muoversi di due caselle!</li>
+                <li>Non esistono mosse speciali, come l'en-passant o l'arrocco</li>
+                <li>La scacchiera è 6x6, avrai a disposizione un solo cavallo e un solo alfiere</li>
+                <li>Le pedine potranno mangiare quelle avversarie solo se 'migliori' di esse in una determinata statistica dei calciatori associati</li>
+                <li>Le statistiche che permettono di prendere un pezzo nemico variano di turno in turno</li>
+                <li>Il re può muoversi sotto scacco e non deve essere per forza difeso se attaccato</li>
+                <li>Non esiste il pareggio! Anche in situazioni re contro re, uno dei due dovrà mangiare l'altro</li>
+            </ul>
+            <img src = "images/scacchi_2.png">
+        </div>
+
+        <div class = "regoleImgSx">
+            <img src = "images/real_madrid.png">
+            <ul class = listaRegole>
+                <li class = "titoloLista">REGOLE MERCATO E ROSA</li>
+                <li>Ogni calciatore può essere acquistato dal mercato trasferimenti, e può essere posseduto solo da un utente</li>
+                <li>Ogni utente ha a disposizione 100 crediti iniziali, che potrà utilizzare per comprare nuovi calciatori</li>
+                <li>Ogni volta che una partita termina, il vincitore riceve 20 crediti</li>
+                <li>Se un utente possiede dei calciatori della sua rosa, egli ha la garanzia che quei determinati giocatori compariranno durante il suo draft</li>
+            </ul>
+        </div>
+    </div>
+
+
+
 </body>
 </html>
