@@ -116,7 +116,7 @@ function startGame() {
     aggiornaStatoPedine();
 
     // Reset dei timer e avvio
-    resetTimer();
+    resetTimers();
     startTimer();
 }
 
@@ -135,7 +135,6 @@ function endGame(){
 
     window.gameStarted = false;
     freezeTimer();
-    resetTimers();
     cambioTurno();
     
     resetSottoscacco();
@@ -197,7 +196,7 @@ async function restartDraft(){
 
     disabilitaPedine();
     resetPedine();  //riposiziono le pedine nelle posizioni iniziali
-    resetTimer();  //resetto il timer
+    resetTimers();  //resetto il timer
 
     document.querySelector(".game-container").classList.remove('game-not-started');
     
