@@ -305,7 +305,8 @@ async function populateDraft(colore) {
                 const li4_info = document.createElement('li');
 
                 //approfondimento statistiche sul click
-                div_info.addEventListener('click', () => display_statistiche_draft(player));
+                if (colore === 'bianco') div_info.addEventListener('click', () => display_statistiche_draftSX(player));
+                else div_info.addEventListener('click', () => display_statistiche_draftDX(player));
 
                 setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
 
@@ -455,21 +456,48 @@ function populateRandom(colore) {
     }
 }
 
-function display_statistiche_draft(calciatore){
+function display_statistiche_draftSX(calciatore){
     const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player'].includes(key));
 
-    let listaHTML = '<ul>';
+    let listaHTML = ''; 
     for (const key of keys) {
         if (key != 'img_url')
-            listaHTML += `<li><strong>${KeyConverter(key)}</strong>:  ${calciatore[key]}</li>`;
+            listaHTML += `<p style="font-size: 0.6em;"><strong>${KeyConverter(key)}</strong>:  ${calciatore[key]}</p>`; 
     }
-    listaHTML += '</ul>';
 
     // Visualizzazione con Swal
     Swal.fire({
+        position: 'center-start',
         title: 'Dettagli Calciatore',
         html: listaHTML,
         width: 300,
-        confirmButtonText: 'Chiudi'
+        confirmButtonText: 'Chiudi',
+        didOpen: () => {
+            const popup = Swal.getPopup();
+            popup.style.marginLeft = '230px';  
+        } 
+    });
+}
+
+function display_statistiche_draftDX(calciatore){
+    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player'].includes(key));
+
+    let listaHTML = ''; 
+    for (const key of keys) {
+        if (key != 'img_url')
+            listaHTML += `<p style="font-size: 0.6em;"><strong>${KeyConverter(key)}</strong>:  ${calciatore[key]}</p>`; 
+    }
+
+    // Visualizzazione con Swal
+    Swal.fire({
+        position: 'center-end',
+        title: '', 
+        html: listaHTML,
+        width: 300,
+        confirmButtonText: 'Chiudi',
+        didOpen: () => {
+            const popup = Swal.getPopup();
+            popup.style.marginRight = '230px';  
+        }
     });
 }

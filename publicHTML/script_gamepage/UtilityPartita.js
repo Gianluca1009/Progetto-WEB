@@ -180,3 +180,17 @@ function launchEndgameSwal(){
         }
     });
 }
+
+async function aggiornaPunti(userid, new_punti) {
+  try {
+    const response = await fetch('/update_punti', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userid, new_punti })
+    });
+  } catch (error) {
+    console.error('Errore durante l\'aggiornamento dei punti:', error);
+  }
+}
