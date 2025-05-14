@@ -1,7 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("logoutbutton").classList.add("hidden");
     document.getElementById("playerusername").classList.add("hidden");
-    BuildMercato();
+
+    BuildMercato("");
+    // console.log("STO buildando il mercato");
+
+
+    document.getElementById("searchForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        //Ottengo l'input del form
+        const inputRicerca = document.querySelector("input[name='nome']").value;
+        BuildMercato(inputRicerca);
+    })
 
     //se la sessione è ancora aperta, non serve fare login o registrazioni, mostro pulsante logout e username
     if(LS_getUserMercatoData()[1] != null){
@@ -12,3 +22,4 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("loginbutton").classList.add("hidden");
     }
 })
+

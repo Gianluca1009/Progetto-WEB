@@ -33,15 +33,7 @@ function BuildRowForCalciatore(calciatore){
     img.src = calciatore.url_foto;
     img.className = 'foto_calciatore';
 
-    // const img_graff = document.createElement('img');
-    // img_graff.src = "images/graffetta.png";
-    // img_graff.style.position = "absolute";
-    // img_graff.style.width = "20%";
-    // img_graff.style.aspectRatio = "1/1";
-    // img_graff.style.top = "0";
-    // img_graff.style.left = "0";
     campoFoto.appendChild(img);
-    // campoFoto.appendChild(img_graff);
 
     //creo il campo info nella riga
 
@@ -124,16 +116,44 @@ function BuildRowForCalciatore(calciatore){
     makeVisible(row);
 }
 
+function deleteRows() {
+    const container = document.getElementById("finestramercato");
+
+    container.querySelectorAll('.riga_finestra').forEach(riga_calc => {
+        riga_calc.remove();
+    });
+}
+
+
 //Funzione per costruire la rosa
-async function BuildMercato(){
-    results = await fetchCalciatoriLiberi();
+async function BuildMercato(stringaDiRicerca){
+    const results = await fetchCalciatoriLiberi();
+    deleteRows();
     let i = 0;
 
+    const ricerca = (stringaDiRicerca || "").toLowerCase();
+
     function processNext() {
-        if (i < results.length) {
-            BuildRowForCalciatore(results[i]);
+        // if (i < results.length) {
+        if (i < 3) {
+            const calciatore = results[i]
+            let nomeCognome;
+            if(calciatore.nome == null) nomeCognome = `${calciatore.cognome}`;
+            else nomeCognome = `${calciatore.nome} ${calciatore.cognome}`;
+            nomeCognome = nomeCognome.toLowerCase();
             i++;
-            setTimeout(processNext, 50); // dà respiro al browser
+            if(ricerca) {
+                // console.log("ricerca != null and ''", ricerca)
+                if(nomeCognome.includes(ricerca)) {
+                    BuildRowForCalciatore(calciatore);
+                }
+            }
+            else {
+                // console.log("stringaDiRicerca === ", stringaDiRicerca)
+                BuildRowForCalciatore(calciatore);
+            }
+
+            setTimeout(processNext, 50);
         }
     }
 
