@@ -121,3 +121,17 @@
     border-radius: 10px;
     padding-bottom: 30%;
 }
+
+.freccia-sinistra{
+    position: absolute;
+    top: 48%;
+    right: 0;
+    width: 3%;
+}
+
+.freccia-destra{
+    position: absolute;
+    top: 48%;
+    left: 0;
+    width: 3%;
+}

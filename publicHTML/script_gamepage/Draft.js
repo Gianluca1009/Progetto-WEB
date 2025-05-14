@@ -483,6 +483,9 @@ function display_statistiche_draftSX(calciatore, div_info){
 
     const divStatistiche = document.createElement('div');
     divStatistiche.classList.add('statistiche-draft');
+    const freccia = document.createElement('img');
+    freccia.src = "images/frecciadestra.png";
+    freccia.classList.add('freccia-destra');
     const listaStatistiche = document.createElement('ul');
     for (const key of keys) {
             const li = document.createElement('li');
@@ -490,6 +493,7 @@ function display_statistiche_draftSX(calciatore, div_info){
             listaStatistiche.appendChild(li);
     }
 
+    divStatistiche.appendChild(freccia);
     divStatistiche.appendChild(listaStatistiche);
     div_info.parentElement.appendChild(divStatistiche);
     setPositionRelativeToDiv(div_info, divStatistiche, 'right', 52);
@@ -514,6 +518,9 @@ function display_statistiche_draftDX(calciatore, div_info){
 
     const divStatistiche = document.createElement('div');
     divStatistiche.classList.add('statistiche-draft');
+    const freccia = document.createElement('img');
+    freccia.src = "images/frecciasinistra.png";
+    freccia.classList.add('freccia-sinistra');
     const listaStatistiche = document.createElement('ul');
     for (const key of keys) {
             const li = document.createElement('li');
@@ -521,6 +528,7 @@ function display_statistiche_draftDX(calciatore, div_info){
             listaStatistiche.appendChild(li);
     }
 
+    divStatistiche.appendChild(freccia);
     divStatistiche.appendChild(listaStatistiche);
     div_info.parentElement.appendChild(divStatistiche);
     setPositionRelativeToDiv(div_info, divStatistiche, 'left', 119);
