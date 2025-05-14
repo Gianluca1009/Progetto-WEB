@@ -13,7 +13,7 @@ window.onload = function() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    handleHamburgerMenu(); // Funzione per gestire il menu hamburger
+    setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger
 
     //mostra logout se l'utente è già loggato
     if(LS_getUser1Game()[0] != null && LS_getUser2Game()[0] != null){

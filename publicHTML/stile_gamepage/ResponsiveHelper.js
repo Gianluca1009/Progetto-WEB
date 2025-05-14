@@ -48,6 +48,7 @@ function misuraInfoDraftCell() {
 
 
 
+
 function setSoccerPlayerNameFontSize() {
     const nomiGiocatori = document.querySelectorAll('.nome-giocatore');
     const dimensioniCella = misuraDimensioniCelle().width;
@@ -79,5 +80,19 @@ function setSoccerPlayerInfoFontSize(){
         // Imposta la grandezza del font in base alla dimensione della cella
         element.style.fontSize = dimensioniInfoDraftCell * 0.09 + 'px';
     }
+}
+
+function setHamburgerLunghezza(){
+    const altezzaPagina = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.clientHeight,
+        document.documentElement.clientHeight
+    );
+
+    const hamburger = document.querySelector('.hamburger');
+    hamburger.style.height = `${altezzaPagina}px`;
 }
 

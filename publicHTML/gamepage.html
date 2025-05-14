@@ -9,7 +9,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <!-- LINK STILI -->
-    <link href="stile_gamepage/barra_superiore.css" rel="stylesheet" type="text/css">
     <link href="stile_gamepage/bottoni.css" rel="stylesheet" type="text/css">
     <link href="stile_gamepage/condizione.css" rel="stylesheet" type="text/css">
     <link href="stile_gamepage/main.css" rel="stylesheet" type="text/css">
@@ -31,7 +30,7 @@
     <!-- TITOLO PAGINA -->
     <title>Soc-c-hess</title>
 </head>
-<body>
+<body style="height: 130vh;">
 
     <script src="script_gamepage/UtilityGrafica.js"></script>
     <script src="script_gamepage/UtilityPartita.js"></script>
@@ -55,10 +54,10 @@
     </div>
 
     <!-- BARRA SUPERIORE -->
-    <div class="intestazione-gamepage">
+    <div class="intestazione" style="position: absolute;">
         
-        <div class="title-container-gamepage">
-            <button class="menu-button"></button>
+        <div class="title-container">
+            <button class="menu-button" data-aperto="false" onclick="handleHamburgerMenu()"></button>
             <h1 class="title" onclick="window.location.reload()">SOC-C-HESS</h1>
             <div class="container-bottoni-login">
                 <button class="btn-login" id="loginbutton" onclick="openLogPopup()">

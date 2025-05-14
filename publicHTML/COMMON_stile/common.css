@@ -7,6 +7,7 @@
 
     /* COLORI UTILIZZATI */
     --background-sfumato-violaceo: linear-gradient(to right ,#1b014e,#4a01de);
+    --background-menu: linear-gradient(to right ,#1b014e,#221167);
     --color-verde: rgb(116, 172, 116);
     --color-crema: #dcc59c;
 }
@@ -28,7 +29,7 @@ body {
     overscroll-behavior: none;
     margin: 0;
     padding: 0;
-    min-width: 100vw;
+    width: 100vw;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -106,7 +107,7 @@ button:active .button_top {
 
 /* OMBRE COMUNI */
 
-.game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .riga_draft, .menu-button, .riga_finestra, .statistiche-draft{
+.game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .riga_draft, .menu-button, .riga_finestra, .statistiche-draft, .hamburger{
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 

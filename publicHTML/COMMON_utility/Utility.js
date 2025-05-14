@@ -69,10 +69,18 @@ function KeyConverter(key){
 //Funzione per far funzionare il menu
 function handleHamburgerMenu() {
     const hamburger = document.querySelector('.hamburger');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-    });
+    if(hamburger.dataset.aperto == "false"){
+        hamburger.style.left = "-20vw";
+        hamburger.style.transition = "left 0.4s ease-in-out";
+        hamburger.dataset.aperto = "true";
+    }
+    else{
+        hamburger.style.left = "0px";
+        hamburger.style.transition = "left 0.4s ease-in-out";
+        hamburger.dataset.aperto = "false";
+    }
+    
+    
 }
 
 // Funzione per far apparire div in posizione desiderata rispetto a un altro div
