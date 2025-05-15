@@ -131,6 +131,7 @@ function endGame(){
 
     //incrementa punti del vincitore
     aggiornaPunti(id_vincitore, new_punti);
+    LS_update_all_prezzo(id_vincitore, new_punti);
     update_LS_winner(id_vincitore, vincitore, new_punti);
 
     window.gameStarted = false;
