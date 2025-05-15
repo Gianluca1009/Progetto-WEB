@@ -57,11 +57,37 @@
 .hamburger{
     z-index: 10000;
     position: absolute;
-    top: 0;
+    display: flex;
+    align-content: center;
+    top: 20vh;
     left: -22vw;
     width: 20vw;
     height: 100vh;
     background: var(--background-menu);
     transition: translate 0.5s ease;
     border-right: 0.4vw solid black;
+}
+
+.hamburger-content{
+    position: absolute;
+    top: 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+}
+
+.menu-item{
+    font-size: calc(1vh + 2vw);
+    font-weight: bold;
+    color: var(--color-crema);
+    text-decoration: none;
+    text-align: center;
+    background: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
+    cursor: pointer;
 }
