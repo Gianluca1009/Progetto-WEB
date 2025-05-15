@@ -234,6 +234,7 @@ async function populateDraft(colore) {
     try {
 
         if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length < 3)) {
+            setSoccerPlayerNameFontSize();
             makeHidden(document.getElementById('draft_table_dx'));
             makeHidden(document.getElementById('random2'));
             makeVisible(document.getElementById('player2button'));
@@ -241,6 +242,7 @@ async function populateDraft(colore) {
         }
 
         else if (colore=="bianco" && (!array_calciatori_partita_bianchi || array_calciatori_partita_bianchi.length < 3)) {
+            setSoccerPlayerNameFontSize();
             makeHidden(document.getElementById('draft_table_sx'));
             makeHidden(document.getElementById('random1'));
             makeVisible(document.getElementById('player1button'));
@@ -328,6 +330,7 @@ async function populateDraft(colore) {
                 ul_info.style.padding = "0"; // Rimuovi il padding della lista
                 ul_info.style.margin = "0"; // Rimuovi i punti elenco
                 li1_info.style.fontWeight = "bold"; // Imposta il testo in grassetto
+                li1_info.style.fontFamily = "'Georgia', serif"; // Imposta la dimensione del font
                 li4_info.style.fontStyle = "italic"; // Imposta il testo in corsivo
 
                 if (player.nome != null){
@@ -479,7 +482,7 @@ function display_statistiche_draftSX(calciatore, div_info){
     }
 
 
-    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player'].includes(key));
+    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player', 'data_nascita', 'squadra', 'ruolo'].includes(key));
 
     const divStatistiche = document.createElement('div');
     divStatistiche.classList.add('statistiche-draft');
@@ -496,7 +499,7 @@ function display_statistiche_draftSX(calciatore, div_info){
     divStatistiche.appendChild(freccia);
     divStatistiche.appendChild(listaStatistiche);
     div_info.parentElement.appendChild(divStatistiche);
-    setPositionRelativeToDiv(div_info, divStatistiche, 'right', 52);
+    setPositionRelativeToDiv(div_info, divStatistiche, 'right', 42);
 
     document.addEventListener('click', () => {
         document.querySelectorAll('.statistiche-draft').forEach(div => {
@@ -514,7 +517,7 @@ function display_statistiche_draftDX(calciatore, div_info){
     }
 
 
-    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player'].includes(key));
+    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player', 'data_nascita', 'squadra', 'ruolo'].includes(key));
 
     const divStatistiche = document.createElement('div');
     divStatistiche.classList.add('statistiche-draft');
@@ -524,14 +527,14 @@ function display_statistiche_draftDX(calciatore, div_info){
     const listaStatistiche = document.createElement('ul');
     for (const key of keys) {
             const li = document.createElement('li');
-            li.textContent = `${KeyConverter(key)}: ${calciatore[key]}`;
+            li.innerHTML = `<strong> ${KeyConverter(key)}</strong>:  ${calciatore[key]}`;
             listaStatistiche.appendChild(li);
     }
 
     divStatistiche.appendChild(freccia);
     divStatistiche.appendChild(listaStatistiche);
     div_info.parentElement.appendChild(divStatistiche);
-    setPositionRelativeToDiv(div_info, divStatistiche, 'left', 119);
+    setPositionRelativeToDiv(div_info, divStatistiche, 'left', 91);
 
     document.addEventListener('click', () => {
         document.querySelectorAll('.statistiche-draft').forEach(div => {

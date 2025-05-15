@@ -171,6 +171,8 @@ function endGame(){
 // Funzione per cambiare il draft
 async function restartDraft(){
     
+    scrollToGameContainer();
+    
     //ELEMENTI DA MOSTRARE (sezioni, switch)
     makeVisible(document.querySelector('.sezione_dx'));
     makeVisible(document.querySelector('.sezione_sx'));

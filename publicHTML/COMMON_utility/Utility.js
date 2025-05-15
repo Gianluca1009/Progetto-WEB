@@ -3,7 +3,7 @@
 //
 
 //Funzione per far vedere un elemento con animazione
-function makeVisible(element) {
+function makeVisible(element, velocita = 1) {
     if (!element) return;
 
     // Rimuovi la classe hidden se presente
@@ -24,12 +24,12 @@ function makeVisible(element) {
     element.offsetHeight;
 
     // Anima l'opacità
-    element.style.transition = 'opacity 1s ease';
+    element.style.transition = `opacity ${velocita}s ease`;
     element.style.opacity = '1';
 }
 
 // Funzione per nascondere un elemento con animazione
-function makeHidden(element) {
+function makeHidden(element, velocita = 1) {
     if (!element) return;
 
     // Salva lo stile di display originale se non è già stato salvato
@@ -38,7 +38,7 @@ function makeHidden(element) {
     }
 
     // Anima l'opacità
-    element.style.transition = 'opacity 1s ease';
+    element.style.transition = `opacity ${velocita}s ease`;
     element.style.opacity = '0';
 
     // Dopo l'animazione, imposta display a none
@@ -67,9 +67,20 @@ function KeyConverter(key){
 }
 
 //Funzione per far funzionare il menu
-function handleHamburgerMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    if(hamburger.dataset.aperto == "false"){
+function handleHamburgerMenu(pagina) {
+    let hamburger;
+    if (pagina === "mercato") {
+        hamburger = document.getElementById("menu-mercato");
+    }
+    else if (pagina === "rosa") {
+        hamburger = document.getElementById("menu-rosa");
+    }
+    else if (pagina === "gamepage") {
+        hamburger = document.getElementById("menu-gamepage");
+    }
+    else console.log("pagina non valida");
+
+    if(hamburger.dataset.aperto === "false"){
         hamburger.style.left = "-20vw";
         hamburger.style.transition = "left 0.4s ease-in-out";
         hamburger.dataset.aperto = "true";
@@ -108,4 +119,28 @@ function setPositionRelativeToDiv(targetElement, floatingElement, side = 'right'
     floatingElement.style.left = `${relativeLeft}%`;
     floatingElement.style.top = `${relativeTop}%`;
     floatingElement.style.transform = 'translateY(-50%)';
+}
+
+// Funzione per andare al gioco
+function goToGame() {
+    window.location.reload();
+    window.location.href = "gamepage.html";
+}
+
+// Funzione per andare alla rosa
+function goToRosa() {
+    window.location.reload();
+    window.location.href = "rosa.html";
+}
+
+// Funzione per andare al mercato
+function goToMercato() {
+    window.location.reload();
+    window.location.href = "mercato.html";
+}
+
+// Funzione per andare alla home
+function goToHome() {
+    window.location.reload();
+    window.location.href = "index.html";
 }

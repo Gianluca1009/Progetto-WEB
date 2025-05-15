@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    handleHamburgerMenu();
+
     document.getElementById("logoutbutton").classList.add("hidden");
     document.getElementById("playerusername").classList.add("hidden");
 

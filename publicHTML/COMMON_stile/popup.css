@@ -1,0 +1,25 @@
+.no-title-padding .swal2-title {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.no-title-padding.swal2-popup {
+    padding: 0 !important;
+}
+
+.log-mangiata{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 25%;    
+    background-color: rgb(255, 255, 255);
+    z-index: 9999;
+    border-radius: 10px;
+    border: 0.1vw solid black;
+}

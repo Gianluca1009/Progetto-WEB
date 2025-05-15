@@ -115,8 +115,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 40vh;
+    width: 70%;
+    height: 33vh;
     border: 2px solid black;
     border-radius: 10px;
     padding-bottom: 30%;
@@ -134,4 +134,8 @@
     top: 48%;
     left: 0;
     width: 3%;
+}
+
+li{
+    font-family: 'Patrick Hand', cursive;
 }

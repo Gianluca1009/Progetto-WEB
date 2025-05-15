@@ -67,22 +67,45 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
             return true;
         }else{
-            Swal.fire({
-            title: 'Errore',
-            text: 'La pedina avversaria ha respinto l\'attacco!',
-            icon: 'error',
-            showConfirmButton: false,
-            width: '20vw',
-            timer: 1000,
-            customClass: {
-                htmlContainer: 'swal-text',
-                title: 'swal-title',
-            },
-            });
+
+            // messaggio di errore
+
+            // Swal.fire({
+            // title: 'Errore',
+            // text: 'La pedina avversaria ha respinto l\'attacco!',
+            // icon: 'error',
+            // showConfirmButton: false,
+            // width: '20vw',
+            // timer: 1000,
+            // customClass: {
+            //     htmlContainer: 'swal-text',
+            //     title: 'swal-title',
+            // },
+            // });
+
+            const LogPopup = document.createElement('div');
+            LogPopup.classList.add('log-mangiata');
+            LogPopup.classList.add('hidden');
+
+            const logText = document.createElement('p');
+            nomeDifensore = pedinaBersaglio.children[1].textContent;
+            logText.innerHTML = `${nomeDifensore}<br>ha respinto l'attacco!`;
+            logText.style.display = 'flex';
+            logText.style.justifyContent = 'center';
+            logText.style.fontSize = 'calc(0.8vw + 0.5vh)';
+            LogPopup.appendChild(logText);
+
+            document.querySelector('.grid-container').appendChild(LogPopup);
+             
+            //gestisco visibilita elemento
+            makeVisible(LogPopup,0.3);
+            setTimeout(() => {
+                makeHidden(LogPopup,0.6);
+                setTimeout(() => {
+                    LogPopup.remove();
+                }, 500);
+            }, 1200);
             return false;
         }
-    }
-
-    // Sposto la pedina selezionata nella cella di destinazione
-    
+    }    
 }

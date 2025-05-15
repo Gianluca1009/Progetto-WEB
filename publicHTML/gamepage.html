@@ -22,8 +22,11 @@
     <link href="stile_gamepage/punteggio.css" rel="stylesheet" type="text/css">
     <link href="COMMON_stile/common.css" rel="stylesheet" type="text/css">
     <link href="COMMON_stile/bottoni-login.css" rel="stylesheet" type="text/css">
-    <link href="COMMON_stile/swal.css" rel="stylesheet" type="text/css">
+    <link href="COMMON_stile/popup.css" rel="stylesheet" type="text/css">
     <link href="COMMON_stile/intestazioni.css" rel="stylesheet" type="text/css">
+
+   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
 
     <link rel="icon" href="./images/santini/dusan_vlahovic.webp" type="image/png">
 
@@ -49,11 +52,11 @@
     <script src="stile_gamepage/ResponsiveHelper.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <div class="hamburger" id="menulaterale">
+    <div class="hamburger" id="menu-gamepage">
         <div class="hamburger-content">
-            <div class="menu-item" id="item1" onclick="window.location.href='index.html'">HOME</div>
-            <div class="menu-item" id="item2" onclick="window.location.href='mercato.html'">MERCATO</div>
-            <div class="menu-item" id="item3" onclick="window.location.href='rosa.html'">ROSA</div>
+            <div class="menu-item" id="item1" onclick="goToHome()">HOME</div>
+            <div class="menu-item" id="item2" onclick="goToMercato()">MERCATO</div>
+            <div class="menu-item" id="item3" onclick="goToRosa()">ROSA</div>
         </div>
     </div>
 
@@ -61,7 +64,7 @@
     <div class="intestazione" style="position: absolute;">
         
         <div class="title-container">
-            <button class="menu-button" data-aperto="false" onclick="handleHamburgerMenu()"></button>
+            <button class="menu-button" data-aperto="false" onclick="handleHamburgerMenu('gamepage')"></button>
             <h1 class="title" onclick="window.location.reload()">SOC-C-HESS</h1>
             <div class="container-bottoni-login">
                 <button class="btn-login" id="loginbutton" onclick="openLogPopup()">
