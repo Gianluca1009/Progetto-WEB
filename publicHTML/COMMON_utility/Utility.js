@@ -122,25 +122,37 @@ function setPositionRelativeToDiv(targetElement, floatingElement, side = 'right'
 }
 
 // Funzione per andare al gioco
-function goToGame() {
-    window.location.reload();
+function goToGame(source) {
+    if(source === "gamepage"){
+        window.location.reload();
+    }
     window.location.href = "gamepage.html";
+    handleHamburgerMenu(source);
 }
 
 // Funzione per andare alla rosa
-function goToRosa() {
-    window.location.reload();
+function goToRosa(source) {
+    if(source === "gamepage"){
+        window.location.reload();
+    }
     window.location.href = "rosa.html";
+    handleHamburgerMenu(source);
 }
 
 // Funzione per andare al mercato
-function goToMercato() {
-    window.location.reload();
+function goToMercato(source) {
+    if(source === "gamepage"){
+        window.location.reload();
+    }
     window.location.href = "mercato.html";
+    handleHamburgerMenu(source);
 }
 
 // Funzione per andare alla home
-function goToHome() {
-    window.location.reload();
+function goToHome(source) {
+    if(source === "gamepage"){
+        window.location.reload();
+    }
     window.location.href = "index.html";
+    handleHamburgerMenu(source);
 }
