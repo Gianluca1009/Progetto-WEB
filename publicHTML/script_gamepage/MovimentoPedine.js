@@ -12,6 +12,9 @@ function ListenerMovimentoPedine(){
         pedina.addEventListener("click", function(event) {
             event.stopPropagation();
 
+         
+            resetSuggerimenti();
+
             // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
             if (window.selectedImage === event.target) {
                 resetHighlighted();
@@ -46,17 +49,25 @@ function ListenerMovimentoPedine(){
     document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
         cell.addEventListener("click", function(event) {
             if (window.selectedElement && this.tagName === "TD") {
+
+                resetSuggerimenti();
+
                 let pedinaAvanza = true;
                 let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
 
                 //controlla che la mossia sia valida per le regole
                 if (validationMove(window.selectedImage, this)) {
+                    
+                    resetSuggerimenti();
 
                     //se la cella è libera
                     if (!pedinaBersaglio){
                         avanza(this); //SPOSTAMENTO PEDINA
                         playSound("mossa", 0.5);
-                        cambioTurno();
+                        let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
+                        if (!isPedonePromosso) cambioTurno();
+                        
+            
                     }
 
                     //se c'è un bersaglio
@@ -83,7 +94,9 @@ function ListenerMovimentoPedine(){
                             //se ho mangiato un pezzo avversario diverso dal re
                             else{
                                 let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
-                                if (!isPedonePromosso) cambioTurno();   //cambia turno solo se non c'è promozione del pedone in corso
+                                if (!isPedonePromosso) cambioTurno();   //cambia turno solo se non c'è promozione del pedone in corso perchè update già fa promo
+                        
+                                
                             }
                         }
                         

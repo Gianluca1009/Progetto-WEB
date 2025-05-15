@@ -58,10 +58,11 @@ function highlight_re_if_sottoscacco(){
         //se dal turno bianco metto in scacco il re, il re è nero
         } 
         else{
-            window.cellaReBianco.classList.add('sottoscacco')
-        }
+            window.cellaReBianco.classList.add('sottoscacco');
+        }  
     }
-    if(!check_reAvversario_sottoscacco()){
+    else{
+        console.log('reset sottos');
         resetSottoscacco();
     }
     //check se metto o tolgo il MIO re sottoscacco quando muovo
@@ -73,7 +74,8 @@ function highlight_re_if_sottoscacco(){
             window.cellaReBianco.classList.add('sottoscacco');
         }
     }
-    if(!check_mio_re_sottoscacco()){
+    else{
+        console.log('reset sottos');
         resetSottoscacco();
     }
     // NOTA:  PULIZIA DELLA CELLA SOTTOSCACCO IN UPDATE_RE_POSITION

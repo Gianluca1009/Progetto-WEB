@@ -89,10 +89,11 @@ function upgrade_pedone(img_pedina, cella_dest){
     //nero arriva al fondo scacchiera
     if(div_pedina.id == "P" ){
         if(current_row == 5){
+            console.log('promozione nero ok!')
             // Crea il div di promozione dinamicamente
             createPromotionDiv();
             // Posiziona il div
-            setDivPosition(cella_dest);
+            setPositionRelativeToDiv(cella_dest, divPromotion, 'right', 1);
             makeVisible(divPromotion);
             disabilitaPedine(); // Disabilita tutte le pedine quando divPromotion diventa visibile
             ListenerPromozione(div_pedina, img_pedina, false); // Passa false perché è un pedone nero
