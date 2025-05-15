@@ -115,6 +115,29 @@ function BuildRowForCalciatore(calciatore){
 
     //Aggiungo tutto
 
+       //creo il bottone vendi
+
+    const bottone = document.createElement('button');
+    const spanbottone = document.createElement('span');
+    spanbottone.textContent = 'Vendi';
+    spanbottone.className = 'button_top';
+    spanbottone.style.position = 'absolute';
+    spanbottone.style.right = "5%";
+    bottone.style.position = 'absolute';
+    bottone.style.right = "5%";
+    bottone.style.height = "30%";
+    bottone.style.top = "50%";
+    //log da vendita
+    bottone.onclick = async () => {
+        try {
+            await ListVendi(calciatore,bottone);
+        } catch (error) {
+            console.error('Errore durante la vendita:', error);
+        }
+    };
+    bottone.appendChild(spanbottone);
+    row.appendChild(bottone);
+
     row.classList.add("fade-hidden");
     document.getElementById('finestrarosa').appendChild(row);
     makeVisible(row);

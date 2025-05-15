@@ -107,6 +107,7 @@ function ListenerMovimentoPedine(){
                 }
 
                 // Resetta la selezione e l'evidenziazione
+                highlight_re_if_sottoscacco();
                 resetHighlighted();
                 resetSelezione();   
             }

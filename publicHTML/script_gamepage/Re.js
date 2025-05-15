@@ -47,6 +47,15 @@ function resetSottoscacco (){
     }
 }
 
+function resetSottoscaccoAvversaro (){
+    //se il re avv non è sottoscacco decoloro la cella
+    if (!window.turnoBianco){
+        window.cellaReBianco.classList.remove("sottoscacco");
+    }else{  
+        window.cellaReNero.classList.remove("sottoscacco");
+    }
+}
+
 //Funzione che evidenzia il re se è sottoscacco
 function highlight_re_if_sottoscacco(){ 
     //chech se metto re avversario sottoscacco quando muovo
@@ -62,8 +71,7 @@ function highlight_re_if_sottoscacco(){
         }  
     }
     else{
-        console.log('reset sottos');
-        resetSottoscacco();
+        resetSottoscaccoAvversaro();
     }
     //check se metto o tolgo il MIO re sottoscacco quando muovo
     if(check_mio_re_sottoscacco()){ //il mio re è sottoscacco con la mia mossa = ho perso
@@ -75,7 +83,6 @@ function highlight_re_if_sottoscacco(){
         }
     }
     else{
-        console.log('reset sottos');
         resetSottoscacco();
     }
     // NOTA:  PULIZIA DELLA CELLA SOTTOSCACCO IN UPDATE_RE_POSITION

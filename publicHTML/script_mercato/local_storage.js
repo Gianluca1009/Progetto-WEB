@@ -21,3 +21,9 @@ function LS_getUserMercatoData() {
 
     return [ userId, name, point ];
   }
+
+function LSM_agg_LSRprezzo ( new_prezzo){
+  if( localStorage.getItem('rose_userId') === localStorage.getItem('mercato_userId')){
+    localStorage.setItem('rose_user_point', new_prezzo);
+  }
+}

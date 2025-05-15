@@ -16,6 +16,7 @@ function ListAcquista(calciatore, bottone){
             //query scala i crediti e update db
             aggiornaPunti(id, miei_punti);
             localStorage.setItem('mercato_user_point', miei_punti);
+            LSM_agg_LSRprezzo(miei_punti);
             // disabilita il pulsanete acquista perchè è già comprato
             bottone.hidden = true;
             //pop up acquisto effettuato

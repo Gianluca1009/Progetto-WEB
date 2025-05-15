@@ -22,3 +22,18 @@ function LS_get_usernamePlayerRose(){
     const name = localStorage.getItem('rose_username');
     return name;
 }
+
+function LS_get_puntiPlayerRose(){
+  let punti = localStorage.getItem('rose_user_point');
+  return punti;
+}
+
+function LS_set_puntiRosa(point){
+  localStorage.setItem('rose_user_point', point);
+}
+
+function LSR_agg_LSMprezzo ( new_prezzo){
+  if( localStorage.getItem('rose_userId') === localStorage.getItem('mercato_userId')){
+    localStorage.setItem('mercato_user_point', new_prezzo);
+  }
+}
