@@ -51,12 +51,22 @@
 
     </div>
 
-    <form class = "barra-ricerca" id="searchForm">
+    <div class = "ricerca">
+
+        <select class = "tendina-ruolo" id = "tendinaRuolo" name = "tendina">
+            <option value = "qualsiasi">Seleziona Ruolo</option>
+            <option value = "attaccante">Attaccante</option>
+            <option value = "centrocampista">Centrocampista</option>
+            <option value = "difensore">Difensore</option>
+        </select>
+
+        <form class = "barra-ricerca" id="searchForm">
         <input type = "text" name = "nome" placeholder = "Cerca giocatore">
         <button class="btn-cerca" id="cerca-button">
                 <span class="button_top login"> Cerca </span>
         </button>
     </form>
+    </div>
 
     <div class="container-mercato" id="finestramercato">
         

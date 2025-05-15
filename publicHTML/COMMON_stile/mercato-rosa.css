@@ -74,6 +74,16 @@ body{
     left: 30%;
 }
 
+.no-result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 80%;
+    height:100%;
+}
+
 .informazioni{
     display: flex;
     flex-direction: row;

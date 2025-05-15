@@ -1,5 +1,4 @@
 .barra-ricerca {
-    margin-top: 24vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +15,7 @@
 }
 
 .barra-ricerca input[type="text"] {
-    flex-grow: 1;
+    flex-grow: 0.8;
     padding: 1vh 1vw;
     border: none;
     border-radius: 0.75rem;
@@ -32,26 +31,30 @@
     color: #555;
     opacity: 0.7;
 }
-/* 
-.barra-ricerca button {
-    height: 100%;
-    padding: 0.5vh 1.5vw;
-    border: none;
+
+.btn-cerca {
+    flex-grow: 0.2;
+    height: 5.5vh;
+}
+
+.ricerca {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5vw; 
+    margin-left: 11vw;
+    margin-top: 24vh;
+    width: 80%;
+    height: 10vh;
+}
+
+.tendina-ruolo {
+    padding: 1vh 1vw;
+    height: 8.5vh;
     border-radius: 0.75rem;
-    font-size: calc(0.9vh + 0.9vw);
+    border: 2px solid var(--color-crema);
+    background-color: rgba(255, 255, 255, 0.85);
     font-family: 'Georgia', serif;
-    background-color: var(--color-crema);
-    color: black;
-    cursor: pointer;
-    box-shadow: 0 0 0.5rem rgba(222, 184, 135, 0.6);
-    transition: background-color 0.3s, transform 0.2s;
+    font-size: calc(1vh + 1vw);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
-
-.barra-ricerca button:hover {
-    background-color: rgba(222, 184, 135, 0.8);
-    transform: scale(1.05);
-}
-
-.barra-ricerca button:active {
-    transform: scale(0.97);
-} */

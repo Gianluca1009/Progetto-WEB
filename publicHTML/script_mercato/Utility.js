@@ -116,43 +116,99 @@ function BuildRowForCalciatore(calciatore){
     makeVisible(row);
 }
 
+function buildRowNoResult() {
+    const row = document.createElement('div');
+    row.className = 'riga_finestra no-result';
+
+    // Campo info con messaggio
+    const campoInfo = document.createElement('div');
+    campoInfo.className = 'no-result';
+
+    const titolo = document.createElement('h2');
+    titolo.textContent = "Nessun giocatore trovato";
+    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
+    titolo.style.marginBlockEnd = '0.5em';
+    titolo.style.color = '#b22222'; // rosso scuro per enfasi
+
+    const testo = document.createElement('p');
+    testo.textContent = "Modifica i criteri di ricerca e riprova.";
+    testo.style.fontSize = 'min(1vw, 1em)';
+    testo.style.color = '#555';
+
+    campoInfo.appendChild(titolo);
+    campoInfo.appendChild(testo);
+    row.appendChild(campoInfo);
+
+    // Aggiunta alla finestra del mercato
+    row.classList.add("fade-hidden");
+    document.getElementById('finestramercato').appendChild(row);
+    makeVisible(row);
+}
+
 function deleteRows() {
     const container = document.getElementById("finestramercato");
 
-    container.querySelectorAll('.riga_finestra').forEach(riga_calc => {
+    container.querySelectorAll('.riga_finestra, .no-result').forEach(riga_calc => {
         riga_calc.remove();
     });
 }
 
 
 //Funzione per costruire la rosa
-async function BuildMercato(stringaDiRicerca){
+async function BuildMercato(inputNome, inputRuolo){
     const results = await fetchCalciatoriLiberi();
     deleteRows();
     let i = 0;
+    let numeroRighe = 0;
 
-    const ricerca = (stringaDiRicerca || "").toLowerCase();
+    const nome = (inputNome || "").toLowerCase();
+    console.log("inputRuolo = ", inputRuolo);
 
     function processNext() {
         if (i < results.length) {
             const calciatore = results[i]
+
             let nomeCognome;
             if(calciatore.nome == null) nomeCognome = `${calciatore.cognome}`;
             else nomeCognome = `${calciatore.nome} ${calciatore.cognome}`;
             nomeCognome = nomeCognome.toLowerCase();
+            let ruolo = calciatore.ruolo.toLowerCase();
+            console.log(ruolo);
             i++;
-            if(ricerca) {
-                // console.log("ricerca != null and ''", ricerca)
-                if(nomeCognome.includes(ricerca)) {
+
+            if(inputRuolo === "qualsiasi") {
+                if(nome) {
+                    if(nomeCognome.includes(nome)) {
+                        BuildRowForCalciatore(calciatore);
+                        numeroRighe++;
+                    }
+                }
+                else {
                     BuildRowForCalciatore(calciatore);
+                    numeroRighe++;
                 }
             }
             else {
-                // console.log("stringaDiRicerca === ", stringaDiRicerca)
-                BuildRowForCalciatore(calciatore);
+                if(nome) {
+                    if(nomeCognome.includes(nome) && ruolo === inputRuolo) {
+                        BuildRowForCalciatore(calciatore);
+                        numeroRighe++;
+                    }
+                }
+                else {
+                    if(ruolo === inputRuolo) {
+                        BuildRowForCalciatore(calciatore);
+                        numeroRighe++;
+                    }
+                }
             }
 
-            setTimeout(processNext, 50);
+            processNext();
+        }
+        else {
+            if (numeroRighe === 0) {
+                buildRowNoResult();
+            }
         }
     }
 
