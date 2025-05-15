@@ -26,8 +26,7 @@ async function confermaAcquisto(id_player, cognome_calciatore, nomePlayer, prezz
     // Aggiorna punti
     let new_pti = parseInt(miei_punti) + parseInt(prezzo);
     await aggiornaPunti(id_player, new_pti);
-    LS_set_puntiRosa(new_pti);
-    LSR_agg_LSMprezzo(new_pti);
+    LS_update_all_prezzo(id_player, new_pti);
 
     // Mostra conferma
     await Swal.fire(
