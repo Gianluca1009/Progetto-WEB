@@ -1,5 +1,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    const finestra_difensori = document.getElementById("finestra-difensori");
+    const finestra_centrocampisti = document.getElementById("finestra-centrocampisti");
+    const finestra_attaccanti = document.getElementById("finestra-attaccanti");
+
+    if(LS_get_idPlayerRose() === null) {
+
+        buildRowNoLogin(finestra_difensori, "difensori");
+        buildRowNoLogin(finestra_centrocampisti, "centrocampisti");
+        buildRowNoLogin(finestra_attaccanti, "attaccanti");
+
+    }
     
     document.getElementById("logoutbutton").classList.add("hidden");
     document.getElementById("playerusername").classList.add("hidden");
@@ -11,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         makeVisible(document.getElementById("playerusername"));
         document.getElementById("registerbutton").classList.add("hidden");
         document.getElementById("loginbutton").classList.add("hidden");
+
         BuildRosa();
     }
 

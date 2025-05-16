@@ -98,6 +98,7 @@ function BuildRowForCalciatore(calciatore){
     spanbottone.style.position = 'absolute';
     spanbottone.style.right = "5%";
     bottone.style.position = 'absolute';
+    bottone.className = "btn-compravendita"
     bottone.style.right = "5%";
     bottone.style.height = "30%";
     bottone.style.top = "50%";

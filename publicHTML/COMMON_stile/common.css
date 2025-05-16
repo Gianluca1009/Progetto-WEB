@@ -77,13 +77,13 @@ button{
 
 .button_top {
     display: flex;
+    padding-inline: 20%;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     box-sizing: border-box;
     border: 2px solid var(--button_outline_color);
     border-radius: var(--button_radius);
-    padding: 0;
     background: var(--button_color);
     color: var(--button_outline_color);
     transform: translateY(-0.4vh);
@@ -91,6 +91,11 @@ button{
     object-fit: contain;
     font-size: calc(0.8vh + 0.8vw);
     height: 100%;
+}
+
+.btn-compravendita{
+    width: 15%;
+    background-color: transparent !important;
 }
 
 button:hover .button_top {

@@ -7,7 +7,7 @@ body{
     min-height: 100vh;
 }
 
-.container-mercato{
+/* .container-mercato{
     position: relative;
     width: 70%;
     border: 0.375rem solid var(--color-crema);
@@ -21,7 +21,25 @@ body{
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
+} */
+
+.container-mercato {
+    position: relative;
+    width: 70%;
+    border: 0.375rem solid var(--color-crema);
+    border-radius: 10px;
+    margin-top: 5vh;
+    background-image: url(../images/texture_legno.png);
+    background-repeat: repeat;
+    background-color: rgba(255, 255, 255, 0.5); /* sfondo bianco semitrasparente sopra la texture */
+    box-shadow: 0 0 1.25rem rgba(245, 222, 179, 0.6);
+    animation: glow 2s infinite alternate;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    margin-bottom: 5vh;
 }
 
 .riga_finestra {
@@ -96,4 +114,12 @@ body{
 
 ul{
     padding-left: 1em;
+}
+
+.container-rosa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 25vh;
 }
