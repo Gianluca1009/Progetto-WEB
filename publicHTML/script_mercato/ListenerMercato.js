@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    handleHamburgerMenu();
-
     document.getElementById("logoutbutton").classList.add("hidden");
     document.getElementById("playerusername").classList.add("hidden");
 
@@ -33,5 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("registerbutton").classList.add("hidden");
         document.getElementById("loginbutton").classList.add("hidden");
     }
-})
 
+
+    document.querySelector(".menu-button").addEventListener("click", function() {
+        handleHamburgerMenu('mercato');
+    });
+
+});

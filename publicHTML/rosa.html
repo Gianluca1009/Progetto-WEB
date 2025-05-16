@@ -25,10 +25,10 @@
     <script src="COMMON_utility/Utility.js"></script>
     <script src="COMMON_utility/COMMON_localstorage.js"></script>
 
-    <div class="hamburger" id="menu-rosa">
+    <div class="hamburger" id="menu-rosa" style="position: fixed;">
         <div class="hamburger-content">
             <div class="menu-item" id="item1" onclick="goToHome('rosa')">HOME</div>
-            <div class="menu-item" id="item2" onclick="goToGioca('rosa')">GIOCA</div>
+            <div class="menu-item" id="item2" onclick="goToGame('rosa')">GIOCA</div>
             <div class="menu-item" id="item3" onclick="goToMercato('rosa')">MERCATO</div>
         </div>
     </div>
@@ -36,7 +36,7 @@
     
     <div class="intestazione">
         <div class="title-container">
-            <button class="menu-button" id="menu-btn-rosa" data-aperto="false" onclick="handleHamburgerMenu('rosa')"></button>
+            <button class="menu-button" data-aperto="true"></button>
             <h1 class="title">ROSA</h1>
 
             <div class="container-bottoni-login">

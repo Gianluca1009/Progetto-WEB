@@ -62,11 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
             Swal.fire('Accedi per scendere in campo!');
         }
     });
-
-    // restartButton.addEventListener('click', () => {
-    //     restartGame();
-    // });
-
     //LISTENER SUL RICARICA DELLA PAGINA
     window.addEventListener('beforeunload', (event) => {
         if(window.gameStarted){
@@ -94,5 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    
+    document.querySelector(".menu-button").addEventListener("click", function() {
+        handleHamburgerMenu('gamepage');
+    });    
 });

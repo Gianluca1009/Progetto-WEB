@@ -1,7 +1,5 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-
-    handleHamburgerMenu();
     
     document.getElementById("logoutbutton").classList.add("hidden");
     document.getElementById("playerusername").classList.add("hidden");
@@ -15,4 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById("loginbutton").classList.add("hidden");
         BuildRosa();
     }
-})
+
+    document.querySelector(".menu-button").addEventListener("click", function() {
+        handleHamburgerMenu('rosa');
+    });
+    
+});
