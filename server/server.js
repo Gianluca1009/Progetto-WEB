@@ -233,7 +233,6 @@ app.post('/sale_calciatore', async (req, res) => {
     try {
       await connection.query('UPDATE calciatore SET id_player = $1 WHERE id= $2', [_null, calc_id]);
       res.status(201).send('vendita calciatore avvenuto');
-      console.log('giocatore venduto con succ');
     } catch (err) {
       res.status(500).send('Errore durante la vendita calciatore');
     }

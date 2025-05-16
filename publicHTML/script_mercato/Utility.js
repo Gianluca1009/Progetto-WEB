@@ -163,7 +163,6 @@ async function BuildMercato(inputNome, inputRuolo){
     let numeroRighe = 0;
 
     const nome = (inputNome || "").toLowerCase();
-    console.log("inputRuolo = ", inputRuolo);
 
     function processNext() {
         if (i < results.length) {
@@ -174,7 +173,6 @@ async function BuildMercato(inputNome, inputRuolo){
             else nomeCognome = `${calciatore.nome} ${calciatore.cognome}`;
             nomeCognome = nomeCognome.toLowerCase();
             let ruolo = calciatore.ruolo.toLowerCase();
-            console.log(ruolo);
             i++;
 
             if(inputRuolo === "qualsiasi") {
