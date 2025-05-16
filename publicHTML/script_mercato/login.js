@@ -28,6 +28,7 @@ function openLogPopup() {
           const { userId, username, point } = data;
           // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
           LS_loginMercato(userId, username, point);
+          document.querySelector('.user-points').textContent = point;
           // Mostriamo il messaggio di successo
           makeVisible(document.getElementById("logoutbutton"));
           fillUsernameMercato();
@@ -88,6 +89,7 @@ function openLogPopup() {
 
 function openLogoutPopup() {
     LS_logoutMercato();
+    document.querySelector('.user-points').textContent = 'loggarsi';
     makeHidden(document.getElementById("logoutbutton"));
     makeHidden(document.getElementById("playerusername"));
     makeVisible(document.getElementById("loginbutton"));
