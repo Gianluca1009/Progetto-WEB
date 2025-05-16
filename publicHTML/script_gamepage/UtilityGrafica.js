@@ -101,32 +101,6 @@ function scrollToGameContainer(){
     }, 10); // Piccolo ritardo prima di iniziare lo scroll
 }
 
-//@deprecated
-//Funzione per cambiare il rapporto delle pedine in base allo stile
-// function ratioPedine(stile) {
-//     if (stile == 'CLASSIC') {
-//         document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
-//             pedina.style.width = '58%'; // Imposta la larghezza al 100%
-//             pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
-//         })
-//         document.querySelectorAll('.cavallo, .alfiere').forEach(pedina => {
-//             pedina.style.width = '65%'; // Imposta la larghezza al 100%
-//             pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
-//         })
-//         document.querySelectorAll('.torre').forEach(pedina => {
-//             pedina.style.width = '61%'; // Imposta la larghezza al 100%
-//             pedina.style.aspectRatio = '1/1'; // Imposta l'aspect ratio al 1:1
-//         });
-//     }
-//     if (stile == 'MODERN') {
-//         document.querySelectorAll('.pedone, .cavallo, .torre, .alfiere').forEach(pedina => {
-//             pedina.style.width = '70%'; // Ripristina la larghezza originale
-//             pedina.style.aspectRatio = '1/1'; // Ripristina l'aspect ratio originale
-//         })
-//     }
-
-// }
-
 //Funzione per cambiare lo stile delle pedine
 function changeStyle(stile) {
     const pedine = document.querySelectorAll('.pedina');
@@ -155,4 +129,23 @@ function getStyle(){
         }
     });
     return stile;
+}
+
+// Funzione per far fluttuare verso l'alto l'elemento log
+function FluttuaElemento(elemento, velocita = 10){
+    let distanza = document.querySelector('.game-container').offsetHeight - elemento.offsetHeight; // Posizione iniziale sotto il game container
+    let posizione = 0;
+
+    const intervalId = setInterval(() => {
+        posizione -= 1; // muovi verso l'alto di 1px
+        elemento.style.transform = `translateY(${posizione}px)`;
+
+        if (Math.abs(posizione) >= distanza) {
+            makeHidden(elemento); // Nascondi l'elemento quando ha raggiunto la distanza
+            clearInterval(intervalId); // Ferma l'intervallo
+        }
+    }, velocita);
+
+    // Restituisco l'ID dell'intervallo così puoi fermarlo se vuoi
+    return intervalId;
 }

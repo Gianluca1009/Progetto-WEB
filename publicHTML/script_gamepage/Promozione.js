@@ -165,10 +165,11 @@ function ListenerPromozione(pedina_d, img_pedina, turnoBianco){
         //modifica il div con un nuovo pezzo
         if(turnoBianco){
             pedina_d.id = pezzi[tipo].id.bianco;
-            img_pedina.src = pezzi[tipo].img.bianco;
+            if(getStyle() == "CLASSIC") img_pedina.src = pezzi[tipo].img.bianco;
+            else img_pedina.src = pezzi[tipo].img.bianco.replace('_prova.png', '.png');
         }else{
-            pedina_d.id = pezzi[tipo].id.nero;
-            img_pedina.src = pezzi[tipo].img.nero;
+            if(getStyle() == "CLASSIC")  pedina_d.id = pezzi[tipo].id.nero;
+            else img_pedina.src = pezzi[tipo].img.nero.replace('_prova.png', '.png');
         }
         makeHidden(document.getElementById("div_ped_promotion"));
         

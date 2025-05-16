@@ -42,6 +42,8 @@ function handleButtonP2(){
 //Funzione per iniziare la preparazione del draft
 async function startDraft(){
 
+    scrollToGameContainer();
+
     // ELEMENTI DA NASCONDERE (bottoni pronto, giocaButton)
     makeHidden(document.querySelector('.gioca-button'));
     document.getElementById('player1button').classList.add('hidden');
@@ -76,6 +78,8 @@ function startGame() {
     // ELEMENTI DA MOSTRARE (condizione, progress, restartButton)
     makeVisible(document.querySelector('.condition-container'));
     makeVisible(document.querySelector('.progress-container'));
+    makeVisible(document.querySelector('.tunnel-sx'));
+    makeVisible(document.querySelector('.tunnel-dx'));
 
     // ELEMENTI DA NASCONDERE (sezioni, switch)
     makeHidden(document.querySelector('.sezione_dx'));
@@ -118,6 +122,7 @@ function startGame() {
     // Reset dei timer e avvio
     resetTimers();
     startTimer();
+
 }
 
 // Funzione per terminare la partita
@@ -151,23 +156,9 @@ function endGame(){
     window.cellaReNero = document.getElementById(window.idCellReNero);
     resetSottoscacco();
 
+    playSound('fischio_finale', 0.5);
+
 }
-
-
-//@deprecated
-
-// Funzione per rigiocare la partita
-// function restartGame() { 
-//     resetNumCelleRe();
-//     resetColoreSottoscacco();
-//     resetPedine();
-//     window.gameStarted = false; // Reset dello stato del gioco
-
-//     //makeHidden(document.querySelector('.game-over'));
-//     document.querySelector('.game-container').classList.remove('game-not-started');
-//     aggiornaStatoPedine();
-//     startGame();
-// }
 
 // Funzione per cambiare il draft
 async function restartDraft(){
@@ -181,10 +172,13 @@ async function restartDraft(){
     makeVisible(document.getElementById('draft_table_sx'));
     makeVisible(document.getElementById('random1'));
     makeVisible(document.getElementById('random2'));
+    makeVisible(document.querySelector('.switch'));
 
     //ELEMENTI DA NASCONDERE (condition, progress-container, bottoni pronto)
     makeHidden(document.querySelector('.condition-container'));
     makeHidden(document.querySelector('.progress-container'));
+    makeHidden(document.querySelector('.tunnel-sx'));
+    makeHidden(document.querySelector('.tunnel-dx'));
     document.getElementById('player1button').classList.add('hidden');
     document.getElementById('player2button').classList.add('hidden');
 
@@ -209,7 +203,11 @@ async function restartDraft(){
     await populateDraft("bianco");
     await populateDraft("nero");
     await DragDrop_draft();
+
+    if(document.getElementById('toggle').checked) document.getElementById('toggle').checked = !document.getElementById('toggle').checked;
+    updateText(document.getElementById('toggle').checked);
 }
+    
 
 // Funzione per tornare alla home
 function goHome(){

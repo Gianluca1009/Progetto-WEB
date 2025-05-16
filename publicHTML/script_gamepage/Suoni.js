@@ -8,7 +8,9 @@ function preloadSounds() {
     const soundsToLoad = {
         mossa: 'sounds/Move_on_Alabaster.wav',
         selezione: 'sounds/Pedina_Selection.wav',
-        mangia: 'sounds/Mangiata.wav'
+        mangia: 'sounds/Mangiata.wav',
+        fischio: 'sounds/fischietto.wav',
+        fischio_finale: 'sounds/fischietto_finale.wav'
     };
 
     for (let [key, url] of Object.entries(soundsToLoad)) {
