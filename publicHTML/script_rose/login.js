@@ -97,6 +97,7 @@ function openRegPopup() {
   });
 }
 
+//crea la riga che segnala il login non effettuato
 function buildRowNoLogin(bacheca, ruolo) {
     const row = document.createElement('div');
     row.className = 'riga_finestra no-result';

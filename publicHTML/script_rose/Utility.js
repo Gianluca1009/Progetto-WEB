@@ -161,6 +161,7 @@ function BuildRowForCalciatore(calciatore){
     makeVisible(row);
 }
 
+//Crea la riga per comunicare che non si hanno giocatori di un determinato ruolo
 function buildRowNoResult(bacheca, ruolo) {
     const row = document.createElement('div');
     row.className = 'riga_finestra no-result';

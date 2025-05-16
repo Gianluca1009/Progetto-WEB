@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const finestra_attaccanti = document.getElementById("finestra-attaccanti");
 
     if(LS_get_idPlayerRose() === null) {
-
+        //Se non è stato fatto il login, inserisco le righe che lo segnalano
         buildRowNoLogin(finestra_difensori, "difensori");
         buildRowNoLogin(finestra_centrocampisti, "centrocampisti");
         buildRowNoLogin(finestra_attaccanti, "attaccanti");
