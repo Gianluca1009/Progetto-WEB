@@ -235,6 +235,9 @@ async function populateDraft(colore) {
 
         if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length < 3)) {
             setSoccerPlayerNameFontSize();
+
+            // AGGIORNAMENTO GRAFICHE
+
             makeHidden(document.getElementById('draft_table_dx'));
             makeHidden(document.getElementById('random2'));
             makeVisible(document.getElementById('player2button'));
@@ -243,6 +246,9 @@ async function populateDraft(colore) {
 
         else if (colore=="bianco" && (!array_calciatori_partita_bianchi || array_calciatori_partita_bianchi.length < 3)) {
             setSoccerPlayerNameFontSize();
+
+            // AGGIORNAMENTO GRAFICHE
+            
             makeHidden(document.getElementById('draft_table_sx'));
             makeHidden(document.getElementById('random1'));
             makeVisible(document.getElementById('player1button'));
@@ -311,7 +317,7 @@ async function populateDraft(colore) {
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
                             console.log("clickdestro");
-                            display_statistiche_draftSX(player, this);
+                            displayStatistiche(player, this, "sinistra");
                         }
                     });
                 }
@@ -319,7 +325,7 @@ async function populateDraft(colore) {
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
                             console.log("clickdestro");
-                            display_statistiche_draftDX(player, this);
+                            displayStatistiche(player, this, "destra");
                         }
                     });
                 } 
@@ -473,7 +479,11 @@ function populateRandom(colore) {
     }
 }
 
-function display_statistiche_draftSX(calciatore, div_info){
+
+
+
+// Funzione per far vedere le statistiche del calciatore nello specifico
+function displayStatistiche(calciatore, div_info, posizione){
     console.log("costruendo statistiche...")
 
     // Controlla se esiste già un div con le statistiche e rimuovilo
@@ -486,20 +496,28 @@ function display_statistiche_draftSX(calciatore, div_info){
 
     const divStatistiche = document.createElement('div');
     divStatistiche.classList.add('statistiche-draft');
+
     const freccia = document.createElement('img');
-    freccia.src = "images/frecciadestra.png";
-    freccia.classList.add('freccia-destra');
+    freccia.src = (posizione === "sinistra") ? "images/frecciadestra.png" : "images/frecciasinistra.png";
+    freccia.classList.add(posizione === "sinistra" ? "freccia-destra" : "freccia-sinistra");
+    divStatistiche.appendChild(freccia);
+
     const listaStatistiche = document.createElement('ul');
     for (const key of keys) {
             const li = document.createElement('li');
             li.innerHTML = `<strong> ${KeyConverter(key)}</strong>:  ${calciatore[key]}`;
             listaStatistiche.appendChild(li);
     }
-
-    divStatistiche.appendChild(freccia);
     divStatistiche.appendChild(listaStatistiche);
+
     div_info.parentElement.appendChild(divStatistiche);
-    setPositionRelativeToDiv(div_info, divStatistiche, 'right', 42);
+
+    setPositionRelativeToDiv(
+    div_info,
+    divStatistiche,
+    posizione === "sinistra" ? "right" : "left",
+    posizione === "sinistra" ? 42 : 91
+    );
 
     document.addEventListener('click', () => {
         document.querySelectorAll('.statistiche-draft').forEach(div => {
@@ -508,37 +526,3 @@ function display_statistiche_draftSX(calciatore, div_info){
     });
 }
 
-function display_statistiche_draftDX(calciatore, div_info){
-    console.log("costruendo statistiche...")
-
-    // Controlla se esiste già un div con le statistiche e rimuovilo
-    if (document.querySelector('.statistiche-draft')) {
-        document.querySelector('.statistiche-draft').remove();
-    }
-
-
-    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player', 'data_nascita', 'squadra', 'ruolo'].includes(key));
-
-    const divStatistiche = document.createElement('div');
-    divStatistiche.classList.add('statistiche-draft');
-    const freccia = document.createElement('img');
-    freccia.src = "images/frecciasinistra.png";
-    freccia.classList.add('freccia-sinistra');
-    const listaStatistiche = document.createElement('ul');
-    for (const key of keys) {
-            const li = document.createElement('li');
-            li.innerHTML = `<strong> ${KeyConverter(key)}</strong>:  ${calciatore[key]}`;
-            listaStatistiche.appendChild(li);
-    }
-
-    divStatistiche.appendChild(freccia);
-    divStatistiche.appendChild(listaStatistiche);
-    div_info.parentElement.appendChild(divStatistiche);
-    setPositionRelativeToDiv(div_info, divStatistiche, 'left', 91);
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.statistiche-draft').forEach(div => {
-            div.remove(); // Rimuovi il div delle statistiche
-        });
-    });
-}
