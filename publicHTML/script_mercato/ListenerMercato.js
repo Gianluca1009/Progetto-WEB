@@ -29,9 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.user-points').textContent = LS_getUserMercatoData()[2];
         document.getElementById("logoutbutton").classList.remove("hidden");
         makeVisible(document.getElementById("playerusername"));
-        document.getElementById("registerbutton").classList.add("hidden");
+        document.getElementById("registerbutton").classList.add("hidden");document.querySelectorAll('.btn-compravendita').forEach(button => {
+          makeVisible(button);
+        });
         document.getElementById("loginbutton").classList.add("hidden");
     }
+
+    if(LS_getUserMercatoData()[1] == null){
+        document.querySelectorAll('.btn-compravendita').forEach(button => {
+          makeVisible(button);
+        });
+    }
+
 
 
     document.querySelector(".menu-button").addEventListener("click", function() {

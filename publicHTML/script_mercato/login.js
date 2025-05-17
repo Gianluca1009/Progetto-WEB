@@ -43,8 +43,12 @@ function openLogPopup() {
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire('Login effettuato!');
+        document.querySelectorAll('.btn-compravendita').forEach(button => {
+          makeVisible(button);
+        });
       }
     });
+    
   }
 
 
@@ -94,4 +98,7 @@ function openLogoutPopup() {
     makeHidden(document.getElementById("playerusername"));
     makeVisible(document.getElementById("loginbutton"));
     makeVisible(document.getElementById("registerbutton"));
+    document.querySelectorAll('.btn-compravendita').forEach(button => {
+        makeHidden(button);
+    });
 }
