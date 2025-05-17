@@ -9,7 +9,8 @@
 
 .popup-gameover{
     position: absolute;
-    width: 65%;
+    height: 40%;
+    width: 70%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -19,7 +20,6 @@
     text-align: center;
     background: linear-gradient(to right, #dadada, #6a6a6a);
     border: 2px solid #000000;
-    border-radius: 10px;
     cursor: pointer;
     z-index: 1000;
     transition: all 0.3s ease;
@@ -27,7 +27,7 @@
     flex-direction:column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 5%;
 }
 
 .bottoni-gameover-container {
@@ -38,7 +38,8 @@
     width: 100%;
     align-items: center;
     pointer-events: auto;
-    gap: 1%;
+    gap: 2%;
+    margin-bottom: 5%;
 }
 
 .button-gameover{
