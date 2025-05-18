@@ -1,15 +1,11 @@
-function ListAcquista(calciatore, bottone){
-    //se non sei loggato disabilita il bottone
-    if (! LS_getUserMercatoData) {
-        bottone.disable = true; //bottone
-        Swal.fire(`Loggati per poter acquistare ${calciatore.cognome}!`);
-    }
-    //se sei loggato al click:
+function acquistaCalciatore(calciatore, bottone){
+
     let id = LS_getUserMercatoData()[0];
     let nome = LS_getUserMercatoData()[1];
     let miei_punti = LS_getUserMercatoData()[2];
+
         //se hai abbastanza punti permette l'acquisto:
-        if(miei_punti >= calciatore.prezzo){  // da inserire punti nel db 
+        if(miei_punti >= calciatore.prezzo){ 
             miei_punti = miei_punti - calciatore.prezzo;
             //query al db che agg id_player al giocatore
             compraCalciatore(id, calciatore.id);
@@ -19,10 +15,9 @@ function ListAcquista(calciatore, bottone){
             document.querySelector('.user-points').textContent = miei_punti;
             localStorage.setItem('mercato_user_point', miei_punti);
             LS_update_all_prezzo(id, miei_punti);
-            // disabilita il pulsanete acquista perchè è già comprato
-            bottone.hidden = true;
+            makeHidden(bottone);
             //pop up acquisto effettuato
-            Swal.fire(`Congratualzioni ${nome}! ${calciatore.cognome} è stato aggiunto alla tua rosa con successo!`);
+            Swal.fire(`Congratualzioni ${nome}! ${calciatore.cognome} è stato aggiunto alla tua rosa!`);
         }
         else{
             //pop up nonha i abbastanzza crediti 

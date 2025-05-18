@@ -5,6 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     BuildMercato("", "qualsiasi");
 
+    //se non sei loggato
+    ifNotLoggedIn();
+
+    //se la sessione è ancora aperta
+    ifSessioneAperta();
+
+    //RICERCA PER NOME
     document.getElementById("searchForm").addEventListener("submit", function(event) {
         event.preventDefault();
         //Ottengo l'input del form
@@ -14,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         BuildMercato(inputNome, inputRuolo);
     })
 
+
+    //RICERCA PER RUOLO
     document.getElementById("tendinaRuolo").addEventListener("change", function(event) {
         event.preventDefault();
         //Ottengo l'input del form
@@ -22,27 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         BuildMercato(inputNome, inputRuolo);
     })
+    
 
-    //se la sessione è ancora aperta, non serve fare login o registrazioni, mostro pulsante logout e username
-    if(LS_getUserMercatoData()[1] != null){
-        fillUsernameMercato();
-        document.querySelector('.user-points').textContent = LS_getUserMercatoData()[2];
-        document.getElementById("logoutbutton").classList.remove("hidden");
-        makeVisible(document.getElementById("playerusername"));
-        document.getElementById("registerbutton").classList.add("hidden");document.querySelectorAll('.btn-compravendita').forEach(button => {
-          makeVisible(button);
-        });
-        document.getElementById("loginbutton").classList.add("hidden");
-    }
-
-    if(LS_getUserMercatoData()[1] == null){
-        document.querySelectorAll('.btn-compravendita').forEach(button => {
-          makeVisible(button);
-        });
-    }
-
-
-
+    //GESTIONE DEL MENU
     document.querySelector(".menu-button").addEventListener("click", function() {
         handleHamburgerMenu('mercato');
     });

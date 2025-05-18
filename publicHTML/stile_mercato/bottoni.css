@@ -1,0 +1,28 @@
+.btn-acquista{
+    width: 15%;
+    height: 30%;
+    right: 1%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.span-acquista{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.span-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.span-top image{
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+}

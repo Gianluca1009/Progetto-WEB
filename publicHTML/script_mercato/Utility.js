@@ -1,3 +1,4 @@
+//Funzione per ritornare dal DB i calciatori liberi
 async function fetchCalciatoriLiberi() {
     const data = await fetch('/get_giocatori_mercato');
     results = await data.json();
@@ -60,7 +61,7 @@ function BuildRowForCalciatore(calciatore){
     //Itero sui campi giocatore per costruire la lista
 
     keys = Object.keys(calciatore);
-    keys = keys.filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player'].includes(key));
+    keys = keys.filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player', 'prezzo'].includes(key));
 
     for(const key of keys){
         if(key == 'presenze') break;
@@ -89,63 +90,31 @@ function BuildRowForCalciatore(calciatore){
     row.appendChild(campoFoto);
     row.appendChild(campoInfo);
 
-    //creo il bottone compra
+    //creo il bottone acquista
+    const btn_acquista = document.createElement('button');
+    const spanbtn_acquista = document.createElement('span');
+    spanbtn_acquista.textContent = `Acquista 🛒 ${calciatore.prezzo}Pt.`;
+    spanbtn_acquista.className = 'button_top';
+    btn_acquista.className = "btn-acquista";
 
-    const bottone = document.createElement('button');
-    const spanbottone = document.createElement('span');
-    spanbottone.textContent = 'Acquista';
-    spanbottone.className = 'button_top';
-    spanbottone.style.position = 'absolute';
-    spanbottone.style.right = "5%";
-    bottone.style.position = 'absolute';
-    bottone.className = "btn-compravendita"
-    bottone.style.right = "5%";
-    bottone.style.height = "30%";
-    bottone.style.top = "50%";
-    //log d'acquisto
-    bottone.onclick = async () => {
+    //Acquisto calciatore
+    btn_acquista.onclick = async () => {
         try {
-            await ListAcquista(calciatore,bottone);
+            await acquistaCalciatore(calciatore,btn_acquista);
         } catch (error) {
             console.error('Errore durante l\'acquisto:', error);
         }
     };
-    bottone.appendChild(spanbottone);
-    row.appendChild(bottone);
+    btn_acquista.appendChild(spanbtn_acquista);
+    row.appendChild(btn_acquista);
+
+    //Aggiungi la riga alla finestra mercato
     row.classList.add("fade-hidden");
     document.getElementById('finestramercato').appendChild(row);
     makeVisible(row);
 }
 
-function buildRowNoResult() {
-    const row = document.createElement('div');
-    row.className = 'riga_finestra no-result';
-
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
-
-    const titolo = document.createElement('h2');
-    titolo.textContent = "Nessun giocatore trovato";
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#b22222'; // rosso scuro per enfasi
-
-    const testo = document.createElement('p');
-    testo.textContent = "Modifica i criteri di ricerca e riprova.";
-    testo.style.fontSize = 'min(1vw, 1em)';
-    testo.style.color = '#555';
-
-    campoInfo.appendChild(titolo);
-    campoInfo.appendChild(testo);
-    row.appendChild(campoInfo);
-
-    // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    document.getElementById('finestramercato').appendChild(row);
-    makeVisible(row);
-}
-
+//Funzione per eliminare le righe della finestra mercato
 function deleteRows() {
     const container = document.getElementById("finestramercato");
 
@@ -154,8 +123,7 @@ function deleteRows() {
     });
 }
 
-
-//Funzione per costruire la rosa
+//Funzione per costruire il mercato
 async function BuildMercato(inputNome, inputRuolo){
     const results = await fetchCalciatoriLiberi();
     deleteRows();

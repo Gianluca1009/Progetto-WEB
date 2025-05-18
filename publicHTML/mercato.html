@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="COMMON_stile/bottoni-login.css">
     <link rel="stylesheet" href="COMMON_stile/mercato-rosa.css">
     <link rel="stylesheet" href="COMMON_stile/intestazioni.css">
-    <link rel="stylesheet" href="stile_mercato/barraDiRicerca.css">
+    <link rel="stylesheet" href="stile_mercato/barra_di_ricerca.css">
+    <link rel="stylesheet" href="stile_mercato/bottoni.css">
     <title>Mercato</title>
 
     <link rel="icon" href="./images/favicon/mercato_favicon.png" type="image/png">
@@ -25,7 +26,7 @@
     <script src="script_mercato/local_storage.js"></script>
     <script src="script_mercato/Utility.js"></script>
     <script src="script_mercato/ListenerMercato.js"></script>
-    <script src="script_mercato/ListenerAcquisto.js"></script>
+    <script src="script_mercato/GestioneAcquisto.js"></script>
     <script src="COMMON_utility/Utility.js"></script>
     <script src="COMMON_utility/COMMON_localstorage.js"></script>
 
@@ -46,15 +47,15 @@
             <h1 class="title">MERCATO</h1>
 
             <div class="container-bottoni-login">
-                <button class="btn-login" id="loginbutton" onclick="openLogPopup()">
+                <button class="btn-login" id="loginbutton" onclick="login()">
                     <span class="button_top login"> Login </span>
                 </button>
 
-                <button class="btn-register" id="registerbutton" onclick="openRegPopup()">
+                <button class="btn-register" id="registerbutton" onclick="register()">
                     <span class="button_top login"> Registrati </span>
                 </button>
 
-                <button class="btn-logout" id="logoutbutton" onclick="openLogoutPopup()">
+                <button class="btn-logout" id="logoutbutton" onclick="logout()">
                     <span class="button_top login"> Logout </span>
                 </button>
 

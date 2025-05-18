@@ -93,11 +93,6 @@ button{
     height: 100%;
 }
 
-.btn-compravendita{
-    width: 15%;
-    background-color: transparent !important;
-}
-
 button:hover .button_top {
     /* Pull the button upwards when hovered */
     transform: translateY(-4%);
