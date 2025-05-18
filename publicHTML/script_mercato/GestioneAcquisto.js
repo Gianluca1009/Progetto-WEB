@@ -1,4 +1,4 @@
-function acquistaCalciatore(calciatore, bottone){
+function acquistaCalciatore(calciatore, riga){
 
     let id = LS_getUserMercatoData()[0];
     let nome = LS_getUserMercatoData()[1];
@@ -15,7 +15,8 @@ function acquistaCalciatore(calciatore, bottone){
             document.querySelector('.user-points').textContent = miei_punti;
             localStorage.setItem('mercato_user_point', miei_punti);
             LS_update_all_prezzo(id, miei_punti);
-            makeHidden(bottone);
+            makeHidden(riga);
+            riga.remove();
             //pop up acquisto effettuato
             Swal.fire(`Congratualzioni ${nome}! ${calciatore.cognome} è stato aggiunto alla tua rosa!`);
         }

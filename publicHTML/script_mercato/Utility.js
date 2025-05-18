@@ -92,15 +92,33 @@ function BuildRowForCalciatore(calciatore){
 
     //creo il bottone acquista
     const btn_acquista = document.createElement('button');
-    const spanbtn_acquista = document.createElement('span');
-    spanbtn_acquista.textContent = `Acquista 🛒 ${calciatore.prezzo}Pt.`;
-    spanbtn_acquista.className = 'button_top';
     btn_acquista.className = "btn-acquista";
+
+    const spanbtn_acquista = document.createElement('span');
+    spanbtn_acquista.className = 'button_top';
+    spanbtn_acquista.classList.add('span-acquista');
+
+    const span_top = document.createElement('div');
+    span_top.className = 'span-top';
+    const carrello = document.createElement('img');
+    carrello.src = "images/carrello.png";
+    carrello.className = "carrello";
+    span_top.appendChild(carrello);
+    const top_text = document.createElement("p");
+    top_text.className = "prezzo";
+    top_text.textContent = "Acquista";
+    span_top.appendChild(top_text);
+    spanbtn_acquista.appendChild(span_top);
+
+    const span_bottom = document.createElement('p');
+    span_bottom.className = 'prezzo';
+    span_bottom.textContent = `${calciatore.prezzo}Pt.`;
+    spanbtn_acquista.appendChild(span_bottom);    
 
     //Acquisto calciatore
     btn_acquista.onclick = async () => {
         try {
-            await acquistaCalciatore(calciatore,btn_acquista);
+            await acquistaCalciatore(calciatore,row);
         } catch (error) {
             console.error('Errore durante l\'acquisto:', error);
         }
