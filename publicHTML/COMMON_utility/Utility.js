@@ -78,6 +78,9 @@ function handleHamburgerMenu(pagina) {
     else if (pagina === 'gamepage') {
         hamburger = document.getElementById("menu-gamepage");
     }
+    else if(pagina === 'regole') {
+        hamburger = document.getElementById("menu-regole");
+    }
     else console.log("pagina non valida");
 
     if(hamburger.dataset.aperto === "true"){ //se il menu è aperto, chiudilo -20vw
@@ -156,5 +159,13 @@ function goToHome(source) {
         window.location.reload();
     }
     window.location.href = "index.html";
+    handleHamburgerMenu(source);
+}
+
+function goToRegole(source) {
+    if(source === "gamepage"){
+        window.location.reload();
+    }
+    window.location.href = "regole.html";
     handleHamburgerMenu(source);
 }

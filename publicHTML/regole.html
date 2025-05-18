@@ -12,11 +12,20 @@
     <link rel="icon" href="./images/favicon/regole_favicon.png" type="image/png">
 </head>
 <body>
+
+    <div class="hamburger" id="menu-regole">
+        <div class="hamburger-content">
+            <div class="menu-item" id="item1" onclick="goToHome('regole')">HOME</div>
+            <div class="menu-item" id="item2" onclick="goToMercato('regole')">MERCATO</div>
+            <div class="menu-item" id="item3" onclick="goToRosa('regole')">ROSA</div>
+            <div class="menu-item" id="item4" onclick="goToGame('regole')">GIOCA</div>
+        </div>
+    </div>
     
     
     <div class="intestazione">
         <div class="title-container">
-            <button class="menu-button"></button>
+            <button class="menu-button" data-aperto="true"></button>
             <h1 class="title">REGOLE</h1>
         </div>
     </div>
@@ -49,7 +58,8 @@
         </div>
     </div>
 
-
+    <script src="COMMON_utility/Utility.js"></script>
+    <script src="script_regole/ListenerRegole.js"></script>
 
 </body>
 </html>
