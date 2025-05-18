@@ -70,15 +70,15 @@
             <button class="menu-button" data-aperto="true"></button>
             <h1 class="title" onclick="window.location.reload()">SOC-C-HESS</h1>
             <div class="container-bottoni-login">
-                <button class="btn-login" id="loginbutton" onclick="openLogPopup()">
+                <button class="btn-login" id="loginbutton" onclick="login()">
                     <span class="button_top login"> Login </span>
                 </button>
 
-                <button class="btn-register" id="registerbutton" onclick="openRegPopup()">
+                <button class="btn-register" id="registerbutton" onclick="register()">
                     <span class="button_top login"> Registrati </span>
                 </button>
 
-                <button class="btn-logout hidden" id="logoutbutton" onclick="openLogoutPopup()">
+                <button class="btn-logout hidden" id="logoutbutton" onclick="logout()">
                     <span class="button_top login"> Logout </span>
                 </button>
 
@@ -90,8 +90,9 @@
     <!-- CONTAINER DEL GIOCO -->
     <div class="game-container">
 
-        <div id="grid-container" class="grid-container" z-index="1">            <!-- SCACCHIERA -->
+        <div id="grid-container" class="grid-container" z-index="1">
 
+            <!-- SCACCHIERA -->
             <table class = 'scacchiera'>
                 <tbody>
                     <tr>

@@ -15,22 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger
 
-    //mostra logout se l'utente è già loggato
-    if(LS_getUser1Game()[0] != null && LS_getUser2Game()[0] != null){
-        document.getElementById("logoutbutton").classList.remove("hidden");
-        document.getElementById("registerbutton").classList.add("hidden");
-        document.getElementById("loginbutton").classList.add("hidden");
-    }
-    // Pre-carico i suoni
-    preloadSounds();
+    isSessioneAperta(); //Gestione della sessione aperta
+    
+    preloadSounds();    // Pre-carico i suoni
     setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
     StartPosition();
 
     // Riferimenti ai bottoni
-    const giocaButton = document.getElementById('giocaButton');
-    const player1Button = document.getElementById('player1Button');
-    const player2Button = document.getElementById('player2Button');
-    
+    const giocaButton = document.getElementById('giocaButton');    
 
     //ELEMENTI DA NASCONDERE ALL'INIZIO (sezioni, condizione,switch,timer, pedine)
     document.querySelector('.sezione_sx').classList.add('hidden');

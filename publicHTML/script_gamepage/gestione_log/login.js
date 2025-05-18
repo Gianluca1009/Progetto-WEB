@@ -1,4 +1,7 @@
-function openLogPopup() {
+//------ LOGIN ------//
+
+//Funzione per effettuare il login
+function login() {
     Swal.fire({
       title: 'Login',
       html:
@@ -63,10 +66,24 @@ function openLogPopup() {
         makeHidden(document.getElementById("registerbutton"));
       }
     });
-  }
+}
+
+//Funzione per gestire il caso di sessione gia aperta
+function isSessioneAperta(){
+    //mostra logout se l'utente è già loggato
+    if(LS_getUser1Game()[0] != null && LS_getUser2Game()[0] != null){
+        document.getElementById("logoutbutton").classList.remove("hidden");
+        document.getElementById("registerbutton").classList.add("hidden");
+        document.getElementById("loginbutton").classList.add("hidden");
+    }
+}
 
 
-  function openRegPopup() {
+
+//------ REGISTRAZIONE ------//
+
+//Funzione per effettuare la registrazione
+function register() {
     Swal.fire({
       title: 'Registrazione utente',
       html:
@@ -103,9 +120,14 @@ function openLogPopup() {
         makeHidden(document.getElementById("registerbutton"));
       }
     });
-  }
+}
 
-  function openLogoutPopup(){
+
+
+//------ LOGOUT ------//
+
+//Funzione per effettuare il logout
+function logout(){
     Swal.fire({
         title: 'Logout',
         html:
@@ -114,11 +136,9 @@ function openLogPopup() {
     })
     //cancella LS
     LS_logoutGame();
-    //faccio uscire gli utenti fuori dalla partita
-    window.location.reload();
     //rende visibili i bottoni
     makeHidden(document.getElementById("logoutbutton"));
     makeHidden(document.getElementById("playerusername"));
     makeVisible(document.getElementById("loginbutton"));
     makeVisible(document.getElementById("registerbutton"));
-  }
+}

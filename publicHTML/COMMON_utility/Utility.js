@@ -63,6 +63,7 @@ function convertDate(stringa){
 function KeyConverter(key){
     keytoReturn = key.replace(/_/g, ' ');
     keytoReturn = keytoReturn.charAt(0).toUpperCase() + keytoReturn.slice(1);
+    if(key === "nazionalita") keytoReturn = "Nazionalità";
     return keytoReturn;
 }
 

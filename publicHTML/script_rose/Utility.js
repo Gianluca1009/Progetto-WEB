@@ -106,21 +106,16 @@ function BuildRowForCalciatore(calciatore){
     row.appendChild(campoFoto);
     row.appendChild(campoInfo);
 
-    //Aggiungo tutto
 
-        //creo il bottone vendi
+    //creo il bottone vendi
 
     const bottone = document.createElement('button');
     const spanbottone = document.createElement('span');
+    bottone.style.position = 'absolute';
+    bottone.className = "btn-vendi";
     spanbottone.textContent = 'Vendi';
     spanbottone.className = 'button_top';
-    spanbottone.style.position = 'absolute';
-    spanbottone.style.right = "5%";
-    bottone.style.position = 'absolute';
-    bottone.className = "btn-compravendita"
-    bottone.style.right = "5%";
-    bottone.style.height = "30%";
-    bottone.style.top = "50%";
+    
     //log da vendita
     bottone.onclick = async () => {
         try {
