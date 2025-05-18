@@ -66,39 +66,6 @@ function KeyConverter(key){
     return keytoReturn;
 }
 
-//Funzione per far funzionare il menu
-function handleHamburgerMenu(pagina) {
-    let hamburger;
-    if (pagina === 'mercato') {
-        hamburger = document.getElementById("menu-mercato");
-    }
-    else if (pagina === 'rosa') {
-        hamburger = document.getElementById("menu-rosa");
-    }
-    else if (pagina === 'gamepage') {
-        hamburger = document.getElementById("menu-gamepage");
-    }
-    else if(pagina === 'regole') {
-        hamburger = document.getElementById("menu-regole");
-    }
-    else console.log("pagina non valida");
-
-    if(hamburger.dataset.aperto === "true"){ //se il menu è aperto, chiudilo -20vw
-        console.log("menu aperto --- chiudo");
-        hamburger.style.left = "-20vw";
-        hamburger.style.transition = "left 0.4s ease-in-out";
-        hamburger.dataset.aperto = "false";
-    }
-    else{
-        console.log("menu chiuso --- apro");
-        hamburger.style.left = "0px";
-        hamburger.style.transition = "left 0.4s ease-in-out";
-        hamburger.dataset.aperto = "true";
-    }
-    
-    
-}
-
 // Funzione per far apparire div in posizione desiderata rispetto a un altro div
 function setPositionRelativeToDiv(targetElement, floatingElement, side = 'right', offsetPercent = 1) {
     console.log("targetElement", targetElement);
@@ -125,6 +92,10 @@ function setPositionRelativeToDiv(targetElement, floatingElement, side = 'right'
     floatingElement.style.top = `${relativeTop}%`;
     floatingElement.style.transform = 'translateY(-50%)';
 }
+
+
+
+//------ FUNZIONI PER LA NAVIGAZIONE TRA LE PAGINE -------//
 
 // Funzione per andare al gioco
 function goToGame(source) {
@@ -162,10 +133,44 @@ function goToHome(source) {
     handleHamburgerMenu(source);
 }
 
+// Funzione per andare alle regole
 function goToRegole(source) {
     if(source === "gamepage"){
         window.location.reload();
     }
     window.location.href = "regole.html";
     handleHamburgerMenu(source);
+}
+
+//Funzione per far funzionare il menu
+function handleHamburgerMenu(pagina) {
+    let hamburger;
+    if (pagina === 'mercato') {
+        hamburger = document.getElementById("menu-mercato");
+    }
+    else if (pagina === 'rosa') {
+        hamburger = document.getElementById("menu-rosa");
+    }
+    else if (pagina === 'gamepage') {
+        hamburger = document.getElementById("menu-gamepage");
+    }
+    else if(pagina === 'regole') {
+        hamburger = document.getElementById("menu-regole");
+    }
+    else console.log("pagina non valida");
+
+    if(hamburger.dataset.aperto === "true"){ //se il menu è aperto, chiudilo -20vw
+        console.log("menu aperto --- chiudo");
+        hamburger.style.left = "-20vw";
+        hamburger.style.transition = "left 0.4s ease-in-out";
+        hamburger.dataset.aperto = "false";
+    }
+    else{
+        console.log("menu chiuso --- apro");
+        hamburger.style.left = "0px";
+        hamburger.style.transition = "left 0.4s ease-in-out";
+        hamburger.dataset.aperto = "true";
+    }
+    
+    
 }

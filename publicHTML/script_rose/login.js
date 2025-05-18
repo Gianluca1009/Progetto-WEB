@@ -1,3 +1,5 @@
+//------ LOGIN ------//
+
 function openLogPopup() {
     Swal.fire({
       title: 'Login',
@@ -55,8 +57,69 @@ function openLogPopup() {
         makeHidden(document.getElementById("registerbutton"));
       }
     });
-  }
+}
 
+//Funzione che crea la riga che segnala il login non effettuato
+function buildRowNoLogin(bacheca, ruolo) {
+    const row = document.createElement('div');
+    row.className = 'riga_finestra no-result';
+    row.id = 'no-login';
+
+    // Campo info con messaggio
+    const campoInfo = document.createElement('div');
+    campoInfo.className = 'no-result';
+
+    const titolo = document.createElement('h2');
+    titolo.textContent = `Effettua il login per visualizzare i ${ruolo} della tua rosa`;
+    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
+    titolo.style.marginBlockEnd = '0.5em';
+    titolo.style.color = '#b22222'; // rosso scuro per enfasi
+
+    campoInfo.appendChild(titolo);
+    row.appendChild(campoInfo);
+
+    // Aggiunta alla finestra del mercato
+    row.classList.add("fade-hidden");
+    bacheca.appendChild(row);
+    makeVisible(row);
+}
+
+//Funzione che elimina i messaggi di login non effettuato
+function eliminaMessaggiLogin() {
+    const rows_difensori = window.finestra_difensori.querySelectorAll("div");
+    const rows_centrocampisti = window.finestra_centrocampisti.querySelectorAll("div");
+    const rows_attaccanti = window.finestra_attaccanti.querySelectorAll("div");
+
+    rows_difensori.forEach(div => div.remove());
+    rows_centrocampisti.forEach(div => div.remove());
+    rows_attaccanti.forEach(div => div.remove());
+}
+
+//Funzione che gestisce il caso in cui non è stato effettuato il login
+function ifNotLoggedIn() {
+    if(LS_get_idPlayerRose() === null) {
+        //Se non è stato fatto il login, inserisco le righe che lo segnalano
+        buildRowNoLogin(window.finestra_difensori, "difensori");
+        buildRowNoLogin(window.finestra_centrocampisti, "centrocampisti");
+        buildRowNoLogin(window.finestra_attaccanti, "attaccanti");
+
+    }
+}
+
+//Funzione che gestisce il caso in cui la sessione è rimasta aperta
+function ifSessioneAperta(){
+    if(LS_get_idPlayerRose()){
+        fillUsernameRosa();
+        document.getElementById("logoutbutton").classList.remove("hidden");
+        makeVisible(document.getElementById("playerusername"));
+        document.getElementById("registerbutton").classList.add("hidden");
+        document.getElementById("loginbutton").classList.add("hidden");
+        BuildRosa();
+    }
+}
+
+
+//------ REGISTRAZIONE ------//
 
 function openRegPopup() {
   Swal.fire({
@@ -97,31 +160,10 @@ function openRegPopup() {
   });
 }
 
-//crea la riga che segnala il login non effettuato
-function buildRowNoLogin(bacheca, ruolo) {
-    const row = document.createElement('div');
-    row.className = 'riga_finestra no-result';
-    row.id = 'no-login';
 
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
 
-    const titolo = document.createElement('h2');
-    titolo.textContent = `Effettua il login per visualizzare i ${ruolo} della tua rosa`;
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#b22222'; // rosso scuro per enfasi
 
-    campoInfo.appendChild(titolo);
-    row.appendChild(campoInfo);
-
-    // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    bacheca.appendChild(row);
-    makeVisible(row);
-}
-
+//------ LOGOUT ------//
 
 function openLogoutPopup() {
     LS_logoutRose();
@@ -148,19 +190,4 @@ function openLogoutPopup() {
     makeHidden(document.getElementById("playerusername"));
     makeVisible(document.getElementById("loginbutton"));
     makeVisible(document.getElementById("registerbutton"));
-}
-
-function eliminaMessaggiLogin() {
-    const finestra_difensori = document.getElementById("finestra-difensori");
-    const finestra_centrocampisti = document.getElementById("finestra-centrocampisti");
-    const finestra_attaccanti = document.getElementById("finestra-attaccanti");
-
-    const rows_difensori = finestra_difensori.querySelectorAll("div");
-    const rows_centrocampisti = finestra_centrocampisti.querySelectorAll("div");
-    const rows_attaccanti = finestra_attaccanti.querySelectorAll("div");
-    console.log(rows_difensori);
-
-    rows_difensori.forEach(div => div.remove());
-    rows_centrocampisti.forEach(div => div.remove());
-    rows_attaccanti.forEach(div => div.remove());
 }
