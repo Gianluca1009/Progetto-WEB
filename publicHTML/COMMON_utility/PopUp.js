@@ -45,11 +45,13 @@ function launchProfilePopup(){
                     <li> <strong>Username:</strong>
                     ${LS_getUserMercatoData()[1]}</li>
                     <li> <strong>Email:</strong>
-                    ${LS_getUserMercatoData()[4]}</li>
+                    ${LS_getUserMercatoData()[2]}</li>
                     <li> <strong>Punti:</strong> 
-                    ${LS_getUserMercatoData()[2]} Pt.</li>
+                    ${LS_getUserMercatoData()[3]} Pt.</li>
                     <li> <strong>Partite:</strong>
-                    ${LS_getUserMercatoData()[3]}</li>
+                    ${LS_getUserMercatoData()[4]}</li>
+                    <li> <strong>Vittorie:</strong>
+                    ${LS_getUserMercatoData()[5]}</li>
                 </ul>
             `;
         makeVisible(profile_popup, 0.5);
