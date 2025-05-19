@@ -12,7 +12,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
     calc_dif = JSON.parse(div_calc_dif.children[0].dataset.json);  //classi difensore ottenute parsando il json di text.id
 
     if (cond === "Goal segnati in carriera"){
-        console.log("goal attuale: " + calc_att.goal + " goal difensore: " + calc_dif.goal);
        return {"valid": calc_att.goal > calc_dif.goal,
                 "val_att": calc_att.goal,
                 "val_dif": calc_dif.goal,
@@ -22,7 +21,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Goal"};
     }
     if (cond === "Assist forniti in carriera"){
-        console.log("assist attuale: " + calc_att.assist + " assist difensore: " + calc_dif.assist);
         return {"valid": calc_att.assist > calc_dif.assist,
                 "val_att": calc_att.assist,
                 "val_dif": calc_dif.assist,
@@ -32,7 +30,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Assist"};
     }
     if (cond === "Presenze collezionate in carriera"){
-        console.log("presenze attuale: " + calc_att.presenze + " presenze difensore: " + calc_dif.presenze);
         return {"valid": calc_att.presenze > calc_dif.presenze,
                 "val_att": calc_att.presenze,
                 "val_dif": calc_dif.presenze,
@@ -42,7 +39,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Presenza"};
     }
     if (cond === "Minor numero di cartellini gialli in carriera"){
-        console.log("cartellini gialli attuale: " + calc_att.cartellini_gialli + " cartellini gialli difensore: " + calc_dif.cartellini_gialli);
         return {"valid": calc_att.cartellini_gialli > calc_dif.cartellini_gialli,
                 "val_att": calc_att.cartellini_gialli,
                 "val_dif": calc_dif.cartellini_gialli,
@@ -52,7 +48,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Cartellini Gialli"};
     }
     if (cond === "Minor numero di cartellini rossi in carriera"){
-        console.log("cartellini rossi attuale: " + calc_att.cartellini_rossi + " cartellini rossi difensore: " + calc_dif.cartellini_rossi);
         return {"valid": calc_att.cartellini_rossi > calc_dif.cartellini_rossi,
                 "val_att": calc_att.cartellini_rossi,
                 "val_dif": calc_dif.cartellini_rossi,
@@ -62,7 +57,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Cartellini Rossi"};
     }
     if (cond === "Numero di maglia più alto"){
-        console.log("numero maglia attuale: " + calc_att.numero_maglia + " numero maglia difensore: " + calc_dif.numero_maglia);
         return {"valid": calc_att.numero_maglia > calc_dif.numero_maglia,
                 "val_att": calc_att.numero_maglia,
                 "val_dif": calc_dif.numero_maglia,
@@ -72,7 +66,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Numero Maglia"};
     }
     if (cond === "Numero di trofei vinti in carriera"){
-        console.log("trofei attuale: " + calc_att.trofei + " trofei difensore: " + calc_dif.trofei);
         return {"valid": calc_att.trofei > calc_dif.trofei,
                 "val_att": calc_att.trofei,
                 "val_dif": calc_dif.trofei,
@@ -82,7 +75,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Trofei"};
     }
     if (cond === "Record di goal stagionale"){
-        console.log("record goal attuale: " + calc_att.record_goal + " record goal difensore: " + calc_dif.record_goal);
         return {"valid": calc_att.record_goal > calc_dif.record_goal,
                 "val_att": calc_att.record_goal,
                 "val_dif": calc_dif.record_goal,
@@ -92,7 +84,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Record Goal"};
     }
     if (cond === "Giocatore più alto"){
-        console.log("altezza attuale: " + calc_att.altezza + " altezza difensore: " + calc_dif.altezza);
         return {"valid": calc_att.altezza > calc_dif.altezza,
                 "val_att": calc_att.altezza,
                 "val_dif": calc_dif.altezza,
@@ -102,7 +93,6 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Altezza"};
     }
     if (cond === "Record di assist stagionale"){
-        console.log("record assist attuale: " + calc_att.record_assist + " record assist difensore: " + calc_dif.record_assist);
         return {"valid": calc_att.record_assist > calc_dif.record_assist,
                 "val_att": calc_att.record_assist,
                 "val_dif": calc_dif.record_assist,
@@ -131,10 +121,8 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
 
             playSound('fischio', 0.5);
 
-
             const divFluttuante = document.createElement('div');
             divFluttuante.classList.add("div-log");
-            console.log("classi: " + divFluttuante.classList);
 
             const immagine = document.createElement('img');
             immagine.src = dizionario_mangiata.src;

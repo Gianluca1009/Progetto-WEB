@@ -2,53 +2,13 @@ window.array_calciatori_partita = [];
 window.array_calciatori_partita_neri = [];
 window.array_calciatori_partita_bianchi = [];
 
-window.DraggedClassCalciatoreBianco = null; // Inizializza la variabile per il calciatore bianco
-window.DraggedClassCalciatoreNero = null; // Inizializza la variabile per il calciatore nero
+window.dragged_class_calciatore_bianco = null; 
+window.dragged_class_calciatore_nero = null;
 
+//------ DRAG & DROP ------//
 
-// Funzione per evidenziare le celle di drop della squadra nera
-function evidenziaCelleDropNero(){
-    for(let i = 0; i < 2; i++){
-        for(let j = 0; j < 6; j++){
-            const cella = document.getElementById(`${i}${j}`);
-            // Controlla se c'è una pedina
-            if(cella.children.length == 1){
-                const pedina = cella.querySelector('.pedina');
-                // Controlla se la pedina esiste e non ha già un nome giocatore assegnato
-                if(pedina && !pedina.querySelector('.nome-giocatore')){
-                    cella.classList.add('highlight-drop-cell');
-                }
-            }
-        }
-    }
-}
-
-// Funzione per sottolineare le celle di drop della squadra bianca
-function evidenziaCelleDropBianco(){
-    for(let i = 4; i < 6; i++){
-        for(let j = 0; j < 6; j++){
-            const cella = document.getElementById(`${i}${j}`);
-            // Controlla se c'è una pedina
-            if(cella.children.length == 1){
-                const pedina = cella.querySelector('.pedina');
-                // Controlla se la pedina esiste e non ha già un nome giocatore assegnato
-                if(pedina && !pedina.querySelector('.nome-giocatore')){
-                    cella.classList.add('highlight-drop-cell');
-                }
-            }
-        }
-    }
-}
-
-// Funzione per resettare le celle di drop
-function resetEvidenziaCelleDrop(){
-    document.querySelectorAll(".highlight-drop-cell").forEach(cell => {
-        cell.classList.remove('highlight-drop-cell');
-    });
-}
-
-// Funzione per gestire il drag e drop dei santini
-async function DragDropSantiniOnly(){
+// Funzione per gestire il drag dei santini
+async function dragSantini(){
     
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
         santino_img.addEventListener("dragstart", async function(event) {
@@ -57,8 +17,8 @@ async function DragDropSantiniOnly(){
                 event.preventDefault();
                 return false;
             }
-            window.DraggedClassCalciatoreBianco = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
-            event.dataTransfer.setData("text", window.DraggedClassCalciatoreBianco.cognome);  //salva cognome calciatore nell'evento
+            window.dragged_class_calciatore_bianco = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
+            event.dataTransfer.setData("text", window.dragged_class_calciatore_bianco.cognome);  //salva cognome calciatore nell'evento
             event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
             evidenziaCelleDropBianco();
@@ -79,8 +39,8 @@ async function DragDropSantiniOnly(){
                 event.preventDefault();
                 return false;
             }
-            window.DraggedClassCalciatoreNero = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON
-            event.dataTransfer.setData("text", window.DraggedClassCalciatoreNero.cognome);  //salva id del div nell'evento
+            window.dragged_class_calciatore_nero = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON
+            event.dataTransfer.setData("text", window.dragged_class_calciatore_nero.cognome);  //salva id del div nell'evento
             event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
             document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
             evidenziaCelleDropNero();
@@ -94,58 +54,10 @@ async function DragDropSantiniOnly(){
     });
 }
 
-// Funzione per assegnare il cognome del calciatore al testo del div_pedina
-function assegnaCognome(text,cognome_calciatore){
-    if (!text.textContent){
-        text.textContent = cognome_calciatore;
-        text.classList.add('nome-giocatore');
-        return true;
-    }
-    return false;
-}
-
-// Funzione per assegnare calciatore a pedine
-async function AssegnaCalciatoreAPedina(event, drop_cell) {
-    var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
-    var tipoSantino = event.dataTransfer.getData("type"); // Ottieni il tipo di santino (sx o dx)
-
-    let div_pedina = drop_cell.querySelector('.pedina');
-
-    if (div_pedina) {
-        // Ottieni l'id della pedina
-        const pedinaId = div_pedina.id;
-        
-        // Verifica se la pedina è bianca (id minuscolo) o nera (id maiuscolo)
-        const isPedinaBianca = pedinaId === pedinaId.toLowerCase() && pedinaId !== pedinaId.toUpperCase();
-
-        // Controlla se è possibile effettuare il drop in base al tipo di santino e di pedina
-        if ((tipoSantino === "sx" && isPedinaBianca) || (tipoSantino === "dx" && !isPedinaBianca)) {
-            // Crea l'elemento text se non esiste -cognome sotto alla pedina
-            let text = div_pedina.querySelector('text');
-            if (!text) {
-                text = document.createElement('text');
-                text.classList.add('nome-giocatore');
-                div_pedina.appendChild(text);
-            }
-
-            // Imposta il testo con l'id del calciatore e aggiunge la classe
-            if(!assegnaCognome(text, cognome_calciatore)) return;  // QUI CONTROLLA ANCHE CHE LA PEDINA NON SIA GIA' OCCUPATA
-            if(isPedinaBianca){
-                div_pedina.firstChild.dataset.json = JSON.stringify(window.DraggedClassCalciatoreBianco); // Usa il JSON della classe com id dell'immagine
-                await populateDraft("bianco"); // Popola il draft per la squadra
-            }
-            if(!isPedinaBianca){
-                div_pedina.firstChild.dataset.json = JSON.stringify(window.DraggedClassCalciatoreNero); // Usa il JSON della classe com id dell'immagine
-                await populateDraft("nero"); // Popola il draft per la squadra
-            }
-        }
-    }
-}
-
-// Funzione per gestire il drag e drop
-async function DragDrop_draft(){
+// Funzione per gestire il drop dei santini
+async function dropSantini(){
     //selziona tutti le img calciatore -> drag elem sx
-    DragDropSantiniOnly(); // Inizializza il drag&drop per i santini
+    dragSantini(); // Inizializza il drag&drop per i santini
 
     //selziona tutte le caselle pezzi -> drop zone
     document.querySelectorAll(".greencell, .creamcell").forEach(drop_cell => {
@@ -164,62 +76,8 @@ async function DragDrop_draft(){
     });
 }
 
-// Funzione per ottiene i calciatori dal server
-async function fetchCalciatori() {
-    const response = await fetch('http://localhost:3000/populate-draft');
-    const data = await response.json(); // Estrai i dati JSON dalla risposta
-    return data; // Restituisci l'array di calciatori
-}
 
-// Funzione per mescolare un array (Fisher-Yates shuffle)
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Scambia elementi
-    }
-}
-
-// Funzione per ottenere 3 calciatori casuali da un array
-function get3Calciatori(colore) {
-    if(colore== "nero"){
-        shuffleArray(array_calciatori_partita_neri);
-        return array_calciatori_partita_neri.slice(0, 3);
-    }
-    else if(colore== "bianco"){
-        shuffleArray(array_calciatori_partita_bianchi);
-        return array_calciatori_partita_bianchi.slice(0, 3);
-    }
-}
-
-// Funzione per rimuovere 3 calciatori da un array
-function remove3Calciatori(colore) {
-    if(colore== "nero"){
-        // Rimuovi i primi 3 calciatori dall'array dei neri
-        array_calciatori_partita_neri.splice(0, 3);
-    }
-    else if(colore== "bianco"){
-        // Rimuovi i primi 3 calciatori dall'array dei bianchi
-        array_calciatori_partita_bianchi.splice(0, 3);
-
-    }
-}
-
-// Funzione per ottenere la lista dei calciatori in base al colore
-function getListaCalciatori(colore) {
-    if(colore== "nero"){
-        return array_calciatori_partita_neri;
-    }
-    else if(colore== "bianco"){
-        return array_calciatori_partita_bianchi;
-    }
-}
-
-// Funzione per creare le liste dei calciatori
-async function CreaListeCalciatori() {
-    window.array_calciatori_partita = await fetchCalciatori();
-    window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri
-    window.array_calciatori_partita_bianchi = window.array_calciatori_partita.slice(36, 72); // Gli ultimi 36 calciatori sono bianchi
-}
+//------ ESTRAZIONE DATABASE ------//
 
 // Funzione per popolare il draft con i calciatori selezionati
 async function populateDraft(colore) {
@@ -248,15 +106,15 @@ async function populateDraft(colore) {
         }
 
         // Seleziona i primi 6 calciatori casuali
-        const selectedPlayers = get3Calciatori(colore);
+        const selected_players = get3Calciatori(colore);
 
         // Rimuovi i calciatori selezionati dall'array originale
         remove3Calciatori(colore);
 
-        santiniContainers = [];
+        santini_containers = [];
 
         if(colore == "nero"){
-            santiniContainers = [
+            santini_containers = [
                 document.getElementById('d00'),
                 document.getElementById('d10'),
                 document.getElementById('d20')
@@ -267,7 +125,7 @@ async function populateDraft(colore) {
                 document.getElementById('d21')
             ]
         } else if(colore == "bianco"){
-            santiniContainers = [
+            santini_containers = [
                 document.getElementById('s00'),
                 document.getElementById('s10'),
                 document.getElementById('s20')
@@ -281,8 +139,8 @@ async function populateDraft(colore) {
 
         // Popola i container di destra (giocatori da 3 a 5)
         for (let i = 0; i < 3; i++) {
-            const player = selectedPlayers[i];
-            const container = santiniContainers[i]; // Usa l'indice corretto per i container di dx
+            const player = selected_players[i];
+            const container = santini_containers[i]; // Usa l'indice corretto per i container di dx
             if (container && player) {
                 //pulizia dei campi precedenti
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
@@ -293,7 +151,7 @@ async function populateDraft(colore) {
                 const img = document.createElement('img');
                 img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
                 img.alt = player.cognome; // Usa 'cognome' come alt text
-                img.dataset.json = JSON.stringify(selectedPlayers[i]); // Usa il JSON della classe com id dell'immagine
+                img.dataset.json = JSON.stringify(selected_players[i]); // Usa il JSON della classe com id dell'immagine
 
                 //POPOLAMENTO INFO
                 div_info = info_statistiche[i];
@@ -358,7 +216,7 @@ async function populateDraft(colore) {
             }
         }
 
-        DragDropSantiniOnly();
+        dragSantini();
 
     } catch (error) {
         console.error('Errore durante il popolamento del draft:', error);
@@ -379,10 +237,10 @@ function populateRandom(colore) {
     }
 
     // Ottieni la lista dei calciatori rimanenti
-    let listaCalciatoriRimanenti = getListaCalciatori(colore);
+    let lista_calciatori_rimanenti = getListaCalciatori(colore);
 
     // Mescola l'array dei calciatori per assegnazione casuale
-    shuffleArray(listaCalciatoriRimanenti);
+    shuffleArray(lista_calciatori_rimanenti);
 
     // Seleziona le pedine in base al colore
     let pedine = [];
@@ -411,19 +269,19 @@ function populateRandom(colore) {
     }
 
     // Calcola quanti calciatori assegnare (un terzo dei rimanenti o tutti se sono meno delle pedine)
-    const numCalciatoriDaAssegnare = Math.min(
-        Math.ceil((listaCalciatoriRimanenti.length / 3) + 1),
+    const num_calciatori_da_assegnare = Math.min(
+        Math.ceil((lista_calciatori_rimanenti.length / 3) + 1),
         pedine.length,
-        listaCalciatoriRimanenti.length
+        lista_calciatori_rimanenti.length
     );
 
 
     // Assegna i calciatori alle pedine
-    for (let i = 0; i < numCalciatoriDaAssegnare; i++) {
-        if (i >= pedine.length || i >= listaCalciatoriRimanenti.length) break;
+    for (let i = 0; i < num_calciatori_da_assegnare; i++) {
+        if (i >= pedine.length || i >= lista_calciatori_rimanenti.length) break;
 
         const pedina = pedine[i];
-        const calciatore = listaCalciatoriRimanenti[i];
+        const calciatore = lista_calciatori_rimanenti[i];
 
         pedina.firstChild.dataset.json = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
 
@@ -445,9 +303,9 @@ function populateRandom(colore) {
     
     // Rimuovi i calciatori assegnati dall'array originale
     if (colore === "nero") {
-        array_calciatori_partita_neri.splice(0, numCalciatoriDaAssegnare);
+        array_calciatori_partita_neri.splice(0, num_calciatori_da_assegnare);
     } else if (colore === "bianco") {
-        array_calciatori_partita_bianchi.splice(0, numCalciatoriDaAssegnare);
+        array_calciatori_partita_bianchi.splice(0, num_calciatori_da_assegnare);
     }
 
 
@@ -469,49 +327,5 @@ function populateRandom(colore) {
             makeVisible(document.getElementById('player1button'));
         }, 500);
     }
-}
-
-// Funzione per far vedere le statistiche del calciatore nello specifico
-function displayStatistiche(calciatore, div_info, posizione){
-    console.log("costruendo statistiche...")
-
-    // Controlla se esiste già un div con le statistiche e rimuovilo
-    if (document.querySelector('.statistiche-draft')) {
-        document.querySelector('.statistiche-draft').remove();
-    }
-
-
-    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player', 'data_nascita', 'squadra', 'ruolo'].includes(key));
-
-    const divStatistiche = document.createElement('div');
-    divStatistiche.classList.add('statistiche-draft');
-
-    const freccia = document.createElement('img');
-    freccia.src = (posizione === "sinistra") ? "images/frecciadestra.png" : "images/frecciasinistra.png";
-    freccia.classList.add(posizione === "sinistra" ? "freccia-destra" : "freccia-sinistra");
-    divStatistiche.appendChild(freccia);
-
-    const listaStatistiche = document.createElement('ul');
-    for (const key of keys) {
-            const li = document.createElement('li');
-            li.innerHTML = `<strong> ${KeyConverter(key)}</strong>:  ${calciatore[key]}`;
-            listaStatistiche.appendChild(li);
-    }
-    divStatistiche.appendChild(listaStatistiche);
-
-    div_info.parentElement.appendChild(divStatistiche);
-
-    setPositionRelativeToDiv(
-    div_info,
-    divStatistiche,
-    posizione === "sinistra" ? "right" : "left",
-    posizione === "sinistra" ? 42 : 91
-    );
-
-    document.addEventListener('click', () => {
-        document.querySelectorAll('.statistiche-draft').forEach(div => {
-            div.remove(); // Rimuovi il div delle statistiche
-        });
-    });
 }
 

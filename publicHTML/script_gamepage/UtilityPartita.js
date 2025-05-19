@@ -61,10 +61,10 @@ async function startDraft(){
 
     //Gestione funzione per draft da DB
 
-    await CreaListeCalciatori(); // Popola l'array di calciatori
+    await creaListeCalciatori(); // Popola l'array di calciatori
     await populateDraft("bianco");
     await populateDraft("nero");
-    await DragDrop_draft();
+    await dropSantini();
 
     // Gestione della visibilità dei vari elementi
 
@@ -94,9 +94,9 @@ function startGame() {
     window.turnoBianco = true; // Reset del turno al bianco
 
     // Ridimensione la scacchiera
-    const gridContainer = document.querySelector('.grid-container');
-    if (gridContainer) {
-        gridContainer.classList.add('grid-container-enlarged');
+    const grid_container = document.querySelector('.grid-container');
+    if (grid_container) {
+        grid_container.classList.add('grid-container-enlarged');
     }
 
     // Rimuove la classe che disabilita l'hover
@@ -201,10 +201,10 @@ async function restartDraft(){
     
     //Gestione funzione per draft da DB
 
-    await CreaListeCalciatori();        // Popola l'array di calciatori
+    await creaListeCalciatori();        // Popola l'array di calciatori
     await populateDraft("bianco");
     await populateDraft("nero");
-    await DragDrop_draft();
+    await dropSantini();
 
     if(document.getElementById('toggle').checked) document.getElementById('toggle').checked = !document.getElementById('toggle').checked;
     updateText(document.getElementById('toggle').checked);
