@@ -1,16 +1,5 @@
 // Funzione che lancia il popup di fine partita
-function launchEndgamePopup(){
-
-    // Ottengo il nome del vincitore
-    let vincitore = null;
-
-    if(window.turno_bianco){
-        vincitore = localStorage.getItem('game_username1');
-        // aumentare le partite giocate
-    }
-    else{
-        vincitore = localStorage.getItem('game_username2');
-    }
+function launchEndgamePopup(vincitore){
 
     const end_game_popup = document.createElement('div');
     end_game_popup.classList.add('popup-gameover');

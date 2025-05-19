@@ -131,19 +131,8 @@ function startGame() {
 // Funzione per terminare la partita
 function endGame(){
 
-    //PARTE DEL PUNTEGGIO
     let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
-    let id_vincitore = window.turno_bianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
-    let id_perdente = window.turno_bianco ? localStorage.getItem('game_userId2') : localStorage.getItem('game_userId1');
-    let punti = window.turno_bianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
-    let new_punti = parseInt(punti) + 20;
-
-    //incrementa punti del vincitore
-    aggiornaPunti(id_vincitore, new_punti);
-    LS_update_all_prezzo(id_vincitore, new_punti);
-    update_LS_winner(id_vincitore, vincitore, new_punti);
-    aggiornaPartite(id_vincitore);
-    aggiornaPartite(id_perdente);
+    aggiornaStatistiche();  //aggiorna punti, partite e vittorie
 
     window.game_started = false;
     freezeTimer();
@@ -151,7 +140,7 @@ function endGame(){
     
     resetSottoscacco();
 
-    launchEndgamePopup();
+    launchEndgamePopup(vincitore);
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
     document.querySelector('.game-container').classList.add('game-not-started');

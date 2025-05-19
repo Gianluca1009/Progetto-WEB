@@ -7,6 +7,7 @@ CREATE TABLE player (
     password VARCHAR(50) NOT NULL,
     punti INT DEFAULT 100,
     partite INT DEFAULT 0,
+    vittorie INT DEFAULT 0,
     UNIQUE (username, email)
 );
 

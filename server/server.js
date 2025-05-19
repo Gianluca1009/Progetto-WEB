@@ -212,21 +212,35 @@ app.post('/update_punti', async (req, res) => {
     } catch (err) {
       res.status(500).send('Errore durante l\'aggiornamento dei punti');
     }
-  });
+});
 
 //Endpoint che aggiorna il numero di partite a +1 e lo ritorna (per il LS)
 app.post('/update_partite', async (req, res) => {
     const connection = await createConnection();
-    const { userid} = req.body;
+    const {userid} = req.body;
   
     try {
       const result = await connection.query('UPDATE player SET partite = partite + 1 WHERE id = $1 RETURNING partite', [userid]);
       partite_aggiornate = result.rows[0].partite;
-      res.status(201).send(partite_aggiornate);
+      res.status(201).json(partite_aggiornate);
     } catch (err) {
       res.status(500).send('Errore durante l\'aggiornamento delle partite');
     }
-  });
+});
+
+//Endpoint che aggiorna il numero di partite a +1 e lo ritorna (per il LS)
+app.post('/update_vittorie', async (req, res) => {
+    const connection = await createConnection();
+    const {userid} = req.body;
+  
+    try {
+      const result = await connection.query('UPDATE player SET vittorie = vittorie + 1 WHERE id = $1 RETURNING vittorie', [userid]);
+      vittorie_aggiornate = result.rows[0].vittorie;
+      res.status(201).json(vittorie_aggiornate);
+    } catch (err) {
+      res.status(500).send('Errore durante l\'aggiornamento delle vittorie');
+    }
+});
 
   //abina un nuovo calciatore al player -> ROSE
 app.post('/buy_calciatore', async (req, res) => {
@@ -239,7 +253,7 @@ app.post('/buy_calciatore', async (req, res) => {
     } catch (err) {
       res.status(500).send('Errore durante l\'acquisto calciatore');
     }
-  });
+});
 
     //abina un nuovo calciatore al player -> ROSE
 app.post('/sale_calciatore', async (req, res) => {
@@ -252,4 +266,4 @@ app.post('/sale_calciatore', async (req, res) => {
     } catch (err) {
       res.status(500).send('Errore durante la vendita calciatore');
     }
-  });
+});
