@@ -1,8 +1,8 @@
 function acquistaCalciatore(calciatore, riga){
 
-    let id = LS_getUserMercatoData()[0];
-    let nome = LS_getUserMercatoData()[1];
-    let miei_punti = LS_getUserMercatoData()[2];
+    let id = LS_getUserMercatoData().id;
+    let nome = LS_getUserMercatoData().username;
+    let miei_punti = LS_getUserMercatoData().punti;
 
         //se hai abbastanza punti permette l'acquisto:
         if(miei_punti >= calciatore.prezzo){ 

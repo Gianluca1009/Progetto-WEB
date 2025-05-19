@@ -23,16 +23,16 @@ function LS_logoutMercato() {
 function LS_getUserMercatoData() {
     const userId = localStorage.getItem('mercato_userId');
     const username = localStorage.getItem('mercato_username');
-    const punti = localStorage.getItem('mercato_user_point');
+    const punti = localStorage.getItem('mercato_user_punti');
     const partite = localStorage.getItem('mercato_user_partite');
     const email = localStorage.getItem('mercato_user_email');
     const vittorie = localStorage.getItem('mercato_user_vittorie');
-    return [userId, username, email, punti, partite, vittorie];
+    return {id: userId, username: username, email: email, punti: punti, partite: partite, vittorie: vittorie};
 }
 
 // ???
 function LSM_agg_LSRprezzo (new_prezzo){
     if( localStorage.getItem('rose_userId') === localStorage.getItem('mercato_userId')){
-      localStorage.setItem('rose_user_point', new_prezzo);
+      localStorage.setItem('rose_user_punti', new_prezzo);
     }
 }

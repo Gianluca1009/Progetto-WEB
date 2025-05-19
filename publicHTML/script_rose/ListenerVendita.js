@@ -1,9 +1,9 @@
 function ListVendi(calciatore, bottone){
    
     //se sei loggato al click:
-    let id = LS_get_idPlayerRose();
-    let nomePlayer = LS_get_usernamePlayerRose();
-    let miei_punti = LS_get_puntiPlayerRose();
+    let id = LS_getUserRosaData().id;
+    let nomePlayer = LS_getUserRosaData().username;
+    let miei_punti = LS_getUserRosaData().punti;
     let calc_id = calciatore.id;
     confermaAcquisto(id, calciatore.cognome , nomePlayer, calciatore.prezzo ,miei_punti, calc_id);
 }
@@ -56,7 +56,7 @@ async function aggiornaPunti(userid, new_punti) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ userid, new_punti })
+      body: JSON.stringify({userid, new_punti})
     });
   } catch (error) {
     console.error('Errore durante l\'aggiornamento dei punti:', error);

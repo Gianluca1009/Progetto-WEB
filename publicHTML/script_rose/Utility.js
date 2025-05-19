@@ -1,8 +1,8 @@
 //Funzione per recuperare la rosa dal db
 async function fetchMiaRosa(){
     try{
-        if (LS_get_idPlayerRose()){
-            const id_player = LS_get_idPlayerRose();
+        if (LS_getUserRosaData().id){
+            const id_player = LS_getUserRosaData().id;
             const data = await fetch(`/get_giocatori_rosa?id=${id_player}`);
             if(!data.ok){
                 throw new Error("errore server");
@@ -22,7 +22,7 @@ async function fetchMiaRosa(){
 
 //Funzione che mette l'username nel campo dedicato dopo il login
 function fillUsernameRosa(){
-    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_get_usernamePlayerRose()}`;
+    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_getUserRosaData().username}`;
 }
 
 // Funzione che crea la riga che segnala il login non effettuato

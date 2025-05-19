@@ -6,10 +6,10 @@ function LS_updatePunti(id_user, new_punti ) {
         localStorage.setItem('game_user_point2', new_punti);
     }
     if(localStorage.getItem('rose_userId') === id_user){
-        localStorage.setItem('rose_user_point', new_punti);
+        localStorage.setItem('rose_user_punti', new_punti);
     }
     if (localStorage.getItem('mercato_userId') === id_user){
-        localStorage.setItem('mercato_user_point', new_punti);
+        localStorage.setItem('mercato_user_punti', new_punti);
     }
 }
 

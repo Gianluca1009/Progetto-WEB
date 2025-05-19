@@ -29,10 +29,10 @@ function login() {
         .then(data => {
 
           // Se la risposta è positiva, la variabile `data` contiene i dati dell'utente
-          const { userId, username, point } = data;
+          const { userId, username, email, punti, partite, vittorie } = data;
 
           // Chiamata alla funzione LS_loginRose per salvare i dati nel localStorage
-          LS_loginRose(userId, username, point);
+          LS_loginRose(userId, username, email, punti, partite, vittorie);
 
           //rimuovo il messaggio di login non effettuato dalla bacheca
           svuotaBacheca();
@@ -58,7 +58,7 @@ function login() {
 
 // Funzione che, quando necessario, inserisce il messaggio di login non effettuato nella bacheca
 function ifNotLoggedIn() {
-    if(LS_get_idPlayerRose() === null) {
+    if(LS_getUserRosaData().id === null) {
         buildRowNoLogin();
         window.logout_button.classList.add("hidden");
     }
@@ -66,7 +66,7 @@ function ifNotLoggedIn() {
 
 //Funzione che gestisce il caso in cui la sessione è rimasta aperta
 function ifSessioneAperta(){
-    if(LS_get_idPlayerRose()){
+    if(LS_getUserRosaData().id){
         fillUsernameRosa();
         // window.logout_button.classList.remove("hidden");
         makeVisible(window.logout_button);

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="COMMON_stile/bottoni-login.css">
     <link rel="stylesheet" href="COMMON_stile/mercato-rosa.css">
     <link rel="stylesheet" href="COMMON_stile/intestazioni.css">
+    <link rel="stylesheet" href="COMMON_stile/popup.css">
     <link rel="stylesheet" href="stile_rosa/bottone.css">
     <title>Rosa</title>
 
@@ -27,6 +28,7 @@
     <script src="script_rose/ListenerVendita.js"></script>
     <script src="COMMON_utility/Utility.js"></script>
     <script src="COMMON_utility/LocalStorage.js"></script>
+    <script src="COMMON_utility/PopUp.js"></script>
 
     <div class="hamburger" id="menu-rosa" style="position: fixed;">
         <div class="hamburger-content">
@@ -57,8 +59,8 @@
                     <span class="button_top login"> Logout </span>
                 </button>
 
-                <div class="sezione-profilo">
-                    <img class="avatar" src="images/avatar.png" alt="Avatar">
+                <div class="sezione-profilo" data-aperto="false">
+                    <img class="avatar" src="images/avatar.png" onclick="launchProfilePopup('rosa')" alt="Avatar">
                     <p id="playerusername" class="p-username"></p>
                 </div>
 

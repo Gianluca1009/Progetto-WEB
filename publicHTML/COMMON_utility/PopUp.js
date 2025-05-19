@@ -33,7 +33,23 @@ function closeEndgamePopup(){
     }, 100);
 }
 
-function launchProfilePopup(){
+function launchProfilePopup(pagina){
+    let Username, Email, Punti, Partite, Vittorie;
+    if(pagina == "mercato"){
+        Username = LS_getUserMercatoData().username;
+        Email = LS_getUserMercatoData().email;
+        Punti = LS_getUserMercatoData().punti;
+        Partite = LS_getUserMercatoData().partite;
+        Vittorie = LS_getUserMercatoData().vittorie;
+    }
+    if(pagina === "rosa"){
+        Username = LS_getUserRosaData().username;
+        Email = LS_getUserRosaData().email;
+        Punti = LS_getUserRosaData().punti;
+        Partite = LS_getUserRosaData().partite;
+        Vittorie = LS_getUserRosaData().vittorie;
+    }
+    
     if(document.querySelector('.sezione-profilo').dataset.aperto == "false"){
         const profile_popup = document.createElement('div');
         profile_popup.classList.add('div-profilo');
@@ -43,20 +59,20 @@ function launchProfilePopup(){
                 <strong style="top: 5%; position: absolute; font-size: 1.2vw">PROFILO</strong>
                 <ul>
                     <li> <strong>Username:</strong>
-                    ${LS_getUserMercatoData()[1]}</li>
+                    ${Username}</li>
                     <li> <strong>Email:</strong>
-                    ${LS_getUserMercatoData()[2]}</li>
+                    ${Email}</li>
                     <li> <strong>Punti:</strong> 
-                    ${LS_getUserMercatoData()[3]} Pt.</li>
+                    ${Punti} Pt.</li>
                     <li> <strong>Partite:</strong>
-                    ${LS_getUserMercatoData()[4]}</li>
+                    ${Partite}</li>
                     <li> <strong>Vittorie:</strong>
-                    ${LS_getUserMercatoData()[5]}</li>
+                    ${Vittorie}</li>
                 </ul>
             `;
         makeVisible(profile_popup, 0.5);
         document.querySelector('.container-bottoni-login').appendChild(profile_popup);
-        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 60);
+        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 50);
 
         //GESTIONE DELLA RIMOZIONE DIV PROFILO
         setTimeout( () => {

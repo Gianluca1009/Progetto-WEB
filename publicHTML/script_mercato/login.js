@@ -28,9 +28,9 @@ function login() {
         })
         .then(data => {
           // Se la risposta è positiva, la variabile `data` contiene i dati dell'utente
-          const { userId, username, punti, partite, email } = data;
+          const { userId, username, email, punti, partite, vittorie } = data;
           // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
-          LS_loginMercato(userId, username, punti, partite, email);
+          LS_loginMercato(userId, username, email, punti, partite, vittorie);
           document.querySelector('.user-points').textContent = punti;
           // Mostriamo il messaggio di successo
           
@@ -57,7 +57,7 @@ function login() {
 
 //Funzione che gestisce il caso in cui non è stato effettuato il login
 function ifNotLoggedIn() {
-    if(LS_getUserMercatoData()[1] == null){
+    if(LS_getUserMercatoData().id == null){
         document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });
@@ -66,9 +66,9 @@ function ifNotLoggedIn() {
 
 //Funzione che gestisce il caso in cui la sessione è rimasta aperta
 function ifSessioneAperta() {
-    if(LS_getUserMercatoData()[1] != null){
+    if(LS_getUserMercatoData().id != null){
         fillUsernameMercato();
-        document.querySelector('.user-points').textContent = LS_getUserMercatoData()[2];
+        document.querySelector('.user-points').textContent = LS_getUserMercatoData().punti;
         document.getElementById("logoutbutton").classList.remove("hidden");
         makeVisible(document.querySelector(".sezione-profilo"));
         document.getElementById("registerbutton").classList.add("hidden");

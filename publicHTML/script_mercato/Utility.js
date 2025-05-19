@@ -7,7 +7,7 @@ async function fetchCalciatoriLiberi() {
 
 //Funzione che mette l'username nel campo dedicato dopo il login
 function fillUsernameMercato(){
-    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_getUserMercatoData()[1]}`;
+    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_getUserMercatoData().username}`;
 }
 
 //Funzione per costruire la riga della rosa
