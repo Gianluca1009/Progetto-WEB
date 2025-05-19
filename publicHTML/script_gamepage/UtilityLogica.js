@@ -178,7 +178,6 @@ function avanza(cella_dest){
 
 // Funzione per cambiare turno
 function cambioTurno(){
-    resetTimer();
     window.turnoBianco = !window.turnoBianco;
     aggiornaStatoPedine();
     updateCondition();
