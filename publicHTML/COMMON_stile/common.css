@@ -62,7 +62,6 @@ body {
 }
 
 button{
-    /* Variables */
     --button_radius: 0.75rem;
     --button_color: #e8e8e8;
     --button_outline_color: hsl(0, 0%, 0%);
@@ -93,12 +92,10 @@ button{
 }
 
 button:hover .button_top {
-    /* Pull the button upwards when hovered */
     transform: translateY(-4%);
 }
 
 button:active .button_top {
-    /* Push the button downwards when pressed */
     transform: translateY(0);
 }
 
