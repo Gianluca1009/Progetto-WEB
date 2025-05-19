@@ -13,4 +13,4 @@ RUN npm install pg
 EXPOSE 3000
 
 # Comando di avvio
-CMD ["node", "server.js"]
+CMD ["node", "Server.js"]
