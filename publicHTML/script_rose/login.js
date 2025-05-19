@@ -27,17 +27,18 @@ function login() {
           return response.json(); // Restituiamo la risposta JSON
         })
         .then(data => {
+
           // Se la risposta è positiva, la variabile `data` contiene i dati dell'utente
           const { userId, username, point } = data;
+
           // Chiamata alla funzione LS_loginRose per salvare i dati nel localStorage
           LS_loginRose(userId, username, point);
-          //popola l'area di log con i calciatori della rosa
 
           //rimuovo il messaggio di login non effettuato dalla bacheca
           svuotaBacheca();
 
+          // Mostro la rosa dell'utente corrente
           BuildRosa();
-          // Mostriamo il messaggio di successo
 
         })
         .catch(error => {
@@ -46,53 +47,20 @@ function login() {
       }
     }).then(result => {
       if (result.isConfirmed) {
-        makeVisible(document.getElementById("logoutbutton"));
         fillUsernameRosa();
-        makeVisible(document.querySelector(".sezione-profilo"));
-        makeHidden(document.getElementById("loginbutton"));
-        makeHidden(document.getElementById("registerbutton"));
+        makeVisible(window.sezione_profilo);
+        makeHidden(window.register_button);
+        makeHidden(window.login_button);
+        makeVisible(window.logout_button);
       }
     });
 }
 
-//Funzione che crea la riga che segnala il login non effettuato
-function buildRowNoLogin() {
-    // let bacheca = document.getElementById("bacheca-rosa");
-
-    const row = document.createElement('div');
-    row.className = 'riga_finestra no-result';
-    row.id = 'no-login';
-
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
-
-    const titolo = document.createElement('h2');
-    titolo.textContent = `Effettua il login per visualizzare i calciatori della tua rosa`;
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#b22222'; // rosso scuro per enfasi
-
-    campoInfo.appendChild(titolo);
-    row.appendChild(campoInfo);
-
-    // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    window.bacheca.appendChild(row);
-    makeVisible(row);
-}
-
-// Svuota le finestre che mostrano i giocatori
-function svuotaBacheca() {
-  window.bacheca.querySelectorAll("*").forEach(el => el.remove());
-}
-
-//Funzione che gestisce il caso in cui non è stato effettuato il login
+// Funzione che, quando necessario, inserisce il messaggio di login non effettuato nella bacheca
 function ifNotLoggedIn() {
     if(LS_get_idPlayerRose() === null) {
-        //Se non è stato fatto il login, inserisco la riga che lo segnalano
-        buildRowNoLogin()
-
+        buildRowNoLogin();
+        window.logout_button.classList.add("hidden");
     }
 }
 
@@ -100,10 +68,11 @@ function ifNotLoggedIn() {
 function ifSessioneAperta(){
     if(LS_get_idPlayerRose()){
         fillUsernameRosa();
-        document.getElementById("logoutbutton").classList.remove("hidden");
-        makeVisible(document.querySelector(".sezione-profilo"));
-        document.getElementById("registerbutton").classList.add("hidden");
-        document.getElementById("loginbutton").classList.add("hidden");
+        // window.logout_button.classList.remove("hidden");
+        makeVisible(window.logout_button);
+        makeVisible(window.sezione_profilo);
+        window.register_button.classList.add("hidden");
+        window.login_button.classList.add("hidden");
         BuildRosa();
     }
 }
@@ -157,16 +126,14 @@ function register() {
 function logout() {
     LS_logoutRose();
 
+    // Svuoto la bacheca non mostrando più la rosa
     svuotaBacheca();
 
-    if(LS_get_idPlayerRose() === null) {
-      // buildRowNoLogin(finestra_difensori, "difensori");
-      // buildRowNoLogin(finestra_centrocampisti, "centrocampisti");
-      // buildRowNoLogin(finestra_attaccanti, "attaccanti");
-    }
+    // Creo il messaggio di login non effettuato e lo metto in bacheca
+    buildRowNoLogin();
 
-    makeHidden(document.getElementById("logoutbutton"));
-    makeHidden(document.querySelector(".sezione-profilo"));
-    makeVisible(document.getElementById("loginbutton"));
-    makeVisible(document.getElementById("registerbutton"));
+    makeHidden(window.logout_button);
+    makeHidden(window.sezione_profilo);
+    makeVisible(window.login_button);
+    makeVisible(window.register_button);
   }

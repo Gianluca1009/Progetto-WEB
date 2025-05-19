@@ -1,8 +1,3 @@
-window.difensori = [];
-window.centrocampisti = [];
-window.attaccanti = [];
-window.bacheca = document.getElementById("finestra-rosa");
-
 //Funzione per recuperare la rosa dal db
 async function fetchMiaRosa(){
     try{
@@ -28,6 +23,59 @@ async function fetchMiaRosa(){
 //Funzione che mette l'username nel campo dedicato dopo il login
 function fillUsernameRosa(){
     document.getElementById("playerusername").textContent = `Benvenuto, ${LS_get_usernamePlayerRose()}`;
+}
+
+// Funzione che crea la riga che segnala il login non effettuato
+function buildRowNoLogin() {
+    // let bacheca = document.getElementById("bacheca-rosa");
+
+    const row = document.createElement('div');
+    row.className = 'riga_finestra no-result';
+    row.id = 'no-login';
+
+    // Campo info con messaggio
+    const campoInfo = document.createElement('div');
+    campoInfo.className = 'no-result';
+
+    const titolo = document.createElement('h2');
+    titolo.textContent = `Effettua il login per visualizzare i calciatori della tua rosa`;
+    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
+    titolo.style.marginBlockEnd = '0.5em';
+    titolo.style.color = 'black'; 
+
+    campoInfo.appendChild(titolo);
+    row.appendChild(campoInfo);
+
+    // Aggiunta alla finestra del mercato
+    row.classList.add("fade-hidden");
+    window.bacheca.appendChild(row);
+    makeVisible(row);
+}
+
+// Popola gli array di finestra dividendo i calciatori della rosa per ruolo
+function dividiPerRuolo(calciatore) {
+
+    if(calciatore.ruolo === "Difensore") {
+        difensori.push(calciatore);
+    }
+
+    if(calciatore.ruolo === "Centrocampista") {
+        centrocampisti.push(calciatore);
+    }
+
+    if(calciatore.ruolo === "Attaccante") {
+        attaccanti.push(calciatore);
+    }
+}
+
+// Crea il titolo per ogni ruolo
+function buildTitoloRuolo(ruolo) {
+
+    const titolo = document.createElement('h3');
+    titolo.className = "title";
+    titolo.style.fontSize = "calc(3.3vh + 2.3vw)";
+    titolo.textContent = ruolo;
+    window.bacheca.appendChild(titolo)
 }
 
 //Funzione per costruire la riga della rosa
@@ -138,22 +186,7 @@ function BuildRowForCalciatore(calciatore){
     makeVisible(row);
 }
 
-function dividiPerRuolo(calciatore) {
-
-    if(calciatore.ruolo === "Difensore") {
-        difensori.push(calciatore);
-    }
-
-    if(calciatore.ruolo === "Centrocampista") {
-        centrocampisti.push(calciatore);
-    }
-
-    if(calciatore.ruolo === "Attaccante") {
-        attaccanti.push(calciatore);
-    }
-}
-
-//Crea la riga per comunicare che non si hanno giocatori di un determinato ruolo
+//Crea la riga per comunicare che non si hanno calciatori di un determinato ruolo
 function buildRowNoResult(ruolo) {
     const row = document.createElement('div');
     row.className = 'riga_finestra no-result';
@@ -167,7 +200,7 @@ function buildRowNoResult(ruolo) {
     titolo.textContent = `Nessun ${ruolo} trovato`;
     titolo.style.fontSize = 'min(1.5vw, 1.5em)';
     titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#b22222'; // rosso scuro per enfasi
+    titolo.style.color = 'black'; // rosso scuro per enfasi
 
     const testo = document.createElement('p');
     testo.textContent = "Vai a comprare quelli che vuoi nella pagina del mercato!";
@@ -184,16 +217,12 @@ function buildRowNoResult(ruolo) {
     makeVisible(row);
 }
 
-function buildTitoloRuolo(ruolo) {
-
-    const titolo = document.createElement('h3');
-    titolo.className = "title";
-    titolo.style.fontSize = "calc(3.3vh + 2.3vw)";
-    titolo.textContent = ruolo;
-    window.bacheca.appendChild(titolo)
+// Svuota le bacheca eliminandone il contenuto
+function svuotaBacheca() {
+  window.bacheca.querySelectorAll("*").forEach(el => el.remove());
 }
 
-//Funzione per costruire la rosa
+// Mostra la rosa nella bacheca
 async function BuildRosa(){
     results = await fetchMiaRosa();
 
@@ -204,8 +233,10 @@ async function BuildRosa(){
         i++;
     }
 
+    // SEZIONE DIFENSORI
     buildTitoloRuolo("Difensori");
 
+    // Crea una riga per ogni difenisore posseduto
     if(difensori.length > 0) {
         window.difensori.forEach(difensore => {
             BuildRowForCalciatore(difensore)
@@ -214,8 +245,10 @@ async function BuildRosa(){
         buildRowNoResult("difensore");
     }
 
+    // SEZIONE CENTROCAMPISTI
     buildTitoloRuolo("Centrocampisti");
 
+    // Crea una riga per ogni centrocampista posseduto
     if(centrocampisti.length > 0) {
         window.centrocampisti.forEach(centrocampista => {
             BuildRowForCalciatore(centrocampista)
@@ -224,8 +257,10 @@ async function BuildRosa(){
         buildRowNoResult("centrocampista");
     }
 
+    // SEZIONE ATTACCANTI
     buildTitoloRuolo("Attaccanti");
 
+    // Crea una riga per ogni attaccante posseduto
     if(attaccanti.length > 0) {
         window.attaccanti.forEach(attaccante => {
             BuildRowForCalciatore(attaccante)

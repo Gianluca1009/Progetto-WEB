@@ -7,6 +7,8 @@ function ListVendi(calciatore, bottone){
     let calc_id = calciatore.id;
     confermaAcquisto(id, calciatore.cognome , nomePlayer, calciatore.prezzo ,miei_punti, calc_id);
 }
+
+
 async function confermaAcquisto(id_player, cognome_calciatore, nomePlayer, prezzo ,miei_punti, calc_id) {
   const result = await Swal.fire({
     title: `Vuoi vendere ${cognome_calciatore} ?`,
