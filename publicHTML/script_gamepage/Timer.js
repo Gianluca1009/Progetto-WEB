@@ -117,20 +117,6 @@ function updateTimerDisplay() {
     }
 }
 
-// Funzione per pausa e cambio del timer
-function resetTimer() {
-    if (!window.gameStarted) return;
-    
-    // Ferma il timer corrente
-    clearInterval(timerId);
-    timerId = null;
-    
-    // Avvia il timer per il turno corrente
-    requestAnimationFrame(() => {
-        startTimer();
-    });
-}
-
 // Funzione per freezare il timer (ad esempio a fine partita)
 function freezeTimer() {
     clearInterval(timerId);
