@@ -158,6 +158,7 @@ function endGame(){
     window.cellaReBianco = document.getElementById(window.idCellReBianco);
     window.cellaReNero = document.getElementById(window.idCellReNero);
     resetSottoscacco();
+    if(document.getElementById('div_ped_promotion')) document.getElementById('div_ped_promotion').remove();
 
     playSound('fischio_finale', 0.2);
 
@@ -186,6 +187,7 @@ async function restartDraft(){
     makeHidden(document.querySelector('.tunnel-dx'));
     document.getElementById('player1button').classList.add('hidden');
     document.getElementById('player2button').classList.add('hidden');
+    if(document.getElementById('div_ped_promotion')) document.getElementById('div_ped_promotion').remove();
 
     resetSottoscacco();
     resetProntoButton();

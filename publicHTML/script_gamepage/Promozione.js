@@ -69,7 +69,7 @@ function createPromotionDiv() {
 }
 
 // Funzione per la logica di promozione
-function ListenerPromozione(pedina_d, img_pedina, turno_bianco) {
+function helperPromozione(pedina_d, img_pedina, turno_bianco) {
     const stile = getStyle(); // "MODERN" o "CLASSIC"
     const colore = turno_bianco ? 'bianco' : 'nero';
 
@@ -132,7 +132,7 @@ function upgradePedone(img_pedina, cella_dest){
         setPositionRelativeToDiv(cella_dest, div_promotion, 'right', 1);
         makeVisible(div_promotion);
         disabilitaPedine();
-        ListenerPromozione(div_pedina, img_pedina, div_pedina.id === "p"); // true per bianco, false per nero
+        helperPromozione(div_pedina, img_pedina, div_pedina.id === "p"); // true per bianco, false per nero
         is_pedone_promosso = true;
     }
     return is_pedone_promosso;
