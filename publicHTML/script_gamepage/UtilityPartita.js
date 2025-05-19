@@ -134,6 +134,7 @@ function endGame(){
     //PARTE DEL PUNTEGGIO
     let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
     let id_vincitore = window.turno_bianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
+    let id_perdente = window.turno_bianco ? localStorage.getItem('game_userId2') : localStorage.getItem('game_userId1');
     let punti = window.turno_bianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
     let new_punti = parseInt(punti) + 20;
 
@@ -142,6 +143,7 @@ function endGame(){
     LS_update_all_prezzo(id_vincitore, new_punti);
     update_LS_winner(id_vincitore, vincitore, new_punti);
     aggiornaPartite(id_vincitore);
+    aggiornaPartite(id_perdente);
 
     window.game_started = false;
     freezeTimer();
@@ -224,40 +226,4 @@ function goHome(){
     makeHidden(document.getElementById('popup-gameover'));
     
     window.location.href = 'index.html';
-}
-
-async function aggiornaPunti(userid, new_punti) {
-  try {
-    const response = await fetch('/update_punti', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ userid, new_punti })
-    });
-  } catch (error) {
-    console.error('Errore durante l\'aggiornamento dei punti:', error);
-  }
-}
-
-async function aggiornaPartite(userid) {
-    try {
-        const response = await fetch('/update_partite', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({userid})
-        });
-    } catch (error) {
-        console.error('Errore durante l\'aggiornamento delle partite:', error);
-    }
-}
-
-function update_LS_winner(id, name, pti){
-    if (window.turno_bianco)
-            LS_login1Game(id,name,pti);
-
-    else LS_login2Game(id,name,pti);
-  
 }

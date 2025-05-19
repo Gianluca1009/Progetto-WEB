@@ -214,13 +214,15 @@ app.post('/update_punti', async (req, res) => {
     }
   });
 
+//Endpoint che aggiorna il numero di partite a +1 e lo ritorna (per il LS)
 app.post('/update_partite', async (req, res) => {
     const connection = await createConnection();
-    const { userid, new_partite} = req.body;
+    const { userid} = req.body;
   
     try {
-      await connection.query('UPDATE player SET partite = partite + 1 WHERE id = $1', [userid]);
-      res.status(201).send('update partite avvenuto');
+      const result = await connection.query('UPDATE player SET partite = partite + 1 WHERE id = $1 RETURNING partite', [userid]);
+      partite_aggiornate = result.rows[0].partite;
+      res.status(201).send(partite_aggiornate);
     } catch (err) {
       res.status(500).send('Errore durante l\'aggiornamento delle partite');
     }
