@@ -141,6 +141,7 @@ function endGame(){
     aggiornaPunti(id_vincitore, new_punti);
     LS_update_all_prezzo(id_vincitore, new_punti);
     update_LS_winner(id_vincitore, vincitore, new_punti);
+    aggiornaPartite(id_vincitore);
 
     window.game_started = false;
     freezeTimer();
@@ -237,6 +238,20 @@ async function aggiornaPunti(userid, new_punti) {
   } catch (error) {
     console.error('Errore durante l\'aggiornamento dei punti:', error);
   }
+}
+
+async function aggiornaPartite(userid) {
+    try {
+        const response = await fetch('/update_partite', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({userid})
+        });
+    } catch (error) {
+        console.error('Errore durante l\'aggiornamento delle partite:', error);
+    }
 }
 
 function update_LS_winner(id, name, pti){

@@ -214,6 +214,18 @@ app.post('/update_punti', async (req, res) => {
     }
   });
 
+app.post('/update_partite', async (req, res) => {
+    const connection = await createConnection();
+    const { userid, new_partite} = req.body;
+  
+    try {
+      await connection.query('UPDATE player SET partite = partite + 1 WHERE id = $1', [userid]);
+      res.status(201).send('update partite avvenuto');
+    } catch (err) {
+      res.status(500).send('Errore durante l\'aggiornamento delle partite');
+    }
+  });
+
   //abina un nuovo calciatore al player -> ROSE
 app.post('/buy_calciatore', async (req, res) => {
     const connection = await createConnection();
