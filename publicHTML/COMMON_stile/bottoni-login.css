@@ -12,14 +12,14 @@
     position: absolute;
     width: 46%;
     height: 100%;
-    left: 0;
+    right: 0;
 }
 
 .btn-register{
     position: absolute;
     width: 46%;
     height: 100%;
-    right: 0;
+    left: 0;
 }
 
 .btn-logout{
@@ -30,13 +30,31 @@
 }
 
 .p-username{
-    position: absolute;
-    bottom:-90%;
-    width: 46%;
-    height: 100%;
-    left: 0;
+    width: 100%;
     color: aliceblue;
     font-family: 'Georgia', serif;
     font-size: 1.1vw;
+    margin-block-start: 5%;
+}
+
+.sezione-profilo{
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.avatar{
+    height: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.avatar:hover{
+    cursor: pointer;
+    transform: scale(1.1);
 }
 

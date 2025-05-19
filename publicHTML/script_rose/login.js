@@ -1,7 +1,7 @@
 
 //------ LOGIN ------//
 
-function openLogPopup() {
+function login() {
     Swal.fire({
       title: 'Login',
       html:
@@ -48,7 +48,7 @@ function openLogPopup() {
       if (result.isConfirmed) {
         makeVisible(document.getElementById("logoutbutton"));
         fillUsernameRosa();
-        makeVisible(document.getElementById("playerusername"));
+        makeVisible(document.querySelector(".sezione-profilo"));
         makeHidden(document.getElementById("loginbutton"));
         makeHidden(document.getElementById("registerbutton"));
       }
@@ -101,7 +101,7 @@ function ifSessioneAperta(){
     if(LS_get_idPlayerRose()){
         fillUsernameRosa();
         document.getElementById("logoutbutton").classList.remove("hidden");
-        makeVisible(document.getElementById("playerusername"));
+        makeVisible(document.querySelector(".sezione-profilo"));
         document.getElementById("registerbutton").classList.add("hidden");
         document.getElementById("loginbutton").classList.add("hidden");
         BuildRosa();
@@ -111,7 +111,7 @@ function ifSessioneAperta(){
 
 //------ REGISTRAZIONE ------//
 
-function openRegPopup() {
+function register() {
   Swal.fire({
     title: 'Registrazione utente',
     html:
@@ -145,7 +145,6 @@ function openRegPopup() {
   }).then(result => {
     if (result.isConfirmed) {
       Swal.fire('Registrazione avvenuta!');
-      makeHidden(document.getElementById("registerbutton"));
     }
   });
 }
@@ -155,19 +154,19 @@ function openRegPopup() {
 
 //------ LOGOUT ------//
 
-function openLogoutPopup() {
+function logout() {
     LS_logoutRose();
 
     svuotaBacheca();
 
     if(LS_get_idPlayerRose() === null) {
-      buildRowNoLogin(finestra_difensori, "difensori");
-      buildRowNoLogin(finestra_centrocampisti, "centrocampisti");
-      buildRowNoLogin(finestra_attaccanti, "attaccanti");
+      // buildRowNoLogin(finestra_difensori, "difensori");
+      // buildRowNoLogin(finestra_centrocampisti, "centrocampisti");
+      // buildRowNoLogin(finestra_attaccanti, "attaccanti");
     }
 
     makeHidden(document.getElementById("logoutbutton"));
-    makeHidden(document.getElementById("playerusername"));
+    makeHidden(document.querySelector(".sezione-profilo"));
     makeVisible(document.getElementById("loginbutton"));
     makeVisible(document.getElementById("registerbutton"));
   }

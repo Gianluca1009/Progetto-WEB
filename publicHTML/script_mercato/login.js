@@ -33,11 +33,7 @@ function login() {
           LS_loginMercato(userId, username, point);
           document.querySelector('.user-points').textContent = point;
           // Mostriamo il messaggio di successo
-          makeVisible(document.getElementById("logoutbutton"));
-          fillUsernameMercato();
-          makeVisible(document.getElementById("playerusername"));
-          makeHidden(document.getElementById("loginbutton"));
-          makeHidden(document.getElementById("registerbutton"));
+          
         })
         .catch(error => {
           Swal.showValidationMessage(error.message);
@@ -49,6 +45,11 @@ function login() {
         document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });
+        makeVisible(document.getElementById("logoutbutton"));
+        fillUsernameMercato();
+        makeVisible(document.querySelector(".sezione-profilo"));
+        makeHidden(document.getElementById("loginbutton"));
+        makeHidden(document.getElementById("registerbutton"));
       }
     });
     
@@ -69,8 +70,9 @@ function ifSessioneAperta() {
         fillUsernameMercato();
         document.querySelector('.user-points').textContent = LS_getUserMercatoData()[2];
         document.getElementById("logoutbutton").classList.remove("hidden");
-        makeVisible(document.getElementById("playerusername"));
-        document.getElementById("registerbutton").classList.add("hidden");document.querySelectorAll('.btn-compravendita').forEach(button => {
+        makeVisible(document.querySelector(".sezione-profilo"));
+        document.getElementById("registerbutton").classList.add("hidden");
+        document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });
         document.getElementById("loginbutton").classList.add("hidden");
@@ -146,8 +148,7 @@ function register() {
   }).then(result => {
     if (result.isConfirmed) {
       Swal.fire('Registrazione avvenuta!');
-      makeHidden(document.getElementById("registerbutton"));
-    }
+ù    }
   });
 }
 
@@ -160,7 +161,7 @@ function logout() {
     LS_logoutMercato();
     document.querySelector('.user-points').textContent = 'loggarsi';
     makeHidden(document.getElementById("logoutbutton"));
-    makeHidden(document.getElementById("playerusername"));
+    makeHidden(document.querySelector(".sezione-profilo"));
     makeVisible(document.getElementById("loginbutton"));
     makeVisible(document.getElementById("registerbutton"));
     document.querySelectorAll('.btn-compravendita').forEach(button => {

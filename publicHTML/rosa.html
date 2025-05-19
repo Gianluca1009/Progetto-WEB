@@ -45,19 +45,22 @@
 
             <div class="container-bottoni-login">
 
-                <button class="btn-login" id="loginbutton" onclick="openLogPopup()">
+                <button class="btn-login" id="loginbutton" onclick="login()">
                     <span class="button_top login"> Login </span>
                 </button>
 
-                <button class="btn-register" id="registerbutton" onclick="openRegPopup()">
+                <button class="btn-register" id="registerbutton" onclick="register()">
                     <span class="button_top login"> Registrati </span>
                 </button>
 
-                <button class="btn-logout" id="logoutbutton" onclick="openLogoutPopup()">
+                <button class="btn-logout" id="logoutbutton" onclick="logout()">
                     <span class="button_top login"> Logout </span>
                 </button>
 
-                <p id="playerusername" class="p-username"></p>
+                <div class="sezione-profilo">
+                    <img class="avatar" src="images/avatar.png" alt="Avatar">
+                    <p id="playerusername" class="p-username"></p>
+                </div>
 
             </div>
         </div>

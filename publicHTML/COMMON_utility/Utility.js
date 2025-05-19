@@ -4,7 +4,10 @@
 
 //Funzione per far vedere un elemento con animazione
 function makeVisible(element, velocita = 1) {
-    if (!element) return;
+    if (!element){
+        console.warn("Elemento non trovato");
+        return;
+    } 
 
     // Rimuovi la classe hidden se presente
     if (element.classList.contains('hidden')) {
@@ -30,7 +33,10 @@ function makeVisible(element, velocita = 1) {
 
 // Funzione per nascondere un elemento con animazione
 function makeHidden(element, velocita = 1) {
-    if (!element) return;
+    if (!element){
+        console.warn("Elemento non trovato");
+        return;
+    } 
 
     // Salva lo stile di display originale se non è già stato salvato
     if (!element.dataset.originalDisplay) {
@@ -69,30 +75,51 @@ function KeyConverter(key){
 
 // Funzione per far apparire div in posizione desiderata rispetto a un altro div
 function setPositionRelativeToDiv(targetElement, floatingElement, side = 'right', offsetPercent = 1) {
-    console.log("targetElement", targetElement);
     const targetRect = targetElement.getBoundingClientRect();
     const parentRect = targetElement.offsetParent.getBoundingClientRect();
 
-    // Calcolo posizione verticale centrata
-    const relativeTop = ((targetRect.top - parentRect.top + targetRect.height / 2) / parentRect.height) * 100;
+    let relativeLeft, relativeTop;
 
-    // Calcolo posizione orizzontale (destra o sinistra)
-    let relativeLeft;
-    if (side === 'right') {
-        relativeLeft = ((targetRect.right - parentRect.left) / parentRect.width) * 100 + offsetPercent;
-    } else if (side === 'left') {
-        relativeLeft = ((targetRect.left - parentRect.left) / parentRect.width) * 100 - offsetPercent;
-    } else {
-        console.warn("Parametro 'side' non valido. Usa 'left' o 'right'.");
-        return;
+    switch (side) {
+        case 'right':
+            // Verticale centrato, destra del target
+            relativeTop = ((targetRect.top - parentRect.top + targetRect.height / 2) / parentRect.height) * 100;
+            relativeLeft = ((targetRect.right - parentRect.left) / parentRect.width) * 100 + offsetPercent;
+            floatingElement.style.transform = 'translateY(-50%)';
+            break;
+
+        case 'left':
+            // Verticale centrato, sinistra del target
+            relativeTop = ((targetRect.top - parentRect.top + targetRect.height / 2) / parentRect.height) * 100;
+            relativeLeft = ((targetRect.left - parentRect.left) / parentRect.width) * 100 - offsetPercent;
+            floatingElement.style.transform = 'translateY(-50%)';
+            break;
+
+        case 'top':
+            // Orizzontale centrato, sopra il target
+            relativeLeft = ((targetRect.left - parentRect.left + targetRect.width / 2) / parentRect.width) * 100;
+            relativeTop = ((targetRect.top - parentRect.top) / parentRect.height) * 100 - offsetPercent;
+            floatingElement.style.transform = 'translateX(-50%)';
+            break;
+
+        case 'bottom':
+            // Orizzontale centrato, sotto il target
+            relativeLeft = ((targetRect.left - parentRect.left + targetRect.width / 2) / parentRect.width) * 100;
+            relativeTop = ((targetRect.bottom - parentRect.top) / parentRect.height) * 100 + offsetPercent;
+            floatingElement.style.transform = 'translateX(-50%)';
+            break;
+
+        default:
+            console.warn("Parametro 'side' non valido. Usa 'left', 'right', 'top' o 'bottom'.");
+            return;
     }
 
     // Applica lo stile di posizionamento
     floatingElement.style.position = 'absolute';
     floatingElement.style.left = `${relativeLeft}%`;
     floatingElement.style.top = `${relativeTop}%`;
-    floatingElement.style.transform = 'translateY(-50%)';
 }
+
 
 
 

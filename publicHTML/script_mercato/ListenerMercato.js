@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById("logoutbutton").classList.add("hidden");
-    document.getElementById("playerusername").classList.add("hidden");
+    document.querySelector(".sezione-profilo").classList.add("hidden");
 
     BuildMercato("", "qualsiasi");
 

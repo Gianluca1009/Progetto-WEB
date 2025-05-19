@@ -27,10 +27,47 @@ function launchEndgamePopup(){
     makeVisible(end_game_popup);
 }
 
+// Funzione che chiude il popup di fine partita
 function closeEndgamePopup(){
     const end_game_popup = document.getElementById('popup-gameover');
     makeHidden(end_game_popup);
     setTimeout(() => {
         end_game_popup.remove();
     }, 100);
+}
+
+function launchProfilePopup(){
+    if(document.querySelector('.sezione-profilo').dataset.aperto == "false"){
+        const profile_popup = document.createElement('div');
+        profile_popup.classList.add('div-profilo');
+        profile_popup.classList.add('hidden');
+        profile_popup.id = 'profilo';
+        profile_popup.innerHTML = `
+                <strong> PROFILO </strong>
+                <p>Nome: ${LS_getUserMercatoData[1]}<br> Punti: ${LS_getUserMercatoData[2]}</p>
+            `;
+        makeVisible(profile_popup, 0.5);
+        document.querySelector('.container-bottoni-login').appendChild(profile_popup);
+        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 10);
+
+        //GESTIONE DELLA RIMOZIONE DIV PROFILO
+        setTimeout( () => {
+            document.addEventListener("click", closeProfilePopup)
+        }, 100);
+        document.querySelector('.sezione-profilo').dataset.aperto = "true";
+    }
+    else{
+        closeProfilePopup();
+    }
+}
+
+function closeProfilePopup(){
+    if(document.getElementById("profilo")){
+        makeHidden(document.getElementById("profilo"), 0.5);
+        setTimeout(() => {
+            document.getElementById("profilo").remove();
+        },1000);
+    }
+    document.querySelector('.sezione-profilo').dataset.aperto = "false";
+    document.removeEventListener("click", closeProfilePopup);
 }

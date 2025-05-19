@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="COMMON_stile/bottoni-login.css">
     <link rel="stylesheet" href="COMMON_stile/mercato-rosa.css">
     <link rel="stylesheet" href="COMMON_stile/intestazioni.css">
+    <link rel="stylesheet" href="COMMON_stile/popup.css">
     <link rel="stylesheet" href="stile_mercato/barra_di_ricerca.css">
     <link rel="stylesheet" href="stile_mercato/bottoni.css">
     <title>Mercato</title>
@@ -29,6 +30,7 @@
     <script src="script_mercato/GestioneAcquisto.js"></script>
     <script src="COMMON_utility/Utility.js"></script>
     <script src="COMMON_utility/LocalStorage.js"></script>
+    <script src="COMMON_utility/PopUp.js"></script>
 
     <div class="hamburger" id="menu-mercato" style="position: fixed;">
         <div class="hamburger-content">
@@ -59,7 +61,11 @@
                     <span class="button_top login"> Logout </span>
                 </button>
 
-                <p id="playerusername" class="p-username"></p>
+                <div class="sezione-profilo" data-aperto="false">
+                    <img class="avatar" src="images/avatar.png" onclick="launchProfilePopup()" alt="Avatar">
+                    <p id="playerusername" class="p-username"></p>
+                </div>
+                
 
             </div>
         </div>
