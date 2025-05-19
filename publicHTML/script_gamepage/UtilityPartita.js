@@ -186,6 +186,8 @@ async function restartDraft(){
 
     resetSottoscacco();
     resetProntoButton();
+    resetSuggerimenti();
+    resetHighlighted();
     
     //avvio il draft
     window.gameStarted = false;
