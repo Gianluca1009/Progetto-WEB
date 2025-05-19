@@ -1,12 +1,6 @@
 
-function get_condition (){
-    const condition_text = document.getElementById('condition').textContent;
-    return condition_text;
-}
-
-
 function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
-    const cond = get_condition();
+    const cond = getCondition();
 
     calc_att = JSON.parse(div_calc_att.children[0].dataset.json);  //classi giocatore ottenute parsando il json di text.id
     calc_dif = JSON.parse(div_calc_dif.children[0].dataset.json);  //classi difensore ottenute parsando il json di text.id
@@ -119,7 +113,7 @@ function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
             return true;
         }else{
 
-            playSound('fischio', 0.5);
+            playSound('fischio', 0.2);
 
             const divFluttuante = document.createElement('div');
             divFluttuante.classList.add("div-log");

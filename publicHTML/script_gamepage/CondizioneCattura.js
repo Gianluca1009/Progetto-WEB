@@ -11,7 +11,7 @@ const conditions = [
     "Giocatore più alto"
 ];
 
-// ---- FUNZIONI PER LA GESTIONE DELLA CONDIZIONE ---- //
+//----- GESTIONE CONDIZIONE ------//
 
 // Funzione per ottenere una condizione casuale
 function getRandomCondition() {
@@ -26,5 +26,8 @@ function updateCondition() {
     }
 }
 
-// Esegui quando il documento è caricato
-document.addEventListener('DOMContentLoaded', updateCondition); 
+// Funzione che ritorna la condizione attuale
+function getCondition (){
+    const condition_text = document.getElementById('condition').textContent;
+    return condition_text;
+}

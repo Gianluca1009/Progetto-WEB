@@ -15,7 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     preloadSounds();    // Pre-carico i suoni
     setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
-    StartPosition();   
+    StartPosition();
+    updateCondition(); // Aggiorna la condizione iniziale   
 
     //ELEMENTI DA NASCONDERE ALL'INIZIO (sezioni, condizione,switch,timer,pedine)
     document.querySelector('.sezione_sx').classList.add('hidden');

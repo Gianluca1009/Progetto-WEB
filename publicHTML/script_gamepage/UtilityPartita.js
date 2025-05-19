@@ -156,7 +156,7 @@ function endGame(){
     window.cellaReNero = document.getElementById(window.idCellReNero);
     resetSottoscacco();
 
-    playSound('fischio_finale', 0.5);
+    playSound('fischio_finale', 0.2);
 
 }
 
