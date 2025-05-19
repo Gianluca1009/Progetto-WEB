@@ -2,7 +2,15 @@
 function launchEndgamePopup(){
 
     // Ottengo il nome del vincitore
-    let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
+    let vincitore = null;
+
+    if(window.turno_bianco){
+        vincitore = localStorage.getItem('game_username1');
+        // aumentare le partite giocate
+    }
+    else{
+        vincitore = localStorage.getItem('game_username2');
+    }
 
     const end_game_popup = document.createElement('div');
     end_game_popup.classList.add('popup-gameover');
@@ -43,12 +51,21 @@ function launchProfilePopup(){
         profile_popup.classList.add('hidden');
         profile_popup.id = 'profilo';
         profile_popup.innerHTML = `
-                <strong> PROFILO </strong>
-                <p>Nome: ${LS_getUserMercatoData[1]}<br> Punti: ${LS_getUserMercatoData[2]}</p>
+                <strong style="top: 5%; position: absolute; font-size: 1.2vw">PROFILO</strong>
+                <ul>
+                    <li> <strong>Username:</strong>
+                    ${LS_getUserMercatoData()[1]}</li>
+                    <li> <strong>Email:</strong>
+                    ${LS_getUserMercatoData()[4]}</li>
+                    <li> <strong>Punti:</strong> 
+                    ${LS_getUserMercatoData()[2]} Pt.</li>
+                    <li> <strong>Partite:</strong>
+                    ${LS_getUserMercatoData()[3]}</li>
+                </ul>
             `;
         makeVisible(profile_popup, 0.5);
         document.querySelector('.container-bottoni-login').appendChild(profile_popup);
-        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 10);
+        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 60);
 
         //GESTIONE DELLA RIMOZIONE DIV PROFILO
         setTimeout( () => {

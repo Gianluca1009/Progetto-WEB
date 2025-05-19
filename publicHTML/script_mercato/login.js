@@ -28,10 +28,10 @@ function login() {
         })
         .then(data => {
           // Se la risposta è positiva, la variabile `data` contiene i dati dell'utente
-          const { userId, username, point } = data;
+          const { userId, username, punti, partite, email } = data;
           // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
-          LS_loginMercato(userId, username, point);
-          document.querySelector('.user-points').textContent = point;
+          LS_loginMercato(userId, username, punti, partite, email);
+          document.querySelector('.user-points').textContent = punti;
           // Mostriamo il messaggio di successo
           
         })
@@ -148,7 +148,7 @@ function register() {
   }).then(result => {
     if (result.isConfirmed) {
       Swal.fire('Registrazione avvenuta!');
-ù    }
+    }
   });
 }
 

@@ -3,7 +3,7 @@
     top: 0;
     display: block;
     width: 100vw;
-    height: 20vh;
+    height: 10vw;
     z-index: 10000;
     border-bottom: 0.4vw solid black;
     box-shadow: 0 1rem 1rem rgba(1, 0, 0, 0.5);

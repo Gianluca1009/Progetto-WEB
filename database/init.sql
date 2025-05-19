@@ -6,7 +6,8 @@ CREATE TABLE player (
     email VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
     punti INT DEFAULT 100,
-    UNIQUE (username, email) 
+    partite INT DEFAULT 0,
+    UNIQUE (username, email)
 );
 
 
