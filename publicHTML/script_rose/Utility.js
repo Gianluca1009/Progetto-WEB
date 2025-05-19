@@ -1,3 +1,8 @@
+window.difensori = [];
+window.centrocampisti = [];
+window.attaccanti = [];
+window.bacheca = document.getElementById("finestra-rosa");
+
 //Funzione per recuperare la rosa dal db
 async function fetchMiaRosa(){
     try{
@@ -129,35 +134,27 @@ function BuildRowForCalciatore(calciatore){
 
     row.classList.add("fade-hidden");
 
-    if(calciatore.ruolo === "Difensore") {
-        bacheca_difesa = document.getElementById('finestra-difensori')
-        if(bacheca_difesa.contains(document.getElementById('no-result'))) {
-            bacheca_difesa.removeChild(document.getElementById("no-result"));
-        }
-        bacheca_difesa.appendChild(row);
-    }
-
-    if(calciatore.ruolo === "Centrocampista") {
-        bacheca_centrocampo = document.getElementById('finestra-centrocampisti')
-        if(bacheca_centrocampo.contains(document.getElementById('no-result'))) {
-            bacheca_centrocampo.removeChild(document.getElementById("no-result"));
-        }
-        bacheca_centrocampo.appendChild(row);
-    }
-
-    if(calciatore.ruolo === "Attaccante") {
-        bacheca_attacco = document.getElementById('finestra-attaccanti')
-        if(bacheca_attacco.contains(document.getElementById('no-result'))) {
-            bacheca_attacco.removeChild(document.getElementById("no-result"));
-        }
-        bacheca_attacco.appendChild(row);
-    }
-
+    window.bacheca.appendChild(row);
     makeVisible(row);
 }
 
+function dividiPerRuolo(calciatore) {
+
+    if(calciatore.ruolo === "Difensore") {
+        difensori.push(calciatore);
+    }
+
+    if(calciatore.ruolo === "Centrocampista") {
+        centrocampisti.push(calciatore);
+    }
+
+    if(calciatore.ruolo === "Attaccante") {
+        attaccanti.push(calciatore);
+    }
+}
+
 //Crea la riga per comunicare che non si hanno giocatori di un determinato ruolo
-function buildRowNoResult(bacheca, ruolo) {
+function buildRowNoResult(ruolo) {
     const row = document.createElement('div');
     row.className = 'riga_finestra no-result';
     row.id = 'no-result';
@@ -183,37 +180,57 @@ function buildRowNoResult(bacheca, ruolo) {
 
     // Aggiunta alla finestra del mercato
     row.classList.add("fade-hidden");
-    bacheca.appendChild(row);
+    window.bacheca.appendChild(row);
     makeVisible(row);
+}
+
+function buildTitoloRuolo(ruolo) {
+
+    const titolo = document.createElement('h3');
+    titolo.className = "title";
+    titolo.style.fontSize = "calc(3.3vh + 2.3vw)";
+    titolo.textContent = ruolo;
+    window.bacheca.appendChild(titolo)
 }
 
 //Funzione per costruire la rosa
 async function BuildRosa(){
     results = await fetchMiaRosa();
+
     let i=0;
-    function processNext() {
-        if (i < results.length) {
-            BuildRowForCalciatore(results[i]);
-            i++;
-            processNext(); // dà respiro al browser
-        } else {
-            bacheca_difesa = document.getElementById('finestra-difensori');
-            bacheca_centrocampo = document.getElementById('finestra-centrocampisti');
-            bacheca_attacco = document.getElementById('finestra-attaccanti');
-
-            if(!bacheca_difesa.hasChildNodes()) {
-                buildRowNoResult(bacheca_difesa, "difensore");
-            }
-
-            if(!bacheca_centrocampo.hasChildNodes()) {
-                buildRowNoResult(bacheca_centrocampo, "centrocampista");
-            }
-
-            if(!bacheca_attacco.hasChildNodes()) {
-                buildRowNoResult(bacheca_attacco, "attaccante");
-            }
-        }
+    while(i < results.length) {
+        calciatore = results[i];
+        dividiPerRuolo(calciatore);
+        i++;
     }
 
-    processNext(); // inizia il ciclo
+    buildTitoloRuolo("Difensori");
+
+    if(difensori.length > 0) {
+        window.difensori.forEach(difensore => {
+            BuildRowForCalciatore(difensore)
+        });
+    } else {
+        buildRowNoResult("difensore");
+    }
+
+    buildTitoloRuolo("Centrocampisti");
+
+    if(centrocampisti.length > 0) {
+        window.centrocampisti.forEach(centrocampista => {
+            BuildRowForCalciatore(centrocampista)
+        });
+    } else {
+        buildRowNoResult("centrocampista");
+    }
+
+    buildTitoloRuolo("Attaccanti");
+
+    if(attaccanti.length > 0) {
+        window.attaccanti.forEach(attaccante => {
+            BuildRowForCalciatore(attaccante)
+        });
+    } else {
+        buildRowNoResult("attaccante");
+    }
 }

@@ -1,3 +1,4 @@
+
 //------ LOGIN ------//
 
 function openLogPopup() {
@@ -32,13 +33,8 @@ function openLogPopup() {
           LS_loginRose(userId, username, point);
           //popola l'area di log con i calciatori della rosa
 
-          //rimuovo i messaggi di login non effettuato dalle finestre
-          const finestra_difensori = document.getElementById("finestra-difensori");
-          const finestra_centrocampisti = document.getElementById("finestra-centrocampisti");
-          const finestra_attaccanti = document.getElementById("finestra-attaccanti");
-          finestra_difensori.querySelectorAll("*").forEach(el => el.remove());
-          finestra_centrocampisti.querySelectorAll("*").forEach(el => el.remove());
-          finestra_attaccanti.querySelectorAll("*").forEach(el => el.remove());
+          //rimuovo il messaggio di login non effettuato dalla bacheca
+          svuotaBacheca();
 
           BuildRosa();
           // Mostriamo il messaggio di successo
@@ -60,7 +56,9 @@ function openLogPopup() {
 }
 
 //Funzione che crea la riga che segnala il login non effettuato
-function buildRowNoLogin(bacheca, ruolo) {
+function buildRowNoLogin() {
+    // let bacheca = document.getElementById("bacheca-rosa");
+
     const row = document.createElement('div');
     row.className = 'riga_finestra no-result';
     row.id = 'no-login';
@@ -70,7 +68,7 @@ function buildRowNoLogin(bacheca, ruolo) {
     campoInfo.className = 'no-result';
 
     const titolo = document.createElement('h2');
-    titolo.textContent = `Effettua il login per visualizzare i ${ruolo} della tua rosa`;
+    titolo.textContent = `Effettua il login per visualizzare i calciatori della tua rosa`;
     titolo.style.fontSize = 'min(1.5vw, 1.5em)';
     titolo.style.marginBlockEnd = '0.5em';
     titolo.style.color = '#b22222'; // rosso scuro per enfasi
@@ -80,28 +78,20 @@ function buildRowNoLogin(bacheca, ruolo) {
 
     // Aggiunta alla finestra del mercato
     row.classList.add("fade-hidden");
-    bacheca.appendChild(row);
+    window.bacheca.appendChild(row);
     makeVisible(row);
 }
 
-//Funzione che elimina i messaggi di login non effettuato
-function eliminaMessaggiLogin() {
-    const rows_difensori = window.finestra_difensori.querySelectorAll("div");
-    const rows_centrocampisti = window.finestra_centrocampisti.querySelectorAll("div");
-    const rows_attaccanti = window.finestra_attaccanti.querySelectorAll("div");
-
-    rows_difensori.forEach(div => div.remove());
-    rows_centrocampisti.forEach(div => div.remove());
-    rows_attaccanti.forEach(div => div.remove());
+// Svuota le finestre che mostrano i giocatori
+function svuotaBacheca() {
+  window.bacheca.querySelectorAll("*").forEach(el => el.remove());
 }
 
 //Funzione che gestisce il caso in cui non è stato effettuato il login
 function ifNotLoggedIn() {
     if(LS_get_idPlayerRose() === null) {
-        //Se non è stato fatto il login, inserisco le righe che lo segnalano
-        buildRowNoLogin(window.finestra_difensori, "difensori");
-        buildRowNoLogin(window.finestra_centrocampisti, "centrocampisti");
-        buildRowNoLogin(window.finestra_attaccanti, "attaccanti");
+        //Se non è stato fatto il login, inserisco la riga che lo segnalano
+        buildRowNoLogin()
 
     }
 }
@@ -168,17 +158,7 @@ function openRegPopup() {
 function openLogoutPopup() {
     LS_logoutRose();
 
-    const finestra_difensori = document.getElementById("finestra-difensori");
-    const finestra_centrocampisti = document.getElementById("finestra-centrocampisti");
-    const finestra_attaccanti = document.getElementById("finestra-attaccanti");
-
-    const rows_difensori = finestra_difensori.querySelectorAll("div");
-    const rows_centrocampisti = finestra_centrocampisti.querySelectorAll("div");
-    const rows_attaccanti = finestra_attaccanti.querySelectorAll("div");
-
-    rows_difensori.forEach(div => div.remove());
-    rows_centrocampisti.forEach(div => div.remove());
-    rows_attaccanti.forEach(div => div.remove());
+    svuotaBacheca();
 
     if(LS_get_idPlayerRose() === null) {
       buildRowNoLogin(finestra_difensori, "difensori");
@@ -190,4 +170,4 @@ function openLogoutPopup() {
     makeHidden(document.getElementById("playerusername"));
     makeVisible(document.getElementById("loginbutton"));
     makeVisible(document.getElementById("registerbutton"));
-}
+  }
