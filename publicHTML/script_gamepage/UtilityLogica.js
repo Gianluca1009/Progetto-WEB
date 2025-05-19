@@ -1,11 +1,11 @@
 // ---- VARIABILI IMPORTANTI PER LA GESTIONE DEL GIOCO ---- //
 
-window.selectedElement = null; // div pezzo selezionato
-window.selectedCell = null;  // Memorizza la cella selezionata
-window.selectedImage = null;  // Memorizza l'immagine selezionata
+window.selected_element = null; // div pezzo selezionato
+window.selected_cell = null;  // Memorizza la cella selezionata
+window.selected_image = null;  // Memorizza l'immagine selezionata
 
-window.turnoBianco = true; // Supponiamo che il bianco inizi per primo
-window.gameStarted = false; // Controlla se il gioco è iniziato
+window.turno_bianco = true; // Supponiamo che il bianco inizi per primo
+window.game_started = false; // Controlla se il gioco è iniziato
 
 //
 // ---- FUNZIONI AUSILIARIE PER LE PEDINE ---- //
@@ -14,7 +14,7 @@ window.gameStarted = false; // Controlla se il gioco è iniziato
 // Funzione per verificare se una pedina può essere mossa in quel turno
 function canMovePiece(pieceId) {
     // Se è turno del bianco (true), può muovere solo pedine maiuscole (bianche)
-    if (window.turnoBianco) {
+    if (window.turno_bianco) {
         return pieceId === pieceId.toUpperCase();
     }
     // Se è turno del nero (false), può muovere solo pedine minuscole (nere)
@@ -161,7 +161,7 @@ function validationMove(img, dest_cell){
     let pedinaBersaglio = dest_cell.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
         // IMPORTANTE: Se c'è una pedina nella cella di destinazione, verifica che non sia dello stesso colore
         if (pedinaBersaglio && pedinaBersaglio.parentElement) {
-            if (areSameColor(div_pezzo.id, pedinaBersaglio.id)) {  //old param (window.selectedElement.id, pedinaBersaglio.parentElement.id
+            if (areSameColor(div_pezzo.id, pedinaBersaglio.id)) {  //old param (window.selected_element.id, pedinaBersaglio.parentElement.id
                 return false; // Non permettere la mossa se le pedine sono dello stesso colore
             }
         }
@@ -171,14 +171,14 @@ function validationMove(img, dest_cell){
 
 // Funzione per spostare una pedina
 function avanza(cella_dest){
-    cella_dest.appendChild(window.selectedElement); //SPOSTAMENTO PEDINA
-    update_re_position(window.selectedImage, cella_dest); //aggiorna la posizione del re
+    cella_dest.appendChild(window.selected_element); //SPOSTAMENTO PEDINA
+    update_re_position(window.selected_image, cella_dest); //aggiorna la posizione del re
     highlight_re_if_sottoscacco();      //controlla se dopo la mossa corrente mette sottoscacco il re dell'AVVERSARIO (LOGICA INV) 
 }
 
 // Funzione per cambiare turno
 function cambioTurno(){
-    window.turnoBianco = !window.turnoBianco;
+    window.turno_bianco = !window.turno_bianco;
     aggiornaStatoPedine();
     updateCondition();
     resetSuggerimenti();        //resetta la selezione delle mosse suggerite
@@ -188,8 +188,8 @@ function cambioTurno(){
 // Funzione per attivare l'hover delle pedine spostabili nel turno
 function aggiornaStatoPedine() {
     document.querySelectorAll(".pedina").forEach(pedina => {
-        if ((window.turnoBianco && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è bianca
-            (!window.turnoBianco && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è nera
+        if ((window.turno_bianco && pedina.id.toLowerCase() === pedina.id) ||       //se è minuscolo la pedina è bianca
+            (!window.turno_bianco && pedina.id.toUpperCase() === pedina.id)) {      //se è maiuscolo la pedina è nera
             pedina.classList.remove("no-hover");
             pedina.style.cursor = 'pointer';
         } else {
@@ -200,7 +200,7 @@ function aggiornaStatoPedine() {
 
     // Aggiorna l'effetto di brillantezza della scacchiera
     const scacchiera = document.querySelector('.scacchiera');
-    if (!window.turnoBianco) {  // Se NON è il turno del nero, significa che è il turno del bianco
+    if (!window.turno_bianco) {  // Se NON è il turno del nero, significa che è il turno del bianco
         scacchiera.classList.remove('turno-nero');
         scacchiera.classList.add('turno-bianco');
     } else {  // Se è il turno del nero
@@ -225,7 +225,7 @@ function resetPedine(){
     StartPosition();
 
     // Aggiorna lo stato delle pedine solo se il gioco è iniziato
-    if (window.gameStarted) {
+    if (window.game_started) {
         aggiornaStatoPedine();
     } else {
         // In modalità draft, disabilita l'hover per tutte le pedine

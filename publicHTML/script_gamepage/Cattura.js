@@ -106,7 +106,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
 function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
-        let dizionario_mangiata = helperCattura(window.selectedElement, pedinaBersaglio);
+        let dizionario_mangiata = helperCattura(window.selected_element, pedinaBersaglio);
         if(dizionario_mangiata.valid){
             pedinaBersaglio.remove();
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
@@ -134,7 +134,7 @@ function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
             verifica.innerHTML = `${dizionario_mangiata.val_att} < ${dizionario_mangiata.val_dif}`;
             divFluttuante.appendChild(verifica);
 
-            if(window.turnoBianco){
+            if(window.turno_bianco){
                 document.querySelector('.tunnel-sx').appendChild(divFluttuante);
             }
             else{

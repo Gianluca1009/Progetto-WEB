@@ -34,9 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //ELEMENTI DISABILITATI
     document.querySelector('.background').classList.add('disabled');
     document.querySelector('.grid-container').classList.add('disabled');
-    
-    disabilitaPedine();
-
 
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     document.getElementById('giocaButton').addEventListener('click', () => {
@@ -54,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //LISTENER SUL RICARICA DELLA PAGINA
     window.addEventListener('beforeunload', (event) => {
-        if(window.gameStarted){
+        if(window.game_started){
             event.preventDefault();
             event.returnValue = 'Se lasci la pagina ora, perderai la partita.';
             return event.returnValue;

@@ -14,7 +14,7 @@ window.cellaReNero = document.getElementById(window.idCellReNero);
 // + pulisce la vecchia cella del re se sottoscacco
 function update_re_position(img_pezzo, new_cell_re){
     //prima di cambiare posizione salvo la vecchia posiz del re
-    let old_king_cell = (window.turnoBianco)? document.getElementById(window.idCellReBianco) : document.getElementById(window.idCellReNero);
+    let old_king_cell = (window.turno_bianco)? document.getElementById(window.idCellReBianco) : document.getElementById(window.idCellReNero);
     let div_pezzo = img_pezzo.parentElement;
     if (div_pezzo.id == "r"){
         window.idCellReBianco = new_cell_re.id;
@@ -40,7 +40,7 @@ function resetSottoscacco_cella(cella_re){
 //Funzione che resetta la cella del re quando non è sottoscacco
 function resetSottoscacco (){
     //se il mio re non è sottoscacco decoloro la cella
-    if (window.turnoBianco){
+    if (window.turno_bianco){
         window.cellaReBianco.classList.remove("sottoscacco");
     }else{  
         window.cellaReNero.classList.remove("sottoscacco");
@@ -49,7 +49,7 @@ function resetSottoscacco (){
 
 function resetSottoscaccoAvversaro (){
     //se il re avv non è sottoscacco decoloro la cella
-    if (!window.turnoBianco){
+    if (!window.turno_bianco){
         window.cellaReBianco.classList.remove("sottoscacco");
     }else{  
         window.cellaReNero.classList.remove("sottoscacco");
@@ -62,7 +62,7 @@ function highlight_re_if_sottoscacco(){
     if(check_reAvversario_sottoscacco()){
         
         //se dal turno nero metto in scacco il re, il re è bianco
-        if(window.turnoBianco){
+        if(window.turno_bianco){
             window.cellaReNero.classList.add('sottoscacco');
         //se dal turno bianco metto in scacco il re, il re è nero
         } 
@@ -75,7 +75,7 @@ function highlight_re_if_sottoscacco(){
     }
     //check se metto o tolgo il MIO re sottoscacco quando muovo
     if(check_mio_re_sottoscacco()){ //il mio re è sottoscacco con la mia mossa = ho perso
-        if(!window.turnoBianco){
+        if(!window.turno_bianco){
             window.cellaReNero.classList.add('sottoscacco');
         } 
         else{
@@ -95,7 +95,7 @@ function check_reAvversario_sottoscacco(){
     //se qualcuno di questi ha una mossa valida sulla cella del re AVVERSARIO allora metto sono sottoscacco
     let sottoscacco = false;
 
-    if (!window.turnoBianco){ 
+    if (!window.turno_bianco){ 
        //logica inv -> dopo la mossa del nero controllo se il re bianco è messo sotto scacco
        let div_tutti_pezzi = document.querySelectorAll(".pedina");
        for (let div_pezzo of div_tutti_pezzi){
@@ -131,7 +131,7 @@ function check_mio_re_sottoscacco(){
     //controllo su tutti i MIEI pezzi 
     //se qualcuno di questi ha una mossa valida sulla cella del re AVVERSARIO allora metto sono sottoscacco
     let sottscacco = false;
-    if (window.turnoBianco){ 
+    if (window.turno_bianco){ 
        let div_tutti_pezzi = document.querySelectorAll(".pedina");
        for (let div_pezzo of div_tutti_pezzi){
             //se è avversario controllo se può fare scacco

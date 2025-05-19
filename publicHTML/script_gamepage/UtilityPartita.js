@@ -43,6 +43,7 @@ function handleButtonP2(){
 async function startDraft(){
 
     scrollToGameContainer();
+    disabilitaPedine();
 
     // ELEMENTI DA NASCONDERE (bottoni pronto, giocaButton)
     makeHidden(document.querySelector('.gioca-button'));
@@ -90,8 +91,8 @@ function startGame() {
     window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
     window.idCellReNero = "03"; //id della cella su cui c'è il re nero
 
-    window.gameStarted = true;
-    window.turnoBianco = true; // Reset del turno al bianco
+    window.game_started = true;
+    window.turno_bianco = true; // Reset del turno al bianco
 
     // Ridimensione la scacchiera
     const grid_container = document.querySelector('.grid-container');
@@ -114,10 +115,12 @@ function startGame() {
     });
     
     // Abilita il movimento delle pedine
+    abilitaPedine();
     window.canMovePiece = function(pieceId) {
-        return window.gameStarted && window.turnoBianco === (pieceId.toLowerCase() === pieceId);
+        return window.game_started && window.turno_bianco === (pieceId.toLowerCase() === pieceId);
     };
     aggiornaStatoPedine();
+    
 
     // Reset dei timer e avvio
     resetTimers();
@@ -129,9 +132,9 @@ function startGame() {
 function endGame(){
 
     //PARTE DEL PUNTEGGIO
-    let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
-    let id_vincitore = window.turnoBianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
-    let punti = window.turnoBianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
+    let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
+    let id_vincitore = window.turno_bianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
+    let punti = window.turno_bianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
     let new_punti = parseInt(punti) + 20;
 
     //incrementa punti del vincitore
@@ -139,7 +142,7 @@ function endGame(){
     LS_update_all_prezzo(id_vincitore, new_punti);
     update_LS_winner(id_vincitore, vincitore, new_punti);
 
-    window.gameStarted = false;
+    window.game_started = false;
     freezeTimer();
     cambioTurno();
     
@@ -187,11 +190,11 @@ async function restartDraft(){
     resetSottoscacco();
     resetProntoButton();
     resetSuggerimenti();
-    resetHighlighted();
+    if(window.selected_cell) resetHighlighted();
     
     //avvio il draft
-    window.gameStarted = false;
-    window.turnoBianco = true;
+    window.game_started = false;
+    window.turno_bianco = true;
 
     document.querySelector('.grid-container').classList.remove('grid-container-enlarged');
 
@@ -235,7 +238,7 @@ async function aggiornaPunti(userid, new_punti) {
 }
 
 function update_LS_winner(id, name, pti){
-    if (window.turnoBianco)
+    if (window.turno_bianco)
             LS_login1Game(id,name,pti);
 
     else LS_login2Game(id,name,pti);

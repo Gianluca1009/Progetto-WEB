@@ -5,7 +5,7 @@
 // Funzione per evidenziare le caselle disponibili
 function SuggerisciMosse() {
     // Rimuovi eventuali evidenziazioni precedenti
-    let startCell = window.selectedElement.parentElement;  //cella di partenza
+    let startCell = window.selected_element.parentElement;  //cella di partenza
 
     // Controlla tutte le caselle della scacchiera 6x6
     for (let x = 0; x < 6; x++) {
@@ -15,7 +15,7 @@ function SuggerisciMosse() {
             let pedinaBersaglio = targetCell.querySelector('.pedina');
             if (targetCell && targetCell !== startCell) {
                 // Verifica se la mossa è valida
-                if (validationMove(window.selectedImage, targetCell)) {
+                if (validationMove(window.selected_image, targetCell)) {
                     if(targetCell.hasChildNodes() && pedinaBersaglio){
                         targetCell.classList.add('eating-move');
                     }
@@ -41,19 +41,19 @@ function resetSuggerimenti(){
 
 // Funzione per evidenziare la cella selezionata
 function addHighlighted(){
-    window.selectedCell.classList.add("highlighted");
+    window.selected_cell.classList.add("highlighted");
 }
 
 // Funzione per resettare l'evidenziazione della cella selezionata
 function resetHighlighted(){
-    window.selectedCell.classList.remove("highlighted");
+    window.selected_cell.classList.remove("highlighted");
 }
 
 // Funzione per resettare la selezione degli elementi image,element,cell
 function resetSelezione(){
-    window.selectedElement = null;
-    window.selectedCell = null;
-    window.selectedImage = null;
+    window.selected_element = null;
+    window.selected_cell = null;
+    window.selected_image = null;
 }
 
 //abilita movimento e hover pedine

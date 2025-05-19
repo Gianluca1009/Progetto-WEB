@@ -2,7 +2,7 @@
 function launchEndgamePopup(){
 
     // Ottengo il nome del vincitore
-    let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
+    let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
 
     const end_game_popup = document.createElement('div');
     end_game_popup.classList.add('popup-gameover');

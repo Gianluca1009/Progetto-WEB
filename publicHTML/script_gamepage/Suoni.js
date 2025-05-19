@@ -29,9 +29,6 @@ function preloadSounds() {
 // Sblocca l’audio context dopo la prima interazione
 function preparaSounds() {
     if (window.soundsInitialized) return;
-
-    console.log("Inizializzazione suoni dopo click");
-
     if (window.audioCtx.state === 'suspended') {
         window.audioCtx.resume().then(() => {
             window.soundsInitialized = true;

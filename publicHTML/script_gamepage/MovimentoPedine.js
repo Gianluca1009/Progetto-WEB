@@ -16,7 +16,7 @@ function ListenerMovimentoPedine(){
             resetSuggerimenti();
 
             // Se clicchiamo sulla stessa pedina già selezionata, deseleziona tutto
-            if (window.selectedImage === event.target) {
+            if (window.selected_image === event.target) {
                 resetHighlighted();
                 resetSuggerimenti(); //resetta i suggerimenti
                 resetSelezione();
@@ -24,17 +24,17 @@ function ListenerMovimentoPedine(){
             }
             
             // Rimuovi l'evidenziazione precedente se presente
-            if (window.selectedCell) {
+            if (window.selected_cell) {
                 resetHighlighted();
                 resetSuggerimenti();
             }
             // Seleziona l'elemento (pedina) da spostare
-            window.selectedImage = event.target;        //immagine della pedina selezionata
-            window.selectedElement = window.selectedImage.parentElement; //div pezzo della pedina selezionata
-            window.selectedCell = window.selectedElement.parentElement; //cella della pedina selezionata
+            window.selected_image = event.target;        //immagine della pedina selezionata
+            window.selected_element = window.selected_image.parentElement; //div pezzo della pedina selezionata
+            window.selected_cell = window.selected_element.parentElement; //cella della pedina selezionata
 
             // Verifica se è il turno corretto per muovere questa pedina
-            if (!canMovePiece(window.selectedElement.id)) {
+            if (!canMovePiece(window.selected_element.id)) {
                 resetSelezione();
                 return;
             }
@@ -48,7 +48,7 @@ function ListenerMovimentoPedine(){
     // SELEZIONA LA CELLA DI DESTINAZIONE
     document.querySelectorAll(".greencell, .creamcell").forEach(cell => {
         cell.addEventListener("click", function(event) {
-            if (window.selectedElement && this.tagName === "TD") {
+            if (window.selected_element && this.tagName === "TD") {
 
                 resetSuggerimenti();
 
@@ -56,7 +56,7 @@ function ListenerMovimentoPedine(){
                 let pedinaBersaglio = this.querySelector('.pedina');  //pedina contenuta nella cella di destinazione
 
                 //controlla che la mossia sia valida per le regole
-                if (validationMove(window.selectedImage, this)) {
+                if (validationMove(window.selected_image, this)) {
                     
                     resetSuggerimenti();
 
@@ -64,7 +64,7 @@ function ListenerMovimentoPedine(){
                     if (!pedinaBersaglio){
                         avanza(this); //SPOSTAMENTO PEDINA
                         playSound("mossa", 0.5);
-                        let isPedonePromosso = upgradePedone(window.selectedImage, this);
+                        let isPedonePromosso = upgradePedone(window.selected_image, this);
                         if (!isPedonePromosso) cambioTurno();
                         
             
@@ -93,7 +93,7 @@ function ListenerMovimentoPedine(){
 
                             //se ho mangiato un pezzo avversario diverso dal re
                             else{
-                                let isPedonePromosso = upgradePedone(window.selectedImage, this);
+                                let isPedonePromosso = upgradePedone(window.selected_image, this);
                                 if (!isPedonePromosso) cambioTurno();   //cambia turno solo se non c'è promozione del pedone in corso perchè update già fa promo
                         
                                 

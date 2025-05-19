@@ -13,7 +13,7 @@ async function dragSantini(){
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
         santino_img.addEventListener("dragstart", async function(event) {
             // Se il gioco è iniziato, non fare nulla
-            if (window.gameStarted) {
+            if (window.game_started) {
                 event.preventDefault();
                 return false;
             }
@@ -35,7 +35,7 @@ async function dragSantini(){
     document.querySelectorAll(".santino-dx").forEach(santino_img => {
         santino_img.addEventListener("dragstart", async function(event) {
             // Se il gioco è iniziato, non fare nulla
-            if (window.gameStarted) {
+            if (window.game_started) {
                 event.preventDefault();
                 return false;
             }

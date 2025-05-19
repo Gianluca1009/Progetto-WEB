@@ -1,6 +1,6 @@
 // Definizione delle variabili per i timer
-window.timerBianco = 5 * 60; // 5 minuti in secondi per il bianco
-window.timerNero = 5 * 60; // 5 minuti in secondi per il nero
+window.timer_bianco = 5 * 60; // 5 minuti in secondi per il bianco
+window.timer_nero = 5 * 60; // 5 minuti in secondi per il nero
 let timerId = null;
 
 // ---- FUNZIONI PER LA GESTIONE DEI TIMER ---- //
@@ -11,7 +11,7 @@ function updateTimer() {
     const progressBar = document.querySelector('.progress-bar');
     
     // Determina quale timer aggiornare in base al turno
-    let currentTimer = window.turnoBianco ? window.timerBianco : window.timerNero;
+    let currentTimer = window.turno_bianco ? window.timer_bianco : window.timer_nero;
     
     // Converte i secondi in formato minuti:secondi
     const minutes = Math.floor(currentTimer / 60);
@@ -24,7 +24,7 @@ function updateTimer() {
     progressBar.style.width = `${progressPercentage}%`;
     
     // Imposta il colore della barra in base al turno
-    if(window.turnoBianco) {
+    if(window.turno_bianco) {
         progressBar.style.backgroundColor = 'white';
         timerDisplay.style.color = 'black';
     } else {
@@ -33,10 +33,10 @@ function updateTimer() {
     }
     
     // Decrementa il timer attivo
-    if(window.turnoBianco) {
-        window.timerBianco--;
+    if(window.turno_bianco) {
+        window.timer_bianco--;
     } else {
-        window.timerNero--;
+        window.timer_nero--;
     }
     
     // Cambia il colore del timer quando rimane meno di un minuto
@@ -53,7 +53,7 @@ function updateTimer() {
         timerId = null;
         
         // Imposta vincitore in base a quale timer è scaduto
-        if(window.turnoBianco) {
+        if(window.turno_bianco) {
             // Il timer del bianco è scaduto, vince il nero
             endGame();
         } else {
@@ -67,7 +67,7 @@ function updateTimer() {
 
 // Funzione per avviare il timer
 function startTimer() {
-    if (timerId === null && window.gameStarted) {
+    if (timerId === null && window.game_started) {
         const progressBar = document.querySelector('.progress-bar');
         progressBar.classList.add('instant');
         progressBar.style.width = '100%';
@@ -85,7 +85,7 @@ function updateTimerDisplay() {
     const timerDisplay = document.getElementById('timer');
     
     // Determina quale timer visualizzare in base al turno
-    let currentTimer = window.turnoBianco ? window.timerBianco : window.timerNero;
+    let currentTimer = window.turno_bianco ? window.timer_bianco : window.timer_nero;
     
     // Converte i secondi in formato minuti:secondi
     const minutes = Math.floor(currentTimer / 60);
@@ -98,7 +98,7 @@ function updateTimerDisplay() {
         timerDisplay.classList.add('warning');
     } else {
         timerDisplay.classList.remove('warning');
-        if(window.turnoBianco) {
+        if(window.turno_bianco) {
             timerDisplay.style.color = 'black';
         } else {
             timerDisplay.style.color = 'white';
@@ -110,7 +110,7 @@ function updateTimerDisplay() {
     const progressPercentage = (currentTimer / (5 * 60)) * 100;
     progressBar.style.width = `${progressPercentage}%`;
     
-    if(window.turnoBianco) {
+    if(window.turno_bianco) {
         progressBar.style.backgroundColor = 'white';
     } else {
         progressBar.style.backgroundColor = 'black';
@@ -125,8 +125,8 @@ function freezeTimer() {
 
 // Funzione per resettare i timer (per una nuova partita)
 function resetTimers() {
-    window.timerBianco = 5 * 60;
-    window.timerNero = 5 * 60;
+    window.timer_bianco = 5 * 60;
+    window.timer_nero = 5 * 60;
     updateTimerDisplay();
 }
 
