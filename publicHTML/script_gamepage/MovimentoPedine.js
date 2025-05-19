@@ -64,7 +64,7 @@ function ListenerMovimentoPedine(){
                     if (!pedinaBersaglio){
                         avanza(this); //SPOSTAMENTO PEDINA
                         playSound("mossa", 0.5);
-                        let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
+                        let isPedonePromosso = upgradePedone(window.selectedImage, this);
                         if (!isPedonePromosso) cambioTurno();
                         
             
@@ -74,7 +74,7 @@ function ListenerMovimentoPedine(){
                     if(pedinaBersaglio){
 
                         //condizione sfavorevole
-                        if(!mangia(pedinaBersaglio,this)){
+                        if(!cattura(pedinaBersaglio,this)){
                             pedinaAvanza = false;               //pedina non avanzata
                             cambioTurno();
                         }
@@ -93,7 +93,7 @@ function ListenerMovimentoPedine(){
 
                             //se ho mangiato un pezzo avversario diverso dal re
                             else{
-                                let isPedonePromosso = upgrade_pedone(window.selectedImage, this);
+                                let isPedonePromosso = upgradePedone(window.selectedImage, this);
                                 if (!isPedonePromosso) cambioTurno();   //cambia turno solo se non c'è promozione del pedone in corso perchè update già fa promo
                         
                                 

@@ -9,8 +9,14 @@ const pezzi = {
         class: 'torre',
         id: { bianco: 't', nero: 'T' },
         img: {
-            bianco: 'images/pedine/torre_bianca_prova.png',
-            nero: 'images/pedine/torre_nera_prova.png'
+            CLASSIC: {
+                bianco: 'images/pedine/torre_bianca_classic.png',
+                nero: 'images/pedine/torre_nera_classic.png'
+            },
+            MODERN: {
+                bianco: 'images/pedine/torre_bianca.png',
+                nero: 'images/pedine/torre_nera.png'
+            }
         }
     },
     alfiere: {
@@ -21,8 +27,14 @@ const pezzi = {
         class: 'alfiere',
         id: { bianco: 'a', nero: 'A' },
         img: {
-            bianco: 'images/pedine/alfiere_bianco_prova.png',
-            nero: 'images/pedine/alfiere_nero_prova.png'
+            CLASSIC: {
+                bianco: 'images/pedine/alfiere_bianco_classic.png',
+                nero: 'images/pedine/alfiere_nero_classic.png'
+            },
+            MODERN: {
+                bianco: 'images/pedine/alfiere_bianco.png',
+                nero: 'images/pedine/alfiere_nero.png'
+            }
         }
     },
     regina: {
@@ -33,8 +45,14 @@ const pezzi = {
         class: 'regina',
         id: { bianco: 'q', nero: 'Q' },
         img: {
-            bianco: 'images/pedine/regina_bianca_prova.png',
-            nero: 'images/pedine/regina_nera_prova.png'
+            CLASSIC: {
+                bianco: 'images/pedine/regina_bianca_classic.png',
+                nero: 'images/pedine/regina_nera_classic.png'
+            },
+            MODERN: {
+                bianco: 'images/pedine/regina_bianca.png',
+                nero: 'images/pedine/regina_nera.png'
+            }
         }
     },
     re: {
@@ -45,8 +63,14 @@ const pezzi = {
         class: 're',
         id: { bianco: 'r', nero: 'R' },
         img: {
-            bianco: 'images/pedine/re_bianco_prova.png',
-            nero: 'images/pedine/re_nero_prova.png'
+            CLASSIC: {
+                bianco: 'images/pedine/re_bianco_classic.png',
+                nero: 'images/pedine/re_nero_classic.png'
+            },
+            MODERN: {
+                bianco: 'images/pedine/re_bianco.png',
+                nero: 'images/pedine/re_nero.png'
+            }
         }
     },
     cavallo: {
@@ -57,25 +81,36 @@ const pezzi = {
         class: 'cavallo',
         id: { bianco: 'c', nero: 'C' },
         img: {
-            bianco: 'images/pedine/cavallo_bianco_prova.png',
-            nero: 'images/pedine/cavallo_nero_prova.png'
+            CLASSIC: {
+                bianco: 'images/pedine/cavallo_bianco_classic.png',
+                nero: 'images/pedine/cavallo_nero_classic.png'
+            },
+            MODERN: {
+                bianco: 'images/pedine/cavallo_bianco.png',
+                nero: 'images/pedine/cavallo_nero.png'
+            }
         }
     },
     pedone: {
         class: 'pedone',
         id: { bianco: 'p', nero: 'P' },
         img: {
-            bianco: 'images/pedine/pedone_bianco_prova.png',
-            nero: 'images/pedine/pedone_nero_prova.png'
+            CLASSIC: {
+                bianco: 'images/pedine/pedone_bianco_classic.png',
+                nero: 'images/pedine/pedone_nero_classic.png'
+            },
+            MODERN: {
+                bianco: 'images/pedine/pedone_bianco.png',
+                nero: 'images/pedine/pedone_nero.png'
+            }
         }
     }
 };
 
+// Funzione per creare la scacchiera e prepararla alla partita
 function StartPosition() {
-    // Configurazione delle pedine
-    //vedi glob var pezzi
+    const stile = getStyle(); // "CLASSIC" o "MODERN"
 
-    // Funzione per creare una pedina
     function creaPedina(tipo, colore, posizione) {
         const cell = document.getElementById(posizione);
         const pedina = document.createElement('div');
@@ -86,7 +121,7 @@ function StartPosition() {
         pedina.draggable = false;
         
         img.className = tipo;
-        img.src = pezzi[tipo].img[colore];
+        img.src = pezzi[tipo].img[stile][colore];
         img.alt = `${tipo.charAt(0).toUpperCase() + tipo.slice(1)} ${colore}`;
         img.draggable = false;
         
@@ -94,20 +129,20 @@ function StartPosition() {
         cell.appendChild(pedina);
     }
 
-    // Posizionamento delle pedine principali
-    for (const [tipo, config] of Object.entries(pezzi)) {  //object.entries() -> restituisce un array di coppie chiave-valore
+    for (const [tipo, config] of Object.entries(pezzi)) {
         if (tipo !== 'pedone' && config.posizioni) {
-            config.posizioni.forEach(({pos, colore}) => {
+            config.posizioni.forEach(({ pos, colore }) => {
                 creaPedina(tipo, colore, pos);
             });
         }
     }
 
-    // Posizionamento dei pedoni
     for (let i = 0; i < 6; i++) {
         creaPedina('pedone', 'nero', `1${i}`);
         creaPedina('pedone', 'bianco', `4${i}`);
     }
+
     ListenerMovimentoPedine();
 }
+
 

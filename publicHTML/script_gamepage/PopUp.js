@@ -4,11 +4,11 @@ function launchEndgamePopup(){
     // Ottengo il nome del vincitore
     let vincitore = window.turnoBianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
 
-    const endGamePopup = document.createElement('div');
-    endGamePopup.classList.add('popup-gameover');
-    endGamePopup.classList.add('hidden');
-    endGamePopup.id = 'popup-gameover';
-    endGamePopup.innerHTML = `
+    const end_game_popup = document.createElement('div');
+    end_game_popup.classList.add('popup-gameover');
+    end_game_popup.classList.add('hidden');
+    end_game_popup.id = 'popup-gameover';
+    end_game_popup.innerHTML = `
             <p class="title-gameover"> PARTITA TERMINATA </p>
             <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
             <div class="bottoni-gameover-container">
@@ -23,14 +23,14 @@ function launchEndgamePopup(){
 
             </div>
         `;
-    document.querySelector('.grid-container').appendChild(endGamePopup);
-    makeVisible(endGamePopup);
+    document.querySelector('.grid-container').appendChild(end_game_popup);
+    makeVisible(end_game_popup);
 }
 
 function closeEndgamePopup(){
-    const endGamePopup = document.getElementById('popup-gameover');
-    makeHidden(endGamePopup);
+    const end_game_popup = document.getElementById('popup-gameover');
+    makeHidden(end_game_popup);
     setTimeout(() => {
-        endGamePopup.remove();
+        end_game_popup.remove();
     }, 100);
 }

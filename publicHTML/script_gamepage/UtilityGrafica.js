@@ -105,15 +105,17 @@ function scrollToGameContainer(){
 function changeStyle(stile) {
     const pedine = document.querySelectorAll('.pedina');
     pedine.forEach(pedina => {
-        pedina.classList.add('hidden'); // Nascondo l'immagine corrente
-        immaginevecchia = pedina.firstChild.src; //immagine vecchia
-        if (stile == 'CLASSIC') {
-            pedina.firstChild.src = immaginevecchia.replace('.png', '_prova.png'); //imposto stile MODERN
+        const img = pedina.firstChild;
+        const tipo = img.className; // es. 'regina', 'torre', ecc.
+        const colore = pedina.id === pezzi[tipo]?.id.bianco ? 'bianco' : 'nero';
+
+        // Verifica che il tipo esista in pezzi
+        if (pezzi[tipo]) {
+            // Aggiorna la src in base allo stile e al colore
+            img.src = pezzi[tipo].img[stile][colore];
         }
-        if (stile == 'MODERN') {
-            pedina.firstChild.src = immaginevecchia.replace('_prova.png', '.png'); //ripristina l'immagine per lo stile CLASSIC
-        }
-        makeVisible(pedina); //rendo visibile l'immagine
+
+        makeVisible(pedina); // Rendi visibile la pedina
     });
 }
 
@@ -122,7 +124,7 @@ function getStyle(){
     const pedine = document.querySelectorAll('.pedina');
     let stile = 'CLASSIC'; // Valore di default
     pedine.forEach(pedina => {
-        if (pedina.firstChild.src.includes('_prova.png')) {
+        if (pedina.firstChild.src.includes('_classic.png')) {
             stile = 'CLASSIC';
         } else {
             stile = 'MODERN';

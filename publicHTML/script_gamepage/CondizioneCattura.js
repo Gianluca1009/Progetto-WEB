@@ -11,6 +11,7 @@ const conditions = [
     "Giocatore più alto"
 ];
 
+
 //----- GESTIONE CONDIZIONE ------//
 
 // Funzione per ottenere una condizione casuale

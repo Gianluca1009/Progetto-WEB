@@ -1,5 +1,5 @@
 
-function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna 
+function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = getCondition();
 
     calc_att = JSON.parse(div_calc_att.children[0].dataset.json);  //classi giocatore ottenute parsando il json di text.id
@@ -103,10 +103,10 @@ function logica_mangiata(div_calc_att, div_calc_dif){  //true se l'att magna
 
 
 //logica mangiata pedina
-function mangia(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
+function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
-        let dizionario_mangiata = logica_mangiata(window.selectedElement, pedinaBersaglio);
+        let dizionario_mangiata = helperCattura(window.selectedElement, pedinaBersaglio);
         if(dizionario_mangiata.valid){
             pedinaBersaglio.remove();
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
