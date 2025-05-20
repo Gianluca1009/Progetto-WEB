@@ -33,6 +33,7 @@ function closeEndgamePopup(){
     }, 100);
 }
 
+// Funzione che lancia il popup del profilo
 function launchProfilePopup(pagina){
     let Username, Email, Punti, Partite, Vittorie;
     if(pagina == "mercato"){
@@ -57,7 +58,7 @@ function launchProfilePopup(pagina){
         profile_popup.id = 'profilo';
         profile_popup.innerHTML = `
                 <strong style="top: 5%; position: absolute; font-size: 1.2vw">PROFILO</strong>
-                <ul>
+                <ul style="padding: 0;">
                     <li> <strong>Username:</strong>
                     ${Username}</li>
                     <li> <strong>Email:</strong>
@@ -66,13 +67,13 @@ function launchProfilePopup(pagina){
                     ${Punti} Pt.</li>
                     <li> <strong>Partite:</strong>
                     ${Partite}</li>
-                    <li> <strong>Vittorie:</strong>
-                    ${Vittorie}</li>
+                    <li> <strong>Storico:</strong>
+                    ${Vittorie}-${Partite-Vittorie}</li>
                 </ul>
             `;
         makeVisible(profile_popup, 0.5);
         document.querySelector('.container-bottoni-login').appendChild(profile_popup);
-        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 50);
+        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 35);
 
         //GESTIONE DELLA RIMOZIONE DIV PROFILO
         setTimeout( () => {
@@ -85,6 +86,7 @@ function launchProfilePopup(pagina){
     }
 }
 
+// Funzione che chiude il popup del profilo
 function closeProfilePopup(){
     if(document.getElementById("profilo")){
         makeHidden(document.getElementById("profilo"), 0.5);
