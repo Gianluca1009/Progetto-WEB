@@ -138,6 +138,8 @@
 
     La rosa contiene alle volte giocatori duplicati, che causano errori alla vendita
 
+    Nel restart draft vengono settati i giocatori della rosa solo la prima volta, poi si levano
+
 
     # CERCARE BUG NEL GIOCO E INSERIRLI SOPRA ^^^^^^^^
 

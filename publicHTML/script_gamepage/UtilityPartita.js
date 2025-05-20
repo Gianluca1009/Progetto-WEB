@@ -169,6 +169,9 @@ async function restartDraft(){
     }
     
     closeEndgamePopup();
+
+    creaListeCalciatori();
+    
     //ELEMENTI DA MOSTRARE (sezioni, switch)
     makeVisible(document.querySelector('.sezione_dx'));
     makeVisible(document.querySelector('.sezione_sx'));
