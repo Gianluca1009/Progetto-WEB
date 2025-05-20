@@ -98,6 +98,12 @@ function register() {
         return false;
       }
 
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        Swal.showValidationMessage('Inserisci un indirizzo email valido');
+        return false;
+      }
+
       return fetch('/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

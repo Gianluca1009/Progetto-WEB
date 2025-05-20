@@ -124,6 +124,7 @@ app.post('/register', async (req, res) => {
       res.status(201).send('Registrazione avvenuta');
     } catch (err) {
       res.status(500).send('Errore durante la registrazione');
+      res.status(409).json({ error: "Username o password errati" });
     }
   });
   

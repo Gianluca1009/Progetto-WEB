@@ -82,46 +82,49 @@ function isSessioneAperta(){
 
 //------ REGISTRAZIONE ------//
 
-//Funzione per effettuare la registrazione
 function register() {
-    Swal.fire({
-      title: 'Registrazione utente',
-      html:
-        '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
-        '<input type="password" id="password" class="swal2-input" placeholder="Password">'+
-        '<input type="email" id="email" class="swal2-input" placeholder="Email">',
-      confirmButtonText: 'Registrati',
-      preConfirm: () => {
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        const email = document.getElementById('email').value;
+  Swal.fire({
+    title: 'Registrazione utente',
+    html:
+      '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
+      '<input type="password" id="password" class="swal2-input" placeholder="Password">'+
+      '<input type="email" id="email" class="swal2-input" placeholder="Email">',
+    confirmButtonText: 'Registrati',
+    preConfirm: () => {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const email = document.getElementById('email').value;
 
-        if (!username || !password  || !email) {
-          Swal.showValidationMessage('Tutti i campi sono obbligatori');
-          return false;
-        }
+      if (!username || !password  || !email) {
+        Swal.showValidationMessage('Tutti i campi sono obbligatori');
+        return false;
+      }
 
-        return fetch('/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password, email })
-        })
-        .then(response => {
-          if (!response.ok) throw new Error('Credenziali non valide');
-          return response.text();
-        })
-        .catch(error => {
-          Swal.showValidationMessage(error.message);
-        });
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        Swal.showValidationMessage('Inserisci un indirizzo email valido');
+        return false;
       }
-    }).then(result => {
-      if (result.isConfirmed) {
-        Swal.fire('Registrazione avvenuta!');
-        makeHidden(document.getElementById("registerbutton"));
-      }
-    });
+
+      return fetch('/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password, email })
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Credenziali non valide');
+        return response.text();
+      })
+      .catch(error => {
+        Swal.showValidationMessage(error.message);
+      });
+    }
+  }).then(result => {
+    if (result.isConfirmed) {
+      Swal.fire('Registrazione avvenuta!');
+    }
+  });
 }
-
 
 
 //------ LOGOUT ------//
