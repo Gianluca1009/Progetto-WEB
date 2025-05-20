@@ -141,9 +141,10 @@ app.post('/login', async (req, res) => {
         res.json({
         userId: user.id,
         username: user.username,
-        point: user.punti,
+        email: user.email,
+        punti: user.punti,
         partite: user.partite,
-        email: user.email 
+        vittorie: user.vittorie
         });
 
     } else {
