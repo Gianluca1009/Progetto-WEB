@@ -131,7 +131,7 @@ async function restartDraft(){
     document.querySelector(".game-container").classList.remove('game-not-started');
     
     //Gestione funzione per draft da DB
-
+    
     await creaListeCalciatori();
     await populateDraft("bianco");
     await populateDraft("nero");

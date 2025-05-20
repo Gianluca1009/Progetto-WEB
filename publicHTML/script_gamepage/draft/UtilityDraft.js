@@ -67,22 +67,6 @@ function resetEvidenziaCelleDrop(){
 }
 
 
-function resetRigaOro(lato){
-    if(lato === "sx"){
-        document.querySelectorAll(".riga-oro-sx").forEach(riga => {
-            riga.classList.remove('riga-oro-sx');
-            console.log("riga-oro-sx rimossa");
-        });
-    }
-    else if(lato === "dx"){
-        document.querySelectorAll(".riga-oro-dx").forEach(riga => {
-            riga.classList.remove('riga-oro-dx');
-            console.log("riga-oro-dx rimossa");
-        });
-    }
-}
-
-
 
 //------ FUNZIONI DROP ------//
 
@@ -100,8 +84,6 @@ function assegnaCognome(text,cognome_calciatore){
 async function AssegnaCalciatoreAPedina(event, drop_cell) {
     var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
     var tipoSantino = event.dataTransfer.getData("type"); // Ottieni il tipo di santino (sx o dx)
-
-    resetRigaOro(tipoSantino); // Reset della riga oro
     
     let div_pedina = drop_cell.querySelector('.pedina');
 

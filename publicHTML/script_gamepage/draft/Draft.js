@@ -5,52 +5,67 @@ window.array_calciatori_partita_bianchi = [];
 window.dragged_class_calciatore_bianco = null; 
 window.dragged_class_calciatore_nero = null;
 
+//------ FUNZIONI DI LISTENER ------//
+
+async function santinoSxDragStart(santino_img, event) {
+    // Se il gioco è iniziato, non fare nulla
+    if (window.game_started) {
+        event.preventDefault();
+        return false;
+    }
+    window.dragged_class_calciatore_bianco = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
+    event.dataTransfer.setData("text", window.dragged_class_calciatore_bianco.cognome);  //salva cognome calciatore nell'evento
+    event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
+    document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
+    evidenziaCelleDropBianco();
+}
+
+async function santinoDxDragStart(santino_img, event) {
+    if (window.game_started) {
+        event.preventDefault();
+        return false;
+    }
+    window.dragged_class_calciatore_nero = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON
+    event.dataTransfer.setData("text", window.dragged_class_calciatore_nero.cognome);  //salva id del div nell'evento
+    event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
+    document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
+    evidenziaCelleDropNero();
+}
+
+async function santinoDragEnd() {
+    document.body.style.cursor = 'default';  // Ripristina il cursore default
+    resetEvidenziaCelleDrop();
+}
+
+async function dropCellDragOver(event) {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+}
+
+async function dropCellDrop(drop_cell, event) {
+    event.preventDefault();
+    AssegnaCalciatoreAPedina(event, drop_cell); // Assegna il calciatore alla pedina    
+}
+
+
 //------ DRAG & DROP ------//
 
 // Funzione per gestire il drag dei santini
 async function dragSantini(){
     
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
-        santino_img.addEventListener("dragstart", async function(event) {
-            // Se il gioco è iniziato, non fare nulla
-            if (window.game_started) {
-                event.preventDefault();
-                return false;
-            }
-            window.dragged_class_calciatore_bianco = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
-            event.dataTransfer.setData("text", window.dragged_class_calciatore_bianco.cognome);  //salva cognome calciatore nell'evento
-            event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
-            document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
-            evidenziaCelleDropBianco();
-        });
+        santino_img.addEventListener("dragstart", async function(event){ santinoSxDragStart(santino_img, event); });
 
         // Evento dragend
-        santino_img.addEventListener("dragend", function() {
-            document.body.style.cursor = 'default';  // Ripristina il cursore default
-            resetEvidenziaCelleDrop();
-        });
+        santino_img.addEventListener("dragend", santinoDragEnd); 
     });
 
     //selziona tutti le img calciatore -> drag elem dx
     document.querySelectorAll(".santino-dx").forEach(santino_img => {
-        santino_img.addEventListener("dragstart", async function(event) {
-            // Se il gioco è iniziato, non fare nulla
-            if (window.game_started) {
-                event.preventDefault();
-                return false;
-            }
-            window.dragged_class_calciatore_nero = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON
-            event.dataTransfer.setData("text", window.dragged_class_calciatore_nero.cognome);  //salva id del div nell'evento
-            event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
-            document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
-            evidenziaCelleDropNero();
-        });
-
+        santino_img.addEventListener("dragstart", async function(event) {santinoDxDragStart(santino_img, event); });
+            
         // Evento dragend
-        santino_img.addEventListener("dragend", async function(event) {
-            document.body.style.cursor = 'default';  // Ripristina il cursore default
-            resetEvidenziaCelleDrop();
-        });
+        santino_img.addEventListener("dragend", santinoDragEnd);
     });
 }
 
@@ -59,20 +74,12 @@ async function dropSantini(){
     //selziona tutti le img calciatore -> drag elem sx
     dragSantini(); // Inizializza il drag&drop per i santini
 
-    //selziona tutte le caselle pezzi -> drop zone
     document.querySelectorAll(".greencell, .creamcell").forEach(drop_cell => {
         // Gestisci l'evento dragover
-        drop_cell.addEventListener("dragover", async function(event) {
-            event.preventDefault();
-            event.dataTransfer.dropEffect = "move";
-        });
+        drop_cell.addEventListener("dragover", dropCellDragOver);
 
         // Gestisci l'evento drop
-        drop_cell.addEventListener("drop", async function(event) {
-
-            event.preventDefault();
-            AssegnaCalciatoreAPedina(event, this); // Assegna il calciatore alla pedina            
-        });
+        drop_cell.addEventListener("drop", async function(event) { dropCellDrop(drop_cell, event);});
     });
 
     
@@ -113,7 +120,8 @@ async function populateDraft(colore) {
         // Rimuovi i calciatori selezionati dall'array originale
         remove3Calciatori(colore);
 
-        santini_containers = [];
+        let santini_containers = [];
+        let info_statistiche = [];
 
         if(colore == "nero"){
             santini_containers = [
@@ -146,15 +154,6 @@ async function populateDraft(colore) {
             if (container && player) {
                 //pulizia dei campi precedenti
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
-
-                if (player.isFromRosa == true && colore == "nero"){
-                    info_statistiche[i].classList.add('riga-oro-dx');
-                    console.log("riga-oro-dx aggiunta");
-                }
-                if (player.isFromRosa == true && colore == "bianco"){
-                    info_statistiche[i].classList.add('riga-oro-sx');
-                    console.log("riga-oro-sx aggiunta");
-                }
 
                 if (info_statistiche[i].hasChildNodes()){
                     info_statistiche[i].removeChild(info_statistiche[i].firstChild);
@@ -214,8 +213,12 @@ async function populateDraft(colore) {
                 ul_info.appendChild(li2_info);
                 ul_info.appendChild(li3_info);
                 ul_info.appendChild(li4_info);
-
                 div_info.appendChild(ul_info);
+
+
+                // setto una variabile per controllare se il calciatore è della rosa
+                if(player.isFromRosa == true) div_info.dataset.fromRosa = "true";
+                else div_info.dataset.fromRosa = "false";
         
                 if(colore == "nero"){
                     img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
@@ -227,6 +230,17 @@ async function populateDraft(colore) {
                 container.appendChild(img);
             }
         }
+
+        document.querySelectorAll('.info_draftcell').forEach(riga => {
+            if (riga.dataset.fromRosa === "true") {
+                console.log("riga rosa")
+                riga.style.background = "rgb(226 174 0)";
+            }
+            else if (riga.dataset.fromRosa === "false") {
+                console.log("riga non rosa")
+                riga.style.background = "rgb(193, 193, 193)";
+            }
+        });
 
         dragSantini();
 
@@ -293,9 +307,7 @@ function populateRandom(colore) {
         if (i >= pedine.length || i >= lista_calciatori_rimanenti.length) break;
 
         const pedina = pedine[i];
-        const calciatore = lista_calciatori_rimanenti[i];
-
-        pedina.firstChild.dataset.json = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
+        const calciatore = lista_calciatori_rimanenti[i];        pedina.firstChild.dataset.json = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
 
         // Crea l'elemento text se non esiste
         let text = pedina.querySelector('text');
@@ -307,6 +319,16 @@ function populateRandom(colore) {
 
         // Assegna il cognome del calciatore
         text.textContent = calciatore.cognome;
+
+        // Evidenzia i calciatori dalla rosa
+        if (calciatore.isFromRosa === true) {
+            // Aggiungi un indicatore visuale alla pedina
+            if (colore === "bianco") {
+                pedina.classList.add('player-from-rosa-bianco');
+            } else if (colore === "nero") {
+                pedina.classList.add('player-from-rosa-nero');
+            }
+        }
 
         // Salva la mappatura del calciatore e della pedina
     }
