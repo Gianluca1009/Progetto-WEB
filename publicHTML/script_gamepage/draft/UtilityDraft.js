@@ -226,22 +226,40 @@ async function creaListeCalciatori() {
 
     let rosa_bianco_res = await fetch(`http://localhost:3000/get_giocatori_rosa?id=${id_player_bianco}`);
     let rosa_nero_res = await fetch(`http://localhost:3000/get_giocatori_rosa?id=${id_player_nero}`);
+
     let rosa_bianco = await rosa_bianco_res.json();
     let rosa_nero = await rosa_nero_res.json();
+
     rosa_bianco = objectifyCalciatori(rosa_bianco, "rosa");
     rosa_nero = objectifyCalciatori(rosa_nero, "rosa");
 
     let numero_mancanti_bianco = 36 - rosa_bianco.length;
     let numero_mancanti_nero = 36 - rosa_nero.length;
-    let mancanti_bianco_res = await fetch(`http://localhost:3000/get_random_calciatori?n=${numero_mancanti_bianco}`);
-    let mancanti_nero_res = await fetch(`http://localhost:3000/get_random_calciatori?n=${numero_mancanti_nero}`);
+
+    // estrai gli id da escludere (calciatori già in rosa)
+    let excludeIdsBianco = rosa_bianco.map(c => c.id);
+    let excludeIdsNero = rosa_nero.map(c => c.id);
+
+    // costruisci query string con excludeIds[]
+    function buildQueryString(n, excludeIds) {
+        const params = new URLSearchParams();
+        params.append('n', n);
+        excludeIds.forEach(id => params.append('excludeIds[]', id));
+        return params.toString();
+    }
+
+    let mancanti_bianco_res = await fetch(`http://localhost:3000/get_random_calciatori?${buildQueryString(numero_mancanti_bianco, excludeIdsBianco)}`);
+    let mancanti_nero_res = await fetch(`http://localhost:3000/get_random_calciatori?${buildQueryString(numero_mancanti_nero, excludeIdsNero)}`);
+
     let mancanti_bianco = await mancanti_bianco_res.json();
     let mancanti_nero = await mancanti_nero_res.json();
+
     mancanti_bianco = objectifyCalciatori(mancanti_bianco, "mancante");
     mancanti_nero = objectifyCalciatori(mancanti_nero, "mancante");
-    
+
     window.array_calciatori_partita_bianchi = rosa_bianco.concat(mancanti_bianco);
     window.array_calciatori_partita_neri = rosa_nero.concat(mancanti_nero);
+
 
     // window.array_calciatori_partita = await fetchCalciatori();
     // window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri

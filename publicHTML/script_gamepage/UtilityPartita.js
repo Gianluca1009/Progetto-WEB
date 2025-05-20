@@ -74,6 +74,73 @@ async function startDraft(){
     document.querySelector('.grid-container').classList.remove('disabled');
 }
 
+// Funzione per cambiare il draft
+async function restartDraft(){
+    scrollToGameContainer();
+
+    //caso in cui fai logout prima di rigiocare il draft
+    if(LS_getUser1Game().id == null || LS_getUser2Game().id == null){
+        Swal.fire("Devi essere loggato per poter giocare");
+        return;
+    }
+    
+    if(document.getElementById('popup-gameover')) closeEndgamePopup();
+    
+    //ELEMENTI DA MOSTRARE (sezioni, switch)
+    makeVisible(document.querySelector('.sezione_dx'));
+    makeVisible(document.querySelector('.sezione_sx'));
+    makeVisible(document.getElementById('draft_table_dx'));
+    makeVisible(document.getElementById('draft_table_sx'));
+    makeVisible(document.getElementById('random1'));
+    makeVisible(document.getElementById('random2'));
+    makeVisible(document.querySelector('.switch'));
+
+    //ELEMENTI DA NASCONDERE (condition, progress-container, bottoni pronto, div promotion, tunnel)
+    makeHidden(document.querySelector('.condition-container'));
+    makeHidden(document.querySelector('.progress-container'));
+    makeHidden(document.querySelector('.tunnel-sx'));
+    makeHidden(document.querySelector('.tunnel-dx'));
+    document.getElementById('player1button').classList.add('hidden');
+    document.getElementById('player2button').classList.add('hidden');
+    if(document.getElementById('div_ped_promotion')) document.getElementById('div_ped_promotion').remove();
+    
+    //RESET ELEMENTI DEL DRAFT
+    window.dragged_class_calciatore_bianco = null; 
+    window.dragged_class_calciatore_nero = null;
+    document.querySelectorAll('.riga-oro-sx, .riga-oro-dx').forEach(riga => {
+        riga.classList.remove('riga-oro-sx');
+        riga.classList.remove('riga-oro-dx');
+    });
+    
+
+    resetSottoscacco();
+    resetProntoButton();
+    resetSuggerimenti();
+    if(window.selected_cell) resetHighlighted();
+    
+    //avvio il draft
+    window.game_started = false;
+    window.turno_bianco = true;
+
+    document.querySelector('.grid-container').classList.remove('grid-container-enlarged');
+
+    disabilitaPedine();
+    resetPedine();  //riposiziono le pedine nelle posizioni iniziali
+    resetTimers();  //resetto il timer
+
+    document.querySelector(".game-container").classList.remove('game-not-started');
+    
+    //Gestione funzione per draft da DB
+
+    await creaListeCalciatori();
+    await populateDraft("bianco");
+    await populateDraft("nero");
+    await dropSantini();
+
+    if(document.getElementById('toggle').checked) document.getElementById('toggle').checked = !document.getElementById('toggle').checked;
+    updateText(document.getElementById('toggle').checked);
+}
+
 // Funzione per avviare il gioco
 function startGame() {
 
@@ -156,66 +223,6 @@ function endGame(){
 
     playSound('fischio_finale', 0.2);
 
-}
-
-// Funzione per cambiare il draft
-async function restartDraft(){
-    scrollToGameContainer();
-
-    //caso in cui fai logout prima di rigiocare il draft
-    if(LS_getUser1Game().id == null || LS_getUser2Game().id == null){
-        Swal.fire("Devi essere loggato per poter giocare");
-        return;
-    }
-    
-    closeEndgamePopup();
-
-    creaListeCalciatori();
-    
-    //ELEMENTI DA MOSTRARE (sezioni, switch)
-    makeVisible(document.querySelector('.sezione_dx'));
-    makeVisible(document.querySelector('.sezione_sx'));
-    makeVisible(document.getElementById('draft_table_dx'));
-    makeVisible(document.getElementById('draft_table_sx'));
-    makeVisible(document.getElementById('random1'));
-    makeVisible(document.getElementById('random2'));
-    makeVisible(document.querySelector('.switch'));
-
-    //ELEMENTI DA NASCONDERE (condition, progress-container, bottoni pronto)
-    makeHidden(document.querySelector('.condition-container'));
-    makeHidden(document.querySelector('.progress-container'));
-    makeHidden(document.querySelector('.tunnel-sx'));
-    makeHidden(document.querySelector('.tunnel-dx'));
-    document.getElementById('player1button').classList.add('hidden');
-    document.getElementById('player2button').classList.add('hidden');
-    if(document.getElementById('div_ped_promotion')) document.getElementById('div_ped_promotion').remove();
-
-    resetSottoscacco();
-    resetProntoButton();
-    resetSuggerimenti();
-    if(window.selected_cell) resetHighlighted();
-    
-    //avvio il draft
-    window.game_started = false;
-    window.turno_bianco = true;
-
-    document.querySelector('.grid-container').classList.remove('grid-container-enlarged');
-
-    disabilitaPedine();
-    resetPedine();  //riposiziono le pedine nelle posizioni iniziali
-    resetTimers();  //resetto il timer
-
-    document.querySelector(".game-container").classList.remove('game-not-started');
-    
-    //Gestione funzione per draft da DB
-
-    await creaListeCalciatori();        // Popola l'array di calciatori
-    await populateDraft("bianco");
-    await populateDraft("nero");
-    await dropSantini();
-
-    if(document.getElementById('toggle').checked) document.getElementById('toggle').checked = !document.getElementById('toggle').checked;
-    updateText(document.getElementById('toggle').checked);
 }
 
 // Funzione per tornare alla home

@@ -30,36 +30,65 @@ async function createConnection() {
 
 //@deprecated
 // Funzione spostata da connection.js
-async function get72RandomCalciatori() {
-    const connection = await createConnection();
-    try {
-        const results = await connection.query(
-            'SELECT * FROM calciatore ORDER BY RANDOM() LIMIT 72'
-        );
-        return results.rows;
-    } catch (error) {
-        console.error('Error fetching calciatori:', error);
-        throw error;
-    } finally {
-        await connection.end();
-    }
-}
+// async function get72RandomCalciatori() {
+//     const connection = await createConnection();
+//     try {
+//         const results = await connection.query(
+//             'SELECT * FROM calciatore ORDER BY RANDOM() LIMIT 72'
+//         );
+//         return results.rows;
+//     } catch (error) {
+//         console.error('Error fetching calciatori:', error);
+//         throw error;
+//     } finally {
+//         await connection.end();
+//     }
+// }
 
 app.get('/get_random_calciatori', async (req, res) => {
     const connection = await createConnection();
     const n = parseInt(req.query.n, 10);
+
+    // Prendi excludeIds dalla query string: ?excludeIds[]=1&excludeIds[]=3
+    let excludeIds = req.query.excludeIds || [];
+    if (!Array.isArray(excludeIds)) {
+        excludeIds = [excludeIds]; // se è singolo valore stringa
+    }
+    // Trasforma in numeri, filtra eventuali NaN (sicurezza)
+    excludeIds = excludeIds.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
+
     try {
-        const results = await connection.query(
-            'SELECT * FROM calciatore ORDER BY RANDOM() LIMIT $1', [n]
-        );
-        res.send(results.rows); //manda i giocatori al client
+        let query, params;
+        if (excludeIds.length > 0) {
+            // costruisci la query con placeholders per excludeIds
+            const placeholders = excludeIds.map((_, i) => `$${i + 2}`).join(', ');
+            query = `
+                SELECT * FROM calciatore
+                WHERE id NOT IN (${placeholders})
+                ORDER BY RANDOM()
+                LIMIT $1
+            `;
+            params = [n, ...excludeIds];
+        } else {
+            // nessun id da escludere, query semplice
+            query = `
+                SELECT * FROM calciatore
+                ORDER BY RANDOM()
+                LIMIT $1
+            `;
+            params = [n];
+        }
+
+        const results = await connection.query(query, params);
+        res.send(results.rows);
     } catch (error) {
         console.error('Error fetching calciatori:', error);
-        throw error;
+        res.status(500).send('Errore interno al server');
     } finally {
         await connection.end();
     }
 });
+
 
 // Route per la homepage
 app.get('/', (req, res) => {
