@@ -45,7 +45,7 @@ function login() {
             // Salvi i dati dei due giochi nel localStorage
             console.log(game1Data);
             console.log(game2Data);
-            LS_login1Game(game1Data.userId, game1Data.username, game1Data.email, game1Data.point, game1Data.partite, game1Data.vittorie);
+            LS_login1Game(game1Data.userId, game1Data.username, game1Data.email, game1Data.punti, game1Data.partite, game1Data.vittorie);
             LS_login2Game(game2Data.userId, game2Data.username, game2Data.email, game2Data.punti, game2Data.partite, game2Data.vittorie);
 
             //aggirno la ui con i nomi dei player

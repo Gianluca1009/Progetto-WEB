@@ -32,9 +32,3 @@ function LS_getUserRosaData() {
 function LS_set_puntiRosa(punti){
     localStorage.setItem('rose_user_punti', punti);
 }
-
-function LSR_agg_LSMprezzo (new_prezzo){
-    if( localStorage.getItem('rose_userId') === localStorage.getItem('mercato_userId')){
-        localStorage.setItem('mercato_user_punti', new_prezzo);
-    }
-}

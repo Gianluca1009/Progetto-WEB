@@ -29,10 +29,3 @@ function LS_getUserMercatoData() {
     const vittorie = localStorage.getItem('mercato_user_vittorie');
     return {id: userId, username: username, email: email, punti: punti, partite: partite, vittorie: vittorie};
 }
-
-// ???
-function LSM_agg_LSRprezzo (new_prezzo){
-    if( localStorage.getItem('rose_userId') === localStorage.getItem('mercato_userId')){
-      localStorage.setItem('rose_user_punti', new_prezzo);
-    }
-}
