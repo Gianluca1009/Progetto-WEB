@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inizializzo le variabili di finestra
     window.bacheca = document.getElementById("bacheca-rosa");
-    window.register_button = document.getElementById("registerbutton");
-    window.login_button = document.getElementById("loginbutton");
-    window.logout_button = document.getElementById("logoutbutton");
+    window.register_button = document.getElementById("register-button");
+    window.login_button = document.getElementById("login-button");
+    window.logout_button = document.getElementById("logout-button");
     window.sezione_profilo = document.querySelector(".sezione-profilo");
     window.difensori = [];
     window.centrocampisti = [];

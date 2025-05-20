@@ -22,7 +22,7 @@ async function fetchMiaRosa(){
 
 //Funzione che mette l'username nel campo dedicato dopo il login
 function fillUsernameRosa(){
-    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_getUserRosaData().username}`;
+    document.getElementById("player-username").textContent = `Benvenuto, ${LS_getUserRosaData().username}`;
 }
 
 // Funzione che crea la riga che segnala il login non effettuato
