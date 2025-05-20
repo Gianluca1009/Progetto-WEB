@@ -3,28 +3,6 @@ const {Client} = require('pg');
 const path = require('path');
 const cors = require('cors');
 
-class Calciatore {
-    constructor(nome, cognome, img_url, data_nascita, nazionalita, ruolo, squadra, numero_maglia, goal, assist, presenze, cartellini_gialli, cartellini_rossi, trofei, record_goal, record_assist, altezza) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.img_url = img_url;
-        this.data_nascita = data_nascita;
-        this.nazionalita = nazionalita;
-        this.ruolo = ruolo;
-        this.squadra = squadra;
-        this.numero_maglia = numero_maglia;
-        this.goal = goal;
-        this.assist = assist;
-        this.presenze = presenze;
-        this.cartellini_gialli = cartellini_gialli;
-        this.cartellini_rossi = cartellini_rossi;
-        this.trofei = trofei;
-        this.record_goal = record_goal;
-        this.record_assist = record_assist;
-        this.altezza = altezza;
-    }
-}
-
 const app = express();
 const port = 3000; // Changed from 3306 to avoid conflict with MySQL
 
@@ -50,6 +28,7 @@ async function createConnection() {
     return client;
 }
 
+//@deprecated
 // Funzione spostata da connection.js
 async function get72RandomCalciatori() {
     const connection = await createConnection();
@@ -66,51 +45,25 @@ async function get72RandomCalciatori() {
     }
 }
 
-
-async function ArrayCalciatoriCreation() {
+app.get('/get_random_calciatori', async (req, res) => {
+    const connection = await createConnection();
+    const n = parseInt(req.query.n, 10);
     try {
-        const random_calciatori = await get72RandomCalciatori();;
-        const OggettiCalciatori = random_calciatori.map(info_calciatore => 
-            new Calciatore(
-                info_calciatore.nome,
-                info_calciatore.cognome,
-                info_calciatore.url_foto,
-                info_calciatore.data_nascita,
-                info_calciatore.nazionalita,
-                info_calciatore.ruolo,
-                info_calciatore.squadra,
-                info_calciatore.numero_maglia,
-                info_calciatore.goal,
-                info_calciatore.assist,
-                info_calciatore.presenze,
-                info_calciatore.cartellini_gialli,
-                info_calciatore.cartellini_rossi,
-                info_calciatore.trofei,
-                info_calciatore.record_goal,
-                info_calciatore.record_assist,
-                info_calciatore.altezza
-            )
+        const results = await connection.query(
+            'SELECT * FROM calciatore ORDER BY RANDOM() LIMIT $1', [n]
         );
-        return OggettiCalciatori;
+        res.send(results.rows); //manda i giocatori al client
     } catch (error) {
-        console.error('Error populating draft in the function ArrayCalciatoriCreation', error);
+        console.error('Error fetching calciatori:', error);
         throw error;
+    } finally {
+        await connection.end();
     }
-}
+});
 
 // Route per la homepage
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'publicHTML', 'index.html'));
-});
-
-// Route per populate_draft
-app.get('/populate-draft', async (req, res) => {
-    try {
-        const result = await ArrayCalciatoriCreation();
-        res.send(result);
-    } catch (error) {
-        res.status(500).json({ error: 'Error populating draft in the endpoint' });
-    }
 });
 
 

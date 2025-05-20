@@ -1,3 +1,28 @@
+// Classe Calciatore
+
+class Calciatore {
+    constructor(nome, cognome, img_url, data_nascita, nazionalita, ruolo, squadra, numero_maglia, goal, assist, presenze, cartellini_gialli, cartellini_rossi, trofei, record_goal, record_assist, altezza, isFromRosa) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.img_url = img_url;
+        this.data_nascita = data_nascita;
+        this.nazionalita = nazionalita;
+        this.ruolo = ruolo;
+        this.squadra = squadra;
+        this.numero_maglia = numero_maglia;
+        this.goal = goal;
+        this.assist = assist;
+        this.presenze = presenze;
+        this.cartellini_gialli = cartellini_gialli;
+        this.cartellini_rossi = cartellini_rossi;
+        this.trofei = trofei;
+        this.record_goal = record_goal;
+        this.record_assist = record_assist;
+        this.altezza = altezza;
+        this.isFromRosa = isFromRosa; // Aggiunto per tenere traccia se il calciatore è già presente nella rosa
+    }
+}
+
 //------ FUNZIONI GRAFICHE ------//
 
 // Funzione per evidenziare le celle di drop della squadra nera
@@ -42,6 +67,22 @@ function resetEvidenziaCelleDrop(){
 }
 
 
+function resetRigaOro(lato){
+    if(lato === "sx"){
+        document.querySelectorAll(".riga-oro-sx").forEach(riga => {
+            riga.classList.remove('riga-oro-sx');
+            console.log("riga-oro-sx rimossa");
+        });
+    }
+    else if(lato === "dx"){
+        document.querySelectorAll(".riga-oro-dx").forEach(riga => {
+            riga.classList.remove('riga-oro-dx');
+            console.log("riga-oro-dx rimossa");
+        });
+    }
+}
+
+
 
 //------ FUNZIONI DROP ------//
 
@@ -60,6 +101,8 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
     var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
     var tipoSantino = event.dataTransfer.getData("type"); // Ottieni il tipo di santino (sx o dx)
 
+    resetRigaOro(tipoSantino); // Reset della riga oro
+    
     let div_pedina = drop_cell.querySelector('.pedina');
 
     if (div_pedina) {
@@ -91,19 +134,13 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
             }
         }
     }
+    return tipoSantino;
 }
 
 
 
 
 //------ FUNZIONI PER L'ESTRAZIONE DA DATABASE ------//
-
-// Funzione per ottiene i calciatori dal server
-async function fetchCalciatori() {
-    const response = await fetch('http://localhost:3000/populate-draft');
-    const data = await response.json(); // Estrai i dati JSON dalla risposta
-    return data; // Restituisci l'array di calciatori
-}
 
 // Funzione per mescolare un array (Fisher-Yates shuffle)
 function shuffleArray(array) {
@@ -148,11 +185,68 @@ function getListaCalciatori(colore) {
     }
 }
 
+
+function objectifyCalciatori(array, provenienza) {
+    try {
+        const OggettiCalciatori = array.map(info_calciatore => 
+            new Calciatore(
+                info_calciatore.nome,
+                info_calciatore.cognome,
+                info_calciatore.url_foto,
+                info_calciatore.data_nascita,
+                info_calciatore.nazionalita,
+                info_calciatore.ruolo,
+                info_calciatore.squadra,
+                info_calciatore.numero_maglia,
+                info_calciatore.goal,
+                info_calciatore.assist,
+                info_calciatore.presenze,
+                info_calciatore.cartellini_gialli,
+                info_calciatore.cartellini_rossi,
+                info_calciatore.trofei,
+                info_calciatore.record_goal,
+                info_calciatore.record_assist,
+                info_calciatore.altezza,
+                provenienza === "rosa" ? true : false // Aggiunto per tenere traccia se il calciatore è già presente nella rosa
+            )
+        );
+        return OggettiCalciatori;
+    } catch (error) {
+        console.error('Error populating draft in the function objectifyCalciatore', error);
+        throw error;
+    }
+}
+
+
+
 // Funzione per creare le liste dei calciatori
 async function creaListeCalciatori() {
-    window.array_calciatori_partita = await fetchCalciatori();
-    window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri
-    window.array_calciatori_partita_bianchi = window.array_calciatori_partita.slice(36, 72); // Gli ultimi 36 calciatori sono bianchi
+    let id_player_bianco = LS_getUser1Game().id;
+    let id_player_nero = LS_getUser2Game().id;
+
+    let rosa_bianco_res = await fetch(`http://localhost:3000/get_giocatori_rosa?id=${id_player_bianco}`);
+    let rosa_nero_res = await fetch(`http://localhost:3000/get_giocatori_rosa?id=${id_player_nero}`);
+    let rosa_bianco = await rosa_bianco_res.json();
+    let rosa_nero = await rosa_nero_res.json();
+    rosa_bianco = objectifyCalciatori(rosa_bianco, "rosa");
+    rosa_nero = objectifyCalciatori(rosa_nero, "rosa");
+
+    let numero_mancanti_bianco = 36 - rosa_bianco.length;
+    let numero_mancanti_nero = 36 - rosa_nero.length;
+    let mancanti_bianco_res = await fetch(`http://localhost:3000/get_random_calciatori?n=${numero_mancanti_bianco}`);
+    let mancanti_nero_res = await fetch(`http://localhost:3000/get_random_calciatori?n=${numero_mancanti_nero}`);
+    let mancanti_bianco = await mancanti_bianco_res.json();
+    let mancanti_nero = await mancanti_nero_res.json();
+    mancanti_bianco = objectifyCalciatori(mancanti_bianco, "mancante");
+    mancanti_nero = objectifyCalciatori(mancanti_nero, "mancante");
+    
+    window.array_calciatori_partita_bianchi = rosa_bianco.concat(mancanti_bianco);
+    window.array_calciatori_partita_neri = rosa_nero.concat(mancanti_nero);
+
+    // window.array_calciatori_partita = await fetchCalciatori();
+    // window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri
+    // window.array_calciatori_partita_bianchi = window.array_calciatori_partita.slice(36, 72); // Gli ultimi 36 calciatori sono bianchi
+
 }
 
 // Funzione per far vedere le statistiche del calciatore nello specifico

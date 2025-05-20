@@ -45,13 +45,13 @@
 # mercato page:
 
     barra di ricerca calciatore                                                                     ✅ 
-    sezione profilo in alto a destra
+    sezione profilo in alto a destra                                                                ✅
 
     
 # rose-page:
 
     gestione programmatica statistiche dei calciatori                                               ✅
-    sezione profilo in alto a destra
+    sezione profilo in alto a destra                                                                ✅
 
 
 # Game-page:
@@ -135,6 +135,11 @@
     L'ultimo cognome che draggi manuale nel draft ha font piu grande                                ✅
 
     La promozione del pedone è ancora in corso se premo restart draft o alla fine della partita     ✅
+
+    La rosa contiene alle volte giocatori duplicati, che causano errori alla vendita
+
+
+    # CERCARE BUG NEL GIOCO E INSERIRLI SOPRA ^^^^^^^^
 
     
 

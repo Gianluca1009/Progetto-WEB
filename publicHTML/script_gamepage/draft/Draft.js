@@ -69,11 +69,13 @@ async function dropSantini(){
 
         // Gestisci l'evento drop
         drop_cell.addEventListener("drop", async function(event) {
+
             event.preventDefault();
-            AssegnaCalciatoreAPedina(event, this); // Assegna il calciatore alla pedina
-            
+            AssegnaCalciatoreAPedina(event, this); // Assegna il calciatore alla pedina            
         });
     });
+
+    
 }
 
 
@@ -144,6 +146,16 @@ async function populateDraft(colore) {
             if (container && player) {
                 //pulizia dei campi precedenti
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
+
+                if (player.isFromRosa == true && colore == "nero"){
+                    info_statistiche[i].classList.add('riga-oro-dx');
+                    console.log("riga-oro-dx aggiunta");
+                }
+                if (player.isFromRosa == true && colore == "bianco"){
+                    info_statistiche[i].classList.add('riga-oro-sx');
+                    console.log("riga-oro-sx aggiunta");
+                }
+
                 if (info_statistiche[i].hasChildNodes()){
                     info_statistiche[i].removeChild(info_statistiche[i].firstChild);
                 }
