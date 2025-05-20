@@ -189,7 +189,7 @@ function BuildRowForCalciatore(calciatore){
 //Crea la riga per comunicare che non si hanno calciatori di un determinato ruolo
 function buildRowNoResult(ruolo) {
     const row = document.createElement('div');
-    row.className = 'riga-finestra no-result';
+    row.className = 'riga-bacheca no-result';
     row.id = 'no-result';
 
     // Campo info con messaggio
