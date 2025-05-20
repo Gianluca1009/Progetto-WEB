@@ -82,7 +82,7 @@ function ifSessioneAperta() {
 //Funzione che crea la riga che segnala il login non effettuato
 function buildRowNoResult() {
     const row = document.createElement('div');
-    row.className = 'riga_finestra no-result';
+    row.className = 'riga-finestra no-result';
 
     // Campo info con messaggio
     const campoInfo = document.createElement('div');

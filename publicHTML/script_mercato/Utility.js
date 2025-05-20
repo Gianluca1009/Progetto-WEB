@@ -95,7 +95,7 @@ function BuildRowForCalciatore(calciatore){
     btn_acquista.className = "btn-acquista";
 
     const spanbtn_acquista = document.createElement('span');
-    spanbtn_acquista.className = 'button_top';
+    spanbtn_acquista.className = 'button-top';
     spanbtn_acquista.classList.add('span-acquista');
 
     const span_top = document.createElement('div');

@@ -11,11 +11,11 @@ function launchEndgamePopup(vincitore){
             <div class="bottoni-gameover-container">
                  
                 <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft(); closeEndgamePopup();">
-                    <span class="button_top top-gameover"> DRAFT </span>
+                    <span class="button-top top-gameover"> DRAFT </span>
                 </button>
 
                 <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome(); closeEndgamePopup();">
-                    <span class="button_top"> HOME </span>
+                    <span class="button-top"> HOME </span>
                 </button>
 
             </div>

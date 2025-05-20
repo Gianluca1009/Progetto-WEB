@@ -74,7 +74,7 @@ button{
     background: var(--button_outline_color);
 }
 
-.button_top {
+.button-top {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -91,11 +91,11 @@ button{
     height: 100%;
 }
 
-button:hover .button_top {
+button:hover .button-top {
     transform: translateY(-4%);
 }
 
-button:active .button_top {
+button:active .button-top {
     transform: translateY(0);
 }
 
@@ -103,7 +103,7 @@ button:active .button_top {
 
 /* OMBRE COMUNI */
 
-.game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .riga_draft, .menu-button, .riga_finestra, .statistiche-draft, .hamburger, .div-profilo{
+.game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .riga_draft, .menu-button, .riga-bacheca, .statistiche-draft, .hamburger, .div-profilo{
     box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
 }
 

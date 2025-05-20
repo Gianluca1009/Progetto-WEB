@@ -30,7 +30,7 @@ function buildRowNoLogin() {
     // let bacheca = document.getElementById("bacheca-rosa");
 
     const row = document.createElement('div');
-    row.className = 'riga_finestra no-result';
+    row.className = 'riga-bacheca no-result';
     row.id = 'no-login';
 
     // Campo info con messaggio
@@ -82,7 +82,7 @@ function buildTitoloRuolo(ruolo) {
 function BuildRowForCalciatore(calciatore){
     //creo la riga
     const row = document.createElement('div');
-    row.className = 'riga_finestra';
+    row.className = 'riga-bacheca';
 
     //creo il punteruolo
     const img_pnt = document.createElement('img');
@@ -98,17 +98,17 @@ function BuildRowForCalciatore(calciatore){
 
     //creo il campo foto nella riga
     const campoFoto = document.createElement('div');
-    campoFoto.className = 'campo_foto';
+    campoFoto.className = 'campo-foto';
     const img = document.createElement('img');
     img.src = calciatore.url_foto;
-    img.className = 'foto_calciatore';
+    img.className = 'foto-calciatore';
 
     campoFoto.appendChild(img);
 
     //creo il campo info nella riga
 
     const campoInfo = document.createElement('div');
-    campoInfo.className = 'campo_info';
+    campoInfo.className = 'campo-info';
     const nomeCognome = document.createElement('h2');
     nomeCognome.style.marginBlockEnd = '0.20em';
     nomeCognome.style.fontSize = 'min(1.5vw, 1.5em)';
@@ -167,7 +167,7 @@ function BuildRowForCalciatore(calciatore){
     bottone.style.position = 'absolute';
     bottone.className = "btn-vendi";
     spanbottone.textContent = 'Vendi';
-    spanbottone.className = 'button_top';
+    spanbottone.className = 'button-top';
     
     //log da vendita
     bottone.onclick = async () => {
@@ -189,7 +189,7 @@ function BuildRowForCalciatore(calciatore){
 //Crea la riga per comunicare che non si hanno calciatori di un determinato ruolo
 function buildRowNoResult(ruolo) {
     const row = document.createElement('div');
-    row.className = 'riga_finestra no-result';
+    row.className = 'riga-finestra no-result';
     row.id = 'no-result';
 
     // Campo info con messaggio
