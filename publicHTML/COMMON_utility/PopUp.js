@@ -10,7 +10,7 @@ function launchEndgamePopup(vincitore){
             <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
             <div class="bottoni-gameover-container">
                  
-                <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft(); closeEndgamePopup();">
+                <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft();">
                     <span class="button-top top-gameover"> DRAFT </span>
                 </button>
 

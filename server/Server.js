@@ -126,7 +126,7 @@ app.post('/register', async (req, res) => {
       res.status(500).send('Errore durante la registrazione');
       res.status(409).json({ error: "Username o password errati" });
     }
-  });
+});
   
   // LOGIN
 app.post('/login', async (req, res) => {
@@ -151,11 +151,11 @@ app.post('/login', async (req, res) => {
     } else {
       res.status(401).send('Username o password errati');
     }
-  });
+});
 
 
   //GET GIOCATORE LIBERI -> MERCATO
-  app.get('/get_giocatori_mercato', async (req, res) => {
+app.get('/get_giocatori_mercato', async (req, res) => {
         const connection = await createConnection();
         const user_id = req.query.id; // ← prende dalla query string ?id=...
         try {
@@ -179,11 +179,11 @@ app.post('/login', async (req, res) => {
           console.error('Errore durante la query:', error);
           res.status(500).send('Errore interno al server');
         }
-      });
+});
 
 
   //GET GIOCATORE ID User -> ROSE
-  app.get('/get_giocatori_rosa', async (req, res) => {
+app.get('/get_giocatori_rosa', async (req, res) => {
     const connection = await createConnection();
     const id_player_log = req.query.id; // ← prende dalla query string ?id=...
   
@@ -206,7 +206,7 @@ app.post('/login', async (req, res) => {
       console.error('Errore durante la query:', error);
       res.status(500).send('Errore interno al server');
     }
-  });
+});
 
 
   // Avvia il server e mettiti in ascolto sulla porta specificata

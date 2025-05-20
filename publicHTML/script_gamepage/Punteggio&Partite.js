@@ -24,13 +24,14 @@ async function aggiornaPartite(userid) {
         });
         if(response.ok){
             partite_aggiornate = await response.json();
+            console.log("partite aggiornate", partite_aggiornate);
             LS_updatePartite(userid, partite_aggiornate);
         }
         else{
-            console.error('Errore durante l\'aggiornamento delle partite:', response.statusText);
+            console.error('Errore durante l\'aggiornamento delle partite interno:', response.statusText);
         }
     } catch (error) {
-        console.error('Errore durante l\'aggiornamento delle partite:', error);
+        console.error('Errore durante l\'aggiornamento delle partite esterno:', error);
     }
 }
 
@@ -70,11 +71,11 @@ function aggiornaStatistiche(){
     aggiornaVittorie(id_vincitore);
     aggiornaPartite(id_vincitore);
     aggiornaPartite(id_perdente);
-    LS_updateWinner(id_vincitore, 
-                    vincitore,
-                    numero_vincitore = 1? LS_getUser1Game().email : LS_getUser2Game().email,
-                    new_punti,
-                    numero_vincitore = 1? LS_getUser1Game().partite : LS_getUser2Game().partite,
-                    numero_vincitore = 1? LS_getUser1Game().vittorie : LS_getUser2Game().vittorie);
+    // LS_updateWinner(id_vincitore, 
+    //                 vincitore,
+    //                 numero_vincitore = 1? LS_getUser1Game().email : LS_getUser2Game().email,
+    //                 new_punti,
+    //                 numero_vincitore = 1? LS_getUser1Game().partite : LS_getUser2Game().partite,
+    //                 numero_vincitore = 1? LS_getUser1Game().vittorie : LS_getUser2Game().vittorie);
 
 }

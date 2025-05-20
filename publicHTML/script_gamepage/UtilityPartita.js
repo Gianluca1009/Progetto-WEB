@@ -160,13 +160,15 @@ function endGame(){
 
 // Funzione per cambiare il draft
 async function restartDraft(){
-
     scrollToGameContainer();
-    if(LS_login1Game().id == null || LS_login2Game().id == null){
-        console.warn("non loggato");
+
+    //caso in cui fai logout prima di rigiocare il draft
+    if(LS_getUser1Game().id == null || LS_getUser2Game().id == null){
+        Swal.fire("Devi essere loggato per poter giocare");
         return;
     }
     
+    closeEndgamePopup();
     //ELEMENTI DA MOSTRARE (sezioni, switch)
     makeVisible(document.querySelector('.sezione_dx'));
     makeVisible(document.querySelector('.sezione_sx'));
