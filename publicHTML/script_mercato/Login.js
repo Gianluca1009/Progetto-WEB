@@ -154,6 +154,7 @@ function register() {
   }).then(result => {
     if (result.isConfirmed) {
       Swal.fire('Registrazione avvenuta!');
+  
     }
   });
 }
