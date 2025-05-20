@@ -14,7 +14,7 @@ function acquistaCalciatore(calciatore, riga){
             //aggiorna pti display
             document.querySelector('.user-points').textContent = miei_punti;
             localStorage.setItem('mercato_user_point', miei_punti);
-            LS_update_all_prezzo(id, miei_punti);
+            LS_updatePunti(id, miei_punti);
             makeHidden(riga);
             riga.remove();
             //pop up acquisto effettuato

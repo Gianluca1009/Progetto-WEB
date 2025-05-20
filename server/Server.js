@@ -180,7 +180,7 @@ app.post('/login', async (req, res) => {
   
     try {
       const results = await connection.query(
-        'SELECT * FROM calciatore WHERE id_player = $1',
+        'SELECT * ',
         [id_player_log]
       );
   
