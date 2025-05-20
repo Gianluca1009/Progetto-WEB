@@ -146,56 +146,50 @@ async function BuildMercato(inputNome, inputRuolo){
     const results = await fetchCalciatoriLiberi();
     deleteRows();
     let i = 0;
-    let numeroRighe = 0;
+    let risultatoRicerca = false;
 
     const nome = (inputNome || "").toLowerCase();
 
-    function processNext() {
-        if (i < results.length) {
-            const calciatore = results[i]
+    while(i < results.length) {
+        const calciatore = results[i]
 
-            let nomeCognome;
-            if(calciatore.nome == null) nomeCognome = `${calciatore.cognome}`;
-            else nomeCognome = `${calciatore.nome} ${calciatore.cognome}`;
-            nomeCognome = nomeCognome.toLowerCase();
-            let ruolo = calciatore.ruolo.toLowerCase();
-            i++;
+        let nomeCognome;
+        if(calciatore.nome == null) nomeCognome = `${calciatore.cognome}`;
+        else nomeCognome = `${calciatore.nome} ${calciatore.cognome}`;
+        nomeCognome = nomeCognome.toLowerCase(); // Contiene il nome completo del calciatore in lowercase
+        let ruolo = calciatore.ruolo.toLowerCase(); // Contiene il ruolo del calciatore in lowercase
 
-            if(inputRuolo === "qualsiasi") {
-                if(nome) {
-                    if(nomeCognome.includes(nome)) {
-                        BuildRowForCalciatore(calciatore);
-                        numeroRighe++;
-                    }
-                }
-                else {
+        if(inputRuolo === "qualsiasi") {
+            if(nome) {
+                if(nomeCognome.includes(nome)) {
                     BuildRowForCalciatore(calciatore);
-                    numeroRighe++;
+                    risultatoRicerca = true;
                 }
             }
             else {
-                if(nome) {
-                    if(nomeCognome.includes(nome) && ruolo === inputRuolo) {
-                        BuildRowForCalciatore(calciatore);
-                        numeroRighe++;
-                    }
-                }
-                else {
-                    if(ruolo === inputRuolo) {
-                        BuildRowForCalciatore(calciatore);
-                        numeroRighe++;
-                    }
-                }
+                BuildRowForCalciatore(calciatore);
+                risultatoRicerca = true;
             }
-
-            processNext();
         }
         else {
-            if (numeroRighe === 0) {
-                buildRowNoResult();
+            if(nome) {
+                if(nomeCognome.includes(nome) && ruolo === inputRuolo) {
+                    BuildRowForCalciatore(calciatore);
+                    risultatoRicerca = true;
+                }
+            }
+            else {
+                if(ruolo === inputRuolo) {
+                    BuildRowForCalciatore(calciatore);
+                    risultatoRicerca = true;
+                }
             }
         }
-    }
 
-    processNext(); // inizia il ciclo
+        i++;
+    }
+    if (!risultatoRicerca) {
+        buildRowNoResult();
+    }
+    
 }
