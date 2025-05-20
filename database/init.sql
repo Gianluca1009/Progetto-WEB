@@ -2,13 +2,13 @@ CREATE DATABASE ChessDB;
 
 CREATE TABLE player (
     id SERIAL PRIMARY KEY,
-    username VARCHAR(50) NOT 
-    email VARCHAR(50) NOT 
-    password VARCHAR(50) NOT 
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
     punti INT DEFAULT 100,
     partite INT DEFAULT 0,
     vittorie INT DEFAULT 0,
-    rosa INTEGER[] DEFAULT ARRAY[]::INTEGER[],
+    rosa_ids INTEGER[] DEFAULT ARRAY[]::INTEGER[],
     UNIQUE (username, email)
 );
 
@@ -16,22 +16,22 @@ CREATE TABLE player (
 CREATE TABLE calciatore (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50),
-    cognome VARCHAR(50) NOT 
-    url_foto VARCHAR(255) NOT 
-    data_nascita VARCHAR(25) NOT 
-    nazionalita VARCHAR(50) NOT 
-    ruolo VARCHAR(50) NOT 
-    squadra VARCHAR(50) NOT 
-    numero_maglia INT NOT 
-    goal INT NOT 
-    assist INT NOT 
-    presenze INT NOT 
-    cartellini_gialli INT NOT 
-    cartellini_rossi INT NOT 
-    trofei INT NOT 
-    record_goal INT NOT 
-    record_assist INT NOT
-    altezza INT NOT 
+    cognome VARCHAR(50) NOT NULL,
+    url_foto VARCHAR(255) NOT NULL,
+    data_nascita VARCHAR(25) NOT NULL,
+    nazionalita VARCHAR(50) NOT NULL,
+    ruolo VARCHAR(50) NOT NULL,
+    squadra VARCHAR(50) NOT NULL,
+    numero_maglia INT NOT NULL,
+    goal INT NOT NULL,
+    assist INT NOT NULL,
+    presenze INT NOT NULL,
+    cartellini_gialli INT NOT NULL,
+    cartellini_rossi INT NOT NULL,
+    trofei INT NOT NULL,
+    record_goal INT NOT NULL,
+    record_assist INT NOT NULL,
+    altezza INT NOT NULL,
     prezzo INT NOT NULL DEFAULT 20
 );
 
@@ -48,7 +48,7 @@ GRANT INSERT, SELECT, UPDATE ON calciatore TO admin;
 INSERT INTO calciatore (
     nome, cognome, url_foto, data_nascita, nazionalita, ruolo,
     squadra, numero_maglia, goal, assist, presenze, cartellini_gialli,
-    cartellini_rossi, trofei, record_goal, record_assist, altezza ,prezzo
+    cartellini_rossi, trofei, record_goal, record_assist, altezza , prezzo
 ) VALUES
 ('Lionel', 'Messi', 'images/santini/lionel_messi.webp', '1987-06-24', 'Argentina', 'Attaccante', 'Inter Miami', 10, 845, 390, 1082, 85, 3, 44, 98, 40, 170, 99),
 ('Cristiano', 'Ronaldo', 'images/santini/cristiano_ronaldo.webp', '1985-02-05', 'Portogallo', 'Attaccante', 'Al Nassr', 7, 960, 310, 1285, 85, 5, 36, 98, 48, 187, 85),
@@ -134,55 +134,55 @@ INSERT INTO calciatore (
 INSERT INTO calciatore (
     nome, cognome, url_foto, data_nascita, nazionalita, ruolo,
     squadra, numero_maglia, goal, assist, presenze, cartellini_gialli,
-    cartellini_rossi, trofei, record_goal, record_assist, altezza, id_player
+    cartellini_rossi, trofei, record_goal, record_assist, altezza
 ) VALUES
-('Milan', 'Škriniar', 'images/santini/milan_skriniar.webp', '1995-02-11', 'Slovacchia', 'Difensore', 'Paris Saint-Germain', 37, 10, 10, 310, 35, 2, 7, 10, 6, 188, NULL),
-('Álvaro', 'Morata', 'images/santini/alvaro_morata.webp', '1992-10-23', 'Spagna', 'Attaccante', 'Galatasaray', 7, 195, 68, 430, 28, 0, 8, 35, 20, 189, NULL),
-('Raphaël', 'Varane', 'images/santini/raphael_varane.webp', '1993-04-25', 'Francia', 'Difensore', 'Ritirato', 19, 16, 10, 440, 30, 0, 16, 10, 6, 191, NULL),
-('N''Golo', 'Kanté', 'images/santini/ngolo_kante.webp', '1991-03-29', 'Francia', 'Centrocampista', 'Al Ittihad', 7, 22, 45, 395, 14, 0, 10, 18, 16, 168, NULL),
-('Ilkay', 'Gündoğan', 'images/santini/ilkay_gundogan.webp', '1990-10-24', 'Germania', 'Centrocampista', 'Manchester City', 22, 80, 60, 470, 20, 0, 11, 25, 20, 180, NULL),
-('Christian', 'Pulisic', 'images/santini/christian_pulisic.webp', '1998-09-18', 'USA', 'Attaccante', 'AC Milan', 11, 80, 55, 240, 16, 0, 5, 30, 22, 177, NULL),
-('Jordi', 'Alba', 'images/santini/jordi_alba.webp', '1989-03-21', 'Spagna', 'Difensore', 'Inter Miami', 18, 30, 80, 500, 25, 1, 15, 25, 32, 170, NULL),
-('Gerard', 'Moreno', 'images/santini/gerard_moreno.webp', '1992-04-07', 'Spagna', 'Attaccante', 'Villarreal', 7, 160, 50, 320, 18, 0, 5, 28, 15, 180, NULL),
-('Ivan', 'Perišić', 'images/santini/ivan_perisic.webp', '1989-02-02', 'Croazia', 'Centrocampista', 'PSV', 14, 100, 80, 500, 22, 0, 10, 28, 25, 186, NULL),
-('Thiago', 'Alcântara', 'images/santini/thiago_alcantara.webp', '1991-04-11', 'Spagna', 'Centrocampista', 'Ritirato', 6, 44, 65, 487, 14, 0, 22, 25, 24, 174, NULL),
-('Jamie', 'Vardy', 'images/santini/jamie_vardy.webp', '1987-01-11', 'Inghilterra', 'Attaccante', 'Leicester City', 9, 180, 50, 400, 22, 1, 6, 30, 18, 179, NULL),
-('Leon', 'Goretzka', 'images/santini/leon_goretzka.webp', '1995-02-06', 'Germania', 'Centrocampista', 'Bayern Monaco', 8, 50, 40, 310, 18, 0, 10, 20, 18, 189, NULL),
-('Giovanni', 'Di Lorenzo', 'images/santini/giovanni_dilorenzo.webp', '1993-08-04', 'Italia', 'Difensore', 'Napoli', 22, 25, 35, 290, 15, 0, 5, 18, 15, 183, NULL),
-('Andrew', 'Robertson', 'images/santini/andrew_robertson.webp', '1994-03-11', 'Scozia', 'Difensore', 'Liverpool', 26, 15, 60, 300, 16, 0, 7, 15, 30, 178, NULL),
-('Benjamin', 'Pavard', 'images/santini/benjamin_pavard.webp', '1996-03-28', 'Francia', 'Difensore', 'Inter', 28, 10, 20, 260, 18, 0, 6, 10, 12, 186, NULL),
-('Matthijs', 'De Ligt', 'images/santini/matthijs_deligt.webp', '1999-08-12', 'Paesi Bassi', 'Difensore', 'Bayern Monaco', 4, 20, 5, 200, 12, 0, 5, 10, 8, 189, NULL),
-('Aymeric', 'Laporte', 'images/santini/aymeric_laporte.webp', '1994-05-27', 'Spagna', 'Difensore', 'Al Nassr', 27, 15, 3, 250, 10, 0, 6, 8, 7, 191, NULL),
-('Marco', 'Verratti', 'images/santini/marco_verratti.webp', '1992-11-05', 'Italia', 'Centrocampista', 'Al-Arabi', 6, 15, 60, 400, 20, 1, 9, 18, 15, 165, NULL),
-('Bernardo', 'Silva', 'images/santini/bernardo_silva.webp', '1994-08-10', 'Portogallo', 'Centrocampista', 'Manchester City', 20, 60, 80, 350, 10, 0, 10, 25, 18, 173, NULL),
-('Romelu', 'Lukaku', 'images/santini/romelu_lukaku.webp', '1993-05-13', 'Belgio', 'Attaccante', 'Napoli', 90, 300, 70, 600, 20, 1, 8, 30, 15, 191, NULL),
-('Ciro', 'Immobile', 'images/santini/ciro_immobile.webp', '1990-02-20', 'Italia', 'Attaccante', 'Besiktas', 17, 250, 50, 450, 15, 0, 6, 28, 20, 185, NULL),
-('Edin', 'Džeko', 'images/santini/edin_dzeko.webp', '1986-03-17', 'Bosnia', 'Attaccante', 'Fenerbahçe', 9, 320, 80, 700, 30, 1, 8, 35, 18, 193, NULL),
-('Marek', 'Hamšík', 'images/santini/marek_hamsik.webp', '1987-07-27', 'Slovacchia', 'Centrocampista', 'Ritirato', 17, 150, 120, 600, 25, 1, 10, 30, 25, 183, NULL),
-('Gerard', 'Piqué', 'images/santini/gerard_pique.webp', '1987-02-02', 'Spagna', 'Difensore', 'Ritirato', 3, 60, 30, 550, 50, 3, 25, 10, 8, 194, NULL),
-('Sadio', 'Mané', 'images/santini/sadio_mane.webp', '1992-04-10', 'Senegal', 'Attaccante', 'Al Nassr', 10, 180, 80, 400, 18, 0, 8, 30, 20, 174, NULL),
-('Edinson', 'Cavani', 'images/santini/edinson_cavani.webp', '1987-02-14', 'Uruguay', 'Attaccante', 'Boca Juniors', 7, 350, 60, 650, 25, 1, 12, 40, 18, 184, NULL),
-(NULL, 'Thiago Silva', 'images/santini/thiagosilva.webp', '1984-09-22', 'Brasile', 'Difensore', 'Fluminense', 3, 30, 10, 715, 41, 2, 26, 8, 5, 183, NULL),
-('Raphaël', 'Guerreiro', 'images/santini/raphael_guerreiro.webp', '1993-12-22', 'Portogallo', 'Difensore', 'Bayern Monaco', 22, 25, 50, 300, 12, 0, 7, 15, 18, 170, NULL),
-('Lucas', 'Hernández', 'images/santini/lucas_hernandez.webp', '1996-02-14', 'Francia', 'Difensore', 'Paris Saint-Germain', 21, 10, 15, 220, 10, 0, 5, 8, 7, 184, NULL),
-('Nicolo', 'Zaniolo', 'images/santini/nicolo_zaniolo.webp', '1999-07-02', 'Italia', 'Centrocampista', 'Fiorentina', 22, 25, 20, 100, 8, 0, 2, 10, 8, 190, NULL),
-('Toni', 'Kroos', 'images/santini/toni_kroos.webp', '1990-01-04', 'Germania', 'Centrocampista', 'Ritirato', 8, 80, 120, 600, 18, 0, 25, 30, 25, 183, NULL),
-('Jules', 'Koundé', 'images/santini/jules_kounde.webp', '1998-11-12', 'Francia', 'Difensore', 'FC Barcelona', 23, 5, 10, 110, 5, 0, 1, 5, 4, 180, NULL),
-('Mikel', 'Oyarzabal', 'images/santini/mikel_oyarzabal.webp', '1997-04-21', 'Spagna', 'Attaccante', 'Real Sociedad', 10, 70, 40, 200, 10, 0, 3, 18, 12, 181, NULL),
-('Jordan', 'Henderson', 'images/santini/jordan_henderson.webp', '1990-06-17', 'Inghilterra', 'Centrocampista', 'Ajax', 14, 40, 60, 500, 20, 0, 10, 18, 15, 182, NULL),
-('Mario', 'Rui', 'images/santini/mario_rui.webp', '1991-05-27', 'Portogallo', 'Difensore', 'Napoli', 6, 5, 20, 200, 8, 0, 2, 5, 6, 168, NULL),
-('Samuel', 'Umtiti', 'images/santini/samuel_umtiti.webp', '1993-11-14', 'Francia', 'Difensore', 'Lille', 23, 8, 5, 200, 10, 0, 3, 5, 4, 182, NULL),
-('Alexis', 'Sánchez', 'images/santini/alexis_sanchez.webp', '1988-12-19', 'Cile', 'Attaccante', 'Udinese', 70, 200, 100, 600, 20, 1, 10, 40, 18, 169, NULL),
-('Lucas', 'Paquetá', 'images/santini/lucas_paqueta.webp', '1997-08-27', 'Brasile', 'Centrocampista', 'West Ham', 10, 30, 25, 120, 6, 0, 2, 10, 8, 180, NULL),
-('Matteo', 'Politano', 'images/santini/matteo_politano.webp', '1993-08-03', 'Italia', 'Attaccante', 'Napoli', 21, 50, 30, 200, 8, 0, 3, 15, 10, 171, NULL),
-('Ruben', 'Dias', 'images/santini/ruben_dias.webp', '1997-05-14', 'Portogallo', 'Difensore', 'Manchester City', 3, 10, 5, 150, 7, 0, 2, 5, 4, 187, NULL),
-('Federico', 'Dimarco', 'images/santini/federico_dimarco.webp', '1997-11-10', 'Italia', 'Difensore', 'Inter', 32, 8, 20, 100, 5, 0, 2, 8, 6, 175, NULL),
-('Leandro', 'Paredes', 'images/santini/leandro_paredes.webp', '1994-06-29', 'Argentina', 'Centrocampista', 'AS Roma', 16, 15, 20, 180, 7, 0, 3, 10, 8, 180, NULL),
-('Giovanni', 'Simeone', 'images/santini/giovanni_simeone.webp', '1995-07-05', 'Argentina', 'Attaccante', 'Napoli', 18, 60, 15, 150, 6, 0, 2, 15, 8, 181, NULL),
-('Pau', 'Torres', 'images/santini/pau_torres.webp', '1997-01-16', 'Spagna', 'Difensore', 'Aston Villa', 14, 7, 5, 120, 5, 0, 2, 4, 3, 191, NULL),
-('Weston', 'McKennie', 'images/santini/weston_mckennie.webp', '1998-08-28', 'USA', 'Centrocampista', 'Juventus', 8, 15, 10, 100, 4, 0, 2, 6, 5, 185, NULL),
-('Alejandro', 'Balde', 'images/santini/alejandro_balde.webp', '2003-10-18', 'Spagna', 'Difensore', 'FC Barcelona', 28, 2, 8, 60, 2, 0, 1, 2, 2, 175, NULL),
-('Hirving', 'Lozano', 'images/santini/hirving_lozano.webp', '1995-07-30', 'Messico', 'Attaccante', 'San Diego FC', 11, 60, 30, 200, 8, 0, 3, 15, 10, 175, NULL),
-('Josip', 'Juranović', 'images/santini/josip_juranovic.webp', '1995-08-16', 'Croazia', 'Difensore', 'Union Berlin', 18, 3, 10, 80, 3, 0, 1, 3, 2, 173, NULL),
-('Arkadiusz', 'Milik', 'images/santini/arkadiusz_milik.webp', '1994-02-28', 'Polonia', 'Attaccante', 'Juventus', 14, 80, 20, 180, 7, 0, 2, 18, 8, 186, NULL),
-('Davide', 'Frattesi', 'images/santini/davide_frattesi.webp', '1999-09-22', 'Italia', 'Centrocampista', 'Inter', 16, 10, 8, 60, 2, 0, 1, 5, 4, 178, NULL);
+('Milan', 'Škriniar', 'images/santini/milan_skriniar.webp', '1995-02-11', 'Slovacchia', 'Difensore', 'Paris Saint-Germain', 37, 10, 10, 310, 35, 2, 7, 10, 6, 188),
+('Álvaro', 'Morata', 'images/santini/alvaro_morata.webp', '1992-10-23', 'Spagna', 'Attaccante', 'Galatasaray', 7, 195, 68, 430, 28, 0, 8, 35, 20, 189),
+('Raphaël', 'Varane', 'images/santini/raphael_varane.webp', '1993-04-25', 'Francia', 'Difensore', 'Ritirato', 19, 16, 10, 440, 30, 0, 16, 10, 6, 191),
+('N''Golo', 'Kanté', 'images/santini/ngolo_kante.webp', '1991-03-29', 'Francia', 'Centrocampista', 'Al Ittihad', 7, 22, 45, 395, 14, 0, 10, 18, 16, 168),
+('Ilkay', 'Gündoğan', 'images/santini/ilkay_gundogan.webp', '1990-10-24', 'Germania', 'Centrocampista', 'Manchester City', 22, 80, 60, 470, 20, 0, 11, 25, 20, 180),
+('Christian', 'Pulisic', 'images/santini/christian_pulisic.webp', '1998-09-18', 'USA', 'Attaccante', 'AC Milan', 11, 80, 55, 240, 16, 0, 5, 30, 22, 177),
+('Jordi', 'Alba', 'images/santini/jordi_alba.webp', '1989-03-21', 'Spagna', 'Difensore', 'Inter Miami', 18, 30, 80, 500, 25, 1, 15, 25, 32, 170),
+('Gerard', 'Moreno', 'images/santini/gerard_moreno.webp', '1992-04-07', 'Spagna', 'Attaccante', 'Villarreal', 7, 160, 50, 320, 18, 0, 5, 28, 15, 180),
+('Ivan', 'Perišić', 'images/santini/ivan_perisic.webp', '1989-02-02', 'Croazia', 'Centrocampista', 'PSV', 14, 100, 80, 500, 22, 0, 10, 28, 25, 186),
+('Thiago', 'Alcântara', 'images/santini/thiago_alcantara.webp', '1991-04-11', 'Spagna', 'Centrocampista', 'Ritirato', 6, 44, 65, 487, 14, 0, 22, 25, 24, 174),
+('Jamie', 'Vardy', 'images/santini/jamie_vardy.webp', '1987-01-11', 'Inghilterra', 'Attaccante', 'Leicester City', 9, 180, 50, 400, 22, 1, 6, 30, 18, 179),
+('Leon', 'Goretzka', 'images/santini/leon_goretzka.webp', '1995-02-06', 'Germania', 'Centrocampista', 'Bayern Monaco', 8, 50, 40, 310, 18, 0, 10, 20, 18, 189),
+('Giovanni', 'Di Lorenzo', 'images/santini/giovanni_dilorenzo.webp', '1993-08-04', 'Italia', 'Difensore', 'Napoli', 22, 25, 35, 290, 15, 0, 5, 18, 15, 183),
+('Andrew', 'Robertson', 'images/santini/andrew_robertson.webp', '1994-03-11', 'Scozia', 'Difensore', 'Liverpool', 26, 15, 60, 300, 16, 0, 7, 15, 30, 178),
+('Benjamin', 'Pavard', 'images/santini/benjamin_pavard.webp', '1996-03-28', 'Francia', 'Difensore', 'Inter', 28, 10, 20, 260, 18, 0, 6, 10, 12, 186),
+('Matthijs', 'De Ligt', 'images/santini/matthijs_deligt.webp', '1999-08-12', 'Paesi Bassi', 'Difensore', 'Bayern Monaco', 4, 20, 5, 200, 12, 0, 5, 10, 8, 189),
+('Aymeric', 'Laporte', 'images/santini/aymeric_laporte.webp', '1994-05-27', 'Spagna', 'Difensore', 'Al Nassr', 27, 15, 3, 250, 10, 0, 6, 8, 7, 191),
+('Marco', 'Verratti', 'images/santini/marco_verratti.webp', '1992-11-05', 'Italia', 'Centrocampista', 'Al-Arabi', 6, 15, 60, 400, 20, 1, 9, 18, 15, 165),
+('Bernardo', 'Silva', 'images/santini/bernardo_silva.webp', '1994-08-10', 'Portogallo', 'Centrocampista', 'Manchester City', 20, 60, 80, 350, 10, 0, 10, 25, 18, 173),
+('Romelu', 'Lukaku', 'images/santini/romelu_lukaku.webp', '1993-05-13', 'Belgio', 'Attaccante', 'Napoli', 90, 300, 70, 600, 20, 1, 8, 30, 15, 191),
+('Ciro', 'Immobile', 'images/santini/ciro_immobile.webp', '1990-02-20', 'Italia', 'Attaccante', 'Besiktas', 17, 250, 50, 450, 15, 0, 6, 28, 20, 185),
+('Edin', 'Džeko', 'images/santini/edin_dzeko.webp', '1986-03-17', 'Bosnia', 'Attaccante', 'Fenerbahçe', 9, 320, 80, 700, 30, 1, 8, 35, 18, 193),
+('Marek', 'Hamšík', 'images/santini/marek_hamsik.webp', '1987-07-27', 'Slovacchia', 'Centrocampista', 'Ritirato', 17, 150, 120, 600, 25, 1, 10, 30, 25, 183),
+('Gerard', 'Piqué', 'images/santini/gerard_pique.webp', '1987-02-02', 'Spagna', 'Difensore', 'Ritirato', 3, 60, 30, 550, 50, 3, 25, 10, 8, 194),
+('Sadio', 'Mané', 'images/santini/sadio_mane.webp', '1992-04-10', 'Senegal', 'Attaccante', 'Al Nassr', 10, 180, 80, 400, 18, 0, 8, 30, 20, 174),
+('Edinson', 'Cavani', 'images/santini/edinson_cavani.webp', '1987-02-14', 'Uruguay', 'Attaccante', 'Boca Juniors', 7, 350, 60, 650, 25, 1, 12, 40, 18, 184),
+(NULL, 'Thiago Silva', 'images/santini/thiagosilva.webp', '1984-09-22', 'Brasile', 'Difensore', 'Fluminense', 3, 30, 10, 715, 41, 2, 26, 8, 5, 183),
+('Raphaël', 'Guerreiro', 'images/santini/raphael_guerreiro.webp', '1993-12-22', 'Portogallo', 'Difensore', 'Bayern Monaco', 22, 25, 50, 300, 12, 0, 7, 15, 18, 170),
+('Lucas', 'Hernández', 'images/santini/lucas_hernandez.webp', '1996-02-14', 'Francia', 'Difensore', 'Paris Saint-Germain', 21, 10, 15, 220, 10, 0, 5, 8, 7, 184),
+('Nicolo', 'Zaniolo', 'images/santini/nicolo_zaniolo.webp', '1999-07-02', 'Italia', 'Centrocampista', 'Fiorentina', 22, 25, 20, 100, 8, 0, 2, 10, 8, 190),
+('Toni', 'Kroos', 'images/santini/toni_kroos.webp', '1990-01-04', 'Germania', 'Centrocampista', 'Ritirato', 8, 80, 120, 600, 18, 0, 25, 30, 25, 183),
+('Jules', 'Koundé', 'images/santini/jules_kounde.webp', '1998-11-12', 'Francia', 'Difensore', 'FC Barcelona', 23, 5, 10, 110, 5, 0, 1, 5, 4, 180),
+('Mikel', 'Oyarzabal', 'images/santini/mikel_oyarzabal.webp', '1997-04-21', 'Spagna', 'Attaccante', 'Real Sociedad', 10, 70, 40, 200, 10, 0, 3, 18, 12, 181),
+('Jordan', 'Henderson', 'images/santini/jordan_henderson.webp', '1990-06-17', 'Inghilterra', 'Centrocampista', 'Ajax', 14, 40, 60, 500, 20, 0, 10, 18, 15, 182),
+('Mario', 'Rui', 'images/santini/mario_rui.webp', '1991-05-27', 'Portogallo', 'Difensore', 'Napoli', 6, 5, 20, 200, 8, 0, 2, 5, 6, 168),
+('Samuel', 'Umtiti', 'images/santini/samuel_umtiti.webp', '1993-11-14', 'Francia', 'Difensore', 'Lille', 23, 8, 5, 200, 10, 0, 3, 5, 4, 182),
+('Alexis', 'Sánchez', 'images/santini/alexis_sanchez.webp', '1988-12-19', 'Cile', 'Attaccante', 'Udinese', 70, 200, 100, 600, 20, 1, 10, 40, 18, 169),
+('Lucas', 'Paquetá', 'images/santini/lucas_paqueta.webp', '1997-08-27', 'Brasile', 'Centrocampista', 'West Ham', 10, 30, 25, 120, 6, 0, 2, 10, 8, 180),
+('Matteo', 'Politano', 'images/santini/matteo_politano.webp', '1993-08-03', 'Italia', 'Attaccante', 'Napoli', 21, 50, 30, 200, 8, 0, 3, 15, 10, 171),
+('Ruben', 'Dias', 'images/santini/ruben_dias.webp', '1997-05-14', 'Portogallo', 'Difensore', 'Manchester City', 3, 10, 5, 150, 7, 0, 2, 5, 4, 187),
+('Federico', 'Dimarco', 'images/santini/federico_dimarco.webp', '1997-11-10', 'Italia', 'Difensore', 'Inter', 32, 8, 20, 100, 5, 0, 2, 8, 6, 175),
+('Leandro', 'Paredes', 'images/santini/leandro_paredes.webp', '1994-06-29', 'Argentina', 'Centrocampista', 'AS Roma', 16, 15, 20, 180, 7, 0, 3, 10, 8, 180),
+('Giovanni', 'Simeone', 'images/santini/giovanni_simeone.webp', '1995-07-05', 'Argentina', 'Attaccante', 'Napoli', 18, 60, 15, 150, 6, 0, 2, 15, 8, 181),
+('Pau', 'Torres', 'images/santini/pau_torres.webp', '1997-01-16', 'Spagna', 'Difensore', 'Aston Villa', 14, 7, 5, 120, 5, 0, 2, 4, 3, 191),
+('Weston', 'McKennie', 'images/santini/weston_mckennie.webp', '1998-08-28', 'USA', 'Centrocampista', 'Juventus', 8, 15, 10, 100, 4, 0, 2, 6, 5, 185),
+('Alejandro', 'Balde', 'images/santini/alejandro_balde.webp', '2003-10-18', 'Spagna', 'Difensore', 'FC Barcelona', 28, 2, 8, 60, 2, 0, 1, 2, 2, 175),
+('Hirving', 'Lozano', 'images/santini/hirving_lozano.webp', '1995-07-30', 'Messico', 'Attaccante', 'San Diego FC', 11, 60, 30, 200, 8, 0, 3, 15, 10, 175),
+('Josip', 'Juranović', 'images/santini/josip_juranovic.webp', '1995-08-16', 'Croazia', 'Difensore', 'Union Berlin', 18, 3, 10, 80, 3, 0, 1, 3, 2, 173),
+('Arkadiusz', 'Milik', 'images/santini/arkadiusz_milik.webp', '1994-02-28', 'Polonia', 'Attaccante', 'Juventus', 14, 80, 20, 180, 7, 0, 2, 18, 8, 186),
+('Davide', 'Frattesi', 'images/santini/davide_frattesi.webp', '1999-09-22', 'Italia', 'Centrocampista', 'Inter', 16, 10, 8, 60, 2, 0, 1, 5, 4, 178);

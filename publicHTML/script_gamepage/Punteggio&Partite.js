@@ -59,9 +59,9 @@ async function aggiornaVittorie(userid) {
 
 function aggiornaStatistiche(){
     let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
-    let id_vincitore = window.turno_bianco ? localStorage.getItem('game_userId1') : localStorage.getItem('game_userId2');
-    let id_perdente = window.turno_bianco ? localStorage.getItem('game_userId2') : localStorage.getItem('game_userId1');
-    let punti_vincitore = window.turno_bianco ? localStorage.getItem('game_user_point1') : localStorage.getItem('game_user_point2');
+    let id_vincitore = window.turno_bianco ? localStorage.getItem('game_user1Id') : localStorage.getItem('game_userId2');
+    let id_perdente = window.turno_bianco ? localStorage.getItem('game_user2Id') : localStorage.getItem('game_userId1');
+    let punti_vincitore = window.turno_bianco ? localStorage.getItem('game_user1_point') : localStorage.getItem('game_user2_point');
     let new_punti = parseInt(punti_vincitore) + 20;
 
     aggiornaPunti(id_vincitore, new_punti);

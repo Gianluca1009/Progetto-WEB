@@ -157,9 +157,17 @@ app.post('/login', async (req, res) => {
   //GET GIOCATORE LIBERI -> MERCATO
   app.get('/get_giocatori_mercato', async (req, res) => {
         const connection = await createConnection();
-      
+        const user_id = req.query.id; // ← prende dalla query string ?id=...
         try {
-          const results = await connection.query("SELECT * FROM calciatore WHERE id_player IS NULL ORDER BY prezzo DESC");
+          const results = await connection.query(
+          `SELECT c.*
+            FROM calciatore c
+            WHERE c.id NOT IN (
+                SELECT unnest(COALESCE(p.rosa_ids, ARRAY[]::INTEGER[]))
+                FROM player p
+                WHERE p.id = $1
+            );
+            `, [user_id]);
       
           if (results.rows.length > 0) {
             // Invia l'elenco dei giocatori liberi al client
@@ -181,7 +189,11 @@ app.post('/login', async (req, res) => {
   
     try {
       const results = await connection.query(
-        'SELECT * ',
+        `SELECT c.*
+          FROM player p
+          JOIN LATERAL unnest(p.rosa_ids) AS rosa_id ON true
+          JOIN calciatore c ON c.id = rosa_id
+          WHERE p.id = $1`,
         [id_player_log]
       );
   
@@ -250,7 +262,7 @@ app.post('/buy_calciatore', async (req, res) => {
     const { userid, calc_id} = req.body;
   
     try {
-      await connection.query('UPDATE calciatore SET id_player = $1 WHERE id= $2', [userid, calc_id]);
+      await connection.query('UPDATE player SET rosa_ids = array_append(rosa_ids, $2) WHERE id = $1', [userid, calc_id]);
       res.status(201).send('acquisto calciatore avvenuto');
     } catch (err) {
       res.status(500).send('Errore durante l\'acquisto calciatore');
@@ -260,10 +272,9 @@ app.post('/buy_calciatore', async (req, res) => {
     //abina un nuovo calciatore al player -> ROSE
 app.post('/sale_calciatore', async (req, res) => {
     const connection = await createConnection();
-    const { calc_id} = req.body;
-    const _null = null;  
+    const { user_id, calc_id } = req.body;
     try {
-      await connection.query('UPDATE calciatore SET id_player = $1 WHERE id= $2', [_null, calc_id]);
+      await connection.query('UPDATE player SET rosa_ids = array_remove(rosa_ids, $2) WHERE id = $1', [user_id, calc_id]);
       res.status(201).send('vendita calciatore avvenuto');
     } catch (err) {
       res.status(500).send('Errore durante la vendita calciatore');

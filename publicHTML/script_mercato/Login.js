@@ -50,6 +50,7 @@ function login() {
         makeVisible(document.querySelector(".sezione-profilo"));
         makeHidden(document.getElementById("loginbutton"));
         makeHidden(document.getElementById("registerbutton"));
+        BuildMercato("", "qualsiasi");
       }
     });
     
@@ -58,15 +59,15 @@ function login() {
 //Funzione che gestisce il caso in cui non è stato effettuato il login
 function ifNotLoggedIn() {
     if(LS_getUserMercatoData().id == null){
-        document.querySelectorAll('.btn-compravendita').forEach(button => {
-          makeVisible(button);
-        });
+        buildRowNoLogin();
+        document.getElementById('user-points').classList.add('hidden');
     }
 }
 
 //Funzione che gestisce il caso in cui la sessione è rimasta aperta
 function ifSessioneAperta() {
     if(LS_getUserMercatoData().id != null){
+        BuildMercato("", "qualsiasi");
         fillUsernameMercato();
         document.querySelector('.user-points').textContent = LS_getUserMercatoData().punti;
         document.getElementById("logoutbutton").classList.remove("hidden");

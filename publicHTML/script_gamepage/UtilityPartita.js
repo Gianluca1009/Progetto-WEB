@@ -49,6 +49,7 @@ async function startDraft(){
     makeHidden(document.querySelector('.gioca-button'));
     document.getElementById('player1button').classList.add('hidden');
     document.getElementById('player2button').classList.add('hidden');
+    makeHidden(document.getElementById('logoutbutton'));
     
     // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine)
     makeVisible(document.querySelector('.background-overlay'));
@@ -143,6 +144,7 @@ function endGame(){
     launchEndgamePopup(vincitore);
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
+    makeVisible(document.getElementById('logoutbutton'));
     document.querySelector('.game-container').classList.add('game-not-started');
 
     window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
@@ -160,8 +162,10 @@ function endGame(){
 async function restartDraft(){
 
     scrollToGameContainer();
-    
-    
+    if(LS_login1Game().id != null && LS_login2Game().id != null){
+        console.warn("non loggato");
+        return;
+    }
     
     //ELEMENTI DA MOSTRARE (sezioni, switch)
     makeVisible(document.querySelector('.sezione_dx'));

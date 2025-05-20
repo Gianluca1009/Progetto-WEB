@@ -23,7 +23,7 @@ async function confermaAcquisto(id_player, cognome_calciatore, nomePlayer, prezz
   //UTENTE ACCETTA
   if (result.isConfirmed) {
     // Attendi vendita
-    await vendiCalciatore(calc_id);
+    await vendiCalciatore(id_player,calc_id);
 
     // Aggiorna punti
     let new_pti = parseInt(miei_punti) + parseInt(prezzo);
@@ -64,14 +64,14 @@ async function aggiornaPunti(userid, new_punti) {
 }
 
 
-async function vendiCalciatore(calc_id) {
+async function vendiCalciatore(user_id, calc_id) {
   try {
     const response = await fetch('/sale_calciatore', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ calc_id })
+      body: JSON.stringify({ user_id, calc_id })
     });
   } catch (error) {
     console.error('Errore durante l\'acquisto del calciatore:', error);

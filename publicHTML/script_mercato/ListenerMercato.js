@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById("logoutbutton").classList.add("hidden");
     document.querySelector(".sezione-profilo").classList.add("hidden");
-
-    BuildMercato("", "qualsiasi");
+    window.bacheca = document.getElementById("finestramercato");
 
     //se non sei loggato
     ifNotLoggedIn();
