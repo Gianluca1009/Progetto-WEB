@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
     document.getElementById('giocaButton').addEventListener('click', () => {
-        if(LS_getUser1Game()[0] != null && LS_getUser2Game()[0] != null){
+        if(LS_getUser1Game().id != null && LS_getUser2Game().id != null){
             preparaSounds();        // Inizializza i suoni al primo click
             startDraft();                    // Prepara il draft
             scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile

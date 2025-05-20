@@ -133,7 +133,7 @@ app.post('/login', async (req, res) => {
     const connection = await createConnection();
     const { username, password} = req.body;
   
-    const result = await connection.query('SELECT * FROM player WHERE username = $1 AND password = $2' , [username, password]);
+    const result = await connection.query('SELECT id,username,email,punti,partite,vittorie FROM player WHERE username = $1 AND password = $2' , [username, password]);
   
     if (result.rows.length > 0) {
         // Estrai l'ID e altri dati necessari

@@ -162,7 +162,7 @@ function endGame(){
 async function restartDraft(){
 
     scrollToGameContainer();
-    if(LS_login1Game().id != null && LS_login2Game().id != null){
+    if(LS_login1Game().id == null || LS_login2Game().id == null){
         console.warn("non loggato");
         return;
     }

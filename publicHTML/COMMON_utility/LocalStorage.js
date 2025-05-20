@@ -20,8 +20,8 @@ function LS_updatePartite(id_user, new_partite) {
     if (localStorage.getItem('game_user1Id') === id_user) {
         localStorage.setItem('game_user1_partite', new_partite);
     }
-    if (localStorage.getItem('game_user2d1') === id_user) {
-        localStorage.setItem('game_user2_partite1', new_partite);
+    if (localStorage.getItem('game_user2Id') === id_user) {
+        localStorage.setItem('game_user2_partite', new_partite);
     }
     if (localStorage.getItem('rose_userId') === id_user) {
         localStorage.setItem('rose_user_partite', new_partite);

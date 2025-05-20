@@ -29,8 +29,8 @@ function LS_getUserRosaData() {
     return {id: userId, username: username, email: email, punti: punti, partite: partite, vittorie: vittorie};
 }
 
-function LS_set_puntiRosa(point){
-    localStorage.setItem('rose_user_punti', point);
+function LS_set_puntiRosa(punti){
+    localStorage.setItem('rose_user_punti', punti);
 }
 
 function LSR_agg_LSMprezzo (new_prezzo){

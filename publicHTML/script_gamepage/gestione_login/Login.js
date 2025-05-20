@@ -43,14 +43,16 @@ function login() {
         ])
         .then(([game1Data, game2Data]) => {
             // Salvi i dati dei due giochi nel localStorage
-            LS_login1Game(game1Data.userId, game1Data.username, game1Data.point);
-            LS_login2Game(game2Data.userId, game2Data.username, game2Data.point);
+            console.log(game1Data);
+            console.log(game2Data);
+            LS_login1Game(game1Data.userId, game1Data.username, game1Data.email, game1Data.point, game1Data.partite, game1Data.vittorie);
+            LS_login2Game(game2Data.userId, game2Data.username, game2Data.email, game2Data.punti, game2Data.partite, game2Data.vittorie);
 
             //aggirno la ui con i nomi dei player
             document.getElementById('nome_player_1').textContent = game1Data.username;
             document.getElementById('nome_player_2').textContent = game2Data.username;
-            document.getElementById('punt_player_1').textContent = game1Data.point;
-            document.getElementById('punt_player_2').textContent = game2Data.point;
+            document.getElementById('punt_player_1').textContent = game1Data.punti;
+            document.getElementById('punt_player_2').textContent = game2Data.punti;
 
             //nasconde i bottone di login e registrazione
         })
@@ -141,7 +143,7 @@ function logout(){
     LS_logoutGame();
     //rende visibili i bottoni
     makeHidden(document.getElementById("logoutbutton"));
-    makeHidden(document.getElementById("playerusername"));
+    makeHidden(document.querySelector("sezione-profilo"));
     makeVisible(document.getElementById("loginbutton"));
     makeVisible(document.getElementById("registerbutton"));
 }
