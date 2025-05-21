@@ -161,10 +161,8 @@ async function populateDraft(colore) {
             if (container && calciatore) {
                 //pulizia dei campi precedenti
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
-
-                if (info_statistiche[i].hasChildNodes()){
-                    info_statistiche[i].removeChild(info_statistiche[i].firstChild);
-                }
+                info_statistiche[i].innerHTML = ''; // Pulisci il div info
+                
                 //POPOlAMENTO IMG
                 const img = document.createElement('img');
                 img.src = calciatore.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
@@ -179,24 +177,6 @@ async function populateDraft(colore) {
                 const li2_info = document.createElement('li');
                 const li3_info = document.createElement('li');
                 const li4_info = document.createElement('li');
-
-                //approfondimento statistiche sul click
-                if (colore === 'bianco'){
-                    div_info.addEventListener('mousedown', function(event){
-                        if(event.button === 2){
-                            console.log("clickdestro");
-                            displayStatistiche(calciatore, this, "sinistra", calciatore.isFromRosa);
-                        }
-                    });
-                }
-                else{
-                    div_info.addEventListener('mousedown', function(event){
-                        if(event.button === 2){
-                            console.log("clickdestro");
-                            displayStatistiche(calciatore, this, "destra", calciatore.isFromRosa);
-                        }
-                    });
-                } 
 
                 setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
 
@@ -221,6 +201,24 @@ async function populateDraft(colore) {
                 ul_info.appendChild(li3_info);
                 ul_info.appendChild(li4_info);
                 div_info.appendChild(ul_info);
+
+                //approfondimento statistiche sul click
+                if (colore === 'bianco'){
+                    div_info.addEventListener('mousedown', function(event){
+                        if(event.button === 2){
+                            console.log("clickdestro");
+                            launchPopupStatistiche(calciatore, this, "sinistra", calciatore.isFromRosa);
+                        }
+                    });
+                }
+                else{
+                    div_info.addEventListener('mousedown', function(event){
+                        if(event.button === 2){
+                            console.log("clickdestro");
+                            launchPopupStatistiche(calciatore, this, "destra", calciatore.isFromRosa);
+                        }
+                    });
+                }
 
 
                 // setto una variabile per controllare se il calciatore è della rosa

@@ -140,6 +140,8 @@
 
     Nel restart draft vengono settati i giocatori della rosa solo la prima volta, poi si levano     ✅
 
+    Nel draft a volte due giocatori vengono posizionati nella stessa riga                           ✅
+
 
     # CERCARE BUG NEL GIOCO E INSERIRLI SOPRA ^^^^^^^^
 

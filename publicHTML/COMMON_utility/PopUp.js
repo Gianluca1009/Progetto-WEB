@@ -98,10 +98,8 @@ function closeProfilePopup(){
     document.removeEventListener("click", closeProfilePopup);
 }
 
-// Funzione che lancia il popul delle statistiche del calciatore nello specifico
-function displayStatistiche(calciatore, div_info, posizione, isFromRosa){
-    console.log("costruendo statistiche...")
-
+// Funzione che lancia il popup delle statistiche del calciatore nello specifico
+function launchPopupStatistiche(calciatore, div_info, posizione, isFromRosa){
     // Controlla se esiste già un div con le statistiche e rimuovilo
     if (document.querySelector('.statistiche-draft')) {
         document.querySelector('.statistiche-draft').remove();
@@ -146,7 +144,10 @@ function displayStatistiche(calciatore, div_info, posizione, isFromRosa){
     posizione === "sinistra" ? "right" : "left",
     posizione === "sinistra" ? 42 : 91
     );
+}
 
+// Funzione che chiude il popup delle statistiche
+function closePopupStatistiche(){
     document.addEventListener('click', () => {
         document.querySelectorAll('.statistiche-draft').forEach(div => {
             div.remove(); // Rimuovi il div delle statistiche
