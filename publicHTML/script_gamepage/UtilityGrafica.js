@@ -135,15 +135,14 @@ function getStyle(){
 
 // Funzione per far fluttuare verso l'alto l'elemento log
 function FluttuaElemento(elemento, velocita = 10){
-    let distanza = document.querySelector('.game-container').offsetHeight - elemento.offsetHeight; // Posizione iniziale sotto il game container
-    let posizione = 0;
+    let distanza = document.querySelector('.game-container').offsetHeight - misuraDivLog().height - 10; // Posizione iniziale sotto il game container
 
     const intervalId = setInterval(() => {
-        posizione -= 1; // muovi verso l'alto di 1px
-        elemento.style.transform = `translateY(${posizione}px)`;
+        distanza -= 1; // muovi verso l'alto di 1px
+        elemento.style.top = `${distanza}px`;
 
-        if (Math.abs(posizione) >= distanza) {
-            makeHidden(elemento); // Nascondi l'elemento quando ha raggiunto la distanza
+        if (distanza <= -(misuraDivLog().height)) {
+            // makeHidden(elemento); // Nascondi l'elemento quando ha raggiunto la distanza
             clearInterval(intervalId); // Ferma l'intervallo
         }
     }, velocita);
@@ -151,3 +150,12 @@ function FluttuaElemento(elemento, velocita = 10){
     // Restituisco l'ID dell'intervallo così puoi fermarlo se vuoi
     return intervalId;
 }
+
+function fluttuaElemento(log) {
+    const tunnel = window.turno_bianco ? document.querySelector('.tunnel-sx') : document.querySelector('.tunnel-dx');
+    const content = tunnel.querySelector('.tunnel-content');
+
+    content.appendChild(log);
+    tunnel.scrollBottom = tunnel.scrollHeight;
+}
+

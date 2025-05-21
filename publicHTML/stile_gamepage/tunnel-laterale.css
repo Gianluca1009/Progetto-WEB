@@ -1,12 +1,29 @@
 .tunnel-dx, .tunnel-sx {
     position: absolute;
+    display: flex;
+    justify-content: center;
     width: 17.5%;
     height: 100%;
-    pointer-events: none;
     z-index: 100;
     border-left: 1px solid black;
     border-right: 1px solid black;
     background-color: rgba(255, 255, 255, 0.4);
+    overflow-y: auto;
+}
+
+.tunnel-content {
+    display: flex;
+    flex-direction: column-reverse; /* inverti l’ordine dei figli */
+    justify-content: flex-start; /* da sopra in giù */
+    width: 100%;
+    overflow-y: auto;
+}
+
+.spacer{
+    position: relative;
+    flex-shrink: 0;
+    height: 0px;
+    top: 0;
 }
 
 .tunnel-dx {
@@ -38,16 +55,16 @@
 }
 
 .div-log{
-    position: absolute;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%;
-    aspect-ratio: 1/1;
+    width: 90%;
+    height: 10vh;
     background: rgba(255, 255, 255, 0);
-    bottom: 0;
     z-index: 1000000;
+    border: 1px solid black;
     border-radius: 10px;
 }
 

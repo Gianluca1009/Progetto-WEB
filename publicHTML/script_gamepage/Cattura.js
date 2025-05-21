@@ -1,3 +1,5 @@
+window.scroll_counter = 0;
+
 // Funzione che calcola variabili di cattura e le passa alla funzione cattura
 function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = getCondition();
@@ -105,6 +107,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
 function setTunnelElement(dizionario_mangiata){
     const divFluttuante = document.createElement('div');
     divFluttuante.classList.add("div-log");
+    divFluttuante.style.color = window.turno_bianco ? "black" : "white";
 
     const top = document.createElement('div');
     top.classList.add("log-top");
@@ -112,7 +115,7 @@ function setTunnelElement(dizionario_mangiata){
 
         const condizione = document.createElement('p');
         condizione.textContent = dizionario_mangiata.cond;
-        divFluttuante.appendChild(condizione);
+        top.appendChild(condizione);
 
         const immagine = document.createElement('img');
         immagine.src = dizionario_mangiata.src;
@@ -144,14 +147,11 @@ function setTunnelElement(dizionario_mangiata){
         stat2.style.color = dizionario_mangiata.valid ? "red" : "green";
         section2.appendChild(stat2);
 
-
-    if(window.turno_bianco){
-        document.querySelector('.tunnel-sx').appendChild(divFluttuante);
-    }
-    else{
-        document.querySelector('.tunnel-dx').appendChild(divFluttuante);
-    }
-    FluttuaElemento(divFluttuante, 10);
+    const tunnel = window.turno_bianco ? document.querySelector('.tunnel-sx') : document.querySelector('.tunnel-dx');
+    const content = tunnel.querySelector('.tunnel-content');
+    content.appendChild(divFluttuante);
+    
+    fluttuaElemento(divFluttuante);
 }
 
 

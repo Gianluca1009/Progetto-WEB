@@ -44,8 +44,17 @@ function misuraInfoDraftCell() {
         dimensioni = infoContainer.getBoundingClientRect();
     }
     return dimensioni;
-}   
+}
 
+// Funzione per misurare le dimensioni del div di log
+function misuraDivLog() {
+    const divLog = document.querySelector('.div-log');
+    if (divLog) {
+        // Ottiene le dimensioni effettive del div log
+        dimensioni = divLog.getBoundingClientRect();
+    }
+    return dimensioni;
+}
 
 
 
