@@ -167,7 +167,7 @@ function getListaCalciatori(colore) {
     }
 }
 
-
+// Funzione che trasforma i json dei calciatori in oggetti Calciatore
 function objectifyCalciatori(array, provenienza) {
     try {
         const OggettiCalciatori = array.map(info_calciatore => 
@@ -218,20 +218,8 @@ async function creaListeCalciatori() {
     let numero_mancanti_bianco = 36 - rosa_bianco.length;
     let numero_mancanti_nero = 36 - rosa_nero.length;
 
-    // estrai gli id da escludere (calciatori già in rosa)
-    let excludeIdsBianco = rosa_bianco.map(c => c.id);
-    let excludeIdsNero = rosa_nero.map(c => c.id);
-
-    // costruisci query string con excludeIds[]
-    function buildQueryString(n, excludeIds) {
-        const params = new URLSearchParams();
-        params.append('n', n);
-        excludeIds.forEach(id => params.append('excludeIds[]', id));
-        return params.toString();
-    }
-
-    let mancanti_bianco_res = await fetch(`http://localhost:3000/get_random_calciatori?${buildQueryString(numero_mancanti_bianco, excludeIdsBianco)}`);
-    let mancanti_nero_res = await fetch(`http://localhost:3000/get_random_calciatori?${buildQueryString(numero_mancanti_nero, excludeIdsNero)}`);
+    let mancanti_bianco_res = await fetch(`http://localhost:3000/get_random_calciatori?id=${id_player_bianco}&n=${numero_mancanti_bianco}`);
+    let mancanti_nero_res = await fetch(`http://localhost:3000/get_random_calciatori?id=${id_player_nero}&n=${numero_mancanti_nero}`);
 
     let mancanti_bianco = await mancanti_bianco_res.json();
     let mancanti_nero = await mancanti_nero_res.json();
@@ -241,11 +229,6 @@ async function creaListeCalciatori() {
 
     window.array_calciatori_partita_bianchi = rosa_bianco.concat(mancanti_bianco);
     window.array_calciatori_partita_neri = rosa_nero.concat(mancanti_nero);
-
-
-    // window.array_calciatori_partita = await fetchCalciatori();
-    // window.array_calciatori_partita_neri = window.array_calciatori_partita.slice(0, 36); // I primi 36 calciatori sono neri
-    // window.array_calciatori_partita_bianchi = window.array_calciatori_partita.slice(36, 72); // Gli ultimi 36 calciatori sono bianchi
 
 }
 

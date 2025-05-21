@@ -47,39 +47,21 @@ async function createConnection() {
 
 app.get('/get_random_calciatori', async (req, res) => {
     const connection = await createConnection();
+    const user_id = req.query.id;
     const n = parseInt(req.query.n, 10);
 
-    // Prendi excludeIds dalla query string: ?excludeIds[]=1&excludeIds[]=3
-    let excludeIds = req.query.excludeIds || [];
-    if (!Array.isArray(excludeIds)) {
-        excludeIds = [excludeIds]; // se è singolo valore stringa
-    }
-    // Trasforma in numeri, filtra eventuali NaN (sicurezza)
-    excludeIds = excludeIds.map(id => parseInt(id, 10)).filter(id => !isNaN(id));
-
     try {
-        let query, params;
-        if (excludeIds.length > 0) {
-            // costruisci la query con placeholders per excludeIds
-            const placeholders = excludeIds.map((_, i) => `$${i + 2}`).join(', ');
-            query = `
-                SELECT * FROM calciatore
-                WHERE id NOT IN (${placeholders})
-                ORDER BY RANDOM()
-                LIMIT $1
-            `;
-            params = [n, ...excludeIds];
-        } else {
-            // nessun id da escludere, query semplice
-            query = `
-                SELECT * FROM calciatore
-                ORDER BY RANDOM()
-                LIMIT $1
-            `;
-            params = [n];
-        }
-
-        const results = await connection.query(query, params);
+        const results = await connection.query(
+        `SELECT c.*
+        FROM calciatore c
+        WHERE c.id NOT IN (
+            SELECT unnest(COALESCE(p.rosa_ids, ARRAY[]::INTEGER[]))
+            FROM player p
+            WHERE p.id = $1
+        )
+        LIMIT $2;
+        `, [user_id, n]
+        );
         res.send(results.rows);
     } catch (error) {
         console.error('Error fetching calciatori:', error);

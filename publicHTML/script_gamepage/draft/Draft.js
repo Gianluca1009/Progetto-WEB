@@ -233,11 +233,9 @@ async function populateDraft(colore) {
 
         document.querySelectorAll('.info_draftcell').forEach(riga => {
             if (riga.dataset.fromRosa === "true") {
-                console.log("riga rosa")
                 riga.style.background = "rgb(226 174 0)";
             }
             else if (riga.dataset.fromRosa === "false") {
-                console.log("riga non rosa")
                 riga.style.background = "rgb(193, 193, 193)";
             }
         });
