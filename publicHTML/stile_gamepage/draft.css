@@ -10,7 +10,7 @@
 
 
  .sezione_sx, .sezione_dx{
-    z-index: 1000;
+    z-index: 2;
     position: absolute;
     height: 100%;
     width: 23%;
@@ -54,6 +54,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    z-index: 1000;
 }
 
 .foto_draftcell {
@@ -69,6 +70,7 @@
     height: 100%;
     margin:0;
     width: 30%;
+    z-index: 1001;
 }
 
 .info_draftcell {
@@ -86,7 +88,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
-    word-wrap: break-word;}
+    word-wrap: break-word;
+    z-index: 1001;
+}
 
 /* immagine calciatore */
 .santino-dx, .santino-sx {
@@ -97,6 +101,7 @@
     transition: transform 0.3s ease;
     object-fit: cover;
     cursor: grab;
+    z-index: 1002;
 }
 
 .santino-dx:hover, .santino-sx:hover {
@@ -105,7 +110,7 @@
 
 .statistiche-draft{
     background: #c1c1c1;
-    z-index: 100000;
+    z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;

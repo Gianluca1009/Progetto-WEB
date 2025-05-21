@@ -1,3 +1,23 @@
+// Funzione che crea l'overlay scuro per i popup
+function createOverlay() {
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    overlay.classList.add('hidden');
+    document.querySelector('.game-container').appendChild(overlay);
+    makeVisible(overlay);
+}
+
+// Funzione per rimuovere l'overlay
+function deleteOverlay(){
+    const overlay = document.querySelector('.overlay');
+    if(overlay){
+        makeHidden(overlay);
+        setTimeout(() => {
+            overlay.remove();
+        }, 100);
+    }
+}
+
 // Funzione che lancia il popup di fine partita
 function launchEndgamePopup(vincitore){
 
@@ -20,7 +40,8 @@ function launchEndgamePopup(vincitore){
 
             </div>
         `;
-    document.querySelector('.grid-container').appendChild(end_game_popup);
+    createOverlay();
+    document.querySelector('.game-container').appendChild(end_game_popup);
     makeVisible(end_game_popup);
 }
 
@@ -31,6 +52,7 @@ function closeEndgamePopup(){
     setTimeout(() => {
         end_game_popup.remove();
     }, 100);
+    deleteOverlay();
 }
 
 // Funzione che lancia il popup del profilo
@@ -159,8 +181,7 @@ function closePopupStatistiche(){
 function launchRestartDraftPopup(){
     const restart_draft_popup = document.createElement('div');
     restart_draft_popup.classList.add('popup-gameover');
-    restart_draft_popup.style.width = "50%";
-    restart_draft_popup.style.height = "30%";
+    restart_draft_popup.style.height = "25%";
     restart_draft_popup.classList.add('hidden');
     restart_draft_popup.id = 'popup-restart-draft';
     restart_draft_popup.innerHTML = `
@@ -171,7 +192,8 @@ function launchRestartDraftPopup(){
             <p style="font-size: calc(0.6vh + 0.6vw); cursor: pointer; border-bottom: 1px solid black;" onclick = "closeRestartDraftPopup();" >CONTINUA A GIOCARE</p>
 
         `;
-    document.querySelector('.grid-container').appendChild(restart_draft_popup);
+    createOverlay();
+    document.querySelector('.game-container').appendChild(restart_draft_popup);
     makeVisible(restart_draft_popup);
 }
 
@@ -182,4 +204,5 @@ function closeRestartDraftPopup(){
     setTimeout(() => {
         restart_draft_popup.remove();
     }, 100);
+    deleteOverlay();
 }

@@ -36,6 +36,9 @@ function makeHidden(element, velocita = 1) {
     if (!element){
         console.warn("Elemento non trovato");
         return;
+    }
+    if(window.getComputedStyle(element).display === "none"){
+        return;
     } 
 
     // Salva lo stile di display originale se non è già stato salvato
