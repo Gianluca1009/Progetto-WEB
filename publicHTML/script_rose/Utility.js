@@ -13,6 +13,7 @@ async function fetchMiaRosa(){
         }
         else{
             console.log("utente non loggato");
+            return [];
         }
     }catch (error){
         console.error(error);
@@ -45,8 +46,7 @@ function dividiPerRuolo(calciatore) {
 function buildTitoloRuolo(ruolo) {
 
     const titolo = document.createElement('h3');
-    titolo.className = "title";
-    titolo.style.fontSize = "calc(3.3vh + 2.3vw)";
+    titolo.className = "title-ruolo";
     titolo.textContent = ruolo;
     window.bacheca.appendChild(titolo)
 }

@@ -135,6 +135,10 @@ function logout() {
     // Svuoto la bacheca non mostrando più la rosa
     svuotaBacheca();
 
+    window.difensori = [];
+    window.centrocampisti = [];
+    window.attaccanti = [];
+
     // Creo il messaggio di login non effettuato e lo metto in bacheca
     buildRowNoLogin();
 

@@ -36,6 +36,23 @@
     background-clip: text;
     -webkit-background-clip: text;
     text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+}
+
+.title-ruolo {
+    text-align: center;
+    font-size: calc(4vh + 5vw);
+    font-weight: bold;
+    margin: 0;
+    margin-top: 3vh;
+    color: black;
+    border-bottom: solid 2.5px black;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.125rem;
+    background: linear-gradient(to right, #efe0c4, #e8c481);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: calc(3vh + 2vw) !important;
 }
 
 .menu-button {
