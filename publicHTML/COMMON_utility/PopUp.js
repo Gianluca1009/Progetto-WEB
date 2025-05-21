@@ -1,3 +1,5 @@
+//------ OVERLAY DA USARE DURANTE I POPUP ------//
+
 // Funzione che crea l'overlay scuro per i popup
 function createOverlay() {
     const overlay = document.createElement('div');
@@ -17,6 +19,10 @@ function deleteOverlay(){
         }, 100);
     }
 }
+
+
+
+//------ POP-UP's ------//
 
 // Funzione che lancia il popup di fine partita
 function launchEndgamePopup(vincitore){
@@ -166,6 +172,8 @@ function launchPopupStatistiche(calciatore, div_info, posizione, isFromRosa){
     posizione === "sinistra" ? "right" : "left",
     posizione === "sinistra" ? 42 : 91
     );
+
+    closePopupStatistiche();
 }
 
 // Funzione che chiude il popup delle statistiche

@@ -1,4 +1,4 @@
-
+// Funzione che calcola variabili di cattura e le passa alla funzione cattura
 function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = getCondition();
 
@@ -101,8 +101,61 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
     }
 }
 
+// Funzione per far comparire un elemento nei tunnel laterali
+function setTunnelElement(dizionario_mangiata){
+    const divFluttuante = document.createElement('div');
+    divFluttuante.classList.add("div-log");
 
-//logica mangiata pedina
+    const top = document.createElement('div');
+    top.classList.add("log-top");
+    divFluttuante.appendChild(top);
+
+        const condizione = document.createElement('p');
+        condizione.textContent = dizionario_mangiata.cond;
+        divFluttuante.appendChild(condizione);
+
+        const immagine = document.createElement('img');
+        immagine.src = dizionario_mangiata.src;
+        top.appendChild(immagine);
+
+    const section1 = document.createElement('div');
+    section1.classList.add("log-section");
+    divFluttuante.appendChild(section1);
+
+        const calciatore1 = document.createElement('p');
+        calciatore1.textContent = dizionario_mangiata.att_cognome;
+        section1.appendChild(calciatore1);
+
+        const stat1 = document.createElement('p');
+        stat1.textContent = dizionario_mangiata.val_att;
+        stat1.style.color = dizionario_mangiata.valid ? "green" : "red";
+        section1.appendChild(stat1);
+    
+    const section2 = document.createElement('div');
+    section2.classList.add("log-section");
+    divFluttuante.appendChild(section2);
+
+        const calciatore2 = document.createElement('p');
+        calciatore2.textContent = dizionario_mangiata.dif_cognome;
+        section2.appendChild(calciatore2);
+
+        const stat2 = document.createElement('p');
+        stat2.textContent = dizionario_mangiata.val_dif;
+        stat2.style.color = dizionario_mangiata.valid ? "red" : "green";
+        section2.appendChild(stat2);
+
+
+    if(window.turno_bianco){
+        document.querySelector('.tunnel-sx').appendChild(divFluttuante);
+    }
+    else{
+        document.querySelector('.tunnel-dx').appendChild(divFluttuante);
+    }
+    FluttuaElemento(divFluttuante, 10);
+}
+
+
+// Funzione che gestisce la cattura di una pedina
 function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
     // Se la cella di destinazione contiene la pedina bersaglio
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
@@ -114,36 +167,7 @@ function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
         }else{
 
             playSound('fischio', 0.2);
-
-            const divFluttuante = document.createElement('div');
-            divFluttuante.classList.add("div-log");
-
-            const immagine = document.createElement('img');
-            immagine.src = dizionario_mangiata.src;
-            divFluttuante.appendChild(immagine);
-
-            const condizione = document.createElement('p');
-            condizione.textContent = dizionario_mangiata.cond;
-            divFluttuante.appendChild(condizione);
-
-            const scontro = document.createElement('p');
-            scontro.innerHTML = `${dizionario_mangiata.att_cognome} VS ${dizionario_mangiata.dif_cognome}`;
-            divFluttuante.appendChild(scontro);
-
-            const verifica = document.createElement('p');
-            verifica.innerHTML = `${dizionario_mangiata.val_att} < ${dizionario_mangiata.val_dif}`;
-            divFluttuante.appendChild(verifica);
-
-            if(window.turno_bianco){
-                document.querySelector('.tunnel-sx').appendChild(divFluttuante);
-            }
-            else{
-                document.querySelector('.tunnel-dx').appendChild(divFluttuante);
-                condizione.style.color = "white";
-                scontro.style.color = "white";
-                verifica.style.color = "white";
-            }
-            FluttuaElemento(divFluttuante, 10);
+            setTunnelElement(dizionario_mangiata); //compone la grafica nei tunnel laterali
             return false;
         }
     }    
