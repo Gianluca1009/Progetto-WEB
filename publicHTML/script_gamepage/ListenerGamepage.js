@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.progress-container').classList.add('hidden');
     document.querySelector('.tunnel-sx').classList.add('hidden');
     document.querySelector('.tunnel-dx').classList.add('hidden');
+    document.getElementById('restartDraftButton').classList.add('hidden');
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('hidden');
     })

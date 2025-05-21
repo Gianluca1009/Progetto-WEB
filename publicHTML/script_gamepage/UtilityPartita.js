@@ -51,8 +51,9 @@ async function startDraft(){
     document.getElementById('player2button').classList.add('hidden');
     makeHidden(document.getElementById('logoutbutton'));
     
-    // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine)
+    // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine, tasto restart draft)
     makeVisible(document.querySelector('.background-overlay'));
+    makeVisible(document.getElementById('restartDraftButton'));
     makeVisible(document.querySelector('.sezione_dx'));
     makeVisible(document.querySelector('.sezione_sx'));
     makeVisible(document.querySelector('.restart-draft'));
@@ -84,6 +85,7 @@ async function restartDraft(){
         return;
     }
     
+    if(document.getElementById('popup-restart-draft')) closeRestartDraftPopup();
     if(document.getElementById('popup-gameover')) closeEndgamePopup();
     
     //ELEMENTI DA MOSTRARE (sezioni, switch)

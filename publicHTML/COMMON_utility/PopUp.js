@@ -154,3 +154,32 @@ function closePopupStatistiche(){
         });
     });
 }
+
+// Funzione per lanciare il popup di riavvio del draft
+function launchRestartDraftPopup(){
+    const restart_draft_popup = document.createElement('div');
+    restart_draft_popup.classList.add('popup-gameover');
+    restart_draft_popup.style.width = "50%";
+    restart_draft_popup.style.height = "30%";
+    restart_draft_popup.classList.add('hidden');
+    restart_draft_popup.id = 'popup-restart-draft';
+    restart_draft_popup.innerHTML = `
+            <p class="text-gameover">Riavviare il draft?</p>
+            <button id="confirmRestart" style="width: 35%; height: 20%;" onclick = "restartDraft();">
+                <span class="button-top" style="font-size: calc(0.6vh + 0.6vw)"> CONFERMA </span>
+            </button>
+            <p style="font-size: calc(0.6vh + 0.6vw); cursor: pointer; border-bottom: 1px solid black;" onclick = "closeRestartDraftPopup();" >CONTINUA A GIOCARE</p>
+
+        `;
+    document.querySelector('.grid-container').appendChild(restart_draft_popup);
+    makeVisible(restart_draft_popup);
+}
+
+// Funzione che chiude il popup di riavvio del draft
+function closeRestartDraftPopup(){
+    const restart_draft_popup = document.getElementById('popup-restart-draft');
+    makeHidden(restart_draft_popup);
+    setTimeout(() => {
+        restart_draft_popup.remove();
+    }, 100);
+}
