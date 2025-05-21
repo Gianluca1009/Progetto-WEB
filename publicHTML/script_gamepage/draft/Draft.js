@@ -308,7 +308,8 @@ function populateRandom(colore) {
         if (i >= pedine.length || i >= lista_calciatori_rimanenti.length) break;
 
         const pedina = pedine[i];
-        const calciatore = lista_calciatori_rimanenti[i];        pedina.firstChild.dataset.json = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
+        const calciatore = lista_calciatori_rimanenti[i];
+        pedina.firstChild.dataset.json = JSON.stringify(calciatore); // Usa il JSON della classe com id dell'immagine
 
         // Crea l'elemento text se non esiste
         let text = pedina.querySelector('text');

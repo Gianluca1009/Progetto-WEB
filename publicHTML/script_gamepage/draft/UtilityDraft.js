@@ -73,6 +73,7 @@ function setColoreRiga(){
             riga.style.background = "var(--gold)";
         }
         else if (riga.dataset.fromRosa === "false") {
+            if(riga.querySelector('.sezione-flag')) riga.querySelector('.sezione-flag').remove();
             riga.style.background = "rgb(193, 193, 193)";
         }
     });
