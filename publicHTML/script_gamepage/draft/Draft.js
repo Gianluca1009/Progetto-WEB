@@ -224,8 +224,24 @@ async function populateDraft(colore) {
 
 
                 // setto una variabile per controllare se il calciatore è della rosa
-                if(player.isFromRosa == true) div_info.dataset.fromRosa = "true";
+                if(player.isFromRosa) div_info.dataset.fromRosa = "true";
                 else div_info.dataset.fromRosa = "false";
+
+                if(player.isFromRosa){
+                    const sezione_flag = document.createElement('div');
+                    sezione_flag.classList.add('sezione-flag');
+
+                    const flag_text = document.createElement('p');
+                    flag_text.textContent = "ROSA";
+                    flag_text.classList.add('flag-rosa');
+                    sezione_flag.appendChild(flag_text);
+
+                    const img_flag = document.createElement('img');
+                    img_flag.src = "images/frecciarosa.png";
+                    sezione_flag.appendChild(img_flag);
+
+                    div_info.appendChild(sezione_flag);
+                }
         
                 if(colore == "nero"){
                     img.classList.add('santino-dx'); // Aggiungi la classe per lo stile e il drag&drop
@@ -237,15 +253,7 @@ async function populateDraft(colore) {
                 container.appendChild(img);
             }
         }
-
-        document.querySelectorAll('.info_draftcell').forEach(riga => {
-            if (riga.dataset.fromRosa === "true") {
-                riga.style.background = "var(--gold)";
-            }
-            else if (riga.dataset.fromRosa === "false") {
-                riga.style.background = "rgb(193, 193, 193)";
-            }
-        });
+        setColoreRiga();
 
         dragSantini();
 

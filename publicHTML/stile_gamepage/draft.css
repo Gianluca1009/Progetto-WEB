@@ -130,6 +130,33 @@
     width: 3%;
 }
 
+.sezione-flag{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5%;
+    width: 25%;
+    height: 15%;
+    bottom: 0;
+    right: 0;
+    z-index: 10000;
+}
+
+.sezione-flag img{
+    aspect-ratio: 1/1;
+    height: 80%;
+    object-fit: cover;
+}
+
+.flag-rosa{
+    font-size: calc(0.7vw + 0.35vh);
+    font-family: 'Patrick Hand', cursive;
+    padding: 0;
+    margin: 0;
+}
+
 li{
     font-family: 'Patrick Hand', cursive;
 }
