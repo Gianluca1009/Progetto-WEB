@@ -97,3 +97,59 @@ function closeProfilePopup(){
     document.querySelector('.sezione-profilo').dataset.aperto = "false";
     document.removeEventListener("click", closeProfilePopup);
 }
+
+// Funzione che lancia il popul delle statistiche del calciatore nello specifico
+function displayStatistiche(calciatore, div_info, posizione, isFromRosa){
+    console.log("costruendo statistiche...")
+
+    // Controlla se esiste già un div con le statistiche e rimuovilo
+    if (document.querySelector('.statistiche-draft')) {
+        document.querySelector('.statistiche-draft').remove();
+    }
+
+
+    const keys = Object.keys(calciatore).filter(key => !['id', 'nome', 'cognome', 'img_url', 'id_player', 'data_nascita', 'squadra', 'ruolo', 'isFromRosa'].includes(key));
+
+    const divStatistiche = document.createElement('div');
+    divStatistiche.classList.add('statistiche-draft');
+    if(isFromRosa) divStatistiche.style.background = "var(--gold)";
+
+    const sfondo = document.createElement('img');
+    sfondo.src = isFromRosa? "images/statistiche_rosa.png" : "images/statistiche.png";
+    sfondo.style.objectFit = "cover";
+    sfondo.style.position = "absolute";
+    sfondo.style.bottom = "0";
+    sfondo.style.width = "100%";
+    sfondo.style.zIndex = "100001";
+    sfondo.style.height = "70%";
+    divStatistiche.appendChild(sfondo);
+
+    const freccia = document.createElement('img');
+    freccia.src = (posizione === "sinistra") ? "images/frecciadestra.png" : "images/frecciasinistra.png";
+    freccia.classList.add(posizione === "sinistra" ? "freccia-destra" : "freccia-sinistra");
+    divStatistiche.appendChild(freccia);
+
+    const listaStatistiche = document.createElement('ul');
+    listaStatistiche.style.zIndex = "100002";
+    for (const key of keys) {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong> ${KeyConverter(key)}</strong>:  ${calciatore[key]}`;
+            listaStatistiche.appendChild(li);
+    }
+    divStatistiche.appendChild(listaStatistiche);
+
+    div_info.parentElement.appendChild(divStatistiche);
+
+    setPositionRelativeToDiv(
+    div_info,
+    divStatistiche,
+    posizione === "sinistra" ? "right" : "left",
+    posizione === "sinistra" ? 42 : 91
+    );
+
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.statistiche-draft').forEach(div => {
+            div.remove(); // Rimuovi il div delle statistiche
+        });
+    });
+}

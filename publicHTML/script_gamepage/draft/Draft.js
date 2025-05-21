@@ -13,6 +13,10 @@ async function santinoSxDragStart(santino_img, event) {
         event.preventDefault();
         return false;
     }
+
+    document.querySelectorAll('.statistiche-draft').forEach(div => {
+            div.remove(); // Rimuovi il div delle statistiche
+    });
     window.dragged_class_calciatore_bianco = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON id sarebbe il json della classe calciatore
     event.dataTransfer.setData("text", window.dragged_class_calciatore_bianco.cognome);  //salva cognome calciatore nell'evento
     event.dataTransfer.setData("type", "sx"); // Indica che è un santino-sx
@@ -25,6 +29,9 @@ async function santinoDxDragStart(santino_img, event) {
         event.preventDefault();
         return false;
     }
+    document.querySelectorAll('.statistiche-draft').forEach(div => {
+            div.remove(); // Rimuovi il div delle statistiche
+    });
     window.dragged_class_calciatore_nero = JSON.parse(santino_img.dataset.json); //parsing dell'oggetto JSON
     event.dataTransfer.setData("text", window.dragged_class_calciatore_nero.cognome);  //salva id del div nell'evento
     event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
@@ -178,7 +185,7 @@ async function populateDraft(colore) {
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
                             console.log("clickdestro");
-                            displayStatistiche(player, this, "sinistra");
+                            displayStatistiche(player, this, "sinistra", player.isFromRosa);
                         }
                     });
                 }
@@ -186,7 +193,7 @@ async function populateDraft(colore) {
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
                             console.log("clickdestro");
-                            displayStatistiche(player, this, "destra");
+                            displayStatistiche(player, this, "destra", player.isFromRosa);
                         }
                     });
                 } 
@@ -233,7 +240,7 @@ async function populateDraft(colore) {
 
         document.querySelectorAll('.info_draftcell').forEach(riga => {
             if (riga.dataset.fromRosa === "true") {
-                riga.style.background = "rgb(226 174 0)";
+                riga.style.background = "var(--gold)";
             }
             else if (riga.dataset.fromRosa === "false") {
                 riga.style.background = "rgb(193, 193, 193)";

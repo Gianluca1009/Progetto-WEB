@@ -104,9 +104,8 @@
 }
 
 .statistiche-draft{
+    background: #c1c1c1;
     z-index: 100000;
-    background-image: url(../images/statistiche.jpg);
-    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
