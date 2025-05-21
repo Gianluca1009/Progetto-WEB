@@ -122,7 +122,7 @@ async function populateDraft(colore) {
         }
 
         // Seleziona i primi 6 calciatori casuali
-        const selected_players = get3Calciatori(colore);
+        const selected_calciatori = get3Calciatori(colore);
 
         // Rimuovi i calciatori selezionati dall'array originale
         remove3Calciatori(colore);
@@ -156,9 +156,9 @@ async function populateDraft(colore) {
 
         // Popola i container di destra (giocatori da 3 a 5)
         for (let i = 0; i < 3; i++) {
-            const player = selected_players[i];
+            const calciatore = selected_calciatori[i];
             const container = santini_containers[i]; // Usa l'indice corretto per i container di dx
-            if (container && player) {
+            if (container && calciatore) {
                 //pulizia dei campi precedenti
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
 
@@ -167,9 +167,9 @@ async function populateDraft(colore) {
                 }
                 //POPOlAMENTO IMG
                 const img = document.createElement('img');
-                img.src = player.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
-                img.alt = player.cognome; // Usa 'cognome' come alt text
-                img.dataset.json = JSON.stringify(selected_players[i]); // Usa il JSON della classe com id dell'immagine
+                img.src = calciatore.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
+                img.alt = calciatore.cognome; // Usa 'cognome' come alt text
+                img.dataset.json = JSON.stringify(selected_calciatori[i]); // Usa il JSON della classe com id dell'immagine
 
                 //POPOLAMENTO INFO
                 div_info = info_statistiche[i];
@@ -185,7 +185,7 @@ async function populateDraft(colore) {
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
                             console.log("clickdestro");
-                            displayStatistiche(player, this, "sinistra", player.isFromRosa);
+                            displayStatistiche(calciatore, this, "sinistra", calciatore.isFromRosa);
                         }
                     });
                 }
@@ -193,7 +193,7 @@ async function populateDraft(colore) {
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
                             console.log("clickdestro");
-                            displayStatistiche(player, this, "destra", player.isFromRosa);
+                            displayStatistiche(calciatore, this, "destra", calciatore.isFromRosa);
                         }
                     });
                 } 
@@ -207,14 +207,14 @@ async function populateDraft(colore) {
                 li1_info.style.fontFamily = "'Georgia', serif"; // Imposta la dimensione del font
                 li4_info.style.fontStyle = "italic"; // Imposta il testo in corsivo
 
-                if (player.nome != null){
-                    li1_info.textContent = `${player.nome} ${player.cognome}`;
+                if (calciatore.nome != null){
+                    li1_info.textContent = `${calciatore.nome} ${calciatore.cognome}`;
                 }else{
-                    li1_info.textContent = `${player.cognome}`;
+                    li1_info.textContent = `${calciatore.cognome}`;
                 }
-                li2_info.textContent = `${player.squadra} `;
-                li3_info.textContent = `${player.ruolo} `;
-                li4_info.textContent = `${convertDate(player.data_nascita)} `;
+                li2_info.textContent = `${calciatore.squadra} `;
+                li3_info.textContent = `${calciatore.ruolo} `;
+                li4_info.textContent = `${convertDate(calciatore.data_nascita)} `;
 
                 ul_info.appendChild(li1_info);
                 ul_info.appendChild(li2_info);
@@ -224,23 +224,11 @@ async function populateDraft(colore) {
 
 
                 // setto una variabile per controllare se il calciatore è della rosa
-                if(player.isFromRosa) div_info.dataset.fromRosa = "true";
+                if(calciatore.isFromRosa) div_info.dataset.fromRosa = "true";
                 else div_info.dataset.fromRosa = "false";
 
-                if(player.isFromRosa){
-                    const sezione_flag = document.createElement('div');
-                    sezione_flag.classList.add('sezione-flag');
-
-                    const flag_text = document.createElement('p');
-                    flag_text.textContent = "ROSA";
-                    flag_text.classList.add('flag-rosa');
-                    sezione_flag.appendChild(flag_text);
-
-                    const img_flag = document.createElement('img');
-                    img_flag.src = "images/frecciarosa.png";
-                    sezione_flag.appendChild(img_flag);
-
-                    div_info.appendChild(sezione_flag);
+                if(calciatore.isFromRosa){
+                    buildFlagRosa(div_info);
                 }
         
                 if(colore == "nero"){

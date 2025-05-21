@@ -78,6 +78,23 @@ function setColoreRiga(){
     });
 }
 
+// Funzione per creare la sezione del flag rosa
+function buildFlagRosa(div_info){
+    const sezione_flag = document.createElement('div');
+    sezione_flag.classList.add('sezione-flag');
+
+    const flag_text = document.createElement('p');
+    flag_text.textContent = "ROSA";
+    flag_text.classList.add('flag-rosa');
+    sezione_flag.appendChild(flag_text);
+
+    const img_flag = document.createElement('img');
+    img_flag.src = "images/frecciarosa.png";
+    sezione_flag.appendChild(img_flag);
+
+    div_info.appendChild(sezione_flag);
+}
+
 
 
 //------ FUNZIONI DROP ------//
