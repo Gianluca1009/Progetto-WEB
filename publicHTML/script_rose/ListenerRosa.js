@@ -1,6 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    
+
     // Inizializzo le variabili di finestra
     window.bacheca = document.getElementById("bacheca-rosa");
     window.register_button = document.getElementById("register-button");

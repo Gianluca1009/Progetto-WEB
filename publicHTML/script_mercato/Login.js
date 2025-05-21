@@ -57,7 +57,17 @@ function login() {
 }
 
 //Funzione che gestisce il caso in cui non è stato effettuato il login
-function ifNotLoggedIn() {
+async function ifNotLoggedIn() {
+
+    const righe_tabella_player = await fetch(`/get_numero_players`);
+    const righe = await righe_tabella_player.json();
+
+    if (righe.count === 0) {
+      // svuotaBacheca();
+      logout();
+      return;
+    }
+
     if(LS_getUserMercatoData().id == null){
         buildRowNoLogin();
         document.getElementById('user-points').classList.add('hidden');

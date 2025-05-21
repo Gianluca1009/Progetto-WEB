@@ -57,7 +57,17 @@ function login() {
 }
 
 // Funzione che, quando necessario, inserisce il messaggio di login non effettuato nella bacheca
-function ifNotLoggedIn() {
+async function ifNotLoggedIn() {
+
+    const righe_tabella_player = await fetch(`/get_numero_players`);
+    const righe = await righe_tabella_player.json();
+
+    if (righe.count === 0) {
+      svuotaBacheca();
+      logout();
+      return;
+    }
+
     if(LS_getUserRosaData().id === null) {
         buildRowNoLogin();
         window.logout_button.classList.add("hidden");

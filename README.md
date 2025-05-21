@@ -136,7 +136,7 @@
 
     La promozione del pedone è ancora in corso se premo restart draft o alla fine della partita     ✅
 
-    La rosa contiene alle volte giocatori duplicati, che causano errori alla vendita
+    La rosa contiene alle volte giocatori duplicati, che causano errori alla vendita                ✅
 
     Nel restart draft vengono settati i giocatori della rosa solo la prima volta, poi si levano     ✅
 

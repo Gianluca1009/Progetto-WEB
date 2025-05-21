@@ -28,23 +28,6 @@ async function createConnection() {
     return client;
 }
 
-//@deprecated
-// Funzione spostata da connection.js
-// async function get72RandomCalciatori() {
-//     const connection = await createConnection();
-//     try {
-//         const results = await connection.query(
-//             'SELECT * FROM calciatore ORDER BY RANDOM() LIMIT 72'
-//         );
-//         return results.rows;
-//     } catch (error) {
-//         console.error('Error fetching calciatori:', error);
-//         throw error;
-//     } finally {
-//         await connection.end();
-//     }
-// }
-
 app.get('/get_random_calciatori', async (req, res) => {
     const connection = await createConnection();
     const user_id = req.query.id;
@@ -59,6 +42,7 @@ app.get('/get_random_calciatori', async (req, res) => {
             FROM player p
             WHERE p.id = $1
         )
+        ORDER BY c.prezzo DESC
         LIMIT $2;
         `, [user_id, n]
         );
@@ -243,4 +227,17 @@ app.post('/sale_calciatore', async (req, res) => {
     } catch (err) {
       res.status(500).send('Errore durante la vendita calciatore');
     }
+});
+
+app.get('/get_numero_players', async (req, res) => {
+  const connection = await createConnection();
+  try {
+    const result = await connection.query('SELECT COUNT(*) FROM player');
+    const count = parseInt(result.rows[0].count);
+    res.json({count});
+  }
+  catch {
+    console.error('Errore durante la query:', error);
+    res.status(500).send('Errore interno al server');
+  }
 });
