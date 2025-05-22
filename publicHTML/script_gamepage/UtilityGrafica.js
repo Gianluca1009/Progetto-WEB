@@ -134,28 +134,41 @@ function getStyle(){
 }
 
 // Funzione per far fluttuare verso l'alto l'elemento log
-function FluttuaElemento(elemento, velocita = 10){
-    let distanza = document.querySelector('.game-container').offsetHeight - misuraDivLog().height - 10; // Posizione iniziale sotto il game container
-
-    const intervalId = setInterval(() => {
-        distanza -= 1; // muovi verso l'alto di 1px
-        elemento.style.top = `${distanza}px`;
-
-        if (distanza <= -(misuraDivLog().height)) {
-            // makeHidden(elemento); // Nascondi l'elemento quando ha raggiunto la distanza
-            clearInterval(intervalId); // Ferma l'intervallo
-        }
-    }, velocita);
-
-    // Restituisco l'ID dell'intervallo così puoi fermarlo se vuoi
-    return intervalId;
-}
-
-function fluttuaElemento(log) {
-    const tunnel = window.turno_bianco ? document.querySelector('.tunnel-sx') : document.querySelector('.tunnel-dx');
+function fluttuaElemento(elemento, velocita = 10) {
+    const tunnel = window.turno_bianco
+        ? document.querySelector('.tunnel-sx')
+        : document.querySelector('.tunnel-dx');
     const content = tunnel.querySelector('.tunnel-content');
 
-    content.appendChild(log);
-    tunnel.scrollBottom = tunnel.scrollHeight;
+    // Aggiungi l'elemento al contenitore
+    elemento.style.opacity = '1';
+    elemento.style.transition = `opacity ${velocita/2}ms ease-out`;
+    content.appendChild(elemento);
+
+    // Implementa uno scroll animato
+    const startPosition = content.scrollTop;
+    const targetPosition = content.scrollHeight;
+    const distance = targetPosition - startPosition;
+    const duration = 500; // 500ms per l'animazione
+    let startTime = null;
+
+    function animateScroll(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+
+        // Funzione di easing per un movimento più naturale
+        const easeOutQuad = t => t * (2 - t);
+        const currentPosition = startPosition + (distance * easeOutQuad(progress));
+
+        content.scrollTop = currentPosition;
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animateScroll);
+        }
+    }
+
+    requestAnimationFrame(animateScroll);
 }
+
 
