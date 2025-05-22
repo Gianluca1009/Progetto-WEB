@@ -82,5 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector(".menu-button").addEventListener("click", function() {
         handleHamburgerMenu('gamepage');
     });
+
+    window.addEventListener('scroll', function() {
+        window.gamecontainer_centered = false;
+    });
     
 });

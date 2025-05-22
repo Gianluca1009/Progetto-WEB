@@ -43,6 +43,14 @@ function handleButtonP2(){
 async function startDraft(){
 
     scrollToGameContainer();
+    
+    // Aggiungo il listener per il click sul game container
+    document.querySelector('.game-container').addEventListener('click', function(event) {
+        if (!window.gamecontainer_centered) {
+            scrollToGameContainer();
+        }
+    });
+
     disabilitaPedine();
 
     // ELEMENTI DA NASCONDERE (bottoni pronto, giocaButton)
@@ -77,7 +85,6 @@ async function startDraft(){
 
 // Funzione per cambiare il draft
 async function restartDraft(){
-    scrollToGameContainer();
 
     //caso in cui fai logout prima di rigiocare il draft
     if(LS_getUser1Game().id == null || LS_getUser2Game().id == null){
