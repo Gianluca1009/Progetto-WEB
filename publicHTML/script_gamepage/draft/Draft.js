@@ -237,7 +237,6 @@ async function populateDraft(colore) {
             }
         }
         setColoreRiga();
-        console.log("colore in populateDraft:",colore);
         dragSantini(colore);
 
     } catch (error) {
@@ -317,7 +316,7 @@ function populateRandom(colore) {
         // Assegna il cognome del calciatore
         text.textContent = calciatore.cognome;
 
-        if(calciatore.isFromRosa) text.style.color = "red";
+        if(calciatore.isFromRosa) text.style.color = "#8200e1";
 
         // Salva la mappatura del calciatore e della pedina
     }

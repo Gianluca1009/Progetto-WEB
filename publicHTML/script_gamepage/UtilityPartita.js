@@ -123,6 +123,8 @@ async function restartDraft(){
     
 
     resetSottoscacco();
+    cambioTurno();
+    resetSottoscacco();
     resetProntoButton();
     resetSuggerimenti();
     if(window.selected_cell) resetHighlighted();
@@ -136,6 +138,7 @@ async function restartDraft(){
     disabilitaPedine();
     resetPedine();  //riposiziono le pedine nelle posizioni iniziali
     resetTimers();  //resetto il timer
+    freezeTimer();
 
     document.querySelector(".game-container").classList.remove('game-not-started');
     

@@ -132,7 +132,13 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
                 remove3Calciatori(colore);   // Rimuovi i calciatori selezionati dall'array della partita
                 text = document.createElement('text');
                 text.classList.add('nome-giocatore');
-                if(isFromRosa) text.style.color = "red";
+                console.log(typeof isFromRosa);
+                if(isFromRosa === "true"){
+                    text.style.color = "#8200e1";   
+                } 
+                else{
+                    text.style.color = "black";
+                }
                 div_pedina.appendChild(text);
             }
 
