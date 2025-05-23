@@ -149,12 +149,26 @@ function setTunnelElement(dizionario_mangiata){
     const content = tunnel.querySelector('.tunnel-content');
     content.appendChild(divFluttuante);
     
-    fluttuaElemento(divFluttuante);
+    appendLog(divFluttuante);
+}
+
+// Funzione
+function setFlyingElement(dizionario_mangiata, image_attaccante){
+    console.log("image_attaccante: ", image_attaccante);
+    const img = document.createElement('img');
+    img.src = dizionario_mangiata.src;
+    img.classList.add("flying");
+    image_attaccante.parentElement.appendChild(img);
+
+    setPositionRelativeToDiv(image_attaccante, img, "top", 35);
+    img.style.left = "auto";
+    fluttuaElemento(img);
 }
 
 // Funzione che gestisce la cattura di una pedina
 function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
     // Se la cella di destinazione contiene la pedina bersaglio
+    let image_attaccante = window.selected_image;
     if (pedinaBersaglio && cella_dest.contains(pedinaBersaglio)) {
         let dizionario_mangiata = helperCattura(window.selected_element, pedinaBersaglio);
         if(dizionario_mangiata.valid){
@@ -165,6 +179,7 @@ function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
 
             playSound('fischio', 0.2);
             setTunnelElement(dizionario_mangiata); //compone la grafica nei tunnel laterali
+            setFlyingElement(dizionario_mangiata, image_attaccante); //compone la grafica della cattura
             return false;
         }
     }    

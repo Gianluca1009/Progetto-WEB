@@ -138,7 +138,7 @@ function getStyle(){
 }
 
 // Funzione per far fluttuare verso l'alto l'elemento log
-function fluttuaElemento(elemento, velocita = 10) {
+function appendLog(elemento) {
     const tunnel = window.turno_bianco
         ? document.querySelector('.tunnel-sx')
         : document.querySelector('.tunnel-dx');
@@ -146,7 +146,6 @@ function fluttuaElemento(elemento, velocita = 10) {
 
     // Aggiungi l'elemento al contenitore
     elemento.style.opacity = '1';
-    elemento.style.transition = `opacity ${velocita/2}ms ease-out`;
     content.appendChild(elemento);
 
     // Implementa uno scroll animato
@@ -173,6 +172,16 @@ function fluttuaElemento(elemento, velocita = 10) {
     }
 
     requestAnimationFrame(animateScroll);
+}
+
+function fluttuaElemento(elemento) {
+    elemento.style.opacity = '0';
+    elemento.style.transform = 'translateY(-200px)';
+    elemento.style.transition = 'opacity 3s ease, transform 3s ease';
+
+    setTimeout(() => {
+        elemento.remove();
+    }, 3000); // Tempo di attesa per la rimozione
 }
 
 

@@ -79,10 +79,13 @@ function setColoreRiga(){
 }
 
 // Funzione per creare la sezione del flag rosa
-function buildFlagRosa(div_info){
+function buildFlagRosa(div_info, posizione = "draft"){
     const sezione_flag = document.createElement('div');
     sezione_flag.classList.add('sezione-flag');
-
+    if(posizione == "gioco"){
+        sezione_flag.style.top = "0px";
+        sezione_flag.style.right = "8%";
+    } 
     const flag_text = document.createElement('p');
     flag_text.textContent = "ROSA";
     flag_text.classList.add('flag-rosa');
@@ -134,10 +137,7 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
                 text.classList.add('nome-giocatore');
                 console.log(typeof isFromRosa);
                 if(isFromRosa === "true"){
-                    text.style.color = "#8200e1";   
-                } 
-                else{
-                    text.style.color = "black";
+                    buildFlagRosa(div_pedina, "gioco"); // Aggiungi il flag rosa   
                 }
                 div_pedina.appendChild(text);
             }

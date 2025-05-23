@@ -1,0 +1,6 @@
+.flying{
+    width: 7vh;
+    aspect-ratio: 1/1;
+    z-index: 9999;
+    pointer-events: none;
+}

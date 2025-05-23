@@ -316,7 +316,7 @@ function populateRandom(colore) {
         // Assegna il cognome del calciatore
         text.textContent = calciatore.cognome;
 
-        if(calciatore.isFromRosa) text.style.color = "#8200e1";
+        if(calciatore.isFromRosa) buildFlagRosa(pedina,"gioco");
 
         // Salva la mappatura del calciatore e della pedina
     }

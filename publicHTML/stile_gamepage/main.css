@@ -15,6 +15,7 @@
     animation: glow 2s infinite alternate;
     display: flex;
     margin-top: 20vh;
+    overflow: hidden;
 }
 
 .background {
