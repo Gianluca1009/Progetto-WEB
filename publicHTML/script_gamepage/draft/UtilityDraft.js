@@ -112,6 +112,7 @@ function assegnaCognome(text,cognome_calciatore){
 // Funzione per assegnare calciatore a pedine
 async function AssegnaCalciatoreAPedina(event, drop_cell) {
     var cognome_calciatore = event.dataTransfer.getData("text");  // Ottieni l'id dell'elemento
+    var isFromRosa = event.dataTransfer.getData("isFromRosa"); // Ottieni se il calciatore è già presente nella rosa
     var tipoSantino = event.dataTransfer.getData("type"); // Ottieni il tipo di santino (sx o dx)
     
     let div_pedina = drop_cell.querySelector('.pedina');
@@ -119,7 +120,6 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
     if (div_pedina) {
         // Ottieni l'id della pedina
         const pedinaId = div_pedina.id;
-        
         // Verifica se la pedina è bianca (id minuscolo) o nera (id maiuscolo)
         const isPedinaBianca = pedinaId === pedinaId.toLowerCase() && pedinaId !== pedinaId.toUpperCase();
 
@@ -128,8 +128,11 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
             // Crea l'elemento text se non esiste -cognome sotto alla pedina
             let text = div_pedina.querySelector('text');
             if (!text) {
+                var colore = event.dataTransfer.getData("colore"); // Ottieni il colore della rosa
+                remove3Calciatori(colore);   // Rimuovi i calciatori selezionati dall'array della partita
                 text = document.createElement('text');
                 text.classList.add('nome-giocatore');
+                if(isFromRosa) text.style.color = "red";
                 div_pedina.appendChild(text);
             }
 
@@ -145,7 +148,7 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
             }
         }
     }
-    return tipoSantino;
+    
 }
 
 
@@ -164,35 +167,34 @@ function shuffleArray(array) {
 // Funzione per ottenere 3 calciatori casuali da un array
 function get3Calciatori(colore) {
     if(colore== "nero"){
-        shuffleArray(array_calciatori_partita_neri);
-        return array_calciatori_partita_neri.slice(0, 3);
+        shuffleArray(window.array_calciatori_partita_neri);
+        return window.array_calciatori_partita_neri.slice(0, 3);
     }
     else if(colore== "bianco"){
-        shuffleArray(array_calciatori_partita_bianchi);
-        return array_calciatori_partita_bianchi.slice(0, 3);
+        shuffleArray(window.array_calciatori_partita_bianchi);
+        return window.array_calciatori_partita_bianchi.slice(0, 3);
     }
 }
 
 // Funzione per rimuovere 3 calciatori da un array
 function remove3Calciatori(colore) {
-    if(colore== "nero"){
+    if(colore === "nero"){
         // Rimuovi i primi 3 calciatori dall'array dei neri
-        array_calciatori_partita_neri.splice(0, 3);
+        window.array_calciatori_partita_neri.splice(0, 3);
     }
-    else if(colore== "bianco"){
+    else if(colore === "bianco"){
         // Rimuovi i primi 3 calciatori dall'array dei bianchi
-        array_calciatori_partita_bianchi.splice(0, 3);
-
+        window.array_calciatori_partita_bianchi.splice(0, 3);
     }
 }
 
 // Funzione per ottenere la lista dei calciatori in base al colore
 function getListaCalciatori(colore) {
     if(colore== "nero"){
-        return array_calciatori_partita_neri;
+        return window.array_calciatori_partita_neri;
     }
     else if(colore== "bianco"){
-        return array_calciatori_partita_bianchi;
+        return window.array_calciatori_partita_bianchi;
     }
 }
 
@@ -227,8 +229,6 @@ function objectifyCalciatori(array, provenienza) {
         throw error;
     }
 }
-
-
 
 // Funzione per creare le liste dei calciatori
 async function creaListeCalciatori() {

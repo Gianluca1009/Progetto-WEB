@@ -1,7 +1,7 @@
 window.gamecontainer_centered = false;
 
 //
-// ---- FUNZIONI AUSILIARIE PER LA GRAFICA ---- //
+//------ FUNZIONI AUSILIARIE PER LA GRAFICA ------//
 //
 
 // Funzione per evidenziare le caselle disponibili

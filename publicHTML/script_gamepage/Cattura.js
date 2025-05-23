@@ -1,5 +1,3 @@
-window.scroll_counter = 0;
-
 // Funzione che calcola variabili di cattura e le passa alla funzione cattura
 function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = getCondition();
@@ -153,7 +151,6 @@ function setTunnelElement(dizionario_mangiata){
     
     fluttuaElemento(divFluttuante);
 }
-
 
 // Funzione che gestisce la cattura di una pedina
 function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio

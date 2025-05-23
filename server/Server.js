@@ -28,6 +28,7 @@ async function createConnection() {
     return client;
 }
 
+// Funzione per ottenere n calciatori random da usare nel draft
 app.get('/get_random_calciatori', async (req, res) => {
     const connection = await createConnection();
     const user_id = req.query.id;

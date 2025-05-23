@@ -4,17 +4,15 @@ window.addEventListener('resize', function() {
     setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatore
 });
 
-// ---- INIZIALIZZAZIONE DEL GIOCO ---- //
-// Inizializza il gioco quando la pagina si carica
+// ---- INIZIALIZZAZIONE DELLA PAGINA ---- //
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger
+    setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger dinamicamente
 
     isSessioneAperta(); //Gestione della sessione aperta
     
-    preloadSounds();    // Pre-carico i suoni
-    setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
+    preloadSounds();    // Pre-carico i suoni di gioco
     StartPosition();
     updateCondition(); // Aggiorna la condizione iniziale   
 
@@ -78,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    //LISTENER PER IL MENU HAMBURGER
+    // LISTENER PER IL MENU HAMBURGER
     document.querySelector(".menu-button").addEventListener("click", function() {
         handleHamburgerMenu('gamepage');
     });
