@@ -43,7 +43,6 @@ app.get('/get_random_calciatori', async (req, res) => {
             FROM player p
             WHERE p.id = $1
         )
-        ORDER BY c.prezzo DESC
         LIMIT $2;
         `, [user_id, n]
         );
