@@ -96,7 +96,6 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Record Assist"};
 
     }else{
-        console.log("condizione di confronto per mangiata inesistente");
         return dict;
     }
 }
@@ -107,7 +106,6 @@ function setTunnelElement(dizionario_mangiata){
     divFluttuante.classList.add("div-log");
     divFluttuante.style.color = window.turno_bianco ? "black" : "white";
     divFluttuante.style.background = window.turno_bianco ? "rgb(241 233 233)" : "rgba(120, 120, 120)";
-    console.log(divFluttuante.style.background);
 
     const top = document.createElement('div');
     top.classList.add("log-top");

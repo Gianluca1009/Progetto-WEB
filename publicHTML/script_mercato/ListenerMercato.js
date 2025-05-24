@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.getElementById("logoutbutton").classList.add("hidden");
+    document.getElementById("logout-button").classList.add("hidden");
     document.querySelector(".sezione-profilo").classList.add("hidden");
     window.bacheca = document.getElementById("finestramercato");
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ifSessioneAperta();
 
     //RICERCA PER NOME
-    document.getElementById("searchForm").addEventListener("submit", function(event) {
+    document.getElementById("search-form").addEventListener("submit", function(event) {
         event.preventDefault();
         //Ottengo l'input del form
         const inputNome = document.querySelector("input[name='nome']").value;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     //RICERCA PER RUOLO
-    document.getElementById("tendinaRuolo").addEventListener("change", function(event) {
+    document.getElementById("tendina-ruolo").addEventListener("change", function(event) {
         event.preventDefault();
         //Ottengo l'input del form
         const inputNome = document.querySelector("input[name='nome']").value;

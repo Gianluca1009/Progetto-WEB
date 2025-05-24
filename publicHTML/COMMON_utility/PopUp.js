@@ -36,11 +36,11 @@ function launchEndgamePopup(vincitore){
             <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
             <div class="bottoni-gameover-container">
                  
-                <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft();">
+                <button id="restart-draft-button-at-end" class="button-gameover" onclick = "restartDraft();">
                     <span class="button-top top-gameover"> DRAFT </span>
                 </button>
 
-                <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome(); closeEndgamePopup();">
+                <button id="home-button-at-end" class="button-gameover" onclick = "goHome(); closeEndgamePopup();">
                     <span class="button-top"> HOME </span>
                 </button>
 
@@ -194,7 +194,7 @@ function launchRestartDraftPopup(){
     restart_draft_popup.id = 'popup-restart-draft';
     restart_draft_popup.innerHTML = `
             <p class="text-gameover">Riavviare il draft?</p>
-            <button id="confirmRestart" style="width: 35%; height: 20%;" onclick = "restartDraft();">
+            <button id="confirm-restart" style="width: 35%; height: 20%;" onclick = "restartDraft();">
                 <span class="button-top" style="font-size: calc(0.6vh + 0.6vw)"> CONFERMA </span>
             </button>
             <p style="font-size: calc(0.6vh + 0.6vw); cursor: pointer; border-bottom: 1px solid black;" onclick = "closeRestartDraftPopup();" >CONTINUA A GIOCARE</p>

@@ -7,12 +7,27 @@
 }
 
 /* Stile per ogni box di testo */
-.p-username-partita {
-    background-color: white;    /* Sfondo bianco */
-    color: black;               /* Testo nero */
+.p-username-partita-bianco {
+    background-color: #e5dfdf;    /* Sfondo bianco */
+    color: #282727;               /* Testo nero */
     padding: 10px 20px;         /* Spaziatura interna */
     margin: 5px 0;              /* Spaziatura esterna tra i box */
-    border: 1px solid #ccc;     /* Bordo grigio chiaro */
+    border: 2px solid #282727;     /* Bordo grigio chiaro */
+    border-radius: 8px;         /* Angoli arrotondati */
+    font-weight: bold;          /* Testo in grassetto */
+    width: 130px;               /* Larghezza fissa */
+    text-align: center;         
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+}
+
+/* Stile per ogni box di testo */
+.p-username-partita-nero {
+    background-color: #282727;    /* Sfondo bianco */
+    color: #e5dfdf;               /* Testo nero */
+    padding: 10px 20px;         /* Spaziatura interna */
+    margin: 5px 0;              /* Spaziatura esterna tra i box */
+    border: 2px solid #e5dfdf;     /* Bordo grigio chiaro */
     border-radius: 8px;         /* Angoli arrotondati */
     font-weight: bold;          /* Testo in grassetto */
     width: 130px;               /* Larghezza fissa */

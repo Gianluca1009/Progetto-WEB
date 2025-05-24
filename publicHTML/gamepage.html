@@ -74,15 +74,15 @@
             <button class="menu-button" data-aperto="true"></button>
             <h1 class="title" onclick="window.location.reload()">SOC-C-HESS</h1>
             <div class="container-bottoni-login">
-                <button class="btn-login" id="loginbutton" onclick="login()">
+                <button class="btn-login" id="login-button" onclick="login()">
                     <span class="button-top login"> Login </span>
                 </button>
 
-                <button class="btn-register" id="registerbutton" onclick="register()">
+                <button class="btn-register" id="register-button" onclick="register()">
                     <span class="button-top login"> Registrati </span>
                 </button>
 
-                <button class="btn-logout hidden" id="logoutbutton" onclick="logout()">
+                <button class="btn-logout hidden" id="logout-button" onclick="logout()">
                     <span class="button-top login"> Logout </span>
                 </button>
 
@@ -161,7 +161,7 @@
         <div class="background-overlay"></div>
 
         <!-- BOTTONE INIZIO GIOCO -->
-        <button id="giocaButton" class="gioca-button" type="button">
+        <button id="gioca-button" class="gioca-button" type="button">
             <span class="button-top"> INIZIA A GIOCARE </span>
         </button>
 
@@ -176,7 +176,7 @@
 
         <!-- BOTTONE RESTART DRAFT -->
         
-        <button id="restartDraftButton" onclick="launchRestartDraftPopup();" class="restart-draft" title="Restart Draft">
+        <button id="restart-draft-button" onclick="launchRestartDraftPopup();" class="restart-draft" title="Restart Draft">
             <span class="button-top"> 
                 <img src="images/restartDraft.png" alt="restartDraft" class="b-image">
             </span>
@@ -186,14 +186,14 @@
          <div class="sezione-sx">
 
             <button id="player1button" onclick="handleButtonP1()" class="pronto-button player1">
-                <span id="top_player1" class="button-top">PRONTO</span>
+                <span id="top-player1" class="button-top">PRONTO</span>
             </button>
 
             <div id="random1" onclick="populateRandom('bianco')" class="random-ico" title="Random Draft">
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
             
-            <div id="draft_table_sx" class="tabella-draft">
+            <div id="draft-table-sx" class="tabella-draft">
                 <div class="riga-draft">
                     <div class="foto-draftcell" id="s00"></div>
                     <div class="info-draftcell" id="s01"></div>
@@ -212,9 +212,8 @@
 
             
 
-            <div class="campo-giocatore" id="player_bianco">
-                <p id='nome_player_1' class="p-username-partita"></p>
-                <!-- <p id='punt_player_1'class="p-username-partita"></p> -->
+            <div class="campo-giocatore" id="player-bianco">
+                <p id='nome-player-1' class="p-username-partita-bianco"></p>
             </div>
 
         </div>
@@ -223,10 +222,10 @@
         <div class="sezione-dx">
 
             <button id="player2button" onclick="handleButtonP2()" class="pronto-button player2">
-                <span id="top_player2" class="button-top">PRONTO</span>
+                <span id="top-player2" class="button-top">PRONTO</span>
             </button>
             
-            <div id="draft_table_dx" class="tabella-draft">
+            <div id="draft-table-dx" class="tabella-draft">
                 <div class="riga-draft">
                     <div class="foto-draftcell" id="d00"></div>
                     <div class="info-draftcell" id="d01"></div>
@@ -245,9 +244,8 @@
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
 
-            <div class="campo-giocatore" id="player_nero">
-                <p id='nome_player_2' class="p-username-partita"> </p>
-                <!-- <p id='punt_player_2'class="p-username-partita"></p> -->
+            <div class="campo-giocatore" id="player-nero">
+                <p id='nome-player-2' class="p-username-partita-nero"> </p>
             </div>
 
         </div>
