@@ -2,13 +2,15 @@
 async function fetchCalciatoriLiberi() {
     if(LS_getUserMercatoData().id){
         const id_player = LS_getUserMercatoData().id;
-        console.log(id_player);
         const data = await fetch(`/get_giocatori_mercato?id=${id_player}`);
         if(!data.ok){
             throw new Error("errore server");
         }
         results = await data.json();
-        console.log(results);
+
+        //Ordino i giocatori in ordine di prezzo decrescente
+        results.sort((a, b) => b.prezzo - a.prezzo);
+
         return results;
     }
 }
