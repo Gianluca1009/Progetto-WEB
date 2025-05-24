@@ -58,15 +58,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const fraseRandom = citazioni[Math.floor(Math.random() * citazioni.length)];
     const autoreRandom = autori_citazioni[Math.floor(Math.random() * autori_citazioni.length)];
-    const paragrafo_citazioni = document.getElementById('fraseRandom');
-    const paragrafo_autore = document.getElementById('autoreRandom');
+    const paragrafo_citazioni = document.getElementById('frase-random');
+    const paragrafo_autore = document.getElementById('autore-random');
 
     if (paragrafo_citazioni) {
-        paragrafo_citazioni.textContent = fraseRandom;
+        paragrafo_citazioni.textContent = frase-random;
     }
 
     if (paragrafo_autore) {
-        paragrafo_autore.textContent = autoreRandom;
+        paragrafo_autore.textContent = autore-random;
     }
 });
 

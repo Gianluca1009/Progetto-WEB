@@ -1,11 +1,11 @@
 /* Elenco delle classi CSS in questo file:
 
- * .div_scelte - div delle scelte
- * .tabella_pedone_promotion - tabella delle pedine
- * .foto_ped_promotion - foto delle pedine
+ * .div-scelte - div delle scelte
+ * .tabella-pedone-promotion - tabella delle pedine
+ * .foto-ped-promotion - foto delle pedine
  */
 
-.div_scelte {
+.div-scelte {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.tabella_pedone_promotion {
+.tabella-pedone-promotion {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +26,7 @@
     width: 100%;
 }
 
-.foto_ped_promotion {
+.foto-ped-promotion {
     background: linear-gradient(to right, #dadada, #6a6a6a);
     width: 80%;
     aspect-ratio: 1/1;

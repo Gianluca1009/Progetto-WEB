@@ -68,7 +68,7 @@ function resetEvidenziaCelleDrop(){
 
 // Funzione che setta a oro le righe della rosa e a grigio le rige random
 function setColoreRiga(){
-    document.querySelectorAll('.info_draftcell').forEach(riga => {
+    document.querySelectorAll('.info-draftcell').forEach(riga => {
         if (riga.dataset.fromRosa === "true") {
             riga.style.background = "var(--gold)";
         }

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCondition(); // Aggiorna la condizione iniziale   
 
     //ELEMENTI DA NASCONDERE ALL'INIZIO (sezioni, condizione,switch,timer,pedine)
-    document.querySelector('.sezione_sx').classList.add('hidden');
+    document.querySelector('.sezione-sx').classList.add('hidden');
     document.querySelector('.sezione_dx').classList.add('hidden');
     document.querySelector('.switch').classList.add('hidden');
     document.querySelector('.background-overlay').classList.add('hidden');
