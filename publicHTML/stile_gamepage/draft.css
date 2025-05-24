@@ -45,7 +45,7 @@
 }
 
 /* Stile per le righe con ombre - ora ciascuna riga è un grid element */
-.riga_draft {
+.riga-draft {
     transition: all 0.2s ease;
     position: relative;
     display: flex;
