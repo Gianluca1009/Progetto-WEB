@@ -146,8 +146,7 @@ function setTunnelElement(dizionario_mangiata){
         stat2.style.color = dizionario_mangiata.valid ? "#c80000" : "#13ea13";
         section2.appendChild(stat2);
 
-    const tunnel = window.turno_bianco ? document.querySelector('.tunnel-sx') : document.querySelector('.tunnel-dx');
-    const content = tunnel.querySelector('.tunnel-content');
+    const content = window.turno_bianco ? document.querySelector('.tunnel-content-sx') : document.querySelector('.tunnel-content-dx');
     content.appendChild(divFluttuante);
     
     appendLog(divFluttuante);

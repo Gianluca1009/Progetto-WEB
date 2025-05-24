@@ -139,10 +139,7 @@ function getStyle(){
 
 // Funzione per far fluttuare verso l'alto l'elemento log
 function appendLog(elemento) {
-    const tunnel = window.turno_bianco
-        ? document.querySelector('.tunnel-sx')
-        : document.querySelector('.tunnel-dx');
-    const content = tunnel.querySelector('.tunnel-content');
+    const content = window.turno_bianco ? document.querySelector('.tunnel-content-sx'): document.querySelector('.tunnel-content-dx');
 
     // Aggiungi l'elemento al contenitore
     elemento.style.opacity = '1';
