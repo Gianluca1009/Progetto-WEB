@@ -62,10 +62,10 @@ async function dropCellDrop(drop_cell, event) {
 //------ DRAG & DROP ------//
 
 // Funzione per gestire il drag dei santini
-async function dragSantini(colore){
+async function dragSantini(){
     
     document.querySelectorAll(".santino-sx").forEach(santino_img => {
-        santino_img.addEventListener("dragstart", async function(event){ santinoSxDragStart(santino_img, event, colore); });
+        santino_img.addEventListener("dragstart", async function(event){ santinoSxDragStart(santino_img, event, "bianco"); });
 
         // Evento dragend
         santino_img.addEventListener("dragend", santinoDragEnd); 
@@ -73,7 +73,7 @@ async function dragSantini(colore){
 
     //selziona tutti le img calciatore -> drag elem dx
     document.querySelectorAll(".santino-dx").forEach(santino_img => {
-        santino_img.addEventListener("dragstart", async function(event) {santinoDxDragStart(santino_img, event, colore); });
+        santino_img.addEventListener("dragstart", async function(event) {santinoDxDragStart(santino_img, event, "nero"); });
             
         // Evento dragend
         santino_img.addEventListener("dragend", santinoDragEnd);
@@ -237,7 +237,7 @@ async function populateDraft(colore) {
             }
         }
         setColoreRiga();
-        dragSantini(colore);
+        dragSantini();
 
     } catch (error) {
         console.error('Errore durante il popolamento del draft:', error);

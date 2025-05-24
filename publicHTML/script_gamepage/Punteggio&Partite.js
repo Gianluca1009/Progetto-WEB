@@ -65,7 +65,7 @@ function aggiornaStatistiche(){
     let id_perdente = window.turno_bianco ? localStorage.getItem('game_user2Id') : localStorage.getItem('game_userId1');
     let punti_vincitore = window.turno_bianco ? localStorage.getItem('game_user1_punti') : localStorage.getItem('game_user2_punti');
     let new_punti = parseInt(punti_vincitore) + 20;
-    console.log("newpunti" ,new_punti);
+    console.log("id vincitore" ,id_vincitore);
     console.log("punti vincitore", punti_vincitore);
     aggiornaPunti(id_vincitore, new_punti);
     aggiornaVittorie(id_vincitore);
