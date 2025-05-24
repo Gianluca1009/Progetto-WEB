@@ -225,13 +225,8 @@ function endGame(){
     launchEndgamePopup(vincitore);
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
-<<<<<<< HEAD
     makeHidden(document.getElementById('tutorialButton'));
-    makeVisible(document.getElementById('logoutbutton'));
-
-=======
     makeVisible(document.getElementById('logout-button'));
->>>>>>> 43850d89d599c407cd883fa1bf2421ab6f15f31b
     document.querySelector('.game-container').classList.add('game-not-started');
 
     window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco

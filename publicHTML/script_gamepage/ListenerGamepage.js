@@ -25,13 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.progress-container').classList.add('hidden');
     document.querySelector('.tunnel-sx').classList.add('hidden');
     document.querySelector('.tunnel-dx').classList.add('hidden');
-<<<<<<< HEAD
-    document.getElementById('restartDraftButton').classList.add('hidden');
+
+    document.getElementById('restart-draft-button').classList.add('hidden');
     document.querySelector('.tutorial').classList.add('hidden');
     document.getElementById('tutorialButton').classList.add('hidden');
-=======
-    document.getElementById('restart-draft-button').classList.add('hidden');
->>>>>>> 43850d89d599c407cd883fa1bf2421ab6f15f31b
+    
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('hidden');
     })
