@@ -249,20 +249,34 @@ async function creaListeCalciatori() {
 
     rosa_bianco = objectifyCalciatori(rosa_bianco, "rosa");
     rosa_nero = objectifyCalciatori(rosa_nero, "rosa");
+    
+    
+    //numero di giocatori magg di 32 o no bianchi 
+    if (rosa_bianco.length >= 36 ){
+        shuffleArray(rosa_bianco);
+        window.array_calciatori_partita_bianchi = rosa_bianco.slice(0,36);
 
-    let numero_mancanti_bianco = 36 - rosa_bianco.length;
-    let numero_mancanti_nero = 36 - rosa_nero.length;
+    }else{
+        let numero_mancanti_bianco = 36 - rosa_bianco.length;
+        let mancanti_bianco_res = await fetch(`http://localhost:3000/get_random_calciatori?id=${id_player_bianco}&n=${numero_mancanti_bianco}`);
+        let mancanti_bianco = await mancanti_bianco_res.json();
+        mancanti_bianco = objectifyCalciatori(mancanti_bianco, "mancante");
+        window.array_calciatori_partita_bianchi = rosa_bianco.concat(mancanti_bianco);
+    }
+    //numero di giocatori magg di 32 o no bianchi 
+    if (rosa_nero.length >= 36){
+        shuffleArray(rosa_nero);
+        window.array_calciatori_partita_neri = rosa_nero.slice(0,36);
 
-    let mancanti_bianco_res = await fetch(`http://localhost:3000/get_random_calciatori?id=${id_player_bianco}&n=${numero_mancanti_bianco}`);
-    let mancanti_nero_res = await fetch(`http://localhost:3000/get_random_calciatori?id=${id_player_nero}&n=${numero_mancanti_nero}`);
+    }else{
+        let numero_mancanti_nero = 36 - rosa_nero.length;
 
-    let mancanti_bianco = await mancanti_bianco_res.json();
-    let mancanti_nero = await mancanti_nero_res.json();
+        let mancanti_nero_res = await fetch(`http://localhost:3000/get_random_calciatori?id=${id_player_nero}&n=${numero_mancanti_nero}`);
+        
+        let mancanti_nero = await mancanti_nero_res.json();
 
-    mancanti_bianco = objectifyCalciatori(mancanti_bianco, "mancante");
-    mancanti_nero = objectifyCalciatori(mancanti_nero, "mancante");
+        mancanti_nero = objectifyCalciatori(mancanti_nero, "mancante");
 
-    window.array_calciatori_partita_bianchi = rosa_bianco.concat(mancanti_bianco);
-    window.array_calciatori_partita_neri = rosa_nero.concat(mancanti_nero);
-
+        window.array_calciatori_partita_neri = rosa_nero.concat(mancanti_nero);
+    }
 }
