@@ -59,13 +59,14 @@ async function startDraft(){
     document.getElementById('player2button').classList.add('hidden');
     makeHidden(document.getElementById('logoutbutton'));
     
-    // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine, tasto restart draft)
+    // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine, tasto restart draft, tutorial button)
     makeVisible(document.querySelector('.background-overlay'));
     makeVisible(document.getElementById('restartDraftButton'));
     makeVisible(document.querySelector('.sezione-dx'));
     makeVisible(document.querySelector('.sezione-sx'));
     makeVisible(document.querySelector('.restart-draft'));
     makeVisible(document.querySelector('.switch'));
+    makeVisible(document.getElementById('tutorialButton'));
     document.querySelectorAll('.pedina').forEach(pedina => {
             makeVisible(pedina); // Rende visibili le pedine
     });
@@ -95,7 +96,7 @@ async function restartDraft(){
     if(document.getElementById('popup-restart-draft')) closeRestartDraftPopup();
     if(document.getElementById('popup-gameover')) closeEndgamePopup();
     
-    //ELEMENTI DA MOSTRARE (sezioni, switch)
+    //ELEMENTI DA MOSTRARE (sezioni, switch, tutorial button)
     makeVisible(document.querySelector('.sezione-dx'));
     makeVisible(document.querySelector('.sezione-sx'));
     makeVisible(document.getElementById('draft_table_dx'));
@@ -103,6 +104,7 @@ async function restartDraft(){
     makeVisible(document.getElementById('random1'));
     makeVisible(document.getElementById('random2'));
     makeVisible(document.querySelector('.switch'));
+    makeVisible(document.getElementById('tutorialButton'));
 
     //ELEMENTI DA NASCONDERE (condition, progress-container, bottoni pronto, div promotion, tunnel)
     makeHidden(document.querySelector('.condition-container'));
@@ -223,7 +225,9 @@ function endGame(){
     launchEndgamePopup(vincitore);
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
+    makeHidden(document.getElementById('tutorialButton'));
     makeVisible(document.getElementById('logoutbutton'));
+
     document.querySelector('.game-container').classList.add('game-not-started');
 
     window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco

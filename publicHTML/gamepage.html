@@ -183,28 +183,28 @@
         </button>
 
         <!-- TABELLA DRAFT SX -->
-         <div class="sezione-sx">
+        <div class="sezione-sx">
 
             <button id="player1button" onclick="handleButtonP1()" class="pronto-button player1">
                 <span id="top_player1" class="button-top">PRONTO</span>
             </button>
 
-            <div id="random1" onclick="populateRandom('bianco')" class="random-ico" title="Random Draft">
+            <div id="random1" onclick="populateRandom('bianco')" class="random-ico" title="Random Draft"style="z-index: 12;">
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
             
             <div id="draft_table_sx" class="tabella-draft">
-                <div class="riga-draft">
+                <div class="riga-draft" style="z-index: 4;">
                     <div class="foto-draftcell" id="s00"></div>
                     <div class="info-draftcell" id="s01"></div>
                 </div>
 
                 <div class="riga-draft">
                     <div class="foto-draftcell" id="s10"></div>
-                    <div class="info-draftcell" id="s11"></div>
+                    <div class="info-draftcell" id="s11" style="z-index: 4;"></div>
                 </div>
                 
-                <div class="riga-draft">
+                <div class="riga-draft" style="z-index: 4;">
                     <div class="foto-draftcell" id="s20"></div>
                     <div class="info-draftcell" id="s21"></div>
                 </div>
@@ -227,21 +227,21 @@
             </button>
             
             <div id="draft_table_dx" class="tabella-draft">
-                <div class="riga-draft">
+                <div class="riga-draft" style="z-index: 4;">
                     <div class="foto-draftcell" id="d00"></div>
                     <div class="info-draftcell" id="d01"></div>
                 </div>
-                <div class="riga-draft">
+                <div class="riga-draft" style="z-index: 4;">
                     <div class="foto-draftcell" id="d10"></div>
                     <div class="info-draftcell" id="d11"></div>
                 </div>
                 <div class="riga-draft">
-                    <div class="foto-draftcell" id="d20"></div>
+                    <div class="foto-draftcell" id="d20" style="z-index: 4;"></div>
                     <div class="info-draftcell" id="d21"></div>
                 </div>
             </div>
 
-            <div id="random2" onclick="populateRandom('nero')" class="random-ico" title="Random Draft">
+            <div id="random2" onclick="populateRandom('nero')" class="random-ico" title="Random Draft" style="z-index: 6;">
                 <img src="images/dado.png" width= "700" height="700" alt="randomDraft" class="dado">
             </div>
 
@@ -273,6 +273,11 @@
             <h1 class="timer-text" id="timer"></h1>
         </div>
 
+        <button id="tutorialButton" class="tutorial-button" onclick="handleTutorial()">
+            <span class="button-top"> ? </span>
+        </button>
+
+        <img src = images/tutorial_draft.png data-aperto="false" class="tutorial">
     </div>
 
 </body>

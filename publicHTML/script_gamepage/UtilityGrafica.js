@@ -174,6 +174,7 @@ function appendLog(elemento) {
     requestAnimationFrame(animateScroll);
 }
 
+// Funzione per far fluttuare un elemento verso l'alto e rimuoverlo dopo un certo tempo
 function fluttuaElemento(elemento) {
     elemento.style.opacity = '0';
     elemento.style.transform = 'translateY(-200px)';
@@ -182,6 +183,19 @@ function fluttuaElemento(elemento) {
     setTimeout(() => {
         elemento.remove();
     }, 3000); // Tempo di attesa per la rimozione
+}
+
+// Funzione che abilita o disabilita il tutorial
+function handleTutorial() {
+    let tutorial = document.querySelector('.tutorial');
+    if(tutorial.dataset.aperto === "false"){
+        tutorial.dataset.aperto = "true";
+        makeVisible(tutorial);
+    }
+    else if(tutorial.dataset.aperto === "true"){
+        tutorial.dataset.aperto = "false";
+        makeHidden(tutorial);
+    }
 }
 
 

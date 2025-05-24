@@ -61,7 +61,7 @@
 
 .restart-draft {
     position: absolute;
-    width: 5%;
+    width: 4.1%;
     aspect-ratio: 1/1;
     top: 0.7%;
     right: 0.1%;
@@ -146,4 +146,12 @@ input:checked + .slider::before {
 .dado:hover{
     transform: scale(1.1);
     transition: all 0.5s ease;
+}
+
+.tutorial-button {
+    position: absolute;
+    height: 7%;
+    aspect-ratio: 1/1;
+    top: 1%;
+    left: 0.5%;
 }

@@ -246,6 +246,7 @@ async function populateDraft(colore) {
 
 // Funzione per popolare i calciatori casuali
 function populateRandom(colore) {
+    if(document.querySelector('.tutorial').dataset.aperto === "true") return;
     // Verifica se ci sono abbastanza calciatori disponibili
     if (colore=="nero" && (!array_calciatori_partita_neri || array_calciatori_partita_neri.length === 0)) {
         console.log("Non ci sono abbastanza calciatori neri disponibili");

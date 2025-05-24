@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     StartPosition();
     updateCondition(); // Aggiorna la condizione iniziale   
 
-    //ELEMENTI DA NASCONDERE ALL'INIZIO (sezioni, condizione,switch,timer,pedine)
+    //ELEMENTI DA NASCONDERE ALL'INIZIO (sezioni, condizione,switch,timer,pedine,tutorial)
     document.querySelector('.sezione-sx').classList.add('hidden');
     document.querySelector('.sezione-dx').classList.add('hidden');
     document.querySelector('.switch').classList.add('hidden');
@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.tunnel-sx').classList.add('hidden');
     document.querySelector('.tunnel-dx').classList.add('hidden');
     document.getElementById('restartDraftButton').classList.add('hidden');
+    document.querySelector('.tutorial').classList.add('hidden');
+    document.getElementById('tutorialButton').classList.add('hidden');
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('hidden');
     })
