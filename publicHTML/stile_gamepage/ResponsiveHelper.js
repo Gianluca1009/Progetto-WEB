@@ -65,6 +65,7 @@ function setSoccerPlayerNameFontSize() {
     });
 }
 
+// Funzione che mi sa non usiamo
 function setSoccerPlayerInfoFontSize(){
     const lista = document.querySelectorAll('lista-info');
     const textElements = document.getElementsByTagName('li');

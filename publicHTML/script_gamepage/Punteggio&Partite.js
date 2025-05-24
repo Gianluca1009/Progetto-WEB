@@ -1,3 +1,4 @@
+// Funzione per aggiornare i punti di un giocatore
 async function aggiornaPunti(userid, new_punti) {
   try {
     const response = await fetch('/update_punti', {
@@ -13,6 +14,7 @@ async function aggiornaPunti(userid, new_punti) {
   }
 }
 
+// Funzione per aggiornare le partite di un giocatore
 async function aggiornaPartite(userid) {
     try {
         const response = await fetch('/update_partite', {
@@ -35,7 +37,7 @@ async function aggiornaPartite(userid) {
     }
 }
 
-
+// Funzione per aggiornare le vittorie di un giocatore
 async function aggiornaVittorie(userid) {
     try {
         const response = await fetch('/update_vittorie', {
@@ -56,8 +58,11 @@ async function aggiornaVittorie(userid) {
     }
 }
 
+
+
 //------ FUNZIONE DA CHIAMARE A FINE PARTITA PER GESTIRE GLI AGGIORNAMENTI ------//
 
+// Funzione per aggiornare i dati dei player a fine partita
 function aggiornaStatistiche(){
     let numero_vincitore = window.turno_bianco ? 1 : 2;
     let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');

@@ -58,7 +58,7 @@ function resetSelezione(){
     window.selected_image = null;
 }
 
-//abilita movimento e hover pedine
+// Funzione che abilita movimento e hover pedine
 function abilitaPedine(){
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.remove('no-hover');
@@ -66,7 +66,7 @@ function abilitaPedine(){
     });
 }
 
-//disabilita movimento e hover pedine
+// Funzione che disabilita movimento e hover pedine
 function disabilitaPedine(){
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('no-hover');  // Aggiungo la classe no-hover per disabilitare l'hover
@@ -194,5 +194,3 @@ function handleTutorial() {
         makeHidden(tutorial);
     }
 }
-
-

@@ -82,6 +82,7 @@ function isSessioneAperta(){
 
 //------ REGISTRAZIONE ------//
 
+// Funzione per effettuare la registrazione
 function register() {
   Swal.fire({
     title: 'Registrazione utente',

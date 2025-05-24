@@ -1,7 +1,3 @@
-/*
-*  INIZIO LOGICA DEL RE IN SCACCO
-*/
-
 
 window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
 window.idCellReNero = "03"; //id della cella su cui c'è il re nero
@@ -10,8 +6,7 @@ window.cellaReBianco = document.getElementById(window.idCellReBianco);
 window.cellaReNero = document.getElementById(window.idCellReNero);
 
 
-//Funzione update variabili window posizione re (ovvero id cella dove è posiz)
-// + pulisce la vecchia cella del re se sottoscacco
+// Funzione che aggiorna le variabili di finestra del re e pulisce la cella del re precedente
 function update_re_position(img_pezzo, new_cell_re){
     //prima di cambiare posizione salvo la vecchia posiz del re
     let old_king_cell = (window.turno_bianco)? document.getElementById(window.idCellReBianco) : document.getElementById(window.idCellReNero);
@@ -32,12 +27,12 @@ function update_re_position(img_pezzo, new_cell_re){
     }  
 }
 
-//Funzione che resetta la cella del re passata come parametro
+// Funzione che resetta la cella del re passata come parametro
 function resetSottoscacco_cella(cella_re){
     cella_re.classList.remove('sottoscacco');
 }
 
-//Funzione che resetta la cella del re quando non è sottoscacco
+// Funzione che resetta la cella del re quando non è sottoscacco
 function resetSottoscacco (){
     //se il mio re non è sottoscacco decoloro la cella
     if (window.turno_bianco){
@@ -47,6 +42,7 @@ function resetSottoscacco (){
     }
 }
 
+// Funzione che resetta la cella del re avversario quando non è sottoscacco
 function resetSottoscaccoAvversaro (){
     //se il re avv non è sottoscacco decoloro la cella
     if (!window.turno_bianco){
@@ -56,7 +52,7 @@ function resetSottoscaccoAvversaro (){
     }
 }
 
-//Funzione che evidenzia il re se è sottoscacco
+// Funzione che evidenzia il re se è sottoscacco
 function highlight_re_if_sottoscacco(){ 
     //chech se metto re avversario sottoscacco quando muovo
     if(check_reAvversario_sottoscacco()){
@@ -88,7 +84,7 @@ function highlight_re_if_sottoscacco(){
     // NOTA:  PULIZIA DELLA CELLA SOTTOSCACCO IN UPDATE_RE_POSITION
 }
 
-//Funzione per controllare se l'ultima mossa fatta dall'avversario mette sotto scacco il proprio re
+// Funzione per controllare se l'ultima mossa fatta dall'avversario mette sotto scacco il proprio re
 function check_reAvversario_sottoscacco(){
     //ho la cella del re AVVERSARIO
     //controllo su tutti i MIEI pezzi 
@@ -125,7 +121,7 @@ function check_reAvversario_sottoscacco(){
     return sottoscacco;
 }
 
-//Funzione per controllare se il mio re è in scacco
+// Funzione per controllare se il mio re è in scacco
 function check_mio_re_sottoscacco(){
     //ho la cella del MIO re
     //controllo su tutti i MIEI pezzi 
@@ -159,7 +155,7 @@ function check_mio_re_sottoscacco(){
     return sottscacco;
 }
 
-//Funzione termina la partita se magio il re
+// Funzione che termina la partita se magio il re
 function isReMangiato(pedina_mangiata){
     // Verifica se la pedina mangiata esiste ed è un re
     if (pedina_mangiata && (pedina_mangiata.id === 'r' || pedina_mangiata.id === 'R')){
@@ -172,13 +168,12 @@ function isReMangiato(pedina_mangiata){
 function resetNumCelleRe(){
     window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
     window.idCellReNero = "03"; //id della cella su cui c'è il re nero
+    window.cellaReBianco = document.getElementById(window.idCellReBianco);
+    window.cellaReNero = document.getElementById(window.idCellReNero);
 }
 
 //Funzione per resettare il colore della cella del re a prescindere dal turno
-function resetColoreSottoscacco(){
+function resetAllSottoscacco(){
     window.cellaReBianco.classList.remove("sottoscacco");
     window.cellaReNero.classList.remove("sottoscacco");
 }
-/*
-*  FINE LOGICA DEL RE IN SCACCO
-*/

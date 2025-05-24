@@ -39,7 +39,7 @@ function handleButtonP2(){
         }
 }
 
-//Funzione per iniziare la preparazione del draft
+// Funzione per iniziare la preparazione del draft
 async function startDraft(){
 
     scrollToGameContainer();
@@ -124,9 +124,7 @@ async function restartDraft(){
     });
     
 
-    resetSottoscacco();
-    cambioTurno();
-    resetSottoscacco();
+    resetAllSottoscacco(); // Resetto lo stato di scacco per entrambi i re
     resetProntoButton();
     resetSuggerimenti();
     if(window.selected_cell) resetHighlighted();

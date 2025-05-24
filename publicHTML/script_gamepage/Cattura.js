@@ -152,7 +152,7 @@ function setTunnelElement(dizionario_mangiata){
     appendLog(divFluttuante);
 }
 
-// Funzione
+// Funzione che imposta degli elementi di condizione volatili
 function setFlyingElement(dizionario_mangiata, image_attaccante){
     const img = document.createElement('img');
     img.src = dizionario_mangiata.src;

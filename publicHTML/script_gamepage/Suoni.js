@@ -3,7 +3,7 @@ window.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 window.soundBuffers = {}; // Oggetti audio pre-caricati
 window.soundsInitialized = false;
 
-// Precarica i suoni e decodifica i buffer
+// Funzione che precarica i suoni e decodifica i buffer
 function preloadSounds() {
     const soundsToLoad = {
         mossa: 'sounds/Move_on_Alabaster.wav',
@@ -26,7 +26,7 @@ function preloadSounds() {
     }
 }
 
-// Sblocca l’audio context dopo la prima interazione
+// Funzione che sblocca l’audio context dopo la prima interazione
 function preparaSounds() {
     if (window.soundsInitialized) return;
     if (window.audioCtx.state === 'suspended') {
@@ -56,6 +56,7 @@ function playSound(tipo, volume = 1.0) {
     source.start(0);
 }
 
+// Funzione per riprodurre un suono vuoto per aggiornare il browser
 function forzaAudio() {
     const buf = window.audioCtx.createBuffer(1, 1, 22050); // buffer silenzioso
     const src = window.audioCtx.createBufferSource();
