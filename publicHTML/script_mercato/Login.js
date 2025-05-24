@@ -63,7 +63,6 @@ async function ifNotLoggedIn() {
     const righe = await righe_tabella_player.json();
 
     if (righe.count === 0) {
-      // svuotaBacheca();
       logout();
       return;
     }
