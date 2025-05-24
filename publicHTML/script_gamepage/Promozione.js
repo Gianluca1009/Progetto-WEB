@@ -10,7 +10,7 @@ function createPromotionDiv() {
     
     // Crea il div principale
     div_promotion = document.createElement('div');
-    div_promotion.id = 'div_ped_promotion';
+    div_promotion.id = 'div-ped-promotion';
     div_promotion.className = 'div-scelte';
     
     // Crea la struttura HTML con createElement
@@ -94,7 +94,7 @@ function helperPromozione(pedina_d, img_pedina, turno_bianco) {
     function gestisciPromozione(tipo) {
         pedina_d.id = pezzi[tipo].id[colore];
         img_pedina.src = pezzi[tipo].img[stile][colore];
-        makeHidden(document.getElementById("div_ped_promotion"));
+        makeHidden(document.getElementById("div-ped-promotion"));
 
         // Rimuove indicatori di scacco
         const reB = document.getElementById(window.idCellReBianco);

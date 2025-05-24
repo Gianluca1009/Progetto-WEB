@@ -59,7 +59,7 @@ function BuildRowForCalciatore(calciatore){
 
     //creo il punteruolo
     const img_pnt = document.createElement('img');
-    img_pnt.src = "images/punteruolo.png";
+    img_pnt.src = "images/bacheche/punteruolo.png";
     img_pnt.style.width = "8%";
     img_pnt.style.aspectRatio = "1/1";
     img_pnt.style.position = "absolute";

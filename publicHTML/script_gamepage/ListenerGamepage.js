@@ -25,9 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.progress-container').classList.add('hidden');
     document.querySelector('.tunnel-sx').classList.add('hidden');
     document.querySelector('.tunnel-dx').classList.add('hidden');
+<<<<<<< HEAD
     document.getElementById('restartDraftButton').classList.add('hidden');
     document.querySelector('.tutorial').classList.add('hidden');
     document.getElementById('tutorialButton').classList.add('hidden');
+=======
+    document.getElementById('restart-draft-button').classList.add('hidden');
+>>>>>>> 43850d89d599c407cd883fa1bf2421ab6f15f31b
     document.querySelectorAll('.pedina').forEach(pedina => {
         pedina.classList.add('hidden');
     })
@@ -37,17 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.grid-container').classList.add('disabled');
 
     // LISTENER PER IL BOTTONE PRINCIPALE GIOCA
-    document.getElementById('giocaButton').addEventListener('click', () => {
+    document.getElementById('gioca-button').addEventListener('click', () => {
         if(LS_getUser1Game().id != null && LS_getUser2Game().id != null){
             preparaSounds();        // Inizializza i suoni al primo click
             startDraft();                    // Prepara il draft
             scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
             aggiornaStatoPedine();     // Inizializza lo stato delle pedine all'avvio
             //aggirno la ui con i nomi dei player
-            document.getElementById('nome_player_1').textContent = LS_getUser1Game().username;
-            document.getElementById('nome_player_2').textContent = LS_getUser2Game().username;
-            //document.getElementById('punt_player_1').textContent = LS_getUser1Game().punti;
-            //document.getElementById('punt_player_2').textContent = LS_getUser2Game().punti;
+            document.getElementById('nome-player-1').textContent = LS_getUser1Game().username;
+            document.getElementById('nome-player-2').textContent = LS_getUser2Game().username;
             
         } else {
             Swal.fire('Accedi per scendere in campo!');

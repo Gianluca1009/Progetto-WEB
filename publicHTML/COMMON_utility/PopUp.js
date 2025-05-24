@@ -36,11 +36,11 @@ function launchEndgamePopup(vincitore){
             <p class="text-gameover">Congratulazioni ${vincitore} <br> +20 pt!</p>
             <div class="bottoni-gameover-container">
                  
-                <button id="restartDraftButtonAtEnd" class="button-gameover" onclick = "restartDraft();">
+                <button id="restart-draft-button-at-end" class="button-gameover" onclick = "restartDraft();">
                     <span class="button-top top-gameover"> DRAFT </span>
                 </button>
 
-                <button id="HomeButtonAtEnd" class="button-gameover" onclick = "goHome(); closeEndgamePopup();">
+                <button id="home-button-at-end" class="button-gameover" onclick = "goHome(); closeEndgamePopup();">
                     <span class="button-top"> HOME </span>
                 </button>
 
@@ -141,7 +141,7 @@ function launchPopupStatistiche(calciatore, div_info, posizione, isFromRosa){
     if(isFromRosa) divStatistiche.style.background = "var(--gold)";
 
     const sfondo = document.createElement('img');
-    sfondo.src = isFromRosa? "images/statistiche_rosa.png" : "images/statistiche.png";
+    sfondo.src = isFromRosa? "images/pop_up_statistiche/statistiche_rosa.png" : "images/pop_up_statistiche/statistiche.png";
     sfondo.style.objectFit = "cover";
     sfondo.style.position = "absolute";
     sfondo.style.bottom = "0";
@@ -151,7 +151,7 @@ function launchPopupStatistiche(calciatore, div_info, posizione, isFromRosa){
     divStatistiche.appendChild(sfondo);
 
     const freccia = document.createElement('img');
-    freccia.src = (posizione === "sinistra") ? "images/frecciadestra.png" : "images/frecciasinistra.png";
+    freccia.src = (posizione === "sinistra") ? "images/pop_up_statistiche//frecciadestra.png" : "images/pop_up_statistiche/frecciasinistra.png";
     freccia.classList.add(posizione === "sinistra" ? "freccia-destra" : "freccia-sinistra");
     divStatistiche.appendChild(freccia);
 
@@ -194,7 +194,7 @@ function launchRestartDraftPopup(){
     restart_draft_popup.id = 'popup-restart-draft';
     restart_draft_popup.innerHTML = `
             <p class="text-gameover">Riavviare il draft?</p>
-            <button id="confirmRestart" style="width: 35%; height: 20%;" onclick = "restartDraft();">
+            <button id="confirm-restart" style="width: 35%; height: 20%;" onclick = "restartDraft();">
                 <span class="button-top" style="font-size: calc(0.6vh + 0.6vw)"> CONFERMA </span>
             </button>
             <p style="font-size: calc(0.6vh + 0.6vw); cursor: pointer; border-bottom: 1px solid black;" onclick = "closeRestartDraftPopup();" >CONTINUA A GIOCARE</p>

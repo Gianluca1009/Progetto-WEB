@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Navigazione ai vari comandi
-    const comandoGioca = document.getElementById('comandoGioca');
-    const comandoRose = document.getElementById('comandoRose');
-    const comandoMercato = document.getElementById('comandoMercato');
-    const comandoRegole = document.getElementById('comandoRegole');
+    const comandoGioca = document.getElementById('comando-gioca');
+    const comandoRose = document.getElementById('comando-rose');
+    const comandoMercato = document.getElementById('comando-mercato');
+    const comandoRegole = document.getElementById('comando-regole');
 
     if (comandoGioca) {
         comandoGioca.addEventListener('click', function () {
@@ -62,11 +62,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const paragrafo_autore = document.getElementById('autore-random');
 
     if (paragrafo_citazioni) {
-        paragrafo_citazioni.textContent = frase-random;
+        paragrafo_citazioni.textContent = fraseRandom;
     }
 
     if (paragrafo_autore) {
-        paragrafo_autore.textContent = autore-random;
+        paragrafo_autore.textContent = autoreRandom;
     }
 });
 

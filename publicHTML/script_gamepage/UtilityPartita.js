@@ -17,11 +17,11 @@ function checkBothPlayersReady() {
 function handleButtonP1(){
     if (window.player1Ready) {
             window.player1Ready = false;
-            document.getElementById('top_player1').style.background = "var(--button_color)";
+            document.getElementById('top-player1').style.background = "var(--button_color)";
         } else {
             // Se il giocatore non era pronto, imposta come pronto
             window.player1Ready = true;
-            document.getElementById('top_player1').style.background = "linear-gradient(to right, #44c300, #027a16)";
+            document.getElementById('top-player1').style.background = "linear-gradient(to right, #44c300, #027a16)";
             checkBothPlayersReady();
         }
 }
@@ -30,11 +30,11 @@ function handleButtonP1(){
 function handleButtonP2(){
     if (window.player2Ready) {
             window.player2Ready = false;
-            document.getElementById('top_player2').style.background = "var(--button_color)";
+            document.getElementById('top-player2').style.background = "var(--button_color)";
         } else {
             // Se il giocatore non era pronto, imposta come pronto
             window.player2Ready = true;
-            document.getElementById('top_player2').style.background = "linear-gradient(to right, #44c300, #027a16)";
+            document.getElementById('top-player2').style.background = "linear-gradient(to right, #44c300, #027a16)";
             checkBothPlayersReady();
         }
 }
@@ -53,15 +53,15 @@ async function startDraft(){
 
     disabilitaPedine();
 
-    // ELEMENTI DA NASCONDERE (bottoni pronto, giocaButton)
+    // ELEMENTI DA NASCONDERE (bottoni pronto, gioca-button)
     makeHidden(document.querySelector('.gioca-button'));
     document.getElementById('player1button').classList.add('hidden');
     document.getElementById('player2button').classList.add('hidden');
-    makeHidden(document.getElementById('logoutbutton'));
+    makeHidden(document.getElementById('logout-button'));
     
     // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine, tasto restart draft, tutorial button)
     makeVisible(document.querySelector('.background-overlay'));
-    makeVisible(document.getElementById('restartDraftButton'));
+    makeVisible(document.getElementById('restart-draft-button'));
     makeVisible(document.querySelector('.sezione-dx'));
     makeVisible(document.querySelector('.sezione-sx'));
     makeVisible(document.querySelector('.restart-draft'));
@@ -99,8 +99,8 @@ async function restartDraft(){
     //ELEMENTI DA MOSTRARE (sezioni, switch, tutorial button)
     makeVisible(document.querySelector('.sezione-dx'));
     makeVisible(document.querySelector('.sezione-sx'));
-    makeVisible(document.getElementById('draft_table_dx'));
-    makeVisible(document.getElementById('draft_table_sx'));
+    makeVisible(document.getElementById('draft-table-dx'));
+    makeVisible(document.getElementById('draft-table-sx'));
     makeVisible(document.getElementById('random1'));
     makeVisible(document.getElementById('random2'));
     makeVisible(document.querySelector('.switch'));
@@ -113,7 +113,7 @@ async function restartDraft(){
     makeHidden(document.querySelector('.tunnel-dx'));
     document.getElementById('player1button').classList.add('hidden');
     document.getElementById('player2button').classList.add('hidden');
-    if(document.getElementById('div_ped_promotion')) document.getElementById('div_ped_promotion').remove();
+    if(document.getElementById('div-ped-promotion')) document.getElementById('div-ped-promotion').remove();
     
     //RESET ELEMENTI DEL DRAFT
     window.dragged_class_calciatore_bianco = null; 
@@ -225,9 +225,13 @@ function endGame(){
     launchEndgamePopup(vincitore);
     makeHidden(document.querySelector('.progress-container'));
     makeHidden(document.querySelector('.condition-container'));
+<<<<<<< HEAD
     makeHidden(document.getElementById('tutorialButton'));
     makeVisible(document.getElementById('logoutbutton'));
 
+=======
+    makeVisible(document.getElementById('logout-button'));
+>>>>>>> 43850d89d599c407cd883fa1bf2421ab6f15f31b
     document.querySelector('.game-container').classList.add('game-not-started');
 
     window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
@@ -235,7 +239,7 @@ function endGame(){
     window.cellaReBianco = document.getElementById(window.idCellReBianco);
     window.cellaReNero = document.getElementById(window.idCellReNero);
     resetSottoscacco();
-    if(document.getElementById('div_ped_promotion')) document.getElementById('div_ped_promotion').remove();
+    if(document.getElementById('div-ped-promotion')) document.getElementById('div-ped-promotion').remove();
 
     playSound('fischio_finale', 0.2);
 

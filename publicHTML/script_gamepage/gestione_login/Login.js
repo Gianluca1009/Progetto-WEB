@@ -49,10 +49,8 @@ function login() {
             LS_login2Game(game2Data.userId, game2Data.username, game2Data.email, game2Data.punti, game2Data.partite, game2Data.vittorie);
 
             //aggirno la ui con i nomi dei player
-            document.getElementById('nome_player_1').textContent = game1Data.username;
-            document.getElementById('nome_player_2').textContent = game2Data.username;
-            //document.getElementById('punt_player_1').textContent = game1Data.punti;
-            //document.getElementById('punt_player_2').textContent = game2Data.punti;
+            document.getElementById('nome-player-1').textContent = game1Data.username;
+            document.getElementById('nome-player-2').textContent = game2Data.username;
 
             //nasconde i bottone di login e registrazione
         })
@@ -64,8 +62,8 @@ function login() {
       if (result.isConfirmed) {
         Swal.fire('Login effettuato per entrambi i giocatori!');
         makeVisible(document.getElementById("logoutbutton"));
-        makeHidden(document.getElementById("loginbutton"));
-        makeHidden(document.getElementById("registerbutton"));
+        makeHidden(document.getElementById("login-button"));
+        makeHidden(document.getElementById("register-button"));
       }
     });
 }
@@ -74,9 +72,9 @@ function login() {
 function isSessioneAperta(){
     //mostra logout se l'utente è già loggato
     if(LS_getUser1Game().id != null && LS_getUser2Game().id != null){
-        document.getElementById("logoutbutton").classList.remove("hidden");
-        document.getElementById("registerbutton").classList.add("hidden");
-        document.getElementById("loginbutton").classList.add("hidden");
+        document.getElementById("logout-button").classList.remove("hidden");
+        document.getElementById("register-button").classList.add("hidden");
+        document.getElementById("login-button").classList.add("hidden");
     }
 }
 
@@ -144,6 +142,6 @@ function logout(){
     //rende visibili i bottoni
     makeHidden(document.getElementById("logoutbutton"));
     makeHidden(document.querySelector("sezione-profilo"));
-    makeVisible(document.getElementById("loginbutton"));
-    makeVisible(document.getElementById("registerbutton"));
+    makeVisible(document.getElementById("login-button"));
+    makeVisible(document.getElementById("register-button"));
 }

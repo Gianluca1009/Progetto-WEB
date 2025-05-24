@@ -49,20 +49,20 @@
             <h1 class="title" onclick="window.location.reload()">MERCATO</h1>
 
             <div class="container-bottoni-login">
-                <button class="btn-login" id="loginbutton" onclick="login()">
+                <button class="btn-login" id="login-button" onclick="login()">
                     <span class="button-top login"> Login </span>
                 </button>
 
-                <button class="btn-register" id="registerbutton" onclick="register()">
+                <button class="btn-register" id="register-button" onclick="register()">
                     <span class="button-top login"> Registrati </span>
                 </button>
 
-                <button class="btn-logout" id="logoutbutton" onclick="logout()">
+                <button class="btn-logout" id="logout-button" onclick="logout()">
                     <span class="button-top login"> Logout </span>
                 </button>
 
                 <div class="sezione-profilo" data-aperto="false">
-                    <img class="avatar" src="images/avatar.png" onclick="launchProfilePopup('mercato')" alt="Avatar">
+                    <img class="avatar" src="images/intestazione/avatar.png" onclick="launchProfilePopup('mercato')" alt="Avatar">
                     <p id="playerusername" class="p-username"></p>
                 </div>
                 
@@ -74,14 +74,14 @@
 
     <div class = "ricerca">
 
-        <select class = "tendina-ruolo" id = "tendinaRuolo" name = "tendina">
+        <select class = "tendina-ruolo" id = "tendina-ruolo" name = "tendina">
             <option value = "qualsiasi">Seleziona Ruolo</option>
             <option value = "attaccante">Attaccante</option>
             <option value = "centrocampista">Centrocampista</option>
             <option value = "difensore">Difensore</option>
         </select>
 
-        <form class = "barra-ricerca" id="searchForm">
+        <form class = "barra-ricerca" id="search-form">
         <input type = "text" name = "nome" placeholder = "Cerca giocatore">
         <button class="btn-cerca" id="cerca-button">
                 <span class="button-top login"> Cerca </span>

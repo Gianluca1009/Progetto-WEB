@@ -37,7 +37,6 @@ async function santinoDxDragStart(santino_img, event, colore) {
     event.dataTransfer.setData("text", window.dragged_class_calciatore_nero.cognome);  //salva id del div nell'evento
     event.dataTransfer.setData("isFromRosa", window.dragged_class_calciatore_nero.isFromRosa);
     event.dataTransfer.setData("type", "dx"); // Indica che è un santino-dx
-    console.log("colore in santinoDxDragStart:",colore);
     event.dataTransfer.setData("colore", colore);
     document.body.style.cursor = 'grabbing';  // Imposta il cursore a grabbing su tutto il body
     evidenziaCelleDropNero();
@@ -104,7 +103,7 @@ async function populateDraft(colore) {
 
             // AGGIORNAMENTO GRAFICHE
 
-            makeHidden(document.getElementById('draft_table_dx'));
+            makeHidden(document.getElementById('draft-table-dx'));
             makeHidden(document.getElementById('random2'));
             makeVisible(document.getElementById('player2button'));
             return;
@@ -115,7 +114,7 @@ async function populateDraft(colore) {
 
             // AGGIORNAMENTO GRAFICHE
             
-            makeHidden(document.getElementById('draft_table_sx'));
+            makeHidden(document.getElementById('draft-table-sx'));
             makeHidden(document.getElementById('random1'));
             makeVisible(document.getElementById('player1button'));
             return;
@@ -203,7 +202,6 @@ async function populateDraft(colore) {
                 if (colore === 'bianco'){
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
-                            console.log("clickdestro");
                             launchPopupStatistiche(calciatore, this, "sinistra", calciatore.isFromRosa);
                         }
                     });
@@ -211,7 +209,6 @@ async function populateDraft(colore) {
                 else{
                     div_info.addEventListener('mousedown', function(event){
                         if(event.button === 2){
-                            console.log("clickdestro");
                             launchPopupStatistiche(calciatore, this, "destra", calciatore.isFromRosa);
                         }
                     });
@@ -337,14 +334,14 @@ function populateRandom(colore) {
     //AGGIORNAMENTO GRAFICHE
 
     if(colore=="nero"){
-        makeHidden(document.getElementById('draft_table_dx'));
+        makeHidden(document.getElementById('draft-table-dx'));
         makeHidden(document.getElementById('random2'));
         setTimeout(() => {
             makeVisible(document.getElementById('player2button'));
         }, 500); // Mostra il bottone dopo 1 secondo
     }
     else if(colore=="bianco"){
-        makeHidden(document.getElementById('draft_table_sx'));
+        makeHidden(document.getElementById('draft-table-sx'));
         makeHidden(document.getElementById('random1'));
         setTimeout(() => {
             makeVisible(document.getElementById('player1button'));

@@ -45,11 +45,11 @@ function login() {
         document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });
-        makeVisible(document.getElementById("logoutbutton"));
+        makeVisible(document.getElementById("logout-button"));
         fillUsernameMercato();
         makeVisible(document.querySelector(".sezione-profilo"));
-        makeHidden(document.getElementById("loginbutton"));
-        makeHidden(document.getElementById("registerbutton"));
+        makeHidden(document.getElementById("login-button"));
+        makeHidden(document.getElementById("register-button"));
         BuildMercato("", "qualsiasi");
       }
     });
@@ -79,13 +79,13 @@ function ifSessioneAperta() {
         BuildMercato("", "qualsiasi");
         fillUsernameMercato();
         document.querySelector('.user-points').textContent = LS_getUserMercatoData().punti;
-        document.getElementById("logoutbutton").classList.remove("hidden");
+        document.getElementById("logout-button").classList.remove("hidden");
         makeVisible(document.querySelector(".sezione-profilo"));
-        document.getElementById("registerbutton").classList.add("hidden");
+        document.getElementById("register-button").classList.add("hidden");
         document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });
-        document.getElementById("loginbutton").classList.add("hidden");
+        document.getElementById("login-button").classList.add("hidden");
     }
 }
 
@@ -177,10 +177,10 @@ function register() {
 function logout() {
     LS_logoutMercato();
     document.querySelector('.user-points').textContent = 'loggarsi';
-    makeHidden(document.getElementById("logoutbutton"));
+    makeHidden(document.getElementById("logout-button"));
     makeHidden(document.querySelector(".sezione-profilo"));
-    makeVisible(document.getElementById("loginbutton"));
-    makeVisible(document.getElementById("registerbutton"));
+    makeVisible(document.getElementById("login-button"));
+    makeVisible(document.getElementById("register-button"));
     document.querySelectorAll('.btn-compravendita').forEach(button => {
         makeHidden(button);
     });
