@@ -11,7 +11,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.goal,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/goal.png",
+                "src": "images/loghi_condizioni/goal.png",
                 "cond":  "Goal"};
     }
     if (cond === "Assist forniti in carriera"){
@@ -20,7 +20,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.assist,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": window.turno_bianco ? "images/assist.png" : "images/assist_nero.png",
+                "src": window.turno_bianco ? "images/loghi_condizioni/assist.png" : "images/loghi_condizioni/assist_nero.png",
                 "cond":  "Assist"};
     }
     if (cond === "Presenze collezionate in carriera"){
@@ -29,7 +29,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.presenze,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": window.turno_bianco ? "images/presenze.png" : "images/presenze_nero.png",
+                "src": window.turno_bianco ? "images/loghi_condizioni/presenze.png" : "images/loghi_condizioni/presenze_nero.png",
                 "cond":  "Presenza"};
     }
     if (cond === "Minor numero di cartellini gialli in carriera"){
@@ -38,7 +38,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.cartellini_gialli,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/cartellino_giallo.png",
+                "src": "images/loghi_condizioni/cartellino_giallo.png",
                 "cond":  "Cartellini Gialli"};
     }
     if (cond === "Minor numero di cartellini rossi in carriera"){
@@ -47,7 +47,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.cartellini_rossi,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/cartellino_rosso.png",
+                "src": "images/loghi_condizioni/cartellino_rosso.png",
                 "cond":  "Cartellini Rossi"};
     }
     if (cond === "Numero di maglia più alto"){
@@ -56,7 +56,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.numero_maglia,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/numero_maglia.png",
+                "src": "images/loghi_condizioni/numero_maglia.png",
                 "cond":  "Numero Maglia"};
     }
     if (cond === "Numero di trofei vinti in carriera"){
@@ -65,7 +65,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.trofei,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/trofei.png",
+                "src": "images/loghi_condizioni/trofei.png",
                 "cond":  "Trofei"};
     }
     if (cond === "Record di goal stagionale"){
@@ -74,7 +74,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.record_goal,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/record_goal.png",
+                "src": "images/loghi_condizioni/record_goal.png",
                 "cond":  "Record Goal"};
     }
     if (cond === "Giocatore più alto"){
@@ -83,7 +83,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.altezza,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": window.turno_bianco ? "images/altezza.png" : "images/altezza_nero.png",
+                "src": window.turno_bianco ? "images/loghi_condizioni/altezza.png" : "images/loghi_condizioni/altezza_nero.png",
                 "cond":  "Altezza"};
     }
     if (cond === "Record di assist stagionale"){
@@ -92,7 +92,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.record_assist,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": window.turno_bianco ?  "images/record_assist.png" : "images/record_assist_nero.png",
+                "src": window.turno_bianco ?  "images/loghi_condizioni/record_assist.png" : "images/loghi_condizioni/record_assist_nero.png",
                 "cond":  "Record Assist"};
 
     }else{

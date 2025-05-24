@@ -141,7 +141,7 @@ function launchPopupStatistiche(calciatore, div_info, posizione, isFromRosa){
     if(isFromRosa) divStatistiche.style.background = "var(--gold)";
 
     const sfondo = document.createElement('img');
-    sfondo.src = isFromRosa? "images/statistiche_rosa.png" : "images/statistiche.png";
+    sfondo.src = isFromRosa? "images/pop_up_statistiche/statistiche_rosa.png" : "images/pop_up_statistiche/statistiche.png";
     sfondo.style.objectFit = "cover";
     sfondo.style.position = "absolute";
     sfondo.style.bottom = "0";
@@ -151,7 +151,7 @@ function launchPopupStatistiche(calciatore, div_info, posizione, isFromRosa){
     divStatistiche.appendChild(sfondo);
 
     const freccia = document.createElement('img');
-    freccia.src = (posizione === "sinistra") ? "images/frecciadestra.png" : "images/frecciasinistra.png";
+    freccia.src = (posizione === "sinistra") ? "images/pop_up_statistiche//frecciadestra.png" : "images/pop_up_statistiche/frecciasinistra.png";
     freccia.classList.add(posizione === "sinistra" ? "freccia-destra" : "freccia-sinistra");
     divStatistiche.appendChild(freccia);
 

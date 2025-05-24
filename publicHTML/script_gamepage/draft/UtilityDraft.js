@@ -92,7 +92,7 @@ function buildFlagRosa(div_info, posizione = "draft"){
     sezione_flag.appendChild(flag_text);
 
     const img_flag = document.createElement('img');
-    img_flag.src = "images/frecciarosa.png";
+    img_flag.src = "images/gamepage/frecciarosa.png";
     sezione_flag.appendChild(img_flag);
 
     div_info.appendChild(sezione_flag);

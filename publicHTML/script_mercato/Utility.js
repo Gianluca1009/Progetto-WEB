@@ -27,7 +27,7 @@ function BuildRowForCalciatore(calciatore){
     row.className = 'riga-bacheca';
 
     const img_pnt = document.createElement('img');
-    img_pnt.src = "images/punteruolo.png";
+    img_pnt.src = "images/bacheche/punteruolo.png";
     img_pnt.style.width = "8%";
     img_pnt.style.aspectRatio = "1/1";
     img_pnt.style.position = "absolute";
@@ -111,7 +111,7 @@ function BuildRowForCalciatore(calciatore){
     const span_top = document.createElement('div');
     span_top.className = 'span-top';
     const carrello = document.createElement('img');
-    carrello.src = "images/carrello.png";
+    carrello.src = "images/bacheche/carrello.png";
     carrello.className = "carrello";
     span_top.appendChild(carrello);
     const top_text = document.createElement("p");
