@@ -20,7 +20,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.assist,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/assist.png",
+                "src": window.turno_bianco ? "images/assist.png" : "images/assist_nero.png",
                 "cond":  "Assist"};
     }
     if (cond === "Presenze collezionate in carriera"){
@@ -29,7 +29,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.presenze,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/presenze.png",
+                "src": window.turno_bianco ? "images/presenze.png" : "images/presenze_nero.png",
                 "cond":  "Presenza"};
     }
     if (cond === "Minor numero di cartellini gialli in carriera"){
@@ -83,7 +83,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.altezza,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/altezza.png",
+                "src": window.turno_bianco ? "images/altezza.png" : "images/altezza_nero.png",
                 "cond":  "Altezza"};
     }
     if (cond === "Record di assist stagionale"){
@@ -92,7 +92,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "val_dif": calc_dif.record_assist,
                 "att_cognome": calc_att.cognome,
                 "dif_cognome": calc_dif.cognome,
-                "src": "images/record_assist.png",
+                "src": window.turno_bianco ?  "images/record_assist.png" : "images/record_assist_nero.png",
                 "cond":  "Record Assist"};
 
     }else{
@@ -106,9 +106,12 @@ function setTunnelElement(dizionario_mangiata){
     const divFluttuante = document.createElement('div');
     divFluttuante.classList.add("div-log");
     divFluttuante.style.color = window.turno_bianco ? "black" : "white";
+    divFluttuante.style.background = window.turno_bianco ? "rgb(241 233 233)" : "rgba(120, 120, 120)";
+    console.log(divFluttuante.style.background);
 
     const top = document.createElement('div');
     top.classList.add("log-top");
+    top.style.background = window.turno_bianco ? "rgb(165 165 165)" : "rgb(62, 60, 60)";
     divFluttuante.appendChild(top);
 
         const condizione = document.createElement('p');
@@ -129,7 +132,7 @@ function setTunnelElement(dizionario_mangiata){
 
         const stat1 = document.createElement('p');
         stat1.textContent = dizionario_mangiata.val_att;
-        stat1.style.color = dizionario_mangiata.valid ? "green" : "red";
+        stat1.style.color = dizionario_mangiata.valid ? "#13ea13" : "#c80000";
         section1.appendChild(stat1);
     
     const section2 = document.createElement('div');
@@ -142,7 +145,7 @@ function setTunnelElement(dizionario_mangiata){
 
         const stat2 = document.createElement('p');
         stat2.textContent = dizionario_mangiata.val_dif;
-        stat2.style.color = dizionario_mangiata.valid ? "red" : "green";
+        stat2.style.color = dizionario_mangiata.valid ? "#c80000" : "#13ea13";
         section2.appendChild(stat2);
 
     const tunnel = window.turno_bianco ? document.querySelector('.tunnel-sx') : document.querySelector('.tunnel-dx');
@@ -154,7 +157,6 @@ function setTunnelElement(dizionario_mangiata){
 
 // Funzione
 function setFlyingElement(dizionario_mangiata, image_attaccante){
-    console.log("image_attaccante: ", image_attaccante);
     const img = document.createElement('img');
     img.src = dizionario_mangiata.src;
     img.classList.add("flying");
