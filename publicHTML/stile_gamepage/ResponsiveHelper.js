@@ -56,27 +56,13 @@ function misuraDivLog() {
     return dimensioni;
 }
 
-
-
+// Funzione per settare la font size ai calciatori nelle celle
 function setSoccerPlayerNameFontSize() {
     const nomiGiocatori = document.querySelectorAll('.nome-giocatore');
     const dimensioniCella = misuraDimensioniCelle().width;
-    
     nomiGiocatori.forEach(nome => {
         nome.style.fontSize = `${dimensioniCella * 0.12}px`;
     });
-}
-
-function setSezioniDimensions(){
-    const dimensioniGameContainer = misuraGameContainer();
-    const dimensioniGridContainer = misuraGridContainer();
-    
-    // Calcola le dimensioni delle sezioni
-    const larghezzaSezione = (dimensioniGameContainer.width - dimensioniGridContainer.width - 20) / 2; // 20px di margine
-    
-    // Applica le dimensioni alle sezioni
-    document.querySelector('.sezione_sx').style.width = `${larghezzaSezione}px`;
-    document.querySelector('.sezione_dx').style.width = `${larghezzaSezione}px`;
 }
 
 function setSoccerPlayerInfoFontSize(){
@@ -91,6 +77,7 @@ function setSoccerPlayerInfoFontSize(){
     }
 }
 
+// Funzione per settare la lunghezza del menu hamburger dinamicamente
 function setHamburgerLunghezza(){
     const altezzaPagina = Math.max(
         document.body.scrollHeight,
