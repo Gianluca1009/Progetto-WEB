@@ -1,7 +1,7 @@
 /* Elenco delle classi CSS in questo file:
 
-  * .foto_draftcell - cella per l'immagine del calciatore
- * .info_draftcell - cella per le informazioni del calciatore
+  * .foto-draftcell - cella per l'immagine del calciatore
+ * .info-draftcell - cella per le informazioni del calciatore
  * .santino-container - contenitore per l'immagine del calciatore
  * .santino - immagine del calciatore
  * .santino:hover - hover dell'immagine del calciatore
@@ -9,7 +9,7 @@
  */
 
 
- .sezione_sx, .sezione_dx{
+ .sezione-sx, .sezione-dx{
     z-index: 3;
     position: absolute;
     height: 100%;
@@ -23,16 +23,16 @@
     gap: 3%;
 }
 
-.sezione_sx{
+.sezione-sx{
     left: 0;   
     
 }
 
-.sezione_dx{
+.sezione-dx{
     right: 0;
 }
 
-.tabella_draft{
+.tabella-draft{
     width: 90%;
     aspect-ratio: 1/1.3;
     border: 0;
@@ -45,7 +45,7 @@
 }
 
 /* Stile per le righe con ombre - ora ciascuna riga è un grid element */
-.riga_draft {
+.riga-draft {
     transition: all 0.2s ease;
     position: relative;
     display: flex;
@@ -57,7 +57,7 @@
     z-index: 1000;
 }
 
-.foto_draftcell {
+.foto-draftcell {
     background-color: #000000;
     text-align: center;
     justify-content: center;
@@ -73,7 +73,7 @@
     z-index: 1001;
 }
 
-.info_draftcell {
+.info-draftcell {
     text-align: center;
     justify-content: center;
     border: 2px solid black;

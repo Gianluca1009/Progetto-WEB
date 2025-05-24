@@ -37,7 +37,7 @@ function misuraGridContainer() {
 //Funzione per misurare le dimensioni del contenitore delle informazioni
 function misuraInfoDraftCell() {
     // Seleziona il contenitore delle informazioni
-    const infoContainer = document.querySelector('.info_draftcell');
+    const infoContainer = document.querySelector('.info-draftcell');
     
     if (infoContainer) {
         // Ottiene le dimensioni effettive del contenitore delle informazioni

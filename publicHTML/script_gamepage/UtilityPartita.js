@@ -62,8 +62,8 @@ async function startDraft(){
     // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine, tasto restart draft)
     makeVisible(document.querySelector('.background-overlay'));
     makeVisible(document.getElementById('restartDraftButton'));
-    makeVisible(document.querySelector('.sezione_dx'));
-    makeVisible(document.querySelector('.sezione_sx'));
+    makeVisible(document.querySelector('.sezione-dx'));
+    makeVisible(document.querySelector('.sezione-sx'));
     makeVisible(document.querySelector('.restart-draft'));
     makeVisible(document.querySelector('.switch'));
     document.querySelectorAll('.pedina').forEach(pedina => {
@@ -96,8 +96,8 @@ async function restartDraft(){
     if(document.getElementById('popup-gameover')) closeEndgamePopup();
     
     //ELEMENTI DA MOSTRARE (sezioni, switch)
-    makeVisible(document.querySelector('.sezione_dx'));
-    makeVisible(document.querySelector('.sezione_sx'));
+    makeVisible(document.querySelector('.sezione-dx'));
+    makeVisible(document.querySelector('.sezione-sx'));
     makeVisible(document.getElementById('draft_table_dx'));
     makeVisible(document.getElementById('draft_table_sx'));
     makeVisible(document.getElementById('random1'));
@@ -163,8 +163,8 @@ function startGame() {
     makeVisible(document.querySelector('.tunnel-dx'));
 
     // ELEMENTI DA NASCONDERE (sezioni, switch)
-    makeHidden(document.querySelector('.sezione_dx'));
-    makeHidden(document.querySelector('.sezione_sx'));
+    makeHidden(document.querySelector('.sezione-dx'));
+    makeHidden(document.querySelector('.sezione-sx'));
     makeHidden(document.querySelector('.switch'));
 
     //Riaggiorno posizioni re

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCondition(); // Aggiorna la condizione iniziale   
 
     //ELEMENTI DA NASCONDERE ALL'INIZIO (sezioni, condizione,switch,timer,pedine)
-    document.querySelector('.sezione_sx').classList.add('hidden');
+    document.querySelector('.sezione-sx').classList.add('hidden');
     document.querySelector('.sezione_dx').classList.add('hidden');
     document.querySelector('.switch').classList.add('hidden');
     document.querySelector('.background-overlay').classList.add('hidden');
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // PERMETTE DI NON FAR VEDERE IL MENU DI CONTESTO PER IL GAME CONTAINER COL TASTO DESTRO 
-    document.querySelectorAll('.riga_draft').forEach(container => {
+    document.querySelectorAll('.riga-draft').forEach(container => {
         container.addEventListener('contextmenu', (event) => {
             event.preventDefault();
         });
