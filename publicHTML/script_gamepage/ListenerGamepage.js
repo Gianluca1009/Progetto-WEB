@@ -41,6 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
             startDraft();                    // Prepara il draft
             scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
             aggiornaStatoPedine();     // Inizializza lo stato delle pedine all'avvio
+            //aggirno la ui con i nomi dei player
+            document.getElementById('nome_player_1').textContent = LS_getUser1Game().username;
+            document.getElementById('nome_player_2').textContent = LS_getUser2Game().username;
+            //document.getElementById('punt_player_1').textContent = LS_getUser1Game().punti;
+            //document.getElementById('punt_player_2').textContent = LS_getUser2Game().punti;
             
         } else {
             Swal.fire('Accedi per scendere in campo!');

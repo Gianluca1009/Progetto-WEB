@@ -51,8 +51,8 @@ function login() {
             //aggirno la ui con i nomi dei player
             document.getElementById('nome_player_1').textContent = game1Data.username;
             document.getElementById('nome_player_2').textContent = game2Data.username;
-            document.getElementById('punt_player_1').textContent = game1Data.punti;
-            document.getElementById('punt_player_2').textContent = game2Data.punti;
+            //document.getElementById('punt_player_1').textContent = game1Data.punti;
+            //document.getElementById('punt_player_2').textContent = game2Data.punti;
 
             //nasconde i bottone di login e registrazione
         })
