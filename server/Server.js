@@ -4,13 +4,13 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const port = 3000; // Changed from 3306 to avoid conflict with MySQL
+const port = 3000; // Porta utilizzata per il server
 
 // Configurazione CORS
 app.use(cors());
 app.use(express.json());
 
-// Configurazione per servire file statici
+// Configurazione per ottenere i file statici del progetto
 app.use(express.static(path.join(__dirname, 'publicHTML')));
 
 // Funzione per creare una connessione al database
@@ -28,7 +28,7 @@ async function createConnection() {
     return client;
 }
 
-// Funzione per ottenere n calciatori random da usare nel draft
+// Endpoint per ottenere n calciatori random da usare nel draft
 app.get('/get_random_calciatori', async (req, res) => {
     const connection = await createConnection();
     const user_id = req.query.id;
@@ -55,14 +55,12 @@ app.get('/get_random_calciatori', async (req, res) => {
     }
 });
 
-
-// Route per la homepage
+// Endpoint per ottenere la pagina principale di accesso con i relativi file statici
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'publicHTML', 'index.html'));
 });
 
-
-// REGISTRAZIONE
+// Endpoint di registrazione
 app.post('/register', async (req, res) => {
     const connection = await createConnection();
     const { username, password, email } = req.body;
@@ -74,63 +72,74 @@ app.post('/register', async (req, res) => {
       res.status(500).send('Errore durante la registrazione');
       res.status(409).json({ error: "Username o password errati" });
     }
+    finally {
+        await connection.end();
+    }
 });
   
-  // LOGIN
+// Endpoint di login
 app.post('/login', async (req, res) => {
     const connection = await createConnection();
     const { username, password} = req.body;
   
-    const result = await connection.query('SELECT id,username,email,punti,partite,vittorie FROM player WHERE username = $1 AND password = $2' , [username, password]);
-  
-    if (result.rows.length > 0) {
-        // Estrai l'ID e altri dati necessari
-        const user = result.rows[0]; // primo risultato -> username è unico
-        // Rispondi con i dati dell'utente (come id, username, punti)
-        res.json({
-        userId: user.id,
-        username: user.username,
-        email: user.email,
-        punti: user.punti,
-        partite: user.partite,
-        vittorie: user.vittorie
-        });
+    try{
+      const result = await connection.query('SELECT id,username,email,punti,partite,vittorie FROM player WHERE username = $1 AND password = $2' , [username, password]);
+    
+      if (result.rows.length > 0) {
+          // Estrai l'ID e altri dati necessari
+          const user = result.rows[0]; // primo risultato -> username è unico
+          // Rispondi con i dati dell'utente (come id, username, punti)
+          res.json({
+          userId: user.id,
+          username: user.username,
+          email: user.email,
+          punti: user.punti,
+          partite: user.partite,
+          vittorie: user.vittorie
+          });
 
-    } else {
-      res.status(401).send('Username o password errati');
+      }else {
+        res.status(401).send('Username o password errati');
+      }
+    } catch (err) {
+      console.error('Errore durante il login');
+      res.status(500).send('Errore interno al server');
+
+    } finally{
+        await connection.end();
     }
 });
 
-
-  //GET GIOCATORE LIBERI -> MERCATO
+// Endpoint per ottenere l'elenco dei giocatori liberi da acquistare
 app.get('/get_giocatori_mercato', async (req, res) => {
-        const connection = await createConnection();
-        const user_id = req.query.id; // ← prende dalla query string ?id=...
-        try {
-          const results = await connection.query(
-          `SELECT c.*
-            FROM calciatore c
-            WHERE c.id NOT IN (
-                SELECT unnest(COALESCE(p.rosa_ids, ARRAY[]::INTEGER[]))
-                FROM player p
-                WHERE p.id = $1
-            );
-            `, [user_id]);
-      
-          if (results.rows.length > 0) {
-            // Invia l'elenco dei giocatori liberi al client
-            res.json(results.rows); // invia solo i dati
-          } else {
-            res.status(404).send('Nessun giocatore libero trovato');
-          }
-        } catch (error) {
-          console.error('Errore durante la query:', error);
-          res.status(500).send('Errore interno al server');
-        }
+    const connection = await createConnection();
+    const user_id = req.query.id; // ← prende dalla query string ?id=...
+    try {
+      const results = await connection.query(
+      `SELECT c.*
+        FROM calciatore c
+        WHERE c.id NOT IN (
+            SELECT unnest(COALESCE(p.rosa_ids, ARRAY[]::INTEGER[]))
+            FROM player p
+            WHERE p.id = $1
+        );
+        `, [user_id]);
+  
+      if (results.rows.length > 0) {
+        // Invia l'elenco dei giocatori liberi al client
+        res.json(results.rows); // invia solo i dati
+      } else {
+        res.status(404).send('Nessun giocatore libero trovato');
+      }
+    } catch (error) {
+      console.error('Errore durante la query:', error);
+      res.status(500).send('Errore interno al server');
+    }finally {
+        await connection.end();
+    }
 });
 
-
-  //GET GIOCATORE ID User -> ROSE
+// Endpoint per ottenere i giocatori della rosa di un giocatore specifico
 app.get('/get_giocatori_rosa', async (req, res) => {
     const connection = await createConnection();
     const id_player_log = req.query.id; // ← prende dalla query string ?id=...
@@ -153,17 +162,12 @@ app.get('/get_giocatori_rosa', async (req, res) => {
     } catch (error) {
       console.error('Errore durante la query:', error);
       res.status(500).send('Errore interno al server');
+    } finally {
+        await connection.end();
     }
 });
 
-
-  // Avvia il server e mettiti in ascolto sulla porta specificata
-app.listen(port, () => {
-    console.log(`[SOC-C-HESS © Server] successfully started and running on port ${port}`); // Log successful start
-});
-
-
-//update punti player 
+//Endpoint per aggiornare i punti del giocatore vincente
 app.post('/update_punti', async (req, res) => {
     const connection = await createConnection();
     const { userid, new_punti} = req.body;
@@ -173,6 +177,8 @@ app.post('/update_punti', async (req, res) => {
       res.status(201).send('update punti avvenuto');
     } catch (err) {
       res.status(500).send('Errore durante l\'aggiornamento dei punti');
+    } finally {
+        await connection.end();
     }
 });
 
@@ -187,6 +193,8 @@ app.post('/update_partite', async (req, res) => {
       res.status(201).json(partite_aggiornate);
     } catch (err) {
       res.status(500).send('Errore durante l\'aggiornamento delle partite');
+    } finally {
+        await connection.end();
     }
 });
 
@@ -201,10 +209,12 @@ app.post('/update_vittorie', async (req, res) => {
       res.status(201).json(vittorie_aggiornate);
     } catch (err) {
       res.status(500).send('Errore durante l\'aggiornamento delle vittorie');
+    } finally {
+        await connection.end();
     }
 });
 
-  //abina un nuovo calciatore al player -> ROSE
+//Endpoint per l'acquisto di un calciatore
 app.post('/buy_calciatore', async (req, res) => {
     const connection = await createConnection();
     const { userid, calc_id} = req.body;
@@ -214,10 +224,12 @@ app.post('/buy_calciatore', async (req, res) => {
       res.status(201).send('acquisto calciatore avvenuto');
     } catch (err) {
       res.status(500).send('Errore durante l\'acquisto calciatore');
+    } finally {
+        await connection.end();
     }
 });
 
-    //abina un nuovo calciatore al player -> ROSE
+//Endpoint per la vendita di un calciatore
 app.post('/sale_calciatore', async (req, res) => {
     const connection = await createConnection();
     const { user_id, calc_id } = req.body;
@@ -226,9 +238,12 @@ app.post('/sale_calciatore', async (req, res) => {
       res.status(201).send('vendita calciatore avvenuto');
     } catch (err) {
       res.status(500).send('Errore durante la vendita calciatore');
+    } finally {
+        await connection.end();
     }
 });
 
+// Endpoint per ottenere il numero di giocatori registrati in rosa
 app.get('/get_numero_players', async (req, res) => {
   const connection = await createConnection();
   try {
@@ -239,5 +254,12 @@ app.get('/get_numero_players', async (req, res) => {
   catch {
     console.error('Errore durante la query:', error);
     res.status(500).send('Errore interno al server');
+  } finally {
+    await connection.end();
   }
+});
+
+// Endpoint che avvia il server e mettiti in ascolto sulla porta specificata
+app.listen(port, () => {
+    console.log(`[SOC-C-HESS © Server] successfully started and running on port ${port}`); // Log successful start
 });
