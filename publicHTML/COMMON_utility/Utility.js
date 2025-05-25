@@ -11,11 +11,11 @@ function makeVisible(element, velocita = 1) {
     if(window.getComputedStyle(element).display !== "none"){
         return;
     }
+    console.log("Elemento dentro makeVisible: ", element)
     // Rimuovi la classe hidden se presente
     if (element.classList.contains('hidden')) {
         element.classList.remove('hidden');
     }
-
     // Salva lo stile di display originale se non è già stato salvato
     if (!element.dataset.originalDisplay) {
         element.dataset.originalDisplay = window.getComputedStyle(element).display;

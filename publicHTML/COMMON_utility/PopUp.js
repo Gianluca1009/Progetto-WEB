@@ -82,7 +82,7 @@ function launchProfilePopup(pagina){
     if(document.querySelector('.sezione-profilo').dataset.aperto == "false"){
         const profile_popup = document.createElement('div');
         profile_popup.classList.add('div-profilo');
-        profile_popup.classList.add('hidden');
+        // profile_popup.classList.add('hidden');
         profile_popup.id = 'profilo';
         profile_popup.innerHTML = `
                 <strong style="top: 5%; position: absolute; font-size: 1.2vw">PROFILO</strong>
@@ -99,7 +99,7 @@ function launchProfilePopup(pagina){
                     ${Vittorie}-${Partite-Vittorie}</li>
                 </ul>
             `;
-        makeVisible(profile_popup, 0.5);
+        // makeVisible(profile_popup, 0.5);
         document.querySelector('.container-bottoni-login').appendChild(profile_popup);
         setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 35);
 
