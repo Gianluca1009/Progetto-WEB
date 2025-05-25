@@ -270,9 +270,6 @@ function handleGameTutorial() {
     if(tutorial.dataset.aperto === "false"){
         tutorial.dataset.aperto = "true";
         makeVisible(tutorial);
-
-        document.querySelector('.tunnel-sx').style.zIndex = "12";
-        document.querySelector('.tunnel-dx').style.zIndex = "12";
     }
     else if(tutorial.dataset.aperto === "true"){
         tutorial.dataset.aperto = "false";
