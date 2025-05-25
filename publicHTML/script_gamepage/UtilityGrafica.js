@@ -1,4 +1,5 @@
 window.gamecontainer_centered = false;
+window.animation_id = null;
 
 //
 //------ FUNZIONI AUSILIARIE PER LA GRAFICA ------//
@@ -182,15 +183,83 @@ function fluttuaElemento(elemento) {
     }, 3000); // Tempo di attesa per la rimozione
 }
 
+// Funzione che anima con scale il tutorial del draft
+function animateDraftTutorial() {
+    const santino1 = document.getElementById('s00').firstChild;
+    const santino2 = document.getElementById('s10').firstChild;
+    const santino3 = document.getElementById('s20').firstChild;
+    const infodestra = document.getElementById('d21').firstChild;
+    const dadosinistro = document.getElementById('random1');
+
+    let scale = 1;
+    let growing = true;
+
+    window.animation_id = setInterval(() => {
+        if (growing) {
+            scale += 0.004;
+            if (scale >= 1.08) growing = false;
+        } else {
+            scale -= 0.004;
+            if (scale <= 1) growing = true;
+        }
+        santino1.style.transform = `scale(${scale})`;
+        santino2.style.transform = `scale(${scale})`;
+        santino3.style.transform = `scale(${scale})`;
+        dadosinistro.style.transform = `scale(${scale})`;
+        infodestra.style.transform = `scale(${scale})`;
+    }, 50);
+}
+
+// Funzione che stoppa l'animazione del draft
+function stopAnimationDraft() {
+    clearInterval(window.animation_id);
+    const santino1 = document.getElementById('s00').firstChild;
+    const santino2 = document.getElementById('s10').firstChild;
+    const santino3 = document.getElementById('s20').firstChild;
+    const dadosinistro = document.getElementById('random1');
+    const infodestra = document.getElementById('d21').firstChild;
+
+    // Reset scale
+    santino1.style.transform = 'scale(1)';
+    santino2.style.transform = 'scale(1)';
+    santino3.style.transform = 'scale(1)';
+    dadosinistro.style.transform = 'scale(1)';
+    infodestra.style.transform = 'scale(1)';
+}
+
 // Funzione che abilita o disabilita il tutorial
 function handleTutorial() {
     let tutorial = document.querySelector('.tutorial');
     if(tutorial.dataset.aperto === "false"){
         tutorial.dataset.aperto = "true";
         makeVisible(tutorial);
+
+        // metto in rilievo le foto dei calciatori
+        document.getElementById('s00').style.zIndex = "12";
+        document.getElementById('s10').style.zIndex = "12";
+        document.getElementById('s20').style.zIndex = "12";
+
+        // metto in rilievo il dado sinistro
+        document.getElementById('random1').style.zIndex = "12";
+
+        // metto in rilievo info draftcell destra
+        document.getElementById('d21').style.zIndex = "12";
+
+        // metto in background tutto il resto
+        document.getElementById('dx0').style.zIndex = "4";
+        document.getElementById('dx1').style.zIndex = "4";
+        document.getElementById('d20').style.zIndex = "4";
+        document.getElementById('s01').style.zIndex = "4";
+        document.getElementById('s11').style.zIndex = "4";
+        document.getElementById('s21').style.zIndex = "4";
+        document.getElementById('random2').style.zIndex = "5";
+        animateDraftTutorial(); // Avvio l'animazione del tutorial
     }
     else if(tutorial.dataset.aperto === "true"){
         tutorial.dataset.aperto = "false";
         makeHidden(tutorial);
+        stopAnimationDraft(); // Ferma l'animazione del tutorial
     }
 }
+
+

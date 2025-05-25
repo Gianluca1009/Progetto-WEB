@@ -62,8 +62,6 @@ async function startDraft(){
     // ELEMENTI DA MOSTRARE (sezioni, overlay, switch, pedine, tasto restart draft, tutorial button)
     makeVisible(document.querySelector('.background-overlay'));
     makeVisible(document.getElementById('restart-draft-button'));
-    makeVisible(document.querySelector('.sezione-dx'));
-    makeVisible(document.querySelector('.sezione-sx'));
     makeVisible(document.querySelector('.restart-draft'));
     makeVisible(document.querySelector('.switch'));
     makeVisible(document.getElementById('tutorialButton'));

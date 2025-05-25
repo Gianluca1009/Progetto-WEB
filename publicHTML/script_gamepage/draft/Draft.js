@@ -4,6 +4,8 @@ window.array_calciatori_partita_bianchi = [];
 window.dragged_class_calciatore_bianco = null; 
 window.dragged_class_calciatore_nero = null;
 
+window.population_counter = 0;
+
 //------ FUNZIONI DI LISTENER ------//
 
 async function santinoSxDragStart(santino_img, event, colore) {
@@ -155,10 +157,10 @@ async function populateDraft(colore) {
             const calciatore = selected_calciatori[i];
             const container = santini_containers[i]; // Usa l'indice corretto per i container di dx
             if (container && calciatore) {
-                //pulizia dei campi precedenti
+
                 container.innerHTML = ''; // Pulisci il container precedente se necessario
                 info_statistiche[i].innerHTML = ''; // Pulisci il div info
-                
+                    
                 //POPOlAMENTO IMG
                 const img = document.createElement('img');
                 img.src = calciatore.img_url; // Assicurati che 'url_foto' sia il nome corretto della proprietà
@@ -236,6 +238,12 @@ async function populateDraft(colore) {
         setColoreRiga();
         dragSantini();
 
+        // ESEGUO QUESTA OPERAZIONE SOLO ALLE PRIME DUE CHIAMATE DI POPULATE DRAFT PER FAR COMPARIRE LE SEZIONI
+        if(window.population_counter < 2){
+            colore === "bianco" ? makeVisible(document.querySelector('.sezione-sx')) : makeVisible(document.querySelector('.sezione-dx'));
+            window.population_counter++;
+        }
+        
     } catch (error) {
         console.error('Errore durante il popolamento del draft:', error);
     }

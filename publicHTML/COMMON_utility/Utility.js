@@ -7,8 +7,10 @@ function makeVisible(element, velocita = 1) {
     if (!element){
         console.warn("Elemento non trovato");
         return;
-    } 
-
+    }
+    if(window.getComputedStyle(element).display !== "none"){
+        return;
+    }
     // Rimuovi la classe hidden se presente
     if (element.classList.contains('hidden')) {
         element.classList.remove('hidden');
