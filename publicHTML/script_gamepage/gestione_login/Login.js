@@ -2,7 +2,6 @@
 
 //Funzione per effettuare il login
 function login() {
-  document.getElementById('game-container').style.marginTop = '50vh';
     Swal.fire({
       title: 'Login',
       customClass: {
@@ -22,15 +21,6 @@ function login() {
           </div>
       </div>`,
       confirmButtonText: 'Login',
-
-      // didOpen: () => {
-      //   // Imposto lo stile all'apertura
-      //   document.getElementById('game-container').style.marginTop = '50vh';
-      // },
-      // willClose: () => {
-      //   // Ripristino lo stile alla chiusura
-      //   document.getElementById('game-container').style.marginTop = '20vh';
-      // },
 
       preConfirm: () => {
         const username1 = document.getElementById('username1').value;
@@ -65,8 +55,6 @@ function login() {
         ])
         .then(([game1Data, game2Data]) => {
             // Salvi i dati dei due giochi nel localStorage
-            console.log(game1Data);
-            console.log(game2Data);
             LS_login1Game(game1Data.userId, game1Data.username, game1Data.email, game1Data.punti, game1Data.partite, game1Data.vittorie);
             LS_login2Game(game2Data.userId, game2Data.username, game2Data.email, game2Data.punti, game2Data.partite, game2Data.vittorie);
 
@@ -83,16 +71,8 @@ function login() {
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire({
-          html: '<h2>Login effettuato per entrambi i giocatori!</h2>',
-          didOpen: () => {
-            // Ripristino lo stile alla chiusura
-            document.getElementById('game-container').style.marginTop = '50vh';
-          },
-          willClose: () => {
-            // Ripristino lo stile alla chiusura
-            document.getElementById('game-container').style.marginTop = '20vh';
-          }
-      });
+          html: '<h2>Login effettuato per entrambi i giocatori!</h2>'
+        });
         makeVisible(document.getElementById("logout-button"));
         makeHidden(document.getElementById("login-button"));
         makeHidden(document.getElementById("register-button"));
@@ -118,6 +98,9 @@ function isSessioneAperta(){
 function register() {
   Swal.fire({
     title: 'Registrazione utente',
+    customClass: {
+      popup: 'register-popup'
+    },
     html:
       '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
       '<input type="password" id="password" class="swal2-input" placeholder="Password">'+
@@ -165,15 +148,7 @@ function register() {
 //Funzione per effettuare il logout
 function logout(){
     Swal.fire({
-      html: '<h2>Logout effettuato per entrambi i giocatori!</h2>',
-      didOpen: () => {
-        // Ripristino lo stile alla chiusura
-        document.getElementById('game-container').style.marginTop = '50vh';
-      },
-      willClose: () => {
-        // Ripristino lo stile alla chiusura
-        document.getElementById('game-container').style.marginTop = '20vh';
-      }
+      html: '<h2>Logout effettuato per entrambi i giocatori!</h2>'
     });
     //cancella LS
     LS_logoutGame();

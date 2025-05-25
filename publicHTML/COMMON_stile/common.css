@@ -57,7 +57,11 @@ body {
 .login-popup {
     width: 60vw;
     height: 60vh;
-    margin-top: 30vh;
+    margin-top: 25vh;
+}
+
+.register-popup {
+    margin-top: 25vh;
 }
 
 .no-hover {
