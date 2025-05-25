@@ -94,67 +94,6 @@
     <!-- CONTAINER DEL GIOCO -->
     <div class="game-container">
 
-        <div id="grid-container" class="grid-container" z-index="1">
-
-            <!-- SCACCHIERA -->
-            <table class = 'scacchiera'>
-                <tbody>
-                    <tr>
-                        <td class="greencell" id="00"> </td>
-                        <td class="creamcell" id="01"> </td>
-                        <td class="greencell" id="02"> </td>
-                        <td class="creamcell" id="03"> </td>
-                        <td class="greencell" id="04"> </td>
-                        <td class="creamcell" id="05"> </td>
-                    </tr>
-                    <tr>
-                        <td class="creamcell" id="10"> </td>
-                        <td class="greencell" id="11"> </td>
-                        <td class="creamcell" id="12"> </td>
-                        <td class="greencell" id="13"> </td>
-                        <td class="creamcell" id="14"> </td>
-                        <td class="greencell" id="15"> </td>
-                    </tr>
-                    <tr>
-                        <td class="greencell" id="20"> </td>
-                        <td class="creamcell" id="21"> </td>
-                        <td class="greencell" id="22"> </td>
-                        <td class="creamcell" id="23"> </td>
-                        <td class="greencell" id="24"> </td>
-                        <td class="creamcell" id="25"> </td>
-                    </tr>
-                    <tr>
-                        <td class="creamcell" id="30"> </td>
-                        <td class="greencell" id="31"> </td>
-                        <td class="creamcell" id="32"> </td>
-                        <td class="greencell" id="33"> </td>
-                        <td class="creamcell" id="34"> </td>
-                        <td class="greencell" id="35"> </td>
-                    </tr>
-                    <tr>
-                        <td class="greencell" id="40"> </td>
-                        <td class="creamcell" id="41"> </td>
-                        <td class="greencell" id="42"> </td>
-                        <td class="creamcell" id="43"> </td>
-                        <td class="greencell" id="44"> </td>
-                        <td class="creamcell" id="45"> </td>
-                    </tr>
-                    <tr>
-                        <td class="creamcell" id="50"> </td>
-                        <td class="greencell" id="51"> </td>
-                        <td class="creamcell" id="52"> </td>
-                        <td class="greencell" id="53"> </td>
-                        <td class="creamcell" id="54"> </td>
-                        <td class="greencell" id="55"> </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <script src="script_gamepage/Re.js"></script>
-        <script src="script_gamepage/UtilityLogica.js"></script>
-        <script src="script_gamepage/MovimentoPedine.js"></script>
-        <script src="script_gamepage/Promozione.js"></script>
-
         <!-- BACKGROUND -->
         <img src = images/gamepage/soccer_field.jpg class = "background">
         <!-- Overlay per la sfumatura -->
@@ -272,12 +211,74 @@
             <h1 class="timer-text" id="timer"></h1>
         </div>
 
+        <div id="grid-container" class="grid-container" z-index="1">
+
+            <!-- SCACCHIERA -->
+            <table class = 'scacchiera'>
+                <tbody>
+                    <tr>
+                        <td class="greencell" id="00"> </td>
+                        <td class="creamcell" id="01"> </td>
+                        <td class="greencell" id="02"> </td>
+                        <td class="creamcell" id="03"> </td>
+                        <td class="greencell" id="04"> </td>
+                        <td class="creamcell" id="05"> </td>
+                    </tr>
+                    <tr>
+                        <td class="creamcell" id="10"> </td>
+                        <td class="greencell" id="11"> </td>
+                        <td class="creamcell" id="12"> </td>
+                        <td class="greencell" id="13"> </td>
+                        <td class="creamcell" id="14"> </td>
+                        <td class="greencell" id="15"> </td>
+                    </tr>
+                    <tr>
+                        <td class="greencell" id="20"> </td>
+                        <td class="creamcell" id="21"> </td>
+                        <td class="greencell" id="22"> </td>
+                        <td class="creamcell" id="23"> </td>
+                        <td class="greencell" id="24"> </td>
+                        <td class="creamcell" id="25"> </td>
+                    </tr>
+                    <tr>
+                        <td class="creamcell" id="30"> </td>
+                        <td class="greencell" id="31"> </td>
+                        <td class="creamcell" id="32"> </td>
+                        <td class="greencell" id="33"> </td>
+                        <td class="creamcell" id="34"> </td>
+                        <td class="greencell" id="35"> </td>
+                    </tr>
+                    <tr>
+                        <td class="greencell" id="40"> </td>
+                        <td class="creamcell" id="41"> </td>
+                        <td class="greencell" id="42"> </td>
+                        <td class="creamcell" id="43"> </td>
+                        <td class="greencell" id="44"> </td>
+                        <td class="creamcell" id="45"> </td>
+                    </tr>
+                    <tr>
+                        <td class="creamcell" id="50"> </td>
+                        <td class="greencell" id="51"> </td>
+                        <td class="creamcell" id="52"> </td>
+                        <td class="greencell" id="53"> </td>
+                        <td class="creamcell" id="54"> </td>
+                        <td class="greencell" id="55"> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
         <button id="tutorialButton" class="tutorial-button" onclick="handleTutorial()">
             <span class="button-top"> ? </span>
         </button>
 
         <img src = images/gamepage/tutorial_draft.png data-aperto="false" class="tutorial">
     </div>
+
+    <script src="script_gamepage/Re.js"></script>
+    <script src="script_gamepage/UtilityLogica.js"></script>
+    <script src="script_gamepage/MovimentoPedine.js"></script>
+    <script src="script_gamepage/Promozione.js"></script>
 
 </body>
 </html>

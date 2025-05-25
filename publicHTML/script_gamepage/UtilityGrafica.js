@@ -227,9 +227,10 @@ function stopAnimationDraft() {
     infodestra.style.transform = 'scale(1)';
 }
 
-// Funzione che abilita o disabilita il tutorial
-function handleTutorial() {
+// Funzione che abilita o disabilita il tutorial del draft
+function handleDraftTutorial() {
     let tutorial = document.querySelector('.tutorial');
+    tutorial.src = "images/gamepage/tutorial_draft.png"; // Imposto l'immagine del tutorial del draft
     if(tutorial.dataset.aperto === "false"){
         tutorial.dataset.aperto = "true";
         makeVisible(tutorial);
@@ -262,4 +263,28 @@ function handleTutorial() {
     }
 }
 
+// Funzione che abilita o disabilita il tutorial del gioco
+function handleGameTutorial() {
+    let tutorial = document.querySelector('.tutorial');
+    tutorial.src = "images/gamepage/tutorial_game.png"; // Imposto l'immagine del tutorial del gioco
+    if(tutorial.dataset.aperto === "false"){
+        tutorial.dataset.aperto = "true";
+        makeVisible(tutorial);
+
+        document.querySelector('.tunnel-sx').style.zIndex = "12";
+        document.querySelector('.tunnel-dx').style.zIndex = "12";
+    }
+    else if(tutorial.dataset.aperto === "true"){
+        tutorial.dataset.aperto = "false";
+        makeHidden(tutorial);
+    }
+}
+
+// Funzione per gestire il tutorial
+function handleTutorial() {
+    if(!window.game_started) {
+        handleDraftTutorial();
+    }
+    else handleGameTutorial();
+}
 

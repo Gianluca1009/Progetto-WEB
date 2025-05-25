@@ -12,7 +12,6 @@
 
 
 .grid-container {
-    z-index: 2;
     position: absolute;
     top: 50%;
     left: 50%;

@@ -16,8 +16,8 @@
     background: var(--background-sfumato-violaceo);
     text-align: center;
     vertical-align: middle;
-    z-index: 2;
     border: 0.09375rem solid var(--color-crema);
+    z-index: 12;
 }
 
 /*stile titolo condizioni*/
