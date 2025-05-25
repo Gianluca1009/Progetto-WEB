@@ -23,8 +23,7 @@
 }
 
 .grid-container-enlarged {
-    width: min(78%, 73vh);
-    height: min(78vw, 73vh);
+    width: 45%;
     top: 53.2%;
     aspect-ratio: 1/1 !important;
 }
