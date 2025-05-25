@@ -16,9 +16,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: min(55%, 80vh);
+    width: 47%;
     aspect-ratio: 1/1 !important;
-    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
     margin-bottom: 2vh;
     transform-origin: center;
 }
