@@ -35,3 +35,20 @@
     font-size: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
+
+.users-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    height: 10vh;
+    margin-top: 15vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-username{
+    position: relative;
+    color: aliceblue;
+    font-size: calc(1vw + 1vh);
+}

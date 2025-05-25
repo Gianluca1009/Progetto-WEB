@@ -47,6 +47,14 @@
     height: 100%;
 }
 
+.profilo-game{
+    position: relative;
+    flex-direction: row;
+    width: 20vw;
+    height: 10vh;
+    left: auto;
+}
+
 .avatar{
     height: 50%;
     aspect-ratio: 1/1;

@@ -20,6 +20,7 @@
     aspect-ratio: 1/1 !important;
     margin-bottom: 2vh;
     transform-origin: center;
+    transition: all 0.5s ease;
 }
 
 .grid-container-enlarged {

@@ -248,3 +248,9 @@ function resetProntoButton() {
     document.getElementById('top-player2').style.background = "var(--button_color)";
 }
 
+// Funzione che assegna gli username dei giocatori nella pagina di gioco
+function fillUsernameGamepage() {
+    document.getElementById('playerusername1').textContent = `Benvenuto, ${LS_getUser1Game().username}`;
+    document.getElementById('playerusername2').textContent = `Benvenuto, ${LS_getUser2Game().username}`;
+}
+

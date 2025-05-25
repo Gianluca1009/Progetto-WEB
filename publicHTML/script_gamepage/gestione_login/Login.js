@@ -87,6 +87,7 @@ function isSessioneAperta(){
         document.getElementById("logout-button").classList.remove("hidden");
         document.getElementById("register-button").classList.add("hidden");
         document.getElementById("login-button").classList.add("hidden");
+        fillUsernameGamepage();
     }
 }
 

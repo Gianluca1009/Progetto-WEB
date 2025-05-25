@@ -63,13 +63,39 @@ function closeEndgamePopup(){
 
 // Funzione che lancia il popup del profilo
 function launchProfilePopup(pagina){
-    let Username, Email, Punti, Partite, Vittorie;
-    if(pagina == "mercato"){
+    let Username, Email, Punti, Partite, Vittorie, Parent, ElementToAttach, Side, Offset;
+    if(pagina === "game1"){
+        Username = LS_getUser1Game().username;
+        Email = LS_getUser1Game().email;
+        Punti = LS_getUser1Game().punti;
+        Partite = LS_getUser1Game().partite;
+        Vittorie = LS_getUser1Game().vittorie;
+        Parent = document.getElementById('profilo1');
+        ElementToAttach = document.querySelector('.users-container');
+        Side = "left";
+        Offset = 8;
+    }
+    if(pagina === "game2"){
+        Username = LS_getUser2Game().username;
+        Email = LS_getUser2Game().email;
+        Punti = LS_getUser2Game().punti;
+        Partite = LS_getUser2Game().partite;
+        Vittorie = LS_getUser2Game().vittorie;
+        Parent = document.getElementById('profilo2');
+        ElementToAttach = document.querySelector('.users-container');
+        Side = "right";
+        Offset = 13;
+    }
+    if(pagina === "mercato"){
         Username = LS_getUserMercatoData().username;
         Email = LS_getUserMercatoData().email;
         Punti = LS_getUserMercatoData().punti;
         Partite = LS_getUserMercatoData().partite;
         Vittorie = LS_getUserMercatoData().vittorie;
+        Parent = document.querySelector('.sezione-profilo');
+        ElementToAttach = document.querySelector('.container-bottoni-login');
+        Side = "bottom";
+        Offset = 35;
     }
     if(pagina === "rosa"){
         Username = LS_getUserRosaData().username;
@@ -77,9 +103,13 @@ function launchProfilePopup(pagina){
         Punti = LS_getUserRosaData().punti;
         Partite = LS_getUserRosaData().partite;
         Vittorie = LS_getUserRosaData().vittorie;
+        Parent = document.querySelector('.sezione-profilo');
+        ElementToAttach = document.querySelector('.container-bottoni-login');
+        Side = "bottom";
+        Offset = 35;
     }
     
-    if(document.querySelector('.sezione-profilo').dataset.aperto == "false"){
+    if(Parent.dataset.aperto === "false"){
         const profile_popup = document.createElement('div');
         profile_popup.classList.add('div-profilo');
         // profile_popup.classList.add('hidden');
@@ -100,29 +130,30 @@ function launchProfilePopup(pagina){
                 </ul>
             `;
         // makeVisible(profile_popup, 0.5);
-        document.querySelector('.container-bottoni-login').appendChild(profile_popup);
-        setPositionRelativeToDiv(document.querySelector('.sezione-profilo'), profile_popup, 'bottom', 35);
+        ElementToAttach.appendChild(profile_popup);
+        setPositionRelativeToDiv(Parent, profile_popup, Side, Offset);
 
         //GESTIONE DELLA RIMOZIONE DIV PROFILO
         setTimeout( () => {
             document.addEventListener("click", closeProfilePopup)
         }, 100);
-        document.querySelector('.sezione-profilo').dataset.aperto = "true";
+        Parent.dataset.aperto = "true";
+        console.log("Profilo aperto");
     }
     else{
-        closeProfilePopup();
+        closeProfilePopup(Parent);
     }
 }
 
 // Funzione che chiude il popup del profilo
-function closeProfilePopup(){
+function closeProfilePopup(Parent){
     if(document.getElementById("profilo")){
         makeHidden(document.getElementById("profilo"), 0.5);
         setTimeout(() => {
             document.getElementById("profilo").remove();
-        },1000);
+        },500);
     }
-    document.querySelector('.sezione-profilo').dataset.aperto = "false";
+    Parent.dataset.aperto = "false";
     document.removeEventListener("click", closeProfilePopup);
 }
 

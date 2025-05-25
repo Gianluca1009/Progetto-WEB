@@ -56,6 +56,20 @@ function misuraDivLog() {
     return dimensioni;
 }
 
+// Funzione per misurare le dimensioni del game container
+function misuraGameContainer(){
+    // Seleziona il contenitore del gioco
+    const gameContainer = document.querySelector('.game-container');
+    
+    if (gameContainer) {
+        // Ottiene le dimensioni effettive del contenitore del gioco
+        dimensioni = gameContainer.getBoundingClientRect();
+    }
+    return dimensioni;
+}
+
+
+
 // Funzione per settare la font size ai calciatori nelle celle
 function setSoccerPlayerNameFontSize() {
     const nomiGiocatori = document.querySelectorAll('.nome-giocatore');
@@ -91,5 +105,16 @@ function setHamburgerLunghezza(){
 
     const hamburger = document.querySelector('.hamburger');
     hamburger.style.height = `${altezzaPagina}px`;
+}
+
+// Funzione per settare le dimensioni del container utenti
+function setUsersContainerWidth(){
+    const usersContainer = document.querySelector('.users-container');
+    const dimensioniGameContainer = misuraGameContainer();
+    
+    if (usersContainer && dimensioniGameContainer) {
+        // Imposta la larghezza del contenitore degli utenti in base alla larghezza del game container
+        usersContainer.style.width = `${dimensioniGameContainer.width * 0.95}px`;
+    }
 }
 

@@ -1,14 +1,10 @@
-// ---- AGGIORNAMENTO RISOLUZIONE ---- //
-
-window.addEventListener('resize', function() {
-    setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatore
-});
 
 // ---- INIZIALIZZAZIONE DELLA PAGINA ---- //
 
 document.addEventListener('DOMContentLoaded', () => {
 
     setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger dinamicamente
+    setUsersContainerWidth(); // Imposta la larghezza del container utenti
 
     isSessioneAperta(); //Gestione della sessione aperta
     
@@ -90,6 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', function() {
         window.gamecontainer_centered = false;
+    });
+
+    window.addEventListener('resize', function() {
+        setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger dinamicamente
+        setUsersContainerWidth(); // Imposta la larghezza del container utenti
+        setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori
     });
     
 });

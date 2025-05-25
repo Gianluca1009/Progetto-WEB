@@ -25,7 +25,7 @@
     <link href="COMMON_stile/bottoni-login.css" rel="stylesheet" type="text/css">
     <link href="COMMON_stile/intestazioni.css" rel="stylesheet" type="text/css">
     <link href="COMMON_stile/popup.css" rel="stylesheet" type="text/css">
-
+    
    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
 
@@ -34,7 +34,7 @@
     <!-- TITOLO PAGINA -->
     <title>Soc-c-hess</title>
 </head>
-<body style="height: 140vh;">
+<body style="height: 145vh;">
 
     <script src="script_gamepage/UtilityGrafica.js"></script>
     <script src="script_gamepage/UtilityPartita.js"></script>
@@ -91,8 +91,21 @@
 
     </div>
 
+    <div class="users-container">
+        <div class="sezione-profilo profilo-game" id="profilo1" data-aperto="false">
+            <img class="avatar" src="images/intestazione/avatar.png" onclick="launchProfilePopup('game1')" alt="Avatar">
+            <p id="playerusername1" class="game-username" style="left: 5%;"></p>
+        </div>
+        <p style="color: aliceblue">VS</p>
+        <div class="sezione-profilo profilo-game" style="flex-direction: row-reverse" id="profilo2" data-aperto="false">
+            <img class="avatar" src="images/intestazione/avatar.png" onclick="launchProfilePopup('game2')" alt="Avatar">
+            <p id="playerusername2" class="game-username" style="right: 5%;"></p>
+        </div>
+    </div>
+
+
     <!-- CONTAINER DEL GIOCO -->
-    <div class="game-container" id = "game-container">
+    <div class="game-container" id="game-container">
 
         <!-- BACKGROUND -->
         <img src = images/gamepage/soccer_field.jpg class = "background">
