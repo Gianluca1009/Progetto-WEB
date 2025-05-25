@@ -7,18 +7,33 @@
 }
 
 /* Stile per ogni box di testo */
-.p-username-partita-bianco {
-    background-color: #e5dfdf;    /* Sfondo bianco */
-    color: #282727;               /* Testo nero */
-    padding: 10px 20px;         /* Spaziatura interna */
-    margin: 5px 0;              /* Spaziatura esterna tra i box */
-    border: 2px solid #282727;     /* Bordo grigio chiaro */
-    border-radius: 8px;         /* Angoli arrotondati */
-    font-weight: bold;          /* Testo in grassetto */
-    width: 130px;               /* Larghezza fissa */
+/* .p-username-partita-bianco {
+    background-color: #e5dfd
+    color: #282727;        
+    padding: 10px 20px;    
+    margin: 5px 0;            
+    border: 2px solid #282727;     
+    border-radius: 8px;         
+    font-weight: bold;          
+    width: 130px;               
     text-align: center;         
     font-size: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Leggera ombra */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+} */
+
+.p-username-partita-bianco {
+    background-color: #e5dfdf;
+    color: #282727;
+    padding: 1.5vh 1.8vw;
+    margin: 0;
+    margin-top: 5vh;
+    border: 2px solid #282727;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 130px;
+    text-align: center;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Stile per ogni box di testo */
