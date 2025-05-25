@@ -61,7 +61,7 @@ function login() {
     }).then(result => {
       if (result.isConfirmed) {
         Swal.fire('Login effettuato per entrambi i giocatori!');
-        makeVisible(document.getElementById("logoutbutton"));
+        makeVisible(document.getElementById("logout-button"));
         makeHidden(document.getElementById("login-button"));
         makeHidden(document.getElementById("register-button"));
       }
@@ -141,7 +141,7 @@ function logout(){
     //cancella LS
     LS_logoutGame();
     //rende visibili i bottoni
-    makeHidden(document.getElementById("logoutbutton"));
+    makeHidden(document.getElementById("logout-button"));
     makeHidden(document.querySelector("sezione-profilo"));
     makeVisible(document.getElementById("login-button"));
     makeVisible(document.getElementById("register-button"));
