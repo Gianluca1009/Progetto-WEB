@@ -138,7 +138,8 @@ function BuildRowForCalciatore(calciatore){
 
     //Aggiungi la riga alla finestra mercato
     row.classList.add("fade-hidden");
-    document.getElementById('finestramercato').appendChild(row);
+    
+    window.bacheca.appendChild(row);
     makeVisible(row);
 }
 

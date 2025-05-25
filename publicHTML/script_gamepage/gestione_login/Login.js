@@ -2,14 +2,36 @@
 
 //Funzione per effettuare il login
 function login() {
+  document.getElementById('game-container').style.marginTop = '50vh';
     Swal.fire({
       title: 'Login',
+      customClass: {
+        popup: 'login-popup'
+      },
       html:
-        '<input type="text" id="username1" class="swal2-input" placeholder="Username 1">' +
-        '<input type="password" id="password1" class="swal2-input" placeholder="Password 1">'+
-        '<input type="text" id="username2" class="swal2-input" placeholder="Username 2">' +
-        '<input type="password" id="password2" class="swal2-input" placeholder="Password 2">',
+      `<div class = container-doppio-login>
+          <div class = 'container-login'>
+              <h3 style = "margin-bottom: 0">Giocatore bianco</h3>
+              <input type="text" id="username1" class="swal2-input" placeholder="Inserire username...">
+              <input type="password" id="password1" class="swal2-input" placeholder="Inserire password...">
+          </div>
+          <div class = 'container-login'>
+              <h3 style = "margin-bottom: 0">Giocatore nero</h3>
+              <input type="text" id="username2" class="swal2-input" placeholder="Inserire username...">
+              <input type="password" id="password2" class="swal2-input" placeholder="Inserire password...">
+          </div>
+      </div>`,
       confirmButtonText: 'Login',
+
+      // didOpen: () => {
+      //   // Imposto lo stile all'apertura
+      //   document.getElementById('game-container').style.marginTop = '50vh';
+      // },
+      // willClose: () => {
+      //   // Ripristino lo stile alla chiusura
+      //   document.getElementById('game-container').style.marginTop = '20vh';
+      // },
+
       preConfirm: () => {
         const username1 = document.getElementById('username1').value;
         const password1 = document.getElementById('password1').value;
@@ -60,8 +82,18 @@ function login() {
         }
     }).then(result => {
       if (result.isConfirmed) {
-        Swal.fire('Login effettuato per entrambi i giocatori!');
-        makeVisible(document.getElementById("logoutbutton"));
+        Swal.fire({
+          html: '<h2>Login effettuato per entrambi i giocatori!</h2>',
+          didOpen: () => {
+            // Ripristino lo stile alla chiusura
+            document.getElementById('game-container').style.marginTop = '50vh';
+          },
+          willClose: () => {
+            // Ripristino lo stile alla chiusura
+            document.getElementById('game-container').style.marginTop = '20vh';
+          }
+      });
+        makeVisible(document.getElementById("logout-button"));
         makeHidden(document.getElementById("login-button"));
         makeHidden(document.getElementById("register-button"));
       }
@@ -133,15 +165,20 @@ function register() {
 //Funzione per effettuare il logout
 function logout(){
     Swal.fire({
-        title: 'Logout',
-        html:
-        `<h1> Logout effettuato per entrambi gli utenti</h1>`,
-        confirmButtonText: 'OK'
-    })
+      html: '<h2>Logout effettuato per entrambi i giocatori!</h2>',
+      didOpen: () => {
+        // Ripristino lo stile alla chiusura
+        document.getElementById('game-container').style.marginTop = '50vh';
+      },
+      willClose: () => {
+        // Ripristino lo stile alla chiusura
+        document.getElementById('game-container').style.marginTop = '20vh';
+      }
+    });
     //cancella LS
     LS_logoutGame();
     //rende visibili i bottoni
-    makeHidden(document.getElementById("logoutbutton"));
+    makeHidden(document.getElementById("logout-button"));
     makeHidden(document.querySelector("sezione-profilo"));
     makeVisible(document.getElementById("login-button"));
     makeVisible(document.getElementById("register-button"));

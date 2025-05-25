@@ -37,6 +37,29 @@ body {
     align-items: center;
 }
 
+.container-doppio-login {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+}
+
+.container-login {
+    display: flex;
+    flex-direction: column;
+    width: 26vw;
+    height: 30vh
+}
+
+.swal2-html-container {
+    justify-items: center;
+}
+
+.login-popup {
+    width: 60vw;
+    height: 60vh;
+    margin-top: 30vh;
+}
+
 .no-hover {
     pointer-events: none;
 }
@@ -45,9 +68,9 @@ body {
     display: none !important;
 }
 
-.fade-hidden{
+/* .fade-hidden{
     opacity: 0;
-}
+} */
 
 .disabled { 
     pointer-events: none;
