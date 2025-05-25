@@ -46,9 +46,9 @@ body {
     display: none !important;
 }
 
-.fade-hidden{
+/* .fade-hidden{
     opacity: 0;
-}
+} */
 
 .disabled { 
     pointer-events: none;
