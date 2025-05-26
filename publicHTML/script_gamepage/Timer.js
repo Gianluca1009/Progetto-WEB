@@ -51,10 +51,11 @@ function updateTimer() {
     if(currentTimer <= 0) {
         clearInterval(timerId);
         timerId = null;
-        
+        cambioTurno(); // Cambia il turno ora è il turno di chi perde per tempo scaduto
         // Imposta vincitore in base a quale timer è scaduto
         if(window.turno_bianco) {
             // Il timer del bianco è scaduto, vince il nero
+            
             endGame();
         } else {
             // Il timer del nero è scaduto, vince il bianco

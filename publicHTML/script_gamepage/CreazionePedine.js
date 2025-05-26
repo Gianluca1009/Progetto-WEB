@@ -21,7 +21,7 @@ const pezzi = {
     },
     alfiere: {
         posizioni: [
-            { pos: '01', colore: 'nero' },
+            { pos: '04', colore: 'nero' },
             { pos: '54', colore: 'bianco' }
         ],
         class: 'alfiere',
@@ -75,7 +75,7 @@ const pezzi = {
     },
     cavallo: {
         posizioni: [
-            { pos: '04', colore: 'nero' },
+            { pos: '01', colore: 'nero' },
             { pos: '51', colore: 'bianco' }
         ],
         class: 'cavallo',

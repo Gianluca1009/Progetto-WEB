@@ -214,9 +214,8 @@ function endGame(){
 
     window.game_started = false;
     freezeTimer();
-    cambioTurno();
-    
-    resetSottoscacco();
+    //cambioturno();
+    resetAllSottoscacco(); // Resetto lo stato di scacco per entrambi i re
 
     launchEndgamePopup(vincitore);
     makeHidden(document.querySelector('.progress-container'));
@@ -225,11 +224,8 @@ function endGame(){
     makeVisible(document.getElementById('logout-button'));
     document.querySelector('.game-container').classList.add('game-not-started');
 
-    window.idCellReBianco = "53"; //id della cella su cui c'è il re bianco
-    window.idCellReNero = "03"; //id della cella su cui c'è il re nero
-    window.cellaReBianco = document.getElementById(window.idCellReBianco);
-    window.cellaReNero = document.getElementById(window.idCellReNero);
-    resetSottoscacco();
+    resetNumCelleRe(); // Resetto le celle del re
+
     if(document.getElementById('div-ped-promotion')) document.getElementById('div-ped-promotion').remove();
 
     playSound('fischio_finale', 0.2);
