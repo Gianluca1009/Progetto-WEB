@@ -66,21 +66,12 @@ async function aggiornaVittorie(userid) {
 function aggiornaStatistiche(){
     let numero_vincitore = window.turno_bianco ? 1 : 2;
     let vincitore = window.turno_bianco ? localStorage.getItem('game_username1') : localStorage.getItem('game_username2');
-    let id_vincitore = window.turno_bianco ? localStorage.getItem('game_user1Id') : localStorage.getItem('game_userId2');
-    let id_perdente = window.turno_bianco ? localStorage.getItem('game_user2Id') : localStorage.getItem('game_userId1');
-    let punti_vincitore = window.turno_bianco ? localStorage.getItem('game_user1_punti') : localStorage.getItem('game_user2_punti');
+    let id_vincitore = window.turno_bianco ?  LS_getUser1Game().id : LS_getUser2Game().id;
+    let id_perdente = window.turno_bianco ? LS_getUser2Game().id : LS_getUser1Game().id;
+    let punti_vincitore = window.turno_bianco ? LS_getUser1Game().punti : LS_getUser2Game().punti;
     let new_punti = parseInt(punti_vincitore) + 20;
-    console.log("id vincitore" ,id_vincitore);
-    console.log("punti vincitore", punti_vincitore);
     aggiornaPunti(id_vincitore, new_punti);
     aggiornaVittorie(id_vincitore);
     aggiornaPartite(id_vincitore);
     aggiornaPartite(id_perdente);
-    // LS_updateWinner(id_vincitore, 
-    //                 vincitore,
-    //                 numero_vincitore = 1? LS_getUser1Game().email : LS_getUser2Game().email,
-    //                 new_punti,
-    //                 numero_vincitore = 1? LS_getUser1Game().partite : LS_getUser2Game().partite,
-    //                 numero_vincitore = 1? LS_getUser1Game().vittorie : LS_getUser2Game().vittorie);
-
 }
