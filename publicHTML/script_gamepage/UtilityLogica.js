@@ -250,7 +250,7 @@ function resetProntoButton() {
 
 // Funzione che assegna gli username dei giocatori nella pagina di gioco
 function fillUsernameGamepage() {
-    document.getElementById('playerusername1').textContent = `Benvenuto, ${LS_getUser1Game().username}`;
-    document.getElementById('playerusername2').textContent = `Benvenuto, ${LS_getUser2Game().username}`;
+    document.getElementById('playerusername1').textContent = LS_getUser1Game().username;
+    document.getElementById('playerusername2').textContent = LS_getUser2Game().username;
 }
 

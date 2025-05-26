@@ -71,9 +71,9 @@ function launchProfilePopup(pagina){
         Partite = LS_getUser1Game().partite;
         Vittorie = LS_getUser1Game().vittorie;
         Parent = document.getElementById('profilo1');
-        ElementToAttach = document.querySelector('.users-container');
+        ElementToAttach = Parent;
         Side = "left";
-        Offset = 8;
+        Offset = 113;
     }
     if(pagina === "game2"){
         Username = LS_getUser2Game().username;
@@ -82,9 +82,9 @@ function launchProfilePopup(pagina){
         Partite = LS_getUser2Game().partite;
         Vittorie = LS_getUser2Game().vittorie;
         Parent = document.getElementById('profilo2');
-        ElementToAttach = document.querySelector('.users-container');
-        Side = "right";
-        Offset = 13;
+        ElementToAttach = Parent;
+        Side = "right"; 
+        Offset = 30;
     }
     if(pagina === "mercato"){
         Username = LS_getUserMercatoData().username;
