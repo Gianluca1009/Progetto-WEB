@@ -11,13 +11,13 @@ function login() {
       `<div class = container-doppio-login>
           <div class = 'container-login'>
               <h3 style = "margin-bottom: 0">Giocatore bianco</h3>
-              <input type="text" id="username1" class="swal2-input" placeholder="Inserire username...">
-              <input type="password" id="password1" class="swal2-input" placeholder="Inserire password...">
+              <input type="text" id="username1" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
+              <input type="password" id="password1" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
           </div>
           <div class = 'container-login'>
               <h3 style = "margin-bottom: 0">Giocatore nero</h3>
-              <input type="text" id="username2" class="swal2-input" placeholder="Inserire username...">
-              <input type="password" id="password2" class="swal2-input" placeholder="Inserire password...">
+              <input type="text" id="username2" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
+              <input type="password" id="password2" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
           </div>
       </div>`,
       confirmButtonText: 'Login',
@@ -103,9 +103,9 @@ function register() {
       popup: 'register-popup'
     },
     html:
-      '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
-      '<input type="password" id="password" class="swal2-input" placeholder="Password">'+
-      '<input type="email" id="email" class="swal2-input" placeholder="Email">',
+      '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
+      '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">'+
+      '<input type="email" id="email" class="swal2-input" placeholder="Email" autocomplete="off">',
     confirmButtonText: 'Registrati',
     preConfirm: () => {
       const username = document.getElementById('username').value;

@@ -5,8 +5,8 @@ function login() {
     Swal.fire({
       title: 'Login',
       html:
-        '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
-        '<input type="password" id="password" class="swal2-input" placeholder="Password">',
+        '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
+        '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">',
       confirmButtonText: 'Login',
       preConfirm: () => {
         const username = document.getElementById('username').value;
@@ -128,9 +128,9 @@ function register() {
   Swal.fire({
     title: 'Registrazione utente',
     html:
-      '<input type="text" id="username" class="swal2-input" placeholder="Username">' +
-      '<input type="password" id="password" class="swal2-input" placeholder="Password">'+
-      '<input type="email" id="email" class="swal2-input" placeholder="Email">',
+      '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
+      '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">'+
+      '<input type="email" id="email" class="swal2-input" placeholder="Email" autocomplete="off">',
     confirmButtonText: 'Registrati',
     preConfirm: () => {
       const username = document.getElementById('username').value;
