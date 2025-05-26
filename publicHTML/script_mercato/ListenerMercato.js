@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Inizializzo le variabili di finestra
     window.bacheca = document.getElementById("finestramercato");
     window.user_points = document.querySelector('.user-points');
     window.sezione_profilo = document.querySelector('.sezione-profilo');

@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.login_button = document.getElementById("login-button");
     window.logout_button = document.getElementById("logout-button");
     window.sezione_profilo = document.querySelector(".sezione-profilo");
+    window.player_username = document.getElementById("player-username");
     window.difensori = [];
     window.centrocampisti = [];
     window.attaccanti = [];

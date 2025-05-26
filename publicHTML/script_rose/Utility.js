@@ -23,7 +23,7 @@ async function fetchMiaRosa(){
 
 //Funzione che mette l'username nel campo dedicato dopo il login
 function fillUsernameRosa(){
-    document.getElementById("player-username").textContent = `Benvenuto, ${LS_getUserRosaData().username}`;
+    window.player_username.textContent = `Benvenuto, ${LS_getUserRosaData().username}`;
 }
 
 // Popola gli array di finestra dividendo i calciatori della rosa per ruolo
@@ -173,7 +173,7 @@ function buildRowNoResult(ruolo) {
     titolo.textContent = `Nessun ${ruolo} trovato`;
     titolo.style.fontSize = 'min(1.5vw, 1.5em)';
     titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = 'black'; // rosso scuro per enfasi
+    titolo.style.color = '#282727'; // rosso scuro per enfasi
 
     const testo = document.createElement('p');
     testo.textContent = "Vai a comprare quelli che vuoi nella pagina del mercato!";
@@ -192,7 +192,6 @@ function buildRowNoResult(ruolo) {
 
 // Funzione che crea la riga che segnala il login non effettuato
 function buildRowNoLogin() {
-    // let bacheca = document.getElementById("bacheca-rosa");
 
     const row = document.createElement('div');
     row.className = 'riga-bacheca no-result';
@@ -206,7 +205,7 @@ function buildRowNoLogin() {
     titolo.textContent = `Effettua il login per visualizzare i calciatori della tua rosa`;
     titolo.style.fontSize = 'min(1.5vw, 1.5em)';
     titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = 'black'; 
+    titolo.style.color = '#282727'; 
 
     campoInfo.appendChild(titolo);
     row.appendChild(campoInfo);

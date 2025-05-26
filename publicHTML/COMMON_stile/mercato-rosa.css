@@ -99,4 +99,21 @@ ul{
     padding-left: 1em;
 }
 
+.title-ruolo {
+    text-align: center;
+    font-size: calc(4vh + 5vw);
+    font-weight: bold;
+    margin: 0;
+    margin-top: 3vh;
+    color: #282727;
+    border-bottom: solid 2.5px #282727;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.125rem;
+    background: linear-gradient(to right, #efe0c4, #e8c481);
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-size: calc(3vh + 2vw) !important;
+}
+
+
 
