@@ -233,3 +233,28 @@ function buildRowNoLogin() {
     window.bacheca.appendChild(row);
     makeVisible(row);
 }
+
+
+
+//------ FETCH COMUNI -------//
+
+async function forgotPassword(email) {
+    try {
+        const response = await fetch('/forgot-password', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        if (!response.ok) {
+            throw new Error('Errore durante il recupero della password');
+        }
+
+        const data = await response.json();
+        return data.message; // Messaggio di successo
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}

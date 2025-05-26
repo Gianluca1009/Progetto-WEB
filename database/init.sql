@@ -5,6 +5,8 @@ CREATE TABLE player (
     username VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
+    reset_token VARCHAR(255),
+    token_expiration TIMESTAMP,
     punti INT DEFAULT 100,
     partite INT DEFAULT 0,
     vittorie INT DEFAULT 0,
