@@ -207,35 +207,6 @@ function handleHamburgerMenu(pagina) {
     
 }
 
-// Funzione che crea la riga che segnala il login non effettuato
-function buildRowNoLogin() {
-    // let bacheca = document.getElementById("bacheca-rosa");
-
-    const row = document.createElement('div');
-    row.className = 'riga-bacheca no-result';
-    row.id = 'no-login';
-
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
-
-    const titolo = document.createElement('h2');
-    titolo.textContent = `Effettua il login per visualizzare i calciatori della tua rosa`;
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = 'black'; 
-
-    campoInfo.appendChild(titolo);
-    row.appendChild(campoInfo);
-
-    // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    window.bacheca.appendChild(row);
-    makeVisible(row);
-}
-
-
-
 //------ FETCH COMUNI -------//
 
 async function forgotPassword(email) {
@@ -258,3 +229,4 @@ async function forgotPassword(email) {
         throw new Error(error.message);
     }
 }
+

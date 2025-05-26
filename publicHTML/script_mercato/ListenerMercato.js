@@ -1,8 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    document.getElementById("logout-button").classList.add("hidden");
-    document.querySelector(".sezione-profilo").classList.add("hidden");
     window.bacheca = document.getElementById("finestramercato");
+    window.user_points = document.querySelector('.user-points');
+    window.sezione_profilo = document.querySelector('.sezione-profilo');
+    window.logout_button = document.getElementById("logout-button");
+    window.login_button = document.getElementById("login-button");
+    window.register_button = document.getElementById("register-button");
+    window.player_username = document.getElementById("playerusername");
+
+    window.sezione_profilo.classList.add("hidden");
+    window.logout_button.classList.add("hidden");
 
     //se non sei loggato
     ifNotLoggedIn();

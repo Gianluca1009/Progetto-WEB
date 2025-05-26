@@ -17,7 +17,7 @@ async function fetchCalciatoriLiberi() {
 
 //Funzione che mette l'username nel campo dedicato dopo il login
 function fillUsernameMercato(){
-    document.getElementById("playerusername").textContent = `Benvenuto, ${LS_getUserMercatoData().username}`;
+    window.player_username.textContent = `Benvenuto, ${LS_getUserMercatoData().username}`;
 }
 
 //Funzione per costruire la riga della rosa
@@ -143,11 +143,67 @@ function BuildRowForCalciatore(calciatore){
     makeVisible(row);
 }
 
+//Funzione che crea la riga che segnala il login non effettuato
+function buildRowNoResult() {
+    const row = document.createElement('div');
+    row.className = 'riga-bacheca no-result';
+
+    // Campo info con messaggio
+    const campoInfo = document.createElement('div');
+    campoInfo.className = 'no-result';
+
+    const titolo = document.createElement('h2');
+    titolo.textContent = "Nessun giocatore trovato";
+    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
+    titolo.style.marginBlockEnd = '0.5em';
+    titolo.style.color = '#282727';
+
+    const testo = document.createElement('p');
+    testo.textContent = "Modifica i criteri di ricerca e riprova.";
+    testo.style.fontSize = 'min(1vw, 1em)';
+    testo.style.color = '#555';
+
+    campoInfo.appendChild(titolo);
+    campoInfo.appendChild(testo);
+    row.appendChild(campoInfo);
+
+    // Aggiunta alla finestra del mercato
+    row.classList.add("fade-hidden");
+    window.bacheca.appendChild(row);
+    makeVisible(row);
+}
+
+
+// Funzione che crea la riga che segnala il login non effettuato
+function buildRowNoLogin() {
+    // let bacheca = document.getElementById("bacheca-rosa");
+
+    const row = document.createElement('div');
+    row.className = 'riga-bacheca no-result';
+    row.id = 'no-login';
+
+    // Campo info con messaggio
+    const campoInfo = document.createElement('div');
+    campoInfo.className = 'no-result';
+
+    const titolo = document.createElement('h2');
+    titolo.textContent = `Effettua il login per comprare nuovi giocatori`;
+    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
+    titolo.style.marginBlockEnd = '0.5em';
+    titolo.style.color = '#282727'; 
+
+    campoInfo.appendChild(titolo);
+    row.appendChild(campoInfo);
+
+    // Aggiunta alla finestra del mercato
+    row.classList.add("fade-hidden");
+    window.bacheca.appendChild(row);
+    makeVisible(row);
+}
+
 //Funzione per eliminare le righe della finestra mercato
 function deleteRows() {
-    const container = document.getElementById("finestramercato");
-
-    container.querySelectorAll('.riga-bacheca, .no-result').forEach(riga_calc => {
+    window.bacheca.querySelectorAll('.riga-bacheca, .no-result').forEach(riga_calc => {
         riga_calc.remove();
     });
 }

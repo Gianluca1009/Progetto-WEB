@@ -31,7 +31,7 @@ function login() {
           const { userId, username, email, punti, partite, vittorie } = data;
           // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
           LS_loginMercato(userId, username, email, punti, partite, vittorie);
-          document.querySelector('.user-points').textContent = punti;
+          window.user_points.textContent = punti;
           // Mostriamo il messaggio di successo
           
         })
@@ -45,11 +45,12 @@ function login() {
         document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });
-        makeVisible(document.getElementById("logout-button"));
+        makeVisible(window.logout_button);
+        makeVisible(window.user_points);
         fillUsernameMercato();
-        makeVisible(document.querySelector(".sezione-profilo"));
-        makeHidden(document.getElementById("login-button"));
-        makeHidden(document.getElementById("register-button"));
+        makeVisible(window.sezione_profilo);
+        makeHidden(window.login_button);
+        makeHidden(window.register_button);
         BuildMercato("", "qualsiasi");
       }
     });
@@ -59,17 +60,18 @@ function login() {
 //Funzione che gestisce il caso in cui non è stato effettuato il login
 async function ifNotLoggedIn() {
 
-    const righe_tabella_player = await fetch(`/get_numero_players`);
-    const righe = await righe_tabella_player.json();
+    // const righe_tabella_player = await fetch(`/get_numero_players`);
+    // const righe = await righe_tabella_player.json();
 
-    if (righe.count === 0) {
-      logout();
-      return;
-    }
+    // if (righe.count === 0) {
+    //   logout();
+    //   return;
+    // }
 
     if(LS_getUserMercatoData().id == null){
+        deleteRows();
+        window.user_points.classList.add('hidden');
         buildRowNoLogin();
-        document.getElementById('user-points').classList.add('hidden');
     }
 }
 
@@ -78,47 +80,16 @@ function ifSessioneAperta() {
     if(LS_getUserMercatoData().id != null){
         BuildMercato("", "qualsiasi");
         fillUsernameMercato();
-        document.querySelector('.user-points').textContent = LS_getUserMercatoData().punti;
-        document.getElementById("logout-button").classList.remove("hidden");
-        makeVisible(document.querySelector(".sezione-profilo"));
-        document.getElementById("register-button").classList.add("hidden");
+        window.user_points.textContent = LS_getUserMercatoData().punti;
+        window.logout_button.classList.remove("hidden");
+        makeVisible(window.sezione_profilo);
+        window.register_button.classList.add("hidden");
         document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });
-        document.getElementById("login-button").classList.add("hidden");
+        window.login_button.classList.add("hidden");
     }
 }
-
-//Funzione che crea la riga che segnala il login non effettuato
-function buildRowNoResult() {
-    const row = document.createElement('div');
-    row.className = 'riga-bacheca no-result';
-
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
-
-    const titolo = document.createElement('h2');
-    titolo.textContent = "Nessun giocatore trovato";
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#b22222'; // rosso scuro per enfasi
-
-    const testo = document.createElement('p');
-    testo.textContent = "Modifica i criteri di ricerca e riprova.";
-    testo.style.fontSize = 'min(1vw, 1em)';
-    testo.style.color = '#555';
-
-    campoInfo.appendChild(titolo);
-    campoInfo.appendChild(testo);
-    row.appendChild(campoInfo);
-
-    // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    document.getElementById('finestramercato').appendChild(row);
-    makeVisible(row);
-}
-
 
 
 //------ REGISTRAZIONE ------//
@@ -176,12 +147,16 @@ function register() {
 //Funzione che permette di effettuare il logout
 function logout() {
     LS_logoutMercato();
-    document.querySelector('.user-points').textContent = 'loggarsi';
-    makeHidden(document.getElementById("logout-button"));
-    makeHidden(document.querySelector(".sezione-profilo"));
-    makeVisible(document.getElementById("login-button"));
-    makeVisible(document.getElementById("register-button"));
+    // window.user_points.textContent = 'loggarsi';
+    makeHidden(window.user_points, 0);
+    window.user_points.classList.add("hidden");
+    makeHidden(window.logout_button);
+    makeHidden(window.sezione_profilo);
+    makeVisible(window.login_button);
+    makeVisible(window.register_button);
+    deleteRows();
     document.querySelectorAll('.btn-compravendita').forEach(button => {
         makeHidden(button);
     });
+    buildRowNoLogin();
 }
