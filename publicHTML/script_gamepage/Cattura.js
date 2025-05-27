@@ -179,7 +179,6 @@ function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
             return true;
         }else{
-
             playSound('fischio', 0.2);
             setTunnelElement(dizionario_mangiata); //compone la grafica nei tunnel laterali
             setFlyingElement(dizionario_mangiata, image_attaccante); //compone la grafica della cattura

@@ -216,6 +216,7 @@ function endGame(){
     freezeTimer();
     //cambioturno();
     resetAllSottoscacco(); // Resetto lo stato di scacco per entrambi i re
+    handleGameTutorial();
 
     launchEndgamePopup(vincitore);
     makeHidden(document.querySelector('.progress-container'));

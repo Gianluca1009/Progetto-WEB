@@ -41,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             startDraft();                    // Prepara il draft
             scrollToGameContainer();    // Scroll naturale con ritardo e velocità variabile
             aggiornaStatoPedine();     // Inizializza lo stato delle pedine all'avvio
-            //aggirno la ui con i nomi dei player
-            document.getElementById('nome-player-1').textContent = LS_getUser1Game().username;
-            document.getElementById('nome-player-2').textContent = LS_getUser2Game().username;
             
         } else {
             Swal.fire('Accedi per scendere in campo!');

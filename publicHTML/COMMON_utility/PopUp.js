@@ -73,7 +73,7 @@ function launchProfilePopup(pagina){
         Parent = document.getElementById('profilo1');
         ElementToAttach = Parent;
         Side = "left";
-        Offset = 113;
+        Offset = 114;
     }
     if(pagina === "game2"){
         Username = LS_getUser2Game().username;
@@ -83,8 +83,8 @@ function launchProfilePopup(pagina){
         Vittorie = LS_getUser2Game().vittorie;
         Parent = document.getElementById('profilo2');
         ElementToAttach = Parent;
-        Side = "right"; 
-        Offset = 30;
+        Side = "right";
+        Offset = 36;
     }
     if(pagina === "mercato"){
         Username = LS_getUserMercatoData().username;
@@ -147,10 +147,11 @@ function launchProfilePopup(pagina){
 
 // Funzione che chiude il popup del profilo
 function closeProfilePopup(Parent){
-    if(document.getElementById("profilo")){
-        makeHidden(document.getElementById("profilo"), 0.5);
+    profilo_da_eliminare = document.querySelector(".div-profilo");
+    if(profilo_da_eliminare){
+        makeHidden(profilo_da_eliminare, 0.5);
         setTimeout(() => {
-            document.getElementById("profilo").remove();
+            profilo_da_eliminare.remove();
         },500);
     }
     Parent.dataset.aperto = "false";

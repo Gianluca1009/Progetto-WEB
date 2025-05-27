@@ -269,11 +269,15 @@ function handleGameTutorial() {
     tutorial.src = "images/gamepage/tutorial_game.png"; // Imposto l'immagine del tutorial del gioco
     if(tutorial.dataset.aperto === "false"){
         tutorial.dataset.aperto = "true";
+        document.querySelector(".condition-container").style.zIndex = "12"; // Metto in rilievo la condizione di vittoria
+        document.querySelector('.progress-container').style.zIndex = "12"; // Metto in rilievo il timer
         makeVisible(tutorial);
     }
     else if(tutorial.dataset.aperto === "true"){
         tutorial.dataset.aperto = "false";
         makeHidden(tutorial);
+        document.querySelector('.condition-container').style.zIndex = "auto"; // Riporto la condizione di vittoria in background
+        document.querySelector('.progress-container').style.zIndex = "auto"; // Riporto il timer in background
     }
 }
 

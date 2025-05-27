@@ -346,8 +346,6 @@ function populateRandom(colore) {
         makeHidden(document.getElementById('random2'));
         setTimeout(() => {
             makeVisible(document.getElementById('player2button'));
-            nome_player_nero = document.getElementById('nome-player-2');
-            nome_player_nero.style.setProperty("margin", "0px", "important");
         }, 500); // Mostra il bottone dopo 1 secondo
     }
     else if(colore=="bianco"){
@@ -355,8 +353,6 @@ function populateRandom(colore) {
         makeHidden(document.getElementById('random1'));
         setTimeout(() => {
             makeVisible(document.getElementById('player1button'));
-            nome_player_bianco = document.getElementById('nome-player-1');
-            nome_player_bianco.style.setProperty("margin-top", "0px", "important");
         }, 500);
     }
 }

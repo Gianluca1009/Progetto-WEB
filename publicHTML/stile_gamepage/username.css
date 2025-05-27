@@ -1,13 +1,24 @@
 .users-container {
     position: relative;
     display: flex;
-    flex-direction: row;
-    gap: 1%;
-    height: 10vh;
-    width: 20vw;
-    margin-top: 15vw;
     justify-content: center;
     align-items: center;
+    height: 10vh;
+    width: 50vw;
+    margin-top: 14.5vw;
+    flex-wrap: nowrap;
+}
+
+.profilo-game{
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: row;
+    gap: 5%;
+    width: 30vw;
+    height: 10vh;
+    left: auto;
+    flex-grow: 1;
 }
 
 .game-username{
@@ -16,8 +27,16 @@
     font-size: calc(1vw + 1vh);
 }
 
+.vs-container {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 6vw;
+}
+
 .versus{
     height: 100%;
     object-fit: contain;
-    filter: var(--color-crema);
 }

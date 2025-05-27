@@ -207,6 +207,9 @@ function handleHamburgerMenu(pagina) {
     
 }
 
+
+
+
 //------ FETCH COMUNI -------//
 
 async function forgotPassword(pagina) {
