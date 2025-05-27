@@ -24,12 +24,10 @@
 
 .sezione-sx{
     left: 0;   
-    padding-top:2.5vh;
 }
 
 .sezione-dx{
     right: 0;
-    margin-top:2.5vh;
 }
 
 .tabella-draft{
@@ -41,13 +39,8 @@
     flex-direction: column;
     gap: 3%;
     top: 0;
+    padding-bottom: 1vw;
 }
-
-#draft-table-dx {
-    margin-top: 5vh;
-}
-
-
 
 /* Stile per le righe con ombre - ora ciascuna riga è un grid element */
 .riga-draft {
