@@ -1,4 +1,4 @@
-//Funzione per recuperare la rosa dal db
+// Funzione per recuperare la rosa dal db
 async function fetchMiaRosa(){
     try{
         if (LS_getUserRosaData().id){
@@ -21,12 +21,12 @@ async function fetchMiaRosa(){
     
 }
 
-//Funzione che mette l'username nel campo dedicato dopo il login
+// Funzione che mette l'username nel campo dedicato dopo il login
 function fillUsernameRosa(){
     window.player_username.textContent = `Benvenuto, ${LS_getUserRosaData().username}`;
 }
 
-// Popola gli array di finestra dividendo i calciatori della rosa per ruolo
+// Funzione che popola gli array di finestra dividendo i calciatori della rosa per ruolo
 function dividiPerRuolo(calciatore) {
 
     if(calciatore.ruolo === "Difensore") {
@@ -42,12 +42,13 @@ function dividiPerRuolo(calciatore) {
     }
 }
 
-// Crea il titolo per ogni ruolo
+// Funzione che crea il titolo per ogni ruolo
 function buildTitoloRuolo(ruolo) {
+    ruolo_maiusc = ruolo.toUpperCase();
 
     const titolo = document.createElement('h3');
     titolo.className = "title-ruolo";
-    titolo.textContent = ruolo;
+    titolo.textContent = ruolo_maiusc;
     window.bacheca.appendChild(titolo)
 }
 
@@ -161,59 +162,63 @@ function BuildRowForCalciatore(calciatore){
 
 //Crea la riga per comunicare che non si hanno calciatori di un determinato ruolo
 function buildRowNoResult(ruolo) {
-    const row = document.createElement('div');
-    row.className = 'riga-bacheca no-result';
-    row.id = 'no-result';
+    ruolo_maiusc = ruolo.toUpperCase();
 
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
+    const div_testi = document.createElement('div');
+    div_testi.id = 'testo-no-result';
+    div_testi.classList.add('hidden');
+    div_testi.style.display = 'flex';
+    div_testi.style.flexDirection = 'column';
+    div_testi.style.alignItems = 'center';
+    div_testi.style.justifyContent = 'center';
+    div_testi.style.marginTop = '5%';
+    div_testi.style.marginBottom = '5%';
 
     const titolo = document.createElement('h2');
-    titolo.textContent = `Nessun ${ruolo} trovato`;
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#282727'; // rosso scuro per enfasi
+    titolo.textContent = `NESSUN ${ruolo_maiusc} TROVATO`;
+    titolo.style.fontSize = 'calc(1.2vw + 1.2vh)';
+    titolo.style.margin = '0';
+    titolo.style.color = 'aliceblue';
+    titolo.style.webkitTextStroke = 'calc(0.03vh + 0.03vw) var(--color-crema)';
 
     const testo = document.createElement('p');
     testo.textContent = "Vai a comprare quelli che vuoi nella pagina del mercato!";
-    testo.style.fontSize = 'min(1vw, 1em)';
-    testo.style.color = '#555';
+    testo.style.fontSize = 'calc(1vw + 1vh)';
+    testo.style.margin = '0';
+    testo.marginTop = '2%';
+    testo.style.color = 'aliceblue';
+    testo.style.webkitTextStroke = 'calc(0.02vh + 0.02vw) var(--color-crema)';
 
-    campoInfo.appendChild(titolo);
-    campoInfo.appendChild(testo);
-    row.appendChild(campoInfo);
+    div_testi.appendChild(titolo);
+    div_testi.appendChild(testo);
 
     // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    window.bacheca.appendChild(row);
-    makeVisible(row);
+    div_testi.classList.add('hidden');
+    window.bacheca.appendChild(div_testi);
+    makeVisible(div_testi);
 }
 
 // Funzione che crea la riga che segnala il login non effettuato
 function buildRowNoLogin() {
 
-    const row = document.createElement('div');
-    row.className = 'riga-bacheca no-result';
-    row.id = 'no-login';
-
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
-
     const titolo = document.createElement('h2');
-    titolo.textContent = `Effettua il login per visualizzare i calciatori della tua rosa`;
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#282727'; 
-
-    campoInfo.appendChild(titolo);
-    row.appendChild(campoInfo);
+    titolo.id = 'titolo-no-login';
+    titolo.textContent = `EFFETTUA IL LOGIN PER VISUALIZZARE I TUOI CALCIATORI`;
+    titolo.style.fontSize = 'calc(1.2vw + 1.2vh)';
+    titolo.style.color = 'aliceblue';
+    titolo.style.margin = '0';
+    titolo.style.position = 'absolute';
+    titolo.style.top = '50%';
+    titolo.style.left = '50%';
+    titolo.style.transform = 'translate(-50%, -50%)';
+    titolo.style.textAlign = 'center';
+    titolo.style.width = '100%';
+    titolo.style.webkitTextStroke = 'calc(0.03vh + 0.03vw) var(--color-crema)';
 
     // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    window.bacheca.appendChild(row);
-    makeVisible(row);
+    titolo.classList.add("hidden");
+    window.bacheca.appendChild(titolo);
+    makeVisible(titolo);
 }
 
 // Svuota le bacheca eliminandone il contenuto

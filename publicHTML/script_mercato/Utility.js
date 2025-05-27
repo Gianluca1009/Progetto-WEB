@@ -145,60 +145,63 @@ function BuildRowForCalciatore(calciatore){
 
 //Funzione che crea la riga che segnala il login non effettuato
 function buildRowNoResult() {
-    const row = document.createElement('div');
-    row.className = 'riga-bacheca no-result';
-
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
+    const div_testi = document.createElement('div');
+    div_testi.id = 'testo-no-result';
+    div_testi.classList.add('hidden');
+    div_testi.style.display = 'flex';
+    div_testi.style.flexDirection = 'column';
+    div_testi.style.alignItems = 'center';
+    div_testi.style.justifyContent = 'center';
+    div_testi.style.position = 'absolute';
+    div_testi.style.top = '50%';
+    div_testi.style.left = '50%';
+    div_testi.style.transform = 'translate(-50%, -50%)';
 
     const titolo = document.createElement('h2');
-    titolo.textContent = "Nessun giocatore trovato";
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#282727';
+    titolo.textContent = "NESSUN CALCIATORE TROVATO";
+    titolo.style.fontSize = 'calc(1.2vw + 1.2vh)';
+    titolo.style.color = 'aliceblue';
+    titolo.style.margin = '0';
+    titolo.style.webkitTextStroke = 'calc(0.03vh + 0.03vw) var(--color-crema)';
 
     const testo = document.createElement('p');
-    testo.textContent = "Modifica i criteri di ricerca e riprova.";
-    testo.style.fontSize = 'min(1vw, 1em)';
-    testo.style.color = '#555';
+    testo.textContent = "Modifica i criteri di ricerca e riprova";
+    testo.marginTop = '2%';
+    testo.style.fontSize = 'calc(1vw + 1vh)';
+    testo.style.color = 'aliceblue';
+    testo.style.margin = '0';
+    testo.style.webkitTextStroke = 'calc(0.02vh + 0.02vw) var(--color-crema)';
 
-    campoInfo.appendChild(titolo);
-    campoInfo.appendChild(testo);
-    row.appendChild(campoInfo);
+    div_testi.appendChild(titolo);
+    div_testi.appendChild(testo);
 
     // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    window.bacheca.appendChild(row);
-    makeVisible(row);
+    window.bacheca.appendChild(div_testi);
+    makeVisible(div_testi);
 }
 
 
 // Funzione che crea la riga che segnala il login non effettuato
 function buildRowNoLogin() {
-    // let bacheca = document.getElementById("bacheca-rosa");
-
-    const row = document.createElement('div');
-    row.className = 'riga-bacheca no-result';
-    row.id = 'no-login';
-
-    // Campo info con messaggio
-    const campoInfo = document.createElement('div');
-    campoInfo.className = 'no-result';
 
     const titolo = document.createElement('h2');
-    titolo.textContent = `Effettua il login per comprare nuovi giocatori`;
-    titolo.style.fontSize = 'min(1.5vw, 1.5em)';
-    titolo.style.marginBlockEnd = '0.5em';
-    titolo.style.color = '#282727'; 
-
-    campoInfo.appendChild(titolo);
-    row.appendChild(campoInfo);
+    titolo.id = 'titolo-no-login';
+    titolo.textContent = `EFFETTUA IL LOGIN PER COMPRARE I CALCIATORI`;
+    titolo.style.fontSize = 'calc(1.2vw + 1.2vh)';
+    titolo.style.color = 'aliceblue';
+    titolo.style.margin = '0';
+    titolo.style.position = 'absolute';
+    titolo.style.top = '50%';
+    titolo.style.left = '50%';
+    titolo.style.transform = 'translate(-50%, -50%)';
+    titolo.style.textAlign = 'center';
+    titolo.style.width = '100%';
+    titolo.style.webkitTextStroke = 'calc(0.03vh + 0.03vw) var(--color-crema)';
 
     // Aggiunta alla finestra del mercato
-    row.classList.add("fade-hidden");
-    window.bacheca.appendChild(row);
-    makeVisible(row);
+    titolo.classList.add("hidden");
+    window.bacheca.appendChild(titolo);
+    makeVisible(titolo);
 }
 
 //Funzione per eliminare le righe della finestra mercato
@@ -206,6 +209,12 @@ function deleteRows() {
     window.bacheca.querySelectorAll('.riga-bacheca, .no-result').forEach(riga_calc => {
         riga_calc.remove();
     });
+    if(document.getElementById('testo-no-result')) {
+        document.getElementById('testo-no-result').remove();
+    }
+    if(document.getElementById('titolo-no-login')) {
+        document.getElementById('titolo-no-login').remove();
+    }
 }
 
 //Funzione per costruire il mercato
