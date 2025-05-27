@@ -4,7 +4,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger dinamicamente
-    setUsersContainerWidth(); // Imposta la larghezza del container utenti
 
     isSessioneAperta(); //Gestione della sessione aperta
     isNotLoggedIn(); //Gestione della sessione non aperta
@@ -91,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', function() {
         setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger dinamicamente
-        setUsersContainerWidth(); // Imposta la larghezza del container utenti
         setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori
     });
     

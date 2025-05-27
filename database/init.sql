@@ -68,7 +68,7 @@ INSERT INTO calciatore (
 ('Antoine', 'Griezmann', 'images/santini/antoine_griezmann.webp', '1991-03-21', 'Francia', 'Attaccante', 'Atlético Madrid', 7, 345, 170, 690, 40, 1, 21, 48, 26, 176, 60),
 ('Phil', 'Foden', 'images/santini/phil_foden.webp', '2000-05-28', 'Inghilterra', 'Centrocampista', 'Manchester City', 47, 105, 110, 270, 18, 0, 12, 38, 28, 171, 90),
 ('Joshua', 'Kimmich', 'images/santini/joshua_kimmich.webp', '1995-02-08', 'Germania', 'Centrocampista', 'Bayern Monaco', 6, 50, 90, 350, 20, 0, 14, 30, 28, 177, 42),
-('Trent Alexander', 'Arnold', 'images/santini/trentalexander_arnold.webp', '1998-10-07', 'Inghilterra', 'Difensore', 'Liverpool', 66, 35, 110, 310, 18, 0, 9, 40, 42, 180, 80),
+('Trent Alexander', 'Arnold', 'images/santini/trentalexander_arnold.webp', '1998-10-07', 'Inghilterra', 'Difensore', 'Liverpool', 66, 35, 110, 310, 18, 0, 9, 5, 12, 180, 80),
 ('Jude', 'Bellingham', 'images/santini/jude_bellingham.webp', '2003-06-29', 'Inghilterra', 'Centrocampista', 'Real Madrid', 5, 75, 70, 235, 20, 1, 10, 35, 28, 186, 95),
 ('Rafael', 'Leão', 'images/santini/rafael_leao.webp', '1999-06-10', 'Portogallo', 'Attaccante', 'AC Milan', 10, 95, 70, 220, 22, 1, 6, 38, 28, 188, 80),
 ('Federico', 'Chiesa', 'images/santini/federico_chiesa.webp', '1997-10-25', 'Italia', 'Attaccante', 'Liverpool', 14, 90, 60, 235, 22, 0, 5, 35, 24, 175, 55),

@@ -159,13 +159,13 @@ function register() {
 //Funzione che permette di effettuare il logout
 function logout() {
     LS_logoutMercato();
-    // window.user_points.textContent = 'loggarsi';
     makeHidden(window.user_points, 0);
     window.user_points.classList.add("hidden");
     makeHidden(window.logout_button);
     makeHidden(window.sezione_profilo);
     makeVisible(window.login_button);
     makeVisible(window.register_button);
+    document.getElementById('cerca-button').disabled = true;
     deleteRows();
     document.querySelectorAll('.btn-compravendita').forEach(button => {
         makeHidden(button);

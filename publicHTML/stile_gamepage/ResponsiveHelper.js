@@ -107,14 +107,3 @@ function setHamburgerLunghezza(){
     hamburger.style.height = `${altezzaPagina}px`;
 }
 
-// Funzione per settare le dimensioni del container utenti
-function setUsersContainerWidth(){
-    const usersContainer = document.querySelector('.users-container');
-    const dimensioniGameContainer = misuraGameContainer();
-    
-    if (usersContainer && dimensioniGameContainer) {
-        // Imposta la larghezza del contenitore degli utenti in base alla larghezza del game container
-        usersContainer.style.width = `${dimensioniGameContainer.width * 0.95}px`;
-    }
-}
-

@@ -21,12 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //RICERCA PER NOME
     document.getElementById("search-form").addEventListener("submit", function(event) {
         event.preventDefault();
-        //Ottengo l'input del form
-        const inputNome = document.querySelector("input[name='nome']").value;
-        const inputRuolo = document.querySelector("select[name='tendina']").value;
+        if(LS_getUserMercatoData().id != null) {
+            const inputNome = document.querySelector("input[name='nome']").value;
+            const inputRuolo = document.querySelector("select[name='tendina']").value;
 
-        BuildMercato(inputNome, inputRuolo);
-    })
+            BuildMercato(inputNome, inputRuolo);
+        }
+    });
 
 
     //RICERCA PER RUOLO
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const inputRuolo = document.querySelector("select[name='tendina']").value;
 
         BuildMercato(inputNome, inputRuolo);
-    })
+    });
     
 
     //GESTIONE DEL MENU
