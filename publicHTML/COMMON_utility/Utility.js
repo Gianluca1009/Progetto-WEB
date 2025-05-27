@@ -209,8 +209,20 @@ function handleHamburgerMenu(pagina) {
 
 //------ FETCH COMUNI -------//
 
-async function forgotPassword(email) {
+async function forgotPassword() {
+    let username = document.getElementById('username').value;
     try {
+        const result_email = await fetch(`/get_email?username=${username}`)
+        const email = await result_email.json()
+        .then(data => {
+            if (data.email) {
+                return data.email;
+            } else {
+                throw new Error('Email non trovata per l\'utente specificato');
+            }
+        });
+
+        console.log("email nel fetch", email);
         const response = await fetch('/forgot-password', {
             method: 'POST',
             headers: {
@@ -224,7 +236,7 @@ async function forgotPassword(email) {
         }
 
         const data = await response.json();
-        return data.message; // Messaggio di successo
+        return data.message;
     } catch (error) {
         throw new Error(error.message);
     }

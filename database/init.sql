@@ -129,9 +129,9 @@ INSERT INTO calciatore (
 ('Yann', 'Bisseck', 'images/santini/yann_bisseck.webp', '2000-11-29', 'Germania', 'Difensore', 'Inter', 31, 8, 6, 90, 6, 0, 3, 3, 3, 196, 45),
 ('Castello', 'Lukeba', 'images/santini/castello_lukeba.webp', '2002-12-17', 'Francia', 'Difensore', 'RB Lipsia', 4, 6, 8, 110, 8, 0, 2, 3, 3, 184, 50),
 ('Yan', 'Couto', 'images/santini/yan_couto.webp', '2002-06-03', 'Brasile', 'Difensore', 'Borussia Dortmund', 2, 8, 20, 115, 6, 0, 3, 5, 8, 168, 45);
-('Gianluca','Nanni', 'images/santini/gianluca_nanni.webp', '2003-01-01', 'Italia', 'Attaccante', 'Sapienza', 7, 1000, 1000, 1000, 0, 0, 100, 100, 100, 180, 20);
-('Matteo','Malara', 'images/santini/matteo_malara.webp', '2003-05-05', 'Italia', 'Attaccante', 'Sapienza', 99, 100, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 20);
-('Marco','Marcovecchio', 'images/santini/marco_marcovecchio.webp', '2003-11-08', 'Italia', 'Attaccante', 'Sapienza', 10, 100, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 20);
+-- ('Gianluca','Nanni', 'images/santini/gianluca_nanni.webp', '2003-01-01', 'Italia', 'Attaccante', 'Sapienza', 7, 1000, 1000, 1000, 0, 0, 100, 100, 100, 180, 20);
+-- ('Matteo','Malara', 'images/santini/matteo_malara.webp', '2003-05-05', 'Italia', 'Attaccante', 'Sapienza', 99, 100, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 20);
+-- ('Marco','Marcovecchio', 'images/santini/marco_marcovecchio.webp', '2003-11-08', 'Italia', 'Attaccante', 'Sapienza', 10, 100, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 20);
 
 
 

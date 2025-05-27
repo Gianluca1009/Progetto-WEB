@@ -7,6 +7,7 @@ const port = 3000; // Porta utilizzata per il server
 // Configurazione CORS
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Configurazione per ottenere i file statici del progetto
 app.use(express.static(path.join(__dirname, 'publicHTML')));

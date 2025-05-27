@@ -6,11 +6,13 @@ function login() {
       title: 'Login',
       html:
         '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
-        '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">',
+        '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">' +
+        '<br><a id="pass_dim" onclick="forgotPassword()" style="color: #007bff; text-decoration: none; font-size: 0.9em; cursor: pointer">Password dimenticata?</a>',
       confirmButtonText: 'Login',
       preConfirm: () => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
+        
 
         if (!username || !password) {
           Swal.showValidationMessage('Tutti i campi sono obbligatori');
