@@ -165,7 +165,7 @@ function buildRowNoResult() {
     titolo.style.webkitTextStroke = 'calc(0.03vh + 0.03vw) var(--color-crema)';
 
     const testo = document.createElement('p');
-    testo.textContent = "MODIFICA I CRITERI DI RICERCA E RIPROVA";
+    testo.textContent = "Modifica i criteri di ricerca e riprova";
     testo.marginTop = '2%';
     testo.style.fontSize = 'calc(1vw + 1vh)';
     testo.style.color = 'aliceblue';

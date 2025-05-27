@@ -33,7 +33,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Presenza"};
     }
     if (cond === "Minor numero di cartellini gialli in carriera"){
-        return {"valid": calc_att.cartellini_gialli >= calc_dif.cartellini_gialli,
+        return {"valid": calc_att.cartellini_gialli <= calc_dif.cartellini_gialli,
                 "val_att": calc_att.cartellini_gialli,
                 "val_dif": calc_dif.cartellini_gialli,
                 "att_cognome": calc_att.cognome,
@@ -42,7 +42,7 @@ function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna
                 "cond":  "Cartellini Gialli"};
     }
     if (cond === "Minor numero di cartellini rossi in carriera"){
-        return {"valid": calc_att.cartellini_rossi >= calc_dif.cartellini_rossi,
+        return {"valid": calc_att.cartellini_rossi <= calc_dif.cartellini_rossi,
                 "val_att": calc_att.cartellini_rossi,
                 "val_dif": calc_dif.cartellini_rossi,
                 "att_cognome": calc_att.cognome,
