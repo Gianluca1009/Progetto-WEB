@@ -13,13 +13,13 @@ function login() {
               <h3 style = "margin-bottom: 0">Giocatore bianco</h3>
               <input type="text" id="username1" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
               <input type="password" id="password1" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
-              <a onclick="forgotPassword()" style="color: #007bff; text-decoration: none; font-size: 0.9em;">Password dimenticata?</a>
+              <a onclick="forgotPassword()" class="password-dimenticata" style="padding-top: 1vw; color: #007bff; text-decoration: none; font-size: 0.9em;">Password dimenticata?</a>
           </div>
           <div class = 'container-login'>
               <h3 style = "margin-bottom: 0">Giocatore nero</h3>
               <input type="text" id="username2" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
               <input type="password" id="password2" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
-              <a onclick="forgotPassword()" style="color: #007bff; text-decoration: none; font-size: 0.9em;">Password dimenticata?</a>
+              <a onclick="forgotPassword()" class="password-dimenticata" style="padding-top: 1vw; color: #007bff; text-decoration: none; font-size: 0.9em;">Password dimenticata?</a>
           </div>
       </div>`,
       confirmButtonText: 'Login',

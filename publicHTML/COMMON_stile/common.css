@@ -140,3 +140,7 @@ ul{
 li{
     font-size: clamp(0.1rem, 0.7vw + 0.7vh, 1rem);
 }
+
+.my-swal-margin-top {
+  margin-top: 7vw !important; 
+}

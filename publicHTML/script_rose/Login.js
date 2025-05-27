@@ -7,8 +7,11 @@ function login() {
       html:
         '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
         '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">' +
-        '<br><br><a id="pass_dim" class="password-dimenticata" onclick="forgotPassword()">Password dimenticata?</a>',
+        '<br><br><a id="pass_dim" class="password-dimenticata" style="padding-top: 1vw; color: #007bff; text-decoration: none; font-size: 0.9em;" onclick="forgotPassword()">Password dimenticata?</a>',
       confirmButtonText: 'Login',
+      customClass: {
+        popup: 'my-swal-margin-top'
+      },
       preConfirm: () => {
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;        
@@ -106,6 +109,9 @@ function register() {
       '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">'+
       '<input type="email" id="email" class="swal2-input" placeholder="Email" autocomplete="off">',
     confirmButtonText: 'Registrati',
+    customClass: {
+      popup: 'my-swal-margin-top'
+    },
     preConfirm: () => {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
