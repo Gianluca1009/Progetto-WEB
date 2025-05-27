@@ -10,7 +10,6 @@ async function fetchCalciatoriLiberi() {
 
         //Ordino i giocatori in ordine di prezzo decrescente
         results.sort((a, b) => b.prezzo - a.prezzo);
-
         return results;
     }
 }

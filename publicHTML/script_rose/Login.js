@@ -77,8 +77,14 @@ async function ifNotLoggedIn() {
 }
 
 //Funzione che gestisce il caso in cui la sessione è rimasta aperta
-function ifSessioneAperta(){
+async function ifSessioneAperta(){
     if(LS_getUserRosaData().id){
+        const player = await fetch(`/player_in_db?id=${LS_getUserRosaData().id}`);
+        console.log(player.ok);
+        if(!player.ok) {
+            LS_logoutRosa();
+            return;
+        }
         fillUsernameRosa();
         // window.logout_button.classList.remove("hidden");
         makeVisible(window.logout_button);

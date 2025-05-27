@@ -76,8 +76,14 @@ async function ifNotLoggedIn() {
 }
 
 //Funzione che gestisce il caso in cui la sessione è rimasta aperta
-function ifSessioneAperta() {
+async function ifSessioneAperta() {
     if(LS_getUserMercatoData().id != null){
+        const player = await fetch(`/player_in_db?id=${LS_getUserMercatoData().id}`);
+        console.log(player.ok);
+        if(!player.ok) {
+            LS_logoutMercato();
+            return;
+        }
         BuildMercato("", "qualsiasi");
         fillUsernameMercato();
         window.user_points.textContent = LS_getUserMercatoData().punti;

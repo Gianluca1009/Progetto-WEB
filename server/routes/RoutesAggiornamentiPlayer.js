@@ -78,4 +78,24 @@ router_aggiornamenti_player.post('/sale_calciatore', async (req, res) => {
     }
 });
 
+// Endpoint per ritornare un player
+router_aggiornamenti_player.get('/player_in_db', async (req,res)=> {
+    const connection = await createConnection();
+    const user_id = req.query.id;
+    try{
+      
+      const result = await connection.query(`SELECT * from player WHERE player.id = $1`, [user_id]);
+      if (result.rows.length > 0) {
+          res.json(result.rows);
+      }
+      else {
+          res.status(404).send('Nessun player trovato in sessione');
+      }
+    } catch (error) {
+      res.status(500).send('Errore interno al server');
+    } finally{
+        await connection.end();
+    }
+});
+
 module.exports = router_aggiornamenti_player;
