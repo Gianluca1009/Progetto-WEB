@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setUsersContainerWidth(); // Imposta la larghezza del container utenti
 
     isSessioneAperta(); //Gestione della sessione aperta
+    isNotLoggedIn(); //Gestione della sessione non aperta
     
     preloadSounds();    // Pre-carico i suoni di gioco
     StartPosition();

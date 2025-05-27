@@ -1,6 +1,6 @@
 //------ LOGIN ------//
 
-//Funzione per effettuare il login
+// Funzione per effettuare il login
 function login() {
     Swal.fire({
       title: 'Login',
@@ -76,13 +76,15 @@ function login() {
           html: '<h2>Login effettuato per entrambi i giocatori!</h2>'
         });
         makeVisible(document.getElementById("logout-button"));
+        makeVisible(document.querySelector(".users-container"));
         makeHidden(document.getElementById("login-button"));
         makeHidden(document.getElementById("register-button"));
+        document.querySelector('.game-container').style.marginTop = '7vh';
       }
     });
 }
 
-//Funzione per gestire il caso di sessione gia aperta
+// Funzione per gestire il caso di sessione gia aperta
 function isSessioneAperta(){
     //mostra logout se l'utente è già loggato
     if(LS_getUser1Game().id != null && LS_getUser2Game().id != null){
@@ -90,6 +92,18 @@ function isSessioneAperta(){
         document.getElementById("register-button").classList.add("hidden");
         document.getElementById("login-button").classList.add("hidden");
         fillUsernameGamepage();
+    }
+}
+
+// Funzione per gestire il caso in cui non è stato effettuato il login
+function isNotLoggedIn() {
+    // Se non è loggato, nasconde il bottone di logout e mostra i bottoni di login e registrazione
+    if(LS_getUser1Game().id == null || LS_getUser2Game().id == null){
+        document.getElementById("logout-button").classList.add("hidden");
+        document.querySelector(".users-container").classList.add("hidden");
+        makeVisible(document.getElementById("login-button"));
+        makeVisible(document.getElementById("register-button"));
+        document.querySelector('.game-container').style.marginTop = '13vw';
     }
 }
 
@@ -157,7 +171,8 @@ function logout(){
     LS_logoutGame();
     //rende visibili i bottoni
     makeHidden(document.getElementById("logout-button"));
-    makeHidden(document.querySelector("sezione-profilo"));
+    document.querySelector(".users-container").classList.add("hidden");
     makeVisible(document.getElementById("login-button"));
     makeVisible(document.getElementById("register-button"));
+    document.querySelector('.game-container').style.marginTop = '13vw';
 }

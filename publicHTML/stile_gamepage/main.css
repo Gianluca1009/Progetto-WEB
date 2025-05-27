@@ -15,6 +15,7 @@
     animation: glow 2s infinite alternate;
     display: flex;
     margin-top: 7vh;
+    transition: margin-top 0.3s ease-in-out;
     overflow: hidden;
 }
 
