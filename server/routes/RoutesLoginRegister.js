@@ -101,7 +101,7 @@ router_login_register.post('/forgot-password', async (req, res) => {
 });
 
 
-// Endpoint per il reset della password
+// Endpoint per l'aggiornamento della password (backend)
 router_login_register.post('/aggiorna-password', async (req, res) => {
   const connection = await createConnection();
   const { new_password, reset_token } = req.body;
@@ -127,7 +127,7 @@ router_login_register.post('/aggiorna-password', async (req, res) => {
 });
 
 
-
+// Endpoint per la visualizzazione della pagina di reset della password nella mail
 router_login_register.get('/reset-password/:token', (req, res) => {
     const { token } = req.params;
 
