@@ -7,7 +7,7 @@ function login() {
       html:
         '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
         '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">' +
-        '<br><br><a id="pass_dim" class="password-dimenticata" style="padding-top: 1vw; color: #007bff; text-decoration: none; font-size: 0.9em;" onclick="forgotPassword()">Password dimenticata?</a>',
+        '<br><br><a id="pass_dim" class="password-dimenticata" onclick="forgotPassword(\'rosa\')">Password dimenticata?</a>',
       confirmButtonText: 'Login',
       customClass: {
         popup: 'my-swal-margin-top'

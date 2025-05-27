@@ -13,17 +13,16 @@ function login() {
               <h3 style = "margin-bottom: 0">Giocatore bianco</h3>
               <input type="text" id="username1" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
               <input type="password" id="password1" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
-              <a onclick="forgotPassword()" class="password-dimenticata" style="padding-top: 1vw; color: #007bff; text-decoration: none; font-size: 0.9em;">Password dimenticata?</a>
+              <a onclick="forgotPassword('game1')" class="password-dimenticata">Password dimenticata?</a>
           </div>
           <div class = 'container-login'>
               <h3 style = "margin-bottom: 0">Giocatore nero</h3>
               <input type="text" id="username2" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
               <input type="password" id="password2" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
-              <a onclick="forgotPassword()" class="password-dimenticata" style="padding-top: 1vw; color: #007bff; text-decoration: none; font-size: 0.9em;">Password dimenticata?</a>
+              <a onclick="forgotPassword('game2')" class="password-dimenticata">Password dimenticata?</a>
           </div>
       </div>`,
       confirmButtonText: 'Login',
-
       preConfirm: () => {
         const username1 = document.getElementById('username1').value;
         const password1 = document.getElementById('password1').value;
@@ -34,6 +33,8 @@ function login() {
             Swal.showValidationMessage('Tutti i campi sono obbligatori');
             return false;
         }
+
+        Swal.showLoading(); // Mostra l'animazione di caricamento
 
         // Due fetch in parallelo per i due giocatori
         return Promise.all([

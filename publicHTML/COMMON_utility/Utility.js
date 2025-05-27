@@ -209,8 +209,16 @@ function handleHamburgerMenu(pagina) {
 
 //------ FETCH COMUNI -------//
 
-async function forgotPassword() {
-    let username = document.getElementById('username').value;
+async function forgotPassword(pagina) {
+    let username;
+    if(pagina==="mercato" || pagina==="rosa") username = document.getElementById('username').value;
+    if(pagina==="game1") username = document.getElementById('username1').value;
+    if(pagina==="game2") username = document.getElementById('username2').value;
+    if(!username) {
+        if(Swal.getPopup()) {
+            Swal.showValidationMessage('Inserisci username per poter recuperare la password');
+        }
+    }
     try {
         const result_email = await fetch(`/get_email?username=${username}`)
         const email = await result_email.json()
