@@ -105,11 +105,13 @@ function setTunnelElement(dizionario_mangiata){
     const divFluttuante = document.createElement('div');
     divFluttuante.classList.add("div-log");
     divFluttuante.style.color = window.turno_bianco ? "black" : "white";
-    divFluttuante.style.background = window.turno_bianco ? "rgb(241 233 233)" : "rgba(120, 120, 120)";
+    divFluttuante.style.background = window.turno_bianco ? "rgb(255 255 255)" : "rgb(83 82 82)";
+
+    divFluttuante.style.border = dizionario_mangiata.valid? "2px solid rgb(19, 234, 19)" : "2px solid red";
 
     const top = document.createElement('div');
     top.classList.add("log-top");
-    top.style.background = window.turno_bianco ? "rgb(165 165 165)" : "rgb(62, 60, 60)";
+    top.style.background = window.turno_bianco ? "rgb(165 165 165)" : "rgb(39 38 38)";
     divFluttuante.appendChild(top);
 
         const condizione = document.createElement('p');
@@ -130,7 +132,7 @@ function setTunnelElement(dizionario_mangiata){
 
         const stat1 = document.createElement('p');
         stat1.textContent = dizionario_mangiata.val_att;
-        stat1.style.color = dizionario_mangiata.valid ? "#13ea13" : "#c80000";
+        stat1.style.color = dizionario_mangiata.valid ? "#13ea13" : "red";
         section1.appendChild(stat1);
     
     const section2 = document.createElement('div');
@@ -143,7 +145,7 @@ function setTunnelElement(dizionario_mangiata){
 
         const stat2 = document.createElement('p');
         stat2.textContent = dizionario_mangiata.val_dif;
-        stat2.style.color = dizionario_mangiata.valid ? "#c80000" : "#13ea13";
+        stat2.style.color = dizionario_mangiata.valid ? "red" : "#13ea13";
         section2.appendChild(stat2);
 
     const content = window.turno_bianco ? document.querySelector('.tunnel-content-sx') : document.querySelector('.tunnel-content-dx');
@@ -172,6 +174,8 @@ function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
         let dizionario_mangiata = helperCattura(window.selected_element, pedinaBersaglio);
         if(dizionario_mangiata.valid){
             pedinaBersaglio.remove();
+            setTunnelElement(dizionario_mangiata); //compone la grafica nei tunnel laterali
+            setFlyingElement(dizionario_mangiata, image_attaccante); //compone la grafica della cattura
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
             return true;
         }else{
