@@ -7,17 +7,17 @@ function login() {
       html:
         '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
         '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">' +
-        '<br><a id="pass_dim" onclick="forgotPassword()" style="color: #007bff; text-decoration: none; font-size: 0.9em; cursor: pointer">Password dimenticata?</a>',
+        '<br><br><a id="pass_dim" class="password-dimenticata" onclick="forgotPassword()">Password dimenticata?</a>',
       confirmButtonText: 'Login',
       preConfirm: () => {
         const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
-        
+        const password = document.getElementById('password').value;        
 
         if (!username || !password) {
           Swal.showValidationMessage('Tutti i campi sono obbligatori');
           return false;
         }
+        Swal.showLoading(); // Mostra l'animazione di caricamento
 
         return fetch('/login', {
           method: 'POST',
@@ -82,7 +82,7 @@ async function ifSessioneAperta(){
         const player = await fetch(`/player_in_db?id=${LS_getUserRosaData().id}`);
         console.log(player.ok);
         if(!player.ok) {
-            LS_logoutRosa();
+            LS_logoutRose();
             return;
         }
         fillUsernameRosa();

@@ -6,7 +6,8 @@ function login() {
       title: 'Login',
       html:
         '<input type="text" id="username" class="swal2-input" placeholder="Username" autocomplete="off">' +
-        '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">',
+        '<input type="password" id="password" class="swal2-input" placeholder="Password" autocomplete="off">' +
+        '<br><br><a id="pass_dim" class="password-dimenticata" onclick="forgotPassword()">Password dimenticata?</a>',
       confirmButtonText: 'Login',
       preConfirm: () => {
         const username = document.getElementById('username').value;
@@ -16,6 +17,7 @@ function login() {
           Swal.showValidationMessage('Tutti i campi sono obbligatori');
           return false;
         }
+        Swal.showLoading(); // Mostra l'animazione di caricamento
 
         return fetch('/login', {
           method: 'POST',
@@ -41,7 +43,6 @@ function login() {
       }
     }).then(result => {
       if (result.isConfirmed) {
-        Swal.fire('Login effettuato!');
         document.querySelectorAll('.btn-compravendita').forEach(button => {
           makeVisible(button);
         });

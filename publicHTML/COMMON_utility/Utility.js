@@ -222,7 +222,10 @@ async function forgotPassword() {
             }
         });
 
-        console.log("email nel fetch", email);
+        if(Swal.getPopup()) {
+            Swal.showValidationMessage(`Controlla ${email} per il recupero password`);
+        }
+
         const response = await fetch('/forgot-password', {
             method: 'POST',
             headers: {

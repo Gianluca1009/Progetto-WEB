@@ -111,6 +111,7 @@ ul{
     background-clip: text;
     -webkit-background-clip: text;
     font-size: calc(3vh + 2vw) !important;
+    text-shadow: 1px 5px 10px black;
 }
 
 
