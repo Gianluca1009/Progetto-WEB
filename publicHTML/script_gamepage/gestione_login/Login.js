@@ -29,6 +29,11 @@ function login() {
         const username2 = document.getElementById('username2').value;
         const password2 = document.getElementById('password2').value;
 
+        if(username1 === username2){
+          Swal.showValidationMessage('Non puoi giocare contro te stesso');
+          return false;
+        }
+
         if (!username1 || !password1 || !username2 || !password2 ) {
             Swal.showValidationMessage('Tutti i campi sono obbligatori');
             return false;
