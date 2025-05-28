@@ -1,7 +1,6 @@
 window.player1Ready = false;
 window.player2Ready = false;
 
-
 //
 //---- FUNZIONI PER LA GESTIONE DELLA PARTITA ----//
 //
@@ -127,7 +126,6 @@ async function restartDraft(){
     resetSuggerimenti();
     if(window.selected_cell) resetHighlighted();
     
-    //avvio il draft
     window.game_started = false;
     window.turno_bianco = true;
 
@@ -216,6 +214,8 @@ function endGame(){
     freezeTimer();
     //cambioturno();
     resetAllSottoscacco(); // Resetto lo stato di scacco per entrambi i re
+    // Chiudo il tutorial se aperto
+    document.querySelector('.tutorial').dataset.aperto = "true"; 
     handleGameTutorial();
 
     launchEndgamePopup(vincitore);
@@ -226,6 +226,7 @@ function endGame(){
     document.querySelector('.game-container').classList.add('game-not-started');
 
     resetNumCelleRe(); // Resetto le celle del re
+    cleanTunnels(); // Pulisce i tunnel
 
     if(document.getElementById('div-ped-promotion')) document.getElementById('div-ped-promotion').remove();
 
