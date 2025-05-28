@@ -73,7 +73,7 @@ function launchProfilePopup(pagina){
         Parent = document.getElementById('profilo1');
         ElementToAttach = Parent;
         Side = "left";
-        Offset = 114;
+        Offset = -10;
     }
     if(pagina === "game2"){
         Username = LS_getUser2Game().username;
@@ -84,7 +84,7 @@ function launchProfilePopup(pagina){
         Parent = document.getElementById('profilo2');
         ElementToAttach = Parent;
         Side = "right";
-        Offset = 36;
+        Offset = -85;
     }
     if(pagina === "mercato"){
         Username = LS_getUserMercatoData().username;
@@ -135,8 +135,8 @@ function launchProfilePopup(pagina){
 
         //GESTIONE DELLA RIMOZIONE DIV PROFILO
         setTimeout( () => {
-            document.addEventListener("click", closeProfilePopup)
-        }, 100);
+            closeProfilePopup(Parent);
+        }, 6000);
         Parent.dataset.aperto = "true";
         console.log("Profilo aperto");
     }
@@ -148,6 +148,7 @@ function launchProfilePopup(pagina){
 // Funzione che chiude il popup del profilo
 function closeProfilePopup(Parent){
     profilo_da_eliminare = document.querySelector(".div-profilo");
+    
     if(profilo_da_eliminare){
         makeHidden(profilo_da_eliminare, 0.5);
         setTimeout(() => {
