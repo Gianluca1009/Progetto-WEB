@@ -131,22 +131,70 @@ router_login_register.post('/aggiorna-password', async (req, res) => {
 router_login_register.get('/reset-password/:token', (req, res) => {
     const { token } = req.params;
 
-    // HTML con form
     res.send(`
       <html>
-        <head><title>Reset Password</title></head>
+        <head>
+          <title>Reset Password</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              background: linear-gradient(to right, #1b014e, #4a01de);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+            }
+            .container {
+                background: white;
+                padding: 3% 4%;
+                border-radius: calc(1vh + 1vh);
+                box-shadow: 0 0.8px 20px rgba(0, 0, 0, 0.5);
+                width: calc(20vh + 20vw);
+                height: calc(15vh + 8vw);
+                text-align: center;
+            }
+            h2 {
+              color: #333;
+            }
+            input[type="password"] {
+              width: 90%;
+              padding: 3%;
+              margin: 3% 0 5% 0;
+              border: calc(0.1vh + 0.1vw) solid #ccc;
+              border-radius: calc(0.3vh + 0.4vw);
+              font-size: calc(1vh + 0.6vw);
+          }
+            button {
+              width: 30%;
+              padding: 3%;
+              background-color: #7066e0;
+              border: none;
+              color: white;
+              font-size: calc(1vh + 0.6vw);
+              border-radius: calc(0.3vh + 0.4vw);
+              cursor: pointer;
+              transition: background-color 0.3s ease;
+          }
+            button:hover {
+              background-color: 0 0 0 3px rgba(112, 102, 224, 0.5);
+            }
+          </style>
+        </head>
         <body>
-          <h2>Reimposta la tua password</h2>
-          <form id="resetForm">
-            <input type="hidden" name="reset_token" value="${token}" />
-            <input type="password" name="new_password" placeholder="Nuova password" required />
-            <button type="submit">Invia</button>
-          </form>
+          <div class="container">
+            <h2>Reimposta la tua password</h2>
+            <form id="resetForm">
+              <input type="hidden" name="reset_token" value="${token}" />
+              <input type="password" name="new_password" placeholder="Nuova password" required />
+              <button type="submit">Invia</button>
+            </form>
+          </div>
 
           <script>
             const form = document.getElementById('resetForm');
             form.addEventListener('submit', async (event) => {
-              event.preventDefault(); // evita il submit tradizionale
+              event.preventDefault();
 
               const formData = new FormData(form);
               const data = new URLSearchParams(formData);
@@ -160,7 +208,6 @@ router_login_register.get('/reset-password/:token', (req, res) => {
 
                 if (response.ok) {
                   alert('Password aggiornata con successo!');
-                  // Qui puoi reindirizzare o aggiornare la pagina
                 } else {
                   alert("Errore nell'aggiornamento della password");
                 }
@@ -173,6 +220,52 @@ router_login_register.get('/reset-password/:token', (req, res) => {
       </html>
     `);
 });
+
+// router_login_register.get('/reset-password/:token', (req, res) => {
+//     const { token } = req.params;
+
+//     // HTML con form
+//     res.send(`
+//       <html>
+//         <head><title>Reset Password</title></head>
+//         <body>
+//           <h2>Reimposta la tua password</h2>
+//           <form id="resetForm">
+//             <input type="hidden" name="reset_token" value="${token}" />
+//             <input type="password" name="new_password" placeholder="Nuova password" required />
+//             <button type="submit">Invia</button>
+//           </form>
+
+//           <script>
+//             const form = document.getElementById('resetForm');
+//             form.addEventListener('submit', async (event) => {
+//               event.preventDefault(); // evita il submit tradizionale
+
+//               const formData = new FormData(form);
+//               const data = new URLSearchParams(formData);
+
+//               try {
+//                 const response = await fetch('/aggiorna-password', {
+//                   method: 'POST',
+//                   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+//                   body: data.toString()
+//                 });
+
+//                 if (response.ok) {
+//                   alert('Password aggiornata con successo!');
+//                   // Qui puoi reindirizzare o aggiornare la pagina
+//                 } else {
+//                   alert("Errore nell'aggiornamento della password");
+//                 }
+//               } catch (err) {
+//                 alert('Errore di rete o server');
+//               }
+//             });
+//           </script>
+//         </body>
+//       </html>
+//     `);
+// });
 
 
 module.exports = router_login_register;

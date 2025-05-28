@@ -10,15 +10,15 @@ function login() {
       html:
       `<div class = container-doppio-login>
           <div class = 'container-login'>
-              <h3 style = "margin-bottom: 0">Giocatore bianco</h3>
-              <input type="text" id="username1" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
-              <input type="password" id="password1" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
+              <h3 style = "margin: 0; margin-bottom: 0.5vh">Giocatore bianco</h3>
+              <input type="text" style="height: calc(3vh + 3vw); margin-top: calc(0.5vh + 0.3vw); font-size: calc(1.3vh + 1vw);" id="username1" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
+              <input type="password" style="height: calc(3vh + 3vw); margin-top: calc(0.5vh + 0.3vw); font-size: calc(1.3vh + 1vw);" id="password1" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
               <a onclick="forgotPassword('game1')" class="password-dimenticata">Password dimenticata?</a>
           </div>
           <div class = 'container-login'>
-              <h3 style = "margin-bottom: 0">Giocatore nero</h3>
-              <input type="text" id="username2" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
-              <input type="password" id="password2" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
+              <h3 style = "margin: 0; margin-bottom: 0.5vh">Giocatore nero</h3>
+              <input type="text" style="height: calc(3vh + 3vw); margin-top: calc(0.5vh + 0.3vw); font-size: calc(1.3vh + 1vw);" id="username2" class="swal2-input" placeholder="Inserire username..." autocomplete="off">
+              <input type="password" style="height: calc(3vh + 3vw); margin-top: calc(0.5vh + 0.3vw); font-size: calc(1.3vh + 1vw);" id="password2" class="swal2-input" placeholder="Inserire password..." autocomplete="off">
               <a onclick="forgotPassword('game2')" class="password-dimenticata">Password dimenticata?</a>
           </div>
       </div>`,
