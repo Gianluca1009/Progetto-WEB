@@ -60,12 +60,6 @@ function login() {
             // Salvi i dati dei due giochi nel localStorage
             LS_login1Game(game1Data.userId, game1Data.username, game1Data.email, game1Data.punti, game1Data.partite, game1Data.vittorie);
             LS_login2Game(game2Data.userId, game2Data.username, game2Data.email, game2Data.punti, game2Data.partite, game2Data.vittorie);
-
-            //aggirno la ui con i nomi dei player
-            document.getElementById('nome-player-1').textContent = game1Data.username;
-            document.getElementById('nome-player-2').textContent = game2Data.username;
-
-            //nasconde i bottone di login e registrazione
         })
         .catch(error => {
             Swal.showValidationMessage(error.message);
@@ -81,6 +75,7 @@ function login() {
         makeHidden(document.getElementById("login-button"));
         makeHidden(document.getElementById("register-button"));
         document.querySelector('.game-container').style.marginTop = '7vh';
+        fillUsernameGamepage();
       }
     });
 }
