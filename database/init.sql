@@ -14,7 +14,6 @@ CREATE TABLE player (
     UNIQUE (username, email)
 );
 
-
 CREATE TABLE calciatore (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(50),
@@ -50,7 +49,7 @@ GRANT INSERT, SELECT, UPDATE ON calciatore TO admin;
 INSERT INTO calciatore (
     nome, cognome, url_foto, data_nascita, nazionalita, ruolo,
     squadra, numero_maglia, goal, assist, presenze, cartellini_gialli,
-    cartellini_rossi, trofei, record_goal, record_assist, altezza , prezzo
+    cartellini_rossi, trofei, record_goal, record_assist, altezza, prezzo
 ) VALUES
 ('Lionel', 'Messi', 'images/santini/lionel_messi.webp', '1987-06-24', 'Argentina', 'Attaccante', 'Inter Miami', 10, 845, 390, 1082, 85, 3, 44, 98, 40, 170, 99),
 ('Cristiano', 'Ronaldo', 'images/santini/cristiano_ronaldo.webp', '1985-02-05', 'Portogallo', 'Attaccante', 'Al Nassr', 7, 960, 310, 1285, 85, 5, 36, 98, 48, 187, 85),
@@ -128,10 +127,10 @@ INSERT INTO calciatore (
 ('Riccardo', 'Calafiori', 'images/santini/riccardo_calafiori.webp', '2002-05-19', 'Italia', 'Difensore', 'Arsenal', 4, 10, 12, 135, 10, 1, 3, 5, 6, 190, 60),
 ('Yann', 'Bisseck', 'images/santini/yann_bisseck.webp', '2000-11-29', 'Germania', 'Difensore', 'Inter', 31, 8, 6, 90, 6, 0, 3, 3, 3, 196, 45),
 ('Castello', 'Lukeba', 'images/santini/castello_lukeba.webp', '2002-12-17', 'Francia', 'Difensore', 'RB Lipsia', 4, 6, 8, 110, 8, 0, 2, 3, 3, 184, 50),
-('Yan', 'Couto', 'images/santini/yan_couto.webp', '2002-06-03', 'Brasile', 'Difensore', 'Borussia Dortmund', 2, 8, 20, 115, 6, 0, 3, 5, 8, 168, 45);
--- ('Gianluca','Nanni', 'images/santini/gianluca_nanni.webp', '2003-01-01', 'Italia', 'Attaccante', 'Sapienza', 7, 1000, 1000, 1000, 0, 0, 100, 100, 100, 180, 20);
--- ('Matteo','Malara', 'images/santini/matteo_malara.webp', '2003-05-05', 'Italia', 'Attaccante', 'Sapienza', 99, 100, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 20);
--- ('Marco','Marcovecchio', 'images/santini/marco_marcovecchio.webp', '2003-11-08', 'Italia', 'Attaccante', 'Sapienza', 10, 100, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 20);
+('Yan', 'Couto', 'images/santini/yan_couto.webp', '2002-06-03', 'Brasile', 'Difensore', 'Borussia Dortmund', 2, 8, 20, 115, 6, 0, 3, 5, 8, 168, 45),
+('Gianluca','Nanni', 'images/santini/gianluca_nanni.webp', '2003-09-10', 'Italia', 'Attaccante', 'Sapienza', 7, 1000, 1000, 1000, 0, 0, 100, 100, 100, 180, 30),
+('Matteo','Malara', 'images/santini/matteo_malara.webp', '2003-05-05', 'Italia', 'Attaccante', 'Sapienza', 999, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 30),
+('Marco','Marcovecchio', 'images/santini/marco_marcovecchio.webp', '2003-11-08', 'Italia', 'Attaccante', 'Sapienza', 10, 1000, 1000, 1000, 0, 0, 100, 100, 100, 185, 30);
 
 
 

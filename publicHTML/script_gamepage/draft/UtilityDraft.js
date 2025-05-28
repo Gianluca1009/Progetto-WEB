@@ -83,17 +83,25 @@ function buildFlagRosa(div_info, posizione = "draft"){
     const sezione_flag = document.createElement('div');
     sezione_flag.classList.add('sezione-flag');
     if(posizione == "gioco"){
-        sezione_flag.style.top = "0px";
-        sezione_flag.style.right = "8%";
-    } 
-    const flag_text = document.createElement('p');
-    flag_text.textContent = "ROSA";
-    flag_text.classList.add('flag-rosa');
-    sezione_flag.appendChild(flag_text);
+        sezione_flag.style.top = "14%";
+        sezione_flag.style.right = "16%";
+        
+        const img_rosa = document.createElement('img');
+        img_rosa.src = "images/gamepage/in_rosa.png";
+        img_rosa.style.height = "100%";
+        img_rosa.style.aspectRatio = "1/1";
+        sezione_flag.appendChild(img_rosa);
+    }
+    else{
+        const flag_text = document.createElement('p');
+        flag_text.textContent = "ROSA";
+        flag_text.classList.add('flag-rosa');
+        sezione_flag.appendChild(flag_text);
 
-    const img_flag = document.createElement('img');
-    img_flag.src = "images/gamepage/frecciarosa.png";
-    sezione_flag.appendChild(img_flag);
+        const img_flag = document.createElement('img');
+        img_flag.src = "images/gamepage/frecciarosa.png";
+        sezione_flag.appendChild(img_flag);
+    }
 
     div_info.appendChild(sezione_flag);
 }

@@ -103,7 +103,7 @@ ul{
     font-weight: bold;
     margin: 0;
     margin-top: 3vh;
-    color: aliceblue;
+    color: var(--color-crema);
     -webkit-text-stroke: 0.05rem black;
     font-family: 'Georgia', serif;
     letter-spacing: 0.125rem;
