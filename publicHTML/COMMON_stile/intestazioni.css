@@ -26,7 +26,7 @@
 
 .title {
     text-align: center;
-    font-size: calc(4vh + 5vw);
+    font-size: 8vw;
     font-weight: bold;
     margin: 0;
     color: var(--color-crema);
@@ -35,7 +35,7 @@
     background: linear-gradient(to right, #efe0c4, #e8c481);
     background-clip: text;
     -webkit-background-clip: text;
-    text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
+    text-shadow: 0.8vw 0.8vw 0.8vw rgba(0, 0, 0, 0.7);
     cursor: pointer;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .menu-item{
-    font-size: calc(1vh + 2vw);
+    font-size: 3vw;
     width: 80%;
     font-weight: bold;
     color: var(--color-crema);

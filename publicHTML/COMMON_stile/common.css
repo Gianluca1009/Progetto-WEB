@@ -108,7 +108,7 @@ button{
     border-radius: var(--button_radius);
     background: var(--button_color);
     color: var(--button_outline_color);
-    transform: translateY(-0.4vh);
+    transform: translateY(-7%);
     transition: transform 0.1s ease;
     object-fit: contain;
     font-size: calc(0.85vh + 0.7vw);
@@ -116,7 +116,7 @@ button{
 }
 
 button:hover .button-top {
-    transform: translateY(-4%);
+    transform: translateY(-3.3%);
 }
 
 button:active .button-top {
