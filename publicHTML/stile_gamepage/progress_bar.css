@@ -15,7 +15,7 @@
     width: 50%;
     height: 4%;  /* Aumento leggermente l'altezza */
     background: rgba(0, 0, 0, 0.5);  /* Aggiungo uno sfondo scuro semi-trasparente */
-    border: 0.09375rem solid black;
+    border: calc(0.1vh + 0.1vw) solid black;
     overflow: hidden;
     display: flex;
     align-items: center;

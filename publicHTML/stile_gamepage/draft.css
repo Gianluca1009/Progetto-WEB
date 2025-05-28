@@ -13,7 +13,6 @@
     position: absolute;
     height: 100%;
     width: 23%;
-    border: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,7 +32,6 @@
 .tabella-draft{
     width: 90%;
     aspect-ratio: 1/1.3;
-    border: 0;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -58,11 +56,11 @@
     background-color: #000000;
     text-align: center;
     justify-content: center;
-    border: 2px solid black;
+    border: calc(0.1vh + 0.1vw) solid black;
     position: relative;
     padding: 0;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: calc(0.5vh + 0.5vw);
+    border-bottom-left-radius: calc(0.5vh + 0.5vw);
     overflow: hidden;
     height: 100%;
     margin:0;
@@ -73,7 +71,7 @@
 .info-draftcell {
     text-align: center;
     justify-content: center;
-    border: 2px solid black;
+    border: calc(0.1vh + 0.1vw) solid black;
     border-left: 0;
     position: relative;
     padding: 0;
@@ -98,7 +96,6 @@
     transition: transform 0.3s ease;
     object-fit: cover;
     cursor: grab;
-    z-index: 1002;
 }
 
 .santino-dx:hover, .santino-sx:hover {
@@ -113,8 +110,8 @@
     align-items: center;
     width: 70%;
     height: 33vh;
-    border: 2px solid black;
-    border-radius: 10px;
+    border: calc(0.1vh + 0.1vw) solid black;
+    border-radius: calc(0.5vh + 0.5vw);
     padding-bottom: 30%;
 }
 

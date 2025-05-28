@@ -107,7 +107,7 @@ function setTunnelElement(dizionario_mangiata){
     divFluttuante.style.color = window.turno_bianco ? "black" : "white";
     divFluttuante.style.background = window.turno_bianco ? "rgb(255 255 255)" : "rgb(83 82 82)";
 
-    divFluttuante.style.border = dizionario_mangiata.valid? "2px solid rgb(19, 234, 19)" : "2px solid red";
+    divFluttuante.style.border = dizionario_mangiata.valid? "calc(0.1vh + 0.1vw) solid rgb(19, 234, 19)" : "calc(0.1vh + 0.1vw) solid red";
 
     const top = document.createElement('div');
     top.classList.add("log-top");

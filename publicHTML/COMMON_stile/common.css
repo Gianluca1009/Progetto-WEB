@@ -86,7 +86,7 @@ body {
 }
 
 button{
-    --button_radius: 0.75rem;
+    --button_radius: calc(0.4vh + 0.4vw);
     --button_color: #e8e8e8;
     --button_outline_color: hsl(0, 0%, 0%);
     font-weight: bold;
@@ -104,7 +104,7 @@ button{
     justify-content: center;
     align-content: center;
     box-sizing: border-box;
-    border: 2px solid var(--button_outline_color);
+    border: calc(0.1vh + 0.1vw) solid var(--button_outline_color);
     border-radius: var(--button_radius);
     background: var(--button_color);
     color: var(--button_outline_color);
@@ -128,7 +128,7 @@ button:active .button-top {
 /* OMBRE COMUNI */
 
 .game-container, .grid-container, .tooltip, .condition-container, .timer-container, .game-over , .riga-draft, .menu-button, .riga-bacheca, .statistiche-draft, .hamburger, .div-profilo, .popup-gameover{
-    box-shadow: 0.9375rem 0.9375rem 0.9375rem rgba(15, 12, 12, 0.5);
+    box-shadow: calc(0.5vh + 0.5vw) calc(0.5vh + 0.5vw) calc(0.5vh + 0.5vw) rgba(15, 12, 12, 0.5);
 }
 
 
