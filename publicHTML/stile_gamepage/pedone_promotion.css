@@ -1,9 +1,3 @@
-/* Elenco delle classi CSS in questo file:
-
- * .div-scelte - div delle scelte
- * .tabella-pedone-promotion - tabella delle pedine
- * .foto-ped-promotion - foto delle pedine
- */
 
 .div-scelte {
     display: flex;
@@ -17,7 +11,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.tabella-pedone-promotion {
+.tabella-promozione {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,7 +20,7 @@
     width: 100%;
 }
 
-.foto-ped-promotion {
+.cella-promozione {
     background: linear-gradient(to right, #dadada, #6a6a6a);
     width: 80%;
     aspect-ratio: 1/1;
@@ -40,4 +34,20 @@
     overflow: hidden;
     cursor: pointer;
     margin: 0 auto;
+}
+
+.container-promozione {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.container-promozione img {
+    width: 45%;
+    object-fit: contain;
 }

@@ -1,26 +1,15 @@
-/* Elenco delle classi CSS in questo file:
+/* Classi CSS riguardanti le celle e le mosse delle pedine comprese quelle di promozione */
 
- * .available-move - mosse disponibili
- * .eating-move - mosse di cattura
- * .available-move::after - stile mosse disponibili
- * .eating-move::after - stile mosse di cattura
- * .available-move:hover::after - hover mosse disponibili
- * .eating-move:hover::after - hover mosse di cattura
- */
-
-/*stile mosse disponibili*/
 .available-move {
     position: relative;
     cursor: pointer;
 }
 
-/*stile mosse di cattura*/
 .eating-move{
     position: relative;
     cursor: pointer;
 }
 
-/*stile mosse disponibili*/
 .available-move::after {
     content: '';
     position: absolute;
@@ -34,7 +23,6 @@
     z-index: 1;
 }
 
-/*stile mosse di cattura*/
 .eating-move::after {
     content: '';
     position: absolute;
@@ -48,28 +36,10 @@
     z-index: 1;
 }
 
-/*stile mosse disponibili*/
 .available-move:hover::after {
     background-color: rgba(0, 255, 0, 0.3);
 }
 
-/*stile mosse di cattura*/
 .eating-move:hover::after {
     background-color: rgba(255, 0, 0, 0.4);
-}
-
-.santino-container {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-}
-
-.santino-container img {
-    width: 45%;
-    object-fit: contain;
 }

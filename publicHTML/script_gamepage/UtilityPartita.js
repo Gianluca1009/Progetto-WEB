@@ -124,6 +124,8 @@ async function restartDraft(){
     resetAllSottoscacco(); // Resetto lo stato di scacco per entrambi i re
     resetProntoButton();
     resetSuggerimenti();
+    cleanTunnels(); // Pulisce i tunnel
+    
     if(window.selected_cell) resetHighlighted();
     
     window.game_started = false;

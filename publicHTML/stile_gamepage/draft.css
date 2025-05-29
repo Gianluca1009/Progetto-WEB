@@ -1,13 +1,4 @@
-/* Elenco delle classi CSS in questo file:
-
-  * .foto-draftcell - cella per l'immagine del calciatore
- * .info-draftcell - cella per le informazioni del calciatore
- * .santino-container - contenitore per l'immagine del calciatore
- * .santino - immagine del calciatore
- * .santino:hover - hover dell'immagine del calciatore
- * .nome-giocatore - nome del calciatore
- */
-
+/* Classi CSS riguardanti tutti gli elementi del draft */
 
  .sezione-sx, .sezione-dx{
     position: absolute;
@@ -21,14 +12,6 @@
     gap: 3%;
 }
 
-.sezione-sx{
-    left: 0;   
-}
-
-.sezione-dx{
-    right: 0;
-}
-
 .tabella-draft{
     width: 90%;
     aspect-ratio: 1/1.3;
@@ -40,7 +23,6 @@
     padding-bottom: 1vw;
 }
 
-/* Stile per le righe con ombre - ora ciascuna riga è un grid element */
 .riga-draft {
     transition: all 0.2s ease;
     position: relative;
@@ -50,22 +32,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-}
-
-.foto-draftcell {
-    background-color: #000000;
-    text-align: center;
-    justify-content: center;
-    border: calc(0.1vh + 0.1vw) solid black;
-    position: relative;
-    padding: 0;
-    border-top-left-radius: calc(0.5vh + 0.5vw);
-    border-bottom-left-radius: calc(0.5vh + 0.5vw);
-    overflow: hidden;
-    height: 100%;
-    margin:0;
-    width: 30%;
-    z-index: 1001;
 }
 
 .info-draftcell {
@@ -84,10 +50,23 @@
     text-overflow: ellipsis;
     white-space: normal;
     word-wrap: break-word;
-    z-index: 1001;
 }
 
-/* immagine calciatore */
+.foto-draftcell {
+    background-color: #000000;
+    text-align: center;
+    justify-content: center;
+    border: calc(0.1vh + 0.1vw) solid black;
+    position: relative;
+    padding: 0;
+    border-top-left-radius: calc(0.5vh + 0.5vw);
+    border-bottom-left-radius: calc(0.5vh + 0.5vw);
+    overflow: hidden;
+    height: 100%;
+    margin:0;
+    width: 30%;
+}
+
 .santino-dx, .santino-sx {
     width: 100%;
     height: 100%;

@@ -1,22 +1,4 @@
-/* Elenco delle classi CSS in questo file:
-
- * .button - classe base per i bottoni
- * .b-image - classe base per le immagini dei bottoni
-
- * .start-button - bottone d'inizio
- * .random-button - bottone casuale
- * .pronto-button - bottone pronto
- * .pronto-button:hover - hover del bottone pronto
- * .restart-button - bottone restart
- * .restart-button:hover - hover del bottone restart
- * .go-home-button - bottone go home
- * .go-home-button:hover - hover del bottone go home
- * .start-button:hover - hover del bottone d'inizio
- * .random-button:hover - hover del bottone casuale
- * .gioca-button:hover - hover del bottone gioca
- * .restart-draft:hover - hover del bottone restart draft
- */
-
+/* Classi CSS riguardanti i bottoni della pagina di gioco */
 
 .b-image {
     object-fit: contain;

@@ -1,3 +1,6 @@
+//------ IMPLEMENTAZIONE DI FUNZIONI PER IMPOSTARE DINAMICAMENTE LE DIMENSIONI ------//
+
+
 // Funzione per misurare le dimensioni delle celle della scacchiera
 function misuraDimensioniCelle() {
     // Seleziona la prima cella della scacchiera
@@ -58,13 +61,25 @@ function misuraDivLog() {
 }
 
 // Funzione per misurare una riga della bacheca
-function misuraRigaBacheca(){
+function misuraRigaBacheca() {
     // Seleziona la prima riga del mercato
     const riga_bacheca = document.querySelector('.riga-bacheca');
     let dimensioni;
     if (riga_bacheca) {
         // Ottiene le dimensioni effettive della riga del mercato
         dimensioni = riga_bacheca.getBoundingClientRect();
+    }
+    return dimensioni;
+}
+
+// Funzione per misurare le dimensioni di una delle due sezioni
+function misuraSezione() {
+    // Seleziona la sezione della pagina
+    const sezione = document.querySelector('.sezione-sx');
+    let dimensioni;
+    if (sezione) {
+        // Ottiene le dimensioni effettive della sezione
+        dimensioni = sezione.getBoundingClientRect();
     }
     return dimensioni;
 }
@@ -82,7 +97,7 @@ function setSoccerPlayerNameFontSize() {
 }
 
 // Funzione che mi sa non usiamo
-function setSoccerPlayerInfoFontSize(){
+function setSoccerPlayerInfoFontSize() {
     const lista = document.querySelectorAll('lista-info');
     const textElements = document.getElementsByTagName('li');
     const dimensioniInfoDraftCell = misuraInfoDraftCell().width;
@@ -95,7 +110,7 @@ function setSoccerPlayerInfoFontSize(){
 }
 
 // Funzione per settare la lunghezza del menu hamburger dinamicamente
-function setHamburgerLunghezza(){
+function setHamburgerLunghezza() {
     const altezzaPagina = Math.max(
         document.body.scrollHeight,
         document.documentElement.scrollHeight,
@@ -122,12 +137,22 @@ function setListeFontSize() {
     });
 }
 
-//
-function setFontSizeAcquistaBtn(){
+// Funzione per settare la font size del bottone "Acquista" nel mercato
+function setFontSizeAcquistaBtn() {
     const span_acquista = document.querySelectorAll('.span-acquista');
     
     span_acquista.forEach(span => {
         span.style.fontSize = `${misuraRigaBacheca().width * 0.02}px`;
+    });
+}
+
+// Funzione per settare la font size delle righe draft
+function setDraftFontSize() {
+    const info_draft_cells = document.querySelectorAll('.info-draftcell');
+    info_draft_cells.forEach(cell => {
+        cell.querySelectorAll('li').forEach(li => {
+            li.style.fontSize = `${misuraSezione().width * 0.05}px`;
+        });
     });
 }
 

@@ -236,6 +236,7 @@ async function populateDraft(colore) {
             }
         }
         setColoreRiga();
+        setDraftFontSize();
         dragSantini();
 
         // ESEGUO QUESTA OPERAZIONE SOLO ALLE PRIME DUE CHIAMATE DI POPULATE DRAFT PER FAR COMPARIRE LE SEZIONI
@@ -328,6 +329,7 @@ function populateRandom(colore) {
     }
 
     setSoccerPlayerNameFontSize();  // Imposta la grandezza del font dei nomi dei calciatori
+    setDraftFontSize(); // Imposta la grandezza del font delle celle del draft
     
     // Rimuovi i calciatori assegnati dall'array originale
     if (colore === "nero") {

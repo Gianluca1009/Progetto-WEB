@@ -15,17 +15,17 @@ function createPromotionDiv() {
     
     // Crea la struttura HTML con createElement
     const table = document.createElement('table');
-    table.className = 'tabella-pedone-promotion';
+    table.className = 'tabella-promozione';
     
     const tbody = document.createElement('tbody');
     
     // Prima riga per la Regina
     const tr_regina = document.createElement('tr');
     const td_regina = document.createElement('td');
-    td_regina.className = 'foto-ped-promotion';
+    td_regina.className = 'cella-promozione';
     
     const santino_div_regina = document.createElement('div');
-    santino_div_regina.className = 'santino-container';
+    santino_div_regina.className = 'container-promozione';
     
     const img_regina = document.createElement('img');
     img_regina.alt = 'regina';
@@ -39,10 +39,10 @@ function createPromotionDiv() {
     // Seconda riga per il Cavallo
     const tr_çavallo = document.createElement('tr');
     const td_cavallo = document.createElement('td');
-    td_cavallo.className = 'foto-ped-promotion';
+    td_cavallo.className = 'cella-promozione';
     
     const santino_div_cavallo = document.createElement('div');
-    santino_div_cavallo.className = 'santino-container';
+    santino_div_cavallo.className = 'container-promozione';
     
     const img_cavallo = document.createElement('img');
     img_cavallo.alt = 'cavallo';

@@ -1,11 +1,5 @@
-/* Elenco delle classi CSS in questo file:
+/* Classi CSS riguardanti la condizione di cattura e i suoi elementi */
 
- * .condition-container - contenitore delle condizioni
- * .condition-title - titolo delle condizioni
- * .timer-text - testo del timer
- */
-
-/*stile container condizioni*/
 .condition-container {
     position: absolute;
     left: 50%;
@@ -19,7 +13,6 @@
     border: calc(0.1vh + 0.1vw) solid var(--color-crema);
 }
 
-/*stile titolo condizioni*/
 .condition-title {
     margin: 0;
     font-size: 2vw;
@@ -33,10 +26,8 @@
 
 .timer-text {
     z-index: 5;
-    /* margin: 0; */
     font-size: 20%;
     line-height: 1.5;
-    /* font-weight: bold; */
     position: relative;
     top: 50%;
     transform: translateY(-50%);

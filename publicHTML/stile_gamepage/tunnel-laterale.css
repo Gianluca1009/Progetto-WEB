@@ -1,3 +1,5 @@
+/* Classi CSS riguardanti i tunnel laterali della pagina di gioco */
+
 .tunnel-dx, .tunnel-sx {
     position: absolute;
     display: flex;
@@ -14,6 +16,16 @@
     height: 97%;
     overflow-y: auto;
     padding: 5%;
+}
+
+.tunnel-dx {
+    right: 5.3%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.tunnel-sx {
+    left: 5.3%;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 .tunnel-content-dx::-webkit-scrollbar {
@@ -42,23 +54,13 @@
     border-radius: calc(0.5vh + 0.5vw);
 }
 
-.tunnel-dx {
-    right: 5.3%;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.tunnel-sx {
-    left: 5.3%;
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
 .div-log{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 90%;
-    height: 10vh;
+    height: 15%;
     border-radius: calc(0.5vh + 0.5vw);
     margin: 0 auto;
     opacity: 1;
@@ -103,4 +105,11 @@
     text-decoration: none;
     text-align: center;
     background: transparent;
+}
+
+.flying{
+    width: 7vh;
+    aspect-ratio: 1/1;
+    z-index: 9999;
+    pointer-events: none;
 }

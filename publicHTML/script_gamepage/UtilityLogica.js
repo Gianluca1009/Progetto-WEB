@@ -259,11 +259,11 @@ function cleanTunnels(){
     let tunnel_sx = document.querySelector('.tunnel-sx');
     let tunnel_dx = document.querySelector('.tunnel-dx');
 
-    tunnel_sx.querySelectorAll('.div-logo-tunnel').forEach(div => {
+    tunnel_sx.querySelectorAll('.div-log').forEach(div => {
         div.remove();
     });
 
-    tunnel_dx.querySelectorAll('.div-logo-tunnel').forEach(div => {
+    tunnel_dx.querySelectorAll('.div-log').forEach(div => {
         div.remove();
     });
 

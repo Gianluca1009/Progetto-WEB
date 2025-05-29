@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', function() {
         setHamburgerLunghezza(); // Imposta la lunghezza del menu hamburger dinamicamente
         setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori
+        setDraftFontSize(); // Imposta la grandezza del font delle celle del draft
     });
     
 });
