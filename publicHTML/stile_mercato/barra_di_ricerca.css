@@ -16,7 +16,7 @@
     width: 60%;
     max-width: 700px;
     background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid var(--color-crema);
+    border: 0.2vw solid var(--color-crema);
     border-radius: 1rem;
     padding-inline: 0.6vw;
     box-shadow: 0 0 1.25rem rgba(222, 184, 135, 0.6);
@@ -29,10 +29,12 @@
     flex-grow: 0.8;
     padding-top: 1vw;
     padding-bottom: 1vw;
+    padding-left: 1vw;
     height: 40%;
+    font-size: 2vw;
     border: none;
     border-radius: 0.75rem;
-    font-size: calc(1vh + 1vw);
+    font-size: 1.5vw;
     background-color: rgba(255, 255, 255, 0.85);
     color: black;
     font-family: 'Georgia', serif;
@@ -51,14 +53,14 @@
 }
 
 .tendina-ruolo {
-    padding: 1vh 1vw;
+    padding-inline: 1vw;
     height: 8.5vh;
-    border-radius: 0.75rem;
-    border: 2px solid var(--color-crema);
+    border-radius: 1vw;
+    border: 0.2vw solid var(--color-crema);
     background-color: rgba(255, 255, 255, 0.85);
     font-family: 'Georgia', serif;
-    font-size: calc(1vh + 1vw);
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    font-size: 1.5vw;
+    box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 25%);
     height: 100%;
 }
 

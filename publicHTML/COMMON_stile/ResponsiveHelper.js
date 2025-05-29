@@ -49,6 +49,7 @@ function misuraInfoDraftCell() {
 // Funzione per misurare le dimensioni del div di log
 function misuraDivLog() {
     const divLog = document.querySelector('.div-log');
+    let dimensioni;
     if (divLog) {
         // Ottiene le dimensioni effettive del div log
         dimensioni = divLog.getBoundingClientRect();
@@ -56,14 +57,13 @@ function misuraDivLog() {
     return dimensioni;
 }
 
-// Funzione per misurare le dimensioni del game container
-function misuraGameContainer(){
-    // Seleziona il contenitore del gioco
-    const gameContainer = document.querySelector('.game-container');
-    
-    if (gameContainer) {
-        // Ottiene le dimensioni effettive del contenitore del gioco
-        dimensioni = gameContainer.getBoundingClientRect();
+function misuraRigaBacheca(){
+    // Seleziona la prima riga del mercato
+    const riga_bacheca = document.querySelector('.riga-bacheca');
+    let dimensioni;
+    if (riga_bacheca) {
+        // Ottiene le dimensioni effettive della riga del mercato
+        dimensioni = riga_bacheca.getBoundingClientRect().width;
     }
     return dimensioni;
 }

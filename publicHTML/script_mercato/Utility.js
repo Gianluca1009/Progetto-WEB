@@ -50,7 +50,6 @@ function BuildRowForCalciatore(calciatore){
     const campoInfo = document.createElement('div');
     campoInfo.className = 'campo-info';
     const nomeCognome = document.createElement('h2');
-    nomeCognome.style.marginBlockEnd = '0.20em';
     nomeCognome.style.fontSize = 'min(1.5vw, 1.5em)';
 
     const informazioni = document.createElement('div');
@@ -62,20 +61,19 @@ function BuildRowForCalciatore(calciatore){
     //divisione in due liste
 
     const lista1 = document.createElement('ul');
-    lista1.style.marginBlockStart = '0.20em';
     
     const lista2 = document.createElement('ul');
-    lista2.style.marginBlockStart = '0.20em';
 
     //Itero sui campi giocatore per costruire la lista
 
-    keys = Object.keys(calciatore);
+    let keys = Object.keys(calciatore);
     keys = keys.filter(key => !['id', 'nome', 'cognome', 'url_foto', 'id_player', 'prezzo'].includes(key));
 
     for(const key of keys){
         if(key == 'presenze') break;
         const li = document.createElement('li');
         li.textContent = `${KeyConverter(key)}: ${calciatore[key]}`;
+        li.style.fontSize = misuraRigaBacheca() * 0.02 + 'px';
         if(key == 'data_nascita'){
             li.textContent = `${KeyConverter(key)}: ${convertDate(calciatore[key])}`;
         }

@@ -35,6 +35,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    user-select: none;
 }
 
 .container-doppio-login {
@@ -139,7 +140,7 @@ ul{
 }
 
 li{
-    font-size: clamp(0.1rem, 0.7vw + 0.7vh, 1rem);
+    font-size: calc(0.4vw + 0.4vh);
 }
 
 .my-swal-margin-top {
