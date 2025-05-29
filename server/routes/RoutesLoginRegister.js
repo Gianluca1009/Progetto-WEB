@@ -137,6 +137,7 @@ router_login_register.get('/reset-password/:token', (req, res) => {
           <title>Reset Password</title>
           <style>
             body {
+              user-select: none;
               font-family: Arial, sans-serif;
               background: linear-gradient(to right, #1b014e, #4a01de);
               display: flex;

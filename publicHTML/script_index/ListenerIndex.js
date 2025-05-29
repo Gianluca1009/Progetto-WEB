@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `"Il difensore centrale è il rocchetto di un castello: se cade lui, cade tutto"`,
         `"Il calcio è istinto e caos, ma chi lo doma con la mente... gioca a scacchi"`,
         `"Ogni duello uno contro uno è uno scacco personale: o ti salvi, o ti pieghi"`,
-        `"Né nel calcio né negli scacchi vinci chi va più veloce. Vince chi sa aspettare il momento giusto"`,
+        `"Né nel calcio né negli scacchi vince chi va più veloce. Vince chi sa aspettare il momento giusto"`,
         `"L’1-2 nello stretto è il cavallo sulla scacchiera: imprevedibile, elegante, letale"`,
         `"Il portiere è come il re negli scacchi: vulnerabile, ma decisivo. Se cade lui, finisce il gioco"`,
         `"Il calcio è istinto che si maschera da tattica. Gli scacchi sono tattica che maschera l’istinto"`

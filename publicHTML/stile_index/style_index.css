@@ -9,6 +9,7 @@
  */
 
 body {
+    user-select: none;
     background: linear-gradient(to right, #0f002d, #2c0182, #3a0ca3, #7209b7);
     margin: 0;
     padding: 0;
