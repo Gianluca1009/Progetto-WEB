@@ -25,6 +25,7 @@
  
 
 body {
+    user-select: none;
     min-height: 100vh;
     background: var(--background-sfumato-violaceo);
     overscroll-behavior: none;
