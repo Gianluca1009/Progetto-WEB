@@ -74,8 +74,14 @@ function disabilitaPedine(){
     });
 }
 
-// Funzione per scrollare la pagina verso il game container
+// Funzione per scrollare la pagina verso il game container (chiude anche i profili)
 function scrollToGameContainer(){
+    
+    const profili = document.querySelectorAll('.div-profilo');
+    profili.forEach(profilo => {
+        closeProfilePopup(profilo.parentElement, profilo);
+    });
+
     const gameContainer = document.querySelector('.game-container');
     
     const startPosition = window.pageYOffset;

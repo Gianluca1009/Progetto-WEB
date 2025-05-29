@@ -57,16 +57,18 @@ function misuraDivLog() {
     return dimensioni;
 }
 
+// Funzione per misurare una riga della bacheca
 function misuraRigaBacheca(){
     // Seleziona la prima riga del mercato
     const riga_bacheca = document.querySelector('.riga-bacheca');
     let dimensioni;
     if (riga_bacheca) {
         // Ottiene le dimensioni effettive della riga del mercato
-        dimensioni = riga_bacheca.getBoundingClientRect().width;
+        dimensioni = riga_bacheca.getBoundingClientRect();
     }
     return dimensioni;
 }
+
 
 
 
@@ -105,5 +107,27 @@ function setHamburgerLunghezza(){
 
     const hamburger = document.querySelector('.hamburger');
     hamburger.style.height = `${altezzaPagina}px`;
+}
+
+// Funzione per settare la fontsize degli elementi li delle pagine rosa e mercato
+function setListeFontSize() {
+    const liste = document.querySelectorAll("ul");
+
+    liste.forEach(lista => {
+        const elementi = lista.querySelectorAll("li");
+        elementi.forEach(element => {
+            // Imposta la grandezza del font in base alla dimensione della cella
+            element.style.fontSize = `${misuraRigaBacheca().width * 0.02}px`;
+        });
+    });
+}
+
+//
+function setFontSizeAcquistaBtn(){
+    const span_acquista = document.querySelectorAll('.span-acquista');
+    
+    span_acquista.forEach(span => {
+        span.style.fontSize = `${misuraRigaBacheca().width * 0.02}px`;
+    });
 }
 

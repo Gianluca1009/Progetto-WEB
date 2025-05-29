@@ -138,10 +138,12 @@ button:active .button-top {
 ul{
     list-style-type: none;
     padding: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
 }
 
 li{
-    font-size: calc(0.4vw + 0.4vh);
+    font-size: calc(0.7vw + 0.7vh);
 }
 
 .my-swal-margin-top {

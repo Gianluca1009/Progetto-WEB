@@ -73,7 +73,6 @@ function BuildRowForCalciatore(calciatore){
         if(key == 'presenze') break;
         const li = document.createElement('li');
         li.textContent = `${KeyConverter(key)}: ${calciatore[key]}`;
-        li.style.fontSize = misuraRigaBacheca() * 0.02 + 'px';
         if(key == 'data_nascita'){
             li.textContent = `${KeyConverter(key)}: ${convertDate(calciatore[key])}`;
         }
@@ -264,5 +263,6 @@ async function BuildMercato(inputNome, inputRuolo){
     if (!risultatoRicerca) {
         buildRowNoResult();
     }
-    
+    setListeFontSize();
+    setFontSizeAcquistaBtn();
 }

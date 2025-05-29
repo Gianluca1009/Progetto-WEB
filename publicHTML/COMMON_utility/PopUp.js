@@ -63,7 +63,7 @@ function closeEndgamePopup(){
 
 // Funzione che lancia il popup del profilo
 function launchProfilePopup(pagina){
-    let Username, Email, Punti, Partite, Vittorie, Parent, ElementToAttach, Side, Offset;
+    let Username, Email, Punti, Partite, Vittorie, Parent, ElementToAttach, Side, Offset, xright;
     if(pagina === "game1"){
         Username = LS_getUser1Game().username;
         Email = LS_getUser1Game().email;
@@ -74,6 +74,7 @@ function launchProfilePopup(pagina){
         ElementToAttach = Parent;
         Side = "left";
         Offset = -10;
+        xright = "88%";
     }
     if(pagina === "game2"){
         Username = LS_getUser2Game().username;
@@ -85,6 +86,7 @@ function launchProfilePopup(pagina){
         ElementToAttach = Parent;
         Side = "right";
         Offset = -85;
+        xright = "4%";
     }
     if(pagina === "mercato"){
         Username = LS_getUserMercatoData().username;
@@ -96,6 +98,7 @@ function launchProfilePopup(pagina){
         ElementToAttach = document.querySelector('.container-bottoni-login');
         Side = "bottom";
         Offset = 35;
+        xright = "4%";
     }
     if(pagina === "rosa"){
         Username = LS_getUserRosaData().username;
@@ -107,14 +110,17 @@ function launchProfilePopup(pagina){
         ElementToAttach = document.querySelector('.container-bottoni-login');
         Side = "bottom";
         Offset = 35;
+        xright = "4%";
     }
     
     if(Parent.dataset.aperto === "false"){
+        Parent.dataset.aperto = "true";
         const profile_popup = document.createElement('div');
         profile_popup.classList.add('div-profilo');
         // profile_popup.classList.add('hidden');
         profile_popup.id = 'profilo';
         profile_popup.innerHTML = `
+                <img src="images/bacheche/x.png" class="close-profilo">
                 <strong style="top: 5%; position: absolute; font-size: 1.2vw">PROFILO</strong>
                 <ul style="padding: 0;">
                     <li> <strong>Username:</strong>
@@ -129,34 +135,24 @@ function launchProfilePopup(pagina){
                     ${Vittorie}-${Partite-Vittorie}</li>
                 </ul>
             `;
-        // makeVisible(profile_popup, 0.5);
+        profile_popup.querySelector('.close-profilo').addEventListener('click', () => {
+            closeProfilePopup(Parent,profile_popup);
+        });
+        profile_popup.querySelector('.close-profilo').style.right = xright;
         ElementToAttach.appendChild(profile_popup);
         setPositionRelativeToDiv(Parent, profile_popup, Side, Offset);
-
-        //GESTIONE DELLA RIMOZIONE DIV PROFILO
-        setTimeout( () => {
-            closeProfilePopup(Parent);
-        }, 6000);
-        Parent.dataset.aperto = "true";
-        console.log("Profilo aperto");
-    }
-    else{
-        closeProfilePopup(Parent);
     }
 }
 
 // Funzione che chiude il popup del profilo
-function closeProfilePopup(Parent){
-    profilo_da_eliminare = document.querySelector(".div-profilo");
-    
-    if(profilo_da_eliminare){
-        makeHidden(profilo_da_eliminare, 0.5);
+function closeProfilePopup(Parent,profilo){
+    Parent.dataset.aperto = "false";
+    if(profilo){
+        makeHidden(profilo, 0.5);
         setTimeout(() => {
-            profilo_da_eliminare.remove();
+            profilo.remove();
         },500);
     }
-    Parent.dataset.aperto = "false";
-    document.removeEventListener("click", closeProfilePopup);
 }
 
 // Funzione che lancia il popup delle statistiche del calciatore nello specifico

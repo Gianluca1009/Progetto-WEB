@@ -102,21 +102,3 @@
     -webkit-background-clip: text;
     text-shadow: 0.625rem 0.125rem 0.3125rem rgba(0, 0, 0, 0.7);
 }
-
-
-.user-points {
-    background-color: white;
-    border-radius: 10px;
-    padding: 8px 12px;
-    font-weight: bold;
-    color: #333;
-    margin-right: 12px;
-    margin-top: 2.5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 60px;
-    border: 2px solid var(--color-crema);
-    height: 35px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-}

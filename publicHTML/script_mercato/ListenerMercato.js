@@ -46,4 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
         handleHamburgerMenu('mercato');
     });
 
+    window.addEventListener('resize', function() {
+        setListeFontSize();
+        setFontSizeAcquistaBtn();
+    });
+
 });
+

@@ -12,6 +12,15 @@
     border: 2px solid black;
 }
 
+.close-profilo{
+    position: absolute;
+    top: 4%;
+    width: 8%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+    cursor: pointer;
+}
+
 .overlay{
     width: var(--game-width);
     height: var(--game-height);

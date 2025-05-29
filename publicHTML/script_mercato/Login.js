@@ -36,7 +36,6 @@ function login() {
           const { userId, username, email, punti, partite, vittorie } = data;
           // Chiamata alla funzione loginMercato per salvare i dati nel localStorage
           LS_loginMercato(userId, username, email, punti, partite, vittorie);
-          window.user_points.textContent = punti;
           // Mostriamo il messaggio di successo
           
         })
@@ -50,7 +49,6 @@ function login() {
           makeVisible(button);
         });
         makeVisible(window.logout_button);
-        makeVisible(window.user_points);
         fillUsernameMercato();
         makeVisible(window.sezione_profilo);
         makeHidden(window.login_button);
@@ -74,7 +72,6 @@ async function ifNotLoggedIn() {
 
     if(LS_getUserMercatoData().id == null){
         deleteRows();
-        window.user_points.classList.add('hidden');
         buildRowNoLogin();
     }
 }
@@ -89,7 +86,6 @@ async function ifSessioneAperta() {
         }
         BuildMercato("", "qualsiasi");
         fillUsernameMercato();
-        window.user_points.textContent = LS_getUserMercatoData().punti;
         window.logout_button.classList.remove("hidden");
         makeVisible(window.sezione_profilo);
         window.register_button.classList.add("hidden");
@@ -159,8 +155,6 @@ function register() {
 //Funzione che permette di effettuare il logout
 function logout() {
     LS_logoutMercato();
-    makeHidden(window.user_points, 0);
-    window.user_points.classList.add("hidden");
     makeHidden(window.logout_button);
     makeHidden(window.sezione_profilo);
     makeVisible(window.login_button);
