@@ -1,3 +1,13 @@
+.ricerca {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5vw; 
+    margin-top: 13vw;
+    width: 80%;
+    height: 5vw;
+}
+
 .barra-ricerca {
     display: flex;
     justify-content: center;
@@ -8,15 +18,18 @@
     background-color: rgba(255, 255, 255, 0.1);
     border: 2px solid var(--color-crema);
     border-radius: 1rem;
-    padding: 1.5vh 2vw;
+    padding-inline: 0.6vw;
     box-shadow: 0 0 1.25rem rgba(222, 184, 135, 0.6);
     backdrop-filter: blur(5px);
     animation: glow 2s infinite alternate;
+    height: 100%;
 }
 
 .barra-ricerca input[type="text"] {
     flex-grow: 0.8;
-    padding: 1vh 1vw;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    height: 40%;
     border: none;
     border-radius: 0.75rem;
     font-size: calc(1vh + 1vw);
@@ -34,18 +47,7 @@
 
 .btn-cerca {
     flex-grow: 0.2;
-    height: 5.5vh;
-}
-
-.ricerca {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1.5vw; 
-    margin-left: 11vw;
-    margin-top: 28vh;
-    width: 80%;
-    height: 10vh;
+    height: 80%;
 }
 
 .tendina-ruolo {
@@ -57,5 +59,6 @@
     font-family: 'Georgia', serif;
     font-size: calc(1vh + 1vw);
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    height: 100%;
 }
 

@@ -37,7 +37,7 @@ body{
     border-radius: 0.5rem;
     width: 80%;
     min-height: 160px;
-    height: 30vh;
+    aspect-ratio: 16/5;
     gap: 5%;
 }
 
