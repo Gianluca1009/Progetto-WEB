@@ -166,11 +166,11 @@ function goToHome(source) {
 }
 
 // Funzione per andare alle regole
-function goToRegole(source) {
+function goToInfo(source) {
     if(source === "gamepage"){
         window.location.reload();
     }
-    window.location.href = "regole.html";
+    window.location.href = "info.html";
     handleHamburgerMenu(source);
 }
 
@@ -186,19 +186,16 @@ function handleHamburgerMenu(pagina) {
     else if (pagina === 'gamepage') {
         hamburger = document.getElementById("menu-gamepage");
     }
-    else if(pagina === 'regole') {
-        hamburger = document.getElementById("menu-regole");
+    else if(pagina === 'info') {
+        hamburger = document.getElementById("menu-info");
     }
-    else console.log("pagina non valida");
 
     if(hamburger.dataset.aperto === "true"){ //se il menu è aperto, chiudilo -20vw
-        console.log("menu aperto --- chiudo");
         hamburger.style.left = "-20vw";
         hamburger.style.transition = "left 0.4s ease-in-out";
         hamburger.dataset.aperto = "false";
     }
     else{
-        console.log("menu chiuso --- apro");
         hamburger.style.left = "0px";
         hamburger.style.transition = "left 0.4s ease-in-out";
         hamburger.dataset.aperto = "true";
