@@ -54,6 +54,9 @@ function login() {
         makeHidden(window.login_button);
         makeHidden(window.register_button);
         BuildMercato("", "qualsiasi");
+        document.getElementById('cerca-button').disabled = false;
+        document.getElementById('tendina-ruolo').disabled = false;
+        document.getElementById('input-nome').disabled = false;
       }
     });
     
@@ -64,6 +67,9 @@ async function ifNotLoggedIn() {
     if(LS_getUserMercatoData().id == null){
         deleteRows();
         buildRowNoLogin();
+        document.getElementById('cerca-button').disabled = true;
+        document.getElementById('tendina-ruolo').disabled = true;
+        document.getElementById('input-nome').disabled = true;
     }
 }
 
@@ -151,6 +157,8 @@ function logout() {
     makeVisible(window.login_button);
     makeVisible(window.register_button);
     document.getElementById('cerca-button').disabled = true;
+    document.getElementById('tendina-ruolo').disabled = true;
+    document.getElementById('input-nome').disabled = true;
     deleteRows();
     document.querySelectorAll('.btn-compravendita').forEach(button => {
         makeHidden(button);

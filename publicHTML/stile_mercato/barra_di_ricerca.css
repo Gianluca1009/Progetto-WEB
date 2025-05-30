@@ -64,3 +64,14 @@
     height: 100%;
 }
 
+select.tendina-ruolo:disabled {
+  color: black;
+  background-color: rgba(255, 255, 255, 0.85);
+  opacity: 1;
+  border: 0.2vw solid var(--color-crema);
+  font-family: 'Georgia', serif;
+  font-size: 1.5vw;
+  box-shadow: 1vw 1vw 1vw rgba(0, 0, 0, 0.25);
+  border-radius: 1vw;
+  padding-inline: 1vw;
+}
