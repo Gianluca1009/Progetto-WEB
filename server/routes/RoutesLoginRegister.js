@@ -99,14 +99,14 @@ router_login_register.post('/forgot-password', async (req, res) => {
 
   const link = `http://localhost:3000/reset-password/${reset_token}`;
   const email_template = path.join(__dirname, '../mailer/email.html');
-  const emailContent = fs.readFileSync(email_template, 'utf8').replace('{{link}}', link);
+  const email_content = fs.readFileSync(email_template, 'utf8').replace('{{link}}', link);
   
 
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: email,
     subject: 'Recupero Password',
-    html: emailContent
+    html: email_content
   });
 });
 
@@ -140,96 +140,10 @@ router_login_register.post('/aggiorna-password', async (req, res) => {
 // Endpoint per la visualizzazione della pagina di reset della password nella mail
 router_login_register.get('/reset-password/:token', (req, res) => {
     const { token } = req.params;
+    const reset_template = path.join(__dirname, '../mailer/resetpassword.html');
+    const reset_content = fs.readFileSync(reset_template, 'utf8').replace('{{token}}', token);
 
-    res.send(`
-      <html>
-        <head>
-          <title>Reset Password</title>
-          <style>
-            body {
-              user-select: none;
-              font-family: Arial, sans-serif;
-              background: linear-gradient(to right, #1b014e, #4a01de);
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              height: 100vh;
-              margin: 0;
-            }
-            .container {
-                background: white;
-                padding: 3% 4%;
-                border-radius: calc(1vh + 1vh);
-                box-shadow: 0 0.8px 20px rgba(0, 0, 0, 0.5);
-                width: calc(20vh + 20vw);
-                height: calc(15vh + 8vw);
-                text-align: center;
-            }
-            h2 {
-              color: #333;
-            }
-            input[type="password"] {
-              width: 90%;
-              padding: 3%;
-              margin: 3% 0 5% 0;
-              border: calc(0.1vh + 0.1vw) solid #ccc;
-              border-radius: calc(0.3vh + 0.4vw);
-              font-size: calc(1vh + 0.6vw);
-          }
-            button {
-              width: 30%;
-              padding: 3%;
-              background-color: #7066e0;
-              border: none;
-              color: white;
-              font-size: calc(1vh + 0.6vw);
-              border-radius: calc(0.3vh + 0.4vw);
-              cursor: pointer;
-              transition: background-color 0.3s ease;
-          }
-            button:hover {
-              background-color: 0 0 0 3px rgba(112, 102, 224, 0.5);
-            }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <h2>Reimposta la tua password</h2>
-            <form id="resetForm">
-              <input type="hidden" name="reset_token" value="${token}" />
-              <input type="password" name="new_password" placeholder="Nuova password" required />
-              <button type="submit">Invia</button>
-            </form>
-          </div>
-
-          <script>
-            const form = document.getElementById('resetForm');
-            form.addEventListener('submit', async (event) => {
-              event.preventDefault();
-
-              const formData = new FormData(form);
-              const data = new URLSearchParams(formData);
-
-              try {
-                const response = await fetch('/aggiorna-password', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                  body: data.toString()
-                });
-
-                if (response.ok) {
-                  alert('Password aggiornata con successo!');
-                } else {
-                  alert("Errore nell'aggiornamento della password");
-                }
-              } catch (err) {
-                alert('Errore di rete o server');
-              }
-            });
-          </script>
-        </body>
-      </html>
-    `);
+    res.send(reset_content);
 });
 
 module.exports = router_login_register;
