@@ -12,7 +12,7 @@ const conditions = [
 ];
 
 
-//----- GESTIONE CONDIZIONE ------// qui
+//----- GESTIONE CONDIZIONE ------//
 
 // Funzione per ottenere una condizione casuale
 function getRandomCondition() {
