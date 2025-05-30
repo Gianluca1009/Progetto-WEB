@@ -4,6 +4,11 @@ const createConnection = require('../database/Connection');
 const transporter = require('../mailer/Mailer');
 const crypto = require('crypto');
 
+// per i template HTML utilizzati
+const path = require('path');
+const fs = require('fs');
+
+
 //----- ENPOINT PER LA GESTIONE DELLE DINAMICHE DI LOGIN, REGISTRAZIONE E RECUPERO PASSWORD ------//
 
 // Endpoint di registrazione
@@ -93,12 +98,15 @@ router_login_register.post('/forgot-password', async (req, res) => {
   );
 
   const link = `http://localhost:3000/reset-password/${reset_token}`;
+  const email_template = path.join(__dirname, '../mailer/email.html');
+  const emailContent = fs.readFileSync(email_template, 'utf8').replace('{{link}}', link);
+  
 
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: email,
     subject: 'Recupero Password',
-    html: `<p>Clicca qui per reimpostare la password: <a href="${link}">${link}</a></p>`
+    html: emailContent
   });
 });
 
