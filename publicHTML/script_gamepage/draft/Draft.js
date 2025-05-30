@@ -192,7 +192,7 @@ async function populateDraft(colore) {
                 }
                 li2_info.textContent = `${calciatore.squadra} `;
                 li3_info.textContent = `${calciatore.ruolo} `;
-                li4_info.textContent = `${convertDate(calciatore.data_nascita)} `;
+                li4_info.textContent = `${valueConverter("data_nascita",(calciatore.data_nascita))} `;
 
                 ul_info.appendChild(li1_info);
                 ul_info.appendChild(li2_info);

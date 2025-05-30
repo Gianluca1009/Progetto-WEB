@@ -2,7 +2,7 @@
 //----- FUNZIONI UTILIZZATE IN TUTTO IL PROGETTO -----//
 //
 
-//Funzione per far vedere un elemento con animazione
+// Funzione per far vedere un elemento con animazione
 function makeVisible(element, velocita = 1) {
     if (!element){
         console.warn("Elemento non trovato");
@@ -58,7 +58,7 @@ function makeHidden(element, velocita = 1) {
 }
 
 // Funzione per convertire la data in formato italiano
-function convertDate(stringa){
+function convertDate(stringa) {
     const mesi = {"01": "Gennaio", "02": "Febbraio", "03": "Marzo", "04": "Aprile", "05": "Maggio", "06": "Giugno",
      "07": "Luglio", "08": "Agosto", "09": "Settembre", "10": "Ottobre", "11": "Novembre", "12": "Dicembre"};
     const anno = stringa.substring(0,4);
@@ -69,13 +69,32 @@ function convertDate(stringa){
 
 }
 
-//Funzione per convertire le chiavi in un formato più leggibile
-function KeyConverter(key){
+// Funzione per convertire le chiavi in un formato più leggibile
+function keyConverter(key) {
     keytoReturn = key.replace(/_/g, ' ');
     keytoReturn = keytoReturn.charAt(0).toUpperCase() + keytoReturn.slice(1);
     if(key === "nazionalita") keytoReturn = "Nazionalità";
     return keytoReturn;
 }
+
+// Funzione per convertire i valori in un formato più leggibile
+function valueConverter(key, value) {
+    switch (key) {
+        case "altezza":
+            str_altezza = value.toString();
+            return `${str_altezza[0]},${str_altezza.substring(1)}cm`;
+        case "data_nascita":
+            const mesi = {"01": "Gennaio", "02": "Febbraio", "03": "Marzo", "04": "Aprile", "05": "Maggio", "06": "Giugno",
+            "07": "Luglio", "08": "Agosto", "09": "Settembre", "10": "Ottobre", "11": "Novembre", "12": "Dicembre"};
+            const anno = value.substring(0,4);
+            const mese = mesi[value.substring(5,7)];
+            const giorno = value.substring(8);
+            
+            return `${giorno} ${mese} ${anno}`;
+   
+    }return value; // Se non è un caso speciale, restituisci il valore originale
+}
+
 
 // Funzione per far apparire div in posizione desiderata rispetto a un altro div
 function setPositionRelativeToDiv(targetElement, floatingElement, side = 'right', offsetPercent = 1) {
@@ -174,7 +193,7 @@ function goToInfo(source) {
     handleHamburgerMenu(source);
 }
 
-//Funzione per far funzionare il menu
+// Funzione per far funzionare il menu
 function handleHamburgerMenu(pagina) {
     let hamburger;
     if (pagina === 'mercato') {

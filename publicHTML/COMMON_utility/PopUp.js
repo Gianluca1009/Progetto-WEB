@@ -187,7 +187,7 @@ function launchPopupStatistiche(calciatore, div_info, posizione, isFromRosa){
     listaStatistiche.style.zIndex = "100002";
     for (const key of keys) {
             const li = document.createElement('li');
-            li.innerHTML = `<strong> ${KeyConverter(key)}</strong>:  ${calciatore[key]}`;
+            li.innerHTML = `<strong> ${keyConverter(key)}</strong>:  ${valueConverter(key,calciatore[key])}`;
             listaStatistiche.appendChild(li);
     }
     divStatistiche.appendChild(listaStatistiche);

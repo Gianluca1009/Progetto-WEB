@@ -4,7 +4,7 @@ const createConnection = require('../database/Connection');
 const transporter = require('../mailer/Mailer');
 const crypto = require('crypto');
 
-// per i template HTML utilizzati
+// per i template HTML utilizzati nel recupero password
 const path = require('path');
 const fs = require('fs');
 
@@ -110,7 +110,6 @@ router_login_register.post('/forgot-password', async (req, res) => {
   });
 });
 
-
 // Endpoint per l'aggiornamento della password (backend)
 router_login_register.post('/aggiorna-password', async (req, res) => {
   const connection = await createConnection();
@@ -135,7 +134,6 @@ router_login_register.post('/aggiorna-password', async (req, res) => {
 
   res.send('Password aggiornata con successo.');
 });
-
 
 // Endpoint per la visualizzazione della pagina di reset della password nella mail
 router_login_register.get('/reset-password/:token', (req, res) => {

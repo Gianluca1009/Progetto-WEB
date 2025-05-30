@@ -111,10 +111,7 @@ function BuildRowForCalciatore(calciatore){
     for(const key of keys){
         if(key == 'presenze') break;
         const li = document.createElement('li');
-        li.textContent = `${KeyConverter(key)}: ${calciatore[key]}`;
-        if(key == 'data_nascita'){
-            li.textContent = `${KeyConverter(key)}: ${convertDate(calciatore[key])}`;
-        }
+        li.textContent = `${keyConverter(key)}: ${valueConverter(key,calciatore[key])}`;
         lista1.appendChild(li);
     }
 
@@ -123,7 +120,7 @@ function BuildRowForCalciatore(calciatore){
         if(key == 'presenze') start = true;
         if(start){
             const li = document.createElement('li');
-            li.textContent = `${KeyConverter(key)}: ${calciatore[key]}`;
+            li.textContent = `${keyConverter(key)}: ${valueConverter(key,calciatore[key])}`;
             lista2.appendChild(li);
         }
     }
