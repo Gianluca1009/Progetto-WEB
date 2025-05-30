@@ -165,7 +165,7 @@ function goToHome(source) {
     handleHamburgerMenu(source);
 }
 
-// Funzione per andare alle regole
+// Funzione per andare alla pagina info
 function goToInfo(source) {
     if(source === "gamepage"){
         window.location.reload();

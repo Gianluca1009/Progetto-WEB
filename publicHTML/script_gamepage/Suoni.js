@@ -1,3 +1,5 @@
+//----- GESTIONE DEGLI EFFETTI AUDIO ------//
+
 // Crea un contesto audio globale
 window.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 window.soundBuffers = {}; // Oggetti audio pre-caricati

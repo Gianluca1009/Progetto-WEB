@@ -1,3 +1,6 @@
+//----- GESTIONE DELL'ACQUISTO DEI CALCIATORI DAL MERCATO ------//
+
+// Funzione che gestisce la logica d'acquisto
 function acquistaCalciatore(calciatore, riga){
 
     let id = LS_getUserMercatoData().id;
@@ -26,7 +29,7 @@ function acquistaCalciatore(calciatore, riga){
         }
 }
 
-
+// Funzione che aggiorna i punti nel DB
 async function aggiornaPunti(userid, new_punti) {
   try {
     const response = await fetch('/update_punti', {
@@ -41,7 +44,7 @@ async function aggiornaPunti(userid, new_punti) {
   }
 }
 
-
+// Funzione che modifica il DB per indicare l'acquisto di un nuovo calciatore
 async function compraCalciatore(userid, calc_id) {
   try {
     const response = await fetch('/buy_calciatore', {

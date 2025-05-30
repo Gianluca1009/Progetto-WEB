@@ -1,4 +1,4 @@
-// Nota: le funzioni sono definite nel file utility.js e sono accessibili globalmente
+// Nota: le funzioni sono definite nel file Utility.js e sono accessibili globalmente
 
 /*
 *    LISTENER PER MUOVERE LE PEDINE:

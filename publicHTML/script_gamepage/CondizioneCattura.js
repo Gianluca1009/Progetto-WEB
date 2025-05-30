@@ -1,3 +1,4 @@
+// Lista di tutte le possibili condizioni di cattura dei pezzi avversari
 const conditions = [
     "Goal segnati in carriera",
     "Assist forniti in carriera",

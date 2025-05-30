@@ -1,4 +1,6 @@
-// Login sulla pagina Game
+//----- GESTIONE DEL LOCAL STORAGE NELLA PAGINA DI GIOCO ------//
+
+// Funzione che permette il login del user 1 nella pagina di gioco
 function LS_login1Game(userId1, username1, email1, punti1, partite1, vittorie1) {
     localStorage.setItem('game_user1Id', userId1);
     localStorage.setItem('game_username1', username1);
@@ -8,6 +10,7 @@ function LS_login1Game(userId1, username1, email1, punti1, partite1, vittorie1) 
     localStorage.setItem('game_user1_vittorie', vittorie1);
 }
 
+// Funzione che permette il login del user 2 nella pagina di gioco
 function LS_login2Game( userId2, username2, email2, punti2, partite2, vittorie2) {
     localStorage.setItem('game_user2Id', userId2);
     localStorage.setItem('game_username2', username2);
@@ -17,7 +20,7 @@ function LS_login2Game( userId2, username2, email2, punti2, partite2, vittorie2)
     localStorage.setItem('game_user2_vittorie', vittorie2);
 }
 
-
+// Funzione che permette il logout di entrambi gli utenti nella pagina di gioco
 function LS_logoutGame() {
     localStorage.removeItem('game_user1Id');
     localStorage.removeItem('game_username1');
@@ -34,7 +37,7 @@ function LS_logoutGame() {
     localStorage.removeItem('game_user2_vittorie');
 }
 
-
+// Funzione che ritorna i dati dell'user 1 nella pagina di gioco
 function LS_getUser1Game() {
     const userId = localStorage.getItem('game_user1Id');
     const username = localStorage.getItem('game_username1');
@@ -45,6 +48,7 @@ function LS_getUser1Game() {
     return { id: userId, username: username, email: email, punti: punti, partite: partite, vittorie: vittorie };
 }
 
+// Funzione che ritorna i dati dell'user 2 nella pagina di gioco
 function LS_getUser2Game() {
     const userId = localStorage.getItem('game_user2Id');
     const username = localStorage.getItem('game_username2');

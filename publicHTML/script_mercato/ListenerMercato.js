@@ -1,3 +1,5 @@
+//----- GESTIONE DELLA LOGICA DEL MERCATO ------//
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Inizializzo le variabili di finestra

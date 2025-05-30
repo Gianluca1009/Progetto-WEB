@@ -1,3 +1,5 @@
+//----- GESTIONE DEL LOCAL STORAGE NELLA PAGINA DELLA MERCATO ------//
+
 // Login sulla pagina Mercato
 function LS_loginMercato(userId, username, email, punti, partite, vittorie) {
     // Salva i dati dell'utente nella pagina Mercato

@@ -1,9 +1,12 @@
+//----- GESTIONE DELLA LOGICA DELLA HOME ------//
+
 document.addEventListener('DOMContentLoaded', function () {
-    // Navigazione ai vari comandi
+
+    // Navigazione verso le varie pagine del sito
     const comandoGioca = document.getElementById('comando-gioca');
     const comandoRose = document.getElementById('comando-rose');
     const comandoMercato = document.getElementById('comando-mercato');
-    const comandoRegole = document.getElementById('comando-regole');
+    const comandoInfo = document.getElementById('comando-info');
 
     if (comandoGioca) {
         comandoGioca.addEventListener('click', function () {
@@ -23,12 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    if (comandoRegole) {
-        comandoRegole.addEventListener('click', function () {
+    if (comandoInfo) {
+        comandoInfo.addEventListener('click', function () {
             window.location.href = 'info.html';
         });
     }
 
+    // Lista di citazioni che riguardano calcio e scacchi
     const citazioni = [
         `"Nel calcio come negli scacchi, chi pensa tre mosse avanti, non rincorre: comanda"`,
         `"Un campo da calcio è una scacchiera in movimento: chi conosce la geometria, detta il ritmo"`,
@@ -43,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `"Il calcio è istinto che si maschera da tattica. Gli scacchi sono tattica che maschera l’istinto"`
     ];
 
+    // Lista di possibili autori di citazioni
     const autori_citazioni = [
         `- Johan Cruijff`,
         `- Pep Guardiola`,
@@ -56,6 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `- Carlo Ancelotti`
     ];
 
+    // Scelta randomica della coppia citazione - autore per il contenuto da mandare a schermo
     const fraseRandom = citazioni[Math.floor(Math.random() * citazioni.length)];
     const autoreRandom = autori_citazioni[Math.floor(Math.random() * autori_citazioni.length)];
     const paragrafo_citazioni = document.getElementById('frase-random');

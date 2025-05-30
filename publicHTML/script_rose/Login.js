@@ -1,6 +1,7 @@
 
-//------ LOGIN ------//
+//------ LOGIN ROSA ------//
 
+// Funzione che permette di effettuare il login
 function login() {
     Swal.fire({
       title: 'Login',
@@ -74,7 +75,7 @@ async function ifNotLoggedIn() {
     }
 
     if(LS_getUserRosaData().id === null) {
-        buildRowNoLogin();
+        buildMessageNoLogin();
         window.logout_button.classList.add("hidden");
     }
 }
@@ -99,8 +100,9 @@ async function ifSessioneAperta(){
 }
 
 
-//------ REGISTRAZIONE ------//
+//------ REGISTRAZIONE ROSA ------//
 
+// Funzione che permette di effettuare la registrazione di un nuovo utente
 function register() {
   Swal.fire({
     title: 'Registrazione utente',
@@ -151,8 +153,9 @@ function register() {
 
 
 
-//------ LOGOUT ------//
+//------ LOGOUT ROSA ------//
 
+// Funzione che permette di effettuare il logout
 function logout() {
     LS_logoutRose();
 
@@ -164,7 +167,7 @@ function logout() {
     window.attaccanti = [];
 
     // Creo il messaggio di login non effettuato e lo metto in bacheca
-    buildRowNoLogin();
+    buildMessageNoLogin();
 
     makeHidden(window.logout_button);
     makeHidden(window.sezione_profilo);

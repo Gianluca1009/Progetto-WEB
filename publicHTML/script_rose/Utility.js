@@ -1,4 +1,6 @@
-// Funzione per recuperare la rosa dal db
+//----- FUNZIONI AUSILIARIE PER IL MERCATO ------//
+
+// Funzione per recuperare la rosa dal DB
 async function fetchMiaRosa(){
     try{
         if (LS_getUserRosaData().id){
@@ -160,8 +162,8 @@ function BuildRowForCalciatore(calciatore){
     makeVisible(row);
 }
 
-//Crea la riga per comunicare che non si hanno calciatori di un determinato ruolo
-function buildRowNoResult(ruolo) {
+//Crea il messaggio per comunicare che non si hanno calciatori di un determinato ruolo
+function buildMessageNoResult(ruolo) {
     ruolo_maiusc = ruolo.toUpperCase();
 
     const div_testi = document.createElement('div');
@@ -199,7 +201,7 @@ function buildRowNoResult(ruolo) {
 }
 
 // Funzione che crea la riga che segnala il login non effettuato
-function buildRowNoLogin() {
+function buildMessageNoLogin() {
 
     const titolo = document.createElement('h2');
     titolo.id = 'titolo-no-login';
@@ -246,7 +248,7 @@ async function BuildRosa(){
             BuildRowForCalciatore(difensore)
         });
     } else {
-        buildRowNoResult("difensore");
+        buildMessageNoResult("difensore");
     }
 
     // SEZIONE CENTROCAMPISTI
@@ -258,7 +260,7 @@ async function BuildRosa(){
             BuildRowForCalciatore(centrocampista)
         });
     } else {
-        buildRowNoResult("centrocampista");
+        buildMessageNoResult("centrocampista");
     }
 
     // SEZIONE ATTACCANTI
@@ -270,6 +272,6 @@ async function BuildRosa(){
             BuildRowForCalciatore(attaccante)
         });
     } else {
-        buildRowNoResult("attaccante");
+        buildMessageNoResult("attaccante");
     }
 }

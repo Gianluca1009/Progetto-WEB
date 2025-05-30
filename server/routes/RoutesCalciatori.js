@@ -2,6 +2,8 @@ const express = require('express');
 const router_calciatori = express.Router();
 const createConnection = require('../database/Connection');
 
+//----- ENPOINT PER IL RECUPERO DEI DATI RELATIVI AI CALCIATORI DEL DB ------//
+
 // Endpoint per ottenere n calciatori random da usare nel draft
 router_calciatori.get('/get_random_calciatori', async (req, res) => {
     const connection = await createConnection();

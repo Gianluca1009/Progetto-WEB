@@ -1,3 +1,5 @@
+//----- GESTIONE DELLA LOGICA DI CATTURA ------//
+
 // Funzione che calcola variabili di cattura e le passa alla funzione cattura
 function helperCattura(div_calc_att, div_calc_dif){  //true se l'att magna 
     const cond = getCondition();

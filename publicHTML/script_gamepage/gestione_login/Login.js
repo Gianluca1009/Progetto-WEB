@@ -87,7 +87,7 @@ function login() {
 
 // Funzione per gestire il caso di sessione gia aperta
 function isSessioneAperta(){
-    //mostra logout se l'utente è già loggato
+    //mostra logout e nasconde registrazione e login se l'utente è già loggato
     if(LS_getUser1Game().id != null && LS_getUser2Game().id != null){
         document.getElementById("logout-button").classList.remove("hidden");
         document.getElementById("register-button").classList.add("hidden");
@@ -170,7 +170,7 @@ function logout(){
     });
     //cancella LS
     LS_logoutGame();
-    //rende visibili i bottoni
+    //rende visibili e nasconde gli elementi opportuni
     makeHidden(document.getElementById("logout-button"));
     document.querySelector(".users-container").classList.add("hidden");
     makeVisible(document.getElementById("login-button"));

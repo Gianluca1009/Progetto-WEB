@@ -1,3 +1,5 @@
+//----- GESTIONE DELLA PROMOZIONE DEI PEDONI ------//
+
 const grid_container = document.querySelector('.grid-container');
 let div_promotion = null; // Sarà creato dinamicamente quando necessario
 

@@ -117,7 +117,6 @@ function launchProfilePopup(pagina){
         Parent.dataset.aperto = "true";
         const profile_popup = document.createElement('div');
         profile_popup.classList.add('div-profilo');
-        // profile_popup.classList.add('hidden');
         profile_popup.id = 'profilo';
         profile_popup.innerHTML = `
                 <img src="images/bacheche/x.png" class="close-profilo">

@@ -1,3 +1,5 @@
+//----- FUNZIONI AUSILIARIE PER IL MERCATO ------//
+
 //Funzione per ritornare dal DB i calciatori liberi
 async function fetchCalciatoriLiberi() {
     if(LS_getUserMercatoData().id){
@@ -140,7 +142,7 @@ function BuildRowForCalciatore(calciatore){
 }
 
 //Funzione che crea la riga che segnala il login non effettuato
-function buildRowNoResult() {
+function buildMessageNoResult() {
     const div_testi = document.createElement('div');
     div_testi.id = 'testo-no-result';
     div_testi.classList.add('hidden');
@@ -177,7 +179,7 @@ function buildRowNoResult() {
 }
 
 // Funzione che crea la riga che segnala il login non effettuato
-function buildRowNoLogin() {
+function buildMessageNoLogin() {
 
     const titolo = document.createElement('h2');
     titolo.id = 'titolo-no-login';
@@ -212,11 +214,11 @@ function deleteRows() {
     }
 }
 
-//Funzione per costruire il mercato
+//Funzione per costruire il mercato (filtra attraverso il testo nella barra di ricerca e il valore del menù a tendina)
 async function BuildMercato(inputNome, inputRuolo){
     if(LS_getUserMercatoData().id == null) {
         deleteRows();
-        buildRowNoLogin();
+        buildMessageNoLogin();
         return;
     }
     const results = await fetchCalciatoriLiberi();
@@ -265,7 +267,7 @@ async function BuildMercato(inputNome, inputRuolo){
         i++;
     }
     if (!risultatoRicerca) {
-        buildRowNoResult();
+        buildMessageNoResult();
     }
     setListeFontSize();
     setFontSizeAcquistaBtn();

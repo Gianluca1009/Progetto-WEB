@@ -1,3 +1,6 @@
+//----- FUNZIONI AUSILIARIE PER LA GESTIONE DEL LOCAL STORAGE ------//
+
+// Funzione per recuperare il numero di punti dell'utente in input
 function LS_updatePunti(id_user, new_punti) {
     if(localStorage.getItem('game_user1Id') === id_user){
         localStorage.setItem('game_user1_punti', new_punti);
@@ -13,6 +16,7 @@ function LS_updatePunti(id_user, new_punti) {
     }
 }
 
+// Funzione per recuperare il numero di partite giocate dall'utente in input
 function LS_updatePartite(id_user, new_partite) {
     if (localStorage.getItem('mercato_userId') === id_user) {
         localStorage.setItem('mercato_user_partite', new_partite);
@@ -28,6 +32,7 @@ function LS_updatePartite(id_user, new_partite) {
     }
 }
 
+// Funzione per recuperare il numero di partite vinte dall'utente in input
 function LS_updateVittorie(id_user, new_vittorie) {
     if (localStorage.getItem('mercato_userId') === id_user) {
         localStorage.setItem('mercato_user_vittorie', new_vittorie);

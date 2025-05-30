@@ -4,6 +4,8 @@ const createConnection = require('../database/Connection');
 const transporter = require('../mailer/Mailer');
 const crypto = require('crypto');
 
+//----- ENPOINT PER LA GESTIONE DELLE DINAMICHE DI LOGIN, REGISTRAZIONE E RECUPERO PASSWORD ------//
+
 // Endpoint di registrazione
 router_login_register.post('/register', async (req, res) => {
     const connection = await createConnection();
@@ -221,52 +223,5 @@ router_login_register.get('/reset-password/:token', (req, res) => {
       </html>
     `);
 });
-
-// router_login_register.get('/reset-password/:token', (req, res) => {
-//     const { token } = req.params;
-
-//     // HTML con form
-//     res.send(`
-//       <html>
-//         <head><title>Reset Password</title></head>
-//         <body>
-//           <h2>Reimposta la tua password</h2>
-//           <form id="resetForm">
-//             <input type="hidden" name="reset_token" value="${token}" />
-//             <input type="password" name="new_password" placeholder="Nuova password" required />
-//             <button type="submit">Invia</button>
-//           </form>
-
-//           <script>
-//             const form = document.getElementById('resetForm');
-//             form.addEventListener('submit', async (event) => {
-//               event.preventDefault(); // evita il submit tradizionale
-
-//               const formData = new FormData(form);
-//               const data = new URLSearchParams(formData);
-
-//               try {
-//                 const response = await fetch('/aggiorna-password', {
-//                   method: 'POST',
-//                   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-//                   body: data.toString()
-//                 });
-
-//                 if (response.ok) {
-//                   alert('Password aggiornata con successo!');
-//                   // Qui puoi reindirizzare o aggiornare la pagina
-//                 } else {
-//                   alert("Errore nell'aggiornamento della password");
-//                 }
-//               } catch (err) {
-//                 alert('Errore di rete o server');
-//               }
-//             });
-//           </script>
-//         </body>
-//       </html>
-//     `);
-// });
-
 
 module.exports = router_login_register;

@@ -1,6 +1,6 @@
-//------ LOGIN ------//
+//------ LOGIN MERCATO ------//
 
-//Funzione che permette di effettuare il login
+//Funzione che permette di effettuare il login nella pagina del mercato
 function login() {
     Swal.fire({
       title: 'Login',
@@ -66,7 +66,7 @@ function login() {
 async function ifNotLoggedIn() {
     if(LS_getUserMercatoData().id == null){
         deleteRows();
-        buildRowNoLogin();
+        buildMessageNoLogin();
         document.getElementById('cerca-button').disabled = true;
         document.getElementById('tendina-ruolo').disabled = true;
         document.getElementById('input-nome').disabled = true;
@@ -94,7 +94,7 @@ async function ifSessioneAperta() {
 }
 
 
-//------ REGISTRAZIONE ------//
+//------ REGISTRAZIONE MERCATO ------//
 
 //Funzione che permette di effettuare la registrazione
 function register() {
@@ -147,7 +147,7 @@ function register() {
 
 
 
-//------ LOGOUT ------//
+//------ LOGOUT MERCATO ------//
 
 //Funzione che permette di effettuare il logout
 function logout() {
@@ -163,5 +163,5 @@ function logout() {
     document.querySelectorAll('.btn-compravendita').forEach(button => {
         makeHidden(button);
     });
-    buildRowNoLogin();
+    buildMessageNoLogin();
 }

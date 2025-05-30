@@ -1,3 +1,4 @@
+//----- GESTIONE DELLA LOGICA DELLA PAGINA ROSA ------//
 
 document.addEventListener('DOMContentLoaded', () => {
 

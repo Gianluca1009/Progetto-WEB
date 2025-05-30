@@ -1,3 +1,5 @@
+//----- GESTIONE DEL DOPPIO STILE DELLE PEDINE MODERN - CLASSIC ------//
+
 const toggle = document.getElementById('toggle');
 const text = toggle.nextElementSibling.querySelector('.modetext');
 

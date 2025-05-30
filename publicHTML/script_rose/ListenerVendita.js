@@ -1,3 +1,5 @@
+//----- GESTIONE DELLA VENDITA DEI GIOCATORI DALLA ROSA ------//
+
 function ListVendi(calciatore, bottone){
    
     //se sei loggato al click:
@@ -8,7 +10,7 @@ function ListVendi(calciatore, bottone){
     confermaAcquisto(id, calciatore.cognome , nomePlayer, calciatore.prezzo ,miei_punti, calc_id);
 }
 
-
+// Funzione utile a confermare la volontà di vendere il calciatore selezionato
 async function confermaAcquisto(id_player, cognome_calciatore, nomePlayer, prezzo ,miei_punti, calc_id) {
   const result = await Swal.fire({
     title: `Vuoi vendere ${cognome_calciatore} ?`,
@@ -49,6 +51,7 @@ async function confermaAcquisto(id_player, cognome_calciatore, nomePlayer, prezz
   }
 }
 
+// Funzione che aggiorna i punti nel DB
 async function aggiornaPunti(userid, new_punti) {
   try {
     const response = await fetch('/update_punti', {
@@ -63,7 +66,7 @@ async function aggiornaPunti(userid, new_punti) {
   }
 }
 
-
+// Funzione che modifica il DB per indicare la vendita di un calciatore
 async function vendiCalciatore(user_id, calc_id) {
   try {
     const response = await fetch('/sale_calciatore', {

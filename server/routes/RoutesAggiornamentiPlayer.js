@@ -2,6 +2,8 @@ const express = require('express');
 const router_aggiornamenti_player = express.Router();
 const createConnection = require('../database/Connection');
 
+//----- ENPOINT PER AGGIORNARE IL DB (ACQUISTI, VENDITE, PUNTI, VITTORIE E PARTITE GIOCATE) ------//
+
 // Endpoint per aggiornare i punti del giocatore vincente
 router_aggiornamenti_player.post('/update_punti', async (req, res) => {
     const connection = await createConnection();

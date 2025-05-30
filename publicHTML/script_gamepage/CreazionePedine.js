@@ -1,3 +1,6 @@
+//----- GESTIONE INIZIALIZZAZIONE PEDINE ------//
+
+// DIzionario che definisce i dati (posizioni iniziali, colore, id e immagini) delle pedine
 const pezzi = {
     torre: {
         posizioni: [
