@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (comandoRegole) {
         comandoRegole.addEventListener('click', function () {
-            window.location.href = 'regole.html';
+            window.location.href = 'info.html';
         });
     }
 
