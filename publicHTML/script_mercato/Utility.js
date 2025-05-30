@@ -176,7 +176,6 @@ function buildRowNoResult() {
     makeVisible(div_testi);
 }
 
-
 // Funzione che crea la riga che segnala il login non effettuato
 function buildRowNoLogin() {
 
@@ -215,6 +214,11 @@ function deleteRows() {
 
 //Funzione per costruire il mercato
 async function BuildMercato(inputNome, inputRuolo){
+    if(LS_getUserMercatoData().id == null) {
+        deleteRows();
+        buildRowNoLogin();
+        return;
+    }
     const results = await fetchCalciatoriLiberi();
     deleteRows();
     let i = 0;

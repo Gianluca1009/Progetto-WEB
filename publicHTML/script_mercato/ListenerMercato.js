@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if(LS_getUserMercatoData().id != null) {
             const inputNome = document.querySelector("input[name='nome']").value;
             const inputRuolo = document.querySelector("select[name='tendina']").value;
-
             BuildMercato(inputNome, inputRuolo);
         }
     });
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //Ottengo l'input del form
         const inputNome = document.querySelector("input[name='nome']").value;
         const inputRuolo = document.querySelector("select[name='tendina']").value;
-
+        ifNotLoggedIn();
         BuildMercato(inputNome, inputRuolo);
     });
     
