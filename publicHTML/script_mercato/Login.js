@@ -77,7 +77,8 @@ async function ifNotLoggedIn() {
 async function ifSessioneAperta() {
     if(LS_getUserMercatoData().id != null){
         const player = await fetch(`/player_in_db?id=${LS_getUserMercatoData().id}`);
-        if(!player.ok) {
+        console.log(player);
+        if(!player.ok || player.json().lenght == 0) {
             LS_logoutMercato();
             return;
         }

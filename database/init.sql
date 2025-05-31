@@ -42,8 +42,8 @@ GRANT USAGE, SELECT, UPDATE ON SEQUENCE player_id_seq TO admin;
 GRANT USAGE, SELECT, UPDATE ON SEQUENCE calciatore_id_seq TO admin;
 
 -- Permessi sulle TABELLE
-GRANT INSERT, SELECT, UPDATE ON player TO admin;
-GRANT INSERT, SELECT, UPDATE ON calciatore TO admin;
+GRANT INSERT, SELECT, UPDATE, DELETE ON player TO admin;
+GRANT INSERT, SELECT, UPDATE, DELETE ON calciatore TO admin;
 
 
 INSERT INTO calciatore (

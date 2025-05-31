@@ -84,8 +84,7 @@ async function ifNotLoggedIn() {
 async function ifSessioneAperta(){
     if(LS_getUserRosaData().id){
         const player = await fetch(`/player_in_db?id=${LS_getUserRosaData().id}`);
-        console.log(player.ok);
-        if(!player.ok) {
+        if(!player.ok || player.json().lenght == 0) {
             LS_logoutRose();
             return;
         }
