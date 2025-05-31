@@ -86,9 +86,15 @@ function login() {
 }
 
 // Funzione per gestire il caso di sessione gia aperta
-function isSessioneAperta(){
+async function isSessioneAperta(){
     //mostra logout e nasconde registrazione e login se l'utente è già loggato
     if(LS_getUser1Game().id != null && LS_getUser2Game().id != null){
+        const player1 = await fetch(`/player_in_db?id=${LS_getUser1Game().id}`);
+        const player2 = await fetch(`/player_in_db?id=${LS_getUser2Game().id}`);
+        if(!player1.ok || !player2.ok || player1.json().lenght == 0 || player2.json().lenght == 0) {
+            LS_logoutGame();
+            return;
+        }
         document.getElementById("logout-button").classList.remove("hidden");
         document.getElementById("register-button").classList.add("hidden");
         document.getElementById("login-button").classList.add("hidden");
