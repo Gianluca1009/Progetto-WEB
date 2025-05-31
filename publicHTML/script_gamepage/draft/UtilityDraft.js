@@ -140,7 +140,6 @@ async function AssegnaCalciatoreAPedina(event, drop_cell) {
             let text = div_pedina.querySelector('text');
             if (!text) {
                 var colore = event.dataTransfer.getData("colore"); // Ottieni il colore della rosa
-                console.log(colore);
                 remove3Calciatori(colore);   // Rimuovi i calciatori selezionati dall'array della partita
                 text = document.createElement('text');
                 text.classList.add('nome-giocatore');

@@ -145,6 +145,16 @@
 
     # CERCARE BUG NEL GIOCO E INSERIRLI SOPRA ^^^^^^^^
 
+
+# PERCORSO DA SEGUIRE
+1. Index e esplorazione pagina info al volo con spiegazione del sito
+2. Entrare in gioca, creare un nuovo account, loggarsi col nuovo e fare recupero password dell'altro
+3. Fatto il login spiegare il Local Storage
+4. Draft 5 a mano e random, visualizzare popup statistiche, e premere pronto, far vedere lo switch classic/modern
+5. Avvio partita, spiegazione movimento pedine e cattura, log laterali, promozione pedone, timer
+6. Spiegazione aggiornamento punti, vittorie, partite, storico dell'utente
+7. Spiegazione Mercato e Rosa con spiegazione del database al volo e query, spiegazione login separati
+8. Riavvio Draft con giocatori di proprietà
     
 
 

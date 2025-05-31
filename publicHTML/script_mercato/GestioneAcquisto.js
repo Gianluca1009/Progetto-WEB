@@ -15,8 +15,6 @@ function acquistaCalciatore(calciatore, riga){
             //query scala i crediti e update db
             aggiornaPunti(id, miei_punti);
             //aggiorna pti display
-            window.user_points.textContent = miei_punti;
-            localStorage.setItem('mercato_user_point', miei_punti);
             LS_updatePunti(id, miei_punti);
             makeHidden(riga);
             riga.remove();

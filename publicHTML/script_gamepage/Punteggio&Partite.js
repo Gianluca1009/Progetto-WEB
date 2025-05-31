@@ -26,7 +26,6 @@ async function aggiornaPartite(userid) {
         });
         if(response.ok){
             partite_aggiornate = await response.json();
-            console.log("partite aggiornate", partite_aggiornate);
             LS_updatePartite(userid, partite_aggiornate);
         }
         else{
