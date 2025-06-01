@@ -120,6 +120,19 @@ function setSoccerPlayerNameFontSize() {
     });
 }
 
+// Funzione per settare dinamicamente i fontsize del container delle info dei calciatori
+function setSoccerPlayerInfoFontSize() {
+    const lista = document.querySelectorAll('lista-info');
+    const textElements = document.getElementsByTagName('li');
+    const dimensioniInfoDraftCell = misuraInfoDraftCell().width;
+
+    for (let i = 0; i < textElements.length; i++) {
+        const element = textElements[i];
+        // Imposta la grandezza del font in base alla dimensione della cella
+        element.style.fontSize = dimensioniInfoDraftCell * 0.09 + 'px';
+    }
+}
+
 // Funzione per settare la lunghezza del menu hamburger dinamicamente
 function setHamburgerLunghezza() {
     const altezzaPagina = Math.max(

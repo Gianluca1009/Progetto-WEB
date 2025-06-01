@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setSoccerPlayerNameFontSize(); // Imposta la grandezza del font dei nomi dei calciatori
         setDraftFontSize(); // Imposta la grandezza del font delle celle del draft
         setCondizioneFontSize(); // Imposta la dimensione del testo della condizione dinamicamente
+        setSoccerPlayerInfoFontSize() // Imposta la fontsize del container delle info dinamicamente
     });
     
 });
