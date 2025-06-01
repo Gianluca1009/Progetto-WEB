@@ -156,6 +156,7 @@ function startGame() {
 
     // ELEMENTI DA MOSTRARE (condizione, progress, restartButton)
     makeVisible(document.querySelector('.condition-container'));
+    setCondizioneFontSize(); // Imposta la dimensione del testo della condizione dinamicamente
     makeVisible(document.querySelector('.progress-container'));
     makeVisible(document.querySelector('.tunnel-sx'));
     makeVisible(document.querySelector('.tunnel-dx'));
