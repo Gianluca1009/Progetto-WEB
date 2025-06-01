@@ -67,7 +67,7 @@ body {
     height:90%;
     background-color: #447dcd;
     border-radius: 30px;
-    border:5px solid #f5deb3;
+    border: calc(0.25vh + 0.25vw) solid #f5deb3;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-decoration: none;
     overflow: hidden;
@@ -88,7 +88,7 @@ body {
     height: 85%;
     width: 100%;
     object-fit: cover;
-    border-bottom:5px solid #f5deb3;
+    border-bottom: calc(0.25vh + 0.25vw) solid #f5deb3;
 }
 
 /* 📝 Testo: 15% e centrato */
