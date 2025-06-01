@@ -156,3 +156,21 @@ function setDraftFontSize() {
     });
 }
 
+
+function misuraContainerCondizione() {
+    // Seleziona il container per le condizioni
+    const container = document.getElementById('condition-container');
+    
+    if (container) {
+        // Ottiene le dimensioni effettive della cella
+        dimensioni = container.getBoundingClientRect();
+        console.log(container.getBoundingClientRect())
+    }
+    return dimensioni;
+}
+
+function setCondizioneFontSize() {
+    const condizione = document.getElementById('condition');
+    console.log(condizione);
+    condizione.style.fontSize = `${misuraContainerCondizione().width * 0.05}px`;
+}
