@@ -49,7 +49,7 @@ router_login_register.post('/login', async (req, res) => {
           vittorie: user.vittorie
           });
 
-      }else {
+      } else {
         res.status(401).send('Username o password errati');
       }
     } catch (err) {

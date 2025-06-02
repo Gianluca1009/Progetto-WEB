@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'publicHTML', 'index.html'));
 });
 
-// Endpoint che avvia il server e mettiti in ascolto sulla porta specificata
+// Endpoint che avvia il server e si mette in ascolto sulla porta specificata
 app.listen(port, () => {
-    console.log(`[SOC-C-HESS © Server] successfully started and running on port ${port}`); // Log successful start
+    console.log(`[SOC-C-HESS © Server] successfully started and running on port ${port}`); 
 });

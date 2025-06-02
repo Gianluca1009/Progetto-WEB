@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const comandoMercato = document.getElementById('comando-mercato');
     const comandoInfo = document.getElementById('comando-info');
 
+    window.addEventListener('resize', function() {
+        setTitoliCardFontSize(); //Imposto dinamicamente il font-size dei titoli delle card
+    });
+
+    setTitoliCardFontSize(); //Imposto dinamicamente il font-size dei titoli delle card
+
     if (comandoGioca) {
         comandoGioca.addEventListener('click', function () {
             window.location.href = 'gamepage.html';

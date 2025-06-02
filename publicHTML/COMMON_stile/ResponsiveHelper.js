@@ -84,6 +84,30 @@ function misuraSezione() {
     return dimensioni;
 }
 
+// Funzione per misurare la dimensione del container delle condizioni di cattura
+function misuraContainerCondizione() {
+    // Seleziona il container per le condizioni
+    const container = document.getElementById('condition-container');
+    
+    if (container) {
+        // Ottiene le dimensioni effettive della cella
+        dimensioni = container.getBoundingClientRect();
+    }
+    return dimensioni;
+}
+
+// Funzione per misurare la dimensione del container dei titoli delle card nella home
+function misuraContainerIndex() {
+    // Seleziona il container per le condizioni
+    const card = document.getElementById('comando-mercato');
+    
+    if (card) {
+        // Ottiene le dimensioni effettive della cella
+        dimensioni = card.getBoundingClientRect();
+    }
+    return dimensioni;
+}
+
 
 
 
@@ -96,7 +120,7 @@ function setSoccerPlayerNameFontSize() {
     });
 }
 
-// Funzione che mi sa non usiamo
+// Funzione per settare dinamicamente i fontsize del container delle info dei calciatori
 function setSoccerPlayerInfoFontSize() {
     const lista = document.querySelectorAll('lista-info');
     const textElements = document.getElementsByTagName('li');
@@ -156,3 +180,22 @@ function setDraftFontSize() {
     });
 }
 
+// Funzione per settare il fontsize della condizione di cattura dinamicamente
+function setCondizioneFontSize() {
+    const condizione = document.getElementById('condition');
+    condizione.style.fontSize = `${misuraContainerCondizione().width * 0.05}px`;
+}
+
+// Funzione per settare il fontsize dei titoli della home dinamicamente
+function setTitoliCardFontSize() {
+
+    const titolo_gioca = document.getElementById('titolo-card-gioca');
+    const titolo_rosa = document.getElementById('titolo-card-rosa');
+    const titolo_mercato = document.getElementById('titolo-card-mercato');
+    const titolo_info = document.getElementById('titolo-card-info');
+
+    titolo_gioca.style.fontSize = `${misuraContainerIndex().width * 0.13}px`;
+    titolo_rosa.style.fontSize = `${misuraContainerIndex().width * 0.13}px`;
+    titolo_mercato.style.fontSize = `${misuraContainerIndex().width * 0.13}px`;
+    titolo_info.style.fontSize = `${misuraContainerIndex().width * 0.13}px`;
+}
