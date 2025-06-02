@@ -176,8 +176,8 @@ function cattura(pedinaBersaglio, cella_dest) {  //div -> pedinaBersaglio
         let dizionario_mangiata = helperCattura(window.selected_element, pedinaBersaglio);
         if(dizionario_mangiata.valid){
             pedinaBersaglio.remove();
-            setTunnelElement(dizionario_mangiata); //compone la grafica nei tunnel laterali
             setFlyingElement(dizionario_mangiata, image_attaccante); //compone la grafica della cattura
+            setTunnelElement(dizionario_mangiata); //compone la grafica nei tunnel laterali
             avanza(cella_dest); // Sposta la pedina selezionata nella cella di destinazione
             return true;
         }else{
