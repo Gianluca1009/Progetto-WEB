@@ -48,7 +48,7 @@ function login() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: username1, password: password1 })
             }).then(res => {
-            if (!res.ok) throw new Error('Login Game 1 fallito');
+            if (!res.ok) throw new Error('Credenziali errate per il giocatore bianco');
             return res.json();
             }),
 
@@ -57,7 +57,7 @@ function login() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: username2, password: password2 })
             }).then(res => {
-            if (!res.ok) throw new Error('Login Game 2 fallito');
+            if (!res.ok) throw new Error('Credenziali errate per il giocatore nero');
             return res.json();
             })
         ])
